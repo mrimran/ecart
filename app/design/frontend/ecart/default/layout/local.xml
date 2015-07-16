@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout version="0.1.0">
+<default>
+	
+	<cms_index_index> 
+		<!--<reference name="root">
+		<action method="setTemplate"><template>page/1column.phtml</template></action>
+		<remove name="left" />
+		<remove name="right" />
+		</reference>
+		-->	
+	</cms_index_index>
+
+
+  <reference name="head">
+			
+			
+				<action method="removeItem"><type>js</type><name>lib/jquery/jquery-1.10.2.min.js</name></action>
+				 
+				<action method="addItem"><type>skin_js</type><name>js/jquery-migrate-1.2.1.min.js</name></action>
+				<action method="addItem"><type>skin_js</type><name>js/bootstrap.min.js</name></action>
+				<action method="addItem"><type>skin_js</type><name>js/jPushMenu.js</name></action>
+				<action method="addItem"><type>skin_js</type><name>js/owl.carousel.min.js</name></action>
+				<!--<action method="addItem"><type>skin_js</type><name>js/jquery.malihu.PageScroll2id.min.js</name></action>-->
+				<action method="addItem"><type>skin_js</type><name>js/bootstrap-select.min.js</name></action>
+				<action method="addItem"><type>skin_js</type><name>js/scripts.js</name></action>
+				<action method="addItem"><type>skin_js</type><name>js/fontsmoothie.min.js</name></action>
+				
+				
+				<action method="addCss"><stylesheet>css/auguria/sliders/default.css</stylesheet></action>
+				<action method="addItem"><type>skin_js</type><script>js/auguria/sliders/slides.min.jquery_forked.js</script></action>
+				
+				
+				<action method="addCss"><stylesheet>css/font-awesome.min.css</stylesheet></action>
+				<action method="addCss"><stylesheet>css/owl.carousel.css</stylesheet></action>
+				<action method="addCss"><stylesheet>css/bootstrap.min.css</stylesheet></action> 
+				<action method="addCss"><stylesheet>css/bootstrap-select.css</stylesheet></action>
+				<action method="addCss"><stylesheet>css/style.css</stylesheet></action>
+				<action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
+				<action method="addCss"><stylesheet>css/responsive.css</stylesheet></action>
+				<action method="addCss"><stylesheet>css/jPushMenu.css</stylesheet></action>
+				<action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+
+	</reference>
+	
+	
+	<reference name="content">
+		<block type="core/text_list" name="top.menu" as="topMenu" translate="label">
+		<label>Navigation Bar</label>
+		<block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+		<block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
+		 
+		</block>
+		</block>
+	</reference>
+	
+	
+	<reference name="footer">
+	<block type="cms/block" name="feature_footer" before="bottomContainer">
+	<action method="setBlockId"><block_id>feature_footer</block_id></action>
+	</block>
+	
+	<block type="cms/block" name="footer_social"  before="cms_footer_links">
+	<action method="setBlockId"><block_id>footer_social</block_id></action>
+	</block>
+	
+	</reference>
+
+</default>
+
+
+ 		<cms_index_index>
+        <reference name="content"> 
+            <block type="auguria_sliders/cms_page_slider" name="auguria_sliders" template="auguria/sliders/slider.phtml" after="catalog.topnav" before="content"/>
+				<block type="cms/block" name="home_promotions" after="content"  >
+				<action method="setBlockId"><block_id>home_promotions</block_id></action>
+				</block>
+				<block type="catalog/product" name="todaysDeal" template="catalog/product//todays_deals.phtml"/>
+				<block type="catalog/product" name="bestSellings" template="catalog/product//bestsellings.phtml"/> 
+				<block type="catalog/product" name="phoneAccessories" template="catalog/product//phoneaccessories.phtml"/>
+				<block type="catalog/product" name="computerAccessories" template="catalog/product//computeraccessories.phtml"/>
+				<block type="catalog/product" name="recomendations" template="catalog/product//recomendations.phtml"/>
+				<block type="cms/block" name="buyers_protection" after="content"  >
+				<action method="setBlockId"><block_id>buyers_protection</block_id></action>
+				</block>
+				<block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/>
+			</reference>
+    </cms_index_index>
+	 
+
+
+
+
+
+
+</layout>
