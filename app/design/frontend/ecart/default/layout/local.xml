@@ -92,7 +92,8 @@
 				<block type="cms/block" name="buyers_protection" after="content">
 				<action method="setBlockId"><block_id>buyers_protection</block_id></action>
 				</block>
-				<block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/> 
+				<!-- <block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/>  -->
+                                <block name="featuredbrandflexiblebox" type="shopbybrand/featuredbrand" template="shopbybrand/featuredbrandflexiblebox.phtml"/>
 				
 				
 				
