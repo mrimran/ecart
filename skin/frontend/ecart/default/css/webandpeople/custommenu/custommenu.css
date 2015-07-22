@@ -561,4 +561,4 @@ vertical-align:middle;}
 #wp-nav-container .active .parentMenu { border-right: 1px solid #fff;}
 
 #wp-nav-container .itemMenuName.level1:hover > span, #wp-nav-container .itemMenuName.level2:hover > span { color: #f57a20;}
-.itemMenuName.level1 { border-bottom: 1px solid #eee; padding: 8px 0 !important;}
+.itemMenuName.level1 { border-bottom: 1px solid #eee; padding: 3px 0px 11px 10px !important;}
