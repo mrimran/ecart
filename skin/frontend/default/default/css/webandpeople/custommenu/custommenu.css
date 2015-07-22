@@ -1,11 +1,11 @@
 #custommenu {
- /*   position: relative;
-    font-size: 14px;
+    position: relative;
+    font-size: 12px;
     padding: 0px 0px 0px 0px;
     width: 100%;
     border-radius: 2px;
     height: auto;
-    margin: 15px 0 0 0;*/
+    margin: 0 auto;
 }
 /*IE7 fix*/
 *:first-child+html #custommenu {
@@ -21,8 +21,6 @@ div.menu a:link, div.menu a:visited {
     height: 40px;
     padding-left: 15px;
     padding-right: 15px;
-     padding-top: 0;
-     padding-bottom: 0;
 }
 div.menu a span {
     display: block;
@@ -56,6 +54,10 @@ div.level1 {
 }
 div.level2 {
     margin-bottom: 5px;
+}
+div.level3 {
+    margin-bottom: 5px;
+    padding: 5px;
 }
 div.block2 {
     padding-top: 0px;
@@ -104,10 +106,10 @@ div.block2 a img {
 div.block2 a:hover img {
     opacity: 1;
     filter: alpha(opacity=100);
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+-webkit-transition: all .2s ease-in-out;
+-moz-transition: all .2s ease-in-out;
+-ms-transition: all .2s ease-in-out;
+transition: all .2s ease-in-out;
 }
 div.block2 .brand a:hover img {
     -webkit-transition: all 0;
@@ -121,7 +123,7 @@ div.wp-custom-menu-popup hr {
 /******************************************* COLUMN WIDTH ***************************** */
 div.column {
     float: left;
-    width: 31%; /* for 3 columns*/
+    width: 18%; /* for 5 columns*/
     padding: 0px 1%;
     margin: 0px 0px 0px 0px;
 }
@@ -142,8 +144,8 @@ div.level1 {
 #custommenu {
 }
 div.wp-custom-menu-popup {
-    background-color: #fbfbfb;
-    border: solid 1px #cccccc;
+    background: #f1f1f1;
+    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.3);
 }
 div.menu a:link, div.menu a:visited {
 }
@@ -151,10 +153,10 @@ div.menu a:hover {
     background: #f1f1f1;
 }
 div.menu a, div.wp-custom-menu-popup a {
-    -webkit-transition: all .1s linear;
-    -moz-transition: all .1s linear;
-    -ms-transition: all .1s linear;
-    transition: all .1s linear;
+ -webkit-transition: all .1s linear;
+-moz-transition: all .1s linear;
+-ms-transition: all .1s linear;
+transition: all .1s linear;
 }
 div.menu .brand a, div.wp-custom-menu-popup .brand a {
     -webkit-transition: all 0s linear;
@@ -162,13 +164,19 @@ div.menu .brand a, div.wp-custom-menu-popup .brand a {
     -ms-transition: all 0s linear;
     transition: all 0s linear;
 }
+div.menu.active a {
+    background: #f1f1f1 !important;
+    color: #000 !important;
+}
+div.level3 {
+    background: #fff;
+}
 /*FONTS*/
 div.menu {
     font-weight: normal;
     font-size: 14px;
     text-transform: uppercase;
-    font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-    line-height: 0;
+    font-family: "Segoe UI";
 }
 a.level1:link, a.level1:visited {
     text-transform: none;
@@ -176,35 +184,37 @@ a.level1:link, a.level1:visited {
 }
 a.level2:link, a.level2:visited {
     font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
-    margin-left: 20px;
+    font-size: 13px;
+    line-height: 16px;
+}
+a.level3:link, a.level3:visited {
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 100%;
+    margin-bottom: 0px;
 }
 /*COLOR*/
-#custommenu {
-    background-color: #fff;
-}
 div.menu a:link, div.menu a:visited {
-    background-color: #fff;
-    color: #636363;
-    text-transform: uppercase;
+    color: #fff;
 }
-a.level1:link, a.level1:visited {
-    color: #636363;
+div.menu a:hover, div.menu.active a {
+    color: #000;
+}
+a.level3:link, a.level3:visited {
+    color: #333333;
+}
+a.level3:hover {
+    color: #b43f74;
 }
 a.level2:link, a.level2:visited {
-    color: #636363;
+    color: #000;
 }
-div.menu a:hover,
-div.menu.act a,
-div.menu.active a {
-    color: #3399cc;
+a.level1:hover {
+    background: #d3d3d3;
 }
-a.level1:hover, a.level1.act, a.level1.actParent {
-    color: #3399cc;
-}
-a.level2:hover, a.level2.act, a.level2.actParent {
-    color: #3399cc;
+a.level2:hover {
+    color: #000;
+    background: #d3d3d3;
 }
 .block2 table.brand {
     float: left;
@@ -248,7 +258,6 @@ html[xmlns] #menu-button, html[xmlns] .parentMenu {
     width: 100%;
     border-bottom: 1px solid #fff;
     text-transform: uppercase;
-    display: none;
 }
 #menu-button a:link, #menu-button a:visited {
     color: #fff;
@@ -326,11 +335,10 @@ html[xmlns] #menu-button, html[xmlns] .parentMenu {
     text-align: left;
     border-bottom: 1px solid #dadada;
 }
-.menu-mobile .parentMenu a:link,
-.menu-mobile .parentMenu a:visited {
+.menu-mobile .parentMenu a:link, .menu-mobile .parentMenu a:visited {
     padding: 10px 0px 10px 10px;
     margin-right: 80px;
-    color: #636363;
+    color: #000;
     display: block;
 }
 .menu-mobile .parentMenu:hover {
@@ -347,32 +355,6 @@ html[xmlns] #menu-button, html[xmlns] .parentMenu {
 }
 .menu-mobile div.level2 {
     margin-bottom: 0;
-}
-.menu-mobile a:hover {
-    text-decoration: none;
-}
-.menu-mobile.level0 .parentMenu a:link,
-.menu-mobile.level0 .parentMenu a:visited {
-    text-transform: uppercase;
-}
-.menu-mobile .parentMenu a.level1:link,
-.menu-mobile .parentMenu a.level1:visited,
-.menu-mobile .parentMenu a.level2:link,
-.menu-mobile .parentMenu a.level2:visited {
-    text-transform: none;
-}
-.menu-mobile .parentMenu a.level1:link,
-.menu-mobile .parentMenu a.level1:visited {
-    margin-left: 20px;
-}
-.menu-mobile .parentMenu a.level2:link,
-.menu-mobile .parentMenu a.level2:visited {
-    margin-left: 40px;
-}
-.menu-mobile .parentMenu a:hover,
-.menu-mobile .parentMenu a.act,
-.menu-mobile .parentMenu a.actParent {
-    color: #3399cc;
 }
 #custommenu-mobile .button {
     cursor: pointer;
@@ -404,7 +386,7 @@ html[xmlns] #menu-button, html[xmlns] .parentMenu {
     background-color: #fff;
 }
 #custommenu-mobile .level0 {
-    background-color: #ededed;
+    background-color: #f1f1f1;
 }
 #custommenu-mobile .level1 {
     background-color: #e4e4e4;

@@ -47,8 +47,9 @@
 
 		    <label>Navigation Bar</label>
 		    <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
-		        <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>	 
-		    </block>
+		       <!-- <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>	 -->
+		    <block  type="custommenu/toggle"></block>
+			 </block>
 		</block>
 	</reference>
 	
