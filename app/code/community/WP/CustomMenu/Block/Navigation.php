@@ -92,7 +92,8 @@ class WP_CustomMenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         if (Mage::getStoreConfig('custom_menu/general/non_breaking_space')) {
             $name = str_replace(' ', '&nbsp;', $name);
         }
-        $htmlTop[] = '<span>' . $name . '</span>';
+        $htmlTop[] = '<span>' . '</span>';
+		   $htmlTop[] =  $name;
         $htmlTop[] = '</a>';
         $htmlTop[] = '</div>';
         $htmlTop[] = '</div>';
@@ -101,20 +102,20 @@ class WP_CustomMenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         if ($drawPopup) {
             $htmlPopup = array();
             // --- Popup function for hide ---
-            $htmlPopup[] = '<div id="popup' . $id . '" class="wp-custom-menu-popup" onmouseout="wpHideMenuPopup(this, event, \'popup' . $id . '\', \'menu' . $id . '\')" onmouseover="wpPopupOver(this, event, \'popup' . $id . '\', \'menu' . $id . '\')">';
+            $htmlPopup[] = '<div id="popup' . $id . '" class=" homeslidercontainer wp-custom-menu-popup" onmouseout="wpHideMenuPopup(this, event, \'popup' . $id . '\', \'menu' . $id . '\')" onmouseover="wpPopupOver(this, event, \'popup' . $id . '\', \'menu' . $id . '\')">';
             // --- draw Sub Categories ---
             if (count($activeChildren)) {
                 $columns = (int)Mage::getStoreConfig('custom_menu/columns/count');
-                $htmlPopup[] = '<div class="block1">';
+                //$htmlPopup[] = '<div class="block1">';
                 $htmlPopup[] = $this->drawColumns($activeChildren, $columns);
-                $htmlPopup[] = '<div class="clearBoth"></div>';
-                $htmlPopup[] = '</div>';
+                //$htmlPopup[] = '<div class="clearBoth"></div>';
+                //$htmlPopup[] = '</div>';
             }
             // --- draw Custom User Block ---
             if ($blockHtml) {
-                $htmlPopup[] = '<div id="' . $blockId . '" class="block2">';
+                //$htmlPopup[] = '<div id="' . $blockId . '" class="block2">';
                 $htmlPopup[] = $blockHtml;
-                $htmlPopup[] = '</div>';
+               // $htmlPopup[] = '</div>';
             }
             $htmlPopup[] = '</div>';
             $this->_popupMenu[] = implode("\n", $htmlPopup);
@@ -172,7 +173,7 @@ class WP_CustomMenu_Block_Navigation extends Mage_Catalog_Block_Navigation
                 // --- format category name ---
                 $name = $this->escapeHtml($child->getName());
                 if (Mage::getStoreConfig('custom_menu/general/non_breaking_space')) $name = str_replace(' ', '&nbsp;', $name);
-                $html.= '<a class="itemMenuName level' . $level . $active . '" href="' . $this->getCategoryUrl($child) . '"><span>' . $name . '</span></a>';
+                $html.= '<a class="itemMenuName level' . $level . $active . '" href="' . $this->getCategoryUrl($child) . '"><span>' . $name . '</span> <i class="fa fa-angle-right"></i> </a>';
                 $activeChildren = $this->_getActiveChildren($child, $level);
                 if (count($activeChildren) > 0) {
                     $html.= '<div class="itemSubMenu level' . $level . '">';
