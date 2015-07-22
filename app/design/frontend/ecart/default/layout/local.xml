@@ -46,11 +46,10 @@
 	
 	<reference name="content">
 		<block type="core/text_list" name="top.menu" as="topMenu" translate="label">
-		<label>Navigation Bar</label>
-		<block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
-		<block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
-		 
-		</block>
+		    <label>Navigation Bar</label>
+		    <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+		        <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>	 
+		    </block>
 		</block>
 	</reference>
 	
@@ -76,7 +75,7 @@
 				<action method="setBlockId"><block_id>home_promotions</block_id></action>
 				</block>
 				<block type="catalog/product" name="todaysDeal" template="catalog/product//todays_deals.phtml"/>
-				<block type="catalog/product" name="bestSellings" template="catalog/product//bestsellings.phtml"/> 
+				<block type="extension/seller" name="bestSellings" template="catalog/product//bestsellings.phtml"/> 
 				<block type="catalog/product" name="phoneAccessories" template="catalog/product//phoneaccessories.phtml"/>
 				<block type="catalog/product" name="computerAccessories" template="catalog/product//computeraccessories.phtml"/>
 				<block type="catalog/product" name="recomendations" template="catalog/product//recomendations.phtml"/>

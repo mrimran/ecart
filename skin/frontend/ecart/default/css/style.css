@@ -305,9 +305,24 @@ vertical-align:middle;}
 .maincontainer .columnslider .col-box .img-box img{max-width:200px;max-height:200px;width:auto;
 margin:0 auto;}
 .maincontainer .columnslider .col-box h4{color:#303030;font-size:15px;margin-bottom:8px;}
-.maincontainer .columnslider .col-box .rating{background-image:url(../images/rating.png);
-background-repeat:no-repeat;background-position:top left;height:15px;margin-top:5px;
-padding:10px 0 10px;}
+.maincontainer .columnslider .col-box .ratings{height:22px;margin-top:5px;
+padding:2px 0 10px;} 
+.rating-box {
+    background: rgba(0, 0, 0, 0) url("../images/product_rating_blank_star.gif") repeat-x scroll 0 0;
+    float: left;
+    height: 16px;
+    margin: 0 5px 3px 0;
+    position: relative;
+    width: 69px;
+}
+.rating-box .rating {
+    background: rgba(0, 0, 0, 0) url("../images/product_rating_full_star.gif") repeat-x scroll 0 0;
+    height: 16px;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
 .maincontainer .columnslider .col-box .price,.maincontainer .recomandations .col-box .price{
 font-family: 'GothamNarrow-Medium', sans-serif;font-weight:400;font-size:22px;color:#f57c20;}
 .maincontainer .columnslider .col-box .price i,.maincontainer .recomandations .col-box .price i{
