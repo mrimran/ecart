@@ -80,7 +80,7 @@
 				<block type="core/template" name="sidenav" before="content" template="page/html/sidenav.phtml"/>
 				
 				
-				<block type="cms/block" name="home_promotions" after="content"  >
+				<block type="cms/block" name="home_promotions" after="content">
 				<action method="setBlockId"><block_id>home_promotions</block_id></action>
 				</block>
 				

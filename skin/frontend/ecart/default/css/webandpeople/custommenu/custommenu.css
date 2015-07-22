@@ -58,6 +58,8 @@ div.wp-custom-menu-popup {
     z-index: 1000;
 	 left: auto !important;
 	 max-height: 540px;
+	 border-top: 1px solid #eee;
+	 
 }
 
 div.menu a, div.wp-custom-menu-popup a {
@@ -453,7 +455,7 @@ html[xmlns] #menu-button, html[xmlns] .parentMenu {
 #custommenu .menu a span {background-image:url(images/cat-sprite.png);
 background-repeat:no-repeat;background-position:0px 0px; height:25px; width: 27px; display:inline-block;
 vertical-align:middle;}
-#custommenu .menu a:hover{color:#f57a20;}
+
 
 
 #custommenu #menu3 a span{background-position:0 0px;}
@@ -468,16 +470,18 @@ vertical-align:middle;}
 #custommenu #menu14 a span{background-position:0px -355px;}
 
 
+#custommenu .menu a:hover{color:#f57a20;}
 
 #custommenu #menu3 a:hover span{background-position:-30px 0px;}
-.maincontainer .mainmenu > .top > li:nth-child(3) > a:hover span{background-position:-30px -74px;}
-.maincontainer .mainmenu > .top > li:nth-child(4) > a:hover span{background-position:-30px -115px;}
-.maincontainer .mainmenu > .top > li:nth-child(5) > a:hover span{background-position:-30px -156px;}
-.maincontainer .mainmenu > .top > li:nth-child(6) > a:hover span{background-position:-30px -194px;}
-.maincontainer .mainmenu > .top > li:nth-child(7) > a:hover span{background-position:-30px -233px;}
-.maincontainer .mainmenu > .top > li:nth-child(8) > a:hover span{background-position:-30px -276px;}
-.maincontainer .mainmenu > .top > li:nth-child(9) > a:hover span{background-position:-30px -314px;}
-.maincontainer .mainmenu > .top > li:nth-child(10) > a:hover span{background-position:-30px -355px;}
+#custommenu #menu6 a:hover span{background-position:-30px -35px;}
+#custommenu #menu7 a:hover span{background-position:-30px -74px;}
+#custommenu #menu8 a:hover span{background-position:-30px -115px;}
+#custommenu #menu9 a:hover span{background-position:-30px -156px;}
+#custommenu #menu10 a:hover span{background-position:-30px -194px;}
+#custommenu #menu11 a:hover span{background-position:-30px -233px;}
+#custommenu #menu12 a:hover span{background-position:-30px -276px;}
+#custommenu #menu13 a:hover span{background-position:-30px -314px;}
+#custommenu #menu14 a:hover span{background-position:-30px -355px;}
 
 .wp-custom-menu-popup .column  { width: 25%;}
 .wp-custom-menu-popup.itemMenu {}
@@ -557,3 +561,4 @@ vertical-align:middle;}
 #wp-nav-container .active .parentMenu { border-right: 1px solid #fff;}
 
 #wp-nav-container .itemMenuName.level1:hover > span, #wp-nav-container .itemMenuName.level2:hover > span { color: #f57a20;}
+.itemMenuName.level1 { border-bottom: 1px solid #eee; padding: 8px 0 !important;}
