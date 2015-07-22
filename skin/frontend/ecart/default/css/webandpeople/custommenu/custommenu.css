@@ -16,14 +16,14 @@ div.menu {
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
 }
-div.menu a:link, div.menu a:visited {
+/*div.menu a:link, div.menu a:visited {
     display: block;
     height: 40px;
     padding-left: 15px;
     padding-right: 15px;
      padding-top: 0;
      padding-bottom: 0;
-}
+}*/
 div.menu a span {
     display: block;
     height: 28px;
@@ -33,7 +33,7 @@ div.menu a span {
 div.menu a span:hover {
     cursor: pointer;
 }
-div.wp-custom-menu-popup {
+/*div.wp-custom-menu-popup {
     position: absolute;
     z-index: 1000;
     display: none;
@@ -42,7 +42,24 @@ div.wp-custom-menu-popup {
     border-top: 0;
     width: 100%;
     margin-top: -1px;
+}*/
+
+div.wp-custom-menu-popup {
+    border-top: 0 none;
+    display: none;
+    float: right !important;
+    margin-top: -1px;
+    padding: 0 0 10px;
+    position: absolute;
+    right: 0 !important;
+    text-align: left;
+    top: 0 !important;
+    width: 75% !important;
+    z-index: 1000;
+	 left: auto !important;
+	 max-height: 540px;
 }
+
 div.menu a, div.wp-custom-menu-popup a {
     text-decoration: none;
     display:block;
@@ -142,8 +159,8 @@ div.level1 {
 #custommenu {
 }
 div.wp-custom-menu-popup {
-    background-color: #fbfbfb;
-    border: solid 1px #cccccc;
+    background-color: #fff;
+    /*border: solid 1px #cccccc;*/
 }
 div.menu a:link, div.menu a:visited {
 }
@@ -178,7 +195,7 @@ a.level2:link, a.level2:visited {
     font-weight: normal;
     font-size: 12px;
     line-height: 12px;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 /*COLOR*/
 #custommenu {
@@ -187,7 +204,7 @@ a.level2:link, a.level2:visited {
 div.menu a:link, div.menu a:visited {
     background-color: #fff;
     color: #636363;
-    text-transform: uppercase;
+    text-transform: none;
 }
 a.level1:link, a.level1:visited {
     color: #636363;
@@ -219,7 +236,7 @@ a.level2:hover, a.level2.act, a.level2.actParent {
 }
 /*MOBILE MENU STYLES*/
 #menu-button, .parentMenu {
-    display: inline-block;
+    /*display: inline-block;*/
 }
 html[xmlns] #menu-button, html[xmlns] .parentMenu {
     display: block;
@@ -412,3 +429,131 @@ html[xmlns] #menu-button, html[xmlns] .parentMenu {
 #custommenu-mobile .level2 {
     background-color: #f1f1f1;
 }
+
+
+#custommenu .mainmenu > .top > li {
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+    padding: 9px 15px 5px;
+}
+#custommenu .menu { width: 25%; }
+#custommenu .parentMenu{ background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+    padding: 9px 15px 5px; }
+#custommenu .menu a { color: #303030;
+    display: block;
+    font-size: 12px;
+    padding: 0;
+	 font-family: "GothamNarrow-Book",sans-serif;
+	 }
+#custommenu .menu a span { padding: 0; height: auto;}
+
+#custommenu .menu a span {background-image:url(images/cat-sprite.png);
+background-repeat:no-repeat;background-position:0px 0px; height:25px; width: 27px; display:inline-block;
+vertical-align:middle;}
+#custommenu .menu a:hover{color:#f57a20;}
+
+
+#custommenu #menu3 a span{background-position:0 0px;}
+#custommenu #menu6 a span{background-position:0px -35px;}
+#custommenu #menu7 a span{background-position:0px -74px;}
+#custommenu #menu8 a span{background-position:0px -115px;}
+#custommenu #menu9 a span{background-position:0px -156px;}
+#custommenu #menu10 a span{background-position:0px -194px;}
+#custommenu #menu11 a span{background-position:0px -233px;}
+#custommenu #menu12 a span{background-position:0px -276px;}
+#custommenu #menu13 a span{background-position:0px -314px;}
+#custommenu #menu14 a span{background-position:0px -355px;}
+
+
+
+#custommenu #menu3 a:hover span{background-position:-30px 0px;}
+.maincontainer .mainmenu > .top > li:nth-child(3) > a:hover span{background-position:-30px -74px;}
+.maincontainer .mainmenu > .top > li:nth-child(4) > a:hover span{background-position:-30px -115px;}
+.maincontainer .mainmenu > .top > li:nth-child(5) > a:hover span{background-position:-30px -156px;}
+.maincontainer .mainmenu > .top > li:nth-child(6) > a:hover span{background-position:-30px -194px;}
+.maincontainer .mainmenu > .top > li:nth-child(7) > a:hover span{background-position:-30px -233px;}
+.maincontainer .mainmenu > .top > li:nth-child(8) > a:hover span{background-position:-30px -276px;}
+.maincontainer .mainmenu > .top > li:nth-child(9) > a:hover span{background-position:-30px -314px;}
+.maincontainer .mainmenu > .top > li:nth-child(10) > a:hover span{background-position:-30px -355px;}
+
+.wp-custom-menu-popup .column  { width: 25%;}
+.wp-custom-menu-popup.itemMenu {}
+.wp-custom-menu-popup.itemMenu a {
+    font-size: 14px;
+    padding: 6px 10px;
+}
+
+.wp-custom-menu-popup.itemMenu:hover {
+    color: #303030;
+    display: block;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 3px 10px;
+}
+.megamenurightimage { width: 25%; float: left;}
+
+/*.btn-group-vertical > .btn-group::after, .btn-group-vertical > .btn-group::before, .btn-toolbar::after, .btn-toolbar::before, .clearfix::after, .clearfix::before, .container-fluid::after, .container-fluid::before, .container::after, .container::before, .dl-horizontal dd::after, .dl-horizontal dd::before, .form-horizontal .form-group::after, .form-horizontal .form-group::before, .modal-footer::after, .modal-footer::before, .nav::after, .nav::before, .navbar-collapse::after, .navbar-collapse::before, .navbar-header::after, .navbar-header::before, .navbar::after, .navbar::before, .pager::after, .pager::before, .panel-body::after, .panel-body::before, .row::after, .row::before {
+    content: " ";
+    display: table;
+}
+*::after, *::before {
+    box-sizing: border-box;
+}
+.btn-group-vertical > .btn-group::after, .btn-toolbar::after, .clearfix::after, .container-fluid::after, .container::after, .dl-horizontal dd::after, .form-horizontal .form-group::after, .modal-footer::after, .nav::after, .navbar-collapse::after, .navbar-header::after, .navbar::after, .pager::after, .panel-body::after, .row::after {
+    clear: both;
+}
+.btn-group-vertical > .btn-group::after, .btn-group-vertical > .btn-group::before, .btn-toolbar::after, .btn-toolbar::before, .clearfix::after, .clearfix::before, .container-fluid::after, .container-fluid::before, .container::after, .container::before, .dl-horizontal dd::after, .dl-horizontal dd::before, .form-horizontal .form-group::after, .form-horizontal .form-group::before, .modal-footer::after, .modal-footer::before, .nav::after, .nav::before, .navbar-collapse::after, .navbar-collapse::before, .navbar-header::after, .navbar-header::before, .navbar::after, .navbar::before, .pager::after, .pager::before, .panel-body::after, .panel-body::before, .row::after, .row::before {
+    content: " ";
+    display: table;
+}
+*::after, *::before {
+    box-sizing: border-box;
+}*/
+#wp-nav-container .ads {
+    display: block;
+    float: left;
+    height: 90px;
+    position: relative;
+    width: 100%;
+	 top: -90px;
+}
+
+#wp-nav-container .ads a {
+    border: 1px solid #eaeaea;
+    clear: both;
+    color: #303030;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-top: 20px;
+    min-height: 70px;
+    padding: 15px 50px 10px 20px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#wp-nav-container .ads a img {
+    border: 1px solid #eaeaea;
+    height: 50px;
+    position: absolute;
+    right: 10px;
+    top: -10px;
+    vertical-align: middle;
+}
+
+#wp-nav-container .itemMenuName.level1 > span {
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+#wp-nav-container .itemMenuName.level1 i {   color: #000; font-size: 16px; margin: 0 0 0 8px; font-weight: bold;}
+#wp-nav-container .itemMenuName.level2 i { display:none}
+#wp-nav-container .itemMenuName.level2 a { padding: 0; margin: 0;}
+#wp-nav-container .active .parentMenu { border-right: 1px solid #fff;}
+
+#wp-nav-container .itemMenuName.level1:hover > span, #wp-nav-container .itemMenuName.level2:hover > span { color: #f57a20;}
