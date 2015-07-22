@@ -84,14 +84,14 @@
 				</block>
 				
 				<block type="catalog/product" name="todaysDeal" template="catalog/product/todays_deals.phtml"/>
-				<block type="catalog/product" name="bestSellings" template="catalog/product/bestsellings.phtml"/> 
+				<block type="extension/seller" name="bestSellings" template="catalog/product/bestsellings.phtml"/> 
 				<block type="catalog/product" name="phoneAccessories" template="catalog/product/phoneaccessories.phtml"/>
 				<block type="catalog/product" name="computerAccessories" template="catalog/product/computeraccessories.phtml"/>
 				<block type="catalog/product" name="recomendations" template="catalog/product/recomendations.phtml"/>
 				<block type="cms/block" name="buyers_protection" after="content">
 				<action method="setBlockId"><block_id>buyers_protection</block_id></action>
 				</block>
-				<block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/>
+				<block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/> 
 				
 				
 				
