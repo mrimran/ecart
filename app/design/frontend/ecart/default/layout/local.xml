@@ -44,10 +44,11 @@
 	
 	<reference name="content">
 		<block type="core/text_list" name="top.menu" as="topMenu" translate="label">
-		<label>Navigation Bar</label>
-		<block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
-		<block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
-		</block>
+
+		    <label>Navigation Bar</label>
+		    <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+		        <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>	 
+		    </block>
 		</block>
 	</reference>
 	
@@ -88,7 +89,6 @@
 				<block type="catalog/product" name="computerAccessories" template="catalog/product/computeraccessories.phtml"/>
 				<block type="catalog/product" name="recomendations" template="catalog/product/recomendations.phtml"/>
 				<block type="cms/block" name="buyers_protection" after="content">
-				
 				<action method="setBlockId"><block_id>buyers_protection</block_id></action>
 				</block>
 				<block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/>

@@ -5,7 +5,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
    
    public function getLoadedProductCollection()
     { 
-        
+       if($this->getRequest()->getParam('id')!= null){
        $id = $this->getRequest()->getParam('id');
        // benchmarking
         $memory = memory_get_usage();
@@ -40,7 +40,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             array('cat_name' => 'cv.value'));
         // if Category filter is on
         if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5);
+            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
@@ -53,6 +53,38 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             }
             $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
         }
+       
+   }
+   else{
+    $id = 2;
+    $storeId = (int) Mage::app()->getStore()->getId();
+ 
+        // Date
+        $date = new Zend_Date();
+        $toDate = $date->setDay(1)->getDate()->get('Y-MM-dd');
+        $fromDate = $date->subMonth(1)->getDate()->get('Y-MM-dd');
+ 
+        $collection = Mage::getResourceModel('catalog/product_collection')
+            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+            ->addStoreFilter()
+            ->addPriceData()
+            ->addTaxPercents()
+            ->addUrlRewrite()
+            ->setPageSize(6);
+ 
+        $collection->getSelect()
+            ->joinLeft(
+                array('aggregation' => $collection->getResource()->getTable('sales/bestsellers_aggregated_monthly')),
+                "e.entity_id = aggregation.product_id AND aggregation.store_id={$storeId} AND aggregation.period BETWEEN '{$fromDate}' AND '{$toDate}'",
+                array('SUM(aggregation.qty_ordered) AS sold_quantity')
+            )
+            ->group('e.entity_id')
+            ->order(array('sold_quantity DESC', 'e.created_at'))
+            ->limit(5);
+        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
+        Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
+ 
+   }
        
         return $collection;
 
