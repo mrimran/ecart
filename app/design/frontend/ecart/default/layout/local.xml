@@ -59,12 +59,12 @@
 			<block type="cms/block" name="feature_footer" before="bottomContainer">
 			<action method="setBlockId"><block_id>feature_footer</block_id></action>
 			</block>
-			<block type="newsletter/subscribe" name="footer.newsletter" as="newsletter" after="feature_footer" template="newsletter/subscribe.phtml">
+			
 			
 			<block type="cms/block" name="footer_social"  before="cms_footer_links">
 			<action method="setBlockId"><block_id>footer_social</block_id></action>
 			</block>
-			</block>
+		
 			
 			</reference>
 
@@ -91,30 +91,26 @@
 				</block>
 				<!-- <block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/>  -->
              <block name="featuredbrandflexiblebox" type="shopbybrand/featuredbrand" template="shopbybrand/featuredbrandflexiblebox.phtml"/>
-				
-				
-				
+							
 			</reference>
 	    </cms_index_index>
 	 
-		<checkout_onepage_index>
-		<reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
-        </reference>
-		  
-		  <reference name="left">
-    <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
-        <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
-        <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
-        <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
-        <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
-            <label>Shopping Cart Sidebar Extra Actions</label>  
-        </block>
-    </block>
-</reference>
-		  
-		  
-		</checkout_onepage_index>
+			<checkout_onepage_index>
+			<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			</reference>
+			
+			<reference name="left">
+			<block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
+			<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+			<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+			<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+			<block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+			<label>Shopping Cart Sidebar Extra Actions</label>  
+			</block>
+			</block>
+			</reference>
+			</checkout_onepage_index>
 		
 
 </layout>

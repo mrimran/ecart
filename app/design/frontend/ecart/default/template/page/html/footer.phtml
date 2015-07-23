@@ -26,9 +26,11 @@
 ?>
 
 <div class="site-footer">
+<?php //echo $this->getChildHtml() ?> 
+  <?php echo $this->getChildHtml('feature_footer') ?> 
   <div class="footer-main">
     <div class="container">
-       <?php //echo $this->getChildHtml() ?> 
+       
       
       <div class="col-sm-12 col-md-5">
       <h3 class="desktop tablet">Subscribe For Our Newsleter</h3>
@@ -40,7 +42,7 @@
 			<div class="col-sm-4">
 			<?php
          $shopping_links_footer = Mage::getModel('cms/block')->load('shopping_links_footer'); 
-			$footer_help_links = Mage::getModel('cms/block')->load('shopping_links_footer');
+			$footer_help_links = Mage::getModel('cms/block')->load('footer_help_links');
 			$footer_customerService_link = Mage::getModel('cms/block')->load('footer_customerService_link');
          ?>
          
@@ -79,3 +81,4 @@
  
 
 </div>
+
