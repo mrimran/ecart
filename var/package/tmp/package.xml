@@ -1,125 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <package>
-  <name>wp_custom_menu</name>
-  <version>2.10.2</version>
-  <stability>stable</stability>
-  <license uri="http://web-experiment.info/regular_free_license">Web-Experiment.Info Regular Free License</license>
-  <channel>community</channel>
-  <extends/>
-  <summary>Magento Extension - Magento Custom Menu (Web-Experiment.Info)</summary>
-  <description>Magento Extension - Magento Custom Menu (Web-Experiment.Info)</description>
-  <notes>Устранение бага подсчета продуктов в категорияй при фключенном flat catalog</notes>
-  <authors>
-    <author>
-      <name>WebAndPeople</name>
-      <user>WebAndPeople</user>
-      <email>design@webandpeople.com</email>
-    </author>
-    <author>
-      <name>y.gerassimenko</name>
-      <user>ygerassimenko</user>
-      <email>y.gerassimenko@webandpeople.com</email>
-    </author>
-  </authors>
-  <date>2015-06-17</date>
-  <time>13:27:02</time>
-  <contents>
-    <target name="mageweb">
-      <dir name="app">
-        <dir name="code">
-          <dir name="community">
-            <dir name="WP">
-              <dir name="CustomMenu">
-                <dir name="Block">
-                  <file name="About.php" hash="2537ed2ed0af59077dde8193bb1f1cd9"/>
-                  <file name="Navigation.php" hash="2772a424a66c690cd72e846104ce4773"/>
-                  <file name="Toggle.php" hash="a184685bd82a0d5238ce40215aba97f6"/>
-                  <file name="Topmenu.php" hash="baf91d07f38b733b3e09957ccab4db4d"/>
-                </dir>
-                <dir name="Helper">
-                  <file name="Data.php" hash="1c942fb2fc11bfbdb2dd925f3fcc6932"/>
-                </dir>
-                <dir name="controllers">
-                  <file name="AjaxmenucontentController.php" hash="8149156483648c590da7d4e977b6829e"/>
-                  <file name="AjaxmobilemenucontentController.php" hash="38ca4e28579d38d697b22e5940c7ecc6"/>
-                </dir>
-                <dir name="etc">
-                  <file name="config.xml" hash="9b855477b12af8fdcfa3e87fa696a541"/>
-                  <file name="system.xml" hash="db517d350606da58f1d25e4301450ac6"/>
-                </dir>
-              </dir>
-            </dir>
-          </dir>
-        </dir>
-        <dir name="design">
-          <dir name="frontend">
-            <dir name="base">
-              <dir name="default">
-                <dir name="layout">
-                  <dir name="webandpeople">
-                    <file name="custommenu.xml" hash="924c62b611df2b20ef35fccab8c87a86"/>
-                  </dir>
-                </dir>
-                <dir name="template">
-                  <dir name="webandpeople">
-                    <dir name="custommenu">
-                      <file name="menucontent.phtml" hash="3394e31c66923ebef82c53b89abad333"/>
-                      <file name="top.phtml" hash="27f74d60761183011778638facc3c5d0"/>
-                    </dir>
-                  </dir>
-                </dir>
-              </dir>
-            </dir>
-          </dir>
-        </dir>
-        <dir name="etc">
-          <dir name="modules">
-            <file name="WP_CustomMenu.xml" hash="c367e72a4fd849f0eb777634ca2d422c"/>
-          </dir>
-        </dir>
-      </dir>
-      <dir name="skin">
-        <dir name="frontend">
-          <dir name="base">
-            <dir name="default">
-              <dir name="css">
-                <dir name="webandpeople">
-                  <dir name="custommenu">
-                    <file name="custommenu.css" hash="1502d73576a6c565ec27b565a2de2778"/>
-                  </dir>
-                </dir>
-              </dir>
-              <dir name="js">
-                <dir name="webandpeople">
-                  <dir name="custommenu">
-                    <file name="custommenu.js" hash="4e0ebcb63638c6d9cedb9e1a314ed9f8"/>
-                  </dir>
-                </dir>
-              </dir>
-            </dir>
-          </dir>
-          <dir name="rwd">
-            <dir name="default">
-              <dir name="css">
-                <dir name="webandpeople">
-                  <dir name="custommenu">
-                    <file name="custommenu.css" hash="1a7b49f1047b7738c73acae90bd168b4"/>
-                  </dir>
-                </dir>
-              </dir>
-            </dir>
-          </dir>
-        </dir>
-      </dir>
-    </target>
-  </contents>
-  <compatible/>
-  <dependencies>
-    <required>
-      <php>
-        <min>5.2.0</min>
-        <max>6.0.0</max>
-      </php>
-    </required>
-  </dependencies>
+    <name>Price_Countdown</name>
+    <version>1.4.0</version>
+    <stability>stable</stability>
+    <license>OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Countdown timer for Special product price to date. Timer displays according to the special price and to date set while adding products.</summary>
+    <description>Countdown timer for Special product price to date. Timer displays according to the special price and to date set while adding products.</description>
+    <notes>Countdown timer for Special product price to date. Timer displays according to the special price and to date set while adding products.</notes>
+    <authors><author><name>LEAD</name><user>apptha</user><email>info@apptha.com</email></author></authors>
+    <date>2014-12-30</date>
+    <time>15:12:48</time>
+    <contents><target name="magelocal"><dir name="Apptha"><dir name="Timer"><dir name="Block"><dir name="Product"><file name="List.php" hash="e0a98fd3c4cbedfb89036d801a03dbbb"/><file name="View.php" hash="cc6c07bb85ce7b350b6148b61dd00116"/></dir></dir><dir name="Helper"><file name="Data.php" hash="660c7e8b9e1d6ca566f3879cc201b520"/></dir><dir name="Model"><dir name="System"><dir name="Config"><dir name="Source"><file name="Showin.php" hash="83ad0ebf1167ce3067434be4d6811e35"/></dir></dir></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="24dddb8493454306c33741bc566e9be9"/><file name="config.xml" hash="ac297e99a100e6496c4420f90b3fd135"/><file name="system.xml" hash="2cd1e4496c0416f809389631bbeed2c6"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Apptha_Timer.xml" hash="6bfae81454a51f0f63f8f88c16af9f00"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="timer.xml" hash="767876c536b76550cfc14801542d8e19"/></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="timer.xml" hash="1c386c2b37e39a42b00053ba49e02e72"/></dir><dir name="template"><dir name="timer"><dir name="product"><file name="list.phtml" hash="4c10e56e8ddc238e4c8db337823cd9d0"/><file name="view.phtml" hash="b13bf7d2748fc09b511b92da79fa78d2"/></dir></dir></dir></dir></dir><dir name="rwd"><dir name="default"><dir name="layout"><file name="timer.xml" hash="1c386c2b37e39a42b00053ba49e02e72"/></dir><dir name="template"><dir name="timer"><dir name="product"><file name="list.phtml" hash="76792439027f8929d3e769ac58f98b4c"/><file name="view.phtml" hash="8e7deb1f7c3efe61f501ae4d34c7984f"/></dir></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="timer"><file name="timer.css" hash="26694a9b9c8bd186a0defe4159058bf8"/></dir></dir></dir></dir></target><target name="mage"><dir name="js"><file name="timer.js" hash="3b73d62168c95a362f26ca973c8480a1"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
 </package>
