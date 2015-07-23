@@ -69,17 +69,6 @@ CREATE TABLE {$this->getTable('brand_store_value')}(
     PRIMARY KEY (`value_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE {$this->getTable('brand_subscriber')}(
-    `brand_subscriber_id` int(11) unsigned NOT NULL auto_increment,
-    `brand_id` int(11) unsigned NOT NULL,
-    `subscriber_id` int(10) unsigned NOT NULL,
-    UNIQUE(`brand_id`, `subscriber_id`),
-    INDEX(`brand_id`),
-    INDEX(`subscriber_id`),
-    FOREIGN KEY (`brand_id`) REFERENCES {$this->getTable('brand')} (`brand_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (`subscriber_id`) REFERENCES {$this->getTable('newsletter_subscriber')} (`subscriber_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (`brand_subscriber_id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ");
 if ($installer->tableExists($installer->getTable('manufacturer'))){
@@ -89,3 +78,14 @@ if ($installer->tableExists($installer->getTable('manufacturer'))){
 }
 $installer->endSetup();
 
+/*CREATE TABLE {$this->getTable('brand_subscriber')}(
+    `brand_subscriber_id` int(11) unsigned NOT NULL auto_increment,
+    `brand_id` int(11) unsigned NOT NULL,
+    `subscriber_id` int(10) unsigned NOT NULL,
+    UNIQUE(`brand_id`, `subscriber_id`),
+    INDEX(`brand_id`),
+    INDEX(`subscriber_id`),
+    FOREIGN KEY (`brand_id`) REFERENCES {$this->getTable('brand')} (`brand_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (`subscriber_id`) REFERENCES {$this->getTable('newsletter_subscriber')} (`subscriber_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY (`brand_subscriber_id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8; */
