@@ -1,0 +1,45 @@
+<?php
+/**
+ * ISAAC Catalog Category Search
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    ISAAC
+ * @package     ISAAC_CatalogCategorySearch
+ * @copyright   Copyright (c) 2011 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Aad Mathijssen
+ * @version     1.0.0
+ */
+?>
+<?php echo $this->getChildHtml(); ?>
+<script type="text/javascript">
+//<![CDATA[
+<?php if ($this->helper('catalogcategorysearch')->isCategoryPage() || $this->helper('catalogcategorysearch')->isSearchResultsPage()) : ?>
+    Event.observe(window, 'load', function(){
+        $$('select#<?php echo $this->helper('catalogcategorysearch')->getCategoryParamName() ?> option').each(function(o) {
+            if (o.value == '<?php echo $this->getCurrentlySelectedCategoryId() ?>') {
+                o.selected = true;
+                throw $break;
+            }
+        });
+        escapedQueryText = '<?php echo $this->helper('catalogsearch')->getEscapedQueryText() ?>';
+        if (escapedQueryText !== '') {
+            $('search').value = escapedQueryText;
+        }
+    });
+<?php endif; ?>
+    var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo $this->__('Search entire store here...') ?>');
+    searchForm.initAutocomplete('<?php echo $this->helper('catalogsearch')->getSuggestUrl() ?>', 'search_autocomplete');
+//]]>
+</script>
