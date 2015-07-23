@@ -166,7 +166,7 @@
            <?php /*?><img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" /><?php */?>
         </a>
                 
-      <?php echo $this->getChildHtml('topSearch') ?>
+ 
                 
       <span class="showsearch" data-id="MainSearchForm"><i class="fa fa-search"></i></span></div>
 		<div class="col-sm-9 padding-r">
@@ -193,7 +193,9 @@
 	<div class="container">
 		<div class="catgories col-sm-3"><a class="maincatclass"><h2>CATEGORIES</h2><span data-id="MainCatMenu" class="home"><i class="fa fa-bars"></i></span></a></div>
 		<div id="MainSearchForm" class="searchform col-md-7">
-		<div class="all-search-cats">
+      
+      <?php echo $this->getChildHtml('topSearch') ?>
+		<!--<div class="all-search-cats">
 		<select name="search_categories" class="search-category-select selectpicker">
 			<option value="">All Categories</option>
 			<option value="">Clearance Sale</option>
@@ -209,7 +211,7 @@
 		</select>
 		</div>
 		<input type="search" name="search" value="" placeholder="Search Entire Store Here...">
-		<button type="submit" class="mg"><i class="glyphicon glyphicon-search"></i></button>
+		<button type="submit" class="mg"><i class="glyphicon glyphicon-search"></i></button>-->
 		</div>
 		<div class="minicart col-sm-3 col-md-2"><a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>"><img src="<?php echo $this->getSkinUrl('images/cart-img.png'); ?>">&nbsp; My Cart <span class="cart-items">
 		<?php 
