@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ISAAC Catalog Category Search
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    ISAAC
+ * @package     ISAAC_CatalogCategorySearch
+ * @copyright   Copyright (c) 2011 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author      Aad Mathijssen
+ * @version     1.0.0
+ */
+-->
+<config>
+    <modules>
+        <ISAAC_CatalogCategorySearch>
+            <version>1.0.0</version>
+        </ISAAC_CatalogCategorySearch>
+    </modules>
+    <global>
+        <blocks>
+            <catalogcategorysearch>
+                <class>ISAAC_CatalogCategorySearch_Block</class>
+            </catalogcategorysearch>
+        </blocks>
+        <helpers>
+            <catalogcategorysearch>
+                <class>ISAAC_CatalogCategorySearch_Helper</class>
+            </catalogcategorysearch>
+        </helpers>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <ISAAC_CatalogCategorySearch>
+                     <files>
+                          <default>ISAAC_CatalogCategorySearch.csv</default>
+                     </files>
+                </ISAAC_CatalogCategorySearch>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <translate>
+            <modules>
+                <ISAAC_CatalogCategorySearch>
+                     <files>
+                          <default>ISAAC_CatalogCategorySearch.csv</default>
+                     </files>
+                </ISAAC_CatalogCategorySearch>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <catalogcategorysearch>
+                    <file>catalogcategorysearch.xml</file>
+                </catalogcategorysearch>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <catalog>
+            <catalog_category_search>
+                <select_category_on_category_pages>1</select_category_on_category_pages>
+                <show_subcategories>1</show_subcategories>
+                <indentation_text><![CDATA[> ]]></indentation_text>
+            </catalog_category_search>
+        </catalog>
+    </default>
+</config>
