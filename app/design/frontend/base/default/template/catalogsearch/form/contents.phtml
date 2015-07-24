@@ -24,7 +24,7 @@
 ?>
 <form id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
     <div class="form-search">
-        <label for="search"><?php echo $this->__('Search:') ?></label>
+       <?php /*?> <label for="search"><?php echo $this->__('Search:') ?></label><?php */?>
         <?php $categorySearchHelper = $this->helper('catalogcategorysearch'); ?>
         <select id="<?php echo $categorySearchHelper->getCategoryParamName() ?>" name="<?php echo $categorySearchHelper->getCategoryParamName() ?>">
             <option value=""><?php echo $this->__('All Categories') ?></option>
