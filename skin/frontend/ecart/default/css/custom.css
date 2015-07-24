@@ -34,3 +34,9 @@ background: none; border: none; height:10px; width: 10px;}
 
 .seachfield { border-left: 1px solid #c7c7c7 !important;}
 .mainheadnav .searchform .search-category-select, .mainheadnav .searchform .search-category-select button { width: 100% !important;}
+.subscribe .button.btn1 { margin: -5px 0 0 -5px} 
+
+.nav-container { position: relative; top: 50px;}
+#custommenu { position: absolute; float: left; top: 0; z-index: 9999; width: 100%;}
+#custommenu .menu { clear: both;}
+.cms-index-index #MainCatMenu { display: block !important;}
