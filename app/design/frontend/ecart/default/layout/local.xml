@@ -143,7 +143,7 @@
 				<block type="extension/seller" name="bestSellings" template="catalog/product/bestsellings.phtml"/> 
 				<block type="extension/phone" name="phoneAccessories" template="catalog/product/phoneaccessories.phtml"/>
 				<block type="extension/computer" name="computerAccessories" template="catalog/product/computeraccessories.phtml"/>
-				<block type="catalog/product" name="recomendations" template="catalog/product/recomendations.phtml"/>
+				<!--<block type="catalog/product" name="recomendations" template="catalog/product/recomendations.phtml"/>-->
 				<block type="cms/block" name="buyers_protection" after="content">
 				<action method="setBlockId"><block_id>buyers_protection</block_id></action>
 				</block>
