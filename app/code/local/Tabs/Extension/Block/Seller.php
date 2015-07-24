@@ -83,7 +83,8 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             ->limit(5);
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
- 
+        
+  
    }
        
         return $collection;
