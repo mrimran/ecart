@@ -25,6 +25,7 @@
  */
 ?>
 <?php if($crumbs && is_array($crumbs)): ?>
+<?php /*?>
 <div class="breadcrumbs">
     <ul>
         <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
@@ -42,12 +43,33 @@
             </li>
         <?php endforeach; ?>
     </ul>
-</div>
-<?php endif; ?>
+</div><?php */?>
 
 
 <section id="breadcrumbs">
 	<div class="container">
-		<div class="breadcrumbs"><a href="#">Home</a>  /  <a href="#">Mobiles &amp; Tablets</a>  /  <a href="#">Mobiles</a></div>
+		<div class="breadcrumbs">
+       <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+        <?php if($_crumbInfo['link']): ?>
+        <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></a>
+            <?php elseif($_crumbInfo['last']): ?>
+                <strong><?php echo $this->escapeHtml($_crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?php echo $this->escapeHtml($_crumbInfo['label']) ?>
+            <?php endif; ?>
+            <?php if(!$_crumbInfo['last']): ?>
+                <span>/ </span>
+        
+      <!--<a href="#">Home</a>  /  <a href="#">Mobiles &amp; Tablets</a>  /  <a href="#">Mobiles</a>-->
+      
+      <?php endif; ?>
+       <?php endforeach; ?>
+      </div>
 	</div>
 </section>
+
+
+<?php endif; ?>
+
+
+
