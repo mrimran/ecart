@@ -7,8 +7,8 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
 
        public function getLoadedProductCollection()
     { 
-       
-       $id = 5;
+
+       $id = 7;
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
@@ -24,6 +24,14 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
+        //join brand 
+           if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
+               $brand_id = $this->getRequest()->getParam('brand_ids'); 
+               $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
+               $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
+               $condition,
+               array('brand_id' => 'br.option_id'));
+        }
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -63,7 +71,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
 
     protected function _getProductCollection()
     {
-        $id = 5;
+        $id = 7;
         $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $collection = Mage::getResourceModel('catalog/product_collection');
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
@@ -85,7 +93,14 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         $collection->addCategoryFilter($category);
        
         } 
-
+        
+        if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
+            $brand_id = $this->getRequest()->getParam('brand_ids'); 
+            $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
+            $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
+            $condition,
+            array('brand_id' => 'br.option_id'));
+        }
         return $collection;
     }
 
