@@ -37,7 +37,7 @@ background: none; border: none; height:10px; width: 10px;}
 .subscribe .button.btn1 { margin: -5px 0 0 -5px} 
 
 .nav-container { position: relative; top: 50px;}
-#custommenu { position: absolute; float: left; top: 0; z-index: 9999; width: 100%;}
+#custommenu { position: absolute; float: left; top: 0; z-index: 5; width: 100%;}
 #custommenu .menu { clear: both;}
 .cms-index-index #MainCatMenu { display: block !important;}
 a.level2:hover, a.level2.act, a.level2.actParent {
@@ -47,3 +47,6 @@ a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 #breadcrumbs { margin-bottom: 25px;}
 .toolbar .sorter .sort-by select, .toolbar .sorter .pager select { padding: 8px 7px;}
 .all-search-cats select { border: none;}
+.rating-links { margin: 0;}
+.product.grid .details { min-height: 98px !important;}
+#narrow-by-list #Price { padding: 15px 8px;}
