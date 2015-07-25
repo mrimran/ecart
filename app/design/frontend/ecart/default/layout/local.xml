@@ -163,6 +163,10 @@
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 			</reference>
 			
+			<reference name="head">
+			<action method="addCss"> <name>css/checkout.css</name> </action>
+			</reference>
+			
 			<reference name="left">
 			<block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
 			<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
@@ -218,15 +222,16 @@
 			<action method="addCss"> <name>css/styles.css</name> </action>
 			</reference>
 			</checkout_cart_index>
+		
 			
-			<checkout_onepage_index>
+			<customer_account_login>
 			<reference name="root">
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			<reference name="head">
-			<action method="addCss"> <name>css/checkout.css</name> </action>
+			<action method="addCss"> <name>css/styles.css</name> </action>
 			</reference>
-			</checkout_onepage_index>
+			</customer_account_login>
 		
 
 </layout>

@@ -154,13 +154,18 @@
 					</div>
 					<div class="col-sm-3 relative price-info">
                
-               <?php echo $this->getPriceHtml($_product, true) ?>
+               <?php 
+					//echo $this->getPriceHtml($_product, true); 
+					
+					?>
                
-					<div class="price">2200<i>AED</i> 
-               <span class="not-now">2400<i>AED</i></span>
+					<div class="price">
+					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> 
+               <span class="not-now">
+					<?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> </span>
                </div>
 					<div class="orders">10 Orders</div>
-					<a class="wishlist" href=""><i class="fa fa-heart"></i> Add to Wishlist</a>
+					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">25 pcs on Stock</h5>
 					</div>
 				</div>
