@@ -78,6 +78,10 @@
 				<action method="addCss"> 
 				<stylesheet>css/styles.css</stylesheet>
 				</action>
+				<action method="removeItem">
+				<type>skin_css</type>
+				<name>css/styles.css</name>
+				</action>
 
             <action method="addCss">
                 <stylesheet>css/bootstrap-select.css</stylesheet>
@@ -138,8 +142,8 @@
 		
 			
         </reference>
-
-    </default>
+ 
+    </default> 
 
 
     <cms_index_index>
