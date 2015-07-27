@@ -37,8 +37,8 @@ var CatalinSeoHandler = {
             fullUrl = url + '?isLayerAjax=1';
         }
 
-        //$('.loading').show();
-        //$('.ajax-errors').hide();
+        $('loading').show();
+        $('ajax-errors').hide();
 
         self.pushState(null, url, false);
 
