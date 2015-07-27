@@ -1,0 +1,44 @@
+<?php
+/**
+ * ISAAC Catalog Category Search
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    ISAAC
+ * @package     ISAAC_CatalogCategorySearch
+ * @copyright   Copyright (c) 2011 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Aad Mathijssen
+ * @version     1.0.0
+ */
+?>
+<form id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+    <div class="form-search">
+       <?php /*?> <label for="search"><?php echo $this->__('Search:') ?></label><?php */?>
+        <?php $categorySearchHelper = $this->helper('catalogcategorysearch'); ?>
+        <select id="<?php echo $categorySearchHelper->getCategoryParamName() ?>" name="<?php echo $categorySearchHelper->getCategoryParamName() ?>">
+            <option value=""><?php echo $this->__('All Categories') ?></option>
+            <?php foreach ($this->getSearchableCategories() as $mainCategory): ?>
+                <option value="<?php echo $mainCategory->getEntityId()?>"><?php echo $mainCategory->getName() ?></option>
+                <?php if ($categorySearchHelper->showSubCategories()) : ?>
+                    <?php foreach ($this->getSearchableSubCategories($mainCategory) as $category) : ?>
+                        <option value="<?php echo $category->getEntityId()?>"><?php echo $categorySearchHelper->getIndentationText() . $category->getName()?></option>
+                    <?php endforeach;?>
+                <?php endif ?>
+            <?php endforeach;?>
+        </select>
+        <input id="search" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" class="input-text" />
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+    </div>
+</form>

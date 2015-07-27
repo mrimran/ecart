@@ -1,0 +1,84 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<div class="site-footer">
+<?php //echo $this->getChildHtml() ?> 
+  <?php echo $this->getChildHtml('feature_footer') ?> 
+  <div class="footer-main">
+    <div class="container">
+       
+      
+      <div class="col-sm-12 col-md-5">
+      <h3 class="desktop tablet">Subscribe For Our Newsleter</h3>
+      <?php echo $this->getChildHtml('newsletter'); ?>
+      <h3 class="connect">Connect With Us</h3>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_social')->toHtml(); ?> 
+      </div>
+      <div class="col-sm-12 col-md-7 desktop tablet">
+			<div class="col-sm-4">
+			<?php
+         $shopping_links_footer = Mage::getModel('cms/block')->load('shopping_links_footer'); 
+			$footer_help_links = Mage::getModel('cms/block')->load('footer_help_links');
+			$footer_customerService_link = Mage::getModel('cms/block')->load('footer_customerService_link');
+         ?>
+         
+			<h3> <?php  echo $shopping_links_footer->getTitle(); ?></h3>
+				<ul>
+					 <?php echo $shopping_links_footer->getContent(); ?>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<h3><?php  echo $footer_help_links->getTitle(); ?></h3>
+				<ul>
+					<?php echo $footer_help_links->getContent(); ?>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<h3><?php  echo $footer_customerService_link->getTitle(); ?></h3>
+				<ul>
+					<?php echo $footer_customerService_link->getContent(); ?>
+				</ul>
+			</div>
+		</div>
+      
+      
+    </div>
+  </div>
+  
+  <div class="credit-cards"><div align="center" class="container"> <img src="<?php echo $this->getSkinUrl('images/accepted-cards.png'); ?>"> 
+  <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('credit_card')->toHtml(); ?></div></div>
+  <div class="footer-bottom">
+	<div class="container">
+	<div class="copyrights">  <?php echo $this->getCopyright() ?> </div>
+		<div class="live-chat desktop"><a href="#"><img src="<?php echo $this->getSkinUrl('images/chat-icon.png'); ?>"><h4>Live Chat</h4><span>+</span></a></div>
+	</div>
+	</div>
+
+ 
+
+</div>
+

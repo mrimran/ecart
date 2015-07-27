@@ -1,0 +1,21 @@
+.product-view .product-shop .product-name .h1 {
+    font-size: 22px;
+    color: rgb(48, 48, 48);
+    font-weight: bold;
+    margin: 0 0 12px 0;
+    padding: 0;
+}
+.mainhead .reasonsnav ul li img,.mainheadnav .minicart a img{display:inline-block;}
+.mainheadnav .searchform #search{width:61%;font-family:inherit;}
+.maincontainer .filters ul li a{text-decoration:none;}
+.maincontainer .filters ul li .currently p{margin-bottom:0;}
+.maincontainer .filters ul li .currently ul{list-style-type:none;}
+.maincontainer .filters ul li .currently ul li:first-child{padding-top:0;border-top:0;}
+.maincontainer .filters ul li .currently ul li:last-child{padding-bottom:0;}
+.maincontainer .filters ul li .currently ul li{border-bottom:0;border-top:1px solid #eaeaea;}
+.maincontainer .filters ul li .currently .btn-remove{color:#f57a20;display:block;padding:5px 0;}
+.maincontainer .filters ul li .currently .label{color:rgb(48,48,48);padding-left:0;font-size:14px;}
+.maincontainer .filters ul li .currently .value{font-size:12px;}
+.maincontainer .filters ul li.actions a{text-decoration:underline;}
+.maincontainer .filters ul li.range-price{border-bottom:0;padding:15px 0px 0;}
+.maincontainer .filters ul li.range-price i{font-style:normal;}
