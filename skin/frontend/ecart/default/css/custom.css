@@ -50,3 +50,6 @@ a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 .rating-links { margin: 0;}
 .product.grid .details { min-height: 98px !important;}
 #narrow-by-list #Price { padding: 15px 8px;}
+
+.more-less {padding-left: 15px; font: 13px strong;}
+.more-less a{color: #2d2e32; cursor: pointer;}
