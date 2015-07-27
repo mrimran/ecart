@@ -10,7 +10,7 @@
 .maincontainer .page_menu{display:none;}
 .maincontainer .mainmenu > .top > li{padding:7px 15px;}
 .maincontainer .mainmenu > .top > li > a{font-size:12px;}
-.maincontainer #features .features-item{min-height:200px;}
+#features .features-item{min-height:200px;}
 .buyerprotection .title-big{font-size:24px;margin-bottom:8px;}
 .buyerprotection a{padding:0;}
 }
@@ -26,13 +26,16 @@
 .maincontainer .mainmenu > .top > li > a{font-size:12px;}
 .maincontainer .mainmenu > .top > li > a span{background-position:0px 2px;}
 .maincontainer .mainmenu > .top > li > a:hover span{background-position:-30px 2px;}
-.maincontainer #features .features-item{min-height:200px;}
+#features .features-item{min-height:200px;}
 .buyerprotection .title-big{font-size:24px;margin-bottom:8px;}
 .buyerprotection a{padding:0;}
 .maincontainer .columnslider .col-box h4{font-size:14px;}
 .buyerprotection .protection-list li{padding-right:12%;}
 .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .ads a{font-size:11px;
 padding:10px 52px 10px 10px;}
+.img-box img{width:100%;}
+.products .product .image, .products .product .details, .products .product .price-info,
+.products .product .image .img-box{height:auto;}
 }
 @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape){
 .maincontainer .page_menu{display:none;}
@@ -47,11 +50,14 @@ padding:10px 52px 10px 10px;}
 .maincontainer .mainmenu > .top > li{padding:4px 15px 3px;}
 .maincontainer .mainmenu > .top > li > a{font-size:12px;}
 .maincontainer .mainmenu > .top > li > a span{background-position:0px 2px;}
-.maincontainer #features .features-item{min-height:200px;}
+#features .features-item{min-height:200px;}
 .buyerprotection .title-big{font-size:24px;margin-bottom:8px;}
 .buyerprotection a{padding:0;}
 .maincontainer .columnslider .col-box h4{font-size:14px;}
 .buyerprotection .protection-list li{padding-right:12%;}
+.img-box img{width:100%;}
+.products .product .image, .products .product .details, .products .product .price-info,
+.products .product .image .img-box{height:auto;}
 }
 @media only screen and (min-width : 801px) and (max-width: 991px){
 .mainhead .logo{padding:0;}
@@ -73,8 +79,8 @@ padding:10px 52px 10px 10px;}
 .mainheadnav .searchform .search-category-select button{padding:0;}
 .mainheadnav .searchform input{width:100%;margin-top:-5px;}
 .mainhead .call-us a{font-size:1.1em;}
-.maincontainer #features .features-item{}
-.maincontainer #features .features-item:nth-child(3){border-right:1px solid #e5e5e5;}
+#features .features-item{}
+#features .features-item:nth-child(3){border-right:1px solid #e5e5e5;}
 .buyerprotection .title-big{font-size:24px;margin-bottom:0;}
 .buyerprotection a{padding:0;}
 .buyerprotection .shield{padding:20px 15px;background-position:7px 7px;}
@@ -92,6 +98,9 @@ min-height:inherit;}
 .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .ads{height:auto;}
 .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .submenu li.heading a,
 .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .submenu li a{font-size:11px;}
+.img-box img{width:100%;}
+.products .product .image, .products .product .details, .products .product .price-info,
+.products .product .image .img-box{height:auto;min-height:inherit;}
 
 .mainhead .reasonsnav,
 .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .ads-r,
@@ -110,8 +119,8 @@ text-align:right;}
 .homeslidercontainer{width:100%;}
 .mainhead .call-us{font-size:0.9em;padding-top:5px;}
 .mainhead .call-us a{font-size:1.1em;}
-.maincontainer #features .features-item{}
-.maincontainer #features .features-item:nth-child(3){border-right:1px solid #e5e5e5;}
+#features .features-item{}
+#features .features-item:nth-child(3){border-right:1px solid #e5e5e5;}
 .buyerprotection .title-big{font-size:24px;margin-bottom:0;}
 .buyerprotection a{padding:0;}
 .buyerprotection .shield{height:145px;}
@@ -240,4 +249,7 @@ font-size:11px;padding:6px 5px;}
 .buyerprotection .protection-list li i{/*margin-left:-19px;*/}
 .maincontainer section#menuslider{padding-bottom:0;}
 .site-footer .footer-main .social a{margin-right:3px;}
+footer .emailcall a{font-size:11px;margin-right:0;}
+footer .emailcall a img{max-width:20px;max-height:12px;margin-right:1px;}
+footer .emailcall a:last-child{float:right;}
 }

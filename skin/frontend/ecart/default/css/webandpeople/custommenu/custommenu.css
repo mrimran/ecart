@@ -551,7 +551,7 @@ vertical-align:middle;}
 }
 
 #wp-nav-container .itemMenuName.level1 > span {
-    color: #000;
+  /*  color: #000;*/
     font-size: 14px;
     font-weight: bold;
 }
@@ -562,3 +562,47 @@ vertical-align:middle;}
 
 #wp-nav-container .itemMenuName.level1:hover > span, #wp-nav-container .itemMenuName.level2:hover > span { color: #f57a20;}
 .itemMenuName.level1 { border-bottom: 1px solid #eee; padding: 3px 0px 11px 10px !important;}
+
+
+
+.view-mode strong {
+    background-color: #f57a20;
+    border: 1px solid #f57a20;
+    color: #fff;
+    text-align: center;
+  
+}
+.view-mode, .view-mode a, .view-mode strong {
+}
+.view-mode, .view-mode a, .view-mode strong {
+	font-size: 18px; padding: 4px 8px;
+}
+.view-mode strong {
+    font-weight: normal;
+}
+.view-mode > a, .view-mode > strong {
+    margin-right: 3px;
+}
+.view-mode .grid::before {
+    content: "\f00a";
+    font-family: FontAwesome;
+}
+.view-mode .list::before {
+    content: "\f00b";
+   font-family: FontAwesome;
+}
+.view-mode a {
+    color: #aaa;
+    display: block;
+
+    text-align: center;
+    text-decoration: none;
+
+}
+.view-mode a:hover {
+    color: #fff;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+   
+}
