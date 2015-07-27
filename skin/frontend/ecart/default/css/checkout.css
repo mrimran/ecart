@@ -1,15 +1,41 @@
-<<<<<<< HEAD
-.checkout-onepage-index .block-title{background-color: #2d2e32;color:#fff;padding:15px;}
-.checkout-onepage-index .block-content{padding:15px;border:1px solid #eaeaea;}
-.checkout-onepage-index .block-content li.item{margin:0;border-bottom:1px solid #eaeaea;padding:10px 0;}
+.checkout-onepage-index .maincontainer{
+    padding: 20px 0 0;
+}
+.checkout-onepage-index .block-title {
+    background-color: #2d2e32;
+    color: #fff;
+    padding: 15px;
+}
+
+.checkout-onepage-index .block-content {
+    padding: 15px;
+    border: 1px solid #eaeaea;
+}
+
+.checkout-onepage-index .block-content li.item {
+    margin: 0;
+    border-bottom: 1px solid #eaeaea;
+    padding: 10px 0;
+}
+
 .checkout-onepage-index p.amount,
-.checkout-onepage-index p.subtotal{}
-.checkout-onepage-index .mini-products-list .product-details .product-name{padding-top:0;color:#3a3a3a;
-font-size:15px;}
-.catalog-product-view .product-view .product-shop .product-name .h1{
-font-size: 22px;color:rgb(48, 48, 48);font-weight:600;
-margin: 0 0 12px 0; padding:0;}
-=======
+.checkout-onepage-index p.subtotal {}
+
+.checkout-onepage-index .mini-products-list .product-details .product-name {
+    padding-top: 0;
+    color: #3a3a3a;
+    font-size: 15px;
+}
+
+.catalog-product-view .product-view .product-shop .product-name .h1 {
+    font-size: 22px;
+    color: rgb(48, 48, 48);
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    padding: 0;
+}
+
+
 /**/
 
 .checkout-onepage-index .block-title {
@@ -53,11 +79,13 @@ margin: 0 0 12px 0; padding:0;}
     padding: 0;
     margin: 0;
 }
+
 .checkout-onepage-index .mini-products-list {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 .checkout-onepage-index .mini-products-list .item:before,
 .checkout-onepage-index .mini-products-list .item:after {
     content: " ";
@@ -67,20 +95,23 @@ margin: 0 0 12px 0; padding:0;}
 .checkout-onepage-index .mini-products-list .item:after {
     clear: both;
 }
+
 .checkout-onepage-index .mini-products-list .item .product-image {
     float: left;
     margin: 0px 12px 0 0;
     padding: 0;
 }
+
 .checkout-onepage-index .mini-products-list .item .btn-remove {
     display: inline-block;
-    border: 1px solid rgb(237, 237, 237);
+    border: none;
     text-align: center;
     font: 0/0 a;
     text-shadow: none;
     color: rgba(0, 0, 0, 0);
     position: relative;
 }
+
 .checkout-onepage-index .mini-products-list .item .btn-remove:after {
     content: 'Remove';
     color: rgb(51, 153, 204);
@@ -89,6 +120,7 @@ margin: 0 0 12px 0; padding:0;}
     width: 100%;
     font-size: 10px;
 }
+
 .checkout-onepage-index .col-md-9 .opc {
     margin: 0;
     padding: 0;
@@ -151,4 +183,3 @@ margin: 0 0 12px 0; padding:0;}
     border-image: none;
     padding: 24px;
 }
->>>>>>> 06fa686fb6bfe4bca190cd3e870b6cff81181a21
