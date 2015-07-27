@@ -9,10 +9,7 @@
             <remove name="right" />
             </reference>
             -->	
-         <action method="removeItem">
-            <type>skin_css</type>
-            <name>css/styles.css</name>
-        </action>
+  
         </cms_index_index>
         <reference name="head">
 			
@@ -78,11 +75,7 @@
 				<action method="addCss"> 
 				<stylesheet>css/styles.css</stylesheet>
 				</action>
-				<action method="removeItem">
-				<type>skin_css</type>
-				<name>css/styles.css</name>
-				</action>
-
+				
             <action method="addCss">
                 <stylesheet>css/bootstrap-select.css</stylesheet>
             </action>
@@ -101,10 +94,10 @@
             <action method="addCss">
                 <stylesheet>css/jPushMenu.css</stylesheet>
             </action>
-            <!--<action method="removeItem">
+            <action method="removeItem">
                 <type>skin_css</type>
                 <name>css/styles.css</name>
-            </action>-->
+            </action>
 
         </reference>
 	<!--
