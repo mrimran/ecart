@@ -175,3 +175,8 @@
     </div>
     <?php echo $this->getChildHtml('crosssell') ?>
 </div>
+
+	<?php 
+		 echo $this->getLayout()->createBlock('cms/block')->setBlockId('buyersprotectionscartpage')->toHtml();
+        echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml();
+   ?>
