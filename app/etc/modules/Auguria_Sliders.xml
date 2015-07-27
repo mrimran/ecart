@@ -10,7 +10,7 @@
 <config>
 	<modules>
 		<Auguria_Sliders>
-			<active>false</active>
+			<active>true</active>
             <codePool>community</codePool>
 		</Auguria_Sliders>
 	</modules>
