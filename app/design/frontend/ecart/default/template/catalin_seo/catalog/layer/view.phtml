@@ -40,30 +40,32 @@ $hiddenFilters = array();
 
 <?php if ($this->canShowBlock()): ?>
     <div class="block block-layered-nav<?php if (!$this->getLayer()->getState()->getFilters()): ?> block-layered-nav--no-filters<?php endif; ?>">
-        <div class="block-title">
-            <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+        <div class="block-title filters">
+            <a class="heading" data-id="activeFilters"><h2><?php echo $this->__('Active Filters') ?></h2><span><i class="fa fa-minus-square-o"></i><i class="fa fa-plus-square-o"></i></span></a>
+            <ul id="activeFilters">
+                <li><?php echo $this->getStateHtml() ?></li>
+                <li class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></li>
+            </ul>
         </div>
         <div class="block-content toggle-content">
-            <?php echo $this->getStateHtml() ?>
-            <?php if ($this->getLayer()->getState()->getFilters()): ?>
-                <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+        <?php if ($this->getLayer()->getState()->getFilters()): ?>
             <?php endif; ?>
             <?php if ($this->canShowOptions()): ?>
-                <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p>
+                <!-- <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p> -->
                 <div id="narrow-by-list">
-                    <div class="filters">
                         <?php $_filters = $this->getFilters() ?>
                         <?php foreach ($_filters as $_filter): ?>
+                            <div class="filters">
                             <?php
                             if ($_filter->getItemsCount() > $displaySize)
                                 $hiddenFilters[] = strtolower($_filter->getName());
                             ?>
                             <?php if ($_filter->getItemsCount()): ?>
-                                <a class="heading" data-id="<?php echo $this->__($_filter->getName()) ?>"><?php echo $this->__($_filter->getName()) ?></a>
+                                <a class="heading" data-id="<?php echo $this->__($_filter->getName()) ?>"><h2><?php echo $this->__($_filter->getName()) ?></h2><span><i class="fa fa-minus-square-o"></i><i class="fa fa-plus-square-o"></i></span></a>
                                 <ul id="<?php echo $this->__($_filter->getName()) ?>"><?php echo $_filter->getHtml() ?></ul>
                             <?php endif; ?>
+                        </div>
                         <?php endforeach; ?>
-                    </div>
                 </div>
                 <script type="text/javascript">decorateDataList('narrow-by-list')</script>
             <?php endif; ?>

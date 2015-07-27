@@ -4,16 +4,21 @@
         <span id="price-max" class="filter-handle price-slider-to" title="Scroll to set your maximum value"></span>
     </div>
     <ul>
-        <li>
-            <span id="price-min-display"><?php echo $this->getCurrentMinPriceFilter(); ?></span>
-            <span style="float: right;" id="price-max-display"><?php echo $this->getCurrentMaxPriceFilter(); ?></span>
+        <li class="range-price">
+    <div class="a-right">
+    <button id="button-price-slider" class="button btn1"
+                onclick="javascript: CatalinSeoHandler.handlePriceEvent(this.value)" value="">
+            <span><span><?php echo $this->__('Filter') ?></span></span></button>
+            &nbsp;
+            <span>
+            <i id="price-min-display"><?php echo $this->getCurrentMinPriceFilter(); ?></i>
+             - 
+            <i id="price-max-display"><?php echo $this->getCurrentMaxPriceFilter(); ?></i>
+            <?php echo $currency_code = Mage::app()->getStore()->getCurrentCurrencyCode(); ?>
+            </span>
+    </div>
         </li>
     </ul>
-    <div class="a-right">
-        <button id="button-price-slider" class="button"
-                onclick="javascript: CatalinSeoHandler.handlePriceEvent(this.value)" value="">
-            <span><span><?php echo $this->__('Update') ?></span></span></button>
-    </div>
 
     <script type="text/javascript">
         <?php if ($this->helper('catalin_seo')->isAjaxEnabled()): ?>

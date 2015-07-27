@@ -9,6 +9,10 @@
             <remove name="right" />
             </reference>
             -->	
+         <action method="removeItem">
+            <type>skin_css</type>
+            <name>css/styles.css</name>
+        </action>
         </cms_index_index>
         <reference name="head">
 			
