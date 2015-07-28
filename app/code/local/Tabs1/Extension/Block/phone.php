@@ -111,17 +111,5 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
     {
         return $this->_getProductCollection();
     }
-    
-     public function getLoadedProductCollectionbrand()
-    {
-          $id = 6;
-         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
-        ->addFieldToSelect('*');
-        echo $collection->getSelect()->order('brand_id ASC');
-        exit;
-        return $collection;
-
-
-    }
 
 }
