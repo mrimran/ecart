@@ -5,13 +5,16 @@
 					<li><a onclick="newproduct()" id="one">New Products</a></li>
 					<li><a class="active" onclick="bestseller()" id="two" >Best Sellers</a></li>
 					<li>
+					<?php
+                    $_productCollectionbrand=$this->getLoadedProductCollectionbrand();
+                    $_helper = $this->helper('catalog/output');?>
 					<select onchange="getbrand()" id="brands">
-						<option value="0">Brands</option>
-						<option value="3">Samsung</option>
-						<option value="4">LG</option>
-						<option value="5">Sony</option>
-						<option value="6">Apple</option>
-						<option value="7">Microsoft</option>
+					<option value="0">Brands</option>
+					<?php
+                    foreach ($_productCollectionbrand as $_brand): 
+                    ?>
+						<option value="<?php echo $_brand->option_id; ?>"><?php echo $_brand->name; ?></option>
+					<?php endforeach ?>
 					</select>
 					</li>
 				</ul>
@@ -105,3 +108,4 @@
 			 window.location =("index.php?brand_ids="+brand);
 		}
 		</script>
+		
