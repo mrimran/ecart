@@ -32,9 +32,10 @@
  */
 ?>
 <?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
-<div class="cart <?php echo $_priceDisplay; ?>">
+<section>
+<div class="cart col-sm-12 paddingzero cart_page <?php echo $_priceDisplay; ?>">
     <div class="page-title title-buttons">
-        <h1><?php echo $this->__('Shopping Cart') ?></h1>
+        <h3 class="heading2"><?php echo $this->__('Shopping Cart') ?></h3>
         <?php if(!$this->hasError()): ?>
         <ul class="checkout-types top">
         <?php foreach ($this->getMethods('top_methods') as $method): ?>
@@ -49,7 +50,7 @@
     <?php echo $this->getChildHtml('form_before') ?>
     <form action="<?php echo $this->getFormActionUrl() ?>" method="post">
         <?php echo $this->getBlockHtml('formkey'); ?>
-        <table id="shopping-cart-table" class="cart-table data-table">
+        <table id="shopping-cart-table" class="cart-table data-table cart_table">
             <col width="1" />
             <col width="1" />
             <col width="1" />
@@ -64,15 +65,9 @@
         <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
             <thead>
                 <tr>
-                    <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product') ?></span></th>
+                    <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Item') ?></span></th>
 
-                    <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-
-                    <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
-<!--                            <div class="cart-price-placeholder">-->
-                            <span class="nobr"><?php echo $this->__('Price') ?></span>
-<!--                            </div>-->
-                    </th>
+                    <!-- <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th> -->
 
                     <th rowspan="<?php echo $mergedCells; ?>" class="a-center">
                         <?php echo $this->__('Qty') ?>
@@ -83,14 +78,17 @@
 
                     </th>
 
+                    <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
+<!--                            <div class="cart-price-placeholder">-->
+                            <span class="nobr"><?php echo $this->__('Price') ?></span>
+<!--                            </div>-->
+                    </th>
+                    <th class="a-center" rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Delivery Details') ?></th>
                     <th class="a-center cart-total-head" colspan="<?php echo $mergedCells; ?>">
 <!--                            <div class="cart-total-placeholder">-->
                             <?php echo $this->__('Subtotal') ?>
 <!--                            </div>-->
                     </th>
-
-                    <th class="a-center" rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-
                 </tr>
                 <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
                 <tr>
@@ -175,7 +173,7 @@
     </div>
     <?php echo $this->getChildHtml('crosssell') ?>
 </div>
-
+</section>
 	<?php 
 		 echo $this->getLayout()->createBlock('cms/block')->setBlockId('buyersprotectionscartpage')->toHtml();
         echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml();

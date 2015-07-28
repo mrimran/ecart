@@ -32,18 +32,26 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 <tr>
     <td class="product-cart-image">
         <?php if ($this->hasProductUrl()):?>
-            <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image">
+            <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image img-box">
         <?php endif;?>
             <img src="<?php echo $this->getProductThumbnail()->resize(180); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
         <?php if ($this->hasProductUrl()):?>
             </a>
         <?php endif;?>
 
-        <ul class="cart-links">
+        <div class="item-detail">
+        <h4 class="product-name">
+        <?php if ($this->hasProductUrl()):?>
+            <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
+        <?php else: ?>
+            <?php echo $this->escapeHtml($this->getProductName()) ?>
+        <?php endif; ?>
+        </h4>
+        <ul class="cart-links square">
             <?php if ($isVisibleProduct): ?>
-                <li>
+                <!-- <li>
                     <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Edit item parameters')) ?>"><?php echo $this->__('Edit') ?></a>
-                </li>
+                </li> -->
             <?php endif ?>
 
             <?php if ($this->helper('wishlist')->isAllowInCart() && $isVisibleProduct) : ?>
@@ -51,61 +59,74 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                     <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax"><?php echo $this->__('Move to wishlist'); ?></a>
                 </li>
             <?php endif ?>
-        </ul>
-    </td>
 
-    <td class="product-cart-info">
+        <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove Item')) ?>" class="btn-remove btn-remove2 remove"><?php echo $this->__('Remove Item') ?></a>
 
-        <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove Item')) ?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove Item') ?></a>
 
-        <h2 class="product-name">
-        <?php if ($this->hasProductUrl()):?>
-            <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
-        <?php else: ?>
-            <?php echo $this->escapeHtml($this->getProductName()) ?>
-        <?php endif; ?>
-        </h2>
-
-        <div class="product-cart-sku">
+        <li class="product-cart-sku">
             <span class="label"><?php echo $this->__('SKU'); ?>:</span> <?php echo $this->escapeHtml($_item->getSku()); ?>
-        </div>
-
+        </li>
+        
         <?php if ($_options = $this->getOptionList()):?>
-        <dl class="item-options">
+        <li class="item-options">
             <?php foreach ($_options as $_option) : ?>
             <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
+                <span class="label"><?php echo $this->escapeHtml($_option['label']) ?></span>
+                <div<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
                 <?php if (isset($_formatedOptionValue['full_view'])): ?>
                 <div class="truncated_full_value">
-                    <dl class="item-options">
-                        <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                        <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
-                    </dl>
+                    <ul class="item-options">
+                        <li><?php echo $this->escapeHtml($_option['label']) ?></li>
+                        <li><?php echo $_formatedOptionValue['full_view'] ?></li>
+                    </ul>
                 </div>
                 <?php endif; ?>
-            </dd>
+            </div>
             <?php endforeach; ?>
-        </dl>
+        </li>
         <?php endif;?>
 
         <?php if ($messages = $this->getMessages()): ?>
         <?php foreach ($messages as $message): ?>
-            <p class="item-msg <?php echo $message['type'] ?>">
+            <li class="item-msg <?php echo $message['type'] ?>">
                 * <?php echo $this->escapeHtml($message['text']) ?>
-            </p>
+            </li>
         <?php endforeach; ?>
         <?php endif; ?>
-
+</ul>
         <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addInfoBlock): ?>
             <?php echo $addInfoBlock->setItem($_item)->toHtml() ?>
         <?php endif;?>
+</div>
+    </td>
+    <td class="product-cart-actions qty" data-rwd-label="<?php echo $this->__('Qty'); ?>">
+        <input type="text" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4"
+               data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
+               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" maxlength="12" />
+
+        <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update')); ?>" class="button btn-update btn1 btn2"><span><span><?php echo $this->__('Update'); ?></span></span>
+        </button>
+
+        <ul class="cart-links">
+            <?php if ($isVisibleProduct): ?>
+                <!-- <li>
+                    <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Edit item parameters')) ?>"><?php echo $this->__('Edit') ?></a>
+                </li> -->
+            <?php endif ?>
+
+            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+            <li>
+                <?php if ($isVisibleProduct): ?>
+                    <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax"><?php echo $this->__('Move to wishlist'); ?></a>
+                <?php endif ?>
+            </li>
+            <?php endif ?>
+        </ul>
 
     </td>
-
     <?php if ($canApplyMsrp): ?>
-        <td class="a-center product-cart-price"<?php if ($this->helper('tax')->displayCartBothPrices()): ?> colspan="2"<?php endif; ?>>
+        <td class="a-center product-cart-price product_price"<?php if ($this->helper('tax')->displayCartBothPrices()): ?> colspan="2"<?php endif; ?>>
             <span class="cart-price">
                 <span class="cart-msrp-unit"><?php echo $this->__('See price before order confirmation.'); ?></span>
                 <?php $helpLinkId = 'cart-msrp-help-' . $_item->getId(); ?>
@@ -120,7 +141,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     <?php else: ?>
 
         <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
-        <td class="product-cart-price" data-rwd-label="<?php echo $this->__('Price'); ?>" data-rwd-tax-label="<?php echo $this->__('Excl. Tax'); ?>">
+        <td class="product-cart-price product_price" data-rwd-label="<?php echo $this->__('Price'); ?>" data-rwd-tax-label="<?php echo $this->__('Excl. Tax'); ?>">
 
             <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                 <span class="cart-tax-total" onclick="taxToggle('eunit-item-tax-details<?php echo $_item->getId(); ?>', this, 'cart-tax-total-expanded');">
@@ -204,31 +225,6 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         </td>
         <?php endif; ?>
     <?php endif; ?>
-    <td class="product-cart-actions" data-rwd-label="<?php echo $this->__('Qty'); ?>">
-        <input type="text" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4"
-               data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
-               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" maxlength="12" />
-
-        <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update')); ?>" class="button btn-update"><span><span><?php echo $this->__('Update'); ?></span></span>
-        </button>
-
-        <ul class="cart-links">
-            <?php if ($isVisibleProduct): ?>
-                <li>
-                    <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Edit item parameters')) ?>"><?php echo $this->__('Edit') ?></a>
-                </li>
-            <?php endif ?>
-
-            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-            <li>
-                <?php if ($isVisibleProduct): ?>
-                    <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax"><?php echo $this->__('Move to wishlist'); ?></a>
-                <?php endif ?>
-            </li>
-            <?php endif ?>
-        </ul>
-
-    </td>
 
     <!--Sub total starts here -->
     <?php if (($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()) && !$_item->getNoSubtotal()): ?>
@@ -325,7 +321,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     </td>
     <?php endif; ?>
     <td class="a-center product-cart-remove">
-        <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove Item')) ?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove Item') ?></a>
+        <!-- <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove Item')) ?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove Item') ?></a> -->
     </td>
 </tr>
 
