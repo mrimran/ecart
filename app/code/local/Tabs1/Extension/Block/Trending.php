@@ -1,28 +1,30 @@
 <?php
 // app/code/local/Envato/Recentproducts/Block/Recentproducts.php
-class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
+class Tabs_Extension_Block_Trending extends Mage_Core_Block_Template {
    protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
    
    public function getLoadedProductCollection()
     { 
-       if($this->getRequest()->getParam('id')!= null){
+        
        $id = $this->getRequest()->getParam('id');
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
         $catId = $id;
+        $date = date('m');
         /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
         $collection = Mage::getResourceModel('catalog/product_collection');
         // join sales order items column and count sold products
         $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
-        $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
+        $condition = new Zend_Db_Expr("oi.created_at LIKE '%-".$date."-%' AND e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
         $collection->addAttributeToSelect('*')->getSelect()
             ->join(array('oi' => $collection->getTable('sales/order_item')),
             $condition,
-            array('sales_count' => $expression))
+            array('sales_count' => $expression ,'date_creation' => 'oi.created_at'))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
-        // join category
+            
+                    // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
         $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
@@ -33,14 +35,14 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
         $condition = new Zend_Db_Expr("c.entity_id = cv.entity_id AND ea.attribute_id = cv.attribute_id");
         // cutting corners here by hardcoding 3 as Category Entiry_type_id
         $condition2 = new Zend_Db_Expr("ea.entity_type_id = 3 AND ea.attribute_code = 'name'");
-        $collection->getSelect()->join(array('ea' => $collection->getTable('eav/attribute')),
+       $collection->getSelect()->join(array('ea' => $collection->getTable('eav/attribute')),
             $condition2,
             array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
             $condition,
             array('cat_name' => 'cv.value'));
         // if Category filter is on
         if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5);
+        $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
@@ -52,44 +54,11 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
                 continue;
             }
             $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
+        
         }
-       
-   }
-   else{
-    $id = 2;
-    $storeId = (int) Mage::app()->getStore()->getId();
- 
-        // Date
-        $date = new Zend_Date();
-        $toDate = $date->setDay(1)->getDate()->get('Y-MM-dd');
-        $fromDate = $date->subMonth(1)->getDate()->get('Y-MM-dd');
- 
-        $collection = Mage::getResourceModel('catalog/product_collection')
-            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-            ->addStoreFilter()
-            ->addPriceData()
-            ->addTaxPercents()
-            ->addUrlRewrite()
-            ->setPageSize(6);
- 
-        $collection->getSelect()
-            ->joinLeft(
-                array('aggregation' => $collection->getResource()->getTable('sales/bestsellers_aggregated_monthly')),
-                "e.entity_id = aggregation.product_id AND aggregation.store_id={$storeId} AND aggregation.period BETWEEN '{$fromDate}' AND '{$toDate}'",
-                array('SUM(aggregation.qty_ordered) AS sold_quantity')
-            )
-            ->group('e.entity_id')
-            ->order(array('sold_quantity DESC', 'e.created_at'))
-            ->limit(5);
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
-        
-  
-   }
-       
         return $collection;
-
         
+ 
     }
 
     public function getMode()
