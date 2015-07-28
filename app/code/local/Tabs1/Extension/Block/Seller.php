@@ -40,7 +40,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             array('cat_name' => 'cv.value'));
         // if Category filter is on
         if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5);
+            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
