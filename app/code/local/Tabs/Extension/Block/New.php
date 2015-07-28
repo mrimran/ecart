@@ -1,6 +1,7 @@
 <?php
 class Tabs_Extension_Block_New extends Mage_Catalog_Block_Product_Abstract
 {
+
     protected $_productsCount = null;
 
     const DEFAULT_PRODUCTS_COUNT = 10;

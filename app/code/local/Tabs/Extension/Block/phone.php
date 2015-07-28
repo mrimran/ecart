@@ -1,6 +1,7 @@
 <?php
 // app/code/local/Envato/Recentproducts/Block/Recentproducts.php
 class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
+
     protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
     protected $_productsCount = null;
     const DEFAULT_PRODUCTS_COUNT = 10;
