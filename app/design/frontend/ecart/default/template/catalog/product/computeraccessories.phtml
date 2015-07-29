@@ -80,6 +80,12 @@
 			<?php endif; ?>
 			<div class="clearfix viewmore" align="right"><a href="#">View All Products</a></div>
 		</section>
+		
+		 
+          
+           
+
+		
 		<script>
 		function newproduct1(){
             jQuery('#bestseller1').hide();
@@ -105,8 +111,16 @@
 
 		function getbrands(){
 			var brand = document.getElementById("brand").value
-			 window.location =("index.php?brands_ids="+brand);
+			 //make the ajax call
+             jQuery.ajax({
+             url: 'index.php',
+             type: 'POST',
+             data: {action : 'getLoadedProductCollection' , brands_ids : brand},
+             success: function(data) { 
+             	
+             }
+             });
+		//window.location =("index.php?brands_ids="+brand);
 		}
 		</script>
-		
 		
