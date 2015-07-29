@@ -78,6 +78,7 @@
 				</div>
 			<?php endforeach ?>
 			<?php endif; ?>
+			</div>
 			<div class="clearfix viewmore" align="right"><a href="#">View All Products</a></div>
 		</section>
 		
@@ -113,11 +114,22 @@
 			var brand = document.getElementById("brand").value
 			 //make the ajax call
              jQuery.ajax({
-             url: 'index.php',
+             url: 'extension/index/ajaxbestseller/',
              type: 'POST',
              data: {action : 'getLoadedProductCollection' , brands_ids : brand},
              success: function(data) { 
-             	
+          
+             	jQuery('#bestseller1').html(data);
+             }
+             });
+
+             jQuery.ajax({
+             url: 'extension/index/ajaxnewproduct/',
+             type: 'POST',
+             data: {action : 'getLoadedProductCollectionnew' , brands_ids : brand},
+             success: function(data) { 
+          
+             	jQuery('#newproduct1').html(data);
              }
              });
 		//window.location =("index.php?brands_ids="+brand);
