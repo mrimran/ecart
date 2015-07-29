@@ -81,7 +81,7 @@
 
                     <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
 <!--                            <div class="cart-price-placeholder">-->
-                            <span class="nobr"><?php echo $this->__('Price') ?></span>
+                            <span class="nobr"><?php echo $this->__('Price ('.$currency_code = Mage::app()->getStore()->getCurrentCurrencyCode().')') ?></span>
 <!--                            </div>-->
                     </th>
                     <th class="a-center" rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Delivery Details') ?></th>
