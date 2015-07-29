@@ -903,6 +903,7 @@ bottom:0;right:0;font-size:12px;text-transform:uppercase;}
 .cart_table td.product_price,.cart_table td.product_price .cart-price .price{color:#8c8d8e;}
 .cart_table td.product_price .cart-price .price{font-family:'GothamNarrow-Book', sans-serif;
 font-size:16px;font-weight:300;}
+
 .cart_table td.delivery{/*width:200px;*/max-width:160px;}
 .cart_table td.delivery h3{font-size:16px;margin-bottom:10px;}
 .cart_table td.delivery p{color:#8c8d8e;font-size:12px;line-height:1.5;}
