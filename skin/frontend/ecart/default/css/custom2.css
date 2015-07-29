@@ -20,3 +20,6 @@
 .maincontainer .filters ul li.range-price{border-bottom:0;padding:15px 0px 0;}
 .maincontainer .filters ul li.range-price i{font-style:normal;}
 .cart_table .label{padding:0 5px 0 0;color:rgba(48,48,48,1);font-size:12px;}
+.checkout-types.bottom{list-style-type:none;text-align:right;}
+.checkout-types.bottom li{display: inline-block;vertical-align:top;}
+.checkout-types.bottom li.method-checkout-cart-methods-multishipping{display:none;}
