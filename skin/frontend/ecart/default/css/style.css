@@ -903,14 +903,14 @@ bottom:0;right:0;font-size:12px;text-transform:uppercase;}
 .cart_table td.product_price,.cart_table td.product_price .cart-price .price{color:#8c8d8e;}
 .cart_table td.product_price .cart-price .price{font-family:'GothamNarrow-Book', sans-serif;
 font-size:16px;font-weight:300;}
-
 .cart_table td.delivery{/*width:200px;*/max-width:160px;}
 .cart_table td.delivery h3{font-size:16px;margin-bottom:10px;}
 .cart_table td.delivery p{color:#8c8d8e;font-size:12px;line-height:1.5;}
 .cart_table td.sub-total .heading2,.cart_table td.sub-total .price{margin-bottom:0;font-size:18px;
 font-family:"GothamNarrow-Bold", sans-serif;color:#202020;}
 table.cart_summary{margin-top:20px;display:block;padding-bottom:20px;border-bottom:1px solid #eaeaea;
-margin-bottom: 20px;}
+margin-bottom: 20px;width:100%;}
+/*table.cart_summary tbody{width:100%;display:table;}*/
 table.cart_summary td{vertical-align:middle;}
 table.sub_summary{width:100%;}
 table.sub_summary td{padding:8px 20px;}
