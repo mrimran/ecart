@@ -51,6 +51,10 @@
                 <type>skin_js</type>
                 <script>js/auguria/sliders/slides.min.jquery_forked.js</script>
             </action>
+				<action method="addItem">
+                <type>skin_js</type>
+                <script>js/jquery.bxslider/jquery.bxslider.js</script>
+            </action>
 				
 				
             <action method="addCss">
@@ -65,6 +69,9 @@
 				
 				<action method="addCss"> 
 				<stylesheet>css/styles.css</stylesheet>
+				</action>
+				<action method="addCss"> 
+				<stylesheet>js/jquery.bxslider/jquery.bxslider.css</stylesheet>
 				</action>
 				
             <action method="addCss">
