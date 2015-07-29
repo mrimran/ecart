@@ -55,7 +55,7 @@
 						<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
                   
                   
-                   
+                    <?php echo $this->getChildHtml('bundle_prices') ?>
                     
                   
                   </h1>
@@ -63,7 +63,7 @@
 						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
 						<div class="row">
 							<div class="col-sm-6">
-								<div class="price"> <?php echo $this->getTierPriceHtml() ?>  <?php echo $this->getChildHtml('bundle_prices') ?> <span class="not-now"><?php echo $this->getPriceHtml($_product); ?></span></div>
+								<div class="price"> <?php echo $this->getTierPriceHtml() ?><span class="not-now"><?php echo $this->getPriceHtml($_product); ?></span></div>
 							</div>
 							<div class="col-sm-6">
 								<div class="__you_saved">You save 80AED!</div>
