@@ -965,3 +965,7 @@ color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;margin
 .margin1{margin-right:-15px;}
 .tablet,.smartphones{display:none;}
 .desktop{display:block;}
+.loader{
+	width: 30%;
+	margin: 0 auto;
+}

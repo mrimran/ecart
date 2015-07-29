@@ -111,6 +111,7 @@
              url: 'extension/index/ajaxbestsellerphone/',
              type: 'POST',
              data: {action : 'getLoadedProductCollection' , brand_ids : brand},
+             beforeSend: function() { jQuery('#bestseller').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>"); },
              success: function(data) { 
           
              	jQuery('#bestseller').html(data);
