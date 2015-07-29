@@ -1,6 +1,7 @@
 <?php
 // app/code/local/Envato/Recentproducts/Block/Recentproducts.php
 class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
+
     protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
     protected $_productsCount = null;
     const DEFAULT_PRODUCTS_COUNT = 10;
@@ -111,5 +112,32 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
     {
         return $this->_getProductCollection();
     }
+    
+      public function getLoadedProductCollectionbrand()
+    {
+         $id = '%6%';
+         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+        ->addFieldToSelect('*');
+        $collection->getSelect()->order('brand_id ASC');
+        $collection->getSelect()->where('category_ids LIKE ?', $id)->limit(5);
+         return $collection;
+        /*$brand = $collection;
+        foreach ($brand as $brands):
+          $r = $brands->category_ids;
+          $i=explode(",",$r);
+          $y = 0;
+          foreach ($i as $brandnew):
+            if($i[$y]==$id){
+                $collection->getSelect()->where('category_ids = ?', $id)->limit(5);
+                return $collection;
+               $y=$y+1;       
+            }
+          endforeach;     
+        endforeach;*/
+
+    }
+
+   
+
 
 }

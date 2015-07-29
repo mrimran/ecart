@@ -25,8 +25,8 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
         //join brand 
-           if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
-               $brand_id = $this->getRequest()->getParam('brands_ids'); 
+           if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
+               $brand_id = $this->getRequest()->getParam('brand_ids'); 
                $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
@@ -94,8 +94,8 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
        
         } 
         
-        if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
-            $brand_id = $this->getRequest()->getParam('brands_ids'); 
+        if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
+            $brand_id = $this->getRequest()->getParam('brand_ids'); 
             $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
             $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
             $condition,
@@ -110,31 +110,5 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
     {
         return $this->_getProductCollection();
     }
-
-     public function getLoadedProductCollectionbrandnew()
-    {
-         $id = '%7%';
-         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
-        ->addFieldToSelect('*');
-        $collection->getSelect()->order('brand_id ASC');
-        $collection->getSelect()->where('category_ids LIKE ?', $id)->limit(5);
-        return $collection;
-        /*$brand = $collection;
-        foreach ($brand as $brands):
-          $r = $brands->category_ids;
-          $i=explode(",",$r);
-          $y = 0;
-          foreach ($i as $brandnew):
-            if($i[$y]==$id){
-                $collection->getSelect()->where('category_ids = ?', $id)->limit(5);
-                return $collection;
-               $y=$y+1;       
-            }
-          endforeach;     
-        endforeach;*/
-
-    }
-
-   
 
 }

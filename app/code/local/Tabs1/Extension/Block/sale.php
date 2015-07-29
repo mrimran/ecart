@@ -1,7 +1,6 @@
 <?php
 class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
 	
-
 	public function getLoadedProductCollection()
 	{
         Mage::getSingleton('core/session', array('name' => 'frontend'));
@@ -26,3 +25,4 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
         return $_productCollection;
     }
 }
+?>

@@ -886,21 +886,24 @@ font-weight:400;font-size:14px;border:1px solid #383a3e;padding:10px;height:50px
 .cart_table .img-box,.cart_table .item-detail{display:inline-block;width:25%;height:auto;
 vertical-align: top;}
 .cart_table .img-box{background-color:transparent;border:1px solid #eaeaea;}
-.cart_table .img-box img{max-height:75px;padding:10px 5px;max-width:65px;}
-.cart_table .item-detail{width:73%;position:relative;padding-left:10px;}
+.cart_table .img-box img{max-height:65px;padding:5px;max-width:100%;}
+.cart_table .item-detail{width:73%;position:relative;padding-left:10px;min-height:80px;}
 .cart_table .item-detail ul{margin-left:20px;font-size:12px;color:#6c6c6f;line-height:1.5;}
 .cart_table .item-detail ul.square{list-style-type:square;}
-.cart_table .item-detail h4{color:#303030;font-size:16px;margin-bottom:10px;}
+.cart_table .item-detail h4,.cart_table .item-detail h4 a{color:#303030;font-size:16px;
+margin-bottom:10px;}
+.cart_table .item-detail h4 a{margin-bottom:0;}
+.cart_table .item-detail h4 a:hover{color:#f57a20;}
 .cart_table .item-detail a.remove{position:absolute;color:#f57a20;text-decoration:underline;
 bottom:0;right:0;font-size:12px;text-transform:uppercase;}
 .cart_table .item-detail a:hover.remove{color:#303030;}
 .cart_table td.qty,.cart_table td.product_price,
 .cart_table td.sub-total{vertical-align:middle;text-align:center;}
 .cart_table td.qty input{width:50px;padding:10px 5px;border:1px solid #eaeaea;text-align:center;}
-.cart_table td.product_price{color:#2d2e32;}
+.cart_table td.product_price{color:#8c8d8e;}
 .cart_table td.delivery{width:200px;max-width:160px;}
 .cart_table td.delivery h3{font-size:16px;margin-bottom:10px;}
-.cart_table td.delivery p{color:#2d2e32;font-size:12px;line-height:1.5;}
+.cart_table td.delivery p{color:#8c8d8e;font-size:12px;line-height:1.5;}
 .cart_table td.sub-total .heading2{margin-bottom:0;font-size:18px;}
 table.cart_summary{margin-top:20px;display:block;padding-bottom:20px;border-bottom:1px solid #eaeaea;
 margin-bottom: 20px;}
@@ -940,6 +943,8 @@ content:'';display:block;background-position:center;width:15px;height:15px;backg
 .contact-us .form-control{border-radius:0;}
 .contact-us p{color:#bebebe;}
 .contact-us .btn1{font-weight:600;padding:8px 30px;}
+.cart_page .btn1,.cart_page .btn2{font-size:20px;padding:10px 30px;font-weight: 600;line-height: 1.2;}
+.cart_page .btn2{font-size:14px;padding:12px 18px;font-weight:100;}
 
 .fullheight{height:100% !important;max-height:100% !important;}
 .relative{position:relative;}

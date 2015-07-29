@@ -1,14 +1,14 @@
 <?php
 // app/code/local/Envato/Recentproducts/Block/Recentproducts.php
-class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract {
+class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
     protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
     protected $_productsCount = null;
     const DEFAULT_PRODUCTS_COUNT = 10;
 
        public function getLoadedProductCollection()
     { 
-
-       $id = 7;
+       
+       $id = 6;
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
@@ -19,14 +19,14 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
         $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
         $collection->addAttributeToSelect('*')->getSelect()
-            ->join(array('oi' => $collection->getTable('sales/order_item')),
+            ->join(array('oi' => $collection->getTable('sales/order_item')),               
             $condition,
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
         //join brand 
-           if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
-               $brand_id = $this->getRequest()->getParam('brands_ids'); 
+           if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
+               $brand_id = $this->getRequest()->getParam('brand_ids'); 
                $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
@@ -50,7 +50,8 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             array('cat_name' => 'cv.value'));
         // if Category filter is on
         if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
+        $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5);
+
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
@@ -71,13 +72,13 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
 
     protected function _getProductCollection()
     {
-        $id = 7;
+        $id = 6;
         $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $collection = Mage::getResourceModel('catalog/product_collection');
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
         
-        echo $collection = $this->_addProductAttributesAndPrices($collection)
+        $collection = $this->_addProductAttributesAndPrices($collection)
             ->addStoreFilter()
             ->addAttributeToFilter('news_from_date', array('date' => true, 'to' => $todayDate))
             ->addAttributeToFilter('news_to_date', array('or'=> array(
@@ -91,16 +92,16 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         if($categoryId = $id){
         $category = Mage::getModel('catalog/category')->load($categoryId);
         $collection->addCategoryFilter($category);
-       
         } 
         
-        if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
-            $brand_id = $this->getRequest()->getParam('brands_ids'); 
+        if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0 ){
+            $brand_id = $this->getRequest()->getParam('brand_ids'); 
             $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
             $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
             $condition,
             array('brand_id' => 'br.option_id'));
         }
+
         return $collection;
     }
 
@@ -110,31 +111,5 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
     {
         return $this->_getProductCollection();
     }
-
-     public function getLoadedProductCollectionbrandnew()
-    {
-         $id = '%7%';
-         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
-        ->addFieldToSelect('*');
-        $collection->getSelect()->order('brand_id ASC');
-        $collection->getSelect()->where('category_ids LIKE ?', $id)->limit(5);
-        return $collection;
-        /*$brand = $collection;
-        foreach ($brand as $brands):
-          $r = $brands->category_ids;
-          $i=explode(",",$r);
-          $y = 0;
-          foreach ($i as $brandnew):
-            if($i[$y]==$id){
-                $collection->getSelect()->where('category_ids = ?', $id)->limit(5);
-                return $collection;
-               $y=$y+1;       
-            }
-          endforeach;     
-        endforeach;*/
-
-    }
-
-   
 
 }
