@@ -109,13 +109,13 @@
     margin: 0;
     padding: 0;
 }
-
+.checkout-onepage-index .col2-set,
 .checkout-onepage-index .mini-products-list .item:before,
 .checkout-onepage-index .mini-products-list .item:after {
     content: " ";
     display: table;
 }
-
+.checkout-onepage-index .col2-set:after,
 .checkout-onepage-index .mini-products-list .item:after {
     clear: both;
 }
@@ -212,7 +212,7 @@
 
 .checkout-onepage-index .col-md-9 .opc li .step {
     border-width: 0px 1px 1px;
-    border-style: none solid solid;
+    border-style: none solid none solid;
     border-color: -moz-use-text-color rgb(236, 236, 236) rgb(236, 236, 236);
     -moz-border-top-colors: none;
     -moz-border-right-colors: none;
@@ -221,4 +221,38 @@
     border-image: none;
     padding: 24px;
     border-color: rgb(236, 236, 236);
+}
+.checkout-onepage-index .col-md-9 .opc li .step h3{
+    margin: 0;
+    margin-bottom: 10px;
+    color: rgb(99, 99, 99);
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+    text-transform: uppercase;
+}
+.checkout-onepage-index .col-md-9 .opc li .step p:not(.required) {
+    font-size: 13px;
+    color: rgb(160, 160, 160);
+}
+.checkout-onepage-index .col-md-9 .opc li .step ul.form-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.checkout-onepage-index .col-md-9 .opc li .step ul.form-list .control {
+    margin-top: 10px;
+}
+.form-list .control input.radio, .form-list .control input.checkbox, .sp-methods dt input.radio, .sp-methods dt input.checkbox, #checkout-shipping-method-load .sp-methods dd input.radio, #checkout-shipping-method-load .sp-methods dd input.checkbox, #co-shipping-method-form .sp-methods dd input.radio, #co-shipping-method-form .sp-methods dd input.checkbox, .product-options ul.options-list input.radio, .product-options ul.options-list input.checkbox {
+    float: left;
+    margin-right: -40px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.product-options ul.options-list label, .col2-set .form-list .control label {
+    min-width: inherit;
+    width: 250px;
+    max-width: 100%;
 }
