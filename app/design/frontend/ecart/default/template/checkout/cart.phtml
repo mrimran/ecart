@@ -81,7 +81,7 @@
 
                     <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
 <!--                            <div class="cart-price-placeholder">-->
-                            <span class="nobr"><?php echo $this->__('Price') ?></span>
+                            <span class="nobr"><?php echo $this->__('Price ('.$currency_code = Mage::app()->getStore()->getCurrentCurrencyCode().')') ?></span>
 <!--                            </div>-->
                     </th>
                     <th class="a-center" rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Delivery Details') ?></th>
@@ -151,22 +151,11 @@
                 <tbody>
                     <tr>
                         <td width="70%">
-                        <div class="buyerprotection clearfix">
-                            <div class="col-sm-2 col-xs-2 shield"></div>
-                            <div class="col-sm-10 col-xs-10 padding1">
-                                <div class="col-sm-9"><h2 class="title-big">ECART BUYERS PROTECTION</h2></div>
-                                <div class="col-sm-3"><a href="#"><i>Learn More Here &gt;</i></a></div>
-                                <div class="col-sm-12">
-                                    <ul class="protection-list">
-                                    <li><i class="fa fa-check-square-o"></i> Full Refund if You Don't Receive Your Order </li>
-                                    <li><i class="fa fa-check-square-o"></i> Refund or Keep Items not as Described</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('buyersprotectionscartpage')->toHtml(); ?>
                         </td>
                         <td width="30%">
                         <?php echo $this->getChildHtml('totals'); ?>
+                        <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                         </td>
                     </tr>
                 </tbody>
@@ -188,7 +177,6 @@
         <?php echo $this->getChildHtml('checkout_cart_widget') ?>
         <?php echo $this->getChildHtml('coupon') ?>
         <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-        <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
     </div>
 <!--     <div class="cart-totals-wrapper">
         <div class="cart-totals">
@@ -207,7 +195,4 @@
     <?php echo $this->getChildHtml('crosssell') ?>
 </div>
 </section>
-	<?php 
-		 echo $this->getLayout()->createBlock('cms/block')->setBlockId('buyersprotectionscartpage')->toHtml();
-        echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml();
-   ?>
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml(); ?>
