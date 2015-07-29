@@ -25,6 +25,7 @@
  */
 ?>
 <?php
+
 /**
  * Shopping cart totals template
  *
@@ -35,7 +36,7 @@
 <?php if ($this->canApplyMsrp()): ?>
     <div class="cart-msrp-totals"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></div>
 <?php else: ?>
-    <table id="shopping-cart-totals-table">
+    <table id="shopping-cart-totals-table" class="sub_summary">
         <col />
         <col width="1" />
         <tfoot>
