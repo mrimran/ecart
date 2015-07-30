@@ -24,32 +24,37 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
+<div class="__reviews__section">
+<div class="row">
 <?php $_items = $this->getReviewsCollection()->getItems();?>
+ 
 <div class="box-collateral box-reviews" id="customer-reviews">
+<div class="col-sm-7">
     <?php if (count($_items)):?>
-        <div class="review-heading">
+      
             <h2>
                 <?php echo $this->__('Customer Reviews') ?>
                 <span><?php echo count($_items); ?> item(s)</span>
             </h2>
             <?php echo $this->getChildHtml('toolbar') ?>
-        </div>
-        <dl>
+      
+  
         <?php foreach ($_items as $_review):?>
-            <dt>
-                <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>">
+           <div class="__review">
+           		<div class="__review_heading clearfix">
+                <h3>
                     <?php echo $this->escapeHtml($_review->getTitle()) ?>
-                </a>
-            </dt>
-            <dd>
-                <?php $_votes = $_review->getRatingVotes(); ?>
-
-                <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
-
-
+                    
+               <span>
+                <?php echo $this->__('by %s', $this->escapeHtml($_review->getNickname())) ?>
+                    .
+                <?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?>
+                </span>
+                </h3>
+          		<div class="__rating">
+               <?php $_votes = $_review->getRatingVotes(); ?>
                 <?php if (count($_votes)): ?>
-                <table class="ratings-table">
+                <table class="ratings-table userstarratting">
                     <colgroup>
                         <col class="review-label" />
                         <col class="review-value" />
@@ -68,20 +73,31 @@
                     </tbody>
                 </table>
                 <?php endif; ?>
+          		</div>
+                </div>
+						<div class="__review__content">
+                  <p>
+                <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
+                </p>
+                </div>
 
 
-                <span class="review-meta">
-                    <?php echo $this->__('Review by %s', $this->escapeHtml($_review->getNickname())) ?>
-                    /
-                   <?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?>
-                </span>
-            </dd>
+               
+
+
+          
+          </div>
         <?php endforeach; ?>
-        </dl>
+      
 
         <?php // echo $this->getChildHtml('toolbar') ?>
     <?php elseif($this->getParentBlock()): ?>
         <?php echo $this->getParentBlock()->getReviewsSummaryHtml($this->getProduct(), 'short', true)?>
     <?php endif;?>
+    </div>
+    <div class="col-sm-5">
     <?php echo $this->getChildHtml('review_form') ?>
+    </div>
 </div>
+	</div>
+			</div>
