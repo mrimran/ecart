@@ -24,14 +24,14 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="dashboard">
+<div class="dashboard cms_template">
     <div class="page-title">
         <h1><?php echo $this->__('My Dashboard') ?></h1>
     </div>
     <?php echo $this->getMessagesBlock()->toHtml() ?>
     <?php echo $this->getChildHtml('hello') ?>
     <?php echo $this->getChildHtml('top') ?>
-    <div class="box-account box-info">
+    <div class="box-account box-info clearfix">
         <div class="box-head">
             <h2><?php echo $this->__('Account Information') ?></h2>
         </div>
