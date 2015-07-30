@@ -77,8 +77,10 @@
 						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
 					</div>
 					<div class="col-sm-3 relative price-info">
-					<div class="price"><?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
-               <span class="not-now"><?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?></span>
+					<div class="price">
+               <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
+               <span class="not-now">
+					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
                </div>
 					<div class="orders">10 Orders</div>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
@@ -126,13 +128,7 @@
 						<?php if($_product->getRatingSummary()): ?>
                     <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                     <?php endif; ?>
-						<ul>
-							<li>4.7-inch Retina HD display</li>
-							<li>A8 chip with 64-bit desktop-class architecture</li>
-							<li>New 8MP iSight camera with Focus Pixels</li>
-							<li>Touch ID fingerprint identity sensor</li>
-							<li>iOS and iCloud</li>
-						</ul>
+						
 						<a href="" class="specs">See Full Specifications</a>
 					</div>
 					<div class="col-sm-3 relative price-info">
@@ -143,9 +139,10 @@
 					?>
                
 					<div class="price">
-					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> 
+					 <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
                <span class="not-now">
-					<?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> </span>
+               <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
+					 </span>
                </div>
 					<div class="orders">10 Orders</div>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
