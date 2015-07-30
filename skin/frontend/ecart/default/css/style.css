@@ -966,6 +966,14 @@ color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;margin
 .tablet,.smartphones{display:none;}
 .desktop{display:block;}
 .loader{
-	width: 30%;
-	margin: 0 auto;
+	position: relative;
+}
+.loader img{
+	 display:block; 
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-30%, -20%);
 }
