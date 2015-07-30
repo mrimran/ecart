@@ -54,17 +54,16 @@
 					<div class="col-sm-6">
 						<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
                   
-                  
-                    <?php echo $this->getChildHtml('bundle_prices') ?>
-                    
-                  
+                
                   </h1>
 						<div class="__type">by <a href="#">Apple</a>, <a href="#">Mobile Phones</a></div>
 						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
-						<div class="row">
+						<?php echo $this->getChildHtml('product_review') ?> adcd
+                  <div class="row">
 							<div class="col-sm-6">
-								<div class="price"> <?php echo $this->getTierPriceHtml() ?><span class="not-now"><?php echo $this->getPriceHtml($_product); ?></span></div>
-							</div>
+								<div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>  <span class="not-now"><?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+							
+                     </div>
 							<div class="col-sm-6">
 								<div class="__you_saved">You save 80AED!</div>
 							</div>
@@ -107,11 +106,18 @@
 						<div class="buttons">
 							<div class="row">
 								<div class="col-sm-9">
-									<button class="btn btn-default btn1 btn-block"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
+									<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
+
 								</div>
 								<div class="col-sm-3">
-									<button class="btn btn-default btn1 btn-block wishlist"> <i class="fa fa-heart"></i><span>WISHLIST</span> </button>
-								</div>
+							<?php $_product = $this->getProduct(); ?>
+                     <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+								
+								
+							<?php if ($this->helper('wishlist')->isAllow()) : ?>
+                     <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
+                     <?php endif; ?>   
+                     </div>
 							</div>
 						</div>
 						<div class="__share__this">
@@ -119,6 +125,57 @@
 						</div>
 					</div>
                </form>
+               <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
 				</div>
 			</div>
 
