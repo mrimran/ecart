@@ -80,6 +80,7 @@
 			<?php endif; ?>
 			<div class="clearfix viewmore" align="right"><a href="#">View All Products</a></div>
 		</section>
+		
 		<script>
 		function newproduct(){
             jQuery('#bestseller').hide();
@@ -105,7 +106,28 @@
 
 		function getbrand(){
 			var brand = document.getElementById("brands").value
-			 window.location =("index.php?brand_ids="+brand);
+			 //make the ajax call
+             jQuery.ajax({
+             url: 'extension/index/ajaxbestsellerphone/',
+             type: 'POST',
+             data: {action : 'getLoadedProductCollection' , brand_ids : brand},
+             beforeSend: function() { jQuery('#bestseller').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>"); },
+             success: function(data) { 
+          
+             	jQuery('#bestseller').html(data);
+             }
+             });
+
+             jQuery.ajax({
+             url: 'extension/index/ajaxnewproductphone/',
+             type: 'POST',
+             data: {action : 'getLoadedProductCollectionnew' , brand_ids : brand},
+             success: function(data) { 
+          
+             	jQuery('#newproduct').html(data);
+             }
+             });
+		//window.location =("index.php?brands_ids="+brand);
+
 		}
 		</script>
-		

@@ -11,7 +11,60 @@
                 </block>  
         </reference>
     </extension_index_seller>
- 
+
+ <extension_index_ajaxbestseller>
+        <!-- extensionseller -->
+        <reference name="head">
+            <action method="setTitle">
+                <title>Ajax Bestseller</title>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/owl.carousel.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/owl.carousel.min.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="extension/computer" name="bestsellerajax" as="bestsellerajax"  template="catalog/product/computeraccessoriesAjax.phtml">
+            </block>
+        </reference>
+    </extension_index_ajaxbestseller>
+
+    <extension_index_ajaxnewproduct>
+        <!-- extensionseller -->
+        <reference name="head">
+            <action method="setTitle">
+                <title>Ajax Bestseller</title>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/owl.carousel.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/owl.carousel.min.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="extension/computer" name="newproductajax" as="newproductajax"  template="catalog/product/newproductsajax.phtml">
+            </block>
+        </reference>
+    </extension_index_ajaxnewproduct>
+
+    <extension_index_computer>
+        <!-- extensionseller -->
+        <reference name="head">
+            <action method="setTitle">
+                <title>Ajax Bestseller</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="extension/computer" name="bestsellerajax" as="bestsellerajax"  template="catalog/product/computeraccessories.phtml">
+                </block>  
+        </reference>
+    </extension_index_computer>
+
  <extension_index_new>
  	<reference name="head">
             <action method="setTitle">
