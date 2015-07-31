@@ -57,8 +57,10 @@
                 
                   </h1>
 						<div class="__type">by <a href="#">Apple</a>, <a href="#">Mobile Phones</a></div>
-						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
-						<?php echo $this->getChildHtml('product_review') ?> adcd
+<!--						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
+-->						
+<?php echo $this->getReviewsSummaryHtml($_product, "short", true)?>
+<?php echo $this->getChildHtml('product_review') ?>
                   <div class="row">
 							<div class="col-sm-6">
 								<div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>  <span class="not-now"><?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
@@ -201,3 +203,4 @@ jQuery('.bxslider').bxSlider({
 		});
 
 </script>
+

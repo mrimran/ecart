@@ -53,5 +53,107 @@ a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 
 .more-less {padding-left: 15px; font: 13px strong;}
 .more-less a{color: #2d2e32; cursor: pointer;}
+.catalog-product-view .btn.disabled, .btn[disabled], fieldset[disabled] .btn { /*opacity: 1 !important;*/ background-color: #f57a20 !important; }
 
+/* -------------------------------------------- *
+ * Messages
+ */
+.success {
+  color: #11b400;
+}
 
+.error {
+  color: #df280a;
+  font-weight: bold;
+}
+
+.notice {
+  color: #e26703;
+  font-weight: bold;
+}
+
+/* -------------------------------------------- *
+ * Messages
+ */
+.messages {
+  margin-bottom: 10px;
+}
+
+.messages li li {
+  position: relative;
+  margin-bottom: 5px;
+  padding: 7px 10px 7px 20px;
+  background: #f4f4f4;
+  font-size: 15px;
+}
+
+.messages li li:before {
+  top: 50%;
+  left: 0;
+  margin-top: -6px;
+}
+
+.messages .error-msg li {
+  color: black;
+  border-left: 5px solid #df280a;
+  background-color: #faebe7;
+}
+
+.messages .error-msg li:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid #df280a;
+  border-right: none;
+}
+
+.messages .notice-msg li {
+  color: black;
+  border-left: 5px solid #e26703;
+  background-color: #f9ebe6;
+}
+
+.messages .notice-msg li:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid #e26703;
+  border-right: none;
+}
+
+.messages .success-msg li {
+  color: black;
+  border-left: 5px solid #11b400;
+  background-color: #eff5ea;
+}
+
+.messages .success-msg li:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid #11b400;
+  border-right: none;
+}
+ul.messages li { list-style: none !important;}
+.catalog-product-view .ratingstarts  { width:64px !important; display: inline-block; float: left; }
+.catalog-product-view .reviewscounttop  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
+.catalog-product-view a.wrireyourreviews  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
+.catalog-product-view span.reviewessperator { display: inline-block; font-size: 12px; color: #999; }
+
+.catalog-category-view .reviewscounttop { display: none;} 
+.catalog-category-view a.wrireyourreviews  { display:none;}
+.catalog-category-view span.reviewessperator {  display:none; }
+.catalog-product-view .userstarratting th { display: none;}
+.catalog-product-view .userstarratting .rating { width: 65px !important;}
