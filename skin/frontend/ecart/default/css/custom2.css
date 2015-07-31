@@ -26,5 +26,28 @@ display:inline-block;vertical-align:top;}
 body.customer-account .my-account .box-info{border-bottom:1px solid #eaeaea;margin-bottom:15px;}
 body.customer-account .my-account .box-info:last-child{border-bottom:0;}
 .page-title{margin-top:15px;}
-.page-title h1{font-size:24px;color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;
-margin-bottom:15px;}
+.page-title h1,.scaffold-form h2,h2.legend{font-size:24px;color:#202020;font-weight:300;
+font-family:'GothamNarrow-Bold', sans-serif;margin-bottom:15px;}
+.scaffolf-form,.form-list{font-family:'GothamNarrow-Book', sans-serif;}
+.scaffold-form h2,h2.legend{border-bottom:1px solid #eaeaea;line-height:2;font-size:18px;
+text-transform:uppercase;}
+.scaffold-form p.required{color:#F52020;}
+.form-list{list-style-type:none;}
+.form-list li{width:100%;margin-bottom:15px;}
+.form-list li > div,.form-list li.fields{display:inline-table;width:100%;}
+.form-list li > div > .field,.form-list li.fields .field{display:table-cell;padding-right:15px;}
+.form-list li > div > .field:last-child,
+.form-list li.fields .field:last-child{padding-right:0;}
+.form-list li.fields .field{width:auto;}
+.form-list li label{padding:10px 0px;font-size:14px;font-weight:600;text-transform:uppercase;}
+.form-list li label.required em{color:#F52020;padding:5px 5px 5px 0;}
+.form-list li .input-box input,.form-list li .input-box select{
+outline:none;padding:8px 12px;font-size:14px;width:100%;border-radius:2px;color:#555;
+border:1px solid #eaeaea;}
+.form-list li .input-box input:focus,.form-list li .input-box select:focus{border:1px solid #aaa;}
+.form-list li.control input,.form-list li.control label{
+display:inline-block;padding:3px 10px;vertical-align:top;}
+.scaffold-form a,.buttons-set a{color:#f57a20;}
+.scaffold-form a:hover,.buttons-set a:hover{color:#303030;}
+.buttons-set button{font-size:12px;}
+.no-display{display:none;}
