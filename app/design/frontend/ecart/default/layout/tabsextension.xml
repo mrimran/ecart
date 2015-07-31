@@ -11,6 +11,18 @@
                 </block>  
         </reference>
     </extension_index_seller>
+    <extension_index_sale>
+        <!-- extensionseller -->
+        <reference name="head">
+            <action method="setTitle">
+                <title>Todays Deals</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="extension/sale" name="bestseller" as="bestseller"  template="catalog/product/list.phtml">
+                </block>  
+        </reference>
+    </extension_index_sale>
 
  <extension_index_ajaxbestseller>
         <!-- extensionseller -->
