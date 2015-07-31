@@ -257,6 +257,12 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			</customer_account_login>
+			
+			<extension_index_sale>
+			<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			</reference>
+			</extension_index_sale>
 		
 
 </layout>
