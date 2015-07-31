@@ -23,3 +23,10 @@
 .checkout-types.bottom{list-style-type:none;text-align:right;}
 .checkout-types.bottom li{display: inline-block;vertical-align:top;}
 .checkout-types.bottom li.method-checkout-cart-methods-multishipping{display:none;}
+body.customer-account .block-account,body.customer-account .my-account{padding:15px 0;}
+body.customer-account .block-account ul li a{text-transform:uppercase;}
+body.customer-account .col2-set{clear:both;}
+body.customer-account .col2-set .col-1,body.customer-account .col2-set .col-2{width:50%;float:left;
+display:inline-block;vertical-align:top;}
+body.customer-account .my-account .box-info{border-bottom:1px solid #eaeaea;margin-bottom:15px;}
+body.customer-account .my-account .box-info:last-child{border-bottom:0;}

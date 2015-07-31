@@ -218,6 +218,13 @@
 				<name>css/productdetail.css</name>
 				</action>
 			</reference>
+			
+				<reference name="content">
+				<block type="review/product_view_list" name="product.info.product_additional_data" as="product_review" template="review/product/view/list.phtml">
+				<block type="review/form" name="product.review.form" as="review_form"/>
+				</block>			
+				</reference>
+		
 			</catalog_product_view>
 			
 			<checkout_cart_index>

@@ -465,6 +465,8 @@ font-size:16px;text-transform:uppercase;}
 height:13px;vertical-align:middle;margin-top:0px;}
 .maincontainer .filters ul li a{color:#2d2e32;font-size:13px;text-decoration:underline;}
 .maincontainer .filters ul li a:hover{color:#f57a20;}
+.maincontainer .filters ul li.current{background-color:#f57a20;}
+.maincontainer .filters ul li.current a{color:#fff;}
 .maincontainer .filters .social a{margin-right:4%;}
 .maincontainer .filters .social a:last-child{margin-right:0;}
 .maincontainer .filters h3{font-size:22px;font-weight:600;}
@@ -955,19 +957,27 @@ content:'';display:block;background-position:center;width:15px;height:15px;backg
 .paddingzero{padding:0 !important;}
 .paddingzeroR{padding-right:0 !important;}
 .paddingzeroL{padding-left:0 !important;}
-.heading2,.heading3,.heading4,.cms_template h2,.cms_template h3,.cms_template h4{font-size:22px;
-color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;margin-bottom:15px;}
+.heading2,.heading3,.heading4,.cms_template h1,.cms_template h2,.cms_template h3,.cms_template h4{
+font-size:22px;color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;
+margin-bottom:15px;}
+.cms_template h1{font-size:25px;text-transform:uppercase;}
 .heading3,.cms_template h3{font-size:18px;}
 .heading4,.cms_template h4{font-size:14px;text-transform:uppercase;margin-top:25px;}
 .heading5,.cms_template h5{font-size:12px;margin-top:20px;}
+.cms_template p.hello{font-weight:600;text-transform:uppercase;margin-bottom:5px;}
+.cms_template .box-head{margin-bottom:5px;}
+.cms_template .box-head a{margin-bottom:15px;display:block;}
+.cms_template .box-head h2{border-bottom:1px solid #eaeaea;line-height:2;font-size:20px;
+text-transform: uppercase;}
+.cms_template .box-title h3{font-family:inherit;font-weight:600;}
+.cms_template a{color:#f57a20;}
+.cms_template a:hover,.cms_template a:focus{color:#303030;}
 .padding1{padding:15px 5px;}
 .padding2{padding:15px 15px;}
 .margin1{margin-right:-15px;}
 .tablet,.smartphones{display:none;}
 .desktop{display:block;}
-.loader{
-	position: relative;
-}
+.loader{position:relative;}
 .loader img{
 	 display:block; 
   height: auto;
