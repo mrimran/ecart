@@ -1,10 +1,5 @@
 .product-view .product-shop .product-name .h1 {
-    font-size: 22px;
-    color: rgb(48, 48, 48);
-    font-weight: bold;
-    margin: 0 0 12px 0;
-    padding: 0;
-}
+font-size: 22px;color: rgb(48, 48, 48);font-weight: bold;margin: 0 0 12px 0;padding: 0;}
 .mainhead .reasonsnav ul li img,.mainheadnav .minicart a img{display:inline-block;}
 .mainheadnav .searchform #search{width:61%;font-family:inherit;}
 .maincontainer .filters ul li a{text-decoration:none;}
@@ -23,10 +18,13 @@
 .checkout-types.bottom{list-style-type:none;text-align:right;}
 .checkout-types.bottom li{display: inline-block;vertical-align:top;}
 .checkout-types.bottom li.method-checkout-cart-methods-multishipping{display:none;}
-body.customer-account .block-account,body.customer-account .my-account{padding:15px 0;}
+body.customer-account .block-account{padding:15px 0;}
 body.customer-account .block-account ul li a{text-transform:uppercase;}
 body.customer-account .col2-set{clear:both;}
 body.customer-account .col2-set .col-1,body.customer-account .col2-set .col-2{width:50%;float:left;
 display:inline-block;vertical-align:top;}
 body.customer-account .my-account .box-info{border-bottom:1px solid #eaeaea;margin-bottom:15px;}
 body.customer-account .my-account .box-info:last-child{border-bottom:0;}
+.page-title{margin-top:15px;}
+.page-title h1{font-size:24px;color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;
+margin-bottom:15px;}

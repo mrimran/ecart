@@ -29,8 +29,12 @@
 </div>
 <div class="cart-empty">
     <?php echo $this->getMessagesBlock()->toHtml() ?>
-    <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
-    <p><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+    <p><?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?></p>
+    <ul class="messages">
+    <li class="notice-msg">
+    <ul>
+    <li><span><?php echo $this->__('You have no items in your shopping cart.') ?></span></li></ul>
+    </ul>
     <p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl())) ?></p>
     <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
 </div>
