@@ -69,15 +69,27 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
          $this->getResponse()->setBody($block->toHtml());
     }
 
-     public function ajaxbestsellerphoneAction(){
+    public function ajaxbestsellerphoneAction(){
         $block = $this->getLayout()->createBlock('extension/phone')
         ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');
          $this->getResponse()->setBody($block->toHtml());
     }
 
-     public function ajaxnewproductphoneAction(){
+    public function ajaxnewproductphoneAction(){
         $block = $this->getLayout()->createBlock('extension/phone')
         ->setTemplate('catalog/product/newproductsajax.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+    }
+
+    public function ajaxlatestproductAction(){
+        $block = $this->getLayout()->createBlock('extension/category')
+        ->setTemplate('catalog/category/ajaxlatestproduct.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+    }
+
+    public function ajaxbestsellerproductAction(){
+        $block = $this->getLayout()->createBlock('extension/category')
+        ->setTemplate('catalog/category/ajaxbestseller.phtml');
          $this->getResponse()->setBody($block->toHtml());
     }
     

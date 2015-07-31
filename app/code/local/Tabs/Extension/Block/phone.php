@@ -115,12 +115,16 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
     
       public function getLoadedProductCollectionbrand()
     {
-         $id = '%6%';
-         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+         $id = 6;
+        $collection = Mage::getModel('shopbybrand/brand')->getCollection()
         ->addFieldToSelect('*');
-        $collection->getSelect()->order('brand_id ASC');
-        $collection->getSelect()->where('category_ids LIKE ?', $id)->limit(5);
-         return $collection;
+        $collection->getSelect()->order('main_table.brand_id ASC');      
+        $condition = new Zend_Db_Expr("main_table.product_ids = ccp.product_id");
+        $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
+        $condition,
+        array('product_id' => 'main_table.product_ids'));
+        $collection->getSelect()->where('ccp.category_id = ?', $id);
+        return $collection;
         /*$brand = $collection;
         foreach ($brand as $brands):
           $r = $brands->category_ids;

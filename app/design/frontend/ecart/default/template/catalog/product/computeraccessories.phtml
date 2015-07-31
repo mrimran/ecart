@@ -127,7 +127,6 @@
              url: 'extension/index/ajaxnewproduct/',
              type: 'POST',
              data: {action : 'getLoadedProductCollectionnew' , brands_ids : brand},
-             beforeSend: function() { jQuery('#newproduct1').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>"); },
              success: function(data) { 
           
              	jQuery('#newproduct1').html(data);
