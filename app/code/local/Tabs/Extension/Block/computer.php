@@ -5,10 +5,10 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
     protected $_productsCount = null;
     const DEFAULT_PRODUCTS_COUNT = 10;
 
-       public function getLoadedProductCollection()
+    public function getLoadedProductCollection()
     { 
 
-       $id = 7;
+      $id = 7;
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
@@ -48,9 +48,11 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
             $condition,
             array('cat_name' => 'cv.value'));
+        
         // if Category filter is on
         if ($catId) {
             $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
+            
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
@@ -113,11 +115,17 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
 
      public function getLoadedProductCollectionbrandnew()
     {
-         $id = '%7%';
-         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+         
+         $id = 7;
+        $collection = Mage::getModel('shopbybrand/brand')->getCollection()
         ->addFieldToSelect('*');
-        $collection->getSelect()->order('brand_id ASC');
-        $collection->getSelect()->where('category_ids LIKE ?', $id)->limit(5);
+        $collection->getSelect()->order('main_table.brand_id ASC');      
+        $condition = new Zend_Db_Expr("main_table.product_ids = ccp.product_id");
+        $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
+        $condition,
+        array('product_id' => 'main_table.product_ids'));
+        echo $collection->getSelect()->where('ccp.category_id = ?', $id);
+        exit;
         return $collection;
         /*$brand = $collection;
         foreach ($brand as $brands):
