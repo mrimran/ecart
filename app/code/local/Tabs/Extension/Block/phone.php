@@ -115,7 +115,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
     
       public function getLoadedProductCollectionbrand()
     {
-         $id = '%6%';
+         $id = 6;
         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
         ->addFieldToSelect('*');
         $collection->getSelect()->order('main_table.brand_id ASC');      
