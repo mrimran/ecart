@@ -220,9 +220,25 @@
 			</reference>
 			
 				<reference name="content">
+				
+				<block type="cms/block" name="productdetailpagestaticblock1">
+				<action method="setBlockId"><block_id>productdetailpagefirststaticblock</block_id></action>
+				</block>
+				
+				<block type="core/template" name="useralsovieweddetailpage" template="catalog/product/useralsoviewed.phtml"/>
+							
 				<block type="review/product_view_list" name="product.info.product_additional_data" as="product_review" template="review/product/view/list.phtml">
 				<block type="review/form" name="product.review.form" as="review_form"/>
-				</block>			
+				</block>	
+				
+				
+				<block type="extension/seller" name="bestSellings" template="catalog/product/bestsellings.phtml"/>
+				
+				<block type="cms/block" name="buyers_protection" after="content">
+				<action method="setBlockId"><block_id>buyers_protection</block_id></action>
+				</block>
+				
+						
 				</reference>
 		
 			</catalog_product_view>
