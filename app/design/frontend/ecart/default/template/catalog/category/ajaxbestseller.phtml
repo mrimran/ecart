@@ -1,6 +1,6 @@
 <div class="owl-stage-outer">
     <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 206.667px;">
-<?php $getProductCollectionLatest=$this->getProductCollectionLatestpro();
+<?php $getProductCollectionLatest=$this->getLoadedProductCollectionsellers();
 $_helper = $this->helper('catalog/output');
 ?>
 <?php if(!$getProductCollectionLatest->count()): ?>

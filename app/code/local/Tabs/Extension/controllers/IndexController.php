@@ -86,6 +86,12 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         ->setTemplate('catalog/category/ajaxlatestproduct.phtml');
          $this->getResponse()->setBody($block->toHtml());
     }
+
+    public function ajaxbestsellerproductAction(){
+        $block = $this->getLayout()->createBlock('extension/category')
+        ->setTemplate('catalog/category/ajaxbestseller.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+    }
     
 }
 
