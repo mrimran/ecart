@@ -25,14 +25,15 @@
  */
 ?>
 <?php if ($this->getReviewsCount()): ?>
-    <div class="ratings">
+    <div class="ratings ratingstopdetail">
         <?php if ($this->getRatingSummary()):?>
-            <div class="rating-box">
-                <div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
+            <div class="rating-box boxrating_topStars">
+                <div class="rating ratingstarts" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
             </div>
         <?php endif;?>
-        <span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a></span>
+        <span class="amount reviewscounttop"><?php /*?><a href="#review-form" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"></a><?php */?> <?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></span>
+         <span class="reviewessperator"> | </span> <a class="wrireyourreviews" href="#review-form">  Write Your Review</a>
     </div>
 <?php elseif ($this->getDisplayIfEmpty()): ?>
-    <p class="no-rating"><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>
+    <p class="no-rating"><a href="<?php //echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>
 <?php endif; ?>

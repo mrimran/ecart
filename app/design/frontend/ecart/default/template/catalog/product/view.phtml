@@ -37,89 +37,97 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<div class="product-view">
-    <div class="product-essential">
-        <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+
+<div class="__product__main__area">
+				<div class="row">
+            
+            <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
             <?php echo $this->getBlockHtml('formkey') ?>
             <div class="no-display">
                 <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
                 <input type="hidden" name="related_product" id="related-products-field" value="" />
             </div>
-
-            <div class="product-img-box">
-                <div class="product-name">
-                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-                </div>
+					<div class="col-sm-6">
                 <?php echo $this->getChildHtml('media') ?>
-            </div>
+				
+					</div>
+					<div class="col-sm-6">
+						<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                  
+                
+                  </h1>
+						<div class="__type">by <a href="#">Apple</a>, <a href="#">Mobile Phones</a></div>
+<!--						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
+-->						
+<?php echo $this->getReviewsSummaryHtml($_product, "short", true)?>
+<?php echo $this->getChildHtml('product_review') ?>
+                  <div class="row">
+							<div class="col-sm-6">
+								<div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>  <span class="not-now"><?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+							
+                     </div>
+							<div class="col-sm-6">
+								<div class="__you_saved">You save 80AED!</div>
+							</div>
+						</div>
+						<div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock 20 pcs</div>
+						<div class="__condition"><strong>Condition:</strong> New</div>
+						<div class="__warrenty"><strong>Warrenty:</strong> 1 Year</div>
+						<div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
+							<div class="panel">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Colour <i class="fa fa-angle-down"></i> <span class="selected-value">White</span> </a></h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
+									<ul class="product-meta-select" data-id="headingOne">
+										<li class="active">White</li>
+										<li>Red</li>
+										<li>Blue</li>
+										<li>Black</li>
+									</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel">
+								<div class="panel-heading" role="tab" id="headingTwo">
+									<h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Storage Capacity <i class="fa fa-angle-down"></i> <span class="selected-value">8GB</span> </a> </h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+									<div class="panel-body">
+									<ul class="product-meta-select" data-id="headingTwo">
+										<li class="active">8GB</li>
+										<li>16GB</li>
+										<li>32GB</li>
+										<li>64GB</li>
+									</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="buttons">
+							<div class="row">
+								<div class="col-sm-9">
+									<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
 
-            <div class="product-shop">
-                <div class="product-name">
-                    <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
-                </div>
-
-                <div class="price-info">
-                    <?php echo $this->getPriceHtml($_product); ?>
-                    <?php echo $this->getChildHtml('bundle_prices') ?>
-                    <?php echo $this->getTierPriceHtml() ?>
-                </div>
-
-                <div class="extra-info">
-                    <?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
-                    <?php echo $this->getChildHtml('product_type_availability'); ?>
-                </div>
-
-                <?php echo $this->getChildHtml('alert_urls') ?>
-
-                <?php if ($_product->getShortDescription()):?>
-                    <div class="short-description">
-                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-                    </div>
-                <?php endif;?>
-
-
-
-
-                <?php echo $this->getChildHtml('other');?>
-
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                <?php endif;?>
-
-            </div>
-
-            <div class="add-to-cart-wrapper">
-                <?php echo $this->getChildHtml('product_type_data') ?>
-                <?php echo $this->getChildHtml('extrahint') ?>
-
-                <?php if (!$this->hasOptions()):?>
-                    <div class="add-to-box">
-                        <?php if($_product->isSaleable()): ?>
-                            <?php echo $this->getChildHtml('addtocart') ?>
-                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                <span class="or"><?php echo $this->__('OR') ?></span>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        <?php echo $this->getChildHtml('addto') ?>
-                        <?php echo $this->getChildHtml('sharing') ?>
-                    </div>
-                    <?php echo $this->getChildHtml('extra_buttons') ?>
-                <?php elseif (!$_product->isSaleable()): ?>
-                    <div class="add-to-box">
-                        <?php echo $this->getChildHtml('addto') ?>
-                        <?php echo $this->getChildHtml('sharing') ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-
-            <?php echo $this->getChildHtml('related_products') ?>
-
-            <div class="clearer"></div>
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-            <?php endif;?>
-        </form>
-        <script type="text/javascript">
+								</div>
+								<div class="col-sm-3">
+							<?php $_product = $this->getProduct(); ?>
+                     <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+								
+								
+							<?php if ($this->helper('wishlist')->isAllow()) : ?>
+                     <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
+                     <?php endif; ?>   
+                     </div>
+							</div>
+						</div>
+						<div class="__share__this">
+							<a href="#">Share this product</a>
+						</div>
+					</div>
+               </form>
+               <script type="text/javascript">
         //<![CDATA[
             var productAddToCartForm = new VarienForm('product_addtocart_form');
             productAddToCartForm.submit = function(button, url) {
@@ -170,22 +178,29 @@
             }.bind(productAddToCartForm);
         //]]>
         </script>
-    </div>
+				</div>
+			</div>
 
-    <div class="product-collateral toggle-content tabs">
-        <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
-            <dl id="collateral-tabs" class="collateral-tabs">
-                <?php foreach ($detailedInfoGroup as $alias => $html):?>
-                    <dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
-                    <dd class="tab-container">
-                        <div class="tab-content"><?php echo $html ?></div>
-                    </dd>
-                <?php endforeach;?>
-            </dl>
-        <?php endif; ?>
-    </div>
 
-    <?php echo $this->getChildHtml('upsell_products') ?>
-    <?php echo $this->getChildHtml('product_additional_data') ?>
 
-</div>
+<script>
+jQuery('.bxslider').bxSlider({
+		  pagerCustom: '#bx-pager'
+		});
+		jQuery('#__product__detail').more({
+			length:1099,
+			ellipsisText: '',
+			moreText: 'Read Full Description',
+			lessText: 'Read Less Description'
+		});
+
+		jQuery('#product_specs').more({
+			length:335,
+			leaway:10,
+			ellipsisText: '',
+			moreText: 'See Full Specs',
+			lessText: 'See Less Specs'
+		});
+
+</script>
+
