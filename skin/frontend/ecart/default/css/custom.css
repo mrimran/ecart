@@ -147,7 +147,7 @@ a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
   border-right: none;
 }
 ul.messages li { list-style: none !important;}
-.catalog-product-view .ratingstarts  { width:64px !important; display: inline-block; float: left; }
+.catalog-product-view .ratingstarts  {!important; display: inline-block; float: left; }
 .catalog-product-view .reviewscounttop  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
 .catalog-product-view a.wrireyourreviews  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
 .catalog-product-view span.reviewessperator { display: inline-block; font-size: 12px; color: #999; }
@@ -156,4 +156,113 @@ ul.messages li { list-style: none !important;}
 .catalog-category-view a.wrireyourreviews  { display:none;}
 .catalog-category-view span.reviewessperator {  display:none; }
 .catalog-product-view .userstarratting th { display: none;}
-.catalog-product-view .userstarratting .rating { width: 65px !important;}
+.catalog-product-view .userstarratting .rating {}
+
+/*.rating-box {
+background: url("../images/bkg_rating.gif") repeat-x;
+font-size: 0;
+height: 13px;
+line-height: 0;
+overflow: hidden;
+text-indent: -999em;
+width: 70px;
+}
+ 
+.rating-box .rating {
+background: url("../images/bkg_rating.gif") repeat-x;
+background-position: 0 100%;
+float: left;
+height: 13px;
+}
+*/
+
+
+
+/* rating star */
+/*.ratings { font-size:11px; line-height:1.25; margin:7px 0; }
+.ratings strong { float:left; margin:1px 3px 0 0; }
+.rating-box { width:69px; height:13px; font-size:0; line-height:0; background:url(../images/bkg_rating.gif) 0 0 repeat-x; text-indent:-999em; overflow:hidden; }
+.rating-box .rating { float:left; height:13px; background:url(../images/bkg_rating.gif) 0 100% repeat-x; }
+.ratings .rating-box { float:left; margin-right:3px; }
+*/
+
+
+.rating { margin-top: 0  !important;}
+.rating-input {
+	display: none;
+}
+ 
+.rating-star {
+	float: right;
+	display: block;
+	width: 15px !important; /* just to be fast here*/
+	height: 13px;
+	background: url(../images/star_empty.png);
+}
+ 
+.rating-star:hover,
+.rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+	background: url(../images/star_full.png);
+}
+ 
+.rating-star:hover {
+	cursor: pointer;
+}
+ 
+.data-table.table-ratings {
+	width: auto;
+	border: 0;
+}
+ 
+.data-table.table-ratings th {
+	width: 80px;
+	line-height: 20px;
+	text-align: left;
+	padding: 10px 0;
+}
+ 
+.data-table.table-ratings td {
+	width: 100px;
+	padding: 9px 0;
+}
+ 
+/*Rating stars when displaying reviews (in product page and profile)*/
+.ratings-table .rating-box,
+.ratings .rating-box,
+.ratings-table .rating-box .rating,
+.ratings .rating-box .rating {
+	background-size: 15px;
+	background-repeat: repeat-x;
+	background-position: 0 1px;
+}
+ 
+.ratings-table .rating-box,
+.ratings .rating-box {
+	background-image: url(../images/star_empty.png);
+}
+ 
+.ratings-table .rating-box .rating,
+.ratings .rating-box .rating {
+	background-image: url(../images/star_full.png);
+}
+ 
+.ratings-table .rating-box,
+.ratings .rating-box {
+	height: 15px;
+	width: 74px;
+
+}
+ 
+.ratings-table .rating-box .rating,
+.ratings .rating-box .rating{
+	height: 20px;
+}
+
+.reviewsbottomtable { width: 100%;}
+.reviewsbottomtable th { width:50% !important;}
+.reviewsbottomtable td { width:50% !important;}
+.boxrating_topStars { display: inline-block;}
+.ratingstopdetail { margin-bottom: 15px;}
+.__reviews__section textarea, .__reviews__section input[type="text"] { padding: 10px 12px !important}
+
