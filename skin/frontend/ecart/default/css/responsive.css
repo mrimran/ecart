@@ -232,7 +232,8 @@ text-transform: uppercase;line-height: 1;margin-bottom:20px;padding:0 15px 10px;
 .site-footer .footer-bottom{padding:20px 10px;text-align:center;}
 .maincontainer section{padding-bottom:0;clear:both;}
 .mainhead .logo button{position:absolute;top:15px;left:5px;padding:0;border:0;color:#f57a20;
-background-color:transparent;font-size:24px;z-index:555;outline:none;}
+background-color:transparent;font-size:24px;z-index:999;outline:none;}
+.mainmenu.flymenu{border:0;}
 .floatmenu a{color:#f0f0f0;text-transform:uppercase;}
 .floatmenu .userbio{padding:20px 0 20px 70px;font-size:12px;color:#acacae;text-transform:none;}
 .floatmenu .userbio:hover{background-color:#1B1D22;}
