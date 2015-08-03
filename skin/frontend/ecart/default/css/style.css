@@ -153,6 +153,7 @@ body.cms-index-index .mainheadnav .catgories a span{display:none;}
 .mainheadnav .searchform{padding:5px;position:relative;height:50px;}
 .mainheadnav .searchform .search-category-menu{display:none;}
 .mainheadnav .searchform .all-search-cats{width:38%;display:inline-block;position:relative;}
+.mainheadnav .searchform .all-search-cats select{width:100%;}
 .mainheadnav .searchform .all-search-cats a{display:block;cursor:pointer;}
 .mainheadnav .searchform .all-search-cats a h3{padding:12px 0;text-align:center;font-size:14px;
 color:#575757;text-transform:uppercase;border-right:1px solid #eaeaea;}
