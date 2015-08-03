@@ -22,6 +22,7 @@
 .mainheadnav .minicart a{font-size:0.9em;text-align:left;padding-left:15px;line-height:1.4;clear:both;}
 .mainheadnav .minicart a .cart-items{margin-left:0px;padding:15px 13px;float:right;margin-top:-15px;}
 .maincontainer .mainmenu{height:auto;}
+.mainmenu.flymenu{max-width:941px;}
 .maincontainer .mainmenu > .top > li{padding:4px 15px 3px;}
 .maincontainer .mainmenu > .top > li > a{font-size:12px;}
 .maincontainer .mainmenu > .top > li > a span{background-position:0px 2px;}
@@ -47,6 +48,7 @@ padding:10px 52px 10px 10px;}
 .mainheadnav .minicart a{font-size:0.9em;text-align:left;padding-left:15px;line-height:1.4;clear:both;}
 .mainheadnav .minicart a .cart-items{margin-left:0px;padding:15px 13px;float:right;margin-top:-15px;}
 .maincontainer .mainmenu{height:auto;}
+.mainmenu.flymenu{max-width:941px;}
 .maincontainer .mainmenu > .top > li{padding:4px 15px 3px;}
 .maincontainer .mainmenu > .top > li > a{font-size:12px;}
 .maincontainer .mainmenu > .top > li > a span{background-position:0px 2px;}
@@ -68,13 +70,19 @@ padding:10px 52px 10px 10px;}
 .mainhead .dealsnav ul li a .new:before{top:1px;}
 .maincontainer .page_menu,.maincontainer .mainmenu{display:none;}
 .homeslidercontainer{width:100%;}
+.mainmenu.flymenu{max-width:750px;top:169px;}
+.megamenurightimage{visibility:hidden;}
+.all-search-cats select{width:100%;}
+.wp-custom-menu-popup .column{width:50% !important;}
 .mainhead ul li.call-us a i{font-size:8px;padding:3px 4px;margin-top:-3px;}
 .mainhead .logo{padding-bottom:10px;}
 .mainheadnav .searchform{width:50%;float:left;}
 .topbar .topnav ul li{padding:0 20px;}
 .topbar .topnav li li{padding:10px 20px;}
-.mainheadnav .searchform .all-search-cats{width:85%;}
+.mainheadnav .searchform .all-search-cats{width:85%;font-size:14px;}
 .mainheadnav .searchform .search-category-select{width:100% !important;}
+.mainheadnav .searchform #search{width:100%;font-family:inherit;margin-top:-5px;border:0 !important;
+background-color:transparent;padding:5px;}
 .mainheadnav .searchform .search-category-select .dropdown-menu.open{padding-top:0;}
 .mainheadnav .searchform .search-category-select button{padding:0;}
 .mainheadnav .searchform input{width:100%;margin-top:-5px;}
@@ -224,7 +232,8 @@ text-transform: uppercase;line-height: 1;margin-bottom:20px;padding:0 15px 10px;
 .site-footer .footer-bottom{padding:20px 10px;text-align:center;}
 .maincontainer section{padding-bottom:0;clear:both;}
 .mainhead .logo button{position:absolute;top:15px;left:5px;padding:0;border:0;color:#f57a20;
-background-color:transparent;font-size:24px;z-index:555;outline:none;}
+background-color:transparent;font-size:24px;z-index:999;outline:none;}
+.mainmenu.flymenu{border:0;}
 .floatmenu a{color:#f0f0f0;text-transform:uppercase;}
 .floatmenu .userbio{padding:20px 0 20px 70px;font-size:12px;color:#acacae;text-transform:none;}
 .floatmenu .userbio:hover{background-color:#1B1D22;}

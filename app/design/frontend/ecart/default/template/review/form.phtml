@@ -24,21 +24,18 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="form-add">
-    <h2><?php echo $this->__('Write Your Own Review') ?></h2>
-    <?php if ($this->getAllowWriteReviewFlag()): ?>
-    <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
-        <?php echo $this->getBlockHtml('formkey'); ?>
-        <?php echo $this->getChildHtml('form_fields_before')?>
-        <h3><?php echo $this->__("You're reviewing:"); ?>
-            <span><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></span>
-        </h3>
 
-        <div class="fieldset">
-            <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
-                <h4><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h4>
-                <span id="input-message-box"></span>
-                <table class="data-table review-summary-table ratings" id="product-review-table">
+<div class="form-add">
+  <h3><?php echo $this->__('Add Reviews') ?></h3>
+  <?php if ($this->getAllowWriteReviewFlag()): ?>
+  <form action="<?php echo $this->getAction() ?>" method="post" id="review-form" class="form-horizontal">
+    <?php echo $this->getBlockHtml('formkey'); ?> <?php echo $this->getChildHtml('form_fields_before')?>
+<?php /*?>    <h3><?php echo $this->__("You're reviewing:"); ?> <span><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></span> </h3>
+<?php */?>    <div class="fieldset">
+    <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
+    <?php /*?><h4><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h4><?php */?>
+    <span id="input-message-box"></span>
+    <?php /*?>  <table class="data-table review-summary-table ratings" id="product-review-table">
                     <col width="1" />
                     <col />
                     <col />
@@ -90,40 +87,55 @@
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
-                </table>
-                <input type="hidden" name="validate_rating" class="validate-rating" value="" />
-                <script type="text/javascript">decorateTable('product-review-table')</script>
-            <?php endif; ?>
-
-                <ul class="form-list">
-                    <li>
-                        <label for="review_field" class="required"><em>*</em><?php echo $this->__('Let us know your thoughts') ?></label>
-                        <div class="input-box">
-                            <textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
-                        </div>
-                    </li>
-
-                   <li class="inline-label">
-                        <label for="summary_field" class="required"><em>*</em><?php echo $this->__('Summary of Your Review') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
-                        </div>
-                   </li>
-
-                    <li class="inline-label">
-                        <label for="nickname_field" class="required"><em>*</em><?php echo $this->__("What's your nickname?") ?></label>
-                        <div class="input-box">
-                            <input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="buttons-set">
-                <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
-            </div>
-    </form>
-    <script type="text/javascript">
+                </table><?php */?>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+        <script type="text/javascript">decorateTable('product-review-table')</script> 
+      </div>
+    </div>
+    <?php endif; ?>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <textarea name="detail" placeholder="Your Reviews" id="review_field" cols="5" rows="3" class="required-entry form-control"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <input type="text" placeholder="Reviews Title" name="title" id="summary_field" class="input-text required-entry form-control" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <input type="text" placeholder="Your Name" name="nickname" id="nickname_field" class="input-text required-entry form-control" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-8">
+     
+        
+        <table class="data-table review-summary-table ratings table-ratings reviewsbottomtable" id="product-review-table">
+  <tbody>
+    <?php foreach ($this->getRatings() as $_rating): ?>
+      <tr>
+         <th><?php /*?><?php echo $this->escapeHtml($_rating->getRatingCode()) ?><?php */?> <div class="__rating"> Your Rating  </div></th>
+        <td class="value">
+          <?php foreach (array_reverse($_rating->getOptions()) as $_option): ?>
+            <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio rating-input" />
+            <label  class="rating-star" for="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></label>
+          <?php endforeach; ?>
+        </td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+      </div>
+      <div style="text-aligin:right" class="col-sm-4">
+        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Post review')) ?>" class="button btn btn1 btn-default"><?php echo $this->__('Post review') ?></button>
+      </div>
+    </div>
+  </form>
+  <script type="text/javascript">
     //<![CDATA[
         var dataForm = new VarienForm('review-form');
         Validation.addAllThese(
@@ -157,9 +169,7 @@
         );
     //]]>
     </script>
-    <?php else: ?>
-    <p class="review-nologged" id="review-form">
-        <?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
-    </p>
-    <?php endif ?>
+  <?php else: ?>
+  <p class="review-nologged" id="review-form"> <?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?> </p>
+  <?php endif ?>
 </div>
