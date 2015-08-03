@@ -84,11 +84,11 @@ $category = Mage::registry('current_category')->getId();
 				<ul class="brandsmenu">
 				    <?php if(!$_productCollectionseller->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
+                    <?php $seller = 0; ?>
                     <?php else: ?>
                     <?php $_columnCount = $this->getColumnCount();  ?>
                     <?php $i=0; foreach ($_productCollectionseller as $_seller): ?>
-                    <?php $getProductCollectionLatest=$this->getProductCollectionLatest($_seller->cat_id);
-                        $_helper = $this->helper('catalog/output');?>	
+                    <?php $seller = $_seller->cat_id;?>	
 					<li id="item<?php echo $_seller->cat_id; ?>"><a onclick="getLatest(<?php echo $_seller->cat_id ?>)"><?php echo $_seller->cat_name;?></a></li>
 					<?php $i++; ?>
 				    <?php endforeach ?>
@@ -96,6 +96,8 @@ $category = Mage::registry('current_category')->getId();
 				</ul>
 			</div>
 				<div class="columnslider" data-items="3" id="latestproduct">
+				<?php $getProductCollectionLatest=$this->getProductCollectionLatest($seller);
+                        $_helper = $this->helper('catalog/output');?>
 				<?php if(!$getProductCollectionLatest->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
 				 <?php else: ?>      
@@ -129,17 +131,19 @@ $category = Mage::registry('current_category')->getId();
 				<ul class="brandsmenu">
 					<?php if(!$_productCollectionseller->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
+                    <?php $seller =  0; ?>
                     <?php else: ?>
                     <?php foreach ($_productCollectionseller as $_seller): ?>
 
-                    <?php $getProductCollection=$this->getLoadedProductCollectionpro($_seller->cat_id);
-                        $_helper = $this->helper('catalog/output');?>
+                    <?php $seller =  $_seller->cat_id; ?>
 					<li><a onclick="getBestseller(<?php echo $_seller->cat_id;?>)"><?php echo $_seller->cat_name;?></a></li>
 				    <?php endforeach ?>
 				    <?php endif ?>
 				</ul>
 			</div>
 			<div class="columnslider" data-items="3" id="bestsellers">
+				<?php $getProductCollection=$this->getLoadedProductCollectionpro($seller);
+                        $_helper = $this->helper('catalog/output');?>
 				<?php if(!$getProductCollection->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
 				 <?php else: ?>      
@@ -177,17 +181,18 @@ $category = Mage::registry('current_category')->getId();
 				<ul class="brandsmenu">
 				<?php if(!$_productCollectionseller->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
+                    <?php $seller = 0; ?>
                     <?php else: ?>
                     <?php foreach ($_productCollectionseller as $_seller): ?>
-
-                    <?php $getUpcomingProduct=$this->getProductCollectionUpcoming($_seller->cat_id);
-                        $_helper = $this->helper('catalog/output');?>
+                    <?php $seller = $_seller->cat_id; ?>
 					<li><a onclick="getUpcoming(<?php echo $_seller->cat_id;?>)"><?php echo $_seller->cat_name;?></a></li>
 				    <?php endforeach ?>
 				    <?php endif ?>
 				    </ul>
 			</div>
-				<div class="columnslider" data-items="3" id="upcoming">                 
+				<div class="columnslider" data-items="3" id="upcoming">
+				<?php $getUpcomingProduct=$this->getProductCollectionUpcoming($seller);
+                        $_helper = $this->helper('catalog/output');?>            
 				<?php if(!$getUpcomingProduct->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
 				 <?php else: ?>      
