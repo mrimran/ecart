@@ -54,7 +54,7 @@ display:inline-block;padding:5px 10px;vertical-align:top;}
 .account-login .page-title{border-bottom:1px solid #eaeaea;text-transform:uppercase;margin-top:50px;}
 .account-login .col2-set{clear:both;}
 .account-login .col2-set .col-1,.col2-set .col-2{}
-.account-login .scaffold-form h2{border-bottom:0;margin-bottom:0;
+.account-login .scaffold-form h2,.addresses-list h2{border-bottom:0;margin-bottom:0;
 font-family:'GothamNarrow-Medium', sans-serif;}
 form .form-instructions{font-style: italic;font-size:13px;color: #999;}
 .customer-account-login .col2-set .col-1 ul{list-style:square;padding-left:20px;margin:10px 0 20px 0;}
@@ -66,7 +66,8 @@ margin-bottom:10px;}
 .remember-me-popup.show {display: block;}
 .remember-me-popup .remember-me-popup-close{position:absolute;top:0;right:0;padding:10px;font-size:12px;}
 .remember-me-popup .remember-me-popup-close-button{display:none;}
-.remember-me-popup-head h3{line-height:1.5;font-weight:600;margin-bottom:10px;}
+.remember-me-popup-head h3,td.customer-wishlist-item-info h3{line-height:1.5;font-weight:600;
+margin-bottom:10px;}
 .remember-me-popup-head p{margin-bottom:5px;}
 #my_recent_reviews{list-style-type:none;}
 #my_recent_reviews li{margin-bottom:25px;border-bottom:1px solid #eaeaea;padding-bottom:15px;}
@@ -74,15 +75,38 @@ li.item{margin-bottom:15px;}
 li.item .details{display:inline-block;}
 li.item .number{display:inline-block;vertical-align:top;background-color:#f57a20;padding:3px 8px;
 color:#fff;font-size:12px;}
-body.customer-account .data-table {width:100%;font-size:12px;margin:15px 0;}
-body.customer-account .data-table th,.customer-account .data-table td{padding: 10px 15px;
-background-color: #333;color: #fff;vertical-align: middle;font-size:12px;
-border: 1px solid #eaeaea;text-align:center;vertical-align:middle;}
-body.customer-account .data-table td{background-color:transparent;color:#303030;}
-.data-table a{color:#f57a20;}
-.data-table a:hover{color:#303030;}
+body.customer-account .data-table,#checkout-step-review .data-table{width:100%;font-size:12px;
+margin:15px 0;}
+body.customer-account .data-table th,.customer-account .data-table td,#checkout-step-review .data-table th,#checkout-step-review .data-table td{padding: 10px 15px;background-color: #333;color: #fff;
+vertical-align: middle;font-size:12px;border: 1px solid #eaeaea;text-align:center;
+vertical-align:middle;}
+body.customer-account .data-table td,#checkout-step-review .data-table td{background-color:transparent;
+color:#303030;}
+.data-table a,.addresses-list a{color:#f57a20;}
+.data-table a:hover,.addresses-list a:hover{color:#303030;}
 body.customer-account .data-table th{font-size:14px;}
 body.customer-account .data-table th.ship{width:100px;}
 body.customer-account .data-table td.total .price{font-size:12px;}
 body.customer-account .data-table td.status{color:#8c8d8e;}
 body.newsletter-manage-index .my-account .fieldset h2{display:none;}
+.addresses-list h2{margin-bottom:15px;}
+.addresses-list ol{list-style-type:none;}
+.count-container{text-align:right;}
+.count-container p,.count-container .limiter{display:inline-block;vertical-align:top;}
+.data-table.clean-table td.customer-wishlist-item-info{text-align:left;}
+td.customer-wishlist-item-info h3{font-size:16px;margin-bottom:10px;}
+td.customer-wishlist-item-info .wishlist-sku{font-weight:600;}
+td.customer-wishlist-item-info .description.std{line-height:1.5;margin:5px 0 10px;}
+td.customer-wishlist-item-info textarea,td.customer-wishlist-item-quantity input{outline:none;
+padding:8px 12px;font-size:14px;width:100%;border-radius:2px;color:#555;
+border:1px solid #eaeaea;margin-bottom:10px;}
+td.customer-wishlist-item-quantity input{width:50px;text-align:center;height:40px;}
+td.customer-wishlist-item-price,td.customer-wishlist-item-cart{width:115px;}
+td.customer-wishlist-item-price p.old-price{text-decoration:line-through;}
+td.customer-wishlist-item-price .price-label{font-weight:600;}
+.data-table.clean-table .button{text-transform:none;}
+td.customer-wishlist-item-price .price{font-size:inherit;}
+#checkout-step-review .data-table .price{font-size:inherit;color:inherit;}
+#checkout-step-review .data-table .product-name{text-align:left;font-size:14px;margin-bottom:0;}
+#checkout-step-review .data-table .a-right{text-align:right;}
+#checkout-step-review .data-table th:first-child{text-align:left;}

@@ -29,13 +29,22 @@
     <h1><?php echo $this->__('My Product Reviews') ?></h1>
 </div>
 <?php if( $this->getCollection() && $this->count()): ?>
-    <?php echo $this->getToolbarHtml() ?>
+    <?php //echo $this->getToolbarHtml() ?>
         <table class="data-table" id="my-reviews-table">
             <col width="1" />
             <col width="210" />
             <col width="1" />
             <col />
             <col width="1" />
+            <thead>
+            <tr>
+                <th class="date"><?php echo $this->__('Date') ?></th>
+                <th><?php echo $this->__('Product') ?></th>
+                <th><?php echo $this->__('Rating') ?></th>
+                <th><?php echo $this->__('Description') ?></th>
+                <th><?php echo $this->__('Detail') ?></th>
+            </tr>
+            </thead>
             <tbody>
                 <?php foreach ($this->getCollection() as $_review): ?>
                 <tr>
