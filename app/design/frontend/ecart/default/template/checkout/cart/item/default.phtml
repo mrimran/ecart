@@ -109,11 +109,11 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update')); ?>" class="button btn-update btn1 btn2"><span><span><?php echo $this->__('Update'); ?></span></span>
         </button>
 
-        <ul class="cart-links">
+        <!-- <ul class="cart-links">
             <?php if ($isVisibleProduct): ?>
-                <!-- <li>
+                <li>
                     <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Edit item parameters')) ?>"><?php echo $this->__('Edit') ?></a>
-                </li> -->
+                </li>
             <?php endif ?>
 
             <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
@@ -123,7 +123,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                 <?php endif ?>
             </li>
             <?php endif ?>
-        </ul>
+        </ul> -->
 
     </td>
     <?php if ($canApplyMsrp): ?>

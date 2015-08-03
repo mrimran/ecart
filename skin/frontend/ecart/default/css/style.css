@@ -906,11 +906,11 @@ margin-bottom:10px;}
 .cart_table .item-detail a.remove{position:absolute;color:#f57a20;text-decoration:underline;
 bottom:0;right:0;font-size:12px;text-transform:uppercase;}
 .cart_table .item-detail a:hover.remove{color:#303030;}
-.cart_table td.qty,.cart_table td.product_price,
+.cart_table td.qty,.data-table td.product_price,
 .cart_table td.sub-total{vertical-align:middle;text-align:center;}
 .cart_table td.qty input{width:50px;padding:10px 5px;border:1px solid #eaeaea;text-align:center;}
-.cart_table td.product_price,.cart_table td.product_price .cart-price .price{color:#8c8d8e;}
-.cart_table td.product_price .cart-price .price{font-family:'GothamNarrow-Book', sans-serif;
+.data-table td.product_price,.data-table td.product_price .cart-price .price{color:#8c8d8e;}
+.data-table td.product_price .cart-price .price{font-family:'GothamNarrow-Book', sans-serif;
 font-size:16px;font-weight:300;}
 .cart_table td.delivery{/*width:200px;*/max-width:160px;}
 .cart_table td.delivery h3{font-size:16px;margin-bottom:10px;}
