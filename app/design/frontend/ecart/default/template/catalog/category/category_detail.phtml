@@ -84,11 +84,11 @@ $category = Mage::registry('current_category')->getId();
 				<ul class="brandsmenu">
 				    <?php if(!$_productCollectionseller->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
+                    <?php $seller = 0; ?>
                     <?php else: ?>
                     <?php $_columnCount = $this->getColumnCount();  ?>
                     <?php $i=0; foreach ($_productCollectionseller as $_seller): ?>
-                    <?php $getProductCollectionLatest=$this->getProductCollectionLatest($_seller->cat_id);
-                        $_helper = $this->helper('catalog/output');?>	
+                    <?php $seller = $_seller->cat_id;?>	
 					<li id="item<?php echo $_seller->cat_id; ?>"><a onclick="getLatest(<?php echo $_seller->cat_id ?>)"><?php echo $_seller->cat_name;?></a></li>
 					<?php $i++; ?>
 				    <?php endforeach ?>
@@ -96,6 +96,8 @@ $category = Mage::registry('current_category')->getId();
 				</ul>
 			</div>
 				<div class="columnslider" data-items="3" id="latestproduct">
+				<?php $getProductCollectionLatest=$this->getProductCollectionLatest($seller);
+                        $_helper = $this->helper('catalog/output');?>
 				<?php if(!$getProductCollectionLatest->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
 				 <?php else: ?>      
@@ -129,20 +131,24 @@ $category = Mage::registry('current_category')->getId();
 				<ul class="brandsmenu">
 					<?php if(!$_productCollectionseller->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
+                    <?php $seller =  0; ?>
                     <?php else: ?>
                     <?php foreach ($_productCollectionseller as $_seller): ?>
-                    <?php $getProductCollection=$this->getLoadedProductCollectionpro($_seller->cat_id);
-                        $_helper = $this->helper('catalog/output');?>
+
+                    <?php $seller =  $_seller->cat_id; ?>
 					<li><a onclick="getBestseller(<?php echo $_seller->cat_id;?>)"><?php echo $_seller->cat_name;?></a></li>
 				    <?php endforeach ?>
 				    <?php endif ?>
 				</ul>
 			</div>
 			<div class="columnslider" data-items="3" id="bestsellers">
+				<?php $getProductCollection=$this->getLoadedProductCollectionpro($seller);
+                        $_helper = $this->helper('catalog/output');?>
 				<?php if(!$getProductCollection->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
 				 <?php else: ?>      
 				 	<?php foreach ($getProductCollection as $Latest): ?>
+
 				 	    <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $Latest->getProductUrl() ?>">
 				           <?php if (date("Y-m-d") >= substr($Latest->getNewsFromDate(), 0, 10)         
                             && date("Y-m-d") <= substr($Latest->getNewsToDate(), 0, 10)) { ?>
@@ -173,19 +179,26 @@ $category = Mage::registry('current_category')->getId();
 			<div class="sectiontitle">
 				<h2><span>Upcomming Products</span></h2>
 				<ul class="brandsmenu">
-					<li><a href="#">Tablets</a></li>
-					<li><a href="#" class="active">Mobiles</a></li>
-				</ul>
+				<?php if(!$_productCollectionseller->count()): ?>
+                    <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
+                    <?php $seller = 0; ?>
+                    <?php else: ?>
+                    <?php foreach ($_productCollectionseller as $_seller): ?>
+                    <?php $seller = $_seller->cat_id; ?>
+					<li><a onclick="getUpcoming(<?php echo $_seller->cat_id;?>)"><?php echo $_seller->cat_name;?></a></li>
+				    <?php endforeach ?>
+				    <?php endif ?>
+				    </ul>
 			</div>
-				<div class="columnslider" data-items="3">
-                 <?php $getProductUpcoming=$this->getProductCollectionUpcoming($category);
-                       $_helper = $this->helper('catalog/output');
-                 ?>
-                 
-				<?php if(!$getProductUpcoming->count()): ?>
+				<div class="columnslider" data-items="3" id="upcoming">
+				<?php $getUpcomingProduct=$this->getProductCollectionUpcoming($seller);
+                        $_helper = $this->helper('catalog/output');?>            
+				<?php if(!$getUpcomingProduct->count()): ?>
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
 				 <?php else: ?>      
-				 	<?php foreach ($$getProductUpcoming as $Latest): ?>
+				 	<?php foreach ($getUpcomingProduct as $Latest): ?>
+				       <?php $upcomingproduct = $Latest->getAttributeText('upcomingproduct') ?>
+				   
 				 	    <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $Latest->getProductUrl() ?>">
 				           <?php if (date("Y-m-d") >= substr($Latest->getNewsFromDate(), 0, 10)         
                             && date("Y-m-d") <= substr($Latest->getNewsToDate(), 0, 10)) { ?>
@@ -204,6 +217,7 @@ $category = Mage::registry('current_category')->getId();
 					        </div>
 					        </a>
 				            </div>
+				      
 				<?php endforeach ?>
 				<?php endif ?>
 			</div>
@@ -236,6 +250,19 @@ $category = Mage::registry('current_category')->getId();
                 beforeSend: function() { jQuery('#bestsellers').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>"); },
                 success: function(data) { 
              	    jQuery('#bestsellers').html(data);
+             }
+             });
+            }
+
+            function getUpcoming(cat_id){
+            	jQuery("#item"+cat_id+" a").addClass("active");
+            	jQuery.ajax({
+                url: 'extension/index/ajaxupcoming/',
+                type: 'POST',
+                data: {action : 'getProductCollectionUpcomingPro' , cat_ids : cat_id},
+                beforeSend: function() { jQuery('#upcoming').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>"); },
+                success: function(data) { 
+             	    jQuery('#upcoming').html(data);
              }
              });
             }

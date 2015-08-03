@@ -45,7 +45,6 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
     {
         
         $this->loadLayout();
-        $this->getLayout()->getBlock('head')->setTitle($this->__('My title'));
         $this->renderLayout();
     }
 
@@ -91,6 +90,12 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
     public function ajaxbestsellerproductAction(){
         $block = $this->getLayout()->createBlock('extension/category')
         ->setTemplate('catalog/category/ajaxbestseller.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+    }
+    
+    public function ajaxupcomingAction(){
+        $block = $this->getLayout()->createBlock('extension/category')
+        ->setTemplate('catalog/category/ajaxupcoming.phtml');
          $this->getResponse()->setBody($block->toHtml());
     }
     
