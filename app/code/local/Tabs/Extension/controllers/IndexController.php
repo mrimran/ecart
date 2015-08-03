@@ -93,6 +93,12 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
          $this->getResponse()->setBody($block->toHtml());
     }
     
+    public function ajaxupcomingAction(){
+        $block = $this->getLayout()->createBlock('extension/category')
+        ->setTemplate('catalog/category/ajaxupcoming.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+    }
+    
 }
 
 

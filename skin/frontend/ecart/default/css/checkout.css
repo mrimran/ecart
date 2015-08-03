@@ -337,8 +337,8 @@
 .checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.checkbox {
     float: left;
     margin-right: -40px;
-    margin-top: 10px;
-    margin-left: 15px;
+    margin-top: 7px;
+    margin-left: 8px;
 }
 
 .checkout-onepage-index .sp-methods dt#dt_method_ccsave label,
@@ -360,9 +360,9 @@
     max-width: none;
     min-width: 250px;
     float: none;
-    padding: 6px 10px 6px 40px;
+    padding:0px 10px 6px 25px;
 }
-
+.step .form-list .control label{padding-left:25px;}
 .checkout-onepage-index #shipping-new-address-form .validation-advice,
 .checkout-onepage-index #billing-new-address-form .validation-advice {
     margin: 5px 0 0;

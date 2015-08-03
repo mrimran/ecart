@@ -1,5 +1,5 @@
 <div class="owl-stage-outer">
-    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 206.667px;">
+    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1500.667px;">
 <?php $getProductCollectionLatest=$this->getLoadedProductCollectionsellers();
 $_helper = $this->helper('catalog/output');
 ?>
@@ -7,7 +7,7 @@ $_helper = $this->helper('catalog/output');
                     <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
 				 <?php else: ?>      
 				 	<?php foreach ($getProductCollectionLatest as $Latest): ?>
-				 	<div class="owl-item active" style="width: 186.667px; margin-right: 20px;">
+				 	<div class="owl-item active" style="width: 266.667px; margin-right: 20px;">
 				 	    <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $Latest->getProductUrl() ?>">
 				           <?php if (date("Y-m-d") >= substr($Latest->getNewsFromDate(), 0, 10)         
                             && date("Y-m-d") <= substr($Latest->getNewsToDate(), 0, 10)) { ?>
