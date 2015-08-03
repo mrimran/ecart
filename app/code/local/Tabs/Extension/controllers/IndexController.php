@@ -45,6 +45,7 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
     {
         
         $this->loadLayout();
+        $this->getLayout()->getBlock('head')->setTitle($this->__('My title'));
         $this->renderLayout();
     }
 
