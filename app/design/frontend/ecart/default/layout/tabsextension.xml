@@ -25,7 +25,7 @@
             </block>
         </reference>
         <reference name="content">
-            <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
+            
                 <block type="extension/sale" name="bestseller" as="bestseller"  template="catalin_seo/catalog/product/list.phtml">
                     <block type="core/text_list" name="product_list.name.after" as="name.after" />
                     <block type="core/text_list" name="product_list.after" as="after" />
@@ -56,7 +56,6 @@
                     <!-- Since the addColumnCountLayoutDepend does not work, we are manually setting the max columns -->
                     <action method="setColumnCount"><count>4</count></action>
                 </block>
-            </block>
         </reference>
     </extension_index_sale>
 

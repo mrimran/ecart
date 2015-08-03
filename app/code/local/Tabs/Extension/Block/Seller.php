@@ -3,95 +3,34 @@
 class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
    protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
    
-   public function getLoadedProductCollection()
-    { 
-       if($this->getRequest()->getParam('id')!= null){
-       $id = $this->getRequest()->getParam('id');
-       // benchmarking
-        $memory = memory_get_usage();
-        $time = microtime();
-        $catId = $id;
-        /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
-        $collection = Mage::getResourceModel('catalog/product_collection');
-        // join sales order items column and count sold products
-        $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
-        $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
-        $collection->addAttributeToSelect('*')->getSelect()
-            ->join(array('oi' => $collection->getTable('sales/order_item')),
-            $condition,
-            array('sales_count' => $expression))
-            ->group('e.entity_id')
-            ->order('sales_count' . ' ' . 'desc');
-        // join category
-        $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
-        $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
-        $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
-            $condition,
-            array())->join(array('c' => $collection->getTable('catalog/category')),
-            $condition2,
-            array('cat_id' => 'c.entity_id'));
-        $condition = new Zend_Db_Expr("c.entity_id = cv.entity_id AND ea.attribute_id = cv.attribute_id");
-        // cutting corners here by hardcoding 3 as Category Entiry_type_id
-        $condition2 = new Zend_Db_Expr("ea.entity_type_id = 3 AND ea.attribute_code = 'name'");
-        $collection->getSelect()->join(array('ea' => $collection->getTable('eav/attribute')),
-            $condition2,
-            array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
-            $condition,
-            array('cat_name' => 'cv.value'));
-        // if Category filter is on
-        if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5);
-        }
+       public function __construct(){
 
-        // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
-        // so all sorting work lays on php
-        $result = array();
-        foreach ($collection as $product) {
-            /** @var $product Mage_Catalog_Model_Product */
-            if (isset($result[$product->getCatId()])) {
-                continue;
-            }
-            $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
-        }
-       
-   }
-   else{
-    $id = 2;
-    $storeId = (int) Mage::app()->getStore()->getId();
- 
-        // Date
-        $date = new Zend_Date();
-        $toDate = $date->setDay(1)->getDate()->get('Y-MM-dd');
-        $fromDate = $date->subMonth(1)->getDate()->get('Y-MM-dd');
- 
-        $collection = Mage::getResourceModel('catalog/product_collection')
-            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-            ->addStoreFilter()
-            ->addPriceData()
-            ->addTaxPercents()
-            ->addUrlRewrite()
-            ->setPageSize(6);
- 
-        $collection->getSelect()
-            ->joinLeft(
-                array('aggregation' => $collection->getResource()->getTable('sales/bestsellers_aggregated_monthly')),
-                "e.entity_id = aggregation.product_id AND aggregation.store_id={$storeId} AND aggregation.period BETWEEN '{$fromDate}' AND '{$toDate}'",
-                array('SUM(aggregation.qty_ordered) AS sold_quantity')
-            )
-            ->group('e.entity_id')
-            ->order(array('sold_quantity DESC', 'e.created_at'))
-            ->limit(5);
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
-        
-  
-   }
-       
-        return $collection;
+        parent::__construct();
+
+        $storeId = Mage::app()->getStore()->getId();
+
+        $products = Mage::getResourceModel('reports/product_collection')
+
+            ->addOrderedQty()
+
+            ->addAttributeToSelect('id')
+
+            ->addAttributeToSelect(array('name', 'price', 'small_image'))
+
+            ->setStoreId($storeId)
+
+            ->addStoreFilter($storeId)
+
+            ->setOrder('ordered_qty', 'desc'); // most best sellers on top
+
+        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
+
+        Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
 
         
+        $this->setProductCollection($products);
+
     }
-
     public function getMode()
     {
         return $this->getChild('toolbar')->getCurrentMode();
@@ -102,7 +41,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
         $toolbar = $this->getToolbarBlock();
 
         // called prepare sortable parameters
-        $collection = $this->getLoadedProductCollection();
+        $collection = $this->getProductCollection();
 
         // use sortable parameters
         if ($orders = $this->getAvailableOrders()) {
@@ -123,10 +62,10 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
 
         $this->setChild('toolbar', $toolbar);
         Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->getLoadedProductCollection()
+            'collection' => $this->getProductCollection()
         ));
 
-        $this->getLoadedProductCollection()->load();
+        $this->getProductCollection()->load();
 
         return parent::_beforeToHtml();
     }
@@ -165,7 +104,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
 
     public function addAttribute($code)
     {
-        $this->getLoadedProductCollection()->addAttributeToSelect($code);
+        $this->getProductCollection()->addAttributeToSelect($code);
         return $this;
     }
 
@@ -218,7 +157,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
     {
         return array_merge(
             parent::getCacheTags(),
-            $this->getItemsTags($this->getLoadedProductCollection())
+            $this->getItemsTags($this->getProductCollection())
         );
     }
 
