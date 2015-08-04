@@ -1,0 +1,283 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<div class="__product__main__area">
+  <div class="row">
+    <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+      <?php echo $this->getBlockHtml('formkey') ?>
+      <div class="no-display">
+        <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+        <input type="hidden" name="related_product" id="related-products-field" value="" />
+      </div>
+      <div class="col-sm-6"> <?php echo $this->getChildHtml('media') ?> </div>
+      <div class="col-sm-6">
+        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
+        <div class="__type">by <a href="#">Apple</a>, <a href="#">Mobile Phones</a></div>
+        <!--						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
+--> 
+        <?php echo $this->getReviewsSummaryHtml($_product, "short", true)?> <?php echo $this->getChildHtml('product_review') ?>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"><?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+          </div>
+          <div class="col-sm-6">
+            <div class="__you_saved">You save <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
+              <?php
+$specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+$this->getProduct()->getFinalPrice();
+$_priceExclTax = $this->getPrice($sign.$value['pricing_value'])+$this->getProduct()->getPrice();
+if($specialprice < $_priceExclTax) { 
+$yousave =  $_priceExclTax - $specialprice;
+echo $yousave;
+}
+?>
+              ! </div>
+          </div>
+        </div>
+        <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
+          <?php if ($_product->isAvailable()): ?>
+          <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
+          <?php endif; ?>
+          pcs</div>
+        <?php if($_product->condition): ?>
+        <div class="__condition"><strong>
+          <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel(); 	?>
+          : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> </div>
+        <?php endif ?>
+        <?php if($_product->warrenty): ?>
+        <div class="__warrenty"><strong>
+          <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel(); 	?>
+          :</strong> <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product);	?> </div>
+        <?php else: ?>
+        <br/>
+        <?php endif ?>
+        <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <?php  echo  $_product->getResource()->getAttribute('color')->getFrontendLabel(); 	?>
+                <i class="fa fa-angle-down"></i> <span class="selected-value">White</span> </a></h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <ul class="product-meta-select" data-id="headingOne">
+                  <?php
+									
+							
+							
+									
+									$attribute_code = "color"; 
+									$attribute_details = Mage::getSingleton("eav/config")->getAttribute("catalog_product", $attribute_code); 
+									$options = $attribute_details->getSource()->getAllOptions(false); 
+									foreach($options as $option){ 
+									?>
+                  <li data-value="<?php echo $option["value"];  ?>" class=""><?php echo $option["label"]; ?></li>
+                  <?php } ?>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Storage Capacity <i class="fa fa-angle-down"></i> <span class="selected-value">8GB</span> </a> </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <ul class="product-meta-select" data-id="headingTwo">
+                  <li class="active">8GB</li>
+                  <li>16GB</li>
+                  <li>32GB</li>
+                  <li>64GB</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="row">
+            <div class="col-sm-9">
+              <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
+            </div>
+            <div class="col-sm-3">
+              <?php $_product = $this->getProduct(); ?>
+              <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+              <?php if ($this->helper('wishlist')->isAllow()) : ?>
+              <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+        <div class="__share__this"> <a href="#">Share this product</a> </div>
+      </div>
+    </form>
+    <?php
+
+                  // Here 18 is Attribute Group Id.
+
+
+//echo "<li>".$attribute->getFrontendLabel()." : ".$_product->getData($attribute->getAttributeCode())."</li>";
+
+//print_r($collections);
+
+?>
+  </div>
+  <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script> 
+</div>
+<div class="__product__description">
+  <div class="row">
+    <div class="col-sm-7">
+      <h2>Description</h2>
+      <div id="__product__detail" class="__product__detail is-more">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisl sapien, vestibulum quis rhoncus a, molestie quis elit. Morbi mollis hendrerit ipsum, varius scelerisque tortor molestie in. Phasellus ultricies risus justo, ut pharetra ex consequat nec. Maecenas ultricies congue nisl vel
+          pellentesque. Sed nec efficitur arcu. In hac habitasse platea dictumst. Duis augue nisi, dictum in lacinia in, maximus nec nulla.</p>
+        <p>Proin euismod tellus in pharetra convallis. Proin iaculis vitae turpis rutrum cursus. Sed ultricies purus at nisi dignissim, ut suscipit tellus ultricies. In quis eleifend velit. Suspendisse tempus felis non nulla posuere tincidunt. Vivamus sed tortor enim. Sed non gravida erat. Integer vel tellus tincidunt, finibus augue at, mattis mi. Phasellus vestibulum metus urna, ac elementum elit pretium id. Praesent feugiat, lorem et varius mattis, justo dolor eleifend tellus, a euismod elit elit quis tellus. Morbi dui nisi, porta nec fermentum vitae, rutrum sed risus. Donec consequat ex vel neque feugiat lobortis. Nulla sollicitudin neque quis tortor pharetra imperdiet.</p>
+        <p></p>
+        <span class="more-ellipsis"></span><span class="more-hidden">
+        <p>Proin euismod tellus in pharetra convallis. Proin iaculis vitae turpis rutrum cursus. Sed ultricies purus at nisi dignissim, ut suscipit tellus ultricies. In quis eleifend velit. Suspendisse tempus felis non nulla posuere tincidunt. Vivamus sed tortor enim. Sed non gravida erat. Integer vel tellus tincidunt, finibus augue at, mattis mi. Phasellus vestibulum metus urna, ac elementum elit pretium id. Praesent feugiat, lorem et varius mattis, justo dolor eleifend tellus, a euismod elit elit quis tellus. Morbi dui nisi, porta nec fermentum vitae, rutrum sed risus. Donec consequat ex vel neque feugiat lobortis. Nulla sollicitudin neque quis tortor pharetra imperdiet.</p>
+        <p></p>
+        <p>Proin euismod tellus in pharetra convallis. Proin iaculis vitae turpis rutrum cursus. Sed ultricies purus at nisi dignissim, ut suscipit tellus ultricies. In quis eleifend velit. Suspendisse tempus felis non nulla posuere tincidunt. Vivamus sed tortor enim. Sed non gravida erat. Integer vel tellus tincidunt, finibus augue at, mattis mi. Phasellus vestibulum metus urna, ac elementum elit pretium id. Praesent feugiat, lorem et varius mattis, justo dolor eleifend tellus, a euismod elit elit quis tellus. Morbi dui nisi, porta nec fermentum vitae, rutrum sed risus. Donec consequat ex vel neque feugiat lobortis. Nulla sollicitudin neque quis tortor pharetra imperdiet.</p>
+        </span><a class="more-link" href="#">Read Full Description</a></div>
+    </div>
+    <div id="product_specs" class="col-sm-5 is-more">
+      <h2>Specifications</h2>
+      
+
+		
+		<?php 			$product_id = Mage::registry('current_product')->getId();
+							$_product = Mage::getModel('catalog/product')->load($product_id);
+							$collections = array();
+							$attributesCollection = Mage::getResourceModel('catalog/product_attribute_collection');
+							$attributesCollection->setAttributeGroupFilter(18);  
+							foreach ($attributesCollection as $attribute) {
+							?>
+      <div class="row">
+        <?php
+									if($attribute->getFrontendInput() == 'select' || $attribute->getFrontendInput() == 'boolean'){
+									?>
+        <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
+        <div class="col-sm-6"> <?php echo $_product->getAttributeText($attribute->getAttributeCode()); ?> </div>
+        <?php 
+									} 
+									else 
+									{ 
+										if($attribute->getFrontendInput()=="text");
+										?>
+        <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
+        <div class="col-sm-6"> <?php echo $_product->getData($attribute->getAttributeCode()); ?> </div>
+        
+        <?php 
+										}
+										?>
+      </div>
+      <?php } ?>
+    </div>
+    <span class="more-ellipsis" style="display: none;"></span> <span class="more-hidden" style="display: inline;"> </span> 
+    <!--<a class="more-link" href="#">See Less Specs</a>--> 
+  </div>
+</div>
+<script>
+jQuery('.bxslider').bxSlider({
+		  pagerCustom: '#bx-pager'
+		});
+		jQuery('#__product__detail').more({
+			length:1099,
+			ellipsisText: '',
+			moreText: 'Read Full Description',
+			lessText: 'Read Less Description'
+		});
+
+		jQuery('#product_specs').more({
+			length:335,
+			leaway:10,
+			ellipsisText: '',
+			moreText: 'See Full Specs',
+			lessText: 'See Less Specs'
+		});
+
+</script> 
