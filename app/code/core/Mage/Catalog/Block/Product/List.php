@@ -268,4 +268,6 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
             $this->getItemsTags($this->_getProductCollection())
         );
     }
+
+    
 }

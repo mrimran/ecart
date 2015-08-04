@@ -37,7 +37,7 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-
+<?php  $upcomingproduct = $_product->getAttributeText('upcomingproduct') ?>
 <div class="__product__main__area">
 				<div class="row">
             
@@ -67,24 +67,72 @@
 							
                      </div>
 							<div class="col-sm-6">
-								<div class="__you_saved">You save 80AED!</div>
+								<div class="__you_saved">You save 
+<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
+<?php
+$specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+$this->getProduct()->getFinalPrice();
+$_priceExclTax = $this->getPrice($sign.$value['pricing_value'])+$this->getProduct()->getPrice();
+if($specialprice < $_priceExclTax) { 
+$yousave =  $_priceExclTax - $specialprice;
+echo $yousave;
+}
+?>
+ !
+                        
+                        </div>
 							</div>
 						</div>
-						<div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock 20 pcs</div>
-						<div class="__condition"><strong>Condition:</strong> New</div>
-						<div class="__warrenty"><strong>Warrenty:</strong> 1 Year</div>
+						<div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock 
+						<?php if ($_product->isAvailable()): ?>
+						<?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
+                  <?php endif; ?>
+                   pcs</div>
+                   
+                   <?php if($_product->condition): ?>
+						<div class="__condition"><strong>
+						<?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel(); 	?>:
+                  </strong> 
+						<?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
+                  </div>
+                   <?php endif ?>
+                  
+                  
+                  <?php if($_product->warrenty): ?>
+						<div class="__warrenty"><strong>
+                  <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel(); 	?>
+                  :</strong> 
+                  <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product);	?>
+                  </div> 
+                  <?php else: ?>
+                  <br/>
+                  <?php endif ?>
 						<div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
 							<div class="panel">
 								<div class="panel-heading" role="tab" id="headingOne">
-									<h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Colour <i class="fa fa-angle-down"></i> <span class="selected-value">White</span> </a></h4>
+									<h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 
+											
+               <?php  echo  $_product->getResource()->getAttribute('color')->getFrontendLabel(); 	?>
+              
+                           
+                            <i class="fa fa-angle-down"></i> <span class="selected-value">White</span> </a></h4>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
+						
+                           <div class="panel-body">
 									<ul class="product-meta-select" data-id="headingOne">
-										<li class="active">White</li>
-										<li>Red</li>
-										<li>Blue</li>
-										<li>Black</li>
+									
+                           <?php
+									
+							
+							
+									
+									$attribute_code = "color"; 
+									$attribute_details = Mage::getSingleton("eav/config")->getAttribute("catalog_product", $attribute_code); 
+									$options = $attribute_details->getSource()->getAllOptions(false); 
+									foreach($options as $option){ 
+									?>
+									<li data-value="<?php echo $option["value"];  ?>" class=""><?php echo $option["label"]; ?></li>
+									<?php } ?>
 									</ul>
 									</div>
 								</div>
@@ -107,10 +155,12 @@
 						</div>
 						<div class="buttons">
 							<div class="row">
+							<?php if($upcomingproduct == "No"){ ?>
 								<div class="col-sm-9">
 									<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
 
 								</div>
+						<?php	} ?>
 								<div class="col-sm-3">
 							<?php $_product = $this->getProduct(); ?>
                      <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
