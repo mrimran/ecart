@@ -23,6 +23,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
         $_productCollection = Mage::getResourceModel('catalogsearch/advanced_collection')
         ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
         ->addMinimalPrice()
+        ->addAttributeToFilter('upcomingproduct', 0)
         ->addStoreFilter();
 
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($_productCollection);
@@ -121,7 +122,10 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
 
        $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
        ->addCategoryFilter($_category)
-       ->addAttributeToSelect('*');
+       ->addAttributeToFilter('upcomingproduct', 0)
+       ->addAttributeToSelect('*')
+       ->setOrder('entity_id', 'desc')
+       ->setPageSize(20);
                            
         return $_testproductCollection;
     }

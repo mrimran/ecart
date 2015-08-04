@@ -37,7 +37,7 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-
+<?php  $upcomingproduct = $_product->getAttributeText('upcomingproduct') ?>
 <div class="__product__main__area">
 				<div class="row">
             
@@ -155,10 +155,12 @@ echo $yousave;
 						</div>
 						<div class="buttons">
 							<div class="row">
+							<?php if($upcomingproduct == "No"){ ?>
 								<div class="col-sm-9">
 									<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
 
 								</div>
+						<?php	} ?>
 								<div class="col-sm-3">
 							<?php $_product = $this->getProduct(); ?>
                      <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>

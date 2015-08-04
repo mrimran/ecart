@@ -278,4 +278,14 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
     {
         return array_merge(parent::getCacheTags(), $this->getProduct()->getCacheIdTags());
     }
+
+    public function getTotalOrder($id){
+         $query = Mage::getResourceModel('sales/order_item_collection');
+         $query->getSelect()->reset(Zend_Db_Select::COLUMNS)
+         ->columns(array('sku','SUM(qty_ordered) as purchased'))
+         ->group(array('sku'))
+         ->where('product_id = ?',array($id))
+         ->limit(1);
+         return $query;
+    }
 }
