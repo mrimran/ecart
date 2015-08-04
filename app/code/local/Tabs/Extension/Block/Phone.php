@@ -51,7 +51,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
             array('cat_name' => 'cv.value'));
         // if Category filter is on
         if ($catId) {
-        $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5);
+        $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
 
         }
 
@@ -88,8 +88,9 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
             ), 'left')
             ->addAttributeToSort('news_from_date', 'desc')
             ->setPageSize($this->getProductsCount())
-            ->setCurPage(1)
-        ;
+            ->addAttributeToFilter('upcomingproduct', 0)
+            ->setCurPage(20);
+
         if($categoryId = $id){
         $category = Mage::getModel('catalog/category')->load($categoryId);
         $collection->addCategoryFilter($category);
@@ -123,7 +124,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
         $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
         $condition,
         array('product_id' => 'main_table.product_ids'));
-        $collection->getSelect()->where('ccp.category_id = ?', $id);
+        $collection->getSelect()->where('ccp.category_id = ?', $id)->limit(5);
         return $collection;
         /*$brand = $collection;
         foreach ($brand as $brands):

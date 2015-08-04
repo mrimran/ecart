@@ -36,8 +36,13 @@
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
+<<<<<<< HEAD
 
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+=======
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<?php  $upcomingproduct = $_product->getAttributeText('upcomingproduct') ?>
+>>>>>>> 4fbfffe16b0a9a3c9e4137b59c2858248d7e786a
 <div class="__product__main__area">
   <div class="row">
     <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
@@ -67,6 +72,7 @@ $yousave =  $_priceExclTax - $specialprice;
 echo $yousave;
 }
 ?>
+<<<<<<< HEAD
               ! </div>
           </div>
         </div>
@@ -170,6 +176,109 @@ echo $yousave;
 ?>
   </div>
   <script type="text/javascript">
+=======
+ !
+                        
+                        </div>
+							</div>
+						</div>
+						<div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock 
+						<?php if ($_product->isAvailable()): ?>
+						<?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
+                  <?php endif; ?>
+                   pcs</div>
+                   
+                   <?php if($_product->condition): ?>
+						<div class="__condition"><strong>
+						<?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel(); 	?>:
+                  </strong> 
+						<?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
+                  </div>
+                   <?php endif ?>
+                  
+                  
+                  <?php if($_product->warrenty): ?>
+						<div class="__warrenty"><strong>
+                  <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel(); 	?>
+                  :</strong> 
+                  <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product);	?>
+                  </div> 
+                  <?php else: ?>
+                  <br/>
+                  <?php endif ?>
+						<div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
+							<div class="panel">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 
+											
+               <?php  echo  $_product->getResource()->getAttribute('color')->getFrontendLabel(); 	?>
+              
+                           
+                            <i class="fa fa-angle-down"></i> <span class="selected-value">White</span> </a></h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						
+                           <div class="panel-body">
+									<ul class="product-meta-select" data-id="headingOne">
+									
+                           <?php
+									
+							
+							
+									
+									$attribute_code = "color"; 
+									$attribute_details = Mage::getSingleton("eav/config")->getAttribute("catalog_product", $attribute_code); 
+									$options = $attribute_details->getSource()->getAllOptions(false); 
+									foreach($options as $option){ 
+									?>
+									<li data-value="<?php echo $option["value"];  ?>" class=""><?php echo $option["label"]; ?></li>
+									<?php } ?>
+									</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel">
+								<div class="panel-heading" role="tab" id="headingTwo">
+									<h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Storage Capacity <i class="fa fa-angle-down"></i> <span class="selected-value">8GB</span> </a> </h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+									<div class="panel-body">
+									<ul class="product-meta-select" data-id="headingTwo">
+										<li class="active">8GB</li>
+										<li>16GB</li>
+										<li>32GB</li>
+										<li>64GB</li>
+									</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="buttons">
+							<div class="row">
+							<?php if($upcomingproduct == "No"){ ?>
+								<div class="col-sm-9">
+									<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
+
+								</div>
+						<?php	} ?>
+								<div class="col-sm-3">
+							<?php $_product = $this->getProduct(); ?>
+                     <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+								
+								
+							<?php if ($this->helper('wishlist')->isAllow()) : ?>
+                     <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
+                     <?php endif; ?>   
+                     </div>
+							</div>
+						</div>
+						<div class="__share__this">
+							<a href="#">Share this product</a>
+						</div>
+					</div>
+               </form>
+               <script type="text/javascript">
+>>>>>>> 4fbfffe16b0a9a3c9e4137b59c2858248d7e786a
         //<![CDATA[
             var productAddToCartForm = new VarienForm('product_addtocart_form');
             productAddToCartForm.submit = function(button, url) {

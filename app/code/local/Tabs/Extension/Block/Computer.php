@@ -88,6 +88,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             ), 'left')
             ->addAttributeToSort('news_from_date', 'desc')
             ->setPageSize($this->getProductsCount())
+            ->addAttributeToFilter('upcomingproduct', 0)
             ->setCurPage(1)
         ;
         if($categoryId = $id){

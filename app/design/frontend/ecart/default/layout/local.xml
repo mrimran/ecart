@@ -265,9 +265,15 @@
 			
 			<extension_index_sale>
 			<reference name="root">
-			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			</extension_index_sale>
+
+			<extension_index_seller>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_index_seller>
 		
 
 </layout>
