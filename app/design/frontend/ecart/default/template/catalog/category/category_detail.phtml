@@ -103,10 +103,10 @@ $category = Mage::registry('current_category')->getId();
 				 <?php else: ?>      
 				 	<?php foreach ($getProductCollectionLatest as $Latest): ?>
 				 	    <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $Latest->getProductUrl() ?>">
-				           <?php if (date("Y-m-d") >= substr($Latest->getNewsFromDate(), 0, 10)         
+				         <!--  <?php if (date("Y-m-d") >= substr($Latest->getNewsFromDate(), 0, 10)         
                             && date("Y-m-d") <= substr($Latest->getNewsToDate(), 0, 10)) { ?>
                            <span class="new">new</span>
-                           <?php } ?>
+                           <?php } ?> -->
 					
 					       <div class="img-box"><div class="abs_center"><a href="<?php echo $Latest->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                            <?php $_imgSize = 210; ?>
