@@ -113,11 +113,17 @@ body.cms-index-index .mainheadnav .catgories a span { display: block; }
 .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .submenu li.heading a, .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .submenu li a { font-size: 11px; }
 .img-box img { width: 100%; }
 .products .product .image, .products .product .details, .products .product .price-info, .products .product .image .img-box { height: auto; min-height: inherit; }
+.product .orders{position: static;}
 .products .product.grid { width: 48%; }
 .products .product.grid:nth-of-type(2n+2) { margin-right: 0; }
 .products .product.grid:nth-of-type(3n+3) { margin-right: 3%; }
 .products .main_title p { float: none; margin-bottom: 0; }
-.mainhead .reasonsnav, .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .ads-r, .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .ads a img { display: none; }
+.cart_table .item-detail a.remove{position:relative;}
+.cart_table td{padding:10px;}
+.cart_page .btn2{padding:5px 10px;margin-top:5px;}
+
+.mainhead .reasonsnav, .maincontainer .mainmenu > .top > li:hover > .submenuDiv > .ads-r,
+.maincontainer .mainmenu > .top > li:hover > .submenuDiv > .ads a img { display: none; }
 .smartphones, .desktop { display: none; }
 .tablet { display: block; }
 }

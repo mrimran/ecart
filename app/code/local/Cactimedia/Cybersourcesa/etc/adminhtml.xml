@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Cactimedia
+ * @package    Cactimedia_Cybersourcesa
+ * @author     magepsycho@gmail.com
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+     <acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<cactimediainfo>
+										<title>Cactimedia Info</title>
+									</cactimediainfo>
+									<paymentinfo>
+										<title>CyberSource Secure Acceptance WM Info</title>
+									</paymentinfo>
+									<cybersourcesa>
+										<title>CyberSource Secure Acceptance WM Area</title>
+									</cybersourcesa>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

@@ -37,7 +37,7 @@ a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 .toolbar .sorter .sort-by select, .toolbar .sorter .pager select { padding: 8px 7px;}
 .all-search-cats select { border: none;}
 .rating-links { margin: 0;}
-.product.grid .details { min-height: 98px !important;}
+.product.grid .details { min-height: 60px !important;}
 #narrow-by-list #Price { padding: 15px 8px;}
 
 .more-less {padding-left: 15px; font: 13px strong;}
@@ -136,7 +136,7 @@ a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
   border-right: none;
 }
 ul.messages li { list-style: none !important;}
-.catalog-product-view .ratingstarts  {!important; display: inline-block; float: left; }
+.catalog-product-view .ratingstarts  {display: inline-block; float: left; }
 .catalog-product-view .reviewscounttop  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
 .catalog-product-view a.wrireyourreviews  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
 .catalog-product-view span.reviewessperator { display: inline-block; font-size: 12px; color: #999; }
