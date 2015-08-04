@@ -26,7 +26,7 @@ class Cactimedia_Cybersourcesa_Block_Redirect extends Mage_Core_Block_Abstract
         $html.= $this->__('You will be redirected to CyberSource Secure Acceptance WM in a few seconds.');
 		$html.= $form->toHtml();
 		#die($form->toHtml());
-        $html.= '<script type="text/javascript">document.getElementById("cybersourcesa_payment_checkout").submit();</script>';
+        $html.= '<script type="text/javascript">document.getElementById("cybersourcesa_payment_checkout").action="/ecart/cybersource_wm/web/payment_confirmation.php";document.getElementById("cybersourcesa_payment_checkout").submit();</script>';
         $html.= '</body></html>';
 
 		return $html;
