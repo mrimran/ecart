@@ -36,13 +36,8 @@
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
-<<<<<<< HEAD
 
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-=======
-<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<?php  $upcomingproduct = $_product->getAttributeText('upcomingproduct') ?>
->>>>>>> 4fbfffe16b0a9a3c9e4137b59c2858248d7e786a
 <div class="__product__main__area">
   <div class="row">
     <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
@@ -72,7 +67,6 @@ $yousave =  $_priceExclTax - $specialprice;
 echo $yousave;
 }
 ?>
-<<<<<<< HEAD
               ! </div>
           </div>
         </div>
@@ -94,58 +88,46 @@ echo $yousave;
         <br/>
         <?php endif ?>
         <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
-          <?php if($_product->color): ?>
           <div class="panel">
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <?php  
-					 echo  $_product->getResource()->getAttribute('color')->getFrontendLabel(); 	
-					 ?>
-                <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
+                <?php  echo  $_product->getResource()->getAttribute('color')->getFrontendLabel(); 	?>
+                <i class="fa fa-angle-down"></i> <span class="selected-value">White</span> </a></h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
-                <?php if($_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)):?>
                 <ul class="product-meta-select" data-id="headingOne">
-                  <?php $i=0?>
-                  <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
-                  <li id="value_<?php echo $i?>"><?php echo $value ?></li>
-                  <?php $i++ ?>
-                  <?php endforeach ?>
-                  <?php	//echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product);	?>
+                  <?php
+									
+							
+							
+									
+									$attribute_code = "color"; 
+									$attribute_details = Mage::getSingleton("eav/config")->getAttribute("catalog_product", $attribute_code); 
+									$options = $attribute_details->getSource()->getAllOptions(false); 
+									foreach($options as $option){ 
+									?>
+                  <li data-value="<?php echo $option["value"];  ?>" class=""><?php echo $option["label"]; ?></li>
+                  <?php } ?>
                 </ul>
-                <?php endif; ?>
               </div>
             </div>
           </div>
-          <?php endif ?>
-          <?php if($_product->storagecapacity): ?>
           <div class="panel">
             <div class="panel-heading" role="tab" id="headingTwo">
-              <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> <?php echo  $_product->getResource()->getAttribute('storagecapacity')->getFrontendLabel(); 	 ?> <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
+              <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Storage Capacity <i class="fa fa-angle-down"></i> <span class="selected-value">8GB</span> </a> </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body">
-                <?php if($_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product)):?>
                 <ul class="product-meta-select" data-id="headingTwo">
-                  <?php $i=0?>
-                  <?php foreach(explode(',', $_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product)) as $value) : ?>
-                  <li id="value_<?php echo $i?>"><?php echo $value ?></li>
-                  <?php $i++ ?>
-                  <?php endforeach ?>
-                </ul>
-                <?php endif; ?>
-                <?php	//echo $_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product);	?>
-                <!-- <ul class="product-meta-select" data-id="headingTwo">
                   <li class="active">8GB</li>
                   <li>16GB</li>
                   <li>32GB</li>
                   <li>64GB</li>
-                </ul>--> 
+                </ul>
               </div>
             </div>
           </div>
-          <?php endif ?>
         </div>
         <div class="buttons">
           <div class="row">
@@ -176,109 +158,6 @@ echo $yousave;
 ?>
   </div>
   <script type="text/javascript">
-=======
- !
-                        
-                        </div>
-							</div>
-						</div>
-						<div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock 
-						<?php if ($_product->isAvailable()): ?>
-						<?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
-                  <?php endif; ?>
-                   pcs</div>
-                   
-                   <?php if($_product->condition): ?>
-						<div class="__condition"><strong>
-						<?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel(); 	?>:
-                  </strong> 
-						<?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
-                  </div>
-                   <?php endif ?>
-                  
-                  
-                  <?php if($_product->warrenty): ?>
-						<div class="__warrenty"><strong>
-                  <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel(); 	?>
-                  :</strong> 
-                  <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product);	?>
-                  </div> 
-                  <?php else: ?>
-                  <br/>
-                  <?php endif ?>
-						<div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
-							<div class="panel">
-								<div class="panel-heading" role="tab" id="headingOne">
-									<h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 
-											
-               <?php  echo  $_product->getResource()->getAttribute('color')->getFrontendLabel(); 	?>
-              
-                           
-                            <i class="fa fa-angle-down"></i> <span class="selected-value">White</span> </a></h4>
-								</div>
-								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-						
-                           <div class="panel-body">
-									<ul class="product-meta-select" data-id="headingOne">
-									
-                           <?php
-									
-							
-							
-									
-									$attribute_code = "color"; 
-									$attribute_details = Mage::getSingleton("eav/config")->getAttribute("catalog_product", $attribute_code); 
-									$options = $attribute_details->getSource()->getAllOptions(false); 
-									foreach($options as $option){ 
-									?>
-									<li data-value="<?php echo $option["value"];  ?>" class=""><?php echo $option["label"]; ?></li>
-									<?php } ?>
-									</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel">
-								<div class="panel-heading" role="tab" id="headingTwo">
-									<h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Storage Capacity <i class="fa fa-angle-down"></i> <span class="selected-value">8GB</span> </a> </h4>
-								</div>
-								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">
-									<ul class="product-meta-select" data-id="headingTwo">
-										<li class="active">8GB</li>
-										<li>16GB</li>
-										<li>32GB</li>
-										<li>64GB</li>
-									</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="buttons">
-							<div class="row">
-							<?php if($upcomingproduct == "No"){ ?>
-								<div class="col-sm-9">
-									<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
-
-								</div>
-						<?php	} ?>
-								<div class="col-sm-3">
-							<?php $_product = $this->getProduct(); ?>
-                     <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-								
-								
-							<?php if ($this->helper('wishlist')->isAllow()) : ?>
-                     <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
-                     <?php endif; ?>   
-                     </div>
-							</div>
-						</div>
-						<div class="__share__this">
-							<a href="#">Share this product</a>
-						</div>
-					</div>
-               </form>
-               <script type="text/javascript">
->>>>>>> 4fbfffe16b0a9a3c9e4137b59c2858248d7e786a
         //<![CDATA[
             var productAddToCartForm = new VarienForm('product_addtocart_form');
             productAddToCartForm.submit = function(button, url) {
@@ -333,27 +212,28 @@ echo $yousave;
 <div class="__product__description">
   <div class="row">
     <div class="col-sm-7">
-    
-     <?php if($_product->description ): ?>
-       
-       
-      <h2><?php  echo  $_product->getResource()->getAttribute('description')->getFrontendLabel(); 	?></h2>
+      <h2>Description</h2>
       <div id="__product__detail" class="__product__detail is-more">
-        
-        <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
-       
-        
-        <?php endif ?>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisl sapien, vestibulum quis rhoncus a, molestie quis elit. Morbi mollis hendrerit ipsum, varius scelerisque tortor molestie in. Phasellus ultricies risus justo, ut pharetra ex consequat nec. Maecenas ultricies congue nisl vel
+          pellentesque. Sed nec efficitur arcu. In hac habitasse platea dictumst. Duis augue nisi, dictum in lacinia in, maximus nec nulla.</p>
+        <p>Proin euismod tellus in pharetra convallis. Proin iaculis vitae turpis rutrum cursus. Sed ultricies purus at nisi dignissim, ut suscipit tellus ultricies. In quis eleifend velit. Suspendisse tempus felis non nulla posuere tincidunt. Vivamus sed tortor enim. Sed non gravida erat. Integer vel tellus tincidunt, finibus augue at, mattis mi. Phasellus vestibulum metus urna, ac elementum elit pretium id. Praesent feugiat, lorem et varius mattis, justo dolor eleifend tellus, a euismod elit elit quis tellus. Morbi dui nisi, porta nec fermentum vitae, rutrum sed risus. Donec consequat ex vel neque feugiat lobortis. Nulla sollicitudin neque quis tortor pharetra imperdiet.</p>
+        <p></p>
+        <span class="more-ellipsis"></span><span class="more-hidden">
+        <p>Proin euismod tellus in pharetra convallis. Proin iaculis vitae turpis rutrum cursus. Sed ultricies purus at nisi dignissim, ut suscipit tellus ultricies. In quis eleifend velit. Suspendisse tempus felis non nulla posuere tincidunt. Vivamus sed tortor enim. Sed non gravida erat. Integer vel tellus tincidunt, finibus augue at, mattis mi. Phasellus vestibulum metus urna, ac elementum elit pretium id. Praesent feugiat, lorem et varius mattis, justo dolor eleifend tellus, a euismod elit elit quis tellus. Morbi dui nisi, porta nec fermentum vitae, rutrum sed risus. Donec consequat ex vel neque feugiat lobortis. Nulla sollicitudin neque quis tortor pharetra imperdiet.</p>
+        <p></p>
+        <p>Proin euismod tellus in pharetra convallis. Proin iaculis vitae turpis rutrum cursus. Sed ultricies purus at nisi dignissim, ut suscipit tellus ultricies. In quis eleifend velit. Suspendisse tempus felis non nulla posuere tincidunt. Vivamus sed tortor enim. Sed non gravida erat. Integer vel tellus tincidunt, finibus augue at, mattis mi. Phasellus vestibulum metus urna, ac elementum elit pretium id. Praesent feugiat, lorem et varius mattis, justo dolor eleifend tellus, a euismod elit elit quis tellus. Morbi dui nisi, porta nec fermentum vitae, rutrum sed risus. Donec consequat ex vel neque feugiat lobortis. Nulla sollicitudin neque quis tortor pharetra imperdiet.</p>
+        </span><a class="more-link" href="#">Read Full Description</a></div>
     </div>
-    
-    
     <div id="product_specs" class="col-sm-5 is-more">
       <h2>Specifications</h2>
-      <?php 			$product_id = Mage::registry('current_product')->getId();
+      
+
+		
+		<?php 			$product_id = Mage::registry('current_product')->getId();
 							$_product = Mage::getModel('catalog/product')->load($product_id);
 							$collections = array();
 							$attributesCollection = Mage::getResourceModel('catalog/product_attribute_collection');
-							$attributesCollection->setAttributeGroupFilter(18);
+							$attributesCollection->setAttributeGroupFilter(18);  
 							foreach ($attributesCollection as $attribute) {
 							?>
       <div class="row">
@@ -361,30 +241,24 @@ echo $yousave;
 									if($attribute->getFrontendInput() == 'select' || $attribute->getFrontendInput() == 'boolean'){
 									?>
         <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
-        <div class="col-sm-6">
-          <?php 
-		  if(is_array($_product->getAttributeText($attribute->getAttributeCode()))){
-			  $a = explode("," , $_product->getAttributeText($attribute->getAttributeCode()) );
-			  }
-			  
-			  print_r($a);
-		  echo $_product->getAttributeText($attribute->getAttributeCode()); ?>
-        </div>
+        <div class="col-sm-6"> <?php echo $_product->getAttributeText($attribute->getAttributeCode()); ?> </div>
         <?php 
 									} 
 									else 
 									{ 
-										if($attribute->getFrontendInput()=="text" );
+										if($attribute->getFrontendInput()=="text");
 										?>
         <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
         <div class="col-sm-6"> <?php echo $_product->getData($attribute->getAttributeCode()); ?> </div>
+        
         <?php 
 										}
 										?>
       </div>
       <?php } ?>
     </div>
-    
+    <span class="more-ellipsis" style="display: none;"></span> <span class="more-hidden" style="display: inline;"> </span> 
+    <!--<a class="more-link" href="#">See Less Specs</a>--> 
   </div>
 </div>
 <script>
