@@ -27,7 +27,6 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
 
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
 
-        
         $this->setProductCollection($products);
 
     }
