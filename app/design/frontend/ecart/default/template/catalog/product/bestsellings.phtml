@@ -1,5 +1,5 @@
 <?php
-    $_productCollection=$this->getLoadedProductCollection();
+    $_productCollection=$this->getProductCollection();
     $_helper = $this->helper('catalog/output');
 ?>
     <?php if(!$_productCollection->count()): ?>
@@ -8,7 +8,7 @@
 		<section id="bestselingproduct">
 			<div class="sectiontitle">
 				<h2><span>BEST SELLINGS</span></h2>
-				<a href="#">View More Products</a>
+				<a href="extension/index/seller/">View More Products</a>
 				<ul class="brandsmenu smartphones">
 					<li>
 					<select>
@@ -56,7 +56,7 @@
 				</div>
 			<?php endforeach ?>
 			</div>
-			<a data-id="bestselingproducts" class="loadmore smartphones">View All Products</a>
+			<a data-id="bestselingproducts" class="loadmore smartphones" href ="extension/index/seller/">View All Products</a>
 		</section>
 	<?php endif; ?>
 <?php

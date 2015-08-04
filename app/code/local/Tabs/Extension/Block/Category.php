@@ -278,5 +278,19 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
                            
         return $_testproductCollection;
     }  
+
+    protected function getProductCollectionUpcomingPro()
+    {
+       $id = $this->getRequest()->getParam('cat_ids');
+       
+       $_category = Mage::getModel('catalog/category')->load($id);
+
+       $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
+       ->addCategoryFilter($_category)
+       ->addAttributeToFilter('upcomingproduct', 1)
+       ->addAttributeToSelect('*');
+                           
+        return $_testproductCollection;
+    }  
 }
 ?>

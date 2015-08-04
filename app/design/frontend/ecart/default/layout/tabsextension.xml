@@ -7,7 +7,7 @@
             </action>
         </reference>
         <reference name="content">
-            <block type="extension/seller" name="bestseller" as="bestseller"  template="catalog/product/list.phtml">
+            <block type="extension/seller" name="bestseller" as="bestseller"  template="catalog/product/bestsellerlist.phtml">
                 </block>  
         </reference>
     </extension_index_seller>
@@ -15,9 +15,7 @@
         <label>Todays Deal (Anchor)</label>
         <!-- extensionseller -->
         <reference name="head">
-            <action method="setTitle">
-                <title>Todays Deals</title>
-            </action>
+            <action method="setForcedTitle"><title>Today's Deals</title></action>
         </reference>
         <reference name="left_first">
             <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalin_seo/catalog/layer/view.phtml">
@@ -25,8 +23,8 @@
             </block>
         </reference>
         <reference name="content">
-            <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
-                <block type="extension/sale" name="bestseller" as="bestseller"  template="catalin_seo/catalog/product/list.phtml">
+            
+                <block type="extension/sale" name="bestseller" as="bestseller"  template="catalog/product/newlist.phtml">
                     <block type="core/text_list" name="product_list.name.after" as="name.after" />
                     <block type="core/text_list" name="product_list.after" as="after" />
                     <!-- <action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/su.phtml</template></action> -->
@@ -56,7 +54,6 @@
                     <!-- Since the addColumnCountLayoutDepend does not work, we are manually setting the max columns -->
                     <action method="setColumnCount"><count>4</count></action>
                 </block>
-            </block>
         </reference>
     </extension_index_sale>
 
