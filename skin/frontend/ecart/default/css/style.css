@@ -507,7 +507,7 @@ clear:both;}
 font-size:14px;font-weight:100;text-transform:uppercase;}
 .toolbar .sorter .sort-by label,.toolbar .sorter .pager label{font-weight:400;}
 .toolbar .sorter .sort-by select,.toolbar .sorter .pager select{color:#5a5f65;padding:4px 7px;
-border:1px solid #e3e3e3;text-transform:uppercase;}
+border:1px solid #e3e3e3;text-transform:uppercase;font-size:12px;}
 .toolbar .sorter .view-mode a{padding:1px 6px;border:1px solid #e3e3e3;display:inline-block;color:#444;
 font-size:18px;line-height:1.4;margin-right:5px;cursor:pointer;}
 .toolbar .sorter .view-mode a:hover,.toolbar .sorter .view-mode a.active{
