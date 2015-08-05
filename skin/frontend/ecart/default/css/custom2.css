@@ -110,3 +110,18 @@ td.customer-wishlist-item-price .price{font-size:inherit;}
 #checkout-step-review .data-table .product-name{text-align:left;font-size:14px;margin-bottom:0;}
 #checkout-step-review .data-table .a-right{text-align:right;}
 #checkout-step-review .data-table th:first-child{text-align:left;}
+div.price-slider{height:10px !important;background-color:#e3e3e3 !important;
+background-image:none !important;}
+.products .product.grid .ratingstopdetail{margin-bottom:0;}
+div.price-slider .price-slider-from{top:-3px;background-color:#f57a20 !important;
+background-image:none !important;}
+div.price-slider .price-slider-to{margin-top:-20px !important;background-color:#f57a20 !important;
+background-image:none !important;}
+@media only screen and (max-width : 800px){
+.data-table{display:block;}
+.data-table thead,.data-table tbody,.data-table tfoot,.data-table tr,.data-table td,.data-table th{
+display:block;}
+.data-table tr{background-color:#fff;}
+.data-table th{height:auto;}
+.cart_table td.delivery{max-width:100%;text-align:center;}
+}

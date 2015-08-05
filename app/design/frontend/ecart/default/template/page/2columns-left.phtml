@@ -51,17 +51,15 @@
                 
                   <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <div class="container">
-                <div class="col-sm-3 paddingzero">
-                
-                
-                
+                <div class="col-sm-4 col-md-3 paddingzero">
+
                 <?php // This left_first block will display above the main content on smaller viewports ?>
                 <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
                 <?php echo $_leftContent;   ?>
                 <?php endif; ?>
                 <?php echo $this->getChildHtml('left') ?>
 					</div>
-               <div class="col-sm-12 col-md-9">
+               <div class="col-sm-8 col-md-9">
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
             </div>
