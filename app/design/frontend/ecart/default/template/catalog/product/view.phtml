@@ -213,61 +213,53 @@ echo $yousave;
         </script> 
 </div>
 <div class="__product__description">
-  <div class="row">
-    <div class="col-sm-7">
-    
-     <?php if($_product->description ): ?>
-       
-       
-      <h2><?php  echo  $_product->getResource()->getAttribute('description')->getFrontendLabel(); 	?></h2>
-      <div id="__product__detail" class="__product__detail ">
-        
-        <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
-       
-        
-        <?php endif ?>
+<div class="row">
+  <div class="col-sm-7">
+    <?php if($_product->description ): ?>
+    <h2>
+      <?php  echo  $_product->getResource()->getAttribute('description')->getFrontendLabel(); 	?>
+    </h2>
+    <div id="__product__detail" class="__product__detail "> <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
+      <?php endif ?>
     </div>
-    </div>
-    
-    <div id="product_specs" class="col-sm-5 ">
-      <h2>Specifications</h2>
-      <?php 			$product_id = Mage::registry('current_product')->getId();
+  </div>
+  <div id="product_specs" class="col-sm-5 ">
+    <h2>Specifications</h2>
+    <?php 			$product_id = Mage::registry('current_product')->getId();
 							$_product = Mage::getModel('catalog/product')->load($product_id);
 							$collections = array();
 							$attributesCollection = Mage::getResourceModel('catalog/product_attribute_collection');
 							$attributesCollection->setAttributeGroupFilter(18);
 							foreach ($attributesCollection as $attribute) {
 							?>
-      <div class="row">
-        <?php
+    <div class="row">
+      <?php
 									if($attribute->getFrontendInput() == 'select' || $attribute->getFrontendInput() == 'boolean'){
 									?>
-        <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
-        <div class="col-sm-6">
-          <?php 
+      <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
+      <div class="col-sm-6">
+        <?php 
 		  if(is_array($_product->getAttributeText($attribute->getAttributeCode()))){
 			  $a = explode("," , $_product->getAttributeText($attribute->getAttributeCode()) );
 			  }
 			  
 			  print_r($a);
 		  echo $_product->getAttributeText($attribute->getAttributeCode()); ?>
-        </div>
-        <?php 
+      </div>
+      <?php 
 									} 
 									else 
 									{ 
 										if($attribute->getFrontendInput()=="text" );
 										?>
-        <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
-        <div class="col-sm-6"> <?php echo $_product->getData($attribute->getAttributeCode()); ?> </div>
-        <?php 
+      <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
+      <div class="col-sm-6"> <?php echo $_product->getData($attribute->getAttributeCode()); ?> </div>
+      <?php 
 										}
 										?>
-      </div>
-      <?php } ?>
     </div>
-    
-
+    <?php } ?>
+  </div>
 </div>
 <script>
 jQuery('.bxslider').bxSlider({
@@ -287,5 +279,3 @@ jQuery('.bxslider').bxSlider({
 			lessText: 'See Less Specs'
 		});
 </script> 
-
-
