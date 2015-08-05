@@ -167,6 +167,18 @@
 			</reference>
 	    </cms_index_index>
 
+	    <catalogsearch_result_index>
+			<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			</reference>
+		</catalogsearch_result_index>
+
+		 <cms_index_noroute>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+		</cms_index_noroute>
+
 			<checkout_onepage_index>
 			<reference name="root">
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
