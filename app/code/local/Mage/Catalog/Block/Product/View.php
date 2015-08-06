@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Magento
  *
@@ -24,7 +25,6 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-
 /**
  * Product View block
  *
@@ -35,6 +35,7 @@
  */
 class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstract
 {
+
     /**
      * Default MAP renderer type
      *
@@ -66,7 +67,7 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
             }
             $description = $product->getMetaDescription();
             if ($description) {
-                $headBlock->setDescription( ($description) );
+                $headBlock->setDescription(($description));
             } else {
                 $headBlock->setDescription(Mage::helper('core/string')->substr($product->getDescription(), 0, 255));
             }
@@ -154,10 +155,8 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
         $_regularPrice = $product->getPrice();
         $_finalPrice = $product->getFinalPrice();
         if ($product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_BUNDLE) {
-            $_priceInclTax = Mage::helper('tax')->getPrice($product, $_finalPrice, true,
-                null, null, null, null, null, false);
-            $_priceExclTax = Mage::helper('tax')->getPrice($product, $_finalPrice, false,
-                null, null, null, null, null, false);
+            $_priceInclTax = Mage::helper('tax')->getPrice($product, $_finalPrice, true, null, null, null, null, null, false);
+            $_priceExclTax = Mage::helper('tax')->getPrice($product, $_finalPrice, false, null, null, null, null, null, false);
         } else {
             $_priceInclTax = Mage::helper('tax')->getPrice($product, $_finalPrice, true);
             $_priceExclTax = Mage::helper('tax')->getPrice($product, $_finalPrice);
@@ -166,37 +165,37 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
         $_tierPricesInclTax = array();
         foreach ($product->getTierPrice() as $tierPrice) {
             $_tierPrices[] = Mage::helper('core')->currency(
-                Mage::helper('tax')->getPrice($product, (float)$tierPrice['website_price'], false) - $_priceExclTax
+                    Mage::helper('tax')->getPrice($product, (float) $tierPrice['website_price'], false) - $_priceExclTax
                     , false, false);
             $_tierPricesInclTax[] = Mage::helper('core')->currency(
-                Mage::helper('tax')->getPrice($product, (float)$tierPrice['website_price'], true) - $_priceInclTax
+                    Mage::helper('tax')->getPrice($product, (float) $tierPrice['website_price'], true) - $_priceInclTax
                     , false, false);
         }
         $config = array(
-            'productId'           => $product->getId(),
-            'priceFormat'         => Mage::app()->getLocale()->getJsPriceFormat(),
-            'includeTax'          => Mage::helper('tax')->priceIncludesTax() ? 'true' : 'false',
-            'showIncludeTax'      => Mage::helper('tax')->displayPriceIncludingTax(),
-            'showBothPrices'      => Mage::helper('tax')->displayBothPrices(),
-            'productPrice'        => Mage::helper('core')->currency($_finalPrice, false, false),
-            'productOldPrice'     => Mage::helper('core')->currency($_regularPrice, false, false),
-            'priceInclTax'        => Mage::helper('core')->currency($_priceInclTax, false, false),
-            'priceExclTax'        => Mage::helper('core')->currency($_priceExclTax, false, false),
+            'productId' => $product->getId(),
+            'priceFormat' => Mage::app()->getLocale()->getJsPriceFormat(),
+            'includeTax' => Mage::helper('tax')->priceIncludesTax() ? 'true' : 'false',
+            'showIncludeTax' => Mage::helper('tax')->displayPriceIncludingTax(),
+            'showBothPrices' => Mage::helper('tax')->displayBothPrices(),
+            'productPrice' => Mage::helper('core')->currency($_finalPrice, false, false),
+            'productOldPrice' => Mage::helper('core')->currency($_regularPrice, false, false),
+            'priceInclTax' => Mage::helper('core')->currency($_priceInclTax, false, false),
+            'priceExclTax' => Mage::helper('core')->currency($_priceExclTax, false, false),
             /**
              * @var skipCalculate
              * @deprecated after 1.5.1.0
              */
-            'skipCalculate'       => ($_priceExclTax != $_priceInclTax ? 0 : 1),
-            'defaultTax'          => $defaultTax,
-            'currentTax'          => $currentTax,
-            'idSuffix'            => '_clone',
-            'oldPlusDisposition'  => 0,
-            'plusDisposition'     => 0,
-            'plusDispositionTax'  => 0,
+            'skipCalculate' => ($_priceExclTax != $_priceInclTax ? 0 : 1),
+            'defaultTax' => $defaultTax,
+            'currentTax' => $currentTax,
+            'idSuffix' => '_clone',
+            'oldPlusDisposition' => 0,
+            'plusDisposition' => 0,
+            'plusDispositionTax' => 0,
             'oldMinusDisposition' => 0,
-            'minusDisposition'    => 0,
-            'tierPrices'          => $_tierPrices,
-            'tierPricesInclTax'   => $_tierPricesInclTax,
+            'minusDisposition' => 0,
+            'tierPrices' => $_tierPrices,
+            'tierPricesInclTax' => $_tierPricesInclTax,
         );
 
         $responseObject = new Varien_Object();
@@ -279,21 +278,57 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
         return array_merge(parent::getCacheTags(), $this->getProduct()->getCacheIdTags());
     }
 
-    public function getTotalOrder($id){
-         $query = Mage::getResourceModel('sales/order_item_collection');
-         $query->getSelect()->reset(Zend_Db_Select::COLUMNS)
-         ->columns(array('sku','SUM(qty_ordered) as purchased'))
-         ->group(array('sku'))
-         ->where('product_id = ?',array($id))
-         ->limit(1);
-         return $query;
+    public function getTotalOrder($id)
+    {
+        $query = Mage::getResourceModel('sales/order_item_collection');
+        $query->getSelect()->reset(Zend_Db_Select::COLUMNS)
+                ->columns(array('sku', 'SUM(qty_ordered) as purchased'))
+                ->group(array('sku'))
+                ->where('product_id = ?', array($id))
+                ->limit(1);
+        return $query;
     }
 
-    public function getBrand($productid){
+    public function getBrand($productid)
+    {
 
-        
+
         $collection = Mage::getModel('shopbybrand/brand')->getCollection();
-        $collection->getSelect()->where('product_ids LIKE ?', '%'.$productid.'%')->limit(1);
+        $collection->getSelect()->where('product_ids LIKE ?', '%' . $productid . '%')->limit(1);
         return $collection;
     }
+
+    /**
+     * @param string $code Attribute's code, who's detail is going to be retrived in array(key,value) format along with value and label
+     * @return array
+     */
+    public function getAttrDetailByCode($code)
+    {
+        $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product', $code);
+        $collection = Mage::getResourceModel('eav/entity_attribute_option_collection')
+                ->setPositionOrder('asc')
+                ->setAttributeFilter($attributeId)
+                ->setStoreFilter(0)
+                ->load();
+        return $collection->toOptionArray();
+    }
+    
+    /**
+     * Searches attributes label within array returned from @getAttrDetailByCode method
+     * @param string $label Label to be searched
+     * @return integer/boolean Value on success otherwise false
+     */
+    public function attrExsistsByLabel($label, $attrCollection = array())
+    {
+        $label = trim($label);
+        if(empty($attrCollection))//if attrCollection is not passed get it.
+            $attrCollection = $this->getAttrDetailByCode($label);
+        foreach($attrCollection as $attr) {
+            if($attr['label'] == $label) {
+                return $attr['value'];
+            }
+        }
+        return 0;
+    }
+
 }
