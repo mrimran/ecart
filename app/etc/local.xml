@@ -39,21 +39,7 @@
                 <table_prefix><![CDATA[]]></table_prefix>
             </db>
             <default_setup>
-               <!-- <connection>
-                    <host><![CDATA[localhost]]></host>
-                    <username><![CDATA[root]]></username>
-                    <password><![CDATA[]]></password>
-                    <dbname><![CDATA[ecart_3]]></dbname>
-                    <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
-                    <model><![CDATA[mysql4]]></model>
-                    <type><![CDATA[pdo_mysql]]></type>
-                    <pdoType><![CDATA[]]></pdoType>
-                    <active>1</active>
-                </connection>-->
-					 
-					 
-					 
-					   <connection>
+      		   <connection>
                     <host><![CDATA[144.76.62.172]]></host>
                     <username><![CDATA[lmlabs_ecart]]></username>
                     <password><![CDATA[m*7S&JIrU5]]></password>
