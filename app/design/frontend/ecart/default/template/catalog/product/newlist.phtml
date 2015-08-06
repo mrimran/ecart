@@ -87,7 +87,15 @@
                <span class="not-now">
 					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
                </div>
-					<div class="orders">10 Orders</div>
+					<?php $productCollection=$this->getTotalOrder($_product->getId());
+                          $_helper = $this->helper('catalog/output');?>
+                     <?php if(!$productCollection->count()): ?>
+                            <div class="orders">0 Orders</div>
+                      <?php else: ?>
+                             <?php foreach ($productCollection as $_brand): ?>
+                                 <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
+                              <?php endforeach ?>
+                      <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">
                
@@ -150,7 +158,15 @@
                <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
 					 </span>
                </div>
-					<div class="orders">10 Orders</div>
+					<?php $productCollection=$this->getTotalOrder($_product->getId());
+                          $_helper = $this->helper('catalog/output');?>
+                     <?php if(!$productCollection->count()): ?>
+                            <div class="orders">0 Orders</div>
+                      <?php else: ?>
+                             <?php foreach ($productCollection as $_brand): ?>
+                                 <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
+                              <?php endforeach ?>
+                      <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">25 pcs on Stock</h5>
 					</div>

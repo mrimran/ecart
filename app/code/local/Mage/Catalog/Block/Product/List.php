@@ -278,4 +278,13 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
          ->limit(1);
          return $query;
     }
+
+    public function getBrand($productid){
+
+        echo $product_id;
+        exit;
+        $collection = Mage::getModel('shopbybrand/brand')->getCollection();
+        $collection->getSelect()->where('product_ids LIKE ?', '%'.$productid.'%')->limit(1);
+        return $collection;
+    }
 }

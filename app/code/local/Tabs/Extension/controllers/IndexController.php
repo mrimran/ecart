@@ -21,6 +21,27 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
+    public function ourcollectionAction() 
+    {
+        
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    public function productcollectionAction() 
+    {
+        
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+     public function allsaleAction() 
+    {
+        
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
     public function TrendingAction() 
     {
     	
