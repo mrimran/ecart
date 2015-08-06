@@ -49,34 +49,37 @@
       <div class="col-sm-6">
         <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
         <div class="__type">by
-        <?php $_helper = $this->helper('catalog/output'); ?>
-        <?php $_brands = $this->getBrand($_product->getId()); ?> 
-        <?php foreach ($_brands as $brand): ?>
-          <a href="#"><?php echo $brand->name ?></a>, 
-        <?php endforeach ?>
-        <?php $_category_detail = Mage::registry('current_category');?>
-            <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
-       
+          <?php $_helper = $this->helper('catalog/output'); ?>
+          <?php $_brands = $this->getBrand($_product->getId()); ?>
+          <?php foreach ($_brands as $brand): ?>
+          <a href="#"><?php echo $brand->name ?></a>,
+          <?php endforeach ?>
+          <?php $_category_detail = Mage::registry('current_category');?>
+          <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
+        
         <!--						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
 --> 
         <?php echo $this->getReviewsSummaryHtml($_product, "short", true)?> <?php echo $this->getChildHtml('product_review') ?>
+        <?php if(!$_product->getTypeId() == 'grouped' ): ?>
         <div class="row">
           <div class="col-sm-6">
-            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"><?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
           </div>
           <div class="col-sm-6">
             <div class="__you_saved">You save <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
-              <?php
-$specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+$this->getProduct()->getFinalPrice();
-$_priceExclTax = $this->getPrice($sign.$value['pricing_value'])+$this->getProduct()->getPrice();
-if($specialprice < $_priceExclTax) { 
-$yousave =  $_priceExclTax - $specialprice;
-echo $yousave;
-}
-?>
+							<?php
+                     $specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+$this->getProduct()->getFinalPrice();
+                     $_priceExclTax = $this->getPrice($sign.$value['pricing_value'])+$this->getProduct()->getPrice();
+                     if($specialprice < $_priceExclTax) { 
+                     $yousave =  $_priceExclTax - $specialprice;
+                     echo $yousave;
+                     }
+                     ?>
               ! </div>
           </div>
         </div>
+        <?php endif; ?>
+        <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?> <?php echo $this->getChildHtml('extrahint') ?> </div>
         <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
           <?php if ($_product->isAvailable()): ?>
           <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
@@ -140,7 +143,6 @@ echo $yousave;
                 <!-- <ul class="product-meta-select" data-id="headingTwo">
                   <li class="active">8GB</li>
                   <li>16GB</li>
-
                   <li>32GB</li>
                   <li>64GB</li>
                 </ul>--> 
@@ -163,7 +165,7 @@ echo $yousave;
             </div>
           </div>
         </div>
-        <div class="__share__this"> <a href="#">Share this product</a> </div>
+        <div class="__share__this"> <!--<a href="#">Share this product</a>--> </div>
       </div>
     </form>
     <?php
@@ -286,4 +288,4 @@ jQuery('.bxslider').bxSlider({
 			moreText: 'See Full Specs',
 			lessText: 'See Less Specs'
 		});
-</script> 
+</script>
