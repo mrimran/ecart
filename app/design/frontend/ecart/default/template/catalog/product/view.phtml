@@ -49,6 +49,7 @@
       <div class="col-sm-6">
         <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
         <div class="__type">by
+<<<<<<< HEAD
           <?php $_helper = $this->helper('catalog/output'); ?>
           <?php $_brands = $this->getBrand($_product->getId()); ?>
           <?php foreach ($_brands as $brand): ?>
@@ -58,6 +59,17 @@
           <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
         
         <!--						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
+=======
+        <?php $_helper = $this->helper('catalog/output'); ?>
+        <?php $_brands = $this->getBrand($_product->getId()); ?> 
+        <?php foreach ($_brands as $brand): ?>
+          <a href="#"><?php echo $brand->name ?></a>, 
+        <?php endforeach ?>
+        <?php $_category_detail = Mage::registry('current_category');?>
+            <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
+       
+        <!--            <div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
+>>>>>>> d9a325b4dd67d15ded31ab3eadad5dad2124c071
 --> 
         <?php echo $this->getReviewsSummaryHtml($_product, "short", true)?> <?php echo $this->getChildHtml('product_review') ?>
         <?php if(!$_product->getTypeId() == 'grouped' ): ?>
@@ -87,13 +99,13 @@
           pcs</div>
         <?php if($_product->condition): ?>
         <div class="__condition"><strong>
-          <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel(); 	?>
+          <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
           : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> </div>
         <?php endif ?>
         <?php if($_product->warrenty): ?>
         <div class="__warrenty"><strong>
-          <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel(); 	?>
-          :</strong> <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product);	?> </div>
+          <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel();  ?>
+          :</strong> <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product); ?> </div>
         <?php else: ?>
         <br/>
         <?php endif ?>
@@ -103,8 +115,8 @@
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <?php  
-					 echo  $_product->getResource()->getAttribute('color')->getFrontendLabel(); 	
-					 ?>
+           echo  $_product->getResource()->getAttribute('color')->getFrontendLabel();   
+           ?>
                 <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -116,7 +128,7 @@
                   <li id="value_<?php echo $i?>"><?php echo $value ?></li>
                   <?php $i++ ?>
                   <?php endforeach ?>
-                  <?php	//echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product);	?>
+                  <?php //echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
                 </ul>
                 <?php endif; ?>
               </div>
@@ -126,7 +138,7 @@
           <?php if($_product->storagecapacity): ?>
           <div class="panel">
             <div class="panel-heading" role="tab" id="headingTwo">
-              <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> <?php echo  $_product->getResource()->getAttribute('storagecapacity')->getFrontendLabel(); 	 ?> <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
+              <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> <?php echo  $_product->getResource()->getAttribute('storagecapacity')->getFrontendLabel();    ?> <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body">
@@ -139,7 +151,7 @@
                   <?php endforeach ?>
                 </ul>
                 <?php endif; ?>
-                <?php	//echo $_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product);	?>
+                <?php //echo $_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product); ?>
                 <!-- <ul class="product-meta-select" data-id="headingTwo">
                   <li class="active">8GB</li>
                   <li>16GB</li>
@@ -223,56 +235,75 @@
         </script> 
 </div>
 <div class="__product__description">
-<div class="row">
-  <div class="col-sm-7">
-    <?php if($_product->description ): ?>
-    <h2>
-      <?php  echo  $_product->getResource()->getAttribute('description')->getFrontendLabel(); 	?>
-    </h2>
-    <div id="__product__detail" class="__product__detail "> <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
-      <?php endif ?>
+
+  <div class="row">
+    <div class="col-sm-7">
+    
+     <?php if($_product->description ): ?>
+       
+       
+      <h2><?php  echo  $_product->getResource()->getAttribute('description')->getFrontendLabel();   ?></h2>
+      <div id="__product__detail" class="__product__detail ">
+        
+        <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
+       
+        
+        <?php endif ?>
     </div>
-  </div>
-  <div id="product_specs" class="col-sm-5 ">
-    <h2>Specifications</h2>
-    <?php 			$product_id = Mage::registry('current_product')->getId();
-							$_product = Mage::getModel('catalog/product')->load($product_id);
-							$collections = array();
-							$attributesCollection = Mage::getResourceModel('catalog/product_attribute_collection');
-							$attributesCollection->setAttributeGroupFilter(18);
-							foreach ($attributesCollection as $attribute) {
-							?>
-    <div class="row">
-      <?php
-									if($attribute->getFrontendInput() == 'select' || $attribute->getFrontendInput() == 'boolean'){
-									?>
-      <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
-      <div class="col-sm-6">
+    </div>
+    
+    <div id="product_specs" class="col-sm-5 ">
+      <h2>Specifications</h2>
+      <?php       $product_id = Mage::registry('current_product')->getId();
+              $_product = Mage::getModel('catalog/product')->load($product_id);
+              $collections = array();
+              $attributesCollection = Mage::getResourceModel('catalog/product_attribute_collection');
+              $attributesCollection->setAttributeGroupFilter(18);
+              foreach ($attributesCollection as $attribute) {
+              ?>
+      <div class="row">
+        <?php
+                  if($attribute->getFrontendInput() == 'select' || $attribute->getFrontendInput() == 'boolean'){
+                  ?>
+        <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
+        <div class="col-sm-6">
+          <?php 
+      if(is_array($_product->getAttributeText($attribute->getAttributeCode()))){
+        $a = explode("," , $_product->getAttributeText($attribute->getAttributeCode()) );
+        }
+        
+        print_r($a);
+      echo $_product->getAttributeText($attribute->getAttributeCode()); ?>
+        </div>
         <?php 
-		  if(is_array($_product->getAttributeText($attribute->getAttributeCode()))){
-			  $a = explode("," , $_product->getAttributeText($attribute->getAttributeCode()) );
-			  }
-			  
-			  print_r($a);
-		  echo $_product->getAttributeText($attribute->getAttributeCode()); ?>
+                  } 
+                  else 
+                  { 
+                    if($attribute->getFrontendInput()=="text" );
+                    ?>
+        <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
+        <?php if($attribute->getAttributeCode() == 'color' || $attribute->getAttributeCode() == 'storagecapacity'){
+                 $colors = $_product->getAttributeText($attribute->getAttributeCode());
+                 echo "<div class='col-sm-6'>";
+                 foreach($colors as $name => $value): 
+                   echo $value.",";
+                 endforeach;
+                 echo "</div>";
+          } else{ ?>
+
+        <div class="col-sm-6"> <?php echo $_product->getData($attribute->getAttributeCode()); ?> </div>
+        
+        <?php }
+                    }
+                    ?>
       </div>
-      <?php 
-									} 
-									else 
-									{ 
-										if($attribute->getFrontendInput()=="text" );
-										?>
-      <div class="col-sm-6"> <strong> <?php echo $attribute->getFrontendLabel(); ?> </strong> </div>
-      <div class="col-sm-6"> <?php echo $_product->getData($attribute->getAttributeCode()); ?> </div>
-      <?php 
-										}
-										?>
+      <?php } ?>
     </div>
-    <?php } ?>
-  </div>
+    
 </div>
 <script>
 jQuery('.bxslider').bxSlider({
+<<<<<<< HEAD
 		  pagerCustom: '#bx-pager'
 		});
 		jQuery('#__product__detail').more({
@@ -289,3 +320,21 @@ jQuery('.bxslider').bxSlider({
 			lessText: 'See Less Specs'
 		});
 </script>
+=======
+      pagerCustom: '#bx-pager'
+    });
+    jQuery('#__product__detail').more({
+      length:1099,
+      ellipsisText: '',
+      moreText: 'Read Full Description',
+      lessText: 'Read Less Description'
+    });
+    jQuery('#product_specs').more({
+      length:335,
+      leaway:10,
+      ellipsisText: '',
+      moreText: 'See Full Specs',
+      lessText: 'See Less Specs'
+    });
+</script> 
+>>>>>>> d9a325b4dd67d15ded31ab3eadad5dad2124c071

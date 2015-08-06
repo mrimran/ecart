@@ -39,6 +39,7 @@
                 <table_prefix><![CDATA[]]></table_prefix>
             </db>
             <default_setup>
+
       		   <connection>
                     <host><![CDATA[144.76.62.172]]></host>
                     <username><![CDATA[lmlabs_ecart]]></username>
