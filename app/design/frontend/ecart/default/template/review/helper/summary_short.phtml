@@ -31,8 +31,8 @@
                 <div class="rating ratingstarts" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
             </div>
         <?php endif;?>
-        <span class="amount reviewscounttop"><?php /*?><a href="#review-form" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"></a><?php */?> <?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></span>
-         <span class="reviewessperator"> | </span> <a class="wrireyourreviews" href="#review-form">  Write Your Review</a>
+        <span class="amount reviewscounttop"><?php /*?><a href="#review-form" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"></a><?php */?> (<?php echo $this->__('%d reviews', $this->getReviewsCount()) ?>)</span>
+        <!--  <span class="reviewessperator"> | </span> <a class="wrireyourreviews" href="#review-form">  Write Your Review</a> -->
     </div>
 <?php elseif ($this->getDisplayIfEmpty()): ?>
     <p class="no-rating"><a href="<?php //echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>

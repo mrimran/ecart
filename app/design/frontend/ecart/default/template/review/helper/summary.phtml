@@ -31,9 +31,10 @@
                 <div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
             </div>
         <?php endif;?>
-        <p class="rating-links">
+        <span class="amount reviewscounttop">(<?php echo $this->__('%d reviews', $this->getReviewsCount()) ?>)</span>
+        <!-- <p class="rating-links">
             <a href="<?php echo $this->getReviewsUrl() ?>"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a><span class="separator">|</span><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Add Your Review') ?></a>
-        </p>
+        </p> -->
     </div>
 <?php elseif ($this->getDisplayIfEmpty()): ?>
     <p class="no-rating"><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>

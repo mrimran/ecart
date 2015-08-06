@@ -24,13 +24,14 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<div class="margin1 products">
 <?php if($this->getResultCount()): ?>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
-<div class="page-title">
+<div class="main_title">
     <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
         <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-rss"><?php echo $this->__('Subscribe to Feed') ?></a>
     <?php endif; ?>
-    <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+    <h2><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h2>
 </div>
     <?php if ($messages = $this->getNoteMessages()):?>
     <p class="note-msg">
@@ -41,8 +42,8 @@
     <?php endif; ?>
     <?php echo $this->getProductListHtml() ?>
 <?php else: ?>
-<div class="page-title">
-    <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+<div class="main_title">
+    <h2><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h2>
 </div>
 <p class="note-msg">
     <?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?>
@@ -54,3 +55,4 @@
     <?php endif; ?>
 </p>
 <?php endif; ?>
+</div>
