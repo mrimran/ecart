@@ -146,7 +146,7 @@
                <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
            </span>
                </div>
-          <?php $productCollection=$this->getTotalOrder(echo $_product->getId());
+          <?php $productCollection=$this->getTotalOrder($_product->getId());
                 $_helper = $this->helper('catalog/output');?>
           <div class="orders"><?php echo $productCollection->purchased;?> Orders</div>
           <a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
