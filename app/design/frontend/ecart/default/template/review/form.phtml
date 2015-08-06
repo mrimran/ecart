@@ -31,7 +31,8 @@
   <form action="<?php echo $this->getAction() ?>" method="post" id="review-form" class="form-horizontal">
     <?php echo $this->getBlockHtml('formkey'); ?> <?php echo $this->getChildHtml('form_fields_before')?>
 <?php /*?>    <h3><?php echo $this->__("You're reviewing:"); ?> <span><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></span> </h3>
-<?php */?>    <div class="fieldset">
+<?php */?>
+<div class="fieldset">
     <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
     <?php /*?><h4><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h4><?php */?>
     <span id="input-message-box"></span>
@@ -111,29 +112,28 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-sm-8">
-     
-        
-        <table class="data-table review-summary-table ratings table-ratings reviewsbottomtable" id="product-review-table">
-  <tbody>
-    <?php foreach ($this->getRatings() as $_rating): ?>
-      <tr>
-         <th><?php /*?><?php echo $this->escapeHtml($_rating->getRatingCode()) ?><?php */?> <div class="__rating"> Your Rating  </div></th>
-        <td class="value">
-          <?php foreach (array_reverse($_rating->getOptions()) as $_option): ?>
-            <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio rating-input" />
-            <label  class="rating-star" for="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></label>
-          <?php endforeach; ?>
-        </td>
-      </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-      </div>
-      <div style="text-aligin:right" class="col-sm-4">
-        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Post review')) ?>" class="button btn btn1 btn-default"><?php echo $this->__('Post review') ?></button>
-      </div>
-    </div>
+  <div class="col-sm-8">
+  <table class="data-table review-summary-table ratings table-ratings reviewsbottomtable" id="product-review-table">
+    <tbody>
+      <?php foreach ($this->getRatings() as $_rating): ?>
+        <tr>
+           <th><?php /*?><?php echo $this->escapeHtml($_rating->getRatingCode()) ?><?php */?> <div class="__rating"> Your Rating  </div></th>
+          <td class="value">
+            <?php foreach (array_reverse($_rating->getOptions()) as $_option): ?>
+              <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio rating-input" />
+              <label  class="rating-star" for="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></label>
+            <?php endforeach; ?>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+  </div>
+  <div style="text-aligin:right" class="col-sm-4">
+    <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Post review')) ?>" class="button btn btn1 btn-default"><?php echo $this->__('Post review') ?></button>
+  </div>
+  </div>
+</div>
   </form>
   <script type="text/javascript">
     //<![CDATA[

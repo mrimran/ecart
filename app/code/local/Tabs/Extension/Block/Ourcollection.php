@@ -1,34 +1,30 @@
-<?php
-class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
-	
-    protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
-	public function getLoadedProductCollection()
-	{
-        Mage::getSingleton('core/session', array('name' => 'frontend'));
-        $_productCollection = Mage::getResourceModel('catalogsearch/advanced_collection')
-        ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-        ->addMinimalPrice()
-        ->addStoreFilter()
-        ->setPageSize(20)
-        ->addAttributeToFilter('upcomingproduct', 0);
-       
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($_productCollection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($_productCollection);
+ <?php 
+class Tabs_Extension_Block_Ourcollection extends Mage_Catalog_Block_Product_Abstract {
+  
+ 
+  // function for displaying brands of category
 
-        $todayDate = date('m/d/y');
-        $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
-        $tomorrowDate = date('m/d/y', $tomorrow);
+ 
 
-        $_productCollection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
-        ->addAttributeToFilter('special_to_date', array('or'=> array(
-        0 => array('date' => true, 'from' => $tomorrowDate),
-        1 => array('is' => new Zend_Db_Expr('null')))
-        ), 'left');
-
-        return $_productCollection;
+    protected function getProductCollectionGroup()
+    {
+ 
+       $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
+       ->addAttributeToFilter('upcomingproduct', 0)
+       ->addAttributeToSelect('*')
+       ->addAttributeToFilter("type_id",array("eq"=>"grouped"));
+                           
+        return $_testproductCollection;
     }
 
-    public function getMode()
+    protected function getProductCollectionProduct($productid)
+    {
+       $Product = Mage::getModel('catalog/product')->load($productid);
+       $_testproductCollection = $Product->getTypeInstance(true)->getAssociatedProducts($Product);           
+       return $_testproductCollection;
+    }
+
+   public function getMode()
     {
         return $this->getChild('toolbar')->getCurrentMode();
     }
@@ -38,7 +34,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
         $toolbar = $this->getToolbarBlock();
 
         // called prepare sortable parameters
-        $collection = $this->getLoadedProductCollection();
+        $collection = $this->getProductCollectionGroup();
 
         // use sortable parameters
         if ($orders = $this->getAvailableOrders()) {
@@ -59,10 +55,10 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
 
         $this->setChild('toolbar', $toolbar);
         Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->getLoadedProductCollection()
+            'collection' => $this->getProductCollectionGroup()
         ));
 
-        $this->getLoadedProductCollection()->load();
+        $this->getProductCollectionGroup()->load();
 
         return parent::_beforeToHtml();
     }
@@ -101,7 +97,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
 
     public function addAttribute($code)
     {
-        $this->getLoadedProductCollection()->addAttributeToSelect($code);
+        $this->getProductCollectionGroup()->addAttributeToSelect($code);
         return $this;
     }
 
@@ -154,7 +150,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
     {
         return array_merge(
             parent::getCacheTags(),
-            $this->getItemsTags($this->getLoadedProductCollection())
+            $this->getItemsTags($this->getProductCollectionGroup())
         );
     }
 
@@ -167,5 +163,5 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
          ->limit(1);
          return $query;
     }
-
 }
+?>

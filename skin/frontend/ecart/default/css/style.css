@@ -538,7 +538,7 @@ color:#303030;}
 margin-left:12px;color:rgb(158, 158, 158);}
 .products .product .price,.products .product .wishlist{margin:0 0 10px;display:block;}
 .products .product .image,.products .product .details,.products .product .price-info,
-.products .product .image .img-box{min-height:250px;}
+.products .product .image .img-box{min-height:260px;}
 .products .product .image{padding-left:0;}
 .products .product .details,.products .product .price-info{padding:10px;}
 .arrow-sides .owl-theme .owl-controls,
@@ -550,7 +550,7 @@ right:inherit !important;margin:-40px 0 10px 30px !important;}
 .arrow-sides .owl-carousel .owl-controls .owl-nav .owl-next{
 border:0 !important;width:inherit !important;height:inherit !important;background-size:100% !important;}
 .__product__related section{padding-bottom:0;}
-.products .product.grid{width:31.3%;display:inline-block;margin-right:3%;float:left;}
+.products .product.grid{width:31.3%;display:inline-block;margin-right:3%;float:left;height:400px;}
 .products .product.grid .image{padding:0;width:100%;}
 .products .product.grid:nth-of-type(3n+3){margin-right:0;}
 .products .product.grid ul{display:none;}
@@ -560,7 +560,10 @@ border:0 !important;width:inherit !important;height:inherit !important;backgroun
 .products .product.grid .__rating{margin-bottom:0;}
 .products .product.grid .price-info{padding-top:0;}
 .products .product.grid .wishlist{margin-top:15px;margin-bottom:5px;}
-
+.products .wrireyourreviews{display:none;}
+.products .reviewscounttop{color:rgb(158, 158, 158);font-size:12px;font-style:italic;
+display:inline-block;}
+.products .ratings .rating-box{display:inline-block;}
 
 .__product__main__area h1 {
     font-size: 22px;
@@ -982,6 +985,7 @@ text-transform: uppercase;}
 .cms_template .box-title h3{font-family:inherit;font-weight:600;}
 .cms_template a{color:#f57a20;}
 .cms_template a:hover,.cms_template a:focus{color:#303030;}
+.cms_template ul.disc{margin:10px 0px 10px 20px;}
 .padding1{padding:15px 5px;}
 .padding2{padding:15px 15px;}
 .margin1{margin-right:-15px;}
