@@ -35,7 +35,7 @@
 
 <div class="margin1 products">
 <?php
-    $_productCollection=$this->getProductCollection();
+    $_productCollection=$this->getProductCollectionGroup();
     $_helper = $this->helper('catalog/output');
 ?>
 <?php if(!$_productCollection->count()): ?>
@@ -51,7 +51,7 @@
      <?php foreach ($_productCollection as $_product): ?>
     <div class="product clearfix">
 					<div class="col-sm-4 image">
-               <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+               <a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                 <?php /* Based on the native RWD styling, product images are displayed at a max of ~400px wide when viewed on a
                         one column page layout with four product columns from a 1280px viewport. For bandwidth reasons,
                         we are going to serve a 300px image, as it will look fine at 400px and most of the times, the image
@@ -69,34 +69,12 @@
 					</div>
 					<div class="col-sm-5 details">
 						
-                  <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
-                        <div class="ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>  
-                            </div>
-                        </div>
-            <ul>
+                  <a  class="title" href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
+                                   <ul>
 							<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
 						</ul>
 						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
 					</div>
-					<div class="col-sm-3 relative price-info">
-					<div class="price">
-               <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
-               <span class="not-now">
-					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
-               </div>
-					<?php $productCollection=$this->getTotalOrder($_product->getId());
-                     $_helper = $this->helper('catalog/output');?>
-                     <?php if(!$productCollection->count()): ?>
-                            <div class="orders">0 Orders</div>
-                      <?php else: ?>
-                      <?php foreach ($productCollection as $_brand): ?>
-                           <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
-                       <?php endforeach ?>
-                       <?php endif ?>
-					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
-					<h5 class="stocks-update">
                
                <?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                <?php echo $this->__('In Stock') ?>
@@ -124,7 +102,7 @@
     <?php $i=0; foreach ($_productCollection as $_product): ?>
 				<div class="product clearfix grid">
 					<div class="col-sm-4 image">
-                  <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                  <a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php $_imgSize = 210; ?>
                     	<div class="img-box"><div class="abs_center">
                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
@@ -136,38 +114,13 @@
                
 					</div>
 					<div class="col-sm-5 details">
-						<a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
-						<div class="ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>  
-                            </div>
-                        </div>
+						<a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
 						
 					</div>
-					<div class="col-sm-3 relative price-info">
-               
-               <?php 
-					//echo $this->getPriceHtml($_product, true); 
 					
-					?>
                
-					<div class="price">
-					 <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
-               <span class="not-now">
-               <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
-					 </span>
-               </div>
-					<?php $productCollection=$this->getTotalOrder($_product->getId());
-                          $_helper = $this->helper('catalog/output');?>
-                     <?php if(!$productCollection->count()): ?>
-                            <div class="orders">0 Orders</div>
-                      <?php else: ?>
-                             <?php foreach ($productCollection as $_brand): ?>
-                                 <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
-                              <?php endforeach ?>
-                      <?php endif ?>
-					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
-					<h5 class="stocks-update">25 pcs on Stock</h5>
+					
+					
 					</div>
 				</div>
 				 <?php endforeach ?>

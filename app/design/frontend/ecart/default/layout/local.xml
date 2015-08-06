@@ -287,6 +287,24 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			</extension_index_seller>
+
+			<extension_index_allsale>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_index_allsale>
+
+			<extension_index_ourcollection>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_index_ourcollection>
+
+			<extension_index_productcollection>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_index_productcollection>
 		
 
 </layout>
