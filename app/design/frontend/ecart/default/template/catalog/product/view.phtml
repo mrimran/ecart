@@ -86,7 +86,8 @@
       <?php if($_product->condition): ?>
       <div class="__condition"><strong>
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
-        : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> </div>
+        : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
+        </div>
       <?php endif ?>
       <?php if($_product->warrenty): ?>
       <div class="__warrenty"><strong>
@@ -137,38 +138,33 @@
                 <?php endforeach ?>
               </ul>
               <?php endif ?>
+            </div>
+            </div>
+            </div>
               <?php endif ?>
-              <?php echo $this->getReviewsSummaryHtml($_product, "short", true) ?> <?php echo $this->getChildHtml('product_review') ?>
-              <div class="buttons">
-                <div class="row">
-                  <div class="col-sm-9">
-                    <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
-                  </div>
-                  <div class="col-sm-3">
-                    <?php $_product = $this->getProduct(); ?>
-                    <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                    <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href);
-                          return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
-                    <?php endif; ?>
-                  </div>
+         </div>   
+            
+            <div class="buttons">
+              <div class="row">
+                <div class="col-sm-9">
+                  <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
+                </div>
+                <div class="col-sm-3">
+                  <?php $_product = $this->getProduct(); ?>
+                  <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+                  <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                  <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
+                  <?php endif; ?>
                 </div>
               </div>
-              <div class="__share__this"> <!--<a href="#">Share this product</a>--> </div>
             </div>
-            <div class="col-sm-3">
-              <?php $_product = $this->getProduct(); ?>
-              <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-              <?php if ($this->helper('wishlist')->isAllow()) : ?>
-              <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
-              <?php endif; ?>
-            </div>
+            <div class="__share__this"> <!--<a href="#">Share this product</a>--> </div>
           </div>
         </div>
-        <div class="__share__this"> <!--<a href="#">Share this product</a>--> </div>
-      </div>
+      
+  
     </form>
-  </div>
+
   <script type="text/javascript">
 
         //<![CDATA[
@@ -280,6 +276,7 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
     </div>
     <?php } ?>
   </div>
+</div>
 </div>
 <script>
         jQuery('.bxslider').bxSlider({
