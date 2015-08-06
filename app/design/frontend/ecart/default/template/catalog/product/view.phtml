@@ -60,7 +60,7 @@
         
 
         <?php echo $this->getReviewsSummaryHtml($_product, "short", true)?> <?php echo $this->getChildHtml('product_review') ?>
-        <?php if(!$_product->getTypeId() == 'grouped' ): ?>
+        <?php if($_product->getTypeId() != 'grouped' ): ?>
         <div class="row">
           <div class="col-sm-6">
             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
@@ -168,11 +168,6 @@
         <div class="__share__this"> <!--<a href="#">Share this product</a>--> </div>
       </div>
     </form>
-    <?php
-                  // Here 18 is Attribute Group Id.
-//echo "<li>".$attribute->getFrontendLabel()." : ".$_product->getData($attribute->getAttributeCode())."</li>";
-//print_r($collections);
-?>
   </div>
   <script type="text/javascript">
         //<![CDATA[
@@ -222,6 +217,12 @@
         //]]>
         </script> 
 </div>
+
+<?php 
+echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpagefirststaticblock')->toHtml();  
+
+?>
+
 <div class="__product__description">
 
   <div class="row">
