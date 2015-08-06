@@ -23,14 +23,16 @@ body.customer-account .block-account ul li a{text-transform:uppercase;}
 .col2-set{clear:both;}
 .col2-set .col-1,.col2-set .col-2{width:50%;float:left;display:inline-block;vertical-align:top;
 margin:15px 0;}
+.account-login .col-2.registered-users{padding-left:20px;border-left:1px solid #eaeaea;}
 body.customer-account .my-account .box-info{border-bottom:1px solid #eaeaea;margin-bottom:15px;}
 body.customer-account .my-account .box-info:last-child{border-bottom:0;}
 .page-title{margin-top:15px;}
-.page-title h1,.scaffold-form h2,h2.legend{font-size:24px;color:#202020;font-weight:300;
-font-family:'GothamNarrow-Bold', sans-serif;margin-bottom:15px;}
+.page-title h1,.scaffold-form h2,h2.legend,.product-review .product-details h2{
+font-size:24px;color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;
+margin-bottom:15px;}
 .scaffolf-form,.form-list{font-family:'GothamNarrow-Book', sans-serif;}
-.scaffold-form h2,h2.legend{border-bottom:1px solid #eaeaea;line-height:2;font-size:18px;
-text-transform:uppercase;}
+.scaffold-form h2,h2.legend,.product-review .product-details h2{
+border-bottom:1px solid #eaeaea;line-height:2;font-size:18px;text-transform:uppercase;}
 .scaffold-form p.required{color:#F52020;}
 .form-list{list-style-type:none;}
 .form-list li{width:100%;margin-bottom:15px;}
@@ -117,6 +119,22 @@ div.price-slider .price-slider-from{top:-3px;background-color:#f57a20 !important
 background-image:none !important;}
 div.price-slider .price-slider-to{margin-top:-20px !important;background-color:#f57a20 !important;
 background-image:none !important;}
+.product-review{}
+.product-review .product-img-box,.product-review .product-details,.ratings .rating-box,
+.ratings .reviewscounttop{display:inline-block;vertical-align:top;}
+.product-review .product-img-box{width:30%;margin-bottom:20px;}
+.product-review .product-details{width:69%;padding-left:15px;margin-bottom:20px;}
+.product-review .product-img-box .product-image{display:block;padding:5px;border:1px solid #eaeaea;}
+.product-review .product-img-box .product-image img{max-width:100%;}
+.product-review .product-img-box .label{padding:10px 0 0;display: block;text-align: left;
+white-space:normal;margin-bottom:10px;font-size:80%;color:#303030;}
+.ratings .reviewscounttop{font-size:12px;color:#999;font-style:italic;padding:3px;}
+.product-review .product-details h3{font-size:14px;font-weight:600;line-height:1.5;}
+.ratings-table{margin:5px 0 10px;font-size:14px;}
+.ratings-table th{padding:0px 5px 0 0;vertical-align: top;}
+.ratings-description dt{font-size:14px;line-height:1.5;}
+.ratings-description dd{font-size:12px;line-height:1.5;}
+
 @media only screen and (max-width : 800px){
 .data-table{display:block;}
 .data-table thead,.data-table tbody,.data-table tfoot,.data-table tr,.data-table td,.data-table th{
