@@ -49,7 +49,7 @@
       <div class="col-sm-6">
         <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
         <div class="__type">by
-<<<<<<< HEAD
+
           <?php $_helper = $this->helper('catalog/output'); ?>
           <?php $_brands = $this->getBrand($_product->getId()); ?>
           <?php foreach ($_brands as $brand): ?>
@@ -58,19 +58,7 @@
           <?php $_category_detail = Mage::registry('current_category');?>
           <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
         
-        <!--						<div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
-=======
-        <?php $_helper = $this->helper('catalog/output'); ?>
-        <?php $_brands = $this->getBrand($_product->getId()); ?> 
-        <?php foreach ($_brands as $brand): ?>
-          <a href="#"><?php echo $brand->name ?></a>, 
-        <?php endforeach ?>
-        <?php $_category_detail = Mage::registry('current_category');?>
-            <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
-       
-        <!--            <div class="__rating"> <span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> (271 Reviews) <a href="#">Write Your Review</a> </div>
->>>>>>> d9a325b4dd67d15ded31ab3eadad5dad2124c071
---> 
+
         <?php echo $this->getReviewsSummaryHtml($_product, "short", true)?> <?php echo $this->getChildHtml('product_review') ?>
         <?php if(!$_product->getTypeId() == 'grouped' ): ?>
         <div class="row">
@@ -303,7 +291,6 @@
 </div>
 <script>
 jQuery('.bxslider').bxSlider({
-<<<<<<< HEAD
 		  pagerCustom: '#bx-pager'
 		});
 		jQuery('#__product__detail').more({
@@ -320,21 +307,4 @@ jQuery('.bxslider').bxSlider({
 			lessText: 'See Less Specs'
 		});
 </script>
-=======
-      pagerCustom: '#bx-pager'
-    });
-    jQuery('#__product__detail').more({
-      length:1099,
-      ellipsisText: '',
-      moreText: 'Read Full Description',
-      lessText: 'Read Less Description'
-    });
-    jQuery('#product_specs').more({
-      length:335,
-      leaway:10,
-      ellipsisText: '',
-      moreText: 'See Full Specs',
-      lessText: 'See Less Specs'
-    });
-</script> 
->>>>>>> d9a325b4dd67d15ded31ab3eadad5dad2124c071
+
