@@ -171,13 +171,13 @@
     <?php endforeach; ?>
     </ul>
 <?php endif; ?>
-    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
-    <div class="cart-forms">
+<div class="cart-forms">
         <?php /* Extensions placeholder */ ?>
         <?php echo $this->getChildHtml('checkout_cart_widget') ?>
         <?php echo $this->getChildHtml('coupon') ?>
         <?php echo $this->getChildHtml('checkout.cart.extra') ?>
     </div>
+    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
 <!--     <div class="cart-totals-wrapper">
         <div class="cart-totals">
             <?php echo $this->getChildHtml('totals'); ?>

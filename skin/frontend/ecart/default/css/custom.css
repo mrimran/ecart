@@ -28,7 +28,7 @@ background: none; border: none; height:10px; width: 10px;}
 .nav-container { position: relative; top: 50px;}
 #custommenu { position: absolute; float: left; top: 0; z-index: 5; width: 100%;}
 #custommenu .menu { clear: both;}
-.cms-index-index #MainCatMenu { display: block !important;}
+/*.cms-index-index #MainCatMenu { display: block !important;}*/
 a.level2:hover, a.level2.act, a.level2.actParent {
     color: #f57a20 !important;
 }

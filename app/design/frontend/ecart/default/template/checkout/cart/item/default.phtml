@@ -68,12 +68,14 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <li class="product-cart-sku">
             <span class="label"><?php echo $this->__('SKU'); ?>:</span> <?php echo $this->escapeHtml($_item->getSku()); ?>
         </li>
-        <li class="product-cart-sku">
-        <span class="label"><?php echo $this->__('COLOR'); ?>:</span>
+        <!-- <li class="product-cart-sku">
+        <span class="label"><?php echo $this->__('Color'); ?>:</span>
        <?php echo $this->escapeHtml($_item->getProduct()->getData("color")); ?>
-<!--        <span class="label"><?php echo $this->__('COLOR'); ?>:</span> -->
-       <?php //echo $this->escapeHtml($this->getProduct()->getData("depth")); ?>        </li>
-        
+        <span class="label"><?php echo $this->__('Depth'); ?>:</span> 
+       <?php echo $this->escapeHtml($this->getProduct()->getData("depth")); ?>
+        </li> -->
+
+
         <?php if ($_options = $this->getOptionList()):?>
         <li class="item-options">
             <?php foreach ($_options as $_option) : ?>
