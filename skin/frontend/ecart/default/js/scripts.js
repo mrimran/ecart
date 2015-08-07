@@ -138,3 +138,36 @@ jQuery(document).ready(function($) {
           jQuery("a[rel='m_PageScroll2id']").mPageScroll2id();
      });
 })(jQuery);
+
+function reinitOwlOnSelector(selector, number_of_items) {
+    var $owl = jQuery(selector);
+    var itemsShow = number_of_items;
+    $owl.trigger('destroy.owl.carousel');
+    // After destory, the markup is still not the same with the initial.
+    // The differences are:
+    //   1. The initial content was wrapped by a 'div.owl-stage-outer';
+    //   2. The '.owl-carousel' itself has an '.owl-loaded' class attached;
+    //   We have to remove that before the new initialization.
+    $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+    $owl.owlCarousel({
+        items: itemsShow,
+               dots: false,
+               margin: 20,
+               nav: true,
+               responsiveClass: true,
+               responsive: {
+                    0: {
+                         items: 1,
+                    },
+                    480: {
+                         items: 2,
+                    },
+                    768: {
+                         items: 3,
+                    },
+                    1025: {
+                         items: itemsShow,
+                    }
+               }
+    });
+}
