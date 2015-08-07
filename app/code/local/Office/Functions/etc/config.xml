@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Office_Functions>
+            <version>0.1.0</version>
+        </Office_Functions>
+    </modules>
+    <global>
+        <helpers>
+            <functions>
+                <class>Office_Functions_Helper</class>
+            </functions>
+        </helpers>
+    </global>
+</config>
