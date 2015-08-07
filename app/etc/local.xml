@@ -44,7 +44,9 @@
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
 
+
                     <dbname><![CDATA[ecart_7]]></dbname>
+
 
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
@@ -52,8 +54,6 @@
                     <pdoType><![CDATA[]]></pdoType>
                     <active>1</active>
                 </connection>
-					 
-					 
             </default_setup>
         </resources>
         <session_save><![CDATA[files]]></session_save>
