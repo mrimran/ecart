@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Office_Functions>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Office_Functions>
+    </modules>
+</config>

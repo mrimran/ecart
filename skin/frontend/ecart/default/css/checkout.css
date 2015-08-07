@@ -360,9 +360,13 @@
     max-width: none;
     min-width: 250px;
     float: none;
-    padding:0px 10px 6px 25px;
+    padding: 0px 10px 6px 25px;
 }
-.step .form-list .control label{padding-left:25px;}
+
+.step .form-list .control label {
+    padding-left: 25px;
+}
+
 .checkout-onepage-index #shipping-new-address-form .validation-advice,
 .checkout-onepage-index #billing-new-address-form .validation-advice {
     margin: 5px 0 0;
@@ -499,6 +503,7 @@
     float: none;
     text-align: right;
 }
+
 .checkout-onepage-index #checkout-payment-method-load .form-list li .v-fix,
 .checkout-onepage-index #checkout-payment-method-load .form-list li,
 .checkout-onepage-index li#shipping-new-address-form ul li:not(.wide) .field,
@@ -585,4 +590,80 @@
     margin: 0;
     list-style: none;
     font-size: 23px !important;
+}
+
+@media only screen and (max-width: 480px) {
+    .checkout-onepage-index .col-sm-4.col-md-3.paddingzero {
+        display: none;
+    }
+    .checkout-onepage-index .col-md-9 {
+        padding: 0;
+    }
+    .checkout-onepage-index .container {
+        padding: 0;
+    }
+    .checkout-onepage-index .maincontainer {
+        padding: 0;
+    }
+    .checkout-onepage-index .col-md-9 .opc li .step-title {
+        font-size: 18px;
+        padding: 19px 16px;
+        background-color: rgb(255, 255, 255);
+    }
+    .checkout-onepage-index .col2-set .col-1,
+    .checkout-onepage-index .col2-set .col-2 {
+        float: none;
+        width: 100%;
+        padding: 0;
+    }
+    .checkout-onepage-index .col-md-9 .opc {
+        background-color: rgb(255, 255, 255);
+    }
+    .form-list li.control label {
+        padding: 22px 10px;
+    }
+    .checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio {
+        float: left;
+        margin-right: -40px;
+        margin-top: 24px;
+        margin-left: 8px;
+    }
+    .form-list li .input-box input,
+    .form-list li .input-box select {
+        padding: 22px 12px;
+    }
+    .checkout-onepage-index #billing-new-address-form .validation-advice {
+        margin: 3px 0 0;
+        top: 100%;
+        bottom: auto;
+    }
+    .checkout-onepage-index .col-md-9 .opc li.section {
+        margin-bottom: 0;
+    }
+    .checkout-onepage-index .col-md-9 .opc li .step {
+        border-bottom: 0;
+    }
+    .checkout-onepage-index .sp-methods dt#dt_method_ccsave label,
+    .checkout-onepage-index .sp-methods #dt_method_checkmo label {
+        padding: 15px 10px 9px 25px;
+    }
+    .checkout-onepage-index .sp-methods dt#dt_method_ccsave input[type="radio"],
+    .checkout-onepage-index .sp-methods #dt_method_checkmo input[type="radio"] {
+        margin-top: 18px;
+    }
+    .checkout-onepage-index #checkout-payment-method-load .form-list li {
+        float: none;
+        width: auto;
+    }
+    .checkout-onepage-index li#billing-new-address-form ul li:not(.wide) .field:nth-child(2n+2) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .checkout-onepage-index li#billing-new-address-form ul li:not(.wide) .field {
+        padding-right: 0;
+        float: none;
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
 }

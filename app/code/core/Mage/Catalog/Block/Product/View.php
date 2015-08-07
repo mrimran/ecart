@@ -287,5 +287,5 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
          ->where('product_id = ?',array($id))
          ->limit(1);
          return $query;
-    }
+    } 
 }

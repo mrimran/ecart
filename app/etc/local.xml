@@ -50,6 +50,8 @@
                     <pdoType><![CDATA[]]></pdoType>
                     <active>1</active>
                 </connection>
+					 
+					 
             </default_setup>
         </resources>
         <session_save><![CDATA[files]]></session_save>
