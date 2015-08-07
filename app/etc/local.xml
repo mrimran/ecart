@@ -45,7 +45,7 @@
                     <password><![CDATA[]]></password>
 
 
-                    <dbname><![CDATA[ecart_7]]></dbname>
+                    <dbname><![CDATA[ecart_1]]></dbname>
 
 
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
