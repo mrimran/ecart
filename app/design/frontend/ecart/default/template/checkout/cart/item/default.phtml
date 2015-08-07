@@ -27,6 +27,7 @@
 
 <?php
 $_item = $this->getItem();
+
 $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
@@ -68,8 +69,13 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <span class="label"><?php echo $this->__('SKU'); ?>:</span> <?php echo $this->escapeHtml($_item->getSku()); ?>
         </li>
         <li class="product-cart-sku">
+<<<<<<< HEAD
+        <span class="label"><?php echo $this->__('COLOR'); ?>:</span>
+       <?php echo $this->escapeHtml($_item->getProduct()->getData("color")); ?>
+=======
         <span class="label"><?php echo $this->__('COLOR'); ?>:</span> 
        <?php echo $this->escapeHtml($this->getProduct()->getData("depth")); ?>
+>>>>>>> 0869460cf409ae752b288ce97ba17babed2f5884
         </li>
         
         <?php if ($_options = $this->getOptionList()):?>

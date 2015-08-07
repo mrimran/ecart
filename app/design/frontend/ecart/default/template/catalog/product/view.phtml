@@ -44,7 +44,9 @@
       <div class="no-display">
         <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
         <input type="hidden" name="related_product" id="related-products-field" value="" />
+
         <input type="hidden" name="color" id="product-color-field" value="" />
+
       </div>
       <div class="col-sm-6"> <?php echo $this->getChildHtml('media') ?> </div>
       <div class="col-sm-6">
@@ -104,23 +106,30 @@
               <?php  
            echo  $_product->getResource()->getAttribute('color')->getFrontendLabel();   
            ?>
-              <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <?php if($_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)):?>
-              <ul class="product-meta-select" data-id="headingOne">
-                <?php $i=0?>
-                <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
-                <li id="value_<?php echo $i?>"><?php echo $value ?></li>
-                <?php $i++ ?>
-                <?php endforeach ?>
-                <?php //echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
-              </ul>
-              <?php endif; ?>
+
+                <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
+
             </div>
-          </div>
-        </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <?php if($_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)):?>
+                <ul class="product-meta-select" data-id="headingOne">
+                  <?php $i=0?>
+                  <?php
+                  echo "<pre>++++";
+                  print_r($_product);
+                  echo "</pre>";
+                  ?>
+                  <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
+
+                  <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?></li>
+                  <?php $i++ ?>
+                  <?php endforeach ?>
+                  <?php //echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
+                </ul>
+                <?php endif; ?>
+              </div>
+            </div>
         <?php endif ?>
         <?php if($_product->storagecapacity): ?>
         <div class="panel">
@@ -214,6 +223,7 @@
         //]]>
     </script> 
 </div>
+
 <?php 
 echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpagefirststaticblock')->toHtml();  
 
@@ -296,3 +306,4 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
             lessText: 'See Less Specs'
         });
     </script> 
+
