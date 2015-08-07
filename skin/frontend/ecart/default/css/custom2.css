@@ -148,6 +148,7 @@ p.required{color:red;}
 .shopbybrand-list .ca-container{margin:40px auto;}
 .shopbybrand-list .ca-container .ca-item{height:auto;margin-bottom:20px;}
 .shopbybrand-list .ca-container .ca-item-main a{max-height:70px;display:block;overflow:hidden;}
+.discount-form{}
 
 @media only screen and (max-width : 800px){
 .data-table{display:block;}
