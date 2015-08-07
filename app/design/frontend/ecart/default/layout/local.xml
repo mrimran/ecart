@@ -277,7 +277,8 @@
 			<reference name="root">
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
-			<!--<remove name="checkout.cart.coupon" />-->
+
+			<!-- <remove name="checkout.cart.coupon" /> -->
 			<remove name="checkout.cart.shipping" />
 			</checkout_cart_index>
 		
@@ -317,6 +318,30 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			</extension_index_productcollection>
+
+			<extension_category_sale>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_category_sale>
+
+			<extension_category_seller>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_category_seller>
+
+			<extension_category_latest>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_category_latest>
+
+			<extension_category_upcoming>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_category_upcoming>
 		
 
 </layout>

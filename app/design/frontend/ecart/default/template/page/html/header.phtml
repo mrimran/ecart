@@ -103,25 +103,64 @@
 
 <?php echo $this->getChildHtml('topContainer'); ?><?php */?>
 
-
-
 <header id="header" class="header">
 <ul class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left floatmenu">
 	<li>
-	<a href="#" class="userbio">
-	<span class="userpic"><img class="img-circle" src="<?php echo $this->getSkinUrl('images/userpic.png'); ?>"></span>
-	<h3>Junaid Qureshi</h3>
-	Last Activity: 2 hours ago</a>
+	<?php $islogedin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
+    <?php if(!$islogedin){ ?>
+
+    <a href="<?php echo Mage::getUrl('customer/account/login'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/notebook.png'); ?>"></span> Login
+    <?php }else{ ?>
+            <a href="<?php echo Mage::getUrl('customer/account'); ?>" class="userbio"><span class="userpic"><img class="img-circle" src="<?php echo $this->getSkinUrl('images/userpic.png'); ?>"></span>
+            <?php
+            $session = Mage::getSingleton('customer/session');
+            if($session->isLoggedIn()) {
+                $customer = $session->getCustomer();
+                echo "<h3>".$customer->getName()."</h3>Last Activity: ";
+				$logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
+				$lastVisited = $logCustomer->getLoginAtTimestamp();
+				$lastVisited = date('Y-m-d H:i:s', $lastVisited);        
+				echo Mage::helper('functions/data')->CalculateTime($lastVisited); 
+            }
+		}
+	?>
+    </a>    
 	</li>
-	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/notebook.png'); ?>"></span> My Orders</a></li>
-	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/shopping_trolley.png'); ?>" alt=""></span> Shopping Cart <span class="circle-count">02</span></a></li>
-	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/heart-icon.png'); ?>" alt=""></span> Wishlist</a></li>
+	<li><a href="<?php echo Mage::getUrl('sales/order/history'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/notebook.png'); ?>"></span> My Orders</a></li>
+	<li><a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>"><span><img src="<?php echo $this->getSkinUrl('images/shopping_trolley.png'); ?>" alt=""></span> Shopping Cart <span class="circle-count"><?php $_cartQty = Mage::getSingleton('checkout/cart')->getItemsCount(); echo $_cartQty;?></span></a></li>
+	<li><a href="<?php echo $this->getUrl('wishlist') ?>"><span><img src="<?php echo $this->getSkinUrl('images/heart-icon.png'); ?>" alt=""></span> Wishlist<span class="circle-count"><?php echo $this->helper('wishlist')->getItemCount() ?></span></a></li>
 	<li class="empty"></li>
-	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/shelter.png'); ?>" alt=""></span> Home</a></li>
-	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/line-bars.png'); ?>" alt=""></span> Categories</a></li>
-	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/help.png'); ?>" alt=""></span> Help Center</a></li>
-	<li><a href="#"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
-	<?php echo $this->getChildHtml('topLinks') ?>
+	<li><a href="<?php echo $this->getUrl('');?>"><span><img src="<?php echo $this->getSkinUrl('images/shelter.png'); ?>" alt=""></span> Home</a></li>
+	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/line-bars.png'); ?>" alt=""></span> Categories
+		<?php 
+        $_helper = Mage::helper('catalog/category');
+        $_categories = $_helper->getStoreCategories();
+        if (count($_categories) > 0){
+            foreach($_categories as $_category){
+                $_category = Mage::getModel('catalog/category')->load($_category->getId());
+                $_subcategories = $_category->getChildrenCategories();
+                if (count($_subcategories) > 0){
+                    echo "<p style='color:#fff'><a href='".$_category->getUrl()."'>".$_category->getName()."</a></p>";
+                    $_category->getId();      
+                    foreach($_subcategories as $_subcategory){
+                         echo "<p style='color:#fff'> -><a href='".$_subcategory->getUrl()."'>".$_subcategory->getName()."</a></p>";
+                         $_subcategory->getId();
+                    }
+                }
+            }
+        }
+        ?>
+    </a></li>
+	<li><a href="<?php echo Mage::getUrl('faqs'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/help.png'); ?>" alt=""></span> Help Center</a></li>
+	<li><a href="<?php echo Mage::getUrl('contactus'); ?>"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
+    <?php
+	if( $islogedin){
+	?>
+		<li><a href="<?php echo Mage::getUrl('customer/account/logout'); ?>"><span><i class="fa fa-star-o"></i></span> Logout</a></li>
+    <?php
+	}
+	?>
+    
 </ul>
 	<div class="topbar">
 	<div class="container">
