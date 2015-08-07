@@ -79,9 +79,10 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
     }
 
     public function ajaxbestsellerAction(){
-        $block = $this->getLayout()->createBlock('extension/computer')
+       $block = $this->getLayout()->createBlock('extension/computer')
         ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');
          $this->getResponse()->setBody($block->toHtml());
+
     }
 
      public function ajaxnewproductAction(){
@@ -100,6 +101,7 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $block = $this->getLayout()->createBlock('extension/phone')
         ->setTemplate('catalog/product/newproductsajax.phtml');
          $this->getResponse()->setBody($block->toHtml());
+
     }
 
     public function ajaxlatestproductAction(){
