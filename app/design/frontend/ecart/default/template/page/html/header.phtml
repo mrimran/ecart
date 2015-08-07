@@ -140,10 +140,10 @@
                 $_category = Mage::getModel('catalog/category')->load($_category->getId());
                 $_subcategories = $_category->getChildrenCategories();
                 if (count($_subcategories) > 0){
-                    echo "<p style='color:#fff'>".$_category->getName()."</p>";
+                    echo "<p style='color:#fff'><a href='".$_category->getUrl()."'>".$_category->getName()."</a></p>";
                     $_category->getId();      
                     foreach($_subcategories as $_subcategory){
-                         echo "<p style='color:#fff'> ->".$_subcategory->getName()."</p>";
+                         echo "<p style='color:#fff'> -><a href='".$_subcategory->getUrl()."'>".$_subcategory->getName()."</a></p>";
                          $_subcategory->getId();
                     }
                 }
