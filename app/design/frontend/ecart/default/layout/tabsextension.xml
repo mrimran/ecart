@@ -388,16 +388,12 @@
             <action method="setTitle">
                 <title>Ajax Bestseller</title>
             </action>
-            <action method="addCss">
-                <stylesheet>css/owl.carousel.css</stylesheet>
-            </action>
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/owl.carousel.min.js</name>
-            </action>
+            
         </reference>
         <reference name="content">
+
             <block type="extension/computer" name="bestsellerajax" as="bestsellerajax"  template="catalog/product/computeraccessoriesAjax.phtml">
+              
             </block>
         </reference>
     </extension_index_ajaxbestseller>

@@ -1,6 +1,6 @@
 
     <div class="owl-stage-outer">
-        <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 773.334px;">
+        <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 5000.334px;">
 <?php
             
             $_productCollection=$this->getLoadedProductCollection();
@@ -10,7 +10,7 @@
                 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
              <?php else: ?>
 			 <?php foreach ($_productCollection as $_product): ?>
-            <div class="owl-item active" style="width: 366.667px; margin-right: 20px;">
+            <div class="owl-item active" style="width: 270.667px; margin-right: 20px;">
 				<div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
 				    <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10)         
                      && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) { ?>
