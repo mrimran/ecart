@@ -121,7 +121,6 @@
               <?php  
            echo  $_product->getResource()->getAttribute('color')->getFrontendLabel();   
            ?>
-
                 <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
 
             </div>
@@ -131,9 +130,9 @@
                 <ul class="product-meta-select" data-id="headingOne">
                   <?php $i=0?>
                   <?php
-                  echo "<pre>++++";
-                  print_r($_product);
-                  echo "</pre>";
+                  // echo "<pre>++++";
+                  // print_r($_product);
+                  // echo "</pre>";
                   ?>
                   <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
 
@@ -145,6 +144,7 @@
                 <?php endif; ?>
               </div>
             </div>
+        </div>
         <?php endif ?>
         <?php if($_product->storagecapacity): ?>
         <div class="panel">
@@ -187,9 +187,9 @@
               </div>
             </div>
             <div class="__share__this"> <!--<a href="#">Share this product</a>--> </div>
+         
           </div>
         </div>
-      
   
     </form>
 
