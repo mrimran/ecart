@@ -19,6 +19,7 @@ jQuery(document).ready(function($) {
      });
 
      if (mainwidth > 801) {
+          //$('.offcanvas-sm').offcanvas('hide');
           var itemsShow = jQuery(".columnslider").attr('data-items');
           var itemsID = jQuery(".columnslider").attr('id');
 

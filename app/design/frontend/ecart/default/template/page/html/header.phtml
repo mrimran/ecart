@@ -41,7 +41,7 @@
                     </div>
                </div>
      	</div>
-	</div>
+     </div>
 <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm" role="navigation">
   <ul class="nav navmenu-nav floatmenu">
           <li>
@@ -75,7 +75,7 @@
                  <span><img src="<?php echo $this->getSkinUrl('images/line-bars.png'); ?>" alt=""></span>
                  Categories
                </a>
-               <ol class="__categories" id="__categories">
+               <ol class="__categories" id="__categories" style="display:none">
                     <?php
                          $_helper = Mage::helper('catalog/category');
                          $_categories = $_helper->getStoreCategories();
@@ -170,5 +170,27 @@
      </div>
 </header>
 <style>
-
+.navmenu-fixed-left{
+background: rgb(45, 46, 50);
+display:none;
+}
+.floatmenu li a{
+    display: block;
+    color: rgb(240, 240, 240) !important;
+    font-size: 1.1em;
+    font-weight: 300;
+    border-bottom: 1px solid rgb(61, 62, 66);
+    padding: 1em;
+    text-transform: uppercase;
+}
+.floatmenu li a:hover {
+    background: rgb(27, 29, 34) !important;
+}
+ol#__categories>li>a {
+    padding-left: 30px;
+}
+ul.__sub__categories>li>a {
+    padding-left: 44px;
+    font-size: 16px;
+}
 </style>
