@@ -44,7 +44,7 @@
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
 
-                    <dbname><![CDATA[ecart_6]]></dbname>
+                    <dbname><![CDATA[ecart_7]]></dbname>
 
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
