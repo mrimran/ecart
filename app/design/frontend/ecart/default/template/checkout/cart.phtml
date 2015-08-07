@@ -148,7 +148,7 @@
                 <tbody>
                     <tr>
                         <td width="70%"> 
-                        <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('buyersprotectionscartpage')->toHtml();  ?>
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('buyersprotectionscartpage')->toHtml();  ?>
                         </td>
                         <td width="30%">
                         <?php echo $this->getChildHtml('totals'); ?>
@@ -195,4 +195,4 @@
     <?php echo $this->getChildHtml('crosssell') ?>
 </div>
 </section>
-<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml(); ?>
+<?php //echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml(); ?>
