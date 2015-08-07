@@ -667,3 +667,6 @@
         padding: 0;
     }
 }
+.__categories__container .__categories{
+    display: none;
+}
