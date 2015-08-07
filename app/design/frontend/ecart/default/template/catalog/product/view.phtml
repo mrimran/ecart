@@ -130,11 +130,6 @@
                 <?php if($_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)):?>
                 <ul class="product-meta-select" data-id="headingOne">
                   <?php $i=0?>
-                  <?php
-                  echo "<pre>++++";
-                  print_r($_product);
-                  echo "</pre>";
-                  ?>
                   <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
 
                   <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?></li>
