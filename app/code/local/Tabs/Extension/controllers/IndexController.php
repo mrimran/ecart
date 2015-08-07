@@ -101,6 +101,7 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $block = $this->getLayout()->createBlock('extension/phone')
         ->setTemplate('catalog/product/newproductsajax.phtml');
          $this->getResponse()->setBody($block->toHtml());
+
     }
 
     public function ajaxlatestproductAction(){
