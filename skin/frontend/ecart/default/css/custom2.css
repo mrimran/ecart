@@ -152,4 +152,7 @@ display:block;}
 .data-table tr{background-color:#fff;}
 .data-table th{height:auto;}
 .cart_table td.delivery{max-width:100%;text-align:center;}
+.col2-set .col-1, .col2-set .col-2{width:100%;}
+.account-login .col-2.registered-users{padding-left:0;border-left:0;}
+.buttons-set{margin-bottom:20px;}
 }
