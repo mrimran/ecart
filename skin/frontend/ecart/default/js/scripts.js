@@ -115,8 +115,8 @@ jQuery(document).ready(function($){
 
 
 });
-(function(){
-    jQuery(window).load(function(){
-        jQuery("a[rel='m_PageScroll2id']").mPageScroll2id();
-    });
-})(jQuery);
+// (function(){
+//     jQuery(window).load(function(){
+//         jQuery("a[rel='m_PageScroll2id']").mPageScroll2id();
+//     });
+// })(jQuery);

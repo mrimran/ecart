@@ -162,8 +162,8 @@ body.push-body-toright { overflow: hidden; }
 .promotionslider .col-sm-4, .promotionslider .col-sm-4:nth-child(2) { padding: 5px; width: 50%; display: inline-block; float: left; }
 .promotionslider .col-sm-4:first-child { padding: 5px; }
 .promotionslider .col-sm-4 a { padding: 0; margin: 0; }
-.maincontainer section#menuslider { padding-bottom: 0px; }
-.maincontainer .sectiontitle { padding: 14px; margin: 0; background-color: #fff; }
+.maincontainer section#menuslider { padding-bottom: 0px;margin:0 -15px; }
+.maincontainer .sectiontitle { padding: 14px; margin:0; background-color: #fff; }
 .maincontainer .sectiontitle:before { display: none; }
 .maincontainer .sectiontitle h2 { padding: 0; border: 0; height: auto; font-size: 12px; }
 .maincontainer .sectiontitle h4 { font-size: 12px; padding: 0 0px; float: right; line-height: 1.5em; }
@@ -185,8 +185,8 @@ body.push-body-toright { overflow: hidden; }
 .site-footer .footer-bottom .credit-cards { padding: 5px 20px; text-align: center; }
 .showsearch { display: block; position: absolute; top: 17px; right: 60px; font-size: 25px; color: rgb(90, 95, 101); cursor: pointer; }
 .owl-theme .owl-controls { margin-left: 0; text-align: center; }
-#category-menu, #ads { display: block; padding: 0; }
-#category-menu { background-color: #fff; }
+#category-menu, #ads { display: block; padding:0; margin:5px -5px -15px;}
+#category-menu{background-color:#fff;margin:0 -15px;}
 #deals { padding-top: 20px; }
 .cat-menu-btn { font-size: 12px; background: #2d2e32; text-align: right; clear: both; }
 .cat-menu-btn h3 { text-align: left; }

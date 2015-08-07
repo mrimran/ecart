@@ -433,9 +433,10 @@ background-color:#000;}
 .site-footer .credit-cards{padding:20px 0;}
 .site-footer .credit-cards img{max-width:100%;}
 .site-footer .footer-bottom{background-color:#2d2e32;padding:20px 0;}
-.site-footer .footer-bottom .copyrights{color:#acacad;text-transform:uppercase;font-size:12px;}
+.site-footer .footer-bottom .copyrights{color:#acacad;text-transform:uppercase;font-size:12px;
+/*text-align:center;*/}
 .site-footer .footer-bottom .live-chat{background-color:#37383d;color:#fff;padding:10px;width:235px;
-height:40px;position:absolute;bottom:-19px;right:0;border-radius:5px 5px 0px 0px;}
+height:40px;position:absolute;bottom:-19px;right:0;border-radius:5px 5px 0px 0px;display:none;}
 .site-footer .footer-bottom .live-chat a{color:#fff;}
 .site-footer .footer-bottom .live-chat img{max-width:20px;display:inline-block;}
 .site-footer .footer-bottom .live-chat h4{display:inline-block;text-transform:uppercase;
