@@ -74,7 +74,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <span class="label"><?php echo $this->__('Depth'); ?>:</span> 
        <?php echo $this->escapeHtml($this->getProduct()->getData("depth")); ?>
         </li> -->
-        
+
+
         <?php if ($_options = $this->getOptionList()):?>
         <li class="item-options">
             <?php foreach ($_options as $_option) : ?>
