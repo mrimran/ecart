@@ -254,7 +254,7 @@
         </reference>
         <reference name="content">
             
-                <block type="extension/Ourcollection" name="ourcollection" as="ourcollection"  template="catalog/product/Ourcollection.phtml">
+                <block type="extension/ourcollection" name="ourcollection" as="ourcollection"  template="catalog/product/ourcollection.phtml">
                     <block type="core/text_list" name="product_list.name.after" as="name.after" />
                     <block type="core/text_list" name="product_list.after" as="after" />
                     <!-- <action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/su.phtml</template></action> -->
@@ -300,7 +300,7 @@
         </reference>
         <reference name="content">
             
-                <block type="extension/Ourcollection" name="ourcollection" as="ourcollection"  template="catalog/product/Productcollection.phtml">
+                <block type="extension/ourcollection" name="ourcollection" as="ourcollection"  template="catalog/product/productcollection.phtml">
                     <block type="core/text_list" name="product_list.name.after" as="name.after" />
                     <block type="core/text_list" name="product_list.after" as="after" />
                     <!-- <action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/su.phtml</template></action> -->
