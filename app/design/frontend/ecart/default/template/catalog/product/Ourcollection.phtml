@@ -46,10 +46,10 @@
     <?php // List mode ?>
     <?php if($this->getMode()!='grid'): ?>
     <?php $_iterator = 0; ?>
-    <div class="clearfix">
+    <div class="">
     
      <?php foreach ($_productCollection as $_product): ?>
-    <div class="product clearfix">
+    <div class="product ">
 					<div class="col-sm-4 image">
                <a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                 <?php /* Based on the native RWD styling, product images are displayed at a max of ~400px wide when viewed on a
@@ -98,9 +98,9 @@
     
     
     
-    <div class="clearfix">
+    <div class="">
     <?php $i=0; foreach ($_productCollection as $_product): ?>
-				<div class="product clearfix grid">
+				<div class="product  grid">
 					<div class="col-sm-4 image">
                   <a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php $_imgSize = 210; ?>

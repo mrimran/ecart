@@ -277,6 +277,7 @@
 			<reference name="root">
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
+
 			<!-- <remove name="checkout.cart.coupon" /> -->
 			<remove name="checkout.cart.shipping" />
 			</checkout_cart_index>
@@ -342,5 +343,6 @@
 			</reference>
 			</extension_category_upcoming>
 		
+		    
 
 </layout>

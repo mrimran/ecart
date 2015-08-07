@@ -28,223 +28,169 @@
  */
 ?>
 
-<?php /*?><div class="header-language-background">
-    <div class="header-language-container">
-        <div class="store-language-container">
-            <?php echo $this->getChildHtml('store_language') ?>
-        </div>
-
-        <?php echo $this->getChildHtml('currency_switcher') ?>
-
-        <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getChildHtml('accountLinks') ?></p>
-    </div>
-</div>
-
-<header id="header" class="page-header">
-    <div class="page-header-container">
-        <a class="logo" href="<?php echo $this->getUrl('') ?>">
-            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
-            <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />
-        </a>
-
-        <?php // In order for the language switcher to display next to logo on smaller viewports, it will be moved here.
-              // See app.js for details ?>
-        <div class="store-language-container"></div>
-
-        <!-- Skip Links -->
-
-        <div class="skip-links">
-            <a href="#header-nav" class="skip-link skip-nav">
-                <span class="icon"></span>
-                <span class="label"><?php echo $this->__('Menu'); ?></span>
-            </a>
-
-            <a href="#header-search" class="skip-link skip-search">
-                <span class="icon"></span>
-                <span class="label"><?php echo $this->__('Search'); ?></span>
-            </a>
-
-            <div class="account-cart-wrapper">
-                <a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" data-target-element="#header-account" class="skip-link skip-account">
-                    <span class="icon"></span>
-                    <span class="label"><?php echo $this->__('Account'); ?></span>
-                </a>
-
-                <!-- Cart -->
-
-                <div class="header-minicart">
-                    <?php echo $this->getChildHtml('minicart_head'); ?>
-                </div>
-            </div>
-
-
-        </div>
-
-        <!-- Navigation -->
-
-        <div id="header-nav" class="skip-content">
-            <?php echo $this->getChildHtml('topMenu') ?>
-        </div>
-
-        <!-- Search -->
-
-        <div id="header-search" class="skip-content">
-            <?php echo $this->getChildHtml('topSearch') ?>
-        </div>
-
-        <!-- Account -->
-
-        <div id="header-account" class="skip-content">
-            <?php echo $this->getChildHtml('topLinks') ?>
-        </div>
-    </div>
-</header>
-
-
-<?php echo $this->getChildHtml('topContainer'); ?><?php */?>
-
 <header id="header" class="header">
-<ul class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left floatmenu">
-	<li>
-	<?php $islogedin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
-    <?php if(!$islogedin){ ?>
-
-    <a href="<?php echo Mage::getUrl('customer/account/login'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/notebook.png'); ?>"></span> Login
-    <?php }else{ ?>
-            <a href="<?php echo Mage::getUrl('customer/account'); ?>" class="userbio"><span class="userpic"><img class="img-circle" src="<?php echo $this->getSkinUrl('images/userpic.png'); ?>"></span>
-            <?php
-            $session = Mage::getSingleton('customer/session');
-            if($session->isLoggedIn()) {
-                $customer = $session->getCustomer();
-                echo "<h3>".$customer->getName()."</h3>Last Activity: ";
-				$logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
-				$lastVisited = $logCustomer->getLoginAtTimestamp();
-				$lastVisited = date('Y-m-d H:i:s', $lastVisited);        
-				echo Mage::helper('functions/data')->CalculateTime($lastVisited); 
-            }
-		}
-	?>
-    </a>    
-	</li>
-	<li><a href="<?php echo Mage::getUrl('sales/order/history'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/notebook.png'); ?>"></span> My Orders</a></li>
-	<li><a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>"><span><img src="<?php echo $this->getSkinUrl('images/shopping_trolley.png'); ?>" alt=""></span> Shopping Cart <span class="circle-count"><?php $_cartQty = Mage::getSingleton('checkout/cart')->getItemsCount(); echo $_cartQty;?></span></a></li>
-	<li><a href="<?php echo $this->getUrl('wishlist') ?>"><span><img src="<?php echo $this->getSkinUrl('images/heart-icon.png'); ?>" alt=""></span> Wishlist<span class="circle-count"><?php echo $this->helper('wishlist')->getItemCount() ?></span></a></li>
-	<li class="empty"></li>
-	<li><a href="<?php echo $this->getUrl('');?>"><span><img src="<?php echo $this->getSkinUrl('images/shelter.png'); ?>" alt=""></span> Home</a></li>
-	<li><a href="#"><span><img src="<?php echo $this->getSkinUrl('images/line-bars.png'); ?>" alt=""></span> Categories
-		<?php 
-        $_helper = Mage::helper('catalog/category');
-        $_categories = $_helper->getStoreCategories();
-        if (count($_categories) > 0){
-            foreach($_categories as $_category){
-                $_category = Mage::getModel('catalog/category')->load($_category->getId());
-                $_subcategories = $_category->getChildrenCategories();
-                if (count($_subcategories) > 0){
-                    echo "<p style='color:#fff'><a href='".$_category->getUrl()."'>".$_category->getName()."</a></p>";
-                    $_category->getId();      
-                    foreach($_subcategories as $_subcategory){
-                         echo "<p style='color:#fff'> -><a href='".$_subcategory->getUrl()."'>".$_subcategory->getName()."</a></p>";
-                         $_subcategory->getId();
-                    }
-                }
-            }
-        }
-        ?>
-    </a></li>
-	<li><a href="<?php echo Mage::getUrl('faqs'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/help.png'); ?>" alt=""></span> Help Center</a></li>
-	<li><a href="<?php echo Mage::getUrl('contactus'); ?>"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
-    <?php
-	if( $islogedin){
-	?>
-		<li><a href="<?php echo Mage::getUrl('customer/account/logout'); ?>"><span><i class="fa fa-star-o"></i></span> Logout</a></li>
-    <?php
-	}
-	?>
-    
-</ul>
 	<div class="topbar">
-	<div class="container">
-		<div class="col-sm-5"><h3> <?php echo $this->getChildHtml('welcome') ?> </h3></div>
-		<div class="col-sm-7"><div class="topnav" align="right"><ul>
-		<li><a href="#">Help</a></li>
-	<?php /*?>	<li class="lang">
-       <?php echo $this->getChildHtml('store_language') ?>
-		<a href="#"><span>Language </span>(EN)</a>
-			<ul>
-			<li><a href="#">(AR)</a></li>
-			<li><a href="#">(FR)</a></li>
-			<li><a href="#">(DE)</a></li>
-			</ul>
-		</li><?php */?>
-		
-			<!--<ul>
-				<li><a href="#">My Account</a></li>
-				<li><a href="#">My Wishlist</a></li>
-				<li><a href="#">My Cart</a></li>
-				<li><a href="#">Checkout</a></li>
-				<li><a href="#">Register</a></li>
-				<li><a href="#">Login</a></li>
-			</ul>-->
-          <?php echo $this->getChildHtml('topLinks') ?>
-		</li>
-		</ul>
-		</div></div>
-	</div>
-	</div>
-   
-   
-   
-   
-<div class="container">
-	<div class="mainhead">
-		<div class="logo col-sm-3">
-		<button class="toggle-menu menu-left btn-bars smartphones"><i class="fa fa-bars"></i></button>
-		
-      <?php /*?><a href="index.php"><img src="<?php echo $this->getSkinUrl('images/logo.png'); ?>"></a><?php */?>
-       <a class="logo" href="<?php echo $this->getUrl('') ?>">
-            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
-           <?php /*?><img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" /><?php */?>
-        </a>
-                
- 
-                
-      <span class="showsearch" data-id="MainSearchForm"><i class="fa fa-search"></i></span></div>
-		<div class="col-sm-9 padding-r">
-			<div class="reasonsnav clearfix">
-				<ul>
-					<li class="col-sm-4"><img src="<?php echo $this->getSkinUrl('images/truck.jpg'); ?>"> FREE SHIPPING ON ORDER OVER AED99</li>
-					<li class="col-sm-4"><img src="<?php echo $this->getSkinUrl('images/customer-service.jpg') ?>"> CUSTOMER SUPPORT SERVICE</li>
-					<li class="col-sm-4"><img src="<?php echo $this->getSkinUrl('images/dollor.jpg') ?>"> ECART buyer protection</li>
-				</ul>
-			</div>
-			<div class="dealsnav clearfix">
-				<ul>
-					<li><a href="<?php echo Mage::getBaseUrl()."extension/index/allsale/"?>">Super Deals <span class="new">New</span></a></li>
-					<li><a href="<?php echo Mage::getBaseUrl()."extension/index/seller/"?>">Best Selling</a></li>
-					<li><a href="<?php echo Mage::getBaseUrl()."extension/index/ourcollection/"?>">Our Collection</a></li>
-					<li><a href="<?php echo Mage::getBaseUrl()."extension/index/sale/"?>">All Sale</a></li>
-					<li class="call-us"><a href="tel:+97180042935"><i class="fa fa-phone"></i> 800 42935</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="mainheadnav clearfix">
-	<div class="container">
-		<div class="catgories col-sm-3"><a class="maincatclass"><h2>CATEGORIES</h2><span data-id="MainCatMenu" class="home"><i class="fa fa-bars"></i></span></a></div>
-		<div id="MainSearchForm" class="searchform col-md-7">
-      
-      <?php echo $this->getChildHtml('topSearch') ?>
-		
-		</div>
-		<div class="minicart col-sm-3 col-md-2"><a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>"><img src="<?php echo $this->getSkinUrl('images/cart-img.png'); ?>">&nbsp; My Cart <span class="cart-items">
-		<?php 
-      $_cartQty = Mage::getSingleton('checkout/cart')->getItemsCount();
-      echo $_cartQty;
-      ?>
-      </span></a></div>
-      
-        <?php echo $this->getChildHtml('topMenu') ?>
-	</div>
-</div>
-</header><!-- /header -->
+     	<div class="container">
+     		<div class="col-sm-5"><h3> <?php echo $this->getChildHtml('welcome') ?> </h3></div>
+     		<div class="col-sm-7">
+                    <div class="topnav" align="right">
+                         <ul>
+                              <li><a href="#">Help</a></li>
+                              <?php echo $this->getChildHtml('topLinks') ?>
+                         </ul>
+                    </div>
+               </div>
+     	</div>
+     </div>
+<nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm smartphones" role="navigation">
+  <ul class="nav navmenu-nav floatmenu">
+          <li>
+          <?php $islogedin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
+         <?php if(!$islogedin){ ?>
+
+         <a href="<?php echo Mage::getUrl('customer/account/login'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/notebook.png'); ?>"></span> Login
+         <?php }else{ ?>
+                 <a href="<?php echo Mage::getUrl('customer/account'); ?>" class="userbio"><span class="userpic"><img class="img-circle" src="<?php echo $this->getSkinUrl('images/userpic.png'); ?>"></span>
+                 <?php
+                 $session = Mage::getSingleton('customer/session');
+                 if($session->isLoggedIn()) {
+                     $customer = $session->getCustomer();
+                     echo "<h3>".$customer->getName()."</h3>Last Activity: ";
+                         $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
+                         $lastVisited = $logCustomer->getLoginAtTimestamp();
+                         $lastVisited = date('Y-m-d H:i:s', $lastVisited);
+                         echo Mage::helper('functions/data')->CalculateTime($lastVisited);
+                 }
+               }
+          ?>
+         </a>
+          </li>
+          <li><a href="<?php echo Mage::getUrl('sales/order/history'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/notebook.png'); ?>"></span> My Orders</a></li>
+          <li><a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>"><span><img src="<?php echo $this->getSkinUrl('images/shopping_trolley.png'); ?>" alt=""></span> Shopping Cart <span class="circle-count"><?php $_cartQty = Mage::getSingleton('checkout/cart')->getItemsCount(); echo $_cartQty;?></span></a></li>
+          <li><a href="<?php echo $this->getUrl('wishlist') ?>"><span><img src="<?php echo $this->getSkinUrl('images/heart-icon.png'); ?>" alt=""></span> Wishlist<span class="circle-count"><?php echo $this->helper('wishlist')->getItemCount() ?></span></a></li>
+          <li class="empty"></li>
+          <li><a href="<?php echo $this->getUrl('');?>"><span><img src="<?php echo $this->getSkinUrl('images/shelter.png'); ?>" alt=""></span> Home</a></li>
+          <li class="__categories__container">
+               <a href="#" data-id="__categories" class="__dropdown">
+                 <span><img src="<?php echo $this->getSkinUrl('images/line-bars.png'); ?>" alt=""></span>
+                 Categories
+               </a>
+               <ol class="__categories" id="__categories" style="display:none">
+                    <?php
+                         $_helper = Mage::helper('catalog/category');
+                         $_categories = $_helper->getStoreCategories();
+                         if (count($_categories) > 0){
+                              foreach($_categories as $_category){
+                                   $_category = Mage::getModel('catalog/category')->load($_category->getId());
+                                   $_subcategories = $_category->getChildrenCategories();
+                                   if (count($_subcategories) > 0){
+                    ?>
+                    <li>
+                         <a href="<?php echo $_category->getUrl(); ?>"><?php echo $_category->getName(); ?></a>
+                         <ul class="__sub__categories">
+                    <?php
+                                        $_category->getId();
+                                        foreach($_subcategories as $_subcategory){
+                    ?>
+                                             <li><a href="<?php echo $_subcategory->getUrl() ?>"><?php echo $_subcategory->getName() ?></a></li>
+                    <?php
+                                             $_subcategory->getId();
+                                        }
+                    ?>
+                         </ul>
+                    <?php
+                                   }
+                              }
+                    ?>
+                    </li>
+                    <?php
+                         }
+                    ?>
+               </ol>
+          </li>
+          <li><a href="<?php echo Mage::getUrl('faqs'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/help.png'); ?>" alt=""></span> Help Center</a></li>
+          <li><a href="<?php echo Mage::getUrl('contactus'); ?>"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
+         <?php
+          if( $islogedin){
+          ?>
+               <li><a href="<?php echo Mage::getUrl('customer/account/logout'); ?>"><span><i class="fa fa-star-o"></i></span> Logout</a></li>
+         <?php
+          }
+          ?>
+
+  </ul>
+</nav>
+     <div class="container">
+     	<div class="mainhead">
+     		<div class="logo col-sm-3">
+  <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+    <span class="fa fa-bars"></span>
+  </button>
+                    <!-- <button class="toggle-menu menu-left btn-bars smartphones"><i class="fa fa-bars"></i></button> -->
+                    <a class="logo" href="<?php echo $this->getUrl('') ?>">
+                         <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
+                    </a>
+                    <span class="showsearch" data-id="MainSearchForm"><i class="fa fa-search"></i></span>
+               </div>
+     		<div class="col-sm-9 padding-r">
+     			<div class="reasonsnav clearfix">
+     				<ul>
+     					<li class="col-sm-4"><img src="<?php echo $this->getSkinUrl('images/truck.jpg'); ?>"> FREE SHIPPING ON ORDER OVER AED99</li>
+     					<li class="col-sm-4"><img src="<?php echo $this->getSkinUrl('images/customer-service.jpg') ?>"> CUSTOMER SUPPORT SERVICE</li>
+     					<li class="col-sm-4"><img src="<?php echo $this->getSkinUrl('images/dollor.jpg') ?>"> ECART buyer protection</li>
+     				</ul>
+     			</div>
+     			<div class="dealsnav clearfix">
+     				<ul>
+     					<li><a href="">Super Deals <span class="new">New</span></a></li>
+     					<li><a href="">Best Selling</a></li>
+     					<li><a href="">Our Collection</a></li>
+     					<li><a href="">All Sale</a></li>
+     					<li class="call-us"><a href="tel:+97180042935"><i class="fa fa-phone"></i> 800 42935</a></li>
+     				</ul>
+     			</div>
+     		</div>
+     	</div>
+     </div>
+     <div class="mainheadnav clearfix">
+     	<div class="container">
+     		<div class="catgories col-sm-3">
+                    <a class="maincatclass"><h2>CATEGORIES</h2><span data-id="MainCatMenu" class="home"><i class="fa fa-bars"></i></span></a>
+               </div>
+     		<div id="MainSearchForm" class="searchform col-md-7">
+                    <?php echo $this->getChildHtml('topSearch') ?>
+     		</div>
+     		<div class="minicart col-sm-3 col-md-2">
+                    <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
+                         <img src="<?php echo $this->getSkinUrl('images/cart-img.png'); ?>">&nbsp; My Cart <span class="cart-items"> <?php echo $_cartQty = Mage::getSingleton('checkout/cart')->getItemsCount(); ?> </span>
+                    </a>
+               </div>
+               <?php echo $this->getChildHtml('topMenu') ?>
+     	</div>
+     </div>
+</header>
+<style>
+.navmenu-fixed-left{
+background: rgb(45, 46, 50);
+display:none;
+}
+.floatmenu li a{
+    display: block;
+    color: rgb(240, 240, 240) !important;
+    font-size: 1.1em;
+    font-weight: 300;
+    border-bottom: 1px solid rgb(61, 62, 66);
+    padding: 1em;
+    text-transform: uppercase;
+}
+.floatmenu li a:hover {
+    background: rgb(27, 29, 34) !important;
+}
+ol#__categories>li>a {
+    padding-left: 30px;
+}
+ul.__sub__categories>li>a {
+    padding-left: 44px;
+    font-size: 16px;
+}
+</style>
