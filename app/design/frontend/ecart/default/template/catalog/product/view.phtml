@@ -58,7 +58,22 @@
         <a href="#"><?php echo $brand->name ?></a>,
         <?php endforeach ?>
         <?php $_category_detail = Mage::registry('current_category'); ?>
+        <?php if($_category_detail != ''){ ?>
         <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
+        <?php } else{ 
+
+          $currentCatIds = $_product->getCategoryIds();
+          $categoryCollection = Mage::getResourceModel('catalog/category_collection')
+                     ->addAttributeToSelect('name')
+                     ->addAttributeToSelect('url')
+                     ->addAttributeToFilter('entity_id', $currentCatIds)
+                     ->addIsActiveFilter();                     
+                     foreach($categoryCollection as $cat){ ?>
+                          <a href="<?php echo $cat->getUrl($_category); ?>"><?php echo $cat->getName(); ?></a></div>
+
+                  <?php  break; } ?>
+          <?php } ?>
+
       <?php echo $this->getReviewsSummaryHtml($_product, "short", true)?> <?php echo $this->getChildHtml('product_review') ?>
       <?php if($_product->getTypeId() != 'grouped' ): ?>
       <div class="row">
