@@ -73,12 +73,13 @@ $hiddenFilters = array();
     </div>
 <?php endif; ?>
 
+<?php /*
 <script>
 //    document.observe("dom:loaded", function() {
         // initially hide all containers for tab content
         <?php
         foreach ($hiddenFilters as $v) {
-            echo "$('cont-" . $v . "').hide();";
+            echo "jQuery('cont-" . $v . "').hide();";
         }
         ?>
 //    });
@@ -94,13 +95,13 @@ $hiddenFilters = array();
 foreach ($hiddenFilters as $p) {
     echo "if(element.up('div').id=='more-" . $p . "')
 {
-$('cont-" . $p . "').show();
-$('more-" . $p . "').hide();
+jQuery('cont-" . $p . "').show();
+jQuery('more-" . $p . "').hide();
 }
 if(element.up('div').id=='less-" . $p . "')
 {
-$('cont-" . $p . "').hide();
-$('more-" . $p . "').show();
+jQuery('cont-" . $p . "').hide();
+jQuery('more-" . $p . "').show();
 }";
 }
 ?>
@@ -110,3 +111,4 @@ $('more-" . $p . "').show();
     }
 
 </script>
+ */ ?>
