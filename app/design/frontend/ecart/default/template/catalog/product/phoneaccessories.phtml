@@ -110,7 +110,7 @@
         var brand = document.getElementById("brands").value
         //make the ajax call
         jQuery.ajax({
-            url: 'index.php/extension/index/ajaxbestsellerphone/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerphone/',
             type: 'POST',
             data: {action: 'getLoadedProductCollection', brand_ids: brand},
             beforeSend: function () {
@@ -123,7 +123,7 @@
         });
 
         jQuery.ajax({
-            url: 'index.php/extension/index/ajaxnewproductphone/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproductphone/',
             type: 'POST',
             data: {action: 'getLoadedProductCollectionnew', brand_ids: brand},
             success: function (data) {

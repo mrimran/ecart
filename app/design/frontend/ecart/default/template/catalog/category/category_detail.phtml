@@ -242,7 +242,7 @@ $_helper = $this->helper('catalog/output');
     function getLatest(cat_id) {
         jQuery("#item" + cat_id + " a").addClass("active");
         jQuery.ajax({
-            url: 'extension/index/ajaxlatestproduct/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxlatestproduct/',
             type: 'POST',
             data: {action: 'getProductCollectionLatestpro', cat_ids: cat_id},
             beforeSend: function () {
@@ -258,7 +258,7 @@ $_helper = $this->helper('catalog/output');
     function getBestseller(cat_id) {
         jQuery("#item" + cat_id + " a").addClass("active");
         jQuery.ajax({
-            url: 'extension/index/ajaxbestsellerproduct/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerproduct/',
             type: 'POST',
             data: {action: 'getLoadedProductCollectionsellers', cat_ids: cat_id},
             beforeSend: function () {
@@ -274,7 +274,7 @@ $_helper = $this->helper('catalog/output');
     function getUpcoming(cat_id) {
         jQuery("#item" + cat_id + " a").addClass("active");
         jQuery.ajax({
-            url: 'extension/index/ajaxupcoming/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxupcoming/',
             type: 'POST',
             data: {action: 'getProductCollectionUpcomingPro', cat_ids: cat_id},
             beforeSend: function () {
