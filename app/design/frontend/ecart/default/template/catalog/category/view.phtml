@@ -41,12 +41,19 @@
         $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
     }
 ?>
+<?php
+$category_id = Mage::registry('current_category')->getId();
+$category = new Mage_Catalog_Model_Category();
+$category->load($category_id);
+$collection = $category->getProductCollection();
+$count = $collection->getSize();
+ ?>
 <div class="main_title">
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
     <?php endif; ?>
     <h2><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h2>
-    <!--<p>357 Results found for Android Samsung Mobile Phones</p>-->
+    <p><?php echo $count; ?> Results found for <?php echo $this->escapeHtml($_category->getName()) ?></p>
 </div>
 
 <?php echo $this->getMessagesBlock()->toHtml() ?>
