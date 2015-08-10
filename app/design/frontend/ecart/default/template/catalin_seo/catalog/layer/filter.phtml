@@ -38,10 +38,10 @@ $cnt = count($this->getItems());
 
 
 <?php foreach ($this->getItems() as $_item): ?>
-    <?php if ($i == $displaySize) { ?>
+    <?php /*if ($i == $displaySize) { ?>
         <div id="more-<?php echo $filterName ?>" class="more-less"><a>Show more</a></div>
         <div id="cont-<?php echo $filterName ?>">
-        <?php } ?>
+        <?php }*/ ?>
         <li>
             <?php if ($_item->getCount() > 0): ?>
                 <?php /* commenting default
@@ -86,9 +86,9 @@ $cnt = count($this->getItems());
             <?php endif; ?>
         </li>
         <?php
-        $i++;
+        /*$i++;
         if ($i == $cnt && $cnt > $displaySize)
-            echo '<div id="less-' . $filterName . '" class="more-less"><a>Show less</a></div></div>';
+            echo '<div id="less-' . $filterName . '" class="more-less"><a>Show less</a></div></div>';*/
         ?>
 <?php endforeach ?>
 
