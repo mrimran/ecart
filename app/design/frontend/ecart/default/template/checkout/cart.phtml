@@ -195,4 +195,4 @@
     <?php echo $this->getChildHtml('crosssell') ?>
 </div>
 </section>
-<?php //echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml(); ?>
+<?php echo $this->getLayout()->createBlock('extension/related')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml(); ?>
