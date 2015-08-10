@@ -342,6 +342,12 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			</extension_category_upcoming>
+
+			<extension_index_related>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+			</extension_index_related>
 		
 		    
 

@@ -49,6 +49,13 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
+     public function relatedAction() 
+    {
+        
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
     public function mostviewedAction() 
     {   
         $this->loadLayout();
