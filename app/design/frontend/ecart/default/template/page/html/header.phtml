@@ -42,7 +42,7 @@
                </div>
      	</div>
      </div>
-<nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm smartphones" role="navigation">
+<nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm" role="navigation">
   <ul class="nav navmenu-nav floatmenu">
           <li>
           <?php $islogedin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
@@ -88,19 +88,16 @@
                     <li>
                          <a href="<?php echo $_category->getUrl(); ?>"><?php echo $_category->getName(); ?></a>
                          <ul class="__sub__categories">
-                    <?php
-                                        $_category->getId();
-                                        foreach($_subcategories as $_subcategory){
+                    <?php $_category->getId();
+                        foreach($_subcategories as $_subcategory){
                     ?>
-                                             <li><a href="<?php echo $_subcategory->getUrl() ?>"><?php echo $_subcategory->getName() ?></a></li>
+                        <li><a href="<?php echo $_subcategory->getUrl() ?>"><?php echo $_subcategory->getName() ?></a></li>
+                    <?php $_subcategory->getId();
+                        } ?>
+                      </ul>
                     <?php
-                                             $_subcategory->getId();
-                                        }
-                    ?>
-                         </ul>
-                    <?php
-                                   }
-                              }
+                       }
+                     }
                     ?>
                     </li>
                     <?php
@@ -169,28 +166,3 @@
      	</div>
      </div>
 </header>
-<style>
-.navmenu-fixed-left{
-background: rgb(45, 46, 50);
-display:none;
-}
-.floatmenu li a{
-    display: block;
-    color: rgb(240, 240, 240) !important;
-    font-size: 1.1em;
-    font-weight: 300;
-    border-bottom: 1px solid rgb(61, 62, 66);
-    padding: 1em;
-    text-transform: uppercase;
-}
-.floatmenu li a:hover {
-    background: rgb(27, 29, 34) !important;
-}
-ol#__categories>li>a {
-    padding-left: 30px;
-}
-ul.__sub__categories>li>a {
-    padding-left: 44px;
-    font-size: 16px;
-}
-</style>
