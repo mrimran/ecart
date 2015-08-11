@@ -539,7 +539,7 @@ body.push-body-toright { overflow: hidden; }
 .buyerprotection .shield { background-image: url(../images/shield-gray.png); background-color: transparent; background-size: 50px; display: inline-block; padding-top: 60px; height: auto; vertical-align: top; }
 .buyerprotection .title-big { color: #64696d; font-size: 22px; margin-bottom: 0; font-weight: 400; }
 .buyerprotection a { text-align: left; }
-.buyerprotection .protection-list li { line-height: 1.5; color: #64696d; }
+.buyerprotection .protection-list li { line-height: 1.5; color: #64696d;padding-right:0; }
 .site-footer { background-color: transparent; }
 .site-footer .footer-main { padding: 15px 0 20px; background-color: #f6f6f6;/*margin:0 10px;*/ border-radius: 5px; }
 .site-footer .footer-main .social { padding: 0; }
@@ -613,8 +613,9 @@ clear:both;}
     }
     .buyerprotection .shield {
         padding-top: 40px;
-        background-position: 2px 10px;
+        background-position:10px 10px;
         padding: 40px 20px;
+        background-size:35px;
     }
     .maincontainer .recomandations .col-rec {
         float: none;
@@ -623,6 +624,7 @@ clear:both;}
     .buyerprotection .protection-list li i {
         /*margin-left:-19px;*/
     }
+    .buyerprotection .protection-list li{line-height:2;padding-right:0;}
     .maincontainer section#menuslider {
         padding-bottom: 0;
     }
@@ -641,4 +643,9 @@ clear:both;}
     footer .emailcall a:last-child {
         float: right;
     }
+    .cart_table .item-detail h4,.cart_table .item-detail h4 a{font-size:12px;}
+    .cart_table td.qty input{padding:5px;}
+    .cart_page .btn2{font-size:8px;}
+    .cart_table td.qty{top:58px;}
+    .buyerprotection .padding1{padding:0;}
 }
