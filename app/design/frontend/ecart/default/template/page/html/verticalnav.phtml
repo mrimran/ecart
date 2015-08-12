@@ -2,24 +2,54 @@
 			<div class="cat-menu">
 			<a data-id="cat-menu" class="cat-menu-btn desktop"><h3>Shop By Category</h3></a>
 			<ul id="cat-menuP" class="category-menup smartphones">
-				<li><a href="#"><span></span>Phones &amp; Accessories</a></li>
-				<li><a href="#"><span></span>Computer &amp; Accessories</a></li>
-				<li><a href="#"><span></span>Consumer Electronics</a></li>
-				<li><a href="#"><span></span>Games &amp; Accessories</a></li>
-				<li><a href="#"><span></span>Home &amp; Office Supplies</a></li>
-			</ul>
+                    <?php
+                         $_helper = Mage::helper('catalog/category');
+                         $_categories = $_helper->getStoreCategories();
+                         if (count($_categories) > 0){
+                              foreach($_categories as $_category){
+                                   $_category = Mage::getModel('catalog/category')->load($_category->getId());
+                                   $_subcategories = $_category->getChildrenCategories();
+                                   if (count($_subcategories) > 0){
+                    ?>
+                    <li>
+                    <a class="<?php echo $_category->getUrlKey(); ?>" href="<?php echo $_category->getUrl(); ?>"><span></span><?php echo $_category->getName(); ?></a>
+                    <?php }
+                     }
+                    ?>
+                    </li>
+                    <?php
+                         }
+                    ?>
+               </ul>
 			<a class="cat-menu-btn smartphones" data-id="cat-menu"><h3>View All Categories</h3> <span><i class="fa fa-angle-right"></i></span></a>
 			<ul id="cat-menu" class="category-menu desktop tablet">
-				<li><a href="#">Clearance Sale</a></li>
-				<li><a href="#">Phones &amp; Accessories</a></li>
-				<li><a href="#">Computer &amp; Accessories</a></li>
-				<li><a href="#">Consumer Electronics</a></li>
-				<li><a href="#">Games &amp; Accessories</a></li>
-				<li><a href="#">Home &amp; Office Supplies</a></li>
-				<li><a href="#">Watches, Perfumes &amp; Gifts</a></li>
-				<li><a href="#">Health, Beauty &amp; Sports</a></li>
-				<li><a href="#">Fashion, Jewelry &amp; Accessories</a></li>
-				<li><a href="#">Bags, Shoes &amp; Wallets</a></li> 
+                    <?php
+                         $_helper = Mage::helper('catalog/category');
+                         $_categories = $_helper->getStoreCategories();
+                         if (count($_categories) > 0){
+                              foreach($_categories as $_category){
+                                   $_category = Mage::getModel('catalog/category')->load($_category->getId());
+                                   $_subcategories = $_category->getChildrenCategories();
+                                   if (count($_subcategories) > 0){
+                    ?>
+                    <li>
+                         <a href="<?php echo $_category->getUrl(); ?>"><?php echo $_category->getName(); ?></a>
+                         <ul class="__sub__categories">
+                    <?php $_category->getId();
+                        foreach($_subcategories as $_subcategory){
+                    ?>
+                        <li><a href="<?php echo $_subcategory->getUrl() ?>"><?php echo $_subcategory->getName() ?></a></li>
+                    <?php $_subcategory->getId();
+                        } ?>
+                      </ul>
+                    <?php
+                       }
+                     }
+                    ?>
+                    </li>
+                    <?php
+                         }
+                    ?>
 			</ul>
 			</div>
 		</section>

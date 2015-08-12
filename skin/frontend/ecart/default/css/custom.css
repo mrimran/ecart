@@ -258,7 +258,9 @@ height: 13px;
 .extension-index-ourcollection .view-mode  { display: none !important;}
 
 
-
+div.zoomContainer {
+  display: none;
+}
 
 .grouped-items-table-wrapper {}
 
