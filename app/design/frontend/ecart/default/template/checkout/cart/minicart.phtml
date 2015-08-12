@@ -38,11 +38,10 @@
         $_cartQty = 0;
     }
 ?>
-
 <a href="<?php echo $this->helper('checkout/cart')->getCartUrl(); ?>" data-target-element="#header-cart" class="skip-link skip-cart <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
-    <span class="icon"></span>
-    <span class="label"><?php echo $this->__('Cart'); ?></span>
-    <span class="count"><?php echo $_cartQty; ?></span>
+    <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+    <span><?php echo $this->__('My Cart'); ?></span>
+    <span class="count cart-items"><?php echo $_cartQty; ?></span>
 </a>
 
 <div id="header-cart" class="block block-cart skip-content">

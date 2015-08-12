@@ -144,14 +144,15 @@ p.required{color:red;}
 .order-date{font-size:12px;color:#555;margin-bottom:10px;}
 .separator{color:#eaeaea;}
 .shopbybrand-list .filterbar,.shopbybrand-list .brands{display:none;}
-.shopbybrand-list .featuredbrands{margin-top:0;}
+.shopbybrand-list .featuredbrands{margin-top:0 !important;}
 .shopbybrand-list .ca-container{margin:40px auto;}
 .shopbybrand-list .ca-container .ca-item{height:auto;margin-bottom:20px;}
 .shopbybrand-list .ca-container .ca-item-main a{max-height:70px;display:block;overflow:hidden;}
-.discount-form{margin-top:-35px;}
+.discount-form{margin-top:-35px;position:relative;}
 .discount-form label{text-transform:uppercase;padding-right:5px;padding-top:10px;}
 .discount-form .input-text{outline:none;padding:8px 12px;font-size:14px;width:50%;border-radius:2px;
 color:#555;border:1px solid #eaeaea;margin-bottom:10px;}
+.discount-form .validation-advice{position:absolute;top:38px;}
 .discount-form .btn1{font-size:12px;}
 
 @media only screen and (max-width : 800px){
