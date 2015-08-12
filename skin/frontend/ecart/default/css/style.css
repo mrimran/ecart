@@ -90,7 +90,7 @@ position:relative;}
 .topbar .topnav li:last-child a{padding-right:20px;}
 .topbar .topnav ul ul{display:none;}
 .topbar .topnav li:hover ul{position:absolute;top:-15px;display:block;z-index:999999;padding-top:43px;
-background-color:#121419;right:16px;}
+background-color:#121419;right:4px;width:100%;}
 .topbar .topnav li li{display:block;padding:10px 20px;border:1px solid #eaeaea;text-align:center;
 background-color:#fff;border-top:0;}
 .topbar .topnav li li a{color:#303030;padding:0 !important;background-image:none;}
