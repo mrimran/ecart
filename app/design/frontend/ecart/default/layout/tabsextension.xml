@@ -502,4 +502,15 @@
             </block>
  </reference>
  </extension_index_trending>
+
+ <extension_index_related>
+    <reference name="head">
+            <action method="setTitle">
+                <title>Related Products</title>
+            </action>
+    </reference>
+    <reference name="content">
+         <block type="extension/related" name="related" as="related" template="checkout/cart/cutomerswhobought.phtml" />
+    </reference>
+ </extension_index_related>
 </layout>
