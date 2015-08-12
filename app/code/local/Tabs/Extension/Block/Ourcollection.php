@@ -10,7 +10,6 @@ class Tabs_Extension_Block_Ourcollection extends Mage_Catalog_Block_Product_Abst
     {
  
        $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
-       ->addAttributeToFilter('upcomingproduct', 0)
        ->addAttributeToSelect('*')
        ->addAttributeToFilter("type_id",array("eq"=>"grouped"));
                            
