@@ -42,14 +42,8 @@
                 <connection>
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
-<<<<<<< HEAD
                     <password><![CDATA[]]></password>
                     <dbname><![CDATA[07_Aug_2015_V3_ecart_3]]></dbname>
-=======
-
-                    <password><![CDATA[]]></password>
-                    <dbname><![CDATA[ecart_7]]></dbname>
->>>>>>> 4921422e14404271929eed68d9a60d2595e4c3fc
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
