@@ -34,11 +34,13 @@
             echo "<input type=\"hidden\" id=\"" . $name . "\" name=\"" . $name . "\" value=\"" . $value . "\"/>\n";
         }
         echo "<input type=\"hidden\" id=\"signature\" name=\"signature\" value=\"" . sign($params) . "\"/>\n";
+die();
         ?>
     </form>
     <script>
     window.onload = function(){
-        document.forms['payment_confirmation'].submit();
+        //document.forms['payment_confirmation'].submit();
+		document.createElement('form').submit.call(document.payment_confirmation);
     }
     </script>
 </body>
