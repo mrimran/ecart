@@ -557,7 +557,7 @@ right:inherit !important;margin:-40px 0 10px 30px !important;}
 .arrow-sides .owl-carousel .owl-controls .owl-nav .owl-next{
 border:0 !important;width:inherit !important;height:inherit !important;background-size:100% !important;}
 .__product__related section{padding-bottom:0;}
-.products .product.grid{width:31.3%;display:inline-block;margin-right:3%;float:left;height:400px;}
+.products .product.grid{width:31.3%;display:inline-block;margin-right:3%;float:left;height:430px;}
 .products .product.grid .image{padding:0;width:100%;}
 .products .product.grid:nth-of-type(3n+3){margin-right:0;}
 .products .product.grid ul{display:none;}
@@ -610,13 +610,13 @@ display:inline-block;}
 }
 
 .__product__main__area .price {
-    font-size: 35.17px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight:600;
 }
 
 .__product__main__area .price .not-now {
     float: right;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     margin: 12px 0 0 0;
 }
@@ -707,9 +707,7 @@ display:inline-block;}
 }
 
 .__product__main__area .buttons .btn1.wishlist span {
-    display: block;
-    line-height: normal;
-    padding: 0;
+    display: block;line-height: normal;padding: 0;font-size:16px;
 }
 
 .__product__main__area .buttons .btn1.wishlist {
@@ -733,6 +731,12 @@ display:inline-block;}
 .__product__main__area .__share__this a {
     color: rgb(58, 58, 58);
 }
+.__product__main__area .product_type_data .short_des,
+.__product__main__area .product_type_data .availability.in-stock{display:none;}
+.__product__main__area .product_type_data .availability.out-of-stock .label,
+.__product__main__area .product_type_data .availability.out-of-stock .value{color:#303030;
+font-size:16px;padding:0;line-height:2;}
+.__product__main__area .product_type_data .availability.out-of-stock{margin-bottom:0;}
 
 .__peoples__loved {
     border-style: solid;
@@ -1022,6 +1026,12 @@ font-size:14px;border-radius:3px;}
 .minicart-bottom .minicart-actions .checkout-button:hover,
 .minicart-bottom .minicart-actions .checkout-button:focus{background-color:#f57a20;color:#fff;}
 .forgot-pass .form-list .input-box{width:37%;}
+.amxnotif-block label{margin-bottom:5px;}
+.amxnotif-block input{border:1px solid #eaeaea;padding:5px 10px;font-size:12px;}
+.amxnotif-block .button{padding:7px 14px;font-size:13px;}
+.link-compare{font-size:12px;margin-bottom:10px;color:#f57a20;}
+.link-compare:hover{color:#303030;}
+.__product__main__area .link-compare{margin-top:-5px;display:block;}
 
 .fullheight{height:100% !important;max-height:100% !important;}
 .relative{position:relative;}
