@@ -43,20 +43,6 @@ class Varien_Image_Adapter_Gd2 extends Varien_Image_Adapter_Abstract
      */
     protected $_resized = false;
 
-    public function __construct()
-    {
-        // Initialize shutdown function
-        register_shutdown_function(array($this, 'destruct'));
-    }
-
-    /**
-     * Destroy object image on shutdown
-     */
-    public function destruct()
-    {
-        @imagedestroy($this->_imageHandler);
-    }
-
     /**
      * Opens image file.
      *
@@ -82,56 +68,26 @@ class Varien_Image_Adapter_Gd2 extends Varien_Image_Adapter_Abstract
     protected function _isMemoryLimitReached()
     {
         $limit = $this->_convertToByte(ini_get('memory_limit'));
-        /**
-         * In case if memory limit was converted to 0, treat it as unlimited
-         */
-        if ($limit === 0) {
-            return false;
-        }
         $size = getimagesize($this->_fileName);
         $requiredMemory = $size[0] * $size[1] * 3;
-
         return (memory_get_usage(true) + $requiredMemory) > $limit;
     }
 
     /**
-     * Convert PHP memory limit value into bytes
-     * Notation in value is supported only for PHP
-     * Shorthand byte options are case insensitive
+     * Converts memory value (e.g. 64M, 129KB) to bytes.
+     * Case insensitive value might be used.
      *
      * @param string $memoryValue
-     *
-     * @throws Varien_Exception
-     * @see http://php.net/manual/en/faq.using.php#faq.using.shorthandbytes
-     *
      * @return int
      */
     protected function _convertToByte($memoryValue)
     {
-        $memoryValue = trim($memoryValue);
-        if (empty($memoryValue)) {
-            return 0;
+        if (stripos($memoryValue, 'M') !== false) {
+            return (int)$memoryValue * 1024 * 1024;
+        } elseif (stripos($memoryValue, 'KB') !== false) {
+            return (int)$memoryValue * 1024;
         }
-        if (preg_match('~^([1-9][0-9]*)[\s]*(k|m|g)b?$~i', $memoryValue, $matches)) {
-            $option = strtolower($matches[2]);
-            $memoryValue = $matches[1];
-            switch ($option) {
-                case 'g':
-                    $memoryValue *= 1024;
-                    // no break
-                case 'm':
-                    $memoryValue *= 1024;
-                    // no break
-                case 'k':
-                    $memoryValue *= 1024;
-                    break;
-                default:
-                    break;
-            }
-        }
-        $memoryValue = (int)$memoryValue;
-
-        return $memoryValue > 0 ? $memoryValue : 0;
+        return (int)$memoryValue;
     }
 
     public function save($destination=null, $newName=null)
@@ -621,6 +577,10 @@ class Varien_Image_Adapter_Gd2 extends Varien_Image_Adapter_Abstract
         $this->_imageSrcHeight = imagesy($this->_imageHandler);
     }
 
+    function __destruct()
+    {
+        @imagedestroy($this->_imageHandler);
+    }
 
     /*
      * Fixes saving PNG alpha channel

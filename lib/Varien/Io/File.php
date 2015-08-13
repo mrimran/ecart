@@ -99,16 +99,10 @@ class Varien_Io_File extends Varien_Io_Abstract
      */
     protected $_streamLocked = false;
 
-    public function __construct()
-    {
-        // Initialize shutdown function
-        register_shutdown_function(array($this, 'destruct'));
-    }
-
     /**
-     * stream close on shutdown
+     * Destruct
      */
-    public function destruct()
+    public function __destruct()
     {
         if ($this->_streamHandler) {
             $this->streamClose();
@@ -232,17 +226,6 @@ class Varien_Io_File extends Varien_Io_Abstract
         if (!$this->_streamHandler) {
             return false;
         }
-
-        /**
-         * Security enchancement for CSV data processing by Excel-like applications.
-         * @see https://bugzilla.mozilla.org/show_bug.cgi?id=1054702
-         */
-        foreach ($row as $key => $value) {
-            if (substr($value, 0, 1) === '=') {
-                $row[$key] = ' ' . $value;
-            }
-        }
-
         return @fputcsv($this->_streamHandler, $row, $delimiter, $enclosure);
     }
 
