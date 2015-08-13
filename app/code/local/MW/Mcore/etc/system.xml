@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+			<config>
+				<tabs>
+					<mageworld translate="label" module="mcore">
+						<label>Mage World</label>
+						<sort_order>300</sort_order>
+					</mageworld>	
+				</tabs>	
+				
+				<sections>
+					<mcore translate="label" module="mcore">
+						 <label>License Activation</label>
+			            <tab>mageworld</tab>
+			            <frontend_type>text</frontend_type>
+			            <sort_order>99</sort_order>			                       
+			            <show_in_default>1</show_in_default>
+			            <show_in_website>1</show_in_website>
+			            <show_in_store>1</show_in_store>
+			            <groups>
+			            	<mwmodule translate="label">
+			            		<label>MageWorld Extensions</label>
+			            		<expanded>1</expanded>
+			                    <frontend_type>text</frontend_type>	
+			                    <frontend_model>mcore/adminhtml_system_config_extension</frontend_model>				                    
+			                    <sort_order>1</sort_order>
+			                    <show_in_default>1</show_in_default>
+			                    <show_in_website>1</show_in_website>
+			                    <show_in_store>1</show_in_store>
+			               </mwmodule>
+			            </groups>
+					</mcore>
+				</sections>
+			</config>

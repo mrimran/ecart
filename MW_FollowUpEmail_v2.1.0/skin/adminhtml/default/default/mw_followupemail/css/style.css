@@ -1,0 +1,13 @@
+/* Style for overview report FUE in admin*/
+.fuet-left {
+    margin-right: 360px;
+}
+td.fl-top {
+    background: #6f8992;
+    color: #fff;
+    font-weight: bold;
+}
+#rule_campaign_note {
+    color: rgb(228, 74, 29);
+    font-weight: bold;
+}

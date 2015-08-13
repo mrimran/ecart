@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <MW_FollowUpEmail>
+            <version>2.1.0</version>
+        </MW_FollowUpEmail>
+    </modules>
+    <frontend>
+        <routers>
+            <followupemail>
+                <use>standard</use>
+                <args>
+                    <module>MW_FollowUpEmail</module>
+                    <frontName>followupemail</frontName>
+                </args>
+            </followupemail>
+        </routers>
+        <layout>
+            <updates>
+                <followupemail>
+                    <file>mw_followupemail.xml</file>
+                </followupemail>
+            </updates>
+        </layout>
+		<translate>
+            <modules>
+                <MW_FollowUpEmail>
+                    <files>
+                        <default>MW_FollowUpEmail.csv</default>
+                    </files>
+                </MW_FollowUpEmail>
+            </modules>
+        </translate>
+    </frontend>
+	<admin>
+       <routers>
+		<adminhtml>
+			<args>
+				<modules>
+					<followupemail before="Mage_Adminhtml">MW_FollowUpEmail_Adminhtml</followupemail>
+				</modules>
+			</args>
+		</adminhtml>
+       </routers>
+	   <translate>
+            <modules>
+                <MW_FollowUpEmail>
+                    <files>
+                        <default>MW_FollowUpEmail.csv</default>
+                    </files>
+                </MW_FollowUpEmail>
+            </modules>
+
+        </translate>
+
+   	</admin>
+
+    <adminhtml>
+
+		<translate>
+
+            <modules>
+
+                <MW_FollowUpEmail>
+
+                    <files>
+
+                        <default>MW_FollowUpEmail.csv</default>
+
+                    </files>
+
+                </MW_FollowUpEmail>
+
+            </modules>
+
+        </translate>
+		<acl>
+
+			<resources>
+
+				<all>
+
+					<title>Allow Everything</title>
+
+				</all>
+
+				<admin>
+
+					<children>
+
+						<MW_FollowUpEmail>
+
+							<title>FollowUpEmail Module</title>
+
+							<sort_order>10</sort_order>
+
+						</MW_FollowUpEmail>
+
+					</children>
+
+				</admin>
+
+			</resources>
+
+		</acl>
+
+		<layout>
+
+			<updates>
+
+				<followupemail>
+
+					<file>mw_followupemail.xml</file>
+
+				</followupemail>
+
+			</updates>
+
+		</layout>
+
+    </adminhtml>   
+
+    <global>
+
+        <models>
+
+            <followupemail>
+
+                <class>MW_FollowUpEmail_Model</class>
+
+                <resourceModel>followupemail_mysql4</resourceModel>
+
+            </followupemail>
+
+            <followupemail_mysql4>
+
+                <class>MW_FollowUpEmail_Model_Mysql4</class>
+
+                <entities>
+
+                    <rules>
+
+                        <table>mw_followupemail_rules</table>
+
+                    </rules>
+
+					<emailqueue>
+
+                        <table>mw_followupemail_emailqueue</table>
+
+                    </emailqueue>
+					
+					<coupons>
+
+                        <table>mw_followupemail_coupons</table>
+
+                    </coupons>					
+
+                </entities>
+
+            </followupemail_mysql4>
+			
+			<salesrule>
+		        <rewrite>
+		          <validator>MW_FollowUpEmail_Model_Validator</validator>
+		        </rewrite>
+		    </salesrule>
+			
+			<core>
+		        <rewrite>
+		            <email_template>MW_FollowUpEmail_Model_Email_Template</email_template>
+		        </rewrite>
+		    </core>
+			
+			<!--<salesrule_mysql4>
+                <rewrite>
+                    <rule_collection>MW_FollowUpEmail_Model_Mysql4_Salesrule_Collection</rule_collection>
+                </rewrite>
+            </salesrule_mysql4>-->
+
+        </models>
+
+        <resources>
+
+            <followupemail_setup>
+
+                <setup>
+
+                    <module>MW_FollowUpEmail</module>
+
+                </setup>
+
+                <connection>
+
+                    <use>core_setup</use>
+
+                </connection>
+
+            </followupemail_setup>
+
+            <followupemail_write>
+
+                <connection>
+
+                    <use>core_write</use>
+
+                </connection>
+
+            </followupemail_write>
+
+            <followupemail_read>
+
+                <connection>
+
+                    <use>core_read</use>
+
+                </connection>
+
+            </followupemail_read>
+
+        </resources>
+
+		<events>
+
+			<free_trial_download>
+
+    			<observers>
+
+    				<followupemail>
+
+    					<type>singleton</type>
+
+    					<class>followupemail/observer</class>
+
+    					<method>mailFreeTrialDownload</method>
+
+    				</followupemail>
+
+    			</observers>
+
+    		</free_trial_download>
+
+			<free_trial_request>
+
+    			<observers>
+
+    				<followupemail>
+
+    					<type>singleton</type>
+
+    					<class>followupemail/observer</class>
+
+    					<method>mailFreeTrialRequest</method>
+
+    				</followupemail>
+
+    			</observers>
+
+    		</free_trial_request>
+
+			<free_trial_remind>
+
+    			<observers>
+
+    				<followupemail>
+
+    					<type>singleton</type>
+
+    					<class>followupemail/observer</class>
+
+    					<method>mailFreeTrialRemind</method>
+
+    				</followupemail>
+
+    			</observers>
+
+    		</free_trial_remind>	
+
+			<free_download>
+
+    			<observers>
+
+    				<followupemail>
+
+    					<type>singleton</type>
+
+    					<class>followupemail/observer</class>
+
+    					<method>mailFreeDownload</method>
+
+    				</followupemail>
+
+    			</observers>
+
+    		</free_download>		
+
+			<sales_order_save_after>
+
+                <observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>eventAddQueue</method>
+
+                    </followupemail>
+
+                </observers>
+
+            </sales_order_save_after>
+
+			<sales_order_place_after>
+
+                <observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>newOrder</method>
+
+                    </followupemail>
+
+                </observers>
+
+            </sales_order_place_after> 
+
+			<customer_login>
+
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>customerLogin</method>
+
+                    </followupemail>
+
+                </observers>
+
+			</customer_login>
+
+			<customer_logout>
+
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>customerLogout</method>
+
+                    </followupemail>
+
+                </observers>
+
+			</customer_logout>
+
+			<checkout_cart_update_items_before>
+
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>cartUpdated</method>
+
+                    </followupemail>
+
+                </observers>
+
+			</checkout_cart_update_items_before>
+            
+            <checkout_cart_save_after>
+                
+                <observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>cartUpdated</method>
+
+                    </followupemail>
+
+                </observers>
+            </checkout_cart_save_after>
+
+			<checkout_cart_product_update_after>
+
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>cartUpdated</method>
+
+                    </followupemail>
+
+                </observers>
+
+			</checkout_cart_product_update_after>
+			
+			<customer_register_success>
+			
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>newCustomerSignedUp</method>
+
+                    </followupemail>
+
+                </observers>
+				
+			</customer_register_success>
+			
+			<!--<controller_action_postdispatch_customer_account_createpost>
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>newCustomerSignedUp</method>
+
+                    </followupemail>
+
+                </observers>
+			</controller_action_postdispatch_customer_account_createpost>-->
+			
+			<controller_action_postdispatch_customer_account_editPost>
+			
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>customerUpdated</method>
+
+                    </followupemail>
+
+                </observers>
+				
+			</controller_action_postdispatch_customer_account_editPost>
+
+			<controller_action_postdispatch_customer_address_formPost>
+			
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>customerUpdated</method>
+
+                    </followupemail>
+
+                </observers>
+				
+			</controller_action_postdispatch_customer_address_formPost>			
+			
+			<controller_action_predispatch>
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>checkStatus</method>
+
+                    </followupemail>
+
+                </observers>
+			</controller_action_predispatch>
+			
+			<adminhtml_customer_save_after>
+			
+				<observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>customerUpdated</method>
+
+                    </followupemail>
+
+                </observers>
+				
+			</adminhtml_customer_save_after>
+			<!--<sales_order_save_after>
+
+                <observers>
+
+                    <followupemail>
+
+                        <type>singleton</type>
+
+                        <class>followupemail/observer</class>
+
+                        <method>eventDeleteQueue</method>
+
+                    </followupemail>
+
+                </observers>
+
+            </sales_order_save_after>-->
+
+		</events>
+
+        <blocks>
+
+            <followupemail>
+
+                <class>MW_FollowUpEmail_Block</class>
+
+            </followupemail>			
+			
+		    <!--<adminhtml>
+		        <rewrite>
+		            <system_email_template_edit_form>MW_FollowUpEmail_Block_Adminhtml_System_Email_Template_Edit_Form</system_email_template_edit_form>
+		        </rewrite>
+		    </adminhtml>-->
+            <adminhtml>
+                <rewrite>
+                    <system_email_template_edit>MW_FollowUpEmail_Block_Adminhtml_System_Email_Template_Edit</system_email_template_edit>
+                    <system_email_template_edit_form>MW_FollowUpEmail_Block_Adminhtml_System_Email_Template_Edit_Form</system_email_template_edit_form>
+                </rewrite>
+            </adminhtml>
+
+        </blocks>
+
+        <helpers>
+
+            <followupemail>
+
+                <class>MW_FollowUpEmail_Helper</class>
+
+            </followupemail>
+
+        </helpers>
+
+    </global>
+
+	<crontab>
+
+            <jobs>
+
+                <MW_FollowUpEmail>
+
+                    <schedule><cron_expr>* * * * *</cron_expr></schedule>
+
+                    <run><model>followupemail/observer::runCron</model></run>
+
+                </MW_FollowUpEmail>           
+				
+				<cron_clean_queuemail>
+
+                    <schedule><cron_expr>0 0 * * *</cron_expr></schedule>
+
+                    <run><model>followupemail/observer::runCronCleanMail</model></run>
+
+                </cron_clean_queuemail>
+
+            </jobs>
+
+    </crontab>
+	
+	<phpunit>
+        <suite>
+            <modules>
+                <MW_FollowUpEmail />
+            </modules>
+        </suite>
+    </phpunit>
+
+	<default>
+
+		<followupemail>
+
+			<config>
+
+				<enabled>1</enabled>
+
+				<sender>general</sender>
+				
+				<dontsendemailhours>24</dontsendemailhours>
+				
+				<cartisabandonedafter>0.25</cartisabandonedafter>
+				
+				<autocleanqueueemail>60</autocleanqueueemail>
+
+			</config>
+
+		</followupemail>		
+
+	</default>
+
+</config>

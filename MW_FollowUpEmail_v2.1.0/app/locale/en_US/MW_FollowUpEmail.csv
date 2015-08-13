@@ -1,0 +1,130 @@
+Follow Up Email, Follow Up Email
+Email Queue,Email Queue
+Configuration,Configuration
+Manage Rules,Manage Rules
+Add New Rule,Add New Rule
+Create Date, Create Date
+Scheduled At, Scheduled At
+Sent At, Sent At
+Not sent yet, Not sent yet
+Follow Up Email Queue,Follow Up Email Queue
+Save Rule, Save Rule
+There are %d pending emails of this rule. Are you sure to remove all emails?, There are %d pending emails of this rule. Are you sure to remove all emails?
+Delete Rule, Delete Rule
+Edit Rule '%s',Edit Rule '%s'
+Enable and save Rule to activate,Enable and save Rule to activate
+Active From,Active From
+Leave blank if no limit,Leave blank if no limit
+Active To,Active To
+Send FUE when,Send FUE when
+New Customer Signed Up,New Customer Signed Up
+Customer Account Updated,Customer Account Updated
+New Order Placed,New Order Placed
+Order Processing,Order Processing
+Order Completed,Order Completed
+Order Cancelled,Order Cancelled
+Order Updated,Order Updated
+Order Closed,Order Closed
+Abandoned Cart,Abandoned Cart
+Cancel Pending Emails If,Cancel Pending Emails If
+Cart Updated,Cart Updated
+Customer Logged In,Customer Logged In
+"Only pending emails will be cancelled. Use 'ctrl' to select more than 1 event","Only pending emails will be cancelled. Use 'ctrl' to select more than 1 event"
+"Store View","Store View"
+"Yes, send to all customers","Yes, send to all customer"
+"Yes, send only to newsletter subscribers","Yes, send only to newsletter subscribers"
+"No","No"
+"Yes","Yes"
+"BCC to, emails are separated by comma "",""", "BCC to, emails are separated by comma "","""
+"Select 'no' if only admin to receive notification of an event","Select 'no' if only admin to receive notification of an event"
+Email Schedule,Email Schedule
+Send,Send
+Days,Days
+Hours,Hours
+Minutes,Minutes
+Template,Template
+After,After
+Before,Before
+Sender Email,Sender Email
+Send now,Send now
+Cancel,Cancel
+Pending,Pending
+Sent,Sent
+Failed,Failed
+cancelled,cancelled
+Add email,Add email
+Customer Name, Customer Name
+Add Rule,Add Rule
+ID, ID
+Email, Email
+FUE Rule, FUE Rule
+Order Number, Order Number
+Email Template, Email Template
+Event Trigger, Event Trigger
+From Date, From Date
+To Date, To Date
+Status, Status
+Action, Action
+Title, Title
+General, General
+Enabled, Enabled
+Disabled, Disabled
+Event, Event
+Customer Groups, Customer Groups
+Cancellation events, Cancellation events
+FUE Rule Title, FUE Rule Title
+Edit, Edit
+Delete, Delete
+The pending emails of the rules will be removed as well. Are you sure to delete?, The pending emails of the rules will be removed as well. Are you sure to delete?
+Are you sure?,Are you sure?
+Change status,Change status
+Rule Information,Rule Information
+Additional Conditions, Additional Conditions
+Apply the rule only if the following conditions are met (leave blank for no conditions), Apply the rule only if the following conditions are met (leave blank for no conditions)
+Conditions, Conditions
+The conditions that do not relate to the event will be ignored, The conditions that do not relate to the event will be ignored
+* The conditions that do not relate to the event will be ignored, * The conditions that do not relate to the event will be ignored
+General, General
+Sender Information, Sender Information
+Send Test Email,Send Test Email
+Test recipient to email,Test recipient to email
+Test customer email,Test customer email
+Select customer email address for test email (customer will not receive this email), Select customer email address for test email (customer will not receive this email)
+Select order # for test email (customer will not receive this email), Select order # for test email (customer will not receive this email)
+Test Order number,Test Order number
+Send Email,Send Email
+Sender Name, Sender Name
+Leave blank to use the default sender (set up in configuration tab), Leave blank to use the default sender (set up in configuration tab)
+Send only to newsletter subscribers,Send only to newsletter subscribers
+Send copy to email,Send copy to email
+Send email to customer,Send email to customer
+Send test email to, Send test email to
+Sender Details,Sender Details
+Send a copy to, Send a copy to
+Rule Information,Rule Information
+Cancellation events,Cancellation events
+Apply the rule only if the following conditions are met (leave blank for all rules),Apply the rule only if the following conditions are met (leave blank for all rules)
+Are you sure you want to do this?, Are you sure you want to do this?
+Email is cancelled,Email is cancelled
+Total of %d record(s) were successfully deleted,Total of %d record(s) were successfully deleted
+Total of %d record(s) were successfully cancelled,Total of %d record(s) were successfully cancelled
+Total of %d record(s) were successfully sent,Total of %d record(s) were successfully sent
+Follow Up Email Preview,Follow Up Email Preview
+Enable Follow Up Email,Enable Follow Up Email
+Default Sender,Default Sender
+"Set up default senders under System – Configuration – General – Store Email Addresses","Set up default senders under System – Configuration – General – Store Email Addresses"
+"Amount of time, cart is considered abandoned after last update (in hours)","Amount of time, cart is considered abandoned after last update (in hours)"
+"(Use decimals for partial hour. Ex. .25 equals 15 minutes)","(Use decimals for partial hour. Ex. .25 equals 15 minutes)"
+"Don't send the same email within # of hours","Don't send the same email within # of hours"
+"(Use decimals for partial hour. Ex. .25 equals 15 minutes)","(Use decimals for partial hour. Ex. .25 equals 15 minutes)"
+"Don't send the same email within # of hours","Don't send the same email within # of hours"
+"Auto-clean 'Sent' emails after # of days","Auto-clean 'Sent' emails after # of days"
+"Coupons","Coupons"
+"Enable coupons","Enable coupons"
+"Enable coupons for this rule","Enable coupons for this rule"
+"Shopping Cart Price Rule","Shopping Cart Price Rule"
+"Coupon Code Prefix","Coupon Code Prefix"
+"Coupon expires after # (days)","Coupon expires after # (days)"
+Email Templates,Email Templates
+Generated Coupons,Generated Coupons
+Apply to past orders,Apply to past orders

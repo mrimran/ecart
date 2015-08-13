@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<templates>
+	<!--Sample - Abandoned Cart #1-->
+    <template>
+        <template_code>Sample - Abandoned Cart #1</template_code>
+        <template_subject>Did you need help with your order from {{var store.getFrontendName()}}?</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+				  <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">Welcome to {{var store.getFrontendName()}}!</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for your interest in our {{var cart.product_names}} product.</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I noticed you put together a shopping cart on our site but didn’t submit your order, wondering if you need any help or if you have any questions about the order before you submit it?</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">If there’s anything I can do, just hit the reply button and drop me a line, alternatively you can email us on <a href="mailto:{{config path='trans_email/ident_support/email'}}">{{config path='trans_email/ident_support/email'}}</a> with any product or order queries.</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I’ve included a list of your shopping cart contents below.</p>
+                                  {{var cart.products}}
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I’d also love to hear if you have any suggestions on how we can improve our website. If you need to discuss your order in more detail, feel free to call me during business hours on <span class="nobr">{{config path='general/store_information/phone'}}</span></p>
+				  <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var cart.direct_link}}" style="color:red;font-size:20px;">Return to Your Shopping Cart</a></center><br></p>				  
+				 </td>
+            </tr>
+            <tr>
+                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a></p></center></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Abandoned Cart #2-->
+    <template>
+        <template_code>Sample - Abandoned Cart #2</template_code>
+        <template_subject>Would you like help with your cart?</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+				  <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">Welcome to {{var store.getFrontendName()}}!</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for your interest in our {{var cart.product_names}} product.</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I noticed you put together a shopping cart on our site but didn’t submit your order, wondering if you need any help or if you have any questions about the order before you submit it?</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">If there’s anything I can do, just hit the reply button and drop me a line, alternatively you can email us on <a href="mailto:{{config path='trans_email/ident_support/email'}}">{{config path='trans_email/ident_support/email'}}</a> with any product or order queries.</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I’ve included a list of your shopping cart contents below.</p>
+                                  {{var cart.products}}
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I’d also love to hear if you have any suggestions on how we can improve our website, again just hit the reply button and let me know. If you need to discuss your order in more detail, feel free to call me during business hours on <span class="nobr">{{config path='general/store_information/phone'}}</span></p>
+				  <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var cart.direct_link}}" style="color:red;font-size:20px;">Return to Your Shopping Cart</a></center><br></p>				  
+				 </td>
+            </tr>
+            <tr>
+                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a></p></center></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Abandoned Cart #3-->
+    <template>
+        <template_code>Sample - Abandoned Cart #3</template_code>
+        <template_subject>We offer 10% discount for your order</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+				  <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">Welcome to {{var store.getFrontendName()}}!</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for your interest in our {{var cart.product_names}} product.</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I noticed you put together a shopping cart on our site 7 days ago but didn’t submit your order, wondering if you need any help or if you have any questions about the order before you submit it?</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;"> We are running a customer appreciation program that offers a <strong style="color:red;">10% OFF</strong> when you use the following coupon code <strong style="color:red;">CODE4SALE</strong>. If you are interested, you can complete your purchase today with a discount. If you have any other questions, just hit the reply button and drop me a line, alternatively you can email us on <a href="mailto:{{config path='trans_email/ident_support/email'}}">{{config path='trans_email/ident_support/email'}}</a> with any product or order queries.</p>
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I’ve included a list of your shopping cart contents below.</p>
+                                  {{var cart.products}}
+				  <p style="font-size:12px; line-height:16px; margin:10px 0;">I’d also love to hear if you have any suggestions on how we can improve our website, again just hit the reply button and let me know. If you need to discuss your order in more detail, feel free to call me during business hours on <span class="nobr">{{config path='general/store_information/phone'}}</span></p>
+				  <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var cart.direct_link}}" style="color:red;font-size:20px;">Return to Your Shopping Cart</a></center><br></p>				  
+				 </td>
+            </tr>
+            <tr>
+                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a></p></center></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Pending Order #1-->
+    <template>
+        <template_code>Sample - Pending Order #1</template_code>
+        <template_subject>Did you need help with your order?</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for your interest in our {{var order.product_names}} product.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">There seems to be a problem with the payment processing of your order.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">We have many ways to securely pay for your order.<br>
+						<center><img src="http://www.mage-world.com/skin/frontend/default/mw_1500/images/logo-ck-1.jpg" style="margin-bottom:10px;" border="0"/></center>
+					</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">We will keep {{var order.product_names}} in <a href="{{var order.direct_link}}">your account</a> for your convenience.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Please click on this link to <a href="{{var order.direct_link}}">view your order</a>.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">If you have any questions regarding our service or your product, please do not hesitate to contact <a href="http://www.mage-world.com/contacts/">our sales department</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> during working hours.</p>
+               </td>
+            </tr>
+                    <tr>
+                        <td bgcolor="#F7F7F7" align="center" style="background:#F7F7F7; text-align:center;"><center><p style="font-size:12px; margin:0;">Sincerely, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a></p></center></td>
+                    </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Pending Order #2-->
+    <template>
+        <template_code>Sample - Pending Order #2</template_code>
+        <template_subject>A reminder about your order.</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for your interest in our {{var order.product_names}} product.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">We thought we would send you a reminder in case you had forgotten about your order from yesterday.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">We have many ways to securely pay for your order.<br>
+						<center><img src="http://www.mage-world.com/skin/frontend/default/mw_1500/images/logo-ck-1.jpg" style="margin-bottom:10px;" border="0"/></center>
+					</p>
+					   <p style="font-size:12px; line-height:16px; margin:10px 0;">We will keep {{var order.product_names}} in <a href="{{var order.direct_link}}">your account</a> for your convenience.</p>
+					  <p style="font-size:12px; line-height:16px; margin:10px 0;">Please click on this link to <a href="{{var order.direct_link}}">view your order</a>.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">If you have any questions regarding our service or your product, please do not hesitate to contact <a href="http://www.mage-world.com/contacts/">our sales department</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> during working hours.</p>
+                    <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var order.direct_link}}" style="color:red;font-size:20px;">Return to My Account</a></center><br></p>
+				</td>
+            </tr>
+                    <tr>
+                        <td bgcolor="#F7F7F7" align="center" style="background:#F7F7F7; text-align:center;"><center><p style="font-size:12px; margin:0;">Sincerely, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a></p></center></td>
+                    </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Pending Order #3-->
+    <template>
+        <template_code>Sample - Pending Order #3</template_code>
+        <template_subject>A friendly reminder about your order</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for your interest in our {{var order.product_names}} product.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">We thought we would send you a reminder in case you had forgotten about your order from last week.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">We have many ways to securely pay for your order.<br>
+						<center><img src="http://www.mage-world.com/skin/frontend/default/mw_1500/images/logo-ck-1.jpg" style="margin-bottom:10px;" border="0"/></center>
+					</p>
+					 <p style="font-size:12px; line-height:16px; margin:10px 0;">We will keep {{var order.product_names}} in <a href="{{var order.direct_link}}">your account</a> for your convenience.</p>
+					  <p style="font-size:12px; line-height:16px; margin:10px 0;">Please click on this link to <a href="{{var order.direct_link}}">view your order</a>.</p>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">If you have any questions regarding our service or your product, please do not hesitate to contact <a href="http://www.mage-world.com/contacts/">our sales department</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> during working hours.</p>
+                    <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var order.direct_link}}" style="color:red;font-size:20px;">Return to My Account</a></center><br></p>
+				</td>
+            </tr>
+                    <tr>
+                        <td bgcolor="#F7F7F7" align="center" style="background:#F7F7F7; text-align:center;"><center><p style="font-size:12px; margin:0;">Sincerely, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a> </p></center></td>
+                    </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Completed Order #1-->
+    <template>
+        <template_code>Sample - Completed Order #1</template_code>
+        <template_subject>How is it going with your new product?</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for your recent purchase. We really appreciate you putting your trust in our site.</p>  
+					 <p style="font-size:12px; line-height:16px; margin:10px 0;">Last week, you had placed an order on our site and we really want to know if you are satisfied with your purchases or not. Please let us know what you think, then we can serve you better.</p>  
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">If you have any questions regarding our service or your product, please do not hesitate to contact <a href="http://www.mage-world.com/contacts/">our sales department</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> during working hours.</p>
+                    <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var order.direct_link}}" style="color:red;font-size:20px;">Return to My Account</a></center><br></p>
+				</td>
+            </tr>
+                    <tr>
+                        <td bgcolor="#F7F7F7" align="center" style="background:#F7F7F7; text-align:center;"><center><p style="font-size:12px; margin:0;">Sincerely, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a> </p></center></td>
+                    </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Completed Order #2-->
+    <template>
+        <template_code>Sample - Completed Order #2</template_code>
+        <template_subject>It has been a while, how is about your product?</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for recent purchase. We really appreciate you putting your trust in our site.</p>  
+					 <p style="font-size:12px; line-height:16px; margin:10px 0;">Last month, you had placed an order on our site and we really want to know if you are satisfied with your purchases or not. Would you like to give us some comments or feedbacks on your ordered products? </p>  
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">If you have any questions regarding our service or your product, please do not hesitate to contact <a href="http://www.mage-world.com/contacts/">our sales department</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> during working hours.</p>
+                    <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var order.direct_link}}" style="color:red;font-size:20px;">Return to My Account</a></center><br></p>
+				</td>
+            </tr>
+                    <tr>
+                        <td bgcolor="#F7F7F7" align="center" style="background:#F7F7F7; text-align:center;"><center><p style="font-size:12px; margin:0;">Sincerely, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a></p></center></td>
+                    </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - New Account #1-->
+    <template>
+        <template_code>Sample - New Account #1</template_code>
+        <template_subject>It has been a while, how is it going?</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for becoming a part of our community. We learn that you registered an account on our website one month ago, but since then you have not placed any orders. </p>  
+					 <p style="font-size:12px; line-height:16px; margin:10px 0;">We were wondering whether our service or product has not satisfied your needs yet?</p>  
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">If you have any questions regarding our service or products, please do not hesitate to contact <a href="http://www.mage-world.com/contacts/">our sales department</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> during working hours.</p>
+                    <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var order.direct_link}}" style="color:red;font-size:20px;">Return to My Account</a></center><br></p>
+				</td>
+            </tr>
+                    <tr>
+                        <td bgcolor="#F7F7F7" align="center" style="background:#F7F7F7; text-align:center;"><center><p style="font-size:12px; margin:0;">Sincerely, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a> </p></center></td>
+                    </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - New Account #2-->
+    <template>
+        <template_code>Sample - New Account #2</template_code>
+        <template_subject>It has been a while, how is it going?</template_subject>        
+        <template_text><![CDATA[
+		<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td align="center" valign="top" style="padding:20px 0 20px 0">
+		<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 20px 0;"">Dear {{var customer.first_name}},</h1>
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">Thank you for becoming a part of our community. We learn that you registered an account on our website two month ago, but since then you have not placed any orders. </p>  
+					 <p style="font-size:12px; line-height:16px; margin:10px 0;">We were wondering whether our service or product has not satisfied your needs yet?</p>  
+                    <p style="font-size:12px; line-height:16px; margin:10px 0;">If you have any questions regarding our service or products, please do not hesitate to contact <a href="http://www.mage-world.com/contacts/">our sales department</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> during working hours.</p>
+                    <p style="font-size:12px; line-height:16px; margin:20px 0;"><center><a href="{{var order.direct_link}}" style="color:red;font-size:20px;">Return to My Account</a></center><br></p>
+				</td>
+            </tr>
+                    <tr>
+                        <td bgcolor="#F7F7F7" align="center" style="background:#F7F7F7; text-align:center;"><center><p style="font-size:12px; margin:0;">Sincerely, <strong>{{var store.getFrontendName()}}</strong> - <a target="_blank" href="{{ var fue.unsubscribe()}}"><strong>Unsubscribe</strong></a></p></center></td>
+                    </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>]]></template_text>
+    </template>
+	<!--Sample - Variables -->
+    <template>
+        <template_code>Sample - Variables</template_code>
+        <template_subject>Sample - Variables</template_subject>        
+        <template_text><![CDATA[
+		<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+    <td align="center" valign="top" style="padding:20px 0 20px 0">
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+              <td valign="top">
+			  	  <h1>Coupon Params</h1>
+				  <p><strong>full_name:</strong> {{var coupon.code}}</p>
+                  <h1>Customer Params</h1>
+                  <p><strong>full_name:</strong> {{var customer.full_name}}</p>
+                  <p><strong>email:</strong> {{var customer.email}}</p>
+                  <p><strong>last_name:</strong> {{var customer.last_name}}</p>
+                  <p><strong>first_name:</strong> {{var customer.first_name}}</p>
+                  <p><strong>default_address:</strong><br> {{var customer.default_address}}</p>
+                  <p><strong>city:</strong> {{var customer.city}}</p>
+                  <p><strong>state:</strong> {{var customer.state}}</p>
+                  <p><strong>zip_code:</strong> {{var customer.zip_code}}</p>
+                  <p><strong>country:</strong> {{var customer.country}}</p>
+                  <h1>Order Params</h1>
+                  <p><strong>order_number:</strong> {{var order.order_number}}</p>
+                  <p><strong>status:</strong> {{var order.status}}</p>
+                  <p><strong>billing_address:</strong><br> {{var order.billing_address}}</p>
+                  <p><strong>billing_address:</strong><br> {{var order.shipping_address}}</p>
+                  <p><strong>total_qty:</strong> {{var order.total_qty}}</p>
+                  <p><strong>subtotal:</strong> {{var order.subtotal}}</p>
+                  <p><strong>product_names:</strong> {{var order.product_names}}</p>
+                  <p><strong>list_products:</strong><br>{{var order.products}}</p>
+                  <p><strong>items_detail:</strong> <br>{{var order.items}}</p>
+                  <p><strong>direct_link:</strong> <a href="{{var order.direct_link}}">{{var order.direct_link}}</a></p>
+                  <h1>Cart Params</h1>
+                  <p><strong>update_at:</strong> {{var cart.update_at}}</p>
+                  <p><strong>items_qty:</strong> {{var cart.items_qty}}</p>
+                  <p><strong>subtotal:</strong> {{var cart.subtotal}}</p>
+                  <p><strong>product_names:</strong> {{var cart.product_names}}</p>
+                  <p><strong>list_products:</strong> <br>{{var cart.products}}</p>
+                  <p><strong>items_detail:</strong> <br>{{var cart.items}}</p>
+                  <p><strong>direct_link:</strong> {{var cart.direct_link}}</p>
+                  <p><strong>Unsubscribe:</strong> {{ var fue.unsubscribe()}}</p>
+      		</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>]]></template_text>
+    </template>
+</templates>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">   
+    <adminhtml_followupemail_rules_index>
+       <reference name="content">
+            <block type="followupemail/adminhtml_rules" name="followupemail.rules" />
+        </reference>
+    </adminhtml_followupemail_rules_index>
+	
+	<adminhtml_followupemail_rules_edit>
+        <reference name="head">
+            <action method="setCanLoadExtJs"><flag>1</flag></action>
+            <action method="setCanLoadRulesJs"><flag>1</flag></action>
+            <action method="addCss"><script>mw_followupemail/css/style.css</script></action>
+        </reference>
+        <reference name="left">
+            <block type="followupemail/adminhtml_rules_edit_tabs" name="followupemail_rules_edit_tabs">
+                <block type="followupemail/adminhtml_rules_edit_tab_main" name="followupemail_rules_edit_tab_main" />
+                <block type="followupemail/adminhtml_rules_edit_tab_conditions" name="followupemail_rules_edit_tab_conditions"/>
+				<block type="followupemail/adminhtml_rules_edit_tab_sendmail" name="followupemail_rules_edit_tab_sendmail"/>
+				<block type="followupemail/adminhtml_rules_edit_tab_sendtestmail" name="followupemail_rules_edit_tab_sendtestmail"/>
+                <block type="followupemail/adminhtml_rules_edit_tab_googleanalytics" name="followupemail_rules_edit_tab_googleanalytics"/>
+				<block type="followupemail/adminhtml_rules_edit_tab_coupons" name="followupemail_rules_edit_tab_coupons"/>
+                <!--<block type="followupemail/adminhtml_rules_edit_tab_actions" name="followupemail_rules_edit_tab_actions"/>	-->
+                <action method="addTab"><name>main_section</name><block>followupemail_rules_edit_tab_main</block></action>
+                <action method="addTab"><name>conditions_section</name><block>followupemail_rules_edit_tab_conditions</block></action>
+				<action method="addTab"><name>sendmail_section</name><block>followupemail_rules_edit_tab_sendmail</block></action>
+				<action method="addTab"><name>sendtestmail_section</name><block>followupemail_rules_edit_tab_sendtestmail</block></action>
+                <action method="addTab"><name>googleanalytics_section</name><block>followupemail_rules_edit_tab_googleanalytics</block></action>
+				<action method="addTab"><name>coupons_section</name><block>followupemail_rules_edit_tab_coupons</block></action>
+                <!--<action method="addTab"><name>actions_section</name><block>followupemail_rules_edit_tab_actions</block></action>-->
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="followupemail/adminhtml_rules_edit" name="followupemail_rules_edit"></block>
+        </reference>
+    </adminhtml_followupemail_rules_edit>
+	
+	<adminhtml_followupemail_queue_index>		
+       <reference name="content">
+            <block type="followupemail/adminhtml_queue" name="followupemail.queue" />
+        </reference>
+    </adminhtml_followupemail_queue_index>
+	
+	<adminhtml_followupemail_coupons_index>		
+       <reference name="content">
+            <block type="followupemail/adminhtml_coupons" name="followupemail.coupons" />
+        </reference>
+    </adminhtml_followupemail_coupons_index>
+	
+	<adminhtml_followupemail_abandoncartforguest_index>		
+       <reference name="content">
+            <block type="followupemail/adminhtml_abandoncartforguest" name="followupemail.abandoncartforguest" />
+        </reference>
+    </adminhtml_followupemail_abandoncartforguest_index>
+
+    <adminhtml_followupemail_reportoverview_index>
+        <reference name="head">
+            <action method="addJs"><script>mw_followupemail/adminhtml/lib/prototype-adapter.js</script></action>
+            <action method="addJs"><script>mw_followupemail/adminhtml/lib/highcharts.js</script></action>
+            <action method="addJs"><script>mw_followupemail/adminhtml/lib/exporting.js</script></action>
+
+            <action method="addJs"><script>mw_followupemail/adminhtml/head.main.js</script></action>
+
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params></params></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+
+            <action method="addCss"><script>mw_followupemail/css/style.css</script></action>
+
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>
+        </reference>
+    </adminhtml_followupemail_reportoverview_index>
+
+</layout>
