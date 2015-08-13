@@ -164,6 +164,14 @@
          </div>   
             
             <div class="buttons">
+            
+            <?php
+    $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+?>
+<?php if($_compareUrl) : ?>
+     <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a>
+<?php endif; ?>
+
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
               if($upcoming == 'No'){?>

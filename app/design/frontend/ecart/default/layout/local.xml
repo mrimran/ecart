@@ -90,9 +90,9 @@
             <action method="addCss">
                 <stylesheet>css/responsive.css</stylesheet>
             </action>
-            <action method="addCss">
+            <!-- <action method="addCss">
                 <stylesheet>css/jPushMenu.css</stylesheet>
-            </action>
+            </action> -->
             <action method="removeItem">
                 <type>skin_css</type>
                 <name>css/styles.css</name>
@@ -133,6 +133,10 @@
 			</block>
 		
 			
+        </reference>
+  
+ <reference name="left">
+            <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
         </reference>
  
     </default> 
