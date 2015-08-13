@@ -233,11 +233,16 @@
                 <type>skin_js</type>
                 <name>js/jquery.plugin.min.js</name>
             </action>
+			
+			<!--<action method="addItem">
+                <type>skin_js</type>
+                <name>js/elevatezoom/jquery-1.8.3.min.js</name>
+            </action>
 				
 				<action method="addItem">
                 <type>skin_js</type>
-                <name>js/jquery.more.min.js</name>
-            </action>
+                <name>js/elevatezoom/jquery.elevatezoom.js</name>
+            </action>-->
 			
 				<action method="addCss">
 				<type>skin_css</type>

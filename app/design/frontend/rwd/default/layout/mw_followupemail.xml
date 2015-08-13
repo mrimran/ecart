@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <followupemail_index_index>
+        <reference name="content">
+            <block type="followupemail/followupemail" name="followupemail" template="mw_followupemail/followupemail.phtml" />
+        </reference>
+    </followupemail_index_index>
+    <followupemail_index_success>
+        <reference name="head"></reference>
+        <reference name="content">
+            <block type="followupemail/success" name="followupemaul.success" template="mw_followupemail/success.phtml" />
+        </reference>
+    </followupemail_index_success>
+
+</layout>

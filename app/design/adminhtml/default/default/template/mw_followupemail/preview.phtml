@@ -1,0 +1,123 @@
+<?php
+
+
+
+$statuses = MW_FollowUpEmail_Model_System_Config_Status::toOptionArray();
+
+$id = $this->getId();
+
+
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en">
+
+<head>
+
+    <title><?php echo $this->__('Follow Up Email Preview'); ?></title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('boxes.css', array()); ?>" media="all" />
+
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('followupemail.css', array()); ?>" media="all" />
+
+
+</head>
+
+<body>
+
+<style type="text/css">
+
+.emailtitle { padding:5px; text-align:left; vertical-align:top; }
+
+.emailcol { padding:5px; vertical-align:top; }
+
+</style>
+
+<script type="text/javascript">
+
+    closeWindow = function(){
+
+        if (window.opener != null){
+
+            window.close();
+
+        }
+
+        else{
+
+            document.location = '<?php echo Mage::getSingleton('adminhtml/url')->getUrl('*/*/index') ?>';
+
+        }
+
+    }
+
+</script>
+
+<?php 
+
+echo $this->getLayout()->createBlock('core/messages')
+
+        ->setMessages(Mage::getSingleton('adminhtml/session')->getMessages(true))
+
+        ->toHtml();
+
+?>
+
+<div height="100%">
+
+    <table class="massaction" cellspacing=0 cellpadding=0 width="100%"><tbody><tr>
+
+        <td class="status" align="center" style="width:200px;font-weight: bold;text-align: left;">Status: <?php echo $statuses[$this->getStatus()] ?></td>
+
+        <td class="status right" style="width:auto"><div class="right">
+
+
+
+            <span class="field-row"><button id="" class="scalable back" style="" onclick="closeWindow();" type="button"><span><?php echo $this->__('Close window')?></span></button></span>
+
+
+
+        </div></td>
+
+    </tr>
+
+    </table>
+
+
+
+    <table class="email" cellspacing="0" width="100%">
+
+        <col width="5%"/>
+
+        <col />
+
+        <tbody>
+
+            <tr><th class="emailtitle">From:</th><td class="emailcol"><?php echo $this->getSenderName() ?><?php echo " <"; ?><a href="mailto:<?php echo $this->getSenderEmail() ?>"><?php echo $this->getSenderEmail() ?></a></?php><?php echo ">"; ?></td></tr>
+
+            <tr><th class="emailtitle">To:</th><td class="emailcol"><?php echo $this->getRecipientName()?><?php echo " <"; ?><a href="mailto:<?php echo $this->getRecipientEmail() ?>"><?php echo $this->getRecipientEmail() ?></a><?php echo ">"; ?></td></tr>
+
+            <tr><th class="emailtitle">Bcc:</th><td class="emailcol"><?php echo $this->getEmailCopyTo() ?></td></tr>
+
+            <tr><th class="emailtitle">Subject:</th><td class="emailcol"><?php echo $this->getSubject() ?></td></tr>
+
+            <tr><th class="emailtitle">Content:</th><td class="emailcol"></td></tr>
+
+            <tr><td colspan="2" class="emailcol"><?php echo $this->getContent() ?></td></tr>
+
+        </tbody>
+
+    </table>
+
+
+
+</div>
+
+</body>
+
+</html>
+

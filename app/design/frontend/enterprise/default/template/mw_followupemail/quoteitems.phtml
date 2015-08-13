@@ -1,0 +1,51 @@
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table  width="100%" id="my-orders-table" cellpadding="0" cellspacing="0" summary="<?php echo $this->__('Items Quote') ?>">
+    <col />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <thead>
+        <tr style="background: #ccc">
+			<th width="10%"></th>
+            <th width="50%"><?php echo $this->__('Product Name') ?></th>
+            <th width="10%"><?php echo $this->__('SKU') ?></th>
+            <th width="10%"><?php echo $this->__('Price') ?></th>
+            <th width="10%"><?php echo $this->__('Qty') ?></th>
+            <th width="10%"><?php echo $this->__('Subtotal') ?></th>
+        </tr>
+    </thead>    
+	<tbody>
+    <?php
+	$items = $this->getItems();
+	foreach($items as $it){ $_item = $this->getItemById($it); ?>
+	<tr style="text-align: center">
+		<td>			
+			 <?php
+			  $_product = Mage::getModel('catalog/product')->load($_item->getProductId());
+			  // Product Image ?>
+			 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(64); ?>" width="64" height="64" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />				
+			</a>
+		</td>
+		<td><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class=""><?php echo $_item->getName(); ?></a></td>
+		<td><?php echo $_item->getSku(); ?></td>
+		<td>
+		  <?php echo $_item->getPrice() ?>
+		</td>
+		<td>
+	        <span class="nobr">
+	                <?php if ($_item->getQty() > 0): ?>
+	            	<strong><?php echo $_item->getQty()*1 ?></strong><br />
+	        <?php endif; ?>        
+	        </span>
+    	</td>	
+		<td>
+        	<?php echo $_item->getRowTotal() ?>
+   		</td>
+		</tr>		
+		<?php }?>   
+	</tbody>
+</table>
+</div>
+</body>
