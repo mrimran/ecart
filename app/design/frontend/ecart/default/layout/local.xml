@@ -134,6 +134,10 @@
 		
 			
         </reference>
+  
+ <reference name="left">
+            <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+        </reference>
  
     </default> 
 

@@ -86,6 +86,11 @@
                 $_helper = $this->helper('catalog/output');?>
           <div class="orders"><?php echo $productCollection->purchased;?> Orders</div>
           <a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
+          
+            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+             <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><?php echo $this->__('Add to Compare') ?></a>
+                            <?php endif; ?>
+          
           <h5 class="stocks-update">
                
                <?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
@@ -150,6 +155,10 @@
                 $_helper = $this->helper('catalog/output');?>
           <div class="orders"><?php echo $productCollection->purchased;?> Orders</div>
           <a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
+           <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+             <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><?php echo $this->__('Add to Compare') ?></a>
+            <?php endif; ?>
+          
           <h5 class="stocks-update">25 pcs on Stock</h5>
           </div>
         </div>
