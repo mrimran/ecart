@@ -1,0 +1,52 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+?>
+<?php
+
+$log = $this->getLog();
+$username = $log->getUsername() ? $log->getUsername() : '';
+$fullName = $log->getName() ? $log->getName() : '';
+$sessionStart = $log->getSessionStart() ? $log->getSessionStart() : '';
+$sessionEnd = $log->getSessionEnd() ? $log->getSessionEnd() : '';
+$ipAddress = $log->getIp() ? $log->getIp() : '';
+$location = $log->getLocation() ? $log->getLocation() : '';
+
+?>
+<div class="content-header" style="height:18px;">
+    <button onclick="Javascript:history.back();" class="scalable back" style="float: right; margin-top: -7px;"
+            type="button" title="Back"><?php echo $this->__('Back') ?></button>
+</div>
+<div class="entry-edit">
+    <fieldset>
+        <table cellspacing="2" class="box-left">
+            <tr>
+                <td><strong><?php echo $this->__('Username:') ?></strong></td>
+                <td><?php echo $username; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Full Name:') ?></strong></td>
+                <td><?php echo $fullName; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Session Start:') ?></strong></td>
+                <td><?php echo $sessionStart; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Session End:') ?></strong></td>
+                <td><?php echo $sessionEnd; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('IP Address:') ?></strong></td>
+                <td><?php echo $ipAddress; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Location:') ?></strong></td>
+                <td><?php echo $location; ?></td>
+            </tr>
+        </table>
+    </fieldset>
+</div>

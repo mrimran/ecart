@@ -1,0 +1,20 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Geoip
+ */
+?>
+<br/> <?php echo $this->getImportDate() ?>
+<br/> var/amasty/GeoLiteCity-Blocks.csv <img src="<?php echo $this->getBlockImagePath() ?>" />
+<br/> var/amasty/GeoLiteCity-Location.csv <img src="<?php echo $this->getLocationImagePath() ?>" />
+<br/>
+<div class="progressbar">
+    <div class="am_processer_container"><span class="begin"></span>
+
+        <div class="am_line">
+            <div class="am_processer" style="width: <?php echo $this->getWidth() ?>%"><span>&nbsp</span></div>
+        </div>
+        <span class="<?php echo $this->getImportedClass() ?>"></span></div>
+    <span class="import"><div class="bubble"><?php echo $this->__("Import")?></div></span><span class="completed"><div class="bubble"><?php echo $this->__("Completed")?></div></span>
+</div>

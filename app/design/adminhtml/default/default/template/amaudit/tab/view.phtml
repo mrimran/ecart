@@ -1,0 +1,65 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+$_log = $this->getLog();
+$_logDate = $_log ? $_log->getDateTime(): '';    
+$_logUsername = $_log ? $_log->getUsername(): '';  
+$user = Mage::getModel('admin/user')->loadByUsername($_logUsername);
+$_logFullname = $user ? $user->getName(): ''; 
+$_logEmail = $user ? $user->getEmail(): ''; 
+$_logType = $_log ? $_log->getType(): '';    
+$_logCategory = $_log ? $_log->getCategoryName(): '';    
+$_logElement = $_log ? $_log->getInfo(): '';    
+
+?>
+<div class="content-header" style="height:18px;">    <h3 class="icon-head head-customer"><?php echo $_logElement ?></h3>
+    <?php if($this->isRestorable($_log)): ?>
+        <button onclick="Javascript:openMyPopup();" class="scalable" style="float: right; margin-top: -7px;" type="button" title="Restore Changes"><?php echo $this->__('Restore Changes') ?></button>
+    <?php endif; ?>
+    <button onclick="Javascript:history.back();" class="scalable back" style="float: right; margin-top: -7px;" type="button" title="Back"><?php echo $this->__('Back') ?></button>
+</div>
+<div class="entry-edit">
+    <div class="entry-edit-head" style="height:18px;"><h4 class="icon-head action-log-view"><?php echo Mage::helper('amaudit')->__('Action Log Details') ?></h4></div>
+    <fieldset>
+        <table cellspacing="2" class="box-left">
+            <tr>
+                <td><strong><?php echo $this->__('Date:') ?></strong></td>
+                <td><?php echo $_logDate; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Username:') ?></strong></td>
+                <td><?php echo $_logUsername; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Full Name:') ?></strong></td>
+                <td><?php echo $_logFullname; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Email:') ?></strong></td>
+                <td><?php echo $_logEmail; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Action Type:') ?></strong></td>
+                <td><span class="amaudit-<?php echo $_logType; ?>"><?php echo $_logType; ?></span></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Object:') ?></strong></td>
+                <td><?php echo $_logCategory; ?></td>
+            </tr>
+            <?php if($_logElement):?>
+            <tr>
+                <td><strong><?php echo $this->__('Item:') ?></strong></td>
+                <td><?php echo $_logElement ?></td>
+            </tr>
+            <?php endif; ?>
+        </table>
+       <!-- <address class="box-right">
+            <strong><?php echo $this->__('Default Billing Address') ?></strong><br/>
+            <?php echo $this->getBillingAddressHtml() ?>
+        </address> -->
+    </fieldset>
+</div>
+<?php echo $this->getChildHtml('details', true, true); ?>

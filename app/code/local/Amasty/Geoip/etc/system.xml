@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Geoip
+ */
+-->
+<config>
+    <sections>
+        <amgeoip translate="label" module="amgeoip">
+            <label>Geo Ip Data</label>
+            <tab>amasty</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>70509</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <download_import translate="label">
+                    <label>Download and Import</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <download_import_button translate="label">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>amgeoip/adminhtml_settings_downloadNImport</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </download_import_button>
+                    </fields>
+                </download_import>
+                <import translate="label">
+                    <label>Import</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <import_button translate="label">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>amgeoip/adminhtml_settings_import</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </import_button>
+                    </fields>
+                </import>
+            </groups>
+        </amgeoip>
+    </sections>
+</config>

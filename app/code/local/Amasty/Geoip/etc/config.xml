@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Geoip
+ */
+-->
+<!--
+    Copyright (c) 2015 Amasty (http://www.amasty.com)
+-->
+<config>
+    <modules>
+        <Amasty_Geoip>
+            <version>1.0.2</version>
+        </Amasty_Geoip>
+    </modules>
+    <global>
+
+        <models>
+            <amgeoip>
+                <class>Amasty_Geoip_Model</class>
+                <resourceModel>amgeoip_resource</resourceModel>
+            </amgeoip>
+
+            <amgeoip_resource>
+                <class>Amasty_Geoip_Model_Resource</class>
+                <entities>
+                    <block>
+                        <table>amasty_geoip_block</table>
+                    </block>
+                    <location>
+                        <table>amasty_geoip_location</table>
+                    </location>
+                </entities>
+            </amgeoip_resource>
+        </models>
+
+        <resources>
+            <amgeoip_setup>
+                <setup>
+                    <module>Amasty_Geoip</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </amgeoip_setup>
+            <amgeoip_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </amgeoip_write>
+            <amgeoip_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </amgeoip_read>
+        </resources>
+
+        <blocks>
+            <amgeoip>
+                <class>Amasty_Geoip_Block</class>
+            </amgeoip>
+        </blocks>
+
+        <helpers>
+            <amgeoip>
+                <class>Amasty_Geoip_Helper</class>
+            </amgeoip>
+        </helpers>
+    </global>
+
+    <admin>
+        <routers>
+            <amgeoip>
+                <use>admin</use>
+                <args>
+                    <module>Amasty_Geoip</module>
+                    <frontName>amgeoip</frontName>
+                </args>
+            </amgeoip>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <events>
+            <controller_action_predispatch_adminhtml_system_config_edit>
+                <observers>
+                    <amgeoip>
+                        <class>amgeoip/observer</class>
+                        <method>onSystemConfiguration</method>
+                    </amgeoip>
+                </observers>
+            </controller_action_predispatch_adminhtml_system_config_edit>
+        </events>
+        <layout>
+            <updates>
+                <amgeoip>
+                    <file>amasty/amgeoip.xml</file>
+                </amgeoip>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <default>
+        <amgeoip>
+            <general>
+                <location_file_url>http://amasty.com/media/downloads/geoip/GeoLiteCity-Location.csv</location_file_url>
+                <block_file_url>http://amasty.com/media/downloads/geoip/GeoLiteCity-Blocks.csv</block_file_url>
+            </general>
+        </amgeoip>
+    </default>
+</config>  
