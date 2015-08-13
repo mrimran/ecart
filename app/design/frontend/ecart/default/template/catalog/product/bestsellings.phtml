@@ -41,12 +41,21 @@
 					<h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4>
 					<?php
                       $storeId = Mage::app()->getStore()->getId();
-                      $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
+                      $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId()); 
+
                       ?> 
                       <div class="ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>  
+                      <?php if ($summaryData['rating_summary'] != '') {?>
+                            <div class="rating-box">                            
+                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
                             </div>
+                            <span class="amount reviewscounttop">( <?php echo $summaryData['reviews_count']; ?>reviews)</span>
+                            <?php } else {?>
+                            <div class="rating-box">
+                                 <div class="rating" style="width:0%"></div>
+                            </div>
+                            <?php } ?>
+                            
                         </div>
 
 					<div class="price"><?php echo number_format( $_product->getPrice(),'1','.',','); ?><i>AED</i></div>
