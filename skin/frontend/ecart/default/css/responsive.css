@@ -574,6 +574,7 @@ body.push-body-toright { overflow: hidden; }
 .__peoples__loved .col-sm-4{width:100%;float:none;display:block;clear:both;margin:15px 0;}
 .__peoples__loved .col-sm-4:before,.__peoples__loved .col-sm-4:after{display:table;content:'';
 clear:both;}
+.forgot-pass .form-list .input-box{width:100%;}
 }
 
 @media only screen and (max-width: 480px) {

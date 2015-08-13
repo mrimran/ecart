@@ -753,6 +753,7 @@ display:inline-block;}
     line-height: 35px;
     float: left;
 }
+.__peoples__loved .__icon span{margin-right:-5px;margin-top:-5px;}
 
 .__peoples__loved .__numbers {
     font-size: 40px;
@@ -1020,6 +1021,7 @@ padding:10px 15px;color:#555555;line-height:1;text-transform:uppercase;text-alig
 font-size:14px;border-radius:3px;}
 .minicart-bottom .minicart-actions .checkout-button:hover,
 .minicart-bottom .minicart-actions .checkout-button:focus{background-color:#f57a20;color:#fff;}
+.forgot-pass .form-list .input-box{width:37%;}
 
 .fullheight{height:100% !important;max-height:100% !important;}
 .relative{position:relative;}
