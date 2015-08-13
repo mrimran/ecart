@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MW_Mcore>
+            <version>3.0.4</version>
+        </MW_Mcore>
+    </modules>
+    <frontend>
+        <routers>
+            <mcore>
+                <use>standard</use>
+                <args>
+                    <module>MW_Mcore</module>
+                    <frontName>mcore</frontName>
+                </args>
+            </mcore>
+        </routers>
+        <layout>
+            <updates>
+                <mcore>
+                    <file>mw_mcore.xml</file>
+                </mcore>
+            </updates>
+        </layout>
+        <translate>
+			<modules>
+				<MW_Mcore>
+					<files>
+						<default>MW_Mcore.csv</default>
+					</files>
+				</MW_Mcore>
+			</modules>
+		</translate>
+    </frontend>
+    
+    <admin>
+        <routers>
+			<mcore>
+				<use>admin</use>
+				<args>
+					<module>MW_Mcore</module>
+					<frontName>mcore</frontName>
+				</args>
+			</mcore>
+			
+        </routers>
+    </admin>
+    
+    <adminhtml>
+        	
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+							<MW_Mcore>
+									<title>Mcore Module</title>
+									<sort_order>10</sort_order>
+							</MW_Mcore>
+							<system>
+								<children>
+									<config>
+										<children>
+											<mcore translate="title" module="mcore">
+												<title>mcore</title>										
+											</mcore>
+										</children>
+									</config>
+								</children>
+							</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		
+		<layout>
+			<updates>
+				<mcore>
+					<file>mw_mcore.xml</file>
+				</mcore>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<MW_Mcore>
+					<files>
+						<default>MW_Mcore.csv</default>
+					</files>
+				</MW_Mcore>
+			</modules>
+		</translate>
+		 <events>
+            <admin_session_user_login_success>
+            <observers>
+                <mcore>
+                    <type>singleton</type>
+                    <class>mcore/observer</class>
+                    <method>adloginsuccess</method>
+                </mcore>
+            </observers>
+           </admin_session_user_login_success>
+           
+            <controller_action_predispatch_adminhtml_index_logout>
+            	<observers>		
+            		<mcore>			
+	                     <class>MW_Mcore_Model_Observer</class>
+                    	 <method>logoutupdate</method>	                     
+	                </mcore>					
+                </observers>
+            </controller_action_predispatch_adminhtml_index_logout> 
+    	</events>
+    </adminhtml>   
+    
+    <global>
+        <models>
+            <mcore>
+                <class>MW_Mcore_Model</class>
+                <resourceModel>mcore_mysql4</resourceModel>
+            </mcore>
+            <mcore_mysql4>
+                <class>MW_Mcore_Model_Mysql4</class>
+                <entities>
+                    <notification>
+                        <table>mw_mcore_notification</table>
+                    </notification>
+                </entities>
+            </mcore_mysql4>
+        </models>
+        <resources>
+            <mcore_setup>
+                <setup>
+                    <module>MW_Mcore</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mcore_setup>
+            <mcore_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </mcore_write>
+            <mcore_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </mcore_read>
+        </resources>
+        <blocks>
+            <mcore>
+                <class>MW_Mcore_Block</class>
+            </mcore>
+        </blocks>
+        <helpers>
+            <mcore>
+                <class>MW_Mcore_Helper</class>
+            </mcore>
+        </helpers>
+        
+       
+    
+    </global>
+    	
+    <default>   
+   		 <mcore>
+            	<trial>Trial</trial>
+            	<disable>Disabled</disable>
+            	<active>Actived</active>            	
+            	
+           		<activelink>https://www.mage-world.com/api/soap/?wsdl</activelink>
+            	<userapi>mw_license_activator</userapi>
+            	<codeapi>MWLicenseActivator12#</codeapi>
+            	
+            	 
+				<timestolock>6</timestolock>
+            	<timeblock>3600</timeblock>
+            	<decrt>2</decrt>
+            	<type1>dev_site</type1>
+            	<enc2>dev</enc2>
+            	<decrt>2</decrt>
+            	<decrtdev>3</decrtdev>
+            	<timestart>1358121600</timestart>
+            	<upgraded>0</upgraded>
+            	<extensions>
+  		        	<extension0>
+  		        		<key>MW_Onestepcheckout</key>
+  		        		<name>One Step Checkout Pro</name>
+  		        		<url>http://www.mage-world.com/one-step-checkout-pro-magento-extension.html</url>
+  		        		<config>onestepcheckout/config/enabled</config>        		
+  		        	</extension0> 
+
+  		        	<extension1>
+  		        		<key>MW_Freegift</key>
+  		        		<name>Free Gift </name>
+  		        		<url>http://www.mage-world.com/free-gift-magento-extension.html</url>
+  		        		<config>freegift/config/enabled</config>        		
+  		        	</extension1>  
+
+					<extension2>
+  		        		<key>MW_Affiliate</key>
+  		        		<name>Affiliate Pro</name>
+  		        		<url>http://www.mage-world.com/affiliate-pro-magento-extension.html</url>
+  		        		<config>affiliate/config/enabled</config>        		
+  		        	</extension2> 
+
+					<extension3>
+						<key>MW_HelpDesk</key>
+						<name>Help Desk Pro</name>
+						<url>http://www.mage-world.com/help-desk-pro-magento-extension.html</url>
+						<config>helpdesk/config/enabled</config>        		
+					</extension3> 
+					
+					<extension4>
+						<key>MW_RewardPoints</key>
+						<name>Reward Points Pro</name>
+						<url>http://www.mage-world.com/reward-points-magento-extension.html</url>
+						<config>rewardpoints/config/enabled</config>        		
+					</extension4> 
+					
+					<extension5>
+						<key>MW_LayoutEditor</key>
+						<name>Layout Editor</name>
+						<url>http://www.mage-world.com/layout-editor-magento-extension.html</url>
+						<config>layouteditor/config/enabled</config>       		
+					</extension5> 
+					
+					<extension6>
+						<key>MW_RewardPointsLite</key>
+						<name>Reward Points Lite</name>
+						<url>http://www.mage-world.com/reward-points-lite-magento-extension.html</url>
+						<config>rewardpoints/config/enabled</config>        		
+					</extension6> 	
+										         		
+					<extension7>
+						<key>MW_Advancecategories</key>
+						<name>Advance Categories</name>
+						<url>http://www.mage-world.com/advance-categories-magento-extension.html</url>
+						<config></config>
+					</extension7>
+
+					<extension8>
+						<key>MW_Ddate</key>
+						<name>Advance Delivery Schedule</name>
+						<url>http://www.mage-world.com/advance-delivery-schedule-magento-extension.html</url>
+						<config></config>
+					</extension8>
+					
+					<extension9>
+						<key>MW_Advancedproductoption</key>
+						<name>Advanced Product Options</name>
+						<url>http://www.mage-world.com/advanced-product-custom-options-magento-extension.html</url>
+						<config>advancedproductoption/config/enabled</config>
+					</extension9>
+
+					<extension10>
+						<key>MW_AjaxHomeTabs</key>
+						<name>Ajax Home Tab</name>
+						<url>http://www.mage-world.com/ajax-home-tab-magento-extension.html</url>
+						<config></config>
+					</extension10>
+					
+					<extension11>
+						<key>MW_Cmspro</key>
+						<name>CMS Pro</name>
+						<url>http://www.mage-world.com/mw-cms-pro-news-blog-magento-extension.html</url>
+						<config></config>
+					</extension11>
+
+			
+					<extension13>
+						<key>MW_Dailydeal</key>
+						<name>Daily Deal Pro</name>
+						<url>http://www.mage-world.com/daily-deal-magento-extension.html</url>
+						<config>dailydeal/general/enabled</config>
+					</extension13>
+
+					<extension14>
+						<key>HM_EasyBannerLite</key>
+						<name>Easy Banner Lite</name>
+						<url>http://www.mage-world.com/easy-banner-multiple-sliders-magento-extension.html</url>
+						<config></config>
+					</extension14>
+
+					<extension15>
+						<key>HM_EasyBanner</key>
+						<name>Easy Banner Pro</name>
+						<url>http://www.mage-world.com/easy-banner-pro-multiple-sliders-magento-extension.html</url>
+						<config>easybanner/info/enabled</config>
+					</extension15>
+
+					<extension16>
+						<key>AsiaConnect_FreeCms</key>
+						<name>Easy Blocks</name>
+						<url>http://www.mage-world.com/easy-cms-block-management-module-for-magento.html</url>
+						<config></config>
+					</extension16>
+					
+					<extension17>
+						<key>MW_Faq</key>
+						<name>Easy FAQ</name>
+						<url>http://www.mage-world.com/easy-faq-magento-extension.html</url>
+						<config></config>
+					</extension17>
+
+					<extension18>
+						<key>Hm_Testimonial</key>
+						<name>Easy Testimonial</name>
+						<url>http://www.mage-world.com/easy-testimonial-extension-for-magento.html</url>
+						<config></config>
+					</extension18>
+					
+
+					<extension19>
+						<key>MW_Enhancedproductreview</key>
+						<name>Enhanced Product Review</name>
+						<url>http://www.mage-world.com/mw-enhancedproductreview-magento-extension.html</url>
+						<config>enhancedproductreview/info/enabled</config>
+					</extension19>
+
+					<extension21>
+						<key>MW_NavigationMenu</key>
+						<name>Mega Menu</name>
+						<url>http://www.mage-world.com/mega-menu-magento-extension.html</url>
+						<config>navigationmenu/general/active</config>
+					</extension21>
+
+					<extension22>
+						<key>AsiaConnect_GalleryLite</key>
+						<name>Photo Gallery Lite</name>
+						<url>http://www.mage-world.com/photo-gallery-lite-with-lightbox-magento-extension.html</url>
+						<config>gallery/info/enabled</config>
+					</extension22>
+
+					<extension23>
+						<key>AsiaConnect_Gallery</key>
+						<name>Photo Gallery Pro</name>
+						<url>http://www.mage-world.com/photo-gallery-pro-magento-extension.html</url>
+						<config>gallery/info/enabled</config>
+					</extension23>
+
+					<extension24>
+						<key>MW_Smartbox</key>
+						<name>Smart Box</name>
+						<url>http://www.mage-world.com/smart-box-magento-extension.html</url>
+						<config>smartbox/config/enabled</config>
+					</extension24>
+
+					<extension25>
+						<key>MW_Smartlabel</key>
+						<name>Smart Label</name>
+						<url>http://www.mage-world.com/smart-label-magento-extension.html</url>
+						<config></config>
+					</extension25>
+
+					<extension26>
+						<key>MW_SmartMenu</key>
+						<name>Smart Menu</name>
+						<url>http://www.mage-world.com/smartmenu-vertical-navigation-categories-with-collapse-expand-feature.html</url>
+						<config>navigationmenu/general/active</config>
+					</extension26>					
+
+					<extension27>
+						<key>MW_GiftWrap</key>
+						<name>Gift Wrap</name>
+						<url>http://www.mage-world.com/gift-wrap-magento-extension.html</url>
+						<config>giftwrap/general/active</config>
+					</extension27>
+					
+					
+					<extension28>
+						<key>MW_FollowUpEmail</key>
+						<name>Follow Up Email</name>
+						<url>http://www.mage-world.com/magento-extension-follow-up-email.html</url>
+						<config>followupemail/config/enabled</config>
+					</extension28>
+					
+					<extension29>
+						<key>MW_Storecreditpro</key>
+						<name>Store Credit Pro</name>
+						<url>http://www.mage-world.com/magento-store-credit-extension.html</url>
+						<config>storecreditpro/config/enabled</config>
+					</extension29>
+
+					<extension30>
+        		<key>MW_AffiliateLite</key>
+        		<name>Affiliate Lite</name>
+        		<url>http://www.mage-world.com/affiliate-lite-magento-extension.html</url>
+        		<config>affiliate/config/enabled</config>        		
+        	</extension30> 
+
+					<extension31>
+        		<key>MW_AjaxCart</key>
+        		<name>Ajax Cart Pro</name>
+        		<url>http://www.mage-world.com/magento-ajax-cart-extension.html</url>
+        		<config>ajaxcart/config/enabled</config>        		
+        	</extension31> 
+				</extensions> 
+       		 	
+       		 	
+       		 	<config>
+            		<enabled>1</enabled>
+            	</config>
+        </mcore>
+        	
+    </default>
+    
+    
+    <crontab>
+        <jobs>                      
+            <mw_mcore_notification>
+                <schedule>
+                    <cron_expr>0 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>mcore/checktime::updateStatus</model>
+                </run>
+            </mw_mcore_notification>
+             	
+		</jobs>
+    </crontab>
+    
+</config>

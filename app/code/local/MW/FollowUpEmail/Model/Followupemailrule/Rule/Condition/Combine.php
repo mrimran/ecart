@@ -1,0 +1,155 @@
+<?php
+
+/**
+
+ * Magento
+
+ *
+
+ * NOTICE OF LICENSE
+
+ *
+
+ * This source file is subject to the Open Software License (OSL 3.0)
+
+ * that is bundled with this package in the file LICENSE.txt.
+
+ * It is also available through the world-wide-web at this URL:
+
+ * http://opensource.org/licenses/osl-3.0.php
+
+ * If you did not receive a copy of the license and are unable to
+
+ * obtain it through the world-wide-web, please send an email
+
+ * to license@magentocommerce.com so we can send you a copy immediately.
+
+ *
+
+ * DISCLAIMER
+
+ *
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+ * versions in the future. If you wish to customize Magento for your
+
+ * needs please refer to http://www.magentocommerce.com for more information.
+
+ *
+
+ * @category    Mage
+
+ * @package     Mage_SalesRule
+
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+
+ */
+
+
+
+
+
+class MW_FollowUpEmail_Model_Followupemailrule_Rule_Condition_Combine extends Mage_Rule_Model_Condition_Combine
+
+{
+
+    public function __construct()
+
+    {
+
+        parent::__construct();
+
+        $this->setType('followupemail/followupemailrule_rule_condition_combine');
+
+    }
+
+
+
+    public function getNewChildSelectOptions()
+
+    {
+
+        $addressCondition = Mage::getModel('followupemail/followupemailrule_rule_condition_address');
+
+        $addressAttributes = $addressCondition->loadAttributeOptions()->getAttributeOption();
+
+        $cattributes = array();		
+
+        $oattributes = array();		
+
+        $cusattributes = array();		
+
+        $pattributes = array();		
+
+        foreach ($addressAttributes as $code=>$label) {
+
+			if (strpos($code, 'cart_')===0) {
+
+            	$cattributes[] = array('value'=>'followupemail/followupemailrule_rule_condition_address|'.$code, 'label'=>$label);
+
+			}
+
+			else if(strpos($code, 'order_')===0){
+
+				$oattributes[] = array('value'=>'followupemail/followupemailrule_rule_condition_address|'.$code, 'label'=>$label);
+
+			}
+
+			else if(strpos($code, 'product_')===0){
+
+				$pattributes[] = array('value'=>'followupemail/followupemailrule_rule_condition_address|'.$code, 'label'=>$label);
+
+			}
+
+			else{
+
+				$cusattributes[] = array('value'=>'followupemail/followupemailrule_rule_condition_address|'.$code, 'label'=>$label);
+
+			}
+
+        }		
+
+        $conditions = parent::getNewChildSelectOptions();
+
+        $conditions = array_merge_recursive($conditions, array(
+
+            //array('value'=>'helpdesk/helpdeskrule_rule_condition_product_found', 'label'=>Mage::helper('salesrule')->__('Product attribute combination')),
+
+            //array('value'=>'helpdesk/helpdeskrule_rule_condition_product_subselect', 'label'=>Mage::helper('salesrule')->__('Products subselection')),
+
+            //array('value'=>'helpdesk/helpdeskrule_rule_condition_combine', 'label'=>Mage::helper('salesrule')->__('Conditions combination')),
+			array('label'=>Mage::helper('followupemail')->__('Cart Attribute'), 'value'=>$cattributes),
+			
+            array('label'=>Mage::helper('followupemail')->__('Order Attribute'), 'value'=>$oattributes),
+			
+			array('label'=>Mage::helper('followupemail')->__('Has Product'), 'value'=>$pattributes),
+			
+			array('label'=>Mage::helper('followupemail')->__('Customer Attribute'), 'value'=>$cusattributes),                        
+
+        ));
+
+
+
+//        $additional = new Varien_Object();
+
+//        //Mage::dispatchEvent('helpdesk_helpdeskrule_rule_condition_combine', array('additional' => $additional));
+
+//        Mage::dispatchEvent('salesrule_rule_condition_combine', array('additional' => $additional));
+
+//        if ($additionalConditions = $additional->getConditions()) {
+
+//            $conditions = array_merge_recursive($conditions, $additionalConditions);
+
+//        }
+
+
+
+        return $conditions;
+
+    }
+
+}
+

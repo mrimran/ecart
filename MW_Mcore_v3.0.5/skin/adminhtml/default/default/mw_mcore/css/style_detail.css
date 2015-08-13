@@ -1,0 +1,77 @@
+@CHARSET "ISO-8859-1";
+
+.mw_extend_trial,.mw_buy,.mw_dev,.mw_active,.mw_guide
+	{
+		 font-size:12px; cursor:pointer;	
+		/*color:#303030;*/
+}
+/*.mw_buy
+	{
+		 font-size:12px; cursor:pointer;	 
+		color:#3399FF;
+	
+}
+
+.mw_active
+	{
+		 font-size:12px; cursor:pointer;
+		color:green;	
+   }
+	
+.mw_dev
+	{
+		 font-size:12px; cursor:pointer;
+	}
+.mw_guide
+	{
+		 font-size:12px; cursor:pointer;		
+    }
+    */
+	
+.mw_text_trial
+	{
+	color:black; font-weight:bold
+	}
+.mw_text_activated
+	{
+	color:green; font-weight:bold
+	}
+.mw_text_disable
+	{
+	color:red; font-weight:bold
+	}
+.mw_announce
+	{
+	color:#505050;
+	}
+#mw_mcore_notification
+	{	
+	list-style:none
+	}
+a
+	{
+	cursor:pointer;
+	}
+#mw_mcore_notification
+	{
+	clear:both;
+	}
+#mw_mcore_notification_reload{
+width:100%;
+}
+.mcore_right_notification
+	{
+		float:right;		
+	}
+.mcore_right_message
+	{
+		float:right;
+	}
+.mcore_right_notification span,.mcore_right_message span
+	{
+	padding: 0 5px;
+	}
+.mcore_noti_license
+	{
+		color:green; 
+	}

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MW_FollowUpEmail>
+            <active>true</active>
+            <codePool>local</codePool>
+			<depends>
+				<MW_Mcore/>
+			</depends> 
+        </MW_FollowUpEmail>
+    </modules>
+</config> 

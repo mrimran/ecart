@@ -1,0 +1,105 @@
+MCore - CHANGELOGS
+
+Legend
++ New feature
+* Fix bugs
+v3.0.4 (Jan 12, 2014)
++ Change some texts in Mcore
+
+v3.0.3 (December 10, 2013)
++ Change some texts in Mcore
+
+v3.0.2 (November 09, 2013)
++ Fix with Onestepcheckout
+
+v3.0.1 (November 09, 2013)
++ Fix remove session
+
+v3.0 (September 12, 2013)
+* fixed bug when enabling cache, the system shows a warning
+
+v2.9 (September 11, 2013)
+* Process module special
+
+v2.8 (August 8, 2013)
+* Fix url includes 'www.'
+
+v2.7.1 (August 8, 2013)
+* Fix SQL 
+
+v2.7 (June 31, 2013)
+* Update Mcore's notifications
+* Fix SQL 
+* Get BaseUrl use secure
+
+v2.6 (June 10, 2013)
++ Manage notifications
+
+v2.5(May 30,2013)
++ Update some extensions's config
++ Update Readme
++ Not check domain when active for developement
+
+v2.4(May 29,2013)
++ Update some extensions's config
+* Fix to add comment when extension start trialing
+
+v2.3(May 28,2013)
++ Add and process extension'comment
+
+v2.2(May 21,2013)
++ Update some extensions's config
+
+v2.1(May 21,2013)
+* Process extension that it is included in other extension
+
+v2.0(May 19, 2013)
+* Change from refreshCache to reinit
++ Fix error save config with path is empty
+
+v1.7(May 16, 2013)
+* Manage some new extensions
+
+v1.6(May 11, 2013)
+
+v1.3(April 26, 2013)
+*  Active on live site, dev site
+
+v1.2(March 12, 2013)
+*  Use type of extension
+*  Update text
+
+v1.1 (February 25, 2013)
+*  Fix error in log file
+
+v1.0.9 (February 25, 2013)
+*  Change some text
+
+v1.0.8.5 (February 21, 2013)
+*  Fix active protocol
+
+v1.0.8.4 (February 20, 2013)
+*  Update extension MW_LayoutEditor_v1.2.5
+
+v1.0.8.3 (February 5, 2013)
+* Edit notification
+
+v1.0.8.2 (February 4, 2013)
++ Active manual
+* Change code from jquery to prototype in backend
+
+v1.0.8.1 (January 28, 2013)
+* Fix error soapclient when disable soap
+
+v1.0.7 (January 24, 2013)
++ Extend type of order
+
+v1.0.6 (January 22, 2013)
++ Update multi module
+
+v1.0.5 (January 19, 2013)
++ Update multi module
+
+v1.0.4 (January 14, 2013)
++ Change link active, buy, extentrial
+

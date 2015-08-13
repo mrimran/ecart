@@ -1,0 +1,299 @@
+<script type="text/javascript">
+
+
+var link_activeManual = "<?php echo Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/activemanual')?>";
+var link_active = "<?php echo Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/active')?>";
+var link_extendtrial  = "<?php echo Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/extendtrial')?>";
+
+var link_remind = "<?php echo Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/remind')?>";
+var link_spec_remind = "<?php echo  Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/specremind')  ?>";
+var link_notdisplay = "<?php echo Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/notdisplay') ?>";
+var link_spec_notdisplay = "<?php echo Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/specnotdisplay') ?>";
+var link_hide = "<?php echo Mage::helper('adminhtml')->getUrl('mcore/adminhtml_index/hide')?>";
+
+
+
+Event.observe(window, 'load', function() {
+		$$('a[id^=mcore_extrial_]').invoke('observe','click',function(field) {
+			id = this.id;
+			arrid = id.split('_');
+			modulename = id.replace("mcore_extrial_","");	
+			extendtrial(modulename);
+		});
+
+		$$('a[id^=mcore_active_]').invoke('observe','click',function(field){
+			id = this.id;
+			arrid = id.split('_');
+			modulename = id.replace("mcore_active_","");				
+			active(modulename,0,"live_site");
+		});
+
+
+		$$('a[id^=mcore_dev_]').invoke('observe','click',function(field){
+			id = this.id;
+			arrid = id.split('_');
+			modulename = id.replace("mcore_dev_","");				
+			active(modulename,0,"dev_site");
+		});
+
+		$$('a[id^=mcore_remind_]').invoke('observe','click', function(field){
+			var module = this.id.replace("mcore_remind_","");			
+			new Ajax.Request(link_remind, {
+				method: 'post',
+				parameters: {"module":module}, 
+				onSuccess: function(data){					
+						$('mcore_each_notification_'+module).hide();
+						if(data.responseText=="hide")
+							$('mw_notification').hide();	
+				}
+				});
+		});
+
+		$$('a[id^=mcore_notdisplay_]').invoke('observe','click', function(field){
+			var module = this.id.replace("mcore_notdisplay_","");			
+			new Ajax.Request(link_notdisplay, {
+				method: 'post',
+				parameters: {"module":module}, 
+				onSuccess: function(data){					
+						$('mcore_each_notification_'+module).hide();
+						if(data.responseText=="hide")
+							$('mw_notification').hide();
+				}
+				});
+		});
+
+		$$('a[id^=mcore_spec_remind_]').invoke('observe','click', function(field){
+			var id = this.id.replace("mcore_spec_remind_","");			
+			new Ajax.Request(link_spec_remind, {
+				method: 'post',
+				parameters: {"id":id}, 
+				onSuccess: function(data){					
+						$('mcore_each_spec_notification_'+id).hide();
+						if(data.responseText=="hide")
+							$('mw_notification').hide();
+				}
+				});
+		});
+
+		$$('a[id^=mcore_spec_notdisplay_]').invoke('observe','click', function(field){
+			var id = this.id.replace("mcore_spec_notdisplay_","");			
+			new Ajax.Request(link_spec_notdisplay, {
+				method: 'post',
+				parameters: {"id":id}, 
+				onSuccess: function(data){
+						$('mcore_each_spec_notification_'+id).hide();
+						if(data.responseText=="hide")
+							$('mw_notification').hide();
+				}
+				});
+		});
+		
+		$$('a[id^=mw_hide]').invoke('observe','click', function(field){
+			var module = this.id;			
+			new Ajax.Request(link_hide, {
+				method: 'post',				 
+				onSuccess: function(data){
+						$('mw_soap').hide();
+						window.location.reload();	
+				}
+				});
+		});
+	    
+		
+	})
+
+function extendtrial(modulename)
+{	
+		$('loading-mask').show();
+		new Ajax.Request(link_extendtrial, {
+			method: 'post',
+			parameters: {"module":modulename}, 
+			onSuccess: function(data){				
+				if(data.responseText)
+					{																		
+						$$('#row_mcore_mwmodule_'+modulename+' .value ')[0].update(data.responseText);																
+						window.location.reload();					
+					}				 
+				$('loading-mask').hide();
+			},
+			onFailure: function(data){
+				var notice= $('mw_mcore_notice_'+modulename)|| "";
+				if(notice.length == 0)
+					{
+						
+						$$('#row_mcore_mwmodule_'+modulename+' .value')[0].insert('<div id="mw_mcore_notice_'+modulename+'" class="mw_mcore_notice">Error occured when trying to extend trial.</div>');
+					}
+					else
+					{
+						$('mw_mcore_notice_'+modulename+'').innerHTML = 'Error occured when trying to extend trial.';
+					}         
+					$('loading-mask').hide();
+			}
+			});
+}
+
+function active(modulename,haslink,sitetype)
+	{	
+			var notice= $('mw_mcore_notice_'+modulename)|| "";
+			if(notice.length!=0)
+			{
+				$('mw_mcore_notice_'+modulename).update("");
+			}
+	
+			mw_link = haslink;
+				
+			if(!sitetype.length)
+				site = "live_site";
+			else
+				site = sitetype;			
+			
+			var ordernumber ="";
+			if(site=="live_site")
+				ordernumber =prompt("ACTIVATE FOR ONE MAGENTO INSTALLATION\nOur license permits you to activate the extension on ONLY ONE Magento installation.\nMake sure you are activating the extension on your LIVE site.\n\nPlease enter your order number or offline activation key:","");
+			else
+				ordernumber =prompt("ACTIVATE FOR DEVELOPMENT SITE\n\nPlease enter your order number or offline activation key:","");
+				
+			if(!ordernumber.length)
+				orderid = "";
+			else
+				orderid = ordernumber.trim();
+
+			if(isNumber(orderid))
+			{		
+				$('loading-mask').show();
+				if(orderid.length == 32)
+				{		
+					var keygen = orderid;				
+					new Ajax.Request(link_activeManual, {
+						method: 'post',
+						parameters: {'module':modulename,'keygen':keygen,'site':site}, 
+						onSuccess: function(data){													
+							if(data.responseText.search("successfully")!=-1)
+							{	
+								alert(data.responseText.split(".")[0]);	
+								location.reload();
+							}
+							else
+							{	
+								if(mw_link==1)
+								{
+									alert(data.responseText.split(".")[0]);
+								}													
+								var notice= $('mw_mcore_notice_'+modulename)|| "";
+								if(notice.length==0)
+								{
+									$$('#row_mcore_mwmodule_'+modulename+' .value')[0].insert('<div id="mw_mcore_notice_'+modulename+'" class="mw_mcore_notice">'+data.responseText+'</div>');
+								}
+								else
+								{
+									$('mw_mcore_notice_'+modulename).update(data.responseText);
+								}
+								
+							}	
+							$('loading-mask').hide();
+						},
+						onFailure: function(data){
+							if(mw_link==1)
+							{
+								alert('Error occured when trying to activate order.');
+							}
+							var notice= $('mw_mcore_notice_'+modulename) || "";
+							 if(notice.length==0)
+								{
+									 $$('#row_mcore_mwmodule_'+modulename+' .value')[0].insert('<div id="mw_mcore_notice_'+modulename+'" class="mw_mcore_notice">Error occured when trying to activate order.</div>');
+								}
+								else
+								{
+									$('mw_mcore_notice_'+modulename+'').innerHTML = 'Error occured when trying to activate order.';									
+								}  
+								$('loading-mask').hide();
+						}
+						});
+				}
+				else
+				{
+					new Ajax.Request(link_active, {
+						method: 'post',
+						parameters: {'orderid':orderid,'module':modulename,'site':site}, 
+						onSuccess: function(data){						
+							if(data.responseText.search("successfully")!=-1)
+							{	
+								alert(data.responseText.split(".")[0]);	
+								location.reload();
+								
+							}
+							else
+							{
+								
+								if(mw_link==1)
+								{
+									alert(data.responseText.split(".")[0]);
+								}
+								var notice= $('mw_mcore_notice_'+modulename)|| "";
+								if(notice.length==0)
+								{
+									$$('#row_mcore_mwmodule_'+modulename+' .value')[0].insert('<div id="mw_mcore_notice_'+modulename+'" class="mw_mcore_notice">'+data.responseText+'</div>');
+								}
+								else
+								{
+									$('mw_mcore_notice_'+modulename).update(data.responseText);
+								}
+							}						
+							$('loading-mask').hide();
+						},
+						onFailure: function(data){	
+							if(mw_link==1)
+							{	
+								alert('Error occured when trying to activate order.');
+							}				
+							var notice= $('mw_mcore_notice_'+modulename) || "";
+							 if(notice.length==0)
+								{
+									 $$('#row_mcore_mwmodule_'+modulename+' .value')[0].insert('<div id="mw_mcore_notice_'+modulename+'" class="mw_mcore_notice">Error occured when trying to activate order.</div>');
+								}
+								else
+								{
+									$('mw_mcore_notice_'+modulename+'').innerHTML = 'Error occured when trying to activate order.';
+								}  					           
+								$('loading-mask').hide();
+						}
+						});
+				}
+			}
+}
+
+function isNumber(orderNumber)
+{
+	
+	var arrchar = ["-","_","0","1","2","3","4","5","6","7","8","9","q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"];	
+	if(!orderNumber.length)
+		orderNumber = "";
+	if(orderNumber.trim() != "" )
+	{
+		orderNumber = orderNumber.toLowerCase();		
+		for(i=0; i< orderNumber.length; i++)
+		{
+			var kt = false;
+			for(j=0; j<arrchar.length; j++)
+			{
+				if(arrchar[j]==orderNumber[i])
+					kt = true;
+					continue;
+			}
+			if(kt == false)
+			{			
+				alert("Your order id is invalid!");	
+				return false;
+			}
+		}
+	}
+	else
+	{	
+		alert("Your order id is invalid!");	
+		return false;
+	}
+	return true;
+}
+
+
+</script>

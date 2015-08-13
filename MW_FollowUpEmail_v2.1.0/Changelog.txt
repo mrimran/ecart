@@ -1,0 +1,32 @@
+Follow Up Email - CHANGELOGS
+--------------------------
+Legend:
++ new feature added
+* bug fix
+v2.1.0 (January 16, 2015)
++ New visual graphs report based on activities of FUE
++ Unsubcribe link in your email.
++ Tracking  all links in template email by Google Analytics
+* Duplicate emails in email queue
+
+v2.0.5 (July 11, 2014)
++ Allow guest recreate checkout cart from return link in email.
+
+v2.0.3 (January 2, 2014)
++ Upgrade to compatible with community enterprise 113
+* Fix action "Send now" issue.
+* Fix abadoned cart conflict issue.
+
+v2.0.1 (November 29, 2013)
+* Fix abandoned cart duplicate email
+
+v2.0 (November 07, 2013)
++ Follow up on customer's birthday
++ Apply the follow rule rules back to old data (orders and abandoned cart).
++ Coupon intergration: allow to integrate with shopping cart rules and generate coupon automatically
++ FUE Report: # of emails sent, # and % read, # and % clicks, # and % purchased   
++ Allow send FUE for abadoned cart of guest
++ Allow to check param condition {{depend param}} show information {{/depend}}
+
+v1.2.0 (July 16, 2013)
++ Extension released
