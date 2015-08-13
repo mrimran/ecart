@@ -233,11 +233,16 @@
                 <type>skin_js</type>
                 <name>js/jquery.plugin.min.js</name>
             </action>
+			
+			<!--<action method="addItem">
+                <type>skin_js</type>
+                <name>js/elevatezoom/jquery-1.8.3.min.js</name>
+            </action>
 				
 				<action method="addItem">
                 <type>skin_js</type>
-                <name>js/jquery.more.min.js</name>
-            </action>
+                <name>js/elevatezoom/jquery.elevatezoom.js</name>
+            </action>-->
 			
 				<action method="addCss">
 				<type>skin_css</type>
@@ -251,7 +256,7 @@
 				<action method="setBlockId"><block_id>productdetailpagefirststaticblock</block_id></action>
 				</block>-->
 				
-				<!--<block type="core/template" name="useralsovieweddetailpage" template="catalog/product/useralsoviewed.phtml"/>-->
+				<block type="core/template" name="useralsovieweddetailpage" template="catalog/product/useralsoviewed.phtml"/>
 							
 				<block type="review/product_view_list" name="product.info.product_additional_data" as="product_review" template="review/product/view/list.phtml">
 				<block type="review/form" name="product.review.form" as="review_form"/>
