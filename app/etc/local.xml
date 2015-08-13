@@ -42,7 +42,6 @@
                 <connection>
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
-
                     <password><![CDATA[]]></password>
                     <dbname><![CDATA[ecart_3]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>

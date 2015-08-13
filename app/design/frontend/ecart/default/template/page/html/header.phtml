@@ -158,9 +158,12 @@
                     <?php echo $this->getChildHtml('topSearch') ?>
      		</div>
      		<div class="minicart col-sm-3 col-md-2">
-                    <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
+                   <!--  <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
                          <img src="<?php echo $this->getSkinUrl('images/cart-img.png'); ?>">&nbsp; My Cart <span class="cart-items"> <?php echo $_cartQty = Mage::getSingleton('checkout/cart')->getItemsCount(); ?> </span>
-                    </a>
+                    </a> -->
+                    <div class="header-minicart">
+                    <?php echo $this->getChildHtml('minicart_head'); ?>
+                    </div>
                </div>
                <?php echo $this->getChildHtml('topMenu') ?>
      	</div>
