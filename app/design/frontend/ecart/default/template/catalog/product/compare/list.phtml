@@ -94,7 +94,7 @@
                 <?php $_i=0 ?>
                 <?php foreach($this->getItems() as $_item): ?>
                     <?php if($_i++%10==0): ?>
-                        <th><span class="nobr"><?php echo $_attribute->getStoreLabel() ?></span></th>
+                        <th><span class="nobr"><?php //echo $_attribute->getStoreLabel() ?></span></th>
                     <?php endif; ?>
                     <td>
                         <?php switch ($_attribute->getAttributeCode()) {
