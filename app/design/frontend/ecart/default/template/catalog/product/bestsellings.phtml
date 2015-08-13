@@ -49,7 +49,12 @@
                             <div class="rating-box">                            
                                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
                             </div>
-                            <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+                            <?php if($summaryData['reviews_count'] > 1) {?>
+                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+                            <?php } else {?>
+                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+                            <?php } ?>
+
                             <?php } else {?>
                             <div class="rating-box">
                                  <div class="rating" style="width:0%"></div>
