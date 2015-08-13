@@ -94,17 +94,12 @@
         </div>
       </div>
       <?php endif; ?>
-      <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?> 
-	  <?php echo $this->getChildHtml('extrahint') ?>
-      <?php echo $this->getChildHtml('product_type_availability'); ?> 
-      <?php echo $this->getChildHtml('alert_urls') ?>
-      
-      </div>
-       <?php if ($_product->isAvailable()): ?>
+      <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?> <?php echo $this->getChildHtml('extrahint') ?> </div>
       <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
+        <?php if ($_product->isAvailable()): ?>
         <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
+        <?php endif; ?>
         pcs</div>
-       <?php endif; ?>
       <?php if($_product->condition): ?>
       <div class="__condition"><strong>
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
@@ -170,9 +165,9 @@
             
             <div class="buttons">
             
-            <?php
+	<?php
     $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
-?>
+    ?>
 <?php if($_compareUrl) : ?>
      <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a>
 <?php endif; ?>
@@ -315,20 +310,21 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 </div>
 </div>
 <script>
-jQuery('.bxslider').bxSlider({
-      pagerCustom: '#bx-pager'
-    });
-    jQuery('#__product__detail').more({
-      length:1099,
-      ellipsisText: '',
-      moreText: 'Read Full Description',
-      lessText: 'Read Less Description'
-    });
-    jQuery('#product_specs').more({
-      length:335,
-      leaway:10,
-      ellipsisText: '',
-      moreText: 'See Full Specs',
-      lessText: 'See Less Specs'
-    });
-</script> 
+        jQuery('.bxslider').bxSlider({
+            pagerCustom: '#bx-pager'
+        });
+        jQuery('#__product__detail').more({
+            length: 1099,
+            ellipsisText: '',
+            moreText: 'Read Full Description',
+            lessText: 'Read Less Description'
+        });
+        jQuery('#product_specs').more({
+            length: 335,
+            leaway: 10,
+            ellipsisText: '',
+            moreText: 'See Full Specs',
+            lessText: 'See Less Specs'
+        });
+    </script> 
+
