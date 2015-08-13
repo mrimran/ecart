@@ -139,6 +139,12 @@
             <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
         </reference>
  
+ <reference name="left">
+            <block type="reports/product_viewed" before="right.permanent.callout" name="right.reports.product.viewed" template="reports/product_viewed.phtml" />
+            
+        </reference>
+ 
+ 
     </default> 
 
 
