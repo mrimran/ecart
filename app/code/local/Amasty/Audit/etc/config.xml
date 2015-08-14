@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+-->
+<!--
+    Copyright (c) 2009-2015 Amasty (http://www.amasty.com)
+-->
+<config>
+    <modules>
+        <Amasty_Audit>
+            <version>1.5.1</version>
+        </Amasty_Audit>
+    </modules>
+
+    <global>
+        <models>
+            <amaudit>
+                <class>Amasty_Audit_Model</class>
+                <resourceModel>amaudit_mysql4</resourceModel>
+            </amaudit>
+
+            <amaudit_mysql4>
+                <class>Amasty_Audit_Model_Mysql4</class>
+                <entities>
+                    <data>
+                        <table>amasty_audit_data</table>
+                    </data>
+                    <lock>
+                        <table>amasty_audit_lock</table>
+                    </lock>
+                    <log>
+                        <table>amasty_audit_log</table>
+                    </log>
+                    <log_details>
+                        <table>amasty_audit_log_details</table>
+                    </log_details>
+                    <location>
+                        <table>amasty_audit_location</table>
+                    </location>
+                    <block>
+                        <table>amasty_audit_block</table>
+                    </block>
+                    <active>
+                        <table>amasty_audit_active</table>
+                    </active>
+                    <visit>
+                        <table>amasty_audit_visit</table>
+                    </visit>
+                    <visit_detail>
+                        <table>amasty_audit_visit_detail</table>
+                    </visit_detail>
+                </entities>
+            </amaudit_mysql4>
+        </models>
+
+
+
+        <resources>
+            <amaudit_setup>
+                <setup>
+                    <module>Amasty_Audit</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </amaudit_setup>
+            <amaudit_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </amaudit_write>
+            <amaudit_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </amaudit_read>
+        </resources>
+
+        <blocks>
+            <amaudit>
+                <class>Amasty_Audit_Block</class>
+            </amaudit>
+        </blocks>
+
+        <template>
+            <email>
+                <amaudit_log_mailing_template translate="label" module="amaudit">
+                    <label>Send audit log to the configured email</label>
+                    <file>amaudit_log_mailing_template.html</file>
+                    <type>html</type>
+                </amaudit_log_mailing_template>
+                <amaudit_suspicious_log_mailing_template translate="label" module="amaudit">
+                    <label>Send suspicious audit log to the configured email</label>
+                    <file>amaudit_suspicious_log_mailing_template.html</file>
+                    <type>html</type>
+                </amaudit_suspicious_log_mailing_template>
+                <amaudit_unsuccessful_log_mailing_template translate="label" module="amaudit">
+                    <label>Send unsuccessful audit log to the configured email</label>
+                    <file>amaudit_unsuccessful_log_mailing_template.html</file>
+                    <type>html</type>
+                </amaudit_unsuccessful_log_mailing_template>
+            </email>
+        </template>
+
+        <helpers>
+            <amaudit>
+                <class>Amasty_Audit_Helper</class>
+            </amaudit>
+        </helpers>
+    </global>
+
+    <crontab>
+        <jobs>
+            <amaudit_delete>
+                <schedule><cron_expr>0 0 * * *</cron_expr></schedule>
+                <run><model>amaudit/observer::deleteLogs</model></run>
+            </amaudit_delete>
+        </jobs>
+    </crontab>
+
+    <admin>
+        <routers>
+            <amaudit>
+                <use>admin</use>
+                <args>
+                    <module>Amasty_Audit</module>
+                    <frontName>amaudit</frontName>
+                </args>
+            </amaudit>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <amaudit0>
+                        <class>amaudit/observer</class>
+                        <method>afterBlockCreate</method>
+                    </amaudit0>
+                </observers>
+            </core_block_abstract_to_html_before>
+
+            <admin_session_user_login_success>
+                <observers>
+                    <amaudit1>
+                        <class>amaudit/lockobserver</class>
+                        <method>onAdminSessionUserLoginSuccess</method>
+                    </amaudit1>
+                </observers>
+            </admin_session_user_login_success>
+
+            <admin_session_user_login_failed>
+                <observers>
+                    <amaudit2>
+                        <class>amaudit/lockobserver</class>
+                        <method>onAdminSessionUserLoginFailed</method>
+                    </amaudit2>
+                </observers>
+            </admin_session_user_login_failed>
+
+            <controller_action_predispatch>
+                <observers>
+                    <amaudit3>
+                        <class>amaudit/observer</class>
+                        <method>saveSomeEvent</method>
+                    </amaudit3>
+                    <amaudit31>
+                        <class>amaudit/active</class>
+                        <method>saveSomeEvent</method>
+                    </amaudit31>
+                </observers>
+            </controller_action_predispatch>
+
+
+            <model_save_before>
+                <observers>
+                    <amaudit4>
+                        <class>amaudit/observer</class>
+                        <method>modelSaveDeleteBefore</method>
+                    </amaudit4>
+                </observers>
+            </model_save_before>
+
+            <catalog_product_attribute_update_before>
+                <observers>
+                    <amaudit0>
+                        <class>amaudit/observer</class>
+                        <method>modelProductsSaveBefore</method>
+                    </amaudit0>
+                </observers>
+            </catalog_product_attribute_update_before>
+
+            <model_save_after>
+                <observers>
+                    <amaudit5>
+                        <class>amaudit/observer</class>
+                        <method>modelSaveAfter</method>
+                    </amaudit5>
+                </observers>
+            </model_save_after>
+
+            <model_delete_after>
+                <observers>
+                    <amaudit6>
+                        <class>amaudit/observer</class>
+                        <method>modelDeleteAfter</method>
+                    </amaudit6>
+                </observers>
+            </model_delete_after>
+
+            <controller_action_predispatch_adminhtml_index_logout>
+                <observers>
+                    <amaudit7>
+                        <class>amaudit/active</class>
+                        <method>onAdminLogout</method>
+                    </amaudit7>
+                </observers>
+            </controller_action_predispatch_adminhtml_index_logout>
+
+            <controller_action_predispatch_adminhtml_permissions_role_saverole>
+                <observers>
+                    <amaudit7>
+                        <class>amaudit/observer</class>
+                        <method>beforeSaveRoles</method>
+                    </amaudit7>
+                </observers>
+            </controller_action_predispatch_adminhtml_permissions_role_saverole>
+
+            <controller_action_postdispatch_adminhtml_permissions_role_saverole>
+                <observers>
+                    <amaudit7>
+                        <class>amaudit/observer</class>
+                        <method>afterSaveRoles</method>
+                    </amaudit7>
+                </observers>
+            </controller_action_postdispatch_adminhtml_permissions_role_saverole>
+
+            <controller_action_layout_render_before>
+                <observers>
+                    <amaudit7>
+                        <class>amaudit/visitobserver</class>
+                        <method>onPageLoad</method>
+                    </amaudit7>
+                </observers>
+            </controller_action_layout_render_before>
+        </events>
+
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <amaudit translate="title" module="amaudit">
+                                    <title>Admin Actions Log</title>
+                                </amaudit>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Amasty_Audit>
+                    <files>
+                        <default>Amasty_Audit.csv</default>
+                    </files>
+                </Amasty_Audit>
+            </modules>
+        </translate>
+
+        <layout>
+            <updates>
+                <amaudit>
+                    <file>amasty/amaudit.xml</file>
+                </amaudit>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <default>
+        <amaudit>
+            <login>
+                <time>900</time>
+                <numberFailed>3</numberFailed>
+            </login>
+            <log>
+                <is_all_admins>1</is_all_admins>
+                <delete_pages_history_after_days>90</delete_pages_history_after_days>
+                <delete_login_attempts_after_days>90</delete_login_attempts_after_days>
+                <delete_logs_afret_days>90</delete_logs_afret_days>
+                <log_users>0,1</log_users>
+                <enableVisitHistory>1</enableVisitHistory>
+                <enableLock>1</enableLock>
+            </log>
+            <log_mailing>
+                <enabled>0</enabled>
+                <template>amaudit_email_template</template>
+                <send_to_email></send_to_email>
+            </log_mailing>
+            <amaudit_suspicious_log_mailing>
+                <enabled>0</enabled>
+                <template>amaudit_suspicious_log_mailing_template</template>
+                <send_to_email></send_to_email>
+            </amaudit_suspicious_log_mailing>
+            <amaudit_unsuccessful_log_mailing>
+                <enabled>0</enabled>
+                <template>amaudit_unsuccessful_log_mailing_template</template>
+                <send_to_email></send_to_email>
+            </amaudit_unsuccessful_log_mailing>
+            <restore_settings>
+                <restore_text>Please be careful when restoring changes. It's recommended to have a backup before running restore process. </restore_text>
+            </restore_settings>
+        </amaudit>
+    </default>
+</config>  

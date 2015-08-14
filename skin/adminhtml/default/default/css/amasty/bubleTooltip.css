@@ -1,0 +1,261 @@
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2013 Amasty (http://www.amasty.com)
+* @package Amasty_Audit 
+*/
+
+#bubble_tooltip{
+    /*width:147px;*/
+    position:absolute;
+    display:none;
+}
+#bubble_tooltip .bubble_top{
+    background-image: url('../images/bubble_top.gif');
+    background-repeat:no-repeat;
+    height:16px;    
+}
+#bubble_tooltip .bubble_middle{
+    background-image: url('../images/bubble_middle.gif');
+    background-repeat:repeat-y;    
+    background-position:bottom left;
+    padding-left:7px;
+    padding-right:7px;
+    text-align: center;
+}
+#bubble_tooltip .bubble_middle span{
+    text-align: center;
+    position:relative;
+    top:-8px;
+    font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+    font-size:16px;
+}
+#bubble_tooltip .bubble_bottom{
+    background-image: url('../images/bubble_bottom.gif');
+    background-repeat:no-repeat;
+    background-repeat:no-repeat;    
+    height:44px;
+    position:relative;
+    top:-6px;
+}
+
+.bubble_tooltip {
+    color: #000000;
+    font: 11px Arial,Helvetica,sans-serif;
+    min-width: 250px; 
+}
+.bubble_tooltip .default {
+    color: #808080;
+}
+.bubble_tooltip .default .toolbar {
+    background: none repeat scroll 0 0 #F1F1F1;
+    font-weight: bold;
+}
+.bubble_tooltip .default .title {
+    padding: 5px;
+}
+.bubble_tooltip .default .content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 5px;
+}
+.bubble_tooltip .basic {
+    color: #808080;
+}
+.bubble_tooltip .basic .toolbar {
+    background: none repeat scroll 0 0 #F1F1F1;
+    font-weight: bold;
+}
+.bubble_tooltip .basic .title {
+    padding: 5px;
+}
+.bubble_tooltip .basic .content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 5px;
+}
+.bubble_tooltip .hint {
+    background: none repeat scroll 0 0 #FFF6AA;
+    color: #313120;
+}
+.bubble_tooltip .hint .toolbar {
+    background: none repeat scroll 0 0 #FDF1A0;
+    font-weight: bold;
+}
+.bubble_tooltip .hint .title, .bubble_tooltip .hint .content {
+    padding: 5px;
+}
+.bubble_tooltip .protoblue {
+    color: #FFFFFF;
+}
+.bubble_tooltip .protoblue .toolbar {
+    background: none repeat scroll 0 0 #0D7CD0;
+    font-weight: bold;
+}
+.bubble_tooltip .protoblue .title {
+    padding: 5px;
+}
+.bubble_tooltip .protoblue .content {
+    background: none repeat scroll 0 0 #1E90FF;
+    padding: 5px;
+}
+.bubble_tooltip .creamy {
+    color: #BB9C61;
+}
+.bubble_tooltip .creamy .toolbar {
+    background: none repeat scroll 0 0 #F3EDC2;
+    font-weight: bold;
+}
+.bubble_tooltip .creamy .title {
+    padding: 5px;
+}
+.bubble_tooltip .creamy .content {
+    background: none repeat scroll 0 0 #F8F4CA;
+    padding: 5px;
+}
+.bubble_tooltip .darkgrey {
+    color: #FFFFFF;
+}
+.bubble_tooltip .darkgrey .toolbar {
+    background: none repeat scroll 0 0 #5F5F5F;
+    font-weight: bold;
+}
+.bubble_tooltip .darkgrey .title {
+    padding: 5px;
+}
+.bubble_tooltip .darkgrey .content {
+    background: none repeat scroll 0 0 #808080;
+    padding: 5px;
+}
+.bubble_tooltip .protogrey {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #FFFFFF;
+}
+.bubble_tooltip .protogrey .toolbar {
+    background: none repeat scroll 0 0 #969C92;
+    font-weight: bold;
+}
+.bubble_tooltip .protogrey .title {
+    padding: 5px;
+}
+.bubble_tooltip .protogrey .content {
+    color: #808080;
+    padding: 5px;
+}
+.bubble_tooltip .protogrey .toolbar .close {
+    height: 14px;
+    width: 14px;
+}
+.bubble_tooltipLoader {
+    border: 1px solid #DDDDDD;
+    height: 14px;
+    left: -1000px;
+    overflow: hidden;
+    position: absolute;
+    top: -1000px;
+    width: 14px;
+}
+.bubble_tooltip {
+    overflow: hidden;
+    position: absolute;
+}
+.bubble_tooltip .tooltip, .bubble_tooltip .toolbar, .bubble_tooltip .toolbar .title {
+    position: relative;
+}
+.bubble_tooltip .content {
+    clear: both;
+}
+
+.bubble_tooltip .tooltip {
+    clear: both;
+    float: left;
+}
+
+.bubble_tooltip .borderFrame {
+    float: left;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.bubble_tooltip .borderTop, .bubble_tooltip .borderBottom {
+    overflow: hidden;
+}
+.bubble_tooltip .borderRow {
+    clear: both;
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.bubble_tooltip_CornerWrapper {
+    clear: both;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.bubble_tooltip_Corner {
+    float: right;
+    position: relative;
+}
+
+.bubble_tooltip_BetweenCorners {
+    clear: both;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.bubble_tooltip .borderMiddle {
+    float: left;
+    position: relative;
+}
+.bubble_tooltip .borderCenter {
+    float: left;
+    height: 100%;
+    position: relative; 
+    width:98%;
+}
+
+.bubble_tooltip_Stem {
+    left:0px;
+    position: absolute;
+    width: 100%;
+}
+    
+
+.bubble_tooltip .clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.bubble_tooltip .clearfix {
+    display: inline-block;
+    display: block;
+    text-align: left !important;
+}
+#bottom-right {
+    background: url(../images/bottom-right.png ) no-repeat scroll left top transparent;   
+}
+#top-right {
+    background: url(../images/top-right.png ) no-repeat scroll left top transparent;   
+}
+#top-left {
+    background: url(../images/top-left.png ) no-repeat scroll left top transparent;   
+}
+#bottom-left {
+    background: url(../images/bottom-left.png ) no-repeat scroll left top transparent;   
+}
+
+#buble_close{
+    float:right;
+    margin-right: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Xnotif
+ */
+-->
+
+<layout version="0.1.0">
+    <customer_account translate="label">
+        <reference name="customer_account_navigation">
+                <action method="addLink" translate="label" module="amxnotif"><name>amxnotif.stock</name><path>amxnotif/stock/</path><label>My Out of Stock Subscriptions</label></action>
+                <action method="addLink" translate="label" module="amxnotif"><name>amxnotif.price</name><path>amxnotif/price/</path><label>My Price Subscriptions</label></action>
+        </reference>
+    </customer_account>
+    
+     <amxnotif_stock_index translate="label">
+        <label>Stock Status Subscriptions</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="amxnotif/stock" name="amxnotif.stock">
+                    <label>My out of Stock Subscriptions</label>
+            </block>
+            <block type="customer/account_dashboard" name="customer.account.link.back" template="customer/account/link/back.phtml"/>
+        </reference>
+    </amxnotif_stock_index>
+    <amxnotif_price_index translate="label">
+        <label>Price Subscriptions</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="amxnotif/price" name="amxnotif.price">
+                    <label>My Price Subscriptions</label>
+            </block>
+            <block type="customer/account_dashboard" name="customer.account.link.back" template="customer/account/link/back.phtml"/>
+        </reference>
+    </amxnotif_price_index>
+	<PRODUCT_TYPE_configurable>
+			<reference name="head">
+				<action method="addJs">
+					<script>amasty/amstockstatusxnotif/configurable.js</script>
+				</action>
+			</reference>
+	</PRODUCT_TYPE_configurable>
+</layout>

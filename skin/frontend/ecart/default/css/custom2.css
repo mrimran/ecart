@@ -160,6 +160,14 @@ color:#555;border:1px solid #eaeaea;margin-bottom:10px;}
 .shopbybrand-list .shopbybrand-title h1{font-size:22px;color:#202020;font-weight:400;
 text-transform:uppercase;display:inline-block;height:40px;border-bottom:1px solid #f57a20;
 padding:5px 25px 5px 0;font-family:'GothamNarrow-Medium','Open Sans', sans-serif;}
+body.cms-index-index .zopim{display:none;}
+.search-autocomplete{z-index: 999999;background-color: #fff;}
+.search-autocomplete ul{list-style-type:none;}
+.search-autocomplete ul li{padding:5px 10px;border:1px solid #eaeaea;font-size:12px;
+box-shadow:0 2px 5px 0 rgba(0,0,0,0.2);}
+.search-autocomplete ul li .amount{background-color:#f57a20;color:#fff;display:inline-block;
+padding:2px 5px;margin-right:5px;font-size:12px;}
+.search-autocomplete ul li .amount:after{content:' Results';}
 
 @media only screen and (max-width : 800px){
 .data-table{display:block;}

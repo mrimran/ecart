@@ -1,0 +1,10 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Xnotif
+ */   
+?>
+<p class="<?php echo $this->getHtmlClass() ?>">
+    <a href="<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getSignupUrl('stock')) ?>" ><?php echo $this->escapeHtml($this->__($this->getSignupLabel())); ?></a>
+</p>

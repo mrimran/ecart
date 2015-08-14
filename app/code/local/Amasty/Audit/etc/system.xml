@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+-->
+<config>
+    <sections>
+        <amaudit translate="label" module="amaudit">
+            <label>Admin Actions Log</label>
+            <tab>amasty</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10401</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <login>
+                    <label>Login Lockout Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enableLock translate="label comment">
+                            <label>Enable Automatic Login Lockout</label>
+                            <comment>User will not be able to login after unsuccessful login attempts</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableLock>
+                        <numberFailed translate="label comment">
+                            <label>Number Of Failed Login Attempts</label>
+                            <comment>Maximum allowed number of tries</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </numberFailed>
+                        <time translate="label comment">
+                            <label>Lockout Time (in seconds)</label>
+                            <comment>Blocking will be removed after this amount of time. If set to 0, users will be
+                                locked permanently, until lock is removed manually
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </time>
+                        <run translate="label comment">
+                            <label>Remove All Lockouts</label>
+                            <comment>Clicking this button will unblock all currently blocked users</comment>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>amaudit/button</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </run>
+                    </fields>
+                </login>
+                <log>
+                    <label>Log Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>11</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <is_all_admins translate="label">
+                            <label>Log Actions For All Admin Users</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </is_all_admins>
+                        <log_users translate="label">
+                            <label>Admin Users To Log Actions For</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>amaudit/source_users</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <is_all_admins>0</is_all_admins>
+                            </depends>
+                        </log_users>
+                        <enableVisitHistory translate="label comment">
+                            <label>Log Page Visit History</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableVisitHistory>
+                        <delete_logs_afret_days translate="label">
+                            <label>Automatically Clear Action Logs After, Days</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </delete_logs_afret_days>
+                        <delete_pages_history_after_days translate="label">
+                            <label>Automatically Clear Page History Log, Days</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>41</sort_order>
+                            <comment>Set 0 for unlimited</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </delete_pages_history_after_days>
+                        <delete_login_attempts_after_days translate="label">
+                            <label>Automatically Clear Login Attempts After, Days</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>41</sort_order>
+                            <comment>Set 0 for unlimited</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </delete_login_attempts_after_days>
+                        <!--<mandatory_values translate="label">-->
+                            <!--<label>Values For Mandatory Logging</label>-->
+                            <!--<frontend_type>textarea</frontend_type>-->
+                            <!--<comment>one per line</comment>-->
+                            <!--<sort_order>50</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>1</show_in_store>-->
+                        <!--</mandatory_values>-->
+                    </fields>
+                </log>
+                <log_mailing translate="label">
+                    <label>Email Successful Logins To Admin</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>12</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <template translate="label">
+                            <label>Select Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </template>
+                        <send_to_mail translate="label">
+                            <label>Send to Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_class>validate-email</frontend_class>
+                        </send_to_mail>
+                    </fields>
+                </log_mailing>
+                <geoip translate="label">
+                    <label>Geolocation</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <use translate="label comment">
+                            <label>Use Geo IP</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <frontend_model>amaudit/adminhtml_settings_geolocation</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </use>
+                    </fields>
+                </geoip>
+                <suspicious_log_mailing translate="label">
+                    <label>Email Suspicious Logins To Admin</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <template translate="label">
+                            <label>Select Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </template>
+                        <send_to_mail translate="label">
+                            <label>Send to Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_class>validate-email</frontend_class>
+                        </send_to_mail>
+                    </fields>
+                </suspicious_log_mailing>
+                <unsuccessful_log_mailing translate="label">
+                    <label>Email Unsuccessful Logins To Admin</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <template translate="label">
+                            <label>Select Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </template>
+                        <send_to_mail translate="label">
+                            <label>Send to Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_class>validate-email</frontend_class>
+                        </send_to_mail>
+                    </fields>
+                </unsuccessful_log_mailing>
+                <restore_settings translate="label">
+                    <label>Restore Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <restore_text translate="label">
+                            <label>Popup Warning Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </restore_text>
+                    </fields>
+                </restore_settings>
+            </groups>
+        </amaudit>
+    </sections>
+</config>

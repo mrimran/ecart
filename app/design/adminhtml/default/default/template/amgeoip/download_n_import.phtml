@@ -1,0 +1,25 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Geoip
+ */
+?>
+<br/>
+<?php echo $this->getImportDate() ?>
+<div class="progressbar">
+    <div class="am_download_container"><span class="begin"></span>
+
+        <div class="am_line">
+            <div class="am_download" style="width: <?php echo $this->getWidth() ?>%"><span>&nbsp</span></div>
+        </div>
+    </div>
+    <div class="am_processer_container"><span class="<?php echo $this->getCompletedClass() ?>"></span>
+
+        <div class="am_line">
+            <div class="am_processer" style="width: <?php echo $this->getWidth() ?>%"><span>&nbsp</span></div>
+        </div>
+        <span class="<?php echo $this->getImportedClass() ?>"></span></div>
+    <span class="download"><div class="bubble"><?php echo $this->__("Download")?></div></span><span class="import"><div class="bubble"><?php echo $this->__("Import")?></div></span>
+    <span class="completed_import"><div class="bubble"><?php echo $this->__("Completed")?></div></span>
+</div>

@@ -1,0 +1,162 @@
+<style>
+
+	th,td{
+
+		padding: 10px;
+
+	}
+
+</style>
+
+<?php  $_order = $this->getOrder() ?>
+
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+
+<table  width="100%" id="item-order" cellpadding="0" cellspacing="0"  summary="<?php echo $this->__('Items Ordered') ?>">
+
+    <col />
+
+    <col width="1" />
+
+    <col width="1" />
+
+    <col width="1" />
+
+    <col width="1" />
+
+    <thead>
+
+        <tr style="background: #EAEAEA">
+
+			<th style="font-size:13px;padding:3px 9px" width="10%"></th>
+
+            <th style="font-size:13px;padding:3px 9px" width="50%"><?php echo $this->__('Product Name') ?></th>
+
+            <th style="font-size:13px;padding:3px 9px" width="10%"><?php echo $this->__('SKU') ?></th>
+
+            <th style="font-size:13px;padding:3px 9px" width="10%"><?php echo $this->__('Price') ?></th>
+
+            <th style="font-size:13px;padding:3px 9px" width="10%"><?php echo $this->__('Qty') ?></th>
+
+            <th style="font-size:13px;padding:3px 9px" width="10%"><?php echo $this->__('Subtotal') ?></th>
+
+		</tr>
+
+    </thead>    
+
+    <?php $_items = $_order->getItemsCollection(); ?>
+
+    <?php $_index = 0; ?>
+
+        <?php $_count = $_items->count(); ?>
+
+	<tbody>
+
+    <?php foreach ($_items as $_item): ?>
+
+    <?php if ($_item->getParentItem()) continue; ?>
+
+        <tr>
+
+			<td style="padding: 5px">			
+
+				 <?php
+				 //mage::log($_item->getProductOptions());
+				  $_product = Mage::getModel('catalog/product')->load($_item->getProductId());
+
+				  // Product Image ?>
+
+	           	 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(64); ?>" width="64" height="64" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />				
+
+				</a>
+
+			</td>
+
+			<td>
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class=""><?php echo $_item->getName(); ?></a>
+				<?php if($_options = $this->getItemOptions($_item)): ?>
+		        <dl class="item-options" style="margin:0;padding:0">
+		        <?php foreach ($_options as $_option) : ?>
+		            <dt><strong><em><?php echo $_option['label'] ?></em></strong></dt>		            
+		                <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option); //mage::log($_formatedOptionValue); ?>
+		                <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?> style="margin:0;padding:0 0 0 9px">
+		                    <?php echo $_formatedOptionValue['value'] ?>		                    
+		                </dd>		           
+		        <?php endforeach; ?>
+		        </dl>
+				<?php endif; ?>
+				<?php if($_optionsBundle = $this->getBundleOptions($_item)): ?>
+		        <dl class="item-options" style="margin:0;padding:0">
+		        <?php foreach ($_optionsBundle as $_option) : ?>
+		            <dt><strong><em><?php echo $_option['label'] ?></em></strong></dt>		            
+		                <?php $_formatedOptionValue = $this->getFormatedOptionBundle($_option); ?>
+		                <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?> style="margin:0;padding:0 0 0 9px">
+		                    <?php echo $_formatedOptionValue['value'] ?>		                    
+		                </dd>		           
+		        <?php endforeach; ?>
+		        </dl>
+				<?php endif; ?>	
+			</td>
+
+			<td style="text-align: center"><?php echo $_item->getSku(); ?></td>
+
+			<td style="text-align: center">
+
+			<?php echo $this->getOrder()->formatPrice($_item->getPrice()) ?>
+
+		</td>
+
+		<td style="text-align: center">
+
+        <span class="nobr">
+
+                <?php if ($_item->getQtyOrdered() > 0): ?>
+
+            	<strong><?php echo $_item->getQtyOrdered()*1 ?></strong><br />
+
+        <?php endif; ?>       
+
+        </span>
+
+    </td>	
+
+	<td style="text-align: center">
+
+        <?php echo $this->getOrder()->formatPrice($_item->getRowTotal()) ?>
+
+    </td>
+
+		</tr>		
+
+    <?php endforeach; ?>
+
+	</tbody>
+	<tbody>
+        <tr>
+	        <td align="right" style="padding:3px 9px" colspan="5">Subtotal</td>
+	        <td align="right" style="padding:3px 9px"><span><?php echo $this->getOrder()->formatPrice($this->getOrder()->getSubtotal()) ?></span></td>
+    	</tr>
+		
+		<tr>
+	        <td align="right" style="padding:3px 9px" colspan="5">Shipping & Handling</td>
+			<td align="right" style="padding:3px 9px"><span><?php echo $this->getOrder()->formatPrice($this->getOrder()->getShippingAmount()); ?></span></td>
+    	</tr>
+		
+    	<?php if($this->getOrder()->getDiscountAmount() > 0){ ?>
+        <tr>
+	        <td align="right" style="padding:3px 9px" colspan="5">Discount</td>
+			<td align="right" style="padding:3px 9px"><span><?php echo "-".$this->getOrder()->formatPrice($this->getOrder()->getDiscountAmount()); ?></span></td>
+    	</tr>
+		<?php } ?>
+    
+        <tr>
+	        <td align="right" style="padding:3px 9px" colspan="5"><strong>Grand Total</strong></td>
+	        <td align="right" style="padding:3px 9px"><strong><span><?php echo $this->getOrder()->formatPrice($this->getOrder()->getGrandTotal()); ?></span></strong></td>
+	    </tr>
+    </tbody>
+</table>
+</div>
+
+</body>

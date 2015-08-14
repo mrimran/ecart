@@ -90,9 +90,9 @@
             <action method="addCss">
                 <stylesheet>css/responsive.css</stylesheet>
             </action>
-            <action method="addCss">
+            <!-- <action method="addCss">
                 <stylesheet>css/jPushMenu.css</stylesheet>
-            </action>
+            </action> -->
             <action method="removeItem">
                 <type>skin_css</type>
                 <name>css/styles.css</name>
@@ -134,6 +134,16 @@
 		
 			
         </reference>
+  
+ <reference name="left">
+            <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+        </reference>
+ 
+ <reference name="left">
+            <block type="reports/product_viewed" before="right.permanent.callout" name="right.reports.product.viewed" template="reports/product_viewed.phtml" />
+            
+        </reference>
+ 
  
     </default> 
 
@@ -233,11 +243,16 @@
                 <type>skin_js</type>
                 <name>js/jquery.plugin.min.js</name>
             </action>
+			
+			<!--<action method="addItem">
+                <type>skin_js</type>
+                <name>js/elevatezoom/jquery-1.8.3.min.js</name>
+            </action>
 				
 				<action method="addItem">
                 <type>skin_js</type>
-                <name>js/jquery.more.min.js</name>
-            </action>
+                <name>js/elevatezoom/jquery.elevatezoom.js</name>
+            </action>-->
 			
 				<action method="addCss">
 				<type>skin_css</type>

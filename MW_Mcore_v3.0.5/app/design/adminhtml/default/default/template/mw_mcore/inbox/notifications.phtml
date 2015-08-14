@@ -1,0 +1,59 @@
+<?php
+
+if(Mage::getStoreConfig("mcore/upgraded")&& Mage::getStoreConfig("mcore/upgraded") == 1):
+		
+		
+	$arrnotification = $this->helper('mcore')->showMcoreNotification();	
+	
+	$specNotic = Mage::helper('mcore')->getSpecialNotification(2);
+	
+	if(count($arrnotification)>0 || (Mage::getStoreConfig('mcore/errorSoap')==1 && Mage::getStoreConfig('mcore/allextension/activated')!=1 && Mage::getStoreConfig('mw/hidesoap')!=1) || count($specNotic)>0)
+	{
+		$goOrphan = $this->helper('mcore')->__('Click here to <a href="%s">manage the licenses</a>',  Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit', array('section'=>'mcore')));	
+		$link_manage = Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit', array('section'=>'mcore'));
+		?>
+		<div class="notification-global"  id="mw_notification">	
+		   <?php
+		    if(Mage::getStoreConfig('mcore/errorSoap')==1 &&  Mage::getStoreConfig('mcore/allextension/activated')!=1 && Mage::getStoreConfig('mw/hidesoap')!=1)
+		    echo '<div style=" padding:0 0 5px ; font-weight:bold" id="mw_soap">It requires to enable PHP SOAP extension to activate MageWorld\'s extension online. Or please go to <a href="http://www.mage-world.com/wiki/index.php?title=License-activation" target="_blank">this instruction</a> for generating the offline key.<a href="javascript:void(0)" id="mw_hide" style="text-decoration:none; float:right;  font-weight:normal;">Don\'t show this mesage</a></div> ';	?> 
+		   
+		    <ul id="mw_mcore_notification" >
+			   	<div id="mw_mcore_notification_reload" >
+			   	<?php
+			   	 if(count($specNotic)>0)
+			   	 foreach ($specNotic as $notic):?>
+			   	 	<li id="mcore_each_spec_notification_<?php echo $notic['notification_id'];?>" style="clear:both;">				   		
+					   		<div id="content_notification<?php echo $notic['notification_id'];?>"  style="float:left;">
+				   			   <?php echo  "<b>Message: </b>".$notic['message']; ?>
+				   			</div>
+					   		<div class="mcore_right_message"><a href="javascript:void(0);" id="<?php echo 'mcore_spec_remind_'.$notic['notification_id']?>"><?php echo $this->__('Remind me later'); ?></a><span>|</span><a href="javascript:void(0);" id="<?php echo 'mcore_spec_notdisplay_'. $notic['notification_id']?>"><?php echo $this->__('Don\'t display this message'); ?></a></div>	
+					</li>
+			   	 <?php
+			   	 endforeach;
+			   	 ?>
+			   	 
+			   	<?php foreach ($arrnotification as $arr):?>
+				   
+				   	 <li id="mcore_each_notification_<?php echo $arr[2];?>" style="clear:both;">
+				   			<div id="content_notification<?php echo $arr[2];?>"  style="float:left;">
+				   			<?php echo  '<b>Notification: </b>'.$arr[0]; ?>
+				   			</div>
+					   		<?php if($arr[1]== 1):?>					   			
+					   			<div class="mcore_right_notification">
+					   				<a href="<?php echo $link_manage; ?>" class="mcore_noti_license"><?php echo $this->__(' Manage the licenses');?></a><span>|</span><a href="javascript:void(0);" id="<?php echo 'mcore_remind_'.$arr[2]?>"><?php echo $this->__('Remind me later');?></a><?php if($arr[3]!="7daytrial"):?><span>|</span><a href="javascript:void(0);" id="<?php echo 'mcore_notdisplay_'.$arr[2]?>"><?php echo $this->__('Don\'t display this message'); ?></a>
+					   				<?php endif;?>
+					   			</div>
+					   		<?php else:?>
+					   			<div class="mcore_right_notification">
+					   			<a href="<?php echo $link_manage; ?>" class="mcore_noti_license"><?php echo $this->__(' Manage the licenses');?></a><span>|</span><a href="javascript:void(0);" id="<?php echo 'mcore_remind_'.$arr[2]?>"><?php echo $this->__('Remind me later');?></a><span>|</span><a href="javascript:void(0);" id="<?php echo 'mcore_notdisplay_'.$arr[2]?>"><?php echo $this->__('Don\'t display this message'); ?></a>
+					   			</div>	
+					   		<?php endif;?>		   			
+				   	</li>	
+				   	
+			   	<?php endforeach;?>
+			   	</div >	   		
+		   	</ul>
+		</div>
+	<?php 
+	}
+endif;

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>   
+	
+	<translate>
+        <modules>
+            <MW_FollowUpEmail>
+                <files>
+                    <default>MW_FollowUpEmail.csv</default>
+                </files>
+            </MW_FollowUpEmail>
+        </modules>
+    </translate>
+	
+	<menu>		
+		<report translate="title" module="reports">
+            <title>Reports</title>
+            <sort_order>80</sort_order>
+            <children>                
+                <shopcart translate="title" module="reports">
+                    <title>Shopping Cart</title>
+                    <sort_order>20</sort_order>
+                    <children>                       
+                        <abandoncartforguest translate="title" module="reports">
+                            <title>Abandoned carts for guest</title>
+                            <action>adminhtml/followupemail_abandoncartforguest</action>
+                        </abandoncartforguest>                        
+                    </children>
+                </shopcart>               
+            </children>
+        </report>
+		<followupemail module="followupemail" translate="label">
+
+			<title>Follow Up Email</title>
+
+			<sort_order>61</sort_order>               
+
+			<children>
+
+				<rules module="followupemail">
+
+					<title>Manage Rules</title>
+
+					<sort_order>10</sort_order>
+
+					<action>adminhtml/followupemail_rules</action>
+
+				</rules>
+
+				<queue module="followupemail">
+
+					<title>Email Queue</title>
+
+					<sort_order>20</sort_order>
+
+					<action>adminhtml/followupemail_queue</action>
+
+				</queue>
+				
+				<coupons module="followupemail">
+
+					<title>Generated Coupons</title>
+
+					<sort_order>30</sort_order>
+
+					<action>adminhtml/followupemail_coupons</action>
+
+				</coupons>
+				
+				<reportqueueemail translate="title" module="followupemail">
+                    <title>Reports</title>
+                    <sort_order>40</sort_order>
+                    <children>
+                    	<reportoverview translate="title" module="followupemail">
+                            <title>Overview</title>
+                            <action>adminhtml/followupemail_reportoverview</action>
+                        </reportoverview>
+                        <reportrules translate="title" module="followupemail">
+                            <title>Rules</title>
+                            <action>adminhtml/followupemail_reportrules</action>
+                        </reportrules>
+                        <reportemails translate="title" module="reports">
+                            <title>Email Templates</title>
+                            <action>adminhtml/followupemail_reportemails</action>
+                        </reportemails>
+                        <!--<customer translate="title" module="reports">
+                            <title>Customers</title>
+                            <action>adminhtml/report_shopcart/customer</action>
+                        </customer>-->
+                    </children>
+                </reportqueueemail>
+				
+				<!--<reportqueueemail module="followupemail">
+
+					<title>Reports</title>
+
+					<sort_order>40</sort_order>
+
+					<action>adminhtml/followupemail_reportqueueemail</action>
+
+				</reportqueueemail>-->
+
+				<configuration>
+
+					<title>Configuration</title>
+
+					<sort_order>50</sort_order>
+
+					<action>adminhtml/system_config/edit/section/followupemail</action>
+
+				</configuration>
+
+			</children>
+
+		</followupemail>		
+
+	</menu>
+
+	<acl>
+
+		<resources>
+
+			<all>
+
+				<title>Allow Everything</title>
+
+			</all>
+
+			<admin>
+
+				<children>				
+
+					<followupemail module="followupemail" translate="label">
+
+						<title>Follow Up Email</title>
+
+						<sort_order>71</sort_order>               
+
+						<children>
+
+							<rules module="followupemail">
+
+								<title>Manage Rules</title>
+
+								<sort_order>10</sort_order>
+
+							</rules>
+
+							<queue module="followupemail">
+
+								<title>Email Queue</title>
+
+								<sort_order>20</sort_order>
+
+							</queue>
+							
+							<coupons module="followupemail">
+
+								<title>Generated Coupons</title>
+
+								<sort_order>30</sort_order>
+
+							</coupons>
+							
+							<reportqueueemail module="followupemail">
+
+								<title>Reports</title>
+
+								<sort_order>40</sort_order>
+								<children>
+									<reportoverview translate="title" module="followupemail">
+									    <title>Overview</title>
+									</reportoverview>
+									<reportrules translate="title" module="followupemail">
+									    <title>Rules</title>
+									</reportrules>
+									<reportemails translate="title" module="reports">
+									    <title>Email Templates</title>
+									</reportemails>
+								</children>
+							</reportqueueemail>
+
+							<configuration>
+
+								<title>Configuration</title>
+
+								<sort_order>50</sort_order>
+
+							</configuration>
+
+						</children>
+
+					</followupemail>					
+
+					<system>
+
+						<children>
+
+							<config>
+
+								<children>
+
+									<followupemail translate="title" module="followupemail">
+
+										<title>Follow Up Email</title>
+
+									</followupemail>
+
+								</children>
+
+							</config>
+
+						</children>
+
+					</system>
+
+				</children>
+
+			</admin>
+
+		</resources>
+
+	</acl>
+
+</config>

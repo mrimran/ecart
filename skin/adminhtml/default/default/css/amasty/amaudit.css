@@ -1,0 +1,79 @@
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2013 Amasty (http://www.amasty.com)
+* @package Amasty_Audit 
+*/
+.amaudit-Edit, .amaudit-MassChangeMode {
+    background: url("../../images/amaudit/edit.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 20px;
+}
+
+.amaudit-exportCsv,
+.amaudit-exportXml {
+    background: url("../../images/amaudit/export.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 20px;
+}
+
+.amaudit-Delete {
+    background: url("../../images/amaudit/delete.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 16px;
+}
+.amaudit-Restore {
+    background: url("../../images/amaudit/restore.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 16px;
+}
+.amaudit-New {
+    background: url("../../images/amaudit/new.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 20px;
+}
+.amaudit-Run, .amaudit-MassEnable {
+    background: url("../../images/amaudit/run.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 20px;
+}
+.amaudit-Disable, .amaudit-MassDisable {
+    background: url("../../images/amaudit/disable.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 20px;
+}
+.amaudit-Recompile, .amaudit-FlushSystem, .amaudit-CleanImages, .amaudit-FlushAll, .amaudit-CleanMedia, .amaudit-MassRefresh, .amaudit-MassReindex {
+    background: url("../../images/amaudit/recompile.png")  no-repeat scroll 0 50% transparent;
+    padding-left: 20px;
+}
+.amaudit-red {
+    background-color: LightCoral;
+    color:black;
+}
+.amaudit-green {
+    background-color: #A4E9AC;
+    color:black;
+}
+
+.entry-edit pre,
+.bubble_tooltip pre {
+    white-space: pre-wrap;
+}
+
+.grid tr.filter .range .label {
+    width: 40px !important;
+}
+
+.grid tr.filter .range .range-line {
+    width: 160px !important;
+}
+
+.grid tr.filter .range .range-line input.input-text {
+    width: 80px !important;
+}
+
+ins {color:green;background:#dfd;text-decoration:none}
+del {color:red;background:#fdd;text-decoration:none}
+td.onlyDeletions ins {display:none}
+td.onlyInsertions del {display:none}
+th.label {
+    width: 200px;
+}
+
+.bubble_tooltip table{
+    font-size: 10pt;
+    table-layout: fixed;
+    word-wrap: break-word;
+}

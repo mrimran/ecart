@@ -1,0 +1,126 @@
+
+<div class="section-config active">
+<div class="entry-edit-head collapseable">
+	<a onclick="Fieldset.toggleCollapse('mcore_mwmodule'); return false;" href="#" id="mcore_mwmodule-head" class="open">MageWorld Extensions</a>
+</div>
+<input type="hidden" value="1" name="config_state[mcore_mwmodule]" id="mcore_mwmodule-state">
+
+<fieldset id="mcore_mwmodule" class="config collapseable">
+	<legend>MageWorld Extensions</legend>
+	<table cellspacing="0" class="form-list">
+		<tbody>
+		
+		<?php
+			$extension_info = $this->getExtensionInfo();
+			if($extension_info)
+			foreach ($extension_info as $extension)
+			{ 
+				$real_ex = strtolower($extension);
+					?>
+				<tr id="row_mcore_mwmodule_<?php echo $real_ex; ?>">
+					<td class="label">
+						<label for="mcore_mwmodule_<?php echo $real_ex; ?>"> <?php echo  Mage::helper('mcore')->getModuleName($extension) ?><br><?php echo  $this->__('Version:').Mage::helper('mcore')->getModuleVersion($extension) ?></label>
+					</td>
+					<?php if($this->getStatus($extension)=="trial"):?>
+						<td class="value"><font class="mw_text_trial"><?php echo $this->__('Your license is currently in Trial Mode')?></font>
+						<p class="note">
+						<span>
+							<?php echo Mage::helper('mcore')->showTimeCheckStatus($extension,"detail"); ?>
+							<br>
+							<a id="mcore_active_<?php echo $real_ex; ?>" class="mw_active"><?php echo $this->__('Activate for Live site')?></a> 
+							
+							<span style="padding:5px;">|</span>	
+						    <a id="mcore_dev_<?php echo $real_ex; ?>" class="mw_dev"><?php echo $this->__('Activate for Development')?></a> 
+						   
+						    <span style="padding:5px;">|</span>	
+						    <a class="mw_buy" href="<?php echo Mage::helper('mcore')->getModuleUrl($extension);?>" target="_blank"><?php echo $this->__('Buy this module')?></a>					 
+						   
+						   <span style="padding:5px;">|</span>	
+						    <a class="mw_guide" href="http://www.mage-world.com/wiki/index.php?title=License-activation" target="_blank"><?php echo $this->__('Activation Guide')?></a>					 
+						   
+		 				</span>
+		 				</p>
+		 				</td>	
+	 				<?php endif; ?>
+	 				
+	 				<?php if($this->getStatus($extension)=="activated"):?>
+ 							<td class="value"><font class="mw_text_activated"><?php echo $this->__('Your license is currently activated in Live Mode')?></font></td>
+ 					<?php endif;?>
+ 					
+ 					<?php if($this->getStatus($extension)=="disable"):?>
+ 						<td class="value"><font class="mw_text_disable"><?php echo $this->__('Disabled')?></font>
+ 						<p class="note"><span>
+				                   		 			<?php echo Mage::helper('mcore')->showTimeCheckStatus($extension,"detail"); ?>
+				                   		 			<br>				                   		 			
+				                   		 			<a id="mcore_active_<?php echo $real_ex; ?>" class="mw_active"><?php echo $this->__('Activate for Live site')?></a> 				                   		 			 
+				                   		 			
+				                   		 			<span style="padding:5px;">|</span>				                   		 			
+					  								<a id="mcore_dev_<?php echo $real_ex; ?>" class="mw_dev"><?php echo $this->__('Activate for Development')?></a> 
+				                   		 			 
+				                   		 			<span style="padding:5px;">|</span>				                   		 			
+				                   		 			<a class="mw_buy" href="<?php echo Mage::helper('mcore')->getModuleUrl($extension);?>" target="_blank"><?php echo $this->__('Buy this module')?></a>
+				                   		 			
+				                   		 			<span style="padding:5px;">|</span> 
+				                   		 			<a id="mcore_extrial_<?php echo $real_ex; ?>" class="mw_extend_trial"><?php echo $this->__('Extend 7 days trial')?></a>
+				                   		 		
+				                   		 			<span style="padding:5px;">|</span>	
+						    						<a class="mw_guide" href="http://www.mage-world.com/wiki/index.php?title=License-activation" target="_blank"><?php echo $this->__('Activation Guide')?></a>					 
+						   
+				                   		 								                         	
+							                     </span></p>
+						</td>
+ 					<?php endif;?>
+ 					
+ 					<?php if($this->getStatus($extension)=="dev"):?>
+ 					 <td class="value"><font class="mw_text_dev"><?php echo $this->__('Your license is currently in Development Mode')?></font>
+ 					 <p class="note"><span>
+				                   		 			<?php echo Mage::helper('mcore')->showTimeCheckStatus($extension,"detail"); ?>
+				                   		 			<br> 
+				                   		 			<a id="mcore_active_<?php echo $real_ex; ?>" class="mw_active"><?php echo $this->__('Activate for Live site')?></a> 
+				                   		 			<span style="padding:5px;">|</span>	
+						    						<a class="mw_guide" href="http://www.mage-world.com/wiki/index.php?title=License-activation" target="_blank"><?php echo $this->__('Activation Guide')?></a>					 
+						   
+				                   		 			</p>
+				        </td>
+ 					<?php endif;?>
+ 					
+ 					<?php if($this->getStatus($extension)=="devdis"):?>
+ 						<td class="value"><font class="mw_text_disable"><?php echo $this->__('Disabled')?></font>
+ 								<p class="note"><span>
+				                   		 			<?php echo Mage::helper('mcore')->showTimeCheckStatus($extension,"detail"); ?>
+				                   		 			<br>				                   		 			
+				                   		 			<a id="mcore_active_<?php echo $real_ex; ?>" class="mw_active"><?php echo $this->__('Activate for Live site')?></a> 				                   		 			 
+				                   		 			
+				                   		 			<span style="padding:5px;">|</span>				                   		 			
+					  								<a id="mcore_dev_<?php echo $real_ex; ?>" class="mw_dev"><?php echo $this->__('Activate for Development')?></a> 
+				                   		 			 
+				                   		 			<span style="padding:5px;">|</span>				                   		 			
+				                   		 			<a class="mw_buy" href="<?php echo Mage::helper('mcore')->getModuleUrl($extension);?>" target="_blank"><?php echo $this->__('Buy this module')?></a>
+				                   		 			
+				                   		 			<span style="padding:5px;">|</span> 
+				                   		 			<a id="mcore_extrial_<?php echo $real_ex; ?>" class="mw_extend_trial"><?php echo $this->__('Extend 7 days trial')?></a>
+				                   		 			
+				                   		 			<span style="padding:5px;">|</span>	
+						    						<a class="mw_guide" href="http://www.mage-world.com/wiki/index.php?title=License-activation" target="_blank"><?php echo $this->__('Activation Guide')?></a>					 
+						   
+				                   		 								                         	
+							                     </span></p>
+					   </td>
+ 					<?php endif;?>
+ 			
+	 			</tr>
+ 		<?php 
+			}
+		?>
+ 			
+			</tr>
+ 		</tbody>
+ 	</table>
+ </fieldset>
+
+
+
+<script type="text/javascript">//&lt;![CDATA[
+        Fieldset.applyCollapse('mcore_mwmodule');
+        //]]&gt;</script>
+		</div>

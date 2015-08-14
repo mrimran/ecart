@@ -1,0 +1,106 @@
+<p class="switcher a-right">
+    <label for="store_switcher"><?php echo $this->__('Date Range:') ?></label>
+    <select name="report_range" id="report_range">
+        <option value="1"><?php echo $this->__('Last 24h')?></option>
+        <option value="2"><?php echo $this->__('Last Week')?></option>
+        <option value="3"><?php echo $this->__('Last Month')?></option>
+        <option value="4"><?php echo $this->__('Last 7 days')?></option>
+        <option value="5" selected="selected"><?php echo $this->__('Last 30 days')?></option>
+        <option value="7"><?php echo $this->__('Custom')?></option>
+    </select>
+    <span id="custom_range" style="display: none">
+        <label for="from_date"><?php echo $this->__('From:') ?></label>
+        <input type="text" name="report_from" id="report_from" style="width: 80px;"/>
+        <label for="to_date"><?php echo $this->__('To:') ?></label>
+        <input type="text" name="report_to" id="report_to" style="width: 80px;"/>
+        <input type="button" id="report_refresh" value="<?php echo $this->__('Refresh') ?>" style="background: #E9E3E3;border: 1px solid #ccc;padding: 2px;">
+    </span>
+</p>
+
+<!-- line chart and static top -->
+<div class="fue-top">
+    <div class="fuet-right">
+        <div class="box-left entry-edit" style="float: right; width: 340px;">
+            <div class="entry-edit-head"><h4><?php echo Mage::helper('followupemail')->__('Statistics')?></h4></div>
+            <fieldset class="np">
+                <div class="grid np">
+                    <table cellspacing="0" style="border:0;" id="statisticsGrid_table" class="">
+                        <colgroup>
+                            <col width="200">
+                            <col width="125">
+                        </colgroup>
+                        <tbody>
+                        <tr class="even pointer">
+                            <td class=""><?php echo Mage::helper('followupemail')->__('Total Created Emails')?></td>
+                            <td class="a-right a-right last" id="total_email">...</td>
+                        </tr>
+                        <tr class="even pointer">
+                            <td class=""><?php echo Mage::helper('followupemail')->__('Total Sent Emails')?></td>
+                            <td class="a-right a-right last" id="total_email_sent">...</td>
+                        </tr>
+                        <tr class="even pointer">
+                            <td class=""><?php echo Mage::helper('followupemail')->__('Total Read Emails')?></td>
+                            <td class="a-right a-right last" id="total_email_read">...</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
+    <!-- end.fuet-right-->
+    <div class="fuet-left">
+        <div id="rwp-container" style="height: 300px"></div>
+    </div>
+    <!-- end.fuet-left-->
+
+</div>
+
+<!-- pie chart and static bottom -->
+<p class="switcher a-right" id="debug">
+
+</p>
+
+<div class="box-left" style="width: 60%;">
+    <!--Order Information-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-account"><?php echo Mage::helper('followupemail')->__('Report By FUE Rules')?></h4>
+        </div>
+        <div class="fieldset">
+            <div id="rwp-container-pie" style="height: 330px"></div>
+        </div>
+    </div>
+</div>
+
+<div class="box-left entry-edit" style="width: 37.2%; margin: 0 0 0 25px;">
+<!--    <div class="entry-edit-head"><h4>--><?php //echo Mage::helper('followupemail')->__('Statistics')?><!--</h4></div>-->
+    <fieldset class="np">
+        <div class="grid np">
+            <table cellspacing="0" style="border:0;" id="statisticsGrid_table" class="">
+                <colgroup>
+                    <td class="fl-top"><?php echo Mage::helper('followupemail')->__('Template')?></td>
+                    <td class="fl-top a-right a-right " id="avg_redeemded_order"><?php echo Mage::helper('followupemail')->__('Sent Email')?></td>
+                    <td class="fl-top a-right a-right " id="avg_redeemded_order"><?php echo Mage::helper('followupemail')->__('Read Email')?></td>
+                    <td class="fl-top a-right a-right last" id="avg_redeemded_order"><?php echo Mage::helper('followupemail')->__('Read Percent')?></td>
+                </colgroup>
+                <tbody id="fue-tbody">
+                <tr class="even pointer">
+                    <td class=""><?php echo Mage::helper('followupemail')->__('...')?></td>
+                    <td class="a-right a-right " id="total_rewarded">...</td>
+                    <td class="a-right a-right " id="total_rewarded">...</td>
+                    <td class="a-right a-right last" id="total_rewarded">...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+
+</div>
+
+<script type="text/javascript">
+    document.observe("dom:loaded", function() {
+        window.mwReport = new MW.FollowUpEmail.Report.Dashboard({url: '<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/followupemail_reportoverview/index')?>'});
+    });
+</script>

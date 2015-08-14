@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+-->
+<layout>
+    <amaudit_adminhtml_log_edit>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/amasty/amaudit.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/amasty/amaudit.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+        <reference name="left">
+            <block type="amaudit/adminhtml_userlog_edit_tabs" name="userlog_edit_tabs">
+                <block type="amaudit/adminhtml_userlog_edit_tab_view" name="amaudit_userlog_edit_tab_view"
+                       template="amaudit/tab/view.phtml">
+                    <block type="amaudit/adminhtml_userlog_edit_tab_view_details"
+                           name="amaudit_userlog_edit_tab_view_details" template="amaudit/tab/view/details.phtml"
+                           before="-"/>
+                </block>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="amaudit/adminhtml_userlog_edit_tab_view_popup"
+                   name='amaudit_userlog_edit_tab_view_details_popup'>
+            </block>
+        </reference>
+    </amaudit_adminhtml_log_edit>
+
+    <amaudit_adminhtml_visit_edit>
+        <reference name="left">
+            <block type="amaudit/adminhtml_visit_edit_tabs" name="visit_edit_tabs">
+                <block type="amaudit/adminhtml_visit_edit_tab_view" name="amaudit_visit_edit_tab_view"
+                       template="amaudit/tab/pages.phtml">
+                    <block type="amaudit/adminhtml_visit_edit_tab_view_details"
+                           name="amaudit_visit_edit_tab_view_details" template="amaudit/tab/pages/details.phtml"
+                           before="-"/>
+                </block>
+            </block>
+        </reference>
+    </amaudit_adminhtml_visit_edit>
+
+    <amaudit_adminhtml_log_index>
+        <reference name="head">
+            <action method="addCss">
+                <name>css/amasty/amaudit.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/amasty/bubleTooltip.js</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/amasty/bubleTooltip.css</name>
+                <params/>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="amaudit/adminhtml_tooltip" name="tooltip" template="amaudit/tooltip.phtml"/>
+        </reference>
+    </amaudit_adminhtml_log_index>
+
+    <adminhtml_catalog_product_edit>
+        <update handle="amaudit_adminhtml_log_index"/>
+    </adminhtml_catalog_product_edit>
+
+    <adminhtml_customer_edit>
+        <update handle="amaudit_adminhtml_log_index"/>
+    </adminhtml_customer_edit>
+
+    <adminhtml_sales_order_view>
+        <update handle="amaudit_adminhtml_log_index"/>
+    </adminhtml_sales_order_view>
+</layout>

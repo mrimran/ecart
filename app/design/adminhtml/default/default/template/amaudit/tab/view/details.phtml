@@ -1,0 +1,70 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+?>
+<?php require(Mage::getBaseDir() . DS . 'lib' . DS . 'Amasty' . DS . 'Auditlog' . DS . 'finediff.php'); ?>
+<?php require(Mage::getBaseDir() . DS . 'lib' . DS . 'Amasty' . DS . 'Auditlog' . DS . 'ganon.php'); ?>
+<pre id="display"></pre>
+<?php if (count($this->getLogRows())): ?>
+    <div class="entry-edit">
+        <div class="entry-edit-head"><h4
+                class="icon-head head-audit-log-statistics"><?php echo Mage::helper('amaudit')->__('Modifications Breakdown') ?></h4>
+        </div>
+        <div class="grid">
+            <table cellspacing="0" class="data">
+                <thead>
+                <tr class="headings">
+                    <th class="label"><?php echo Mage::helper('amaudit')->__('Name') ?></th>
+                    <th><?php echo Mage::helper('amaudit')->__('Old Value') ?></th>
+                    <th><?php echo Mage::helper('amaudit')->__('New Value') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php $_i = 0;
+                $_model = ''; ?>
+                <?php $a = extension_loaded('tidy'); ?>
+                <?php $numberOfElement = 0; ?>
+                <?php foreach ($this->getLogRows() as $_value): ?>
+                    <?php $numberOfElement++ ?>
+                    <?php if ($_i == 0 || $_model != $_value->getModel()): ?>
+                        <tr<?php echo($_i++ % 2 ? ' class="even"' : '') ?>>
+                            <td align="center" colspan="3" class="label ammodel"><?php echo $_value->getModel(); ?></td>
+                        </tr>
+                        <?php $_model = $_value->getModel(); ?>
+                    <?php endif; ?>
+                    <tr<?php echo($_i++ % 2 ? ' class="even"' : '') ?>>
+                        <td class="label"><?php echo $_value->getName(); ?></td>
+                        <?php
+                        //formating
+                        $noFormatOld = str_get_dom($_value->getOldValue());
+                        dom_format($noFormatOld, array('attributes_case' => CASE_LOWER));
+                        $noFormatNew = str_get_dom($_value->getNewValue());
+                        dom_format($noFormatNew, array('attributes_case' => CASE_LOWER));
+                        //difference
+//                        $opcodes = FineDiff::getDiffOpcodes($noFormatOld, $noFormatNew, FineDiff::$wordGranularity);
+                        $opcodes = FineDiff::getDiffOpcodes($noFormatOld, $noFormatNew);
+                        $noFormatDiff = FineDiff::renderDiffToHTMLFromOpcodes($noFormatOld, $opcodes);
+                        ?>
+                        <td class="onlyDeletions">
+                            <pre><?php echo $noFormatDiff; ?></pre>
+                        </td>
+                        <td class="onlyInsertions">
+                            <pre><?php echo $noFormatDiff; ?></pre>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="clear"></div>
+<?php else: ?>
+    <div class="entry-edit">
+        <div class="entry-edit-head"><h4
+                class="icon-head head-audit-log-statistics"><?php echo Mage::helper('amaudit')->__('Not found') ?></h4>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,48 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+?>
+<?php
+$history = $this->getHistory();
+?>
+<div class="content-header" style="height:18px;">
+    <button onclick="Javascript:history.back();" class="scalable back" style="float: right; margin-top: -7px;"
+            type="button" title="Back"><?php echo $this->__('Back') ?></button>
+</div>
+<pre id="display"></pre>
+<?php if (count($history)): ?>
+    <div class="entry-edit">
+        <div class="grid">
+            <table cellspacing="0" class="data">
+                <thead>
+                <tr class="headings">
+                    <th><?php echo Mage::helper('amaudit')->__('#') ?></th>
+                    <th><?php echo Mage::helper('amaudit')->__('Page Name') ?></th>
+                    <th><?php echo Mage::helper('amaudit')->__('Page Url') ?></th>
+                    <th><?php echo Mage::helper('amaudit')->__('Stay Duration') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($history as $value): ?>
+                    <tr>
+                        <td><?php echo $value['numb'] ?></td>
+                        <td><?php echo $value['page_name'] ?></td>
+                        <td><?php echo $value['page_url'] ?></td>
+                        <td><?php echo $value['stay_duration'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="clear"></div>
+<?php else: ?>
+    <div class="entry-edit">
+        <div class="entry-edit-head"><h4
+                class="icon-head head-audit-log-statistics"><?php echo Mage::helper('amaudit')->__('Not found') ?></h4>
+        </div>
+    </div>
+<?php endif; ?>

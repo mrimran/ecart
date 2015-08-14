@@ -1,0 +1,18 @@
+.form-list td.scope-label
+	{
+		display:none;
+	}
+.mw_mcore_notice
+{
+	line-height:20px;
+	font-weight:bold;
+	color:red;
+}
+.columns .form-list td.value {
+    padding-right: 5px !important;
+    width: 650px;
+}
+.form-list td.value p.note
+{
+	width: 640px;
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+--> 
+<!--
+    Copyright (c) 2013 Amasty (http://www.amasty.com) 
+-->
+<config>
+       <menu>
+            <system>
+                <children>
+                    <amauditmenu translate="title" module="amaudit">
+                        <title>Admin Actions Log</title>
+                    <children>
+                        <amaudit translate="title" module="amaudit">
+                            <title>Login Attempts</title>
+                            <action>amaudit/adminhtml_login</action>
+                        </amaudit>
+                        <log translate="title" module="amaudit">
+                            <title>Action Log</title>
+                            <action>amaudit/adminhtml_log</action>
+                        </log>
+                        <active translate="title" module="amaudit">
+                            <title>Active Sessions</title>
+                            <action>amaudit/adminhtml_active</action>
+                        </active>
+                        <visit translate="title" module="amaudit">
+                            <title>Page Visit History</title>
+                            <action>amaudit/adminhtml_visit</action>
+                        </visit>
+                    </children>
+                    <sort_order>70</sort_order>
+                                
+                    </amauditmenu>
+                </children>
+            </system>
+        </menu>     
+   
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <amauditmenu translate="title" module="amaudit">
+                                    <title>Admin Actions Log</title>
+                                    <children>
+                                        <amaudit translate="title">
+                                            <title>Login Attempts</title>
+                                        </amaudit>
+                                        <log translate="title">
+                                             <title>Action Log</title>
+                                        </log>
+                                        <active translate="title">
+                                            <title>Active Sessions</title>
+                                        </active>
+                                        <visit translate="title">
+                                            <title>Page Visit History</title>
+                                        </visit>
+                                        <producthistory translate="title">
+                                            <title>Product View: History of Changes</title>
+                                        </producthistory>
+                                        <customerhistory translate="title">
+                                            <title>Customer View: History of Changes</title>
+                                        </customerhistory>
+                                        <orderhistory translate="title">
+                                            <title>Order View: History of Changes</title>
+                                        </orderhistory>
+                                    </children>
+                                </amauditmenu>
+                            </children>
+                        </system>
+                     </children>
+                    <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <amaudit translate="title" module="amaudit">
+                                            <title>Admin Actions Log</title>
+                                    </amaudit>
+                                </children>
+                            </config>
+                        </children>
+                    </system> 
+                 </children>
+                </admin> 
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Amasty_Audit>
+                    <files>
+                        <default>Amasty_Audit.csv</default>
+                    </files>
+                </Amasty_Audit>
+            </modules>
+        </translate> 
+</config> 

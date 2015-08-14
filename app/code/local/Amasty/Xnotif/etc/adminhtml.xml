@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Xnotif
+ */
+--> 
+<!--
+    Copyright (c) 2010 Amasty (http://www.amasty.com) 
+-->
+<config>
+       <menu>
+            <report>
+                <children>
+                    <amxnotif_stock translate="title" module="amxnotif">
+                        <title>Out of Stock Notifications</title>
+                        <action>amxnotif/adminhtml_stock</action>
+                        <sort_order>120</sort_order>
+                    </amxnotif_stock>
+                    <amxnotif_price translate="title" module="amxnotif">
+                        <title>Price Notifications</title>
+                        <action>amxnotif/adminhtml_price</action>
+                        <sort_order>130</sort_order>
+                    </amxnotif_price>
+                </children>
+            </report>
+        </menu>     
+   
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <report>
+                            <children>
+                                <amxnotif_stock translate="title" module="amxnotif">
+                                    <title>Out of Stock Notifications</title>
+                                </amxnotif_stock>
+                                <amxnotif_price translate="title" module="amxnotif">
+                                    <title>Price Notifications</title>
+                                </amxnotif_price>
+                            </children>
+                        </report>
+			             <system>
+                           <children>
+                            <config>
+                                <children>
+                                    <amxnotif translate="title" module="amxnotif">
+                                        <title>Out of Stock Notifications</title>
+                                    </amxnotif>
+                                </children>
+                            </config>
+                         </children>
+                       </system> 
+                     </children>
+                </admin> 
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Amasty_Xnotif>
+                    <files>
+                        <default>Amasty_Xnotif.csv</default>
+                    </files>
+                </Amasty_Xnotif>
+            </modules>
+        </translate> 
+</config> 

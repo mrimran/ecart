@@ -1,0 +1,53 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Audit
+ */
+?>
+<script type="text/javascript">
+var amauditConlrollUrl = '<?php echo $this->getAjaxUrl();?>';
+var amauditFormKey = '<?php echo Mage::getSingleton('core/session')->getFormKey();?>';
+</script>
+<div id="bubble" class="bubble_tooltip" style="z-index: 6000; height: auto; visibility: visible; left: 1016px; top: 171px; display: none;">
+    <div class="clearfix" style="padding: 0px; margin: 0px 0px 12px;">
+        <div class="clearfix">
+            <ul class="borderFrame">
+                <li class="borderTop borderRow" style="height: 6px;">
+                    <div>
+                    <div id="top-left" style="width: 6px; height: 6px;"></div>
+                    </div>
+                    <div class="bubble_tooltip_BetweenCorners" style="height: 6px;">
+                    <div style="margin: 0px 6px; height: 6px; background-color: rgb(235, 228, 180);"></div>
+                    </div>
+                    <div class="bubble_tooltip_CornerWrapper ">
+                    <div id="top-right" class="bubble_tooltip_Corner" style="width: 6px; height: 6px;"> </div>
+                    </div>
+                </li>
+                <li class="borderMiddle borderRow" style="background-color: rgb(235, 228, 180);">
+                    <div class="borderCenter" style="padding: 0px 6px;">
+                        <div class="creamy" >
+                            <div id="buble_close" onclick="buble.hideToolTip(this); return false" style="font-size: 14pt;">X</div>
+                            <div id="buble_middle" class="content clearfix"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="borderBottom borderRow" style="height: 6px;">
+                    <div>
+                        <div id="bottom-left" style="width: 6px; height: 6px;"></div>
+                    </div>
+                    <div class="bubble_tooltip_BetweenCorners" style="height: 6px;">
+                        <div class="bubble_tooltip_Between" style="margin: 0px 6px; height: 6px; background-color: rgb(235, 228, 180);"></div>
+                    </div>
+                    <div class="bubble_tooltip_CornerWrapper">
+                        <div id="bottom-right" class="bubble_tooltip_Corner" style="width: 6px; height: 6px;">  </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+   
+</div>
+
+    
+   

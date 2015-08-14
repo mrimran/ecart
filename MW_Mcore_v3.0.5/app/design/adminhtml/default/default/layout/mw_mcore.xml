@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">	
+<default>
+		<reference name="notifications">
+			<block type="core/template"
+				name="mcore_inbox_notifications"
+				template="mw_mcore/inbox/notifications.phtml">
+			</block>
+		</reference>
+		
+		<reference name="head">		
+				<action method="addCss"><stylesheet>mw_mcore/css/style_detail.css</stylesheet></action>					
+				<action method="setTemplate"><template>mw_mcore/head.phtml</template></action>	
+				<block type="mcore/adminhtml_head" name="top.mcore" as="top_mcore" template="mw_mcore/top.phtml"/>		
+		</reference>
+</default>
+    <mcore_adminhtml_mcore_index>
+        <reference name="content">
+            <block type="mcore/adminhtml_mcore" name="mcore" />
+        </reference>
+    </mcore_adminhtml_mcore_index>
+    
+    <mcore_adminhtml_notification_index>
+        <reference name="content">
+            <block type="mcore/adminhtml_notification" name="notification" />
+        </reference>
+    </mcore_adminhtml_notification_index>
+    
+    <adminhtml_system_config_edit>		
+			<reference name="head">		
+				<action method="addCss"><stylesheet>mw_mcore/css/style.css</stylesheet></action>	
+			</reference>
+	</adminhtml_system_config_edit>
+	
+</layout>
