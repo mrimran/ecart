@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="checkout"><title>Shopping Cart</title></action>
+            <action method="addItem"><type>skin_css</type><name>css/tm/suggestpage.css</name></action>
+        </reference>
+    </default>
+
+    <suggestpage_index_index translate="label">
+        <label>Suggest Page</label>
+        <remove name="left"/>
+        <remove name="right"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <update handle="suggestpage_view"/>
+    </suggestpage_index_index>
+
+    <suggestpage_view>
+        <reference name="content">
+            <block type="checkout/cart_sidebar" name="suggest.cart" template="tm/suggestpage/cart.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+            </block>
+        </reference>
+    </suggestpage_view>
+
+    <tm_ajaxpro_checkout_cart_add_suggestpage>
+        <update handle="suggestpage_view"/>
+        <remove name="ajaxpro_message.continue"/>
+        <remove name="ajaxpro_message.grouped"/>
+        <reference name="ajaxpro_message">
+            <action method="insert"><name>content</name></action>
+        </reference>
+    </tm_ajaxpro_checkout_cart_add_suggestpage>
+</layout>

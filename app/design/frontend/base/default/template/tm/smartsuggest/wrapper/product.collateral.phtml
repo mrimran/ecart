@@ -1,0 +1,41 @@
+<?php
+    $block  = $this->getChild('smartsuggest');
+    $html   = $this->getChildHtml('smartsuggest');
+    $suffix = $block->getSliderId();
+?>
+<?php if (!$html) : return; endif; ?>
+
+<div class="box-collateral box-smartsuggest">
+    <?php // List mode ?>
+    <?php if($block->getMode() == 'list') : ?>
+        <?php $_iterator = 0; ?>
+        <div class="listing-suggest listing-suggest-list catalog-listing">
+            <div class="head"><h2><?php echo $block->getTitle() ?></h2></div>
+            <?php echo $html ?>
+        </div>
+    <?php elseif ($block->getMode() == 'slider') : ?>
+        <div class="listing-suggest listing-suggest-slider catalog-listing">
+            <div class="head">
+                <h2><?php echo $block->getTitle() ?></h2>
+                <div class="smartsuggest-slider-controls">
+                    <a href="#" id="smartsuggest-move-right<?php echo $suffix ?>" class="smartsuggest-move-right"><?php echo Mage::helper('smartsuggest')->__('Move right') ?></a>
+                    <a href="#" id="smartsuggest-move-left<?php echo $suffix ?>" class="smartsuggest-move-left"><?php echo Mage::helper('smartsuggest')->__('Move left') ?></a>
+                </div>
+            </div>
+            <?php echo $html ?>
+            <script type="text/javascript">
+                new SmartSuggest.Slider(
+                    "<?php echo 'smartsuggest-slider-container' . $suffix ?>",
+                    "<?php echo 'smartsuggest-move-left' . $suffix ?>",
+                    "<?php echo 'smartsuggest-move-right' . $suffix ?>"
+                );
+            </script>
+        </div>
+    <?php else : ?>
+        <?php // Grid Mode ?>
+        <div class="listing-suggest listing-suggest-grid catalog-listing">
+            <div class="head"><h2><?php echo $block->getTitle() ?></h2></div>
+            <?php echo $html ?>
+        </div>
+    <?php endif; ?>
+</div>

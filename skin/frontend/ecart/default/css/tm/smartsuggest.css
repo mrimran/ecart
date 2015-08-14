@@ -1,0 +1,141 @@
+.listing-suggest { margin-bottom: 7px; clear: both; }
+.listing-suggest .product-image { width: auto; height: auto; text-align: center; }
+.listing-suggest .product-image img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+
+.listing-suggest .f-fix { float: left; }
+.listing-suggest .products-grid li.item { margin-left: 0 !important; margin-right: 0 !important; }
+
+/* remove std styles */
+.std .listing-suggest ul,
+.std .listing-suggest ol { margin: 0; padding: 0; list-style: none; }
+.std .listing-suggest .products-list li { margin-left: 0; margin-right: 0; }
+.std .listing-suggest .add-to-links { margin: 5px 0 0; }
+.std .listing-suggest .add-to-links li { margin: 0; }
+
+/* grid mode */
+.listing-suggest .products-grid { width: auto; background: none; }
+.listing-suggest .products-grid li.item { padding-right: 1% !important; padding-left: 1% !important; }
+.listing-suggest .products-grid .product-image { width: auto; height: auto; text-align: center; }
+.listing-suggest .products-grid .actions { position: static; }
+.smartsuggest-cols-2 li.item { width: 48%; }
+.smartsuggest-cols-3 li.item { width: 31.3%; }
+.smartsuggest-cols-4 li.item { width: 23%; }
+.smartsuggest-cols-5 li.item { width: 18%; }
+.smartsuggest-cols-6 li.item { width: 14.6%; }
+
+/* list mode */
+.listing-suggest .products-list .product-image { width: 30%; }
+.listing-suggest .products-list .product-shop { margin-left: 31%; float: none; padding: 0; width: auto; }
+.col3-layout .listing-suggest .products-list .product-shop { margin-left: 33%; }
+
+/* product collateral block */
+.product-view .listing-suggest .add-to-links { margin: 5px 0 0; }
+.product-view .listing-suggest .product-shop .product-name { float: none; }
+.product-view .listing-suggest .product-shop .desc { clear: left; }
+.product-view .listing-suggest .product-shop .add-to-links { text-align: left; }
+.product-view .listing-suggest .product-shop .price-box { margin: 3px 13px 5px 0; }
+.product-view .listing-suggest .products-list .product-image { width: 25%; }
+.product-view .listing-suggest .products-list .product-shop { margin-left: 27%; }
+
+/* sidebar list mode */
+.sidebar .listing-suggest .products-list li.item { padding: 5px; }
+.sidebar .listing-suggest .products-list .product-shop { margin-left: 33%; }
+.sidebar .listing-suggest .products-list .product-shop p { margin-bottom: 3px; }
+.sidebar .listing-suggest .products-list .product-shop .desc { display: none; }
+.sidebar .listing-suggest .products-list .product-name { font-size: 11px; margin-bottom: 3px; }
+.sidebar .listing-suggest .products-list .price-box { margin-top: 2px; margin-bottom: 2px; }
+.sidebar .listing-suggest .products-list .add-to-links { margin-top: 2px; }
+.sidebar .listing-suggest .add-to-links li { display: block; }
+.sidebar .listing-suggest .add-to-links .link-compare,
+.sidebar .listing-suggest .add-to-links .link-wishlist { float: none; }
+.sidebar .listing-suggest .products-list .add-to-links .separator { display: none; }
+
+/* sidebar grid mode */
+.sidebar .listing-suggest { margin: 0; }
+.sidebar .listing-suggest .products-grid li.item { padding-right: 2% !important; padding-left: 2% !important; float: left; margin: 0; }
+.sidebar .listing-suggest .smartsuggest-cols-1 li.item { width: 90% !important; padding-right: 5% !important; padding-left: 5% !important; }
+.sidebar .smartsuggest-cols-2 li.item { width: 46% !important; }
+.sidebar .smartsuggest-cols-3 li.item { width: 29.3% !important; }
+.sidebar .smartsuggest-cols-4 li.item { width: 21% !important; }
+.sidebar .smartsuggest-cols-5 li.item { width: 16% !important; }
+.sidebar .smartsuggest-cols-6 li.item { width: 12.6% !important; }
+.sidebar .listing-suggest .products-grid .product-image img { max-width: 95%; width: auto; }
+.sidebar .listing-suggest .products-grid .product-name { font-size: 11px; }
+.sidebar .listing-suggest .products-grid .actions { background: none; padding: 0; text-align: left; }
+.sidebar .listing-suggest .products-grid .actions button.button { float: none; }
+
+/* slider */
+.listing-suggest-slider .block-title,
+.listing-suggest-slider .head { position: relative; }
+.listing-suggest-slider .block-title span,
+.listing-suggest-slider .head h2 { padding-right: 45px; /* gap for controls */ }
+.listing-suggest-slider .block-title .smartsuggest-slider-controls,
+.listing-suggest-slider .head .smartsuggest-slider-controls { position: absolute; right: 5px; top: 4px; }
+.listing-suggest-slider .block-title span,
+.listing-suggest-slider .block-title strong,
+.listing-suggest-slider .head h2 { float: left; }
+.smartsuggest-slider-controls { float: right; }
+.smartsuggest-slider-wrapper { overflow: hidden; clear: both; position: relative; }
+.smartsuggest-slider { width: 10000px; }
+.smartsuggest-slider li { float: left; padding: 10px 10px 0; width: 200px; }
+.smartsuggest-slider .product-name { font-weight: bold; text-align: center; margin: 5px 0; }
+.smartsuggest-move-left {}
+.smartsuggest-move-left,
+.smartsuggest-move-right {
+    width: 16px;
+    height: 16px;
+    float: left;
+    display: inline;
+    background: url(../../images/tm/smartsuggest/arrow.gif) no-repeat -16px 0;
+    text-indent: -9999px;
+    text-align: left;
+    margin-left: 2px;
+}
+.smartsuggest-move-right { background-position: 0 0; margin-left: 15px; display: inline; }
+.smartsuggest-move-left.disabled { background-position: -16px -16px; }
+.smartsuggest-move-right.disabled { background-position: 0 -16px; }
+
+.smartsuggest-slider:after,
+.listing-suggest-slider .block-title:after,
+.listing-suggest-slider .head:after,
+.product-view .listing-suggest .product-shop:after { content: '.'; visibility: hidden; height: 0; font-size: 0; display: block; clear: both; }
+
+/* rwd fixes */
+.listing-suggest .products-grid > li:nth-child(3n+1) { clear: none; }
+
+@media (max-width: 767px) {
+    .product-view .listing-suggest .products-grid .add-to-links { text-align: center; float: none; }
+    .product-view .listing-suggest .products-grid .add-to-links li { float: none; }
+    .product-view .listing-suggest .products-grid .add-to-links a { border: none; margin: 0; }
+
+    /* Three columns */
+    .listing-suggest .products-grid:after { clear: none; }
+    .listing-suggest .products-grid li.item { width: 48%; padding-left: 1%; padding-right: 1%; }
+    .listing-suggest .smartsuggest-cols-6 li.item:nth-of-type(4n) { clear: none; }
+    /* clear: left for every third li */
+    .listing-suggest .smartsuggest-cols-6 li.item:nth-of-type(2n+1),
+    /* clear: left for every third li inside every third .smartsuggest-cols */
+    .listing-suggest .smartsuggest-cols-5:nth-of-type(2n+1) li.item:nth-of-type(2n+1),
+    /* clear: left for every second li inside every second .smartsuggest-cols */
+    .listing-suggest .smartsuggest-cols-5:nth-of-type(2n) li.item:nth-of-type(2n) { clear: left; }
+    .listing-suggest .smartsuggest-cols-5:after { content: ''; clear: none; }
+}
+
+@media (max-width: 480px) {
+    .listing-suggest .smartsuggest-cols-6 li.item:nth-of-type(4n) { clear: none; }
+    /* Two columns for small screen */
+    .listing-suggest .products-grid li.item { width: 46%; padding-left: 2%; padding-right: 2%; }
+    .listing-suggest .smartsuggest-cols-1 li.item { width: 100%; padding-left: 0; padding-right: 0; }
+    /* clear: left for every third li */
+    .listing-suggest .smartsuggest-cols-2 li.item:nth-of-type(2n+1),
+    .listing-suggest .smartsuggest-cols-4 li.item:nth-of-type(2n+1),
+    .listing-suggest .smartsuggest-cols-6 li.item:nth-of-type(2n+1),
+    /* clear: left for every third li inside every third .smartsuggest-cols */
+    .listing-suggest .smartsuggest-cols-3:nth-of-type(2n+1) li.item:nth-of-type(2n+1),
+    .listing-suggest .smartsuggest-cols-5:nth-of-type(2n+1) li.item:nth-of-type(2n+1),
+    /* clear: left for every second li inside every second .smartsuggest-cols */
+    .listing-suggest .smartsuggest-cols-3:nth-of-type(2n) li.item:nth-of-type(2n),
+    .listing-suggest .smartsuggest-cols-5:nth-of-type(2n) li.item:nth-of-type(2n) { clear: left; }
+    .listing-suggest .smartsuggest-cols-3:after,
+    .listing-suggest .smartsuggest-cols-5:after { content: ''; clear: none; }
+}
