@@ -1,0 +1,77 @@
+<?php
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php $notice = $this->getNotice(); ?>
+<form action="" method="post" id="form-setup">
+    <input type="hidden" name="action" value="setup"/>
+    <h1 class="header_title"><?php echo $this->__("Source Cart Setup"); ?></h1>
+    <?php if($this->_checkShowWarning()){ ?>
+    <div class="lecm-warning" style="text-align: left;">
+        <p><strong>Warning:</strong></p>
+        <?php if(!$this->_checkFolderMediaPermission()){ ?><p> - Folder "media" is not writable, images could not be saved!</p><?php } ?>
+        <?php if(!$this->_checkAllowUrlFOpen()){ ?><p> - PHP variable allow_url_fopen = Off, need to change to allow_url_fopen = On, please click <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=allow_url_fopen+php" target="_blank">here</a> for detail</p><?php } ?>
+    </div>
+    <?php } ?>
+    <div class="le-container">
+        <div class="le-form-fields">
+            <div class="label-fields">
+                <p>
+                    <label for="token"><?php echo $this->__("Cart Type:"); ?>
+                        <span class="required">*</span>
+                    </label>
+                </p>
+            </div>
+            <div class="input-fields">
+                <p>
+                    <select id="cms-type" name="cart_type" class="cms-type required-entry input-text">
+                        <?php echo $this->getCartsOption($notice['config']['cart_type']);?>
+                    </select>
+                    <span class="success-icon"></span>
+                </p>
+                <div id="error-cart" class="validation-advice error-custom"><?php echo $this->__('Cart type is not correct!'); ?></div>
+            </div>
+        </div>
+        <div class="le-form-fields">
+            <div class="label-fields">
+                <p>
+                    <label for="source-cart-url"><?php echo $this->__("Cart Url"); ?>:<span class="required">*</span></label>
+                </p>
+            </div>
+            <div class="input-fields">
+                <p>
+                    <input type="text" id="source-cart-url" name="cart_url" value="<?php echo $notice['config']['cart_url']; ?>"
+                           class="source-cart-url required-entry input-text validate-url"/>
+                    <span class="success-icon"></span>
+                <p style="font-size: 11px;">Please enter correct Source Cart Url as it will be registered as the migration domain.</p>
+                </p>
+                <div id="error-url" class="validation-advice error-custom"><?php echo $this->__('Can not reach connector!'); ?></div>
+            </div>
+        </div>
+        <div class="le-form-fields">
+            <div class="label-fields">
+                <p>
+                    <label for="token"><?php echo $this->__("Cart Token"); ?>:<span class="required">*</span></label>
+                </p>
+            </div>
+            <div class="input-fields">
+                <p>
+                    <input type="text" id="token" name="cart_token" class="token required-entry input-text validate-alphanum" value="<?php echo $notice['config']['cart_token'];?>"/>
+                    <span class="success-icon"></span>
+                </p>
+                <div id="error-token" class="validation-advice error-custom"><?php echo $this->__('Token is not correct!'); ?></div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="le-submit">
+        <div id="form-setup-loading" class="form-loading"><?php echo $this->__('Connecting')?> ... </div>
+        <div id="form-setup-submit" class="lecm-submit">
+            <a href="javascript:void(0)" class="le-button"><?php echo $this->__('Next') ?> &raquo;</a>
+        </div>
+    </div>
+</form>
