@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<widgets>
+    <share_primary type="share/share">
+        <name>Share This Buttons Widget</name>
+        <description type="desc">This widget adds a standard set of Share This buttons</description>
+    </share_primary>
+	
+	<share_widget type="share/widget">
+        <name>Sidebar style Share This Buttons Widget</name>
+        <description type="desc">This widget adds a sidebar style of Share This buttons</description>
+    </share_widget>
+</widgets>
