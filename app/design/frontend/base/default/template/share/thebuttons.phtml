@@ -1,0 +1,34 @@
+<?php
+
+?>
+<?php if ($this->isEnabled()): ?>
+
+<?php if ($this->showSTbutton()): ?>
+<span class='st_sharethis' displayText='ShareThis'></span>
+<?php endif; ?>
+
+<?php if ($this->showFBbutton()): ?>
+<span class='st_facebook' displayText='Facebook'></span>
+<?php endif; ?>
+
+<?php if ($this->showTweetbutton()): ?>
+<span class='st_twitter' displayText='Tweet'></span>
+<?php endif; ?>
+
+<?php if ($this->showLIbutton()): ?>
+<span class='st_linkedin' displayText='LinkedIn'></span>
+<?php endif; ?>
+
+<?php if ($this->showPinbutton()): ?>
+<span class='st_pinterest' displayText='Pinterest'></span>
+<?php endif; ?>
+
+<?php if ($this->showEmailbutton()): ?>
+<span class='st_email' displayText='Email'></span>
+<?php endif; ?>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "<?php echo $this->getPubKey(); ?>", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+<?php endif; ?>

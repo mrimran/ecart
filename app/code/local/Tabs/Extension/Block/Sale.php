@@ -168,4 +168,11 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
          return $query;
     }
 
+    public function __construct()
+    {
+        parent::__construct();
+        $collection = clone $this->getLoadedProductCollection();
+        return $this->setCollection($collection->clear());
+    }
+
 }

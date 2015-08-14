@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+   
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <techninja_share_section translate="title" module="share">
+                                        <title>Share This</title>
+                                        <sort_order>100</sort_order>
+                                    </techninja_share_section>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                 </children>
+            </admin>
+        </resources>
+    </acl>
+</config>									
