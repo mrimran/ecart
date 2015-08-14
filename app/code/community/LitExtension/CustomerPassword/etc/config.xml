@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project: CustomerPassword
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_CustomerPassword>
+            <version>1.0.0</version>
+        </LitExtension_CustomerPassword>
+    </modules>
+
+    <global>
+        <models>
+            <lecupd>
+                <class>LitExtension_CustomerPassword_Model</class>
+            </lecupd>
+            <customer>
+                <rewrite>
+                    <customer>LitExtension_CustomerPassword_Model_Customer</customer>
+                </rewrite>
+            </customer>
+        </models>
+    </global>
+
+    <default>
+        <lecupd>
+            <general>
+                <type></type>
+                <url></url>
+            </general>
+        </lecupd>
+    </default>
+</config>
