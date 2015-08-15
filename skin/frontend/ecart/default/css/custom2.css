@@ -154,7 +154,9 @@ text-align:left;}
 .discount-form label{text-transform:uppercase;padding-right:5px;padding-top:10px;}
 .discount-form .input-text{outline:none;padding:8px 12px;font-size:14px;width:50%;border-radius:2px;
 color:#555;border:1px solid #eaeaea;margin-bottom:10px;}
-.discount-form .validation-advice{position:absolute;top:38px;}
+.amxnotif-block{position:relative;margin-bottom:25px;}
+.discount-form .validation-advice,.amxnotif-block .validation-advice{position:absolute;top:38px;}
+.amxnotif-block .validation-advice{top:45px;font-size:12px;}
 .discount-form .btn1{font-size:12px;}
 .shopbybrand-list .shopbybrand-title{border-bottom:1px solid #e3e3e3;}
 .shopbybrand-list .shopbybrand-title h1{font-size:22px;color:#202020;font-weight:400;
