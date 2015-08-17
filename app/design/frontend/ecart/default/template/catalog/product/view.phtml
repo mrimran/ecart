@@ -131,11 +131,8 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
         <div class="panel">
           <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <?php  
-           echo  $_product->getResource()->getAttribute('color')->getFrontendLabel();   
-           ?>
-                <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
-
+              <?php echo $_product->getResource()->getAttribute('color')->getFrontendLabel(); ?>
+              <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
@@ -144,7 +141,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                   <?php $i=0?>
                   <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
 
-                  <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?></li>
+                  <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><input required="true" type="radio" name="color"><?php echo $value ?></li>
                   <?php $i++ ?>
                   <?php endforeach ?>
                   <?php //echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
@@ -165,7 +162,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
               <ul class="product-meta-select" data-id="headingTwo">
                 <?php $i=0?>
                 <?php foreach(explode(',', $_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product)) as $value) : ?>
-                <li id="value_<?php echo $i?>"><?php echo $value ?></li>
+                <li id="value_<?php echo $i?>"><input required="true" type="radio" name="storagecapacity"><?php echo $value ?></li>
                 <?php $i++ ?>
                 <?php endforeach ?>
               </ul>
