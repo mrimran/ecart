@@ -1,0 +1,53 @@
+<?php
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php $notice = $this->getNotice(); ?>
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function(){
+            $.LeCaMg({
+                url: '<?php echo $this->getUrl('adminhtml/lecamg_index/import',array('_secure'=>true)); ?>',
+                formKey : '<?php echo $this->getFormKey(); ?>',
+                fnResume: '<?php echo $notice['fn_resume']; ?>',
+                timeDelay: '<?php echo $notice['setting']['delay'] * 1000?>',
+                autoRetry: '<?php echo $notice['setting']['retry'] * 1000?>'
+            });
+        });
+    })(jle)
+</script>
+<div class="le-content-migration">
+    <div class="content-header">
+        <span class="lecamg-logo"></span>
+    </div>
+    <div id="w" class="clearfix">
+        <div id="sidemenu">
+            <div id="menu-setup" class="stepmenu open"><strong> 1. <?php echo $this->__("Source Cart Setup"); ?></strong></div>
+            <div id="menu-config"  class="stepmenu"><strong> 2. <?php echo $this->__("Configuration"); ?></strong></div>
+            <div id="menu-confirm"  class="stepmenu"><strong> 3. <?php echo $this->__("Migration"); ?></strong></div>
+        </div>
+
+        <div id="le-content">
+            <?php if($notice['is_running']){ ?>
+            <div id="lecamg-resume" class="contentblock">
+                <?php echo $this->getChild('lecamg.resume')->setNotice($notice)->toHtml();?>
+            </div>
+            <?php } ?>
+            <div id="lecamg-setup" class="contentblock">
+                <?php echo $this->getChild('lecamg.setup')->setNotice($notice)->toHtml();?>
+            </div>
+            <div id="lecamg-config" class="contentblock"></div>
+            <div id="lecamg-confirm" class="contentblock"></div>
+            <div id="lecamg-import" class="contentblock"></div>
+        </div>
+
+    </div>
+
+    <div class="le-footer-migration">
+        <p><?php echo $this->__('Cart Migration by LitExtension ver ') . Mage::getConfig()->getNode()->modules->LitExtension_CartMigration->version;?></p>
+    </div>
+</div>

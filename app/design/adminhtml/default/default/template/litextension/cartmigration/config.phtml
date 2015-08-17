@@ -1,0 +1,319 @@
+<?php
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php $notice = $this->getNotice(); ?>
+<form action="" method="post" id="form-config">
+    <h1 class="header_title">Configuration</h1>
+    <input type="hidden" name="action" value="config">
+
+    <?php if($notice['config']['config_support']['category_map']){ ?>
+    <div class="le-container" id="lecm-cat-dup">
+        <h1><?php echo $this->__("Root Category"); ?></h1>
+        <div class="section_guide">Choose a Category to put migrated categories from Source Cart into.</div>
+        <div class="le-form-fields">
+            <?php foreach($notice['config']['category_data'] as $cat_key => $cat_name){?>
+                <div class="label-fields mapping">
+                    <p><label><?php echo $cat_name; ?></label></p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <select name="cats[<?php echo $cat_key;?>]" class="input-text">
+                            <?php echo $this->getCategoriesOption("");?>
+                        </select>
+                    </p>
+                </div>
+            <?php }?>
+        </div>
+        <div class="label-fields">
+            <p><label></label></p>
+        </div>
+        <div class="input-fields">
+            <p>
+            <div class="lecm-error validation-advice"><?php echo $this->__('Can not be the same Root Category.'); ?></div>
+            </p>
+        </div>
+    </div>
+    <?php } ?>
+
+    <?php if($notice['config']['config_support']['attribute_map']){ ?>
+    <div class="le-container" id="lecm-attr-dup">
+        <h1><?php echo $this->__("Product Attribute Set"); ?></h1>
+        <div class="section_guide">Choose an appropriate Product Attribute Set or just leave it Default.</div>
+        <div class="le-form-fields">
+            <?php foreach($notice['config']['attribute_data'] as $attr_key => $attr_name){ ?>
+                <div class="label-fields mapping">
+                    <p><label><?php echo $attr_name; ?></label></p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <select name="attributes[<?php echo $attr_key;?>]" class="input-text">
+                            <?php echo $this->getAttributesOption("");?>
+                        </select>
+                    </p>
+                </div>
+            <?php } ?>
+            <div class="label-fields">
+                <p><label></label></p>
+            </div>
+            <div class="input-fields">
+                <p>
+                <div class="lecm-error validation-advice"><?php echo $this->__('Can not be the same Attribute Set.'); ?></div>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+
+    <?php if($notice['config']['config_support']['language_map']){ ?>
+    <div class="le-container" id="lecm-lang-dup">
+        <h1><?php echo $this->__("Languages Mapping"); ?></h1>
+        <div class="section_guide">
+            If your Source Cart is multilingual, corresponding languages ( or storeviews) should be available
+            in Target Magento Store. You may need to create additional languages in Magento Store to avoid data loss.
+        </div>
+        <?php foreach($notice['config']['languages_data'] as $lang_id => $lang_name){ ?>
+                <div class="label-fields mapping">
+                    <p><label><?php echo $lang_name; ?></label></p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <select name="languages[<?php echo $lang_id;?>]" class="input-text">
+                            <?php echo $this->getStoresOption('');?>
+                        </select>
+                    </p>
+                </div>
+            <?php } ?>
+        <div class="label-fields">
+            <p><label></label></p>
+        </div>
+        <div class="input-fields">
+            <p>
+            <div class="lecm-error validation-advice"><?php echo $this->__('Can not be the same Store View.'); ?></div>
+            </p>
+        </div>
+    </div>
+    <?php } ?>
+
+    <?php if($notice['config']['config_support']['currency_map']){ ?>
+    <div class="le-container">
+        <h1><?php echo $this->__("Currencies Mapping"); ?></h1>
+        <div class="section_guide">
+            Please assign Source Cart currencies to proper Target Magento Store currencies. Creating currencies
+            in Target Magento Store may be needed.
+        </div>
+        <?php foreach($notice['config']['currencies_data'] as $cur_id => $cur_name){ ?>
+            <div class="label-fields mapping">
+                <p><label><?php echo $cur_name; ?></label></p>
+            </div>
+            <div class="input-fields">
+                <p>
+                    <select name="currencies[<?php echo $cur_id;?>]" class="input-text">
+                        <?php echo $this->getCurrenciesOption('');?>
+                    </select>
+                </p>
+            </div>
+        <?php } ?>
+    </div>
+    <?php } ?>
+
+    <?php if($notice['config']['config_support']['order_status_map']){ ?>
+    <div class="le-container">
+        <h1><?php echo $this->__("Orders Status Mapping"); ?></h1>
+        <div class="section_guide">
+            Please assign Source Cart order statuses to proper Target Magento Store order statuses.
+            Creating additional order statues in Target Magento Store may be needed.
+        </div>
+        <?php foreach($notice['config']['order_status_data'] as $status_id => $status_name){ ?>
+            <div class="label-fields mapping">
+                <p><label><?php echo $status_name; ?></label></p>
+            </div>
+            <div class="input-fields">
+                <p>
+                    <select name="order_status[<?php echo $status_id;?>]" class="input-text">
+                        <?php echo $this->getOrderStatusOption('');?>
+                    </select>
+                </p>
+            </div>
+        <?php } ?>
+    </div>
+    <?php } ?>
+
+    <?php if($notice['config']['config_support']['country_map']){?>
+        <div class="le-container">
+            <h1><?php echo $this->__("Countries Mapping"); ?></h1>
+            <?php foreach($notice['config']['countries_data'] as $country_key => $country_name){ ?>
+                <div class="label-fields mapping">
+                    <p>
+                        <label><?php echo $country_name; ?></label>
+                    </p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <select name="countries[<?php echo $country_key; ?>]">
+                            <?php echo $this->getCountriesOption('');?>
+                        </select>
+                    </p>
+                </div>
+            <?php } ?>
+        </div>
+    <?php } ?>
+
+    <?php if($notice['config']['config_support']['customer_group_map']){ ?>
+        <div class="le-container">
+            <h1><?php echo $this->__("Customer Group Mapping"); ?></h1>
+            <?php foreach($notice['config']['customer_group_data'] as $group_key => $group_name){ ?>
+                <div class="label-fields mapping">
+                    <p>
+                        <label><?php echo $group_name; ?></label>
+                    </p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <select name="customer_group[<?php echo $group_key; ?>]">
+                            <?php echo $this->getCustomerGroupOption('');?>
+                        </select>
+                    </p>
+                </div>
+            <?php } ?>
+        </div>
+    <?php } ?>
+
+    <div class="le-input-fields le-container" id="input-fields-select">
+        <h1><?php echo $this->__("Entities to Migrate"); ?></h1>
+        <div class="section_guide">
+            Select entities to migrate.
+        </div>
+        <div class="le-select-all">
+            <input type="checkbox" title="" id="select-all" class="checkbox"/>
+            <label class="le-select-checkbox"><?php echo $this->__("Select All"); ?></label>
+        </div>
+        <?php if($notice['config']['import_support']['taxes']){ ?>
+        <div class="lv0">
+            <div class="le-select-cat">
+                <input type="checkbox" name="taxes" id="taxes" class="checkbox lv1" <?php if($notice['config']['import']['taxes']){echo 'checked="checked"';}?>/>
+                <label class="le-select-checkbox"><?php echo $this->__("Taxes"); ?></label>
+            </div>
+        </div>
+        <?php } ?>
+        <?php if($notice['config']['import_support']['manufacturers']){ ?>
+        <div class="lv0">
+            <div class="le-select-cat">
+                <input type="checkbox" name="manufacturers" id="manufacturers" class="checkbox lv1" <?php if($notice['config']['import']['manufacturers']){echo 'checked="checked"';}?>/>
+                <label class="le-select-checkbox"><?php echo $this->__("Manufacturers"); ?></label>
+            </div>
+        </div>
+        <?php } ?>
+        <?php if($notice['config']['import_support']['categories']){ ?>
+        <div class="lv0">
+            <div class="le-select-cat">
+                <input type="checkbox" name="categories" id="product-categories" class="checkbox lv1" <?php if($notice['config']['import']['categories']){echo "checked='checked'";}?>/>
+                <label class="le-select-checkbox"><?php echo $this->__("Product Categories"); ?></label>
+            </div>
+        </div>
+        <?php } ?>
+        <?php if($notice['config']['import_support']['products']){ ?>
+        <div class="lv0">
+            <div class="le-select-cat">
+                <input type="checkbox" name="products" id="select-products" class="checkbox lv1" <?php if($notice['config']['import']['products']){echo "checked='checked'";}?> />
+                <label class="le-select-checkbox"><?php echo $this->__("Products"); ?></label>
+            </div>
+            <?php if($notice['config']['import_support']['reviews']){ ?>
+            <ul class="le-list-select">
+                <li>
+                    <input type="checkbox" name="reviews" id="reviews" class="checkbox lv2" <?php if($notice['config']['import']['reviews']){echo "checked='checked'";}?> />
+                    <label class="le-select-checkbox"><?php echo $this->__("Reviews"); ?></label>
+                </li>
+            </ul>
+            <?php } ?>
+        </div>
+        <?php } ?>
+        <?php if($notice['config']['import_support']['customers']){ ?>
+        <div id="le-list-customers" class="lv0">
+            <div class="le-select-cat">
+                <input type="checkbox" name="customers" id="customers" class="checkbox lv1" <?php if($notice['config']['import']['customers']){echo 'checked="checked"';}?>/>
+                <label class="le-select-checkbox"><?php echo $this->__("Customers"); ?></label>
+            </div>
+        </div>
+        <?php } ?>
+        <?php if($notice['config']['import_support']['orders']){ ?>
+        <div class="lv0">
+            <ul class="le-select-cat">
+                <li>
+                    <input type="checkbox" name="orders" id="orders" class="checkbox lv1" <?php if($notice['config']['import']['orders']){echo 'checked="checked"';}?>/>
+                    <label class="le-select-checkbox"><?php echo $this->__("Orders"); ?></label>
+                </li>
+            </ul>
+        </div>
+        <?php } ?>
+    </div>
+    <div class="le-error validation-advice"><?php echo $this->__('You must select at least one entity!') ?></div>
+    <div class="clear"></div>
+
+    <div class="input-fields le-additional le-container">
+        <h1><?php echo $this->__("Additional Options"); ?></h1>
+        <ul class="le-list-select">
+            <li>
+                <input type="checkbox" name="add_new" class="checkbox" <?php if(LitExtension_CartMigration_Model_Cart::DEMO_MODE) echo 'disabled="disabled"';?>/>
+                <label class="le-select-checkbox"><?php echo $this->__("Migrate recent data (adds new entities only)"); ?></label>
+            </li>
+            <li>
+                <input type="checkbox" name="clear_data" class="checkbox" />
+                <label class="le-select-checkbox"><?php echo $this->__("Clear current data on Target Store before Migration"); ?></label>
+            </li>
+            <li>
+                <input type="checkbox" name="img_des" class="checkbox" />
+                <label class="le-select-checkbox"><?php echo $this->__("Transfer images from Product descriptions to Target Store"); ?></label>
+            </li>
+            <li>
+                <input type="checkbox" name="pre_cus" class="checkbox" />
+                <label class="le-select-checkbox"><?php echo $this->__("Preserve Customer IDs on Target Store"); ?></label>
+            </li>
+            <li>
+                <input type="checkbox" name="pre_ord" class="checkbox" />
+                <label class="le-select-checkbox"><?php echo $this->__("Preserve Order IDs on Target Store"); ?></label>
+            </li>
+            <li>
+                <input type="checkbox" name="stock" class="checkbox" />
+                <label class="le-select-checkbox"><?php echo $this->__("Ignore stock management for products with quantity = 0"); ?></label>
+            </li>
+            <li>
+                <input type="checkbox" id="choose-seo" name="seo_url" class="checkbox" <?php if(LitExtension_CartMigration_Model_Cart::DEMO_MODE) echo 'disabled="disabled"';?>/>
+                <label class="le-select-checkbox"><?php echo $this->__("Migrate categories and products SEO URLs"); ?></label>
+            </li>
+            <div id="seo_plugin" class="le-container hidden">
+                <div class="label-fields mapping">
+                    <p><label><?php echo $this->__("Choose Plugin Seo In Source Cart"); ?></label></p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <select name="seo_plugin">
+                            <?php
+                                $seo_plugin = $this->getSeoPlugin($notice['config']['cart_type']);
+                                foreach($seo_plugin as $plugin){ ?>
+                                    <option value="<?php echo $plugin['value']?>"><?php echo $plugin['label'];?></option>
+                                <?php } ?>
+                        </select>
+                    </p>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="le-submit">
+        <?php if(!$this->_checkFolderMediaPermission()){?>
+        <div class="lecm-warning"><?php echo $this->__('Warning: folder "media" is not writable, images could not be saved!'); ?></div>
+        <?php } ?>
+        <div id="form-config-loading" class="form-loading"><?php echo $this->__('Preparing ...')?></div>
+        <div id="form-config-submit" class="lecm-submit">
+            <a href="javascript:void(0)" class="le-button"><?php echo $this->__('Next') ?> &raquo;</a>
+        </div>
+    </div>
+    <div id="form-config-back" class="lecm-submit">
+        <a href="javascript:void(0)" class="">&laquo; <?php echo $this->__('Back to previous Step') ?></a>
+    </div>
+</form>

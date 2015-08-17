@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Techninja_Share>
+            <version>0.0.1</version>
+        </Techninja_Share>
+    </modules>
+    <global>
+	
+		<models>
+            <share>
+                <class>Techninja_Share_Model</class>
+            </share>
+        </models>
+		<helpers>
+            <share>
+                <class>Techninja_Share_Helper</class>
+            </share>
+        </helpers>
+		<resources>
+            <share_setup>
+                <setup>
+                    <module>Techninja_Sharethis</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </share_setup>
+            <share_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </share_write>
+            <share_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </share_read>
+        </resources>
+		<!-- blocks section -->
+        <blocks>
+             <share>
+                <class>Techninja_Share_Block</class>
+             </share>
+        </blocks>
+		
+		 
+		
+    </global>
+	
+	<frontend>       
+        <layout>
+            <updates>
+                
+                <share module="Techninja_Share">
+                    
+                    <!-- the name of the layout file we are adding -->
+                    <file>techninja_share.xml</file>
+                    
+                </share>
+                
+            </updates>
+            
+        </layout>
+    </frontend>
+	
+	 <default>
+        <share>
+            <share_group>
+                <enabled>1</enabled>
+                <pub_key>Include your pub key here</pub_key>
+				<st_button>1</st_button>
+				<fb_button>1</fb_button>
+				<tweet_button>1</tweet_button>
+				<li_button>1</li_button>
+				<pin_button>1</pin_button>
+                <email_button>1</email_button>
+				<button_size>large</button_size>
+				<buttons_side>left</buttons_side>
+            </share_group>
+        </share>
+    </default>
+	
+	<adminhtml>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <share>
+                                        <title>Share This</title>
+                                    </share>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>
+	
+	
+</config>
+

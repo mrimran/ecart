@@ -242,7 +242,7 @@ class Cactimedia_Cybersourcesa_Model_Cybersourcesa extends Mage_Payment_Model_Me
 		$formFields['merchant_defined_data21']				= count($items); //Number of items sold in the order
 		$formFields['merchant_defined_data25']				= $order->getShippingAddress()->getCountry(); //Product Shipping Country Name
 
-		$formFields['signature']					= $this->getHashSign($formFields);
+		//$formFields['signature']					= $this->getHashSign($formFields);
 
 		//Log request info
         if($this->getConfigData('debug_flag')){

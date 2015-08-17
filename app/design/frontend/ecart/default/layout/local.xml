@@ -14,6 +14,20 @@
         <reference name="head">
 			
 			
+            <action method="addJs">
+            	<script>prototype/window.js</script>
+            </action>
+
+            <action method="addItem">
+            	<type>js_css</type>
+            	<name>prototype/windows/themes/default.css</name>
+            </action>
+            
+            <action method="addItem">
+            	<type>js_css</type>
+            	<name>prototype/windows/themes/magento.css</name>
+            </action>
+
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/bootstrap.min.js</name>

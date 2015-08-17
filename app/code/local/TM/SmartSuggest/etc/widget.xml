@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<widgets>
+    <smartsuggest type="smartsuggest/widget_suggest" translate="name" module="smartsuggest">
+        <name>Smart Suggest</name>
+        <parameters>
+            <enabled>
+                <visible>0</visible>
+                <value>1</value>
+                <label>Enabled</label>
+                <type>text</type>
+            </enabled>
+            <template>
+                <visible>0</visible>
+                <value>tm/smartsuggest/list.phtml</value>
+                <label>Template</label>
+                <type>text</type>
+            </template>
+            <title translate="label" module="smartsuggest">
+                <visible>1</visible>
+                <value>Personalized recommendations</value>
+                <label>Title</label>
+                <type>text</type>
+            </title>
+            <wrapper translate="label" module="smartsuggest">
+                <visible>1</visible>
+                <value>tm/smartsuggest/wrapper/content.phtml</value>
+                <label>Render as block for</label>
+                <type>select</type>
+                <values>
+                    <content translate="label" module="checkout">
+                        <value>tm/smartsuggest/wrapper/content.phtml</value>
+                        <label>Content</label>
+                    </content>
+                    <sidebar translate="label" module="smartsuggest">
+                        <value>tm/smartsuggest/wrapper/sidebar.phtml</value>
+                        <label>Sidebar</label>
+                    </sidebar>
+                </values>
+            </wrapper>
+            <mode translate="label" module="index">
+                <visible>1</visible>
+                <value>list</value>
+                <label>Mode</label>
+                <type>select</type>
+                <values>
+                    <grid translate="label" module="catalog">
+                        <value>grid</value>
+                        <label>Grid</label>
+                    </grid>
+                    <list translate="label" module="catalog">
+                        <value>list</value>
+                        <label>List</label>
+                    </list>
+                    <slider translate="label" module="smartsuggest">
+                        <value>slider</value>
+                        <label>Slider</label>
+                    </slider>
+                </values>
+            </mode>
+            <slider_id translate="label" module="smartsuggest">
+                <visible>1</visible>
+                <value></value>
+                <label>Slider Id</label>
+                <depends>
+                    <mode>
+                        <value>slider</value>
+                    </mode>
+                </depends>
+                <type>text</type>
+            </slider_id>
+            <products_count translate="label" module="catalog">
+                <required>1</required>
+                <visible>1</visible>
+                <value>4</value>
+                <label>Number of Products to Display</label>
+                <type>text</type>
+            </products_count>
+            <column_count translate="label" module="catalog">
+                <required>1</required>
+                <visible>1</visible>
+                <value>4</value>
+                <label>Number of Columns to Display</label>
+                <depends>
+                    <mode>
+                        <value>grid</value>
+                    </mode>
+                </depends>
+                <type>text</type>
+            </column_count>
+            <order translate="label" module="sales">
+                <required>0</required>
+                <visible>1</visible>
+                <value>popularuty</value>
+                <label>Order</label>
+                <type>select</type>
+                <values>
+                    <popularuty translate="label" module="reports">
+                        <value>popularity</value>
+                        <label>Popularity</label>
+                    </popularuty>
+                    <sales translate="label">
+                        <value>sales</value>
+                        <label>Sales</label>
+                    </sales>
+                    <random translate="label" module="smartsuggest">
+                        <value>random</value>
+                        <label>Random</label>
+                    </random>
+                </values>
+            </order>
+        </parameters>
+    </smartsuggest>
+</widgets>

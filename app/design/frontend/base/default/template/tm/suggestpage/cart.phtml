@@ -1,0 +1,63 @@
+<?php
+// ajaxpro compatibility
+if (!Mage::registry('product')) {
+    $productId = Mage::getSingleton('checkout/session')->getSuggestpageProductId();
+    if ($productId) {
+        $product = Mage::getModel('catalog/product')
+            ->setStoreId(Mage::app()->getStore()->getId())
+            ->load($productId);
+        if ($product->getId()) {
+            Mage::register('product', $product);
+        }
+    }
+}
+// ajaxpro compatibility
+?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<div class="suggestpage-activity col2-set">
+
+    <?php
+        $_item = null;
+        if ($product = Mage::registry('product')) :
+            $_item = $this->getQuote()->getItemByProduct($product);
+        endif;
+    ?>
+
+    <?php if ($_item) : ?>
+        <ol id="suggestpage-products-list" class="mini-products-list col-1">
+            <?php echo $this->getItemHtml($_item) ?>
+        </ol>
+        <script type="text/javascript">decorateList('suggestpage-products-list', 'none-recursive')</script>
+    <?php endif ?>
+
+    <div class="col-2<?php echo $_item ? '' : ' col-wide' ?>">
+        <div class="cartinfo">
+            <div class="totals">
+                <p class="subtotal">
+                    <?php if (method_exists($this, 'canApplyMsrp') && $this->canApplyMsrp()): ?>
+                        <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
+                    <?php else: ?>
+                        <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                        <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                            <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </p>
+                <?php $_cartQty = (int) $this->getSummaryCount() ?>
+                <?php if ($_cartQty==1): ?>
+                    <p class="amount"><?php echo $this->__('There is <a href="%s">1 item</a> in your cart.', $this->getUrl('checkout/cart')) ?></p>
+                <?php else: ?>
+                    <p class="amount"><?php echo $this->__('There are <a href="%s">%s items</a> in your cart.', $this->getUrl('checkout/cart'), $_cartQty) ?></p>
+                <?php endif ?>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>');" class="btn-suggest-page btn-suggest-cart" title="<?php echo $this->__('Edit Your Cart') ?>" type="button"><span><span><?php echo $this->__('Edit Your Cart') ?></span></span></button>
+                <?php if ($_cartQty && $this->isPossibleOnepageCheckout()) : ?>
+                    <button onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')" class="btn-suggest-page btn-suggest-checkout" title="<?php echo $this->__('Checkout') ?>" type="button"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

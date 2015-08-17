@@ -1,0 +1,93 @@
+<!--
+<link rel="stylesheet" href="http://yandex.st/highlightjs/7.2/styles/github.min.css">
+<script src="http://yandex.st/highlightjs/7.2/highlight.min.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+document.observe("dom:loaded", function() {
+    hljs.initHighlightingOnLoad();
+});
+//]]>
+</script>
+-->
+
+<div class="entry-edit">
+    <ul class="-note-list" style="width: 100%">
+    <?php
+    $theards = $this->getTheards();
+    $previosTheard = current($theards);
+    $diff = array();
+    foreach ($theards as $_theard): ?>
+        <li>
+            <strong>
+                <?php echo $this->getTheardOwnerTitle($_theard) ?>
+            </strong>
+            <span class="separator">|</span>
+            <strong><?php echo $this->getTheardCreatedAt($_theard) ?></strong>
+            <?php echo $this->getTheardCreatedAt($_theard, 'time') ?>
+            <span class="separator">|</span>
+            <strong title="<?php echo $this->helper('helpmate')->__('Status')?>">
+                <?php echo $this->getTheardStatus($_theard)?>
+            </strong>
+            <span class="separator">|</span>
+            <strong title="<?php echo $this->helper('helpmate')->__('Priority')?>">
+                <?php echo $this->getTheardPriority($_theard) ?>
+            </strong>
+            <span class="separator">|</span>
+            <strong title="<?php echo $this->helper('helpmate')->__('Departament')?>">
+                <?php echo $this->getTheardDepartment($_theard) ?>
+            </strong>
+
+            <?php if ($_text = $this->getTheardText($_theard)): ?>
+                <div class="box">
+                    <?php echo $_text ?>
+                </div>
+            <?php endif; ?>
+            <script type='text/javascript'>
+
+            document.observe('dom:loaded', function() {
+                $$('.theard_content span').each(function(element){
+                    element.observe('click', function(event) {
+                        Effect.toggle(this.next('div'), 'blind', {duration: 0.8} );
+                    });
+                    element.setStyle('border: 1px solid #D6D6D6; border-bottom:none;background-color: #FFF9E9;display:block;')
+                });
+                $$('.theard_content div').each(function(element){
+                    element.hide();
+                    element.setStyle('border: 1px solid #D6D6D6; border-top:none;background-color: #FFF9E9;')
+                });
+            });
+
+        </script>
+            <?php if ($_theard['status'] !== $previosTheard['status']) :?>
+                <br/><small> <?php echo $this->helper('helpmate')->__(
+                        'Status has been changed from %s to %s',
+                        $this->getTheardStatus($previosTheard),
+                        $this->getTheardStatus($_theard)
+
+                    ) ?>
+                </small>
+             <?php endif;
+             if ($_theard['priority'] !== $previosTheard['priority']) : ?>
+                <br/><small><?php echo $this->helper('helpmate')->__(
+                        'Priority has been changed from %s to %s',
+                        $this->getTheardPriority($previosTheard),
+                        $this->getTheardPriority($_theard)
+                    );?>
+                </small>
+             <?php endif;
+             if ($_theard['department_id'] !== $previosTheard['department_id']) : ?>
+                <br/><small><?php echo $this->helper('helpmate')->__(
+                        'Department has been changed from %s to %s',
+                        $this->getTheardDepartment($previosTheard),
+                        $this->getTheardDepartment($_theard)
+                    ) ?></small>;
+
+             <?php endif;?>
+
+        </li>
+    <?php
+    $previosTheard = $_theard;
+    endforeach; ?>
+    </ul>
+</div>

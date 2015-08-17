@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <sections>
+        <lecamg>
+            <class>separator-top</class>
+            <label>Cart Migration</label>
+            <tab>litextension</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <demo>
+                            <label>Notice Demo Mode</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>lecamg/demo</frontend_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </demo>
+                        <taxes>
+                            <label>Taxes Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number lecamg-limit-demo number-range-1-10</validate>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </taxes>
+                        <manufacturers>
+                            <label>Manufacturers Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number lecamg-limit-demo number-range-1-10</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </manufacturers>
+                        <categories>
+                            <label>Categories Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number lecamg-limit-demo number-range-1-10</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </categories>
+                        <products>
+                            <label>Products Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number lecamg-limit-demo number-range-1-10</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </products>
+                        <customers>
+                            <label>Customres Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number lecamg-limit-demo number-range-1-10</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customers>
+                        <orders>
+                            <label>Orders Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number lecamg-limit-demo number-range-1-10</validate>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </orders>
+                        <reviews>
+                            <label>Reviews Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number lecamg-limit-demo number-range-1-10</validate>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviews>
+                        <delay>
+                            <label>Delay Time</label>
+                            <comment><![CDATA[Unit is second]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </delay>
+                        <retry translate="label comment">
+                            <label>Auto Retry After</label>
+                            <comment><![CDATA[Unit is second, 0 = disabled]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </retry>
+                        <prefix translate="label comment">
+                            <label>Source Cart Database Prefix</label>
+                            <comment><![CDATA[Fill this in only in case your Source Cart does not support Table Prefix by default (e.g osCommerce), but has been customized to have Custom Table Prefix.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>lecamg-demo-empty</validate>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </prefix>
+                        <report>
+                            <label>Migrate Product Most Viewed</label>
+                            <comment><![CDATA[Requires Products, Customers and Orders selected for migration, this might remarkably increase migration time.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </report>
+                        <license translate="label comment">
+                            <label>License Key</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </license>
+                    </fields>
+                </general>
+            </groups>
+        </lecamg>
+    </sections>
+</config>

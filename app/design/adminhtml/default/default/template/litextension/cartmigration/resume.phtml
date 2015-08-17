@@ -1,0 +1,190 @@
+<?php
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php
+$notice = $this->getNotice();
+$entities = '';
+foreach($notice['config']['import'] as $key => $value){
+    if($value == true){
+        $entities .= ' - '.ucfirst($key).'<br />';
+    }
+}
+?>
+<form action="" method="post" id="form-resume">
+    <input type="hidden" name="action" value="resume">
+    <div id="lecm-resume">
+        <h1 id="resume-header"><?php echo $this->__("Incompleted Last Migration"); ?></h1>
+        <div>Due to some reason, your last migration hasn't been completed yet. Please check the blow information and resume if you wish.</div>
+        <br />
+        <div>
+            <div class="lecm-title"><?php echo $this->__("Source Cart Setup"); ?></div>
+            <div>
+                <div class="le-form-fields">
+                    <div class="resume-label">
+                        <span><label><?php echo  $this->__('Cart Type'); ?>:</label></span>
+                    </div>
+                    <div class="resume-value">
+                        <span><?php echo $this->getCartTypeByValue($notice['config']['cart_type']); ?></span>
+                    </div>
+                </div>
+            </div>
+            <div class="le-form-fields">
+                <div class="resume-label">
+                    <span><label><?php echo  $this->__('Cart Url'); ?>:</label></span>
+                </div>
+                <div class="resume-value">
+                    <span><?php echo $notice['config']['cart_url']; ?></span>
+                </div>
+            </div>
+            <div class="le-form-fields">
+                <div class="resume-label">
+                    <span><label><?php echo  $this->__('Cart Token'); ?>:</label></span>
+                </div>
+                <div class="resume-value">
+                    <span><?php echo $notice['config']['cart_token']; ?></span>
+                </div>
+            </div>
+
+            <?php if($notice['config']['config_support']['category_map']){ ?>
+            <div class="lecm-title"><?php echo $this->__("Root Category"); ?></div>
+            <?php foreach($notice['config']['category_data'] as $cat_key => $cat_name){ ?>
+                <div class="le-form-fields">
+                    <div class="resume-label">
+                        <p><label><?php echo $cat_name; ?>:</label></p>
+                    </div>
+                    <div class="resume-value">
+                        <p><?php if(isset($notice['config']['cats'][$cat_key])) echo $this->getCategoryNameById($notice['config']['cats'][$cat_key]); ?></p>
+                    </div>
+                </div>
+            <?php }} ?>
+
+            <?php if($notice['config']['config_support']['attribute_map']){ ?>
+            <div class="lecm-title"><?php echo $this->__("Product Attribute Set"); ?></div>
+            <?php foreach($notice['config']['attribute_data'] as $attr_key => $attr_name){ ?>
+                <div class="le-form-fields">
+                    <div class="resume-label">
+                        <p><label><?php echo $attr_name; ?>:</label></p>
+                    </div>
+                    <div class="resume-value">
+                        <p><?php if(isset($notice['config']['attributes'][$attr_key])) echo $this->getAttributeSetNameById($notice['config']['attributes'][$attr_key]); ?></p>
+                    </div>
+                </div>
+            <?php }} ?>
+
+            <?php if($notice['config']['config_support']['language_map']){ ?>
+            <div class="lecm-title"><?php echo $this->__("Languages Mapping"); ?></div>
+            <?php foreach($notice['config']['languages_data'] as $lang_id => $lang_name){ ?>
+                <div class="le-form-fields">
+                    <div class="resume-label">
+                        <span><label><?php echo $lang_name?>:</label></span>
+                    </div>
+                    <div class="resume-char"></div>
+                    <div class="resume-value">
+                        <span><?php if(isset($notice['config']['languages'][$lang_id])) echo $this->getStoreNameById($notice['config']['languages'][$lang_id]); ?></span>
+                    </div>
+                </div>
+            <?php }} ?>
+
+            <?php if($notice['config']['config_support']['currency_map']){ ?>
+            <div class="lecm-title"><?php echo $this->__("Currencies Mapping"); ?></div>
+            <?php foreach($notice['config']['currencies_data'] as $currency_id => $currency_name){ ?>
+                <div class="le-form-fields">
+                    <div class="resume-label">
+                        <span><label><?php echo $currency_name; ?>:</label></span>
+                    </div>
+                    <div class="resume-char"></div>
+                    <div class="resume-value">
+                        <span><?php if(isset($notice['config']['currencies'][$currency_id])) echo $this->getCurrencyNameByCode($notice['config']['currencies'][$currency_id]); ?></span>
+                    </div>
+                </div>
+            <?php }} ?>
+
+            <?php if($notice['config']['config_support']['order_status_map']){ ?>
+            <div class="lecm-title"><?php echo $this->__("Orders Status Mapping"); ?></div>
+            <?php foreach($notice['config']['order_status_data'] as $status_id => $status_name){?>
+                <div class="le-form-fields">
+                    <div class="resume-label">
+                        <span><label><?php echo $status_name; ?>:</label></span>
+                    </div>
+                    <div class="resume-char"></div>
+                    <div class="resume-value">
+                        <span><?php if(isset($notice['config']['order_status'][$status_id])) echo $this->getOrderStatusByValue($notice['config']['order_status'][$status_id]); ?></span>
+                    </div>
+                </div>
+            <?php }} ?>
+
+            <?php if($notice['config']['config_support']['country_map']){ ?>
+                <div class="lecm-title"><?php echo $this->__("Countries Mapping"); ?></div>
+                <?php foreach($notice['config']['countries_data'] as $country_key => $country_name){ ?>
+                    <div class="le-form-fields">
+                        <div class="resume-label">
+                           <span><label><?php echo $country_name; ?></label></span>
+                        </div>
+                        <div class="resume-char"></div>
+                        <div class="resume-value">
+                            <p><?php if(isset($notice['config']['countries'][$country_key])) echo $this->getCountryNameById($notice['config']['countries'][$country_key]); ?></p>
+                        </div>
+                    </div>
+            <?php }} ?>
+
+            <?php if($notice['config']['config_support']['customer_group_map']){ ?>
+                <div class="lecm-title"><?php echo $this->__("Customer Group Mapping"); ?></div>
+                <?php foreach($notice['config']['customer_group_data'] as $group_key => $group_name){ ?>
+                    <div class="le-form-fields">
+                        <div class="resume-label">
+                            <span><label><?php echo $group_name; ?></label></span>
+                        </div>
+                        <div class="resume-char"></div>
+                        <div class="resume-value">
+                            <p><?php if(isset($notice['config']['customer_group'][$group_key])) echo $this->getCustomerGroupCodeById($notice['config']['customer_group'][$group_key]); ?></p>
+                        </div>
+                    </div>
+            <?php }} ?>
+
+            <div class="lecm-title"><?php echo $this->__("Entities to Migrate"); ?></div>
+            <div class="le-form-fields">
+                <div class="resume-value">
+                    <span><?php echo $entities; ?></span>
+                </div>
+            </div>
+
+            <div class="lecm-title"><?php echo $this->__("Additional Options"); ?></div>
+            <div class="le-form-fields">
+                <div class="resume-value">
+                    <?php if($notice['config']['add_option']['add_new']){?><p> - <?php echo $this->__("Migrate recent data (adds new entities only)"); ?></p><?php } ?>
+                    <?php if($notice['config']['add_option']['clear_data']){?><p> - <?php echo $this->__("Clear current data on Target Store before Migration"); ?></p><?php } ?>
+                    <?php if($notice['config']['add_option']['seo_url']){?><p> - <?php echo $this->__("Migrate categories and products SEO URLs"); ?></p><?php } ?>
+                    <?php if($notice['config']['add_option']['img_des']){?><p> - <?php echo $this->__("Transfer images in product descriptions to your site"); ?></p><?php } ?>
+                    <?php if($notice['config']['add_option']['pre_cus']){?><p> - <?php echo $this->__("Preserve Customer IDs on Target Store"); ?></p><?php } ?>
+                    <?php if($notice['config']['add_option']['pre_ord']){?><p> - <?php echo $this->__("Preserve Order IDs on Target Store"); ?></p><?php } ?>
+                    <?php if($notice['config']['add_option']['stock']){?><p> - <?php echo $this->__("Ignore stock management for products with quantity = 0"); ?></p><?php } ?>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="lecm-title"><?php echo $this->__("Previous Process"); ?></div>
+            <div class="resume-value">
+                <?php
+                    foreach($notice['config']['import'] as $key => $value){
+                        if($value == true){ ?>
+                            <p> - <?php echo $notice[$key]['imported'].'/'.$notice[$key]['total'].' '.$key.' completed, '.$notice[$key]['error'].' errors' ?><?php if($notice[$key]['finish']){echo '<span class="success-icon" style="display: inline-block;margin-left: 0.5em;"></span>';}?></p>
+                        <?php }
+                    }
+                ?>
+            </div>
+            <div class="lecm-title"><?php echo $this->__("Do you want to resume last migration?"); ?></div>
+            <div class="le-submit">
+                <div id="form-resume-loading" class="form-loading"><?php echo $this->__('Connecting ... ')?></div>
+                <div id="form-resume-submit" class="lecm-submit">
+                    <a href="javascript:void(0)" class="le-button"><?php echo $this->__('Resume') ?></a>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>

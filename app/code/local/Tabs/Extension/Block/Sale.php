@@ -1,44 +1,139 @@
 <?php
-class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
-	
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Catalog
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+
+/**
+ * Product list
+ *
+ * @category   Mage
+ * @package    Mage_Catalog
+ * @author      Magento Core Team <core@magentocommerce.com>
+ */
+class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
+{
+    /**
+     * Default toolbar block name
+     *
+     * @var string
+     */
     protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
-	public function getLoadedProductCollection()
-	{
+
+    /**
+     * Product Collection
+     *
+     * @var Mage_Eav_Model_Entity_Collection_Abstract
+     */
+    protected $_productCollection;
+
+    /**
+     * Retrieve loaded category collection
+     *
+     * @return Mage_Eav_Model_Entity_Collection_Abstract
+     */
+    protected function _getProductCollections()
+    {
+        if (is_null($this->_productCollection)) {
+            $layer = $this->getLayer();
+            /* @var $layer Mage_Catalog_Model_Layer */
+            /* @var $layer Mage_Catalog_Model_Layer */
+        
         Mage::getSingleton('core/session', array('name' => 'frontend'));
-        $_productCollection = Mage::getResourceModel('catalogsearch/advanced_collection')
+        $collection = Mage::getResourceModel('catalogsearch/advanced_collection')
         ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
         ->addMinimalPrice()
         ->addStoreFilter()
         ->setPageSize(20)
         ->addAttributeToFilter('upcomingproduct', 0);
        
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($_productCollection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($_productCollection);
+        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
+        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($collection);
 
         $todayDate = date('m/d/y');
         $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
         $tomorrowDate = date('m/d/y', $tomorrow);
 
-        $_productCollection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
+        $collection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
         ->addAttributeToFilter('special_to_date', array('or'=> array(
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
+            
+        //print_r($collection);
+        $this->_productCollection = $layer->getProductCollections();
+        print_r($this->_productCollection);
 
-        return $_productCollection;
+        }
+
+        return $collection;
     }
 
+    /**
+     * Get catalog layer model
+     *
+     * @return Mage_Catalog_Model_Layer
+     */
+    public function getLayer()
+    {
+        $layer = Mage::registry('current_layer');
+        if ($layer) {
+            return $layer;
+        }
+        return Mage::getSingleton('catalog/layer');
+    }
+
+    /**
+     * Retrieve loaded category collection
+     *
+     * @return Mage_Eav_Model_Entity_Collection_Abstract
+     */
+    public function getLoadedProductCollection()
+    {
+        return $this->_getProductCollections();
+    }
+
+    /**
+     * Retrieve current view mode
+     *
+     * @return string
+     */
     public function getMode()
     {
         return $this->getChild('toolbar')->getCurrentMode();
     }
 
+    /**
+     * Need use as _prepareLayout - but problem in declaring collection from
+     * another block (was problem with search result)
+     */
     protected function _beforeToHtml()
     {
         $toolbar = $this->getToolbarBlock();
 
         // called prepare sortable parameters
-        $collection = $this->getLoadedProductCollection();
+        $collection = $this->_getProductCollections();
 
         // use sortable parameters
         if ($orders = $this->getAvailableOrders()) {
@@ -59,14 +154,19 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
 
         $this->setChild('toolbar', $toolbar);
         Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->getLoadedProductCollection()
+            'collection' => $this->_getProductCollections()
         ));
 
-        $this->getLoadedProductCollection()->load();
+        $this->_getProductCollections()->load();
 
         return parent::_beforeToHtml();
     }
 
+    /**
+     * Retrieve Toolbar block
+     *
+     * @return Mage_Catalog_Block_Product_List_Toolbar
+     */
     public function getToolbarBlock()
     {
         if ($blockName = $this->getToolbarBlockName()) {
@@ -78,6 +178,11 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
         return $block;
     }
 
+    /**
+     * Retrieve additional blocks html
+     *
+     * @return string
+     */
     public function getAdditionalHtml()
     {
         return $this->getChildHtml('additional');
@@ -101,7 +206,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
 
     public function addAttribute($code)
     {
-        $this->getLoadedProductCollection()->addAttributeToSelect($code);
+        $this->_getProductCollections()->addAttributeToSelect($code);
         return $this;
     }
 
@@ -154,10 +259,10 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
     {
         return array_merge(
             parent::getCacheTags(),
-            $this->getItemsTags($this->getLoadedProductCollection())
+            $this->getItemsTags($this->_getProductCollections())
         );
     }
-
+    
     public function getTotalOrder($id){
          $query = Mage::getResourceModel('sales/order_item_collection');
          $query->getSelect()->reset(Zend_Db_Select::COLUMNS)
@@ -167,5 +272,5 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract{
          ->limit(1);
          return $query;
     }
-
+    
 }

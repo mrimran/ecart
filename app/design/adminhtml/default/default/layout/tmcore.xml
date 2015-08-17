@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_tmcore_module_index>
+        <update handle="tmcore_popup"/>
+        <reference name="content">
+            <block type="tmcore/adminhtml_module" name="module.list"/>
+        </reference>
+    </adminhtml_tmcore_module_index>
+
+    <adminhtml_tmcore_module_grid>
+        <block type="tmcore/adminhtml_module_grid" name="root" output="toHtml"/>
+    </adminhtml_tmcore_module_grid>
+
+    <adminhtml_tmcore_module_manage>
+        <reference name="content">
+            <block type="tmcore/adminhtml_module_manage" name="module.manage"/>
+        </reference>
+        <reference name="left">
+            <block type="tmcore/adminhtml_module_manage_tabs" name="tmcore_module_manage_tabs">
+                <block type="tmcore/adminhtml_module_manage_tab_main" name="tmcore_module_manage_tab_main" />
+                <action method="addTab"><name>main_section</name><block>tmcore_module_manage_tab_main</block></action>
+            </block>
+        </reference>
+    </adminhtml_tmcore_module_manage>
+
+    <tmcore_popup>
+        <reference name="head">
+            <action method="addJs"><script>tm/adminhtml/core/window.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="tmcore.popup" template="tmcore/popup.phtml"/>
+        </reference>
+    </tmcore_popup>
+
+    <adminhtml_tmcore_support_index>
+        <reference name="content">
+            <block type="tmcore/adminhtml_support_list" name="support.list"/>
+        </reference>
+    </adminhtml_tmcore_support_index>
+
+    <adminhtml_tmcore_support_edit>
+        <reference name="content">
+            <block type="tmcore/adminhtml_support_edit" name="support.edit"/>
+        </reference>
+        <reference name="left">
+            <block type="tmcore/adminhtml_support_edit_tabs" name="tmcore_support_edit_tabs">
+                <block type="tmcore/adminhtml_support_edit_tab_main" name="adminhtml_support_edit_tab_main" />
+                <!-- -->
+                <action method="addTab">
+                    <name>main_section</name>
+                    <block>adminhtml_support_edit_tab_main</block>
+                </action>
+                <!-- -->
+            </block>
+        </reference>
+    </adminhtml_tmcore_support_edit>
+    
+    <adminhtml_tmcore_support_new>
+        <update handle="adminhtml_tmcore_support_edit"/>
+    </adminhtml_tmcore_support_new>
+</layout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<layout version="1.0">
+    <adminhtml_lecamg_index_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>litextension/cartmigration/css/styles.css</stylesheet></action>
+            <action method="addJs"><script>litextension/base/jquery.core.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>litextension/cartmigration/js/jq.lecamg.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="lecamg/adminhtml_index" name="lecamg.index" template="litextension/cartmigration/index.phtml">
+                <block type="lecamg/adminhtml_index" name="lecamg.resume" template="litextension/cartmigration/resume.phtml"/>
+                <block type="lecamg/adminhtml_index" name="lecamg.setup" template="litextension/cartmigration/setup.phtml"/>
+            </block>
+        </reference>
+    </adminhtml_lecamg_index_index>
+</layout>

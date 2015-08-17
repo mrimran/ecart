@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/tm/smartsuggest.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/tm/smartsuggest.js</name></action>
+        </reference>
+    </default>
+
+    <catalog_category_default>
+        <update handle="smartsuggest_sidebar"/>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <update handle="smartsuggest_sidebar"/>
+    </catalog_category_layered>
+
+    <catalog_product_view>
+        <reference name="left">
+            <action method="unsetChild" ifconfig="smartsuggest/product_additional_info/enabled"><name>smartsuggest_left</name></action>
+        </reference>
+        <reference name="right">
+            <action method="unsetChild" ifconfig="smartsuggest/product_additional_info/enabled"><name>smartsuggest_right</name></action>
+        </reference>
+        <reference name="product.info.additional">
+            <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/product.collateral.phtml" before="-">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <suggestpage_view>
+        <reference name="content">
+            <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            </block>
+        </reference>
+    </suggestpage_view>
+
+    <tm_ajaxpro_checkout_cart_add_suggestpage>
+        <reference name="smartsuggest.content.default">
+            <action method="setProductsCount"><count>3</count></action>
+            <action method="setColumnCount"><count>3</count></action>
+        </reference>
+        <reference name="smartsuggest.content.default">
+            <action method="setProductsCount"><count>3</count></action>
+            <action method="setColumnCount"><count>3</count></action>
+        </reference>
+    </tm_ajaxpro_checkout_cart_add_suggestpage>
+
+    <cms_index_index>
+        <remove name="smartsuggest_left"/>
+        <remove name="smartsuggest_right"/>
+    </cms_index_index>
+
+    <checkout_onepage_index>
+        <remove name="smartsuggest_left"/>
+        <remove name="smartsuggest_right"/>
+    </checkout_onepage_index>
+
+    <smartsuggest_sidebar>
+        <reference name="left">
+            <block type="smartsuggest/wrapper" name="smartsuggest_left" template="tm/smartsuggest/wrapper/sidebar.phtml" after="catalog.leftnav">
+                <block type="smartsuggest/suggest" name="smartsuggest.left.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/left</path></action>
+                    <action method="setSliderId"><id>-left</id></action>
+
+                    <!--
+                    <action method="setDataFromConfig"><key>enabled</key><path>smartsuggest/left/enabled</path></action>
+                    <action method="setDataFromConfig"><key>mode</key><path>smartsuggest/left/mode</path></action>
+                    <action method="setDataFromConfig"><key>column_count</key><path>smartsuggest/left/column_count</path></action>
+                    <action method="setDataFromConfig"><key>products_count</key><path>smartsuggest/left/products_count</path></action>
+                    <action method="setDataFromConfig"><key>order</key><path>smartsuggest/left/order</path></action>
+                    -->
+                </block>
+            </block>
+        </reference>
+        <reference name="right">
+            <block type="smartsuggest/wrapper" name="smartsuggest_right" template="tm/smartsuggest/wrapper/sidebar.phtml" after="cart_sidebar">
+                <block type="smartsuggest/suggest" name="smartsuggest.right.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/right</path></action>
+                    <action method="setSliderId"><id>-right</id></action>
+                </block>
+            </block>
+        </reference>
+    </smartsuggest_sidebar>
+</layout>

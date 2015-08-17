@@ -10600,3 +10600,18 @@ div.calendar table td.button {
   color: inherit;
   text-transform: none;
 }
+
+.socail_share a {
+  padding:10px;
+  color:#000;
+  text-align:left;
+  float:left; 
+  width:100px;
+  font-size:20px;
+  color:#64355A;
+}
+
+
+.socail_share {
+  background:#123;
+}
