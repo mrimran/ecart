@@ -1054,3 +1054,35 @@ text-transform: uppercase;}
 .loader{position:relative;}
 .loader img{display:block;height:auto;position:absolute;top:0;left:50%;margin-right:-50%;
 transform: translate(-30%, -20%);}
+
+
+
+
+.alphacube_message {
+  background:#123;
+}
+
+.alphacube_message .social a {
+
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    height: 100%;
+    line-height: 1;
+    margin-right: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.alphacube_message .social {
+
+	padding: 10px 4px 30px;
+
+}
+
+.overlay_alphacube{
+	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0 !important;
+}

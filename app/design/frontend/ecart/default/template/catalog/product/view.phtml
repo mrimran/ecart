@@ -195,7 +195,25 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                 </div>
               </div>
             </div>
-            <div class="__share__this"> <a href="#">Share this product</a> </div>
+            
+            <div class="__share__this"> <a onclick="return showForm('social_share')" >Share this product</a> </div>
+          <div id="social_share" style="display:none" >
+            <?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+           <?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
+          <?php $productImage = $_product->getImageUrl() ?>
+
+          
+          <div class="social">
+           <a href="javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Google Plus') ?>"class="gplus"><span class="fa fa-google-plus"></span> Share on Google Plus</a><br/>
+
+           <a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($productUrl); ?>&t=<?php echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Facebook') ?>" class="fb"><span class="fa fa-facebook">Share on Facebook</a><br/>
+
+          <a href="javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Tweet') ?>" class="tw"><span class="fa fa-twitter"></span> Share on Twitter</a><br/>
+
+          </div>
+
+            
+           
          
           </div>
         </div>
@@ -333,3 +351,9 @@ jQuery('.bxslider').bxSlider({
       lessText: 'See Less Specs'
     });
 </script> 
+
+<script>
+function showForm(id){
+Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
+}
+</script>
