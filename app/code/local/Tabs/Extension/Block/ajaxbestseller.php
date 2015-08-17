@@ -32,7 +32,7 @@
  * @package    Mage_Catalog
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
+class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abstract
 {
     /**
      * Default toolbar block name
@@ -53,43 +53,68 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
      *
      * @return Mage_Eav_Model_Entity_Collection_Abstract
      */
-    protected function _getProductCollections()
-    {
-        if (is_null($this->_productCollection)) {
-            $layer = $this->getLayer();
-            /* @var $layer Mage_Catalog_Model_Layer */
-            /* @var $layer Mage_Catalog_Model_Layer */
+    public function getLoadedProductCollectionpro($id)
+    { 
+       // benchmarking
+        $memory = memory_get_usage();
+        $time = microtime();
+        $catId = $id;
+        /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
+        $collection = Mage::getResourceModel('catalog/product_collection');
+        // join sales order items column and count sold products
+        $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
+        $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
+        $collection->addAttributeToSelect('*')->getSelect()
+            ->join(array('oi' => $collection->getTable('sales/order_item')),
+            $condition,
+            array('sales_count' => $expression))
+            ->group('e.entity_id')
+            ->order('sales_count' . ' ' . 'desc');
+        //join brand 
+           if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
+               $brand_id = $this->getRequest()->getParam('brands_ids'); 
+               $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
+               $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
+               $condition,
+               array('brand_id' => 'br.option_id'));
+        }
+        // join category
+        $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
+        $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
+        $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
+            $condition,
+            array())->join(array('c' => $collection->getTable('catalog/category')),
+            $condition2,
+            array('cat_id' => 'c.entity_id'));
+        $condition = new Zend_Db_Expr("c.entity_id = cv.entity_id AND ea.attribute_id = cv.attribute_id");
+        // cutting corners here by hardcoding 3 as Category Entiry_type_id
+        $condition2 = new Zend_Db_Expr("ea.entity_type_id = 3 AND ea.attribute_code = 'name'");
+        $collection->getSelect()->join(array('ea' => $collection->getTable('eav/attribute')),
+            $condition2,
+            array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
+            $condition,
+            array('cat_name' => 'cv.value'));
         
-        Mage::getSingleton('core/session', array('name' => 'frontend'));
-        $collection = Mage::getResourceModel('catalogsearch/advanced_collection')
-        ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-        ->addMinimalPrice()
-        ->addStoreFilter()
-        ->setPageSize(20)
-        ->addAttributeToFilter('upcomingproduct', 0);
-       
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($collection);
-
-        $todayDate = date('m/d/y');
-        $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
-        $tomorrowDate = date('m/d/y', $tomorrow);
-
-        $collection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
-        ->addAttributeToFilter('special_to_date', array('or'=> array(
-        0 => array('date' => true, 'from' => $tomorrowDate),
-        1 => array('is' => new Zend_Db_Expr('null')))
-        ), 'left');
+        // if Category filter is on
+        if ($catId) {
+            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
             
-        //print_r($collection);
-        $this->_productCollection = $layer->getProductCollections();
-        print_r($this->_productCollection);
-
         }
 
+        // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
+        // so all sorting work lays on php
+        $result = array();
+        foreach ($collection as $product) {
+            /** @var $product Mage_Catalog_Model_Product */
+            if (isset($result[$product->getCatId()])) {
+                continue;
+            }
+            $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
+        }
+       
         return $collection;
+        
     }
-
     /**
      * Get catalog layer model
      *
@@ -111,7 +136,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
      */
     public function getLoadedProductCollection()
     {
-        return $this->_getProductCollections();
+        return $this->getLoadedProductCollectionpro($id);
     }
 
     /**
@@ -133,7 +158,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         $toolbar = $this->getToolbarBlock();
 
         // called prepare sortable parameters
-        $collection = $this->_getProductCollections();
+        $collection = $this->getLoadedProductCollectionpro($id);
 
         // use sortable parameters
         if ($orders = $this->getAvailableOrders()) {
@@ -154,10 +179,10 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
 
         $this->setChild('toolbar', $toolbar);
         Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->_getProductCollections()
+            'collection' => $this->getLoadedProductCollectionpro($id)
         ));
 
-        $this->_getProductCollections()->load();
+        $this->getLoadedProductCollectionpro($id)->load();
 
         return parent::_beforeToHtml();
     }
@@ -206,7 +231,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
 
     public function addAttribute($code)
     {
-        $this->_getProductCollections()->addAttributeToSelect($code);
+        $this->getLoadedProductCollectionpro($id)->addAttributeToSelect($code);
         return $this;
     }
 
@@ -259,7 +284,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
     {
         return array_merge(
             parent::getCacheTags(),
-            $this->getItemsTags($this->_getProductCollections())
+            $this->getItemsTags($this->getLoadedProductCollectionpro($id))
         );
     }
     

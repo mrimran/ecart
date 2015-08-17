@@ -32,7 +32,7 @@
  * @package    Mage_Catalog
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
+class Tabs_Extension_Block_Ajaxupcoming extends Mage_Catalog_Block_Product_Abstract
 {
     /**
      * Default toolbar block name
@@ -53,42 +53,18 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
      *
      * @return Mage_Eav_Model_Entity_Collection_Abstract
      */
-    protected function _getProductCollections()
+    protected function getProductCollectionUpcoming($category)
     {
-        if (is_null($this->_productCollection)) {
-            $layer = $this->getLayer();
-            /* @var $layer Mage_Catalog_Model_Layer */
-            /* @var $layer Mage_Catalog_Model_Layer */
-        
-        Mage::getSingleton('core/session', array('name' => 'frontend'));
-        $collection = Mage::getResourceModel('catalogsearch/advanced_collection')
-        ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-        ->addMinimalPrice()
-        ->addStoreFilter()
-        ->setPageSize(20)
-        ->addAttributeToFilter('upcomingproduct', 0);
-       
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($collection);
+ 
+       $_category = Mage::getModel('catalog/category')->load($category);
 
-        $todayDate = date('m/d/y');
-        $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
-        $tomorrowDate = date('m/d/y', $tomorrow);
-
-        $collection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
-        ->addAttributeToFilter('special_to_date', array('or'=> array(
-        0 => array('date' => true, 'from' => $tomorrowDate),
-        1 => array('is' => new Zend_Db_Expr('null')))
-        ), 'left');
-            
-        //print_r($collection);
-        $this->_productCollection = $layer->getProductCollections();
-        print_r($this->_productCollection);
-
-        }
-
-        return $collection;
-    }
+       $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
+       ->addCategoryFilter($_category)
+       ->addAttributeToFilter('upcomingproduct', 1)
+       ->addAttributeToSelect('*');
+                           
+        return $_testproductCollection;
+    }  
 
     /**
      * Get catalog layer model
@@ -109,10 +85,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
      *
      * @return Mage_Eav_Model_Entity_Collection_Abstract
      */
-    public function getLoadedProductCollection()
-    {
-        return $this->_getProductCollections();
-    }
+    
 
     /**
      * Retrieve current view mode
@@ -133,7 +106,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         $toolbar = $this->getToolbarBlock();
 
         // called prepare sortable parameters
-        $collection = $this->_getProductCollections();
+        $collection = $this->getProductCollectionUpcoming($id);
 
         // use sortable parameters
         if ($orders = $this->getAvailableOrders()) {
@@ -154,10 +127,10 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
 
         $this->setChild('toolbar', $toolbar);
         Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->_getProductCollections()
+            'collection' => $this->getLoadedProductCollection($id)
         ));
 
-        $this->_getProductCollections()->load();
+        $this->getProductCollectionUpcoming($id)->load();
 
         return parent::_beforeToHtml();
     }
@@ -206,7 +179,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
 
     public function addAttribute($code)
     {
-        $this->_getProductCollections()->addAttributeToSelect($code);
+        $this->getProductCollectionUpcoming($id)->addAttributeToSelect($code);
         return $this;
     }
 
@@ -259,7 +232,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
     {
         return array_merge(
             parent::getCacheTags(),
-            $this->getItemsTags($this->_getProductCollections())
+            $this->getItemsTags($this->getProductCollectionUpcoming($id))
         );
     }
     

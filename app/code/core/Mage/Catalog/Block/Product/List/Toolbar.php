@@ -219,9 +219,10 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
      * @return Mage_Catalog_Block_Product_List_Toolbar
      */
     public function setCollection($collection)
-    {
+    { 
+        
         $this->_collection = $collection;
-
+        
         $this->_collection->setCurPage($this->getCurrentPage());
 
         // we need to set pagination only if passed value integer and more that 0
