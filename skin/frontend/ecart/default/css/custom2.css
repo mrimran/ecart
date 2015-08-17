@@ -171,8 +171,8 @@ box-shadow:0 2px 5px 0 rgba(0,0,0,0.2);}
 padding:2px 5px;margin-right:5px;font-size:12px;}
 .search-autocomplete ul li .amount:after{content:' Results';}
 .compare-products{padding:20px;font-size:12px;line-height:1.5;padding-top:0; }
-.compare-products a{color:#f57a20;}
-.compare-products a:hover{color:#303030;}
+.compare-products a,.suggestpage-activity a{color:#f57a20;}
+.compare-products a:hover,.suggestpage-activity a:hover{color:#303030;}
 .compare-products .compare-table{border:1px solid #eaeaea;}
 .compare-products .compare-table th{background-color:#eaeaea;min-width:100px;padding:10px;
 border:1px solid #dadada;font-family:"GothamNarrow-Medium",sans-serif;font-weight:400;}
@@ -184,6 +184,17 @@ margin-bottom:5px;}
 .compare-products .compare-table .add-to-links li{margin:0;}
 .mini-products-list a,.mini-products-list .product-details{display:inline-block;vertical-align:top;}
 .mini-products-list .product-details{margin-top:15px;}
+.suggestpage-activity{border:0;}
+.suggestpage-activity ol{list-style-type:none;}
+.suggestpage-activity .product-image,.suggestpage-activity .product-details{padding:10px;}
+.suggestpage-activity .product-image{background-color:#fff;border:1px solid #eaeaea;}
+.suggestpage-activity .product-details{margin-top:0px;}
+.suggestpage-activity p{margin-bottom:5px;}
+.suggestpage-activity .price{font-size:inherit;}
+.suggestpage-activity .product-details input{font-size:12px;padding:5px;border:1px solid #eaeaea;
+width:40px;text-align:center;}
+.suggestpage-activity .cartinfo{background-color:#eaeaea;border:1px solid #e3e3e3;border-radius:2px;}
+.listing-suggest .products-grid{margin-top:20px;}
 
 @media only screen and (max-width : 800px){
 .data-table{display:block;}
