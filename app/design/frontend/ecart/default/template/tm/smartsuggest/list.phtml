@@ -80,11 +80,12 @@ endif;
         <?php if ($i++%$_columnCount==0): ?>
         <ul class="products products-grid smartsuggest-cols-<?php echo $_columnCount ?>">
         <?php endif ?>
-            <li class="product grid item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+            <li class="product grid <?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image img-box"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
                 <?php if (Mage::helper('core')->isModuleOutputEnabled('TM_QuickShopping')) : ?>
                     <?php echo Mage::helper('quickshopping')->getViewButton($this->__('Quick View'), $_product, $this->getMode(), null, $_productCollection); ?>
                 <?php endif ?>
+                <div class="bottom-area">
                 <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h3>
                 <?php if($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
@@ -104,6 +105,7 @@ endif;
                             <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
                         <?php endif; ?>
                     </ul>
+                </div>
                 </div>
             </li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
