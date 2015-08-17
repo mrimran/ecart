@@ -25,6 +25,7 @@
  */
 /* @var $this Mage_Catalog_Block_Product_Compare_List */
 ?>
+<div class="compare-products">
 <div class="page-title title-buttons">
     <h1><?php echo $this->__('Compare Products') ?></h1>
     <a href="#" onclick="window.print(); return false;" class="link-print"><?php echo $this->__('Print This Page') ?></a>
@@ -88,13 +89,13 @@
             <?php endforeach; ?>
         </tr>
         </tbody>
-        <tbody>
+        <tbody class="second">
         <?php foreach ($this->getAttributes() as $_attribute): ?>
             <tr>
                 <?php $_i=0 ?>
                 <?php foreach($this->getItems() as $_item): ?>
                     <?php if($_i++%10==0): ?>
-                        <th><span class="nobr"><?php //echo $_attribute->getStoreLabel() ?></span></th>
+                        <th><span class="nobr"><?php echo $_attribute->getStoreLabel() ?></span></th>
                     <?php endif; ?>
                     <td>
                         <?php switch ($_attribute->getAttributeCode()) {
@@ -148,6 +149,7 @@
             <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->quoteEscape($this->__('Please wait...')) ?>" title="<?php echo $this->quoteEscape($this->__('Please wait...')) ?>" class="v-middle" /> <?php echo $this->__('Please wait...') ?>
         </span>
     </div>
+</div>
     <script type="text/javascript">
         decorateTable('product_comparison');
 

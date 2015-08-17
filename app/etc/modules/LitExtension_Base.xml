@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project: Base
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_Base>
+            <active>true</active>
+            <codePool>community</codePool>
+        </LitExtension_Base>
+    </modules>
+</config>
+

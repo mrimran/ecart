@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_CartMigration>
+            <version>2.3.1</version>
+        </LitExtension_CartMigration>
+    </modules>
+
+    <global>
+        <blocks>
+            <lecamg>
+                <class>LitExtension_CartMigration_Block</class>
+            </lecamg>
+        </blocks>
+        <helpers>
+            <lecamg>
+                <class>LitExtension_CartMigration_Helper</class>
+            </lecamg>
+        </helpers>
+        <models>
+            <lecamg>
+                <class>LitExtension_CartMigration_Model</class>
+                <resourceModel>lecamg_mysql4</resourceModel>
+            </lecamg>
+            <lecamg_mysql4>
+                <class>LitExtension_CartMigration_Model_Mysql4</class>
+                <entities>
+                    <import>
+                        <table>lecamg_import</table>
+                    </import>
+                    <user>
+                        <table>lecamg_user</table>
+                    </user>
+                    <recent>
+                        <table>lecamg_recent</table>
+                    </recent>
+                    <update>
+                        <table>lecamg_update</table>
+                    </update>
+                </entities>
+            </lecamg_mysql4>
+            <catalog>
+                <rewrite>
+                    <product>LitExtension_CartMigration_Model_Catalog_Product</product>
+                    <product_attribute_backend_media>LitExtension_CartMigration_Model_Catalog_Product_Attribute_Backend_Media</product_attribute_backend_media>
+                </rewrite>
+            </catalog>
+        </models>
+        <resources>
+            <lecamg_setup>
+                <setup>
+                    <module>LitExtension_CartMigration</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </lecamg_setup>
+        </resources>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_cartmigration>
+                    <file>litextension/cartmigration.xml</file>
+                </litextension_cartmigration>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_CartMigration>
+                    <files>
+                        <default>LitExtension_CartMigration.csv</default>
+                    </files>
+                </LitExtension_CartMigration>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LitExtension_CartMigration before="Mage_Adminhtml">LitExtension_CartMigration_Adminhtml</LitExtension_CartMigration>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+
+    </frontend>
+
+    <default>
+        <lecamg>
+            <general>
+                <categories>4</categories>
+                <products>4</products>
+                <reviews>4</reviews>
+                <taxes>4</taxes>
+                <manufacturers>4</manufacturers>
+                <customers>4</customers>
+                <orders>4</orders>
+                <delay>0.05</delay>
+                <retry>30</retry>
+                <report>0</report>
+                <bestseller>0</bestseller>
+                <prefix></prefix>
+            </general>
+        </lecamg>
+    </default>
+</config>

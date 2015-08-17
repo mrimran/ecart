@@ -95,7 +95,7 @@
         <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
              <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-             <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><?php echo $this->__('Add to Compare') ?></a>
+             <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><i class="fa fa-exchange"></i> <?php echo $this->__('Add to Compare') ?></a>
             <?php endif; ?>
 					<h5 class="stocks-update">
                
@@ -168,8 +168,8 @@
         <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
               <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-             <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><?php echo $this->__('Add to Compare') ?></a>
-            <?php endif; ?>
+             <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><i class="fa fa-exchange"></i> <?php echo $this->__('Add to Compare') ?></a>
+            <?php endif; ?> 
 					<h5 class="stocks-update">25 pcs on Stock</h5>
 					</div>
 				</div>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: Base
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_Base>
+            <version>1.0.0</version>
+        </LitExtension_Base>
+    </modules>
+
+    <global>
+        <blocks>
+            <lebase>
+                <class>LitExtension_Base_Block</class>
+            </lebase>
+        </blocks>
+        <helpers>
+            <lebase>
+                <class>LitExtension_Base_Helper</class>
+            </lebase>
+        </helpers>
+        <models>
+            <lebase>
+                <class>LitExtension_Base_Model</class>
+            </lebase>
+        </models>
+    </global>
+
+    <adminhtml>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <lebase_check_update>
+                        <type>singleton</type>
+                        <class>lebase/feed</class>
+                        <method>check</method>
+                    </lebase_check_update>
+                </observers>
+            </controller_action_predispatch>
+            <controller_action_predispatch>
+                <observers>
+                    <lebase_check_extension>
+                        <type>singleton</type>
+                        <class>lebase/extensions</class>
+                        <method>check</method>
+                    </lebase_check_extension>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+        <translate>
+            <modules>
+                <LitExtension_Base>
+                    <files>
+                        <default>LitExtension_Base.csv</default>
+                    </files>
+                </LitExtension_Base>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <lebase>
+            <feed>
+                <feed_url>litextension.com/feeds/updates.xml</feed_url>
+                <use_https>0</use_https>
+                <frequency>24</frequency>
+                <interests>UPDATE_RELEASE,INSTALLED_UPDATE,NEW_RELEASE,PROMO,INFO</interests>
+            </feed>
+        </lebase>
+    </default>
+</config>

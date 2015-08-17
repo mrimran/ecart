@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: Base
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <lebase translate="title">
+                                        <title>LitExtension: General</title>
+                                        <sort_order>80</sort_order>
+                                    </lebase>
+                                    <lestore translate="title">
+                                        <title>LitExtension: Store</title>
+                                        <sort_order>80</sort_order>
+                                    </lestore>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <litextension>
+                        <title>LitExtension</title>
+                        <sort_order>70</sort_order>
+                    </litextension>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <litextension>
+            <title>LitExtension</title>
+            <sort_order>70</sort_order>
+            <action>adminhtml/system_config/edit/section/lestore</action>
+        </litextension>
+    </menu>
+</config>
