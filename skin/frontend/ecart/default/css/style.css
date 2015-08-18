@@ -915,7 +915,7 @@ margin-bottom:10px;}
 .cart_table .item-detail h4 a{margin-bottom:0;}
 .cart_table .item-detail h4 a:hover{color:#f57a20;}
 .cart_table .item-detail a.remove{position:absolute;color:#f57a20;text-decoration:underline;
-bottom:0;right:0;font-size:12px;text-transform:uppercase;}
+bottom:-14px;right:0;font-size:12px;text-transform:uppercase;}
 .cart_table .item-detail a:hover.remove{color:#303030;}
 .cart_table td.qty,.data-table td.product_price,
 .cart_table td.sub-total{vertical-align:middle;text-align:center;}
@@ -1054,3 +1054,35 @@ text-transform: uppercase;}
 .loader{position:relative;}
 .loader img{display:block;height:auto;position:absolute;top:0;left:50%;margin-right:-50%;
 transform: translate(-30%, -20%);}
+
+
+
+
+.alphacube_message {
+  background:#123;
+}
+
+.alphacube_message .social a {
+
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    height: 100%;
+    line-height: 1;
+    margin-right: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.alphacube_message .social {
+
+	padding: 10px 4px 30px;
+
+}
+
+.overlay_alphacube{
+	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0 !important;
+}

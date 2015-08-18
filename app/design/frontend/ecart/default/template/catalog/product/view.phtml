@@ -51,6 +51,7 @@
       <div class="col-sm-6"> <?php echo $this->getChildHtml('media') ?> </div>
       <div class="col-sm-6">
       <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
+      <?php if( $_product->getTypeId() != 'grouped' ): ?>
       <div class="__type">by
         <?php $_helper = $this->helper('catalog/output'); ?>
         <?php $_brands = $this->getBrand($_product->getId()); ?>
@@ -73,6 +74,7 @@
 
                   <?php  break; } ?>
           <?php } ?>
+          <?php endif ?>
 
       <?php echo $this->getReviewsSummaryHtml($_product, "short", true)?> <?php echo $this->getChildHtml('product_review') ?>
       <?php
@@ -129,11 +131,8 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
         <div class="panel">
           <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <?php  
-           echo  $_product->getResource()->getAttribute('color')->getFrontendLabel();   
-           ?>
-                <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
-
+              <?php echo $_product->getResource()->getAttribute('color')->getFrontendLabel(); ?>
+              <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
@@ -142,7 +141,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                   <?php $i=0?>
                   <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
 
-                  <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?></li>
+                  <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><input required="true" type="radio" name="color"><?php echo $value ?></li>
                   <?php $i++ ?>
                   <?php endforeach ?>
                   <?php //echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
@@ -163,7 +162,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
               <ul class="product-meta-select" data-id="headingTwo">
                 <?php $i=0?>
                 <?php foreach(explode(',', $_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product)) as $value) : ?>
-                <li id="value_<?php echo $i?>"><?php echo $value ?></li>
+                <li id="value_<?php echo $i?>"><input required="true" type="radio" name="storagecapacity"><?php echo $value ?></li>
                 <?php $i++ ?>
                 <?php endforeach ?>
               </ul>
@@ -193,7 +192,25 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                 </div>
               </div>
             </div>
-            <div class="__share__this"> <a href="#">Share this product</a> </div>
+            
+            <div class="__share__this"> <a onclick="return showForm('social_share')" >Share this product</a> </div>
+          <div id="social_share" style="display:none" >
+            <?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+           <?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
+          <?php $productImage = $_product->getImageUrl() ?>
+
+          
+          <div class="social">
+           <a href="javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Google Plus') ?>"class="gplus"><span class="fa fa-google-plus"></span> Share on Google Plus</a><br/>
+
+           <a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($productUrl); ?>&t=<?php echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Facebook') ?>" class="fb"><span class="fa fa-facebook">Share on Facebook</a><br/>
+
+          <a href="javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Tweet') ?>" class="tw"><span class="fa fa-twitter"></span> Share on Twitter</a><br/>
+
+          </div>
+
+            
+           
          
           </div>
         </div>
@@ -331,3 +348,9 @@ jQuery('.bxslider').bxSlider({
       lessText: 'See Less Specs'
     });
 </script> 
+
+<script>
+function showForm(id){
+Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
+}
+</script>
