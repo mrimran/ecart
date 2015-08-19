@@ -1045,7 +1045,8 @@ text-transform: uppercase;}
 .cms_template .box-title h3{font-family:inherit;font-weight:600;}
 .cms_template a{color:#f57a20;}
 .cms_template a:hover,.cms_template a:focus{color:#303030;}
-.cms_template ul.disc{margin:10px 0px 10px 20px;}
+.cms_template ul.disc,.cms_template ul,.cms_template ol{margin:10px 0px 10px 20px;}
+.cms_template ul li{line-height:1.5;color: #2d2e32;font-size:14px;}
 .padding1{padding:15px 5px;}
 .padding2{padding:15px 15px;}
 .margin1{margin-right:-15px;}
@@ -1054,35 +1055,9 @@ text-transform: uppercase;}
 .loader{position:relative;}
 .loader img{display:block;height:auto;position:absolute;top:0;left:50%;margin-right:-50%;
 transform: translate(-30%, -20%);}
-
-
-
-
-.alphacube_message {
-  background:#123;
-}
-
-.alphacube_message .social a {
-
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-    font-size: 18px;
-    height: 100%;
-    line-height: 1;
-    margin-right: 5px;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10%;
-}
-
-.alphacube_message .social {
-
-	padding: 10px 4px 30px;
-
-}
-
-.overlay_alphacube{
-	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0 !important;
-}
+.alphacube_message {background:#123;}
+.alphacube_message .social a {border-radius: 5px;color: #fff;display: inline-block;font-size: 18px;
+height: 100%;line-height: 1;margin-right: 5px;padding: 10px;text-align: center;width: 100%;
+margin-bottom: 10%;}
+.alphacube_message .social{padding: 10px 4px 30px;}
+.overlay_alphacube{background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0 !important;}
