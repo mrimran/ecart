@@ -3,9 +3,9 @@
     
      <catalog_product_view>
         <reference name="alert.urls">
-            <block type="sharingtool/share" name="addthis_sharetool" after="-" >
+            <!--<block type="sharingtool/share" name="addthis_sharetool" after="-" >
            		<action method="setTemplate"><template>addthis/sharingtool/share.phtml</template></action>
-			</block>
+			</block>-->
         </reference>
         <reference name="product.info">		
             <block type="sharingtool/share" name="addthis_sharetool">
