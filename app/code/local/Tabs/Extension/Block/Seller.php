@@ -7,6 +7,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
 
         parent::__construct();
 
+        
         $storeId = Mage::app()->getStore()->getId();
 
         $products = Mage::getResourceModel('reports/product_collection')
@@ -16,7 +17,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             ->addAttributeToSelect(array('name', 'price', 'small_image'))
             ->setStoreId($storeId)
             ->addStoreFilter($storeId)
-            ->setOrder('ordered_qty', 'desc')
+            //->setOrder('ordered_qty', 'desc')
             ->addAttributeToFilter('upcomingproduct', 0)
             ->setPageSize(20); // most best sellers on top
 
@@ -27,6 +28,16 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
         $this->setProductCollection($products);
 
     }
+    
+    public function getLayer()
+    {
+        $layer = Mage::registry('current_layer');
+        if ($layer) {
+            return $layer;
+        }
+        return Mage::getSingleton('catalog/layer');
+    }
+
     public function getMode()
     {
         return $this->getChild('toolbar')->getCurrentMode();
