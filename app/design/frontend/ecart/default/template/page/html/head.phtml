@@ -44,12 +44,8 @@
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
 
-<?php $product = Mage::registry('current_product');
-if ($product): ?>
-<meta property="og:title" content="<?php echo $product->getName(); ?>" />
-<meta property="og:type" content="product" />
-<meta property="og:url" content="<?php echo $this->helper('catalog/product')->getProductUrl($product); ?>" />
-<meta property="og:image" content="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(300, 300); ?>" />
-<meta property="og:description" content="<?php echo strip_tags($product->getShortDescription()); ?>" />
-<meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName() ?>" />
-<?php endif; ?>
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="746246344341-llt3jo0rltnfn954jcup2g5bkmpdhcq9.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+

@@ -205,6 +205,26 @@ width:40px;text-align:center;}
 .listing-suggest .product-name{margin-bottom:15px;}
 .listing-suggest .product-name a{font-size:18px;color:#303030;line-height:1.5;}
 .listing-suggest .price{font-size:inherit;}
+.modalstyles{padding:50px;text-align:center;}
+.modalstyles .title,.modalstyles .title-deals{font-size:55px;
+font-family:'lato','GothamNarrow-Bold',sans-serif;text-transform:uppercase;}
+.modalstyles .title-deals{max-width:460px;font-weight:600;margin-top:50px;margin-left:11px;
+font-family:'lato-black','GothamNarrow-Bold',sans-serif;}
+.modalstyles.deals{background-image:url(../images/deals-title.png);background-repeat:no-repeat;
+background-position:0 0;}
+.modalstyles hr{max-width:30%;width:100%;margin:5px auto 25px;position:relative;border:0;
+border-bottom:1px solid #e7e7e7;}
+.modalstyles hr:before,.modalstyles hr:after{content:'';position:absolute;display:block;width:30px;
+top:-1px;height:2px;background-color:#e7e7e7;left:40%;}
+.modalstyles hr:after{top:2px;}
+.modalstyles p{color:#5a5f65;text-transform:uppercase;font-size:14px;margin-bottom:5px;}
+.modalstyles input{border:1px solid #eaeaea;display:block;padding:15px 20px;font-size:14px;
+line-height:1;outline:none;width:100%;margin-bottom:15px;}
+.modalstyles .btn1{display:block;width:100%;border-radius:3px;text-transform:uppercase;font-size:14px;
+padding:15px 20px;}
+.modal{z-index:99999;}
+.label{color:inherit;}
+
 
 
 @media only screen and (max-width : 800px){
