@@ -58,12 +58,45 @@ class Tabs_Extension_Block_Ajaxupcoming extends Mage_Catalog_Block_Product_Abstr
  
        $_category = Mage::getModel('catalog/category')->load($category);
 
-       $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
+       if (is_null($this->_productCollection)) {
+            $layer = $this->getLayer();
+            if ($this->getShowRootCategory()) {
+                $this->setCategoryId(Mage::app()->getStore()->getRootCategoryId());
+            }
+
+            // if this is a product view page
+            if (Mage::registry('product')) {
+                // get collection of categories this product is associated with
+                $categories = Mage::registry('product')->getCategoryCollection()
+                    ->setPage(1, 1)
+                    ->load();
+                // if the product is associated with any category
+                if ($categories->count()) {
+                    // show products from this category
+                    $this->setCategoryId(current($categories->getIterator()));
+                }
+            }
+
+            $origCategory = null;
+            if ($this->getCategoryId()) {
+                $category = Mage::getModel('catalog/category')->load($this->getCategoryId());
+                if ($category->getId()) {
+                    $origCategory = $layer->getCurrentCategory();
+                    $layer->setCurrentCategory($category);
+                    $this->addModelTags($category);
+                }
+            }
+            /* @var $layer Mage_Catalog_Model_Layer */
+            /* @var $layer Mage_Catalog_Model_Layer */
+        $this->_productCollection = $layer->getProductCollection();
+
+       $this->_productCollection = Mage::getResourceModel('catalog/product_collection')
        ->addCategoryFilter($_category)
        ->addAttributeToFilter('upcomingproduct', 1)
        ->addAttributeToSelect('*');
+   }
                            
-        return $_testproductCollection;
+        return $this->_productCollection;
     }  
 
     /**
