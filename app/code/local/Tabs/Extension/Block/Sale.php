@@ -57,37 +57,63 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
     {
         if (is_null($this->_productCollection)) {
             $layer = $this->getLayer();
+            if ($this->getShowRootCategory()) {
+                $this->setCategoryId(Mage::app()->getStore()->getRootCategoryId());
+            }
+
+            // if this is a product view page
+            if (Mage::registry('product')) {
+                // get collection of categories this product is associated with
+                $categories = Mage::registry('product')->getCategoryCollection()
+                    ->setPage(1, 1)
+                    ->load();
+                // if the product is associated with any category
+                if ($categories->count()) {
+                    // show products from this category
+                    $this->setCategoryId(current($categories->getIterator()));
+                }
+            }
+
+            $origCategory = null;
+            if ($this->getCategoryId()) {
+                $category = Mage::getModel('catalog/category')->load($this->getCategoryId());
+                if ($category->getId()) {
+                    $origCategory = $layer->getCurrentCategory();
+                    $layer->setCurrentCategory($category);
+                    $this->addModelTags($category);
+                }
+            }
             /* @var $layer Mage_Catalog_Model_Layer */
             /* @var $layer Mage_Catalog_Model_Layer */
-        
-        Mage::getSingleton('core/session', array('name' => 'frontend'));
-        $collection = Mage::getResourceModel('catalogsearch/advanced_collection')
+        $this->_productCollection = $layer->getProductCollection();
+        //Mage::getSingleton('core/session', array('name' => 'frontend'));
+       $this->_productCollection = Mage::getResourceModel('catalogsearch/advanced_collection')
         ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
         ->addMinimalPrice()
         ->addStoreFilter()
         ->setPageSize(20)
         ->addAttributeToFilter('upcomingproduct', 0);
        
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($collection);
+        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($this->_productCollection);
+        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($this->_productCollection);
 
         $todayDate = date('m/d/y');
         $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
         $tomorrowDate = date('m/d/y', $tomorrow);
 
-        $collection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
+        $this->_productCollection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
         ->addAttributeToFilter('special_to_date', array('or'=> array(
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
             
         //print_r($collection);
-        $this->_productCollection = $layer->getProductCollections();
-        print_r($this->_productCollection);
+        //$this->_productCollection = $layer->getProductCollections();
+        //print_r($this->_productCollection);
 
         }
 
-        return $collection;
+        return $this->_productCollection;
     }
 
     /**

@@ -1,3 +1,8 @@
+<?php $_Collection = $this->getLoadedProductCollection();
+      $Collection = $this->getLoadedProductCollectionnew();
+      $_helper = $this->helper('catalog/output');
+      if($_Collection->count() || $Collection->count()):
+?>
 <section id="computeraccessories" class="desktop">
     <div class="sectiontitle">
         <h2><span>Computer & Accessories</span></h2>
@@ -147,4 +152,4 @@
 //window.location =("index.php?brands_ids="+brand);
     }
 </script>
-
+<?php endif ?>
