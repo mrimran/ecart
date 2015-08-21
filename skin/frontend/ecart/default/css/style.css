@@ -484,7 +484,8 @@ height:13px;vertical-align:middle;margin-top:0px;}
 .maincontainer .filters ul li a{color:#2d2e32;font-size:13px;text-decoration:underline;}
 .maincontainer .filters ul li a:hover{color:#f57a20;}
 .maincontainer .filters ul li.current{background-color:#f57a20;}
-.maincontainer .filters ul li.current a{color:#fff;}
+.maincontainer .filters ul li.current:hover{background-color:#303030;}
+.maincontainer .filters ul li.current a,.maincontainer .filters ul li.current:hover a{color:#fff;}
 .maincontainer .filters .social a{margin-right:4%;}
 .maincontainer .filters .social a:last-child{margin-right:0;}
 .maincontainer .filters h3{font-size:22px;font-weight:600;}
