@@ -281,14 +281,14 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 ?>
 <div class="__product__description">
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-7">
     <?php if ($_product->description): ?>
     <h2><?php echo $_product->getResource()->getAttribute('description')->getFrontendLabel(); ?></h2>
     <div id="__product__detail" class="__product__detail "> <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
       <?php endif ?>
     </div>
   </div>
-  <div id="product_specs" class="col-sm-5 " style="display:none;">
+  <div id="product_specs" class="col-sm-5 ">
     <h2>Specifications</h2>
     <?php
             $product_id = Mage::registry('current_product')->getId();
