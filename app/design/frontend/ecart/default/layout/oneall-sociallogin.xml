@@ -11,7 +11,7 @@
 			</action>
 		</reference>
 	</customer_logged_out>	
-	<!--<checkout_onepage_index>
+	<checkout_onepage_index>
 		<reference name="checkout.onepage.login.before">
 			<block type="oneall_sociallogin/login" name="oneall.sociallogin.login.checkout">
 				<action method="setPlace">
@@ -22,13 +22,13 @@
 	</checkout_onepage_index>
 	<customer_account_login>
 		<reference name="content">
-			<block after="customer_form_login" type="oneall_sociallogin/login" name="oneall.sociallogin.login.login">
+			<!--<block after="customer_form_login" type="oneall_sociallogin/login" name="oneall.sociallogin.login.login">-->
 				<action method="setPlace">
 					<place>login</place>
 				</action>
 			</block>
 		</reference>
-	</customer_account_login>-->
+	</customer_account_login>
 	<customer_account_create>
 		<reference name="content">
 			<block after="customer_form_register" type="oneall_sociallogin/login" name="oneall.sociallogin.login.login">
