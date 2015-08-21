@@ -50,15 +50,16 @@
        <div class="maincontainer">
           
                  <?php echo $this->getChildHtml('breadcrumbs') ?>
-                	<div class="container">
-                 
+                <div class="container">
+                <div class="row">
                   <div class="col-sm-9 ">
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
              		</div>
-                  <div class="col-sm-3 ">
+                <div class="col-sm-3 ">
                <?php echo $this->getChildHtml('right') ?>
                </div>
+              </div>
          	 </div>
         <?php echo $this->getChildHtml('footer_before') ?>
         <?php echo $this->getChildHtml('footer') ?>
