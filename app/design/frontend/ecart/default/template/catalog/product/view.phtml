@@ -196,7 +196,12 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
               </div>
             </div>
             
-            <div class="__share__this"> <a onclick="return showForm('social_share')" >Share this product</a> </div>
+            <div class="__share__this"> 
+            
+            <?php /*?><a onclick="return showForm('social_share')" >Share this product</a> <?php */?>
+            <?php echo $this->getLayout()->createBlock('sharingtool/share')->setTemplate('addthis/sharingtool/share.phtml')->toHtml(); ?>
+            
+            </div>
           <div id="social_share" style="display:none" >
             <?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
            <?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
