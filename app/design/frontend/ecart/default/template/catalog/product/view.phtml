@@ -196,7 +196,12 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
               </div>
             </div>
             
-            <div class="__share__this"> <a onclick="return showForm('social_share')" >Share this product</a> </div>
+            <div class="__share__this"> 
+            
+            <?php /*?><a onclick="return showForm('social_share')" >Share this product</a> <?php */?>
+            <?php echo $this->getLayout()->createBlock('sharingtool/share')->setTemplate('addthis/sharingtool/share.phtml')->toHtml(); ?>
+            
+            </div>
           <div id="social_share" style="display:none" >
             <?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
            <?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
@@ -276,14 +281,14 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 ?>
 <div class="__product__description">
 <div class="row">
-  <div class="col-sm-7">
+  <div class="col-sm-12">
     <?php if ($_product->description): ?>
     <h2><?php echo $_product->getResource()->getAttribute('description')->getFrontendLabel(); ?></h2>
     <div id="__product__detail" class="__product__detail "> <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
       <?php endif ?>
     </div>
   </div>
-  <div id="product_specs" class="col-sm-5 ">
+  <div id="product_specs" class="col-sm-5 " style="display:none;">
     <h2>Specifications</h2>
     <?php
             $product_id = Mage::registry('current_product')->getId();
