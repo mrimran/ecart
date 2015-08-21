@@ -1,3 +1,9 @@
+ <?php
+    $_Collection = $this->getLoadedProductCollection();
+    $Collection = $this->getLoadedProductCollectionnew();
+    $_helper = $this->helper('catalog/output');
+    if($_Collection->count() || $Collection->count()):
+?>
 <section id="phoneaccessories" class="desktop">
     <div class="sectiontitle">
         <h2><span>Phones & Accessories</span></h2>
@@ -136,3 +142,4 @@
 
     }
 </script>
+<?php endif ?>
