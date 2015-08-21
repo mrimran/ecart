@@ -51,7 +51,7 @@ if (count ($providers_enabled) > 0)
 		// We are on the login oage
 		case 'customer_account_login':
 			?>
-				<!--<div class="oneall_social_login loginpage siginf">
+				<div class="oneall_social_login loginpage siginf">
 					<?php
 						//Random integer to prevent id collisions
 						$rand = rand ();
@@ -71,7 +71,7 @@ if (count ($providers_enabled) > 0)
 						_oneall.push(['social_login', 'set_custom_css_uri', (("https:" == document.location.protocol) ? "https://secure" : "http://public") + '.oneallcdn.com/css/api/socialize/themes/magento/default.css']);
 						_oneall.push(['social_login', 'do_render_ui', 'oneall_social_login_providers_<?php echo $rand; ?>']);
 					</script>
-				</div>-->
+				</div>
 
 				<!--<div class="oneall_social_login loginpage registerloginform">
 					<?php

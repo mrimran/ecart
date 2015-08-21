@@ -22,7 +22,7 @@
 	</checkout_onepage_index>
 	<customer_account_login>
 		<reference name="content">
-			<!--<block after="customer_form_login" type="oneall_sociallogin/login" name="oneall.sociallogin.login.login">-->
+			<block after="customer_form_login" type="oneall_sociallogin/login" name="oneall.sociallogin.login.login">
 				<action method="setPlace">
 					<place>login</place>
 				</action>
