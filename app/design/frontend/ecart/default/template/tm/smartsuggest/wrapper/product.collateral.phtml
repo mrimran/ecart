@@ -10,12 +10,12 @@
     <?php if($block->getMode() == 'list') : ?>
         <?php $_iterator = 0; ?>
         <div class="listing-suggest listing-suggest-list catalog-listing">
-            <div class="head"><h2><?php echo $block->getTitle() ?></h2></div>
+            <div class="head sectiontitle"><h2><?php echo $block->getTitle() ?></h2></div>
             <?php echo $html ?>
         </div>
     <?php elseif ($block->getMode() == 'slider') : ?>
         <div class="listing-suggest listing-suggest-slider catalog-listing">
-            <div class="head">
+            <div class="head sectiontitle">
                 <h2><?php echo $block->getTitle() ?></h2>
                 <div class="smartsuggest-slider-controls">
                     <a href="#" id="smartsuggest-move-right<?php echo $suffix ?>" class="smartsuggest-move-right"><?php echo Mage::helper('smartsuggest')->__('Move right') ?></a>
@@ -34,7 +34,7 @@
     <?php else : ?>
         <?php // Grid Mode ?>
         <div class="listing-suggest listing-suggest-grid catalog-listing">
-            <div class="head"><h2><?php echo $block->getTitle() ?></h2></div>
+            <div class="head sectiontitle"><h2><?php echo $block->getTitle() ?></h2></div>
             <?php echo $html ?>
         </div>
     <?php endif; ?>

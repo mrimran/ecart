@@ -13,7 +13,7 @@ if (!Mage::registry('product')) {
 }
 // ajaxpro compatibility
 ?>
-
+<br>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <div class="suggestpage-activity col2-set">
@@ -39,7 +39,7 @@ if (!Mage::registry('product')) {
                     <?php if (method_exists($this, 'canApplyMsrp') && $this->canApplyMsrp()): ?>
                         <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
                     <?php else: ?>
-                        <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                        <span><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
                         <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
                             <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
                         <?php endif; ?>
@@ -53,9 +53,9 @@ if (!Mage::registry('product')) {
                 <?php endif ?>
             </div>
             <div class="actions">
-                <button onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>');" class="btn-suggest-page btn-suggest-cart" title="<?php echo $this->__('Edit Your Cart') ?>" type="button"><span><span><?php echo $this->__('Edit Your Cart') ?></span></span></button>
+                <button onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>');" class="btn1-alt" title="<?php echo $this->__('Edit Your Cart') ?>" type="button"><span><span><?php echo $this->__('Edit Your Cart') ?></span></span></button>
                 <?php if ($_cartQty && $this->isPossibleOnepageCheckout()) : ?>
-                    <button onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')" class="btn-suggest-page btn-suggest-checkout" title="<?php echo $this->__('Checkout') ?>" type="button"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+                    <button onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')" class="btn1" title="<?php echo $this->__('Checkout') ?>" type="button"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
                 <?php endif; ?>
             </div>
         </div>

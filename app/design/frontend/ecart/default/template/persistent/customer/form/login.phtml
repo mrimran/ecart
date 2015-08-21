@@ -90,8 +90,14 @@
                 <div class="buttons-set">
                     <button type="submit" class="button" title="<?php echo $this->quoteEscape($this->__('Login')) ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
                 </div>
+                    
             </div>
+
+
+        
         </div>
+
+  
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
@@ -102,3 +108,7 @@
     //]]>
     </script>
 </div>
+
+
+
+

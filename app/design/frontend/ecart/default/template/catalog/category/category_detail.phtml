@@ -59,7 +59,7 @@ $category = Mage::registry('current_category')->getId();
                                 <!-- </a> --></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4>
-                            <div class="price"><?php echo number_format($_product->getSpecialPrice(), '1', '.', ','); ?><i>AED</i> <span class="not-now"><?php echo number_format($_product->getPrice(), '1', '.', ','); ?><i>AED</i></span></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
                         </div>
                     </a></div>
         <?php endforeach ?>
@@ -126,14 +126,14 @@ $category = Mage::registry('current_category')->getId();
                                 </a></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($Latest, $Latest->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo number_format($Latest->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                         </div>
                     </a>
                 </div>
     <?php endforeach ?>
 <?php endif ?>
     </div>
-    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/sale?id=$category" ?>">View All Products</a></div>
+    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/latest?id=$category" ?>">View All Products</a></div>
 </section>
 <section id="bestsellings" class="desktop">
     <div class="sectiontitle">
@@ -174,7 +174,7 @@ $_helper = $this->helper('catalog/output');
                                 </a></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($Latest, $Latest->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo number_format($Latest->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                         </div>
                     </a>
                 </div>
@@ -224,7 +224,7 @@ $_helper = $this->helper('catalog/output');
                                 </a></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($Latest, $Latest->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo number_format($Latest->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                         </div>
                     </a>
                 </div>

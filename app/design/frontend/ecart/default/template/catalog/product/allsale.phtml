@@ -82,9 +82,22 @@
 						
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
                         <div class="ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>  
+                      <?php if ($summaryData['rating_summary'] != '') {?>
+                            <div class="rating-box">                            
+                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
                             </div>
+                            <?php if($summaryData['reviews_count'] > 1) {?>
+                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+                            <?php } else {?>
+                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+                            <?php } ?>
+
+                            <?php } else {?>
+                            <div class="rating-box">
+                                 <div class="rating" style="width:0%"></div>
+                            </div>
+                            <?php } ?>
+                            
                         </div>
                    
 						<ul>
@@ -159,11 +172,23 @@
 					<div class="col-sm-5 details">
 						<a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
 						<div class="ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>  
+                      <?php if ($summaryData['rating_summary'] != '') {?>
+                            <div class="rating-box">                            
+                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
                             </div>
+                            <?php if($summaryData['reviews_count'] > 1) {?>
+                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+                            <?php } else {?>
+                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+                            <?php } ?>
+
+                            <?php } else {?>
+                            <div class="rating-box">
+                                 <div class="rating" style="width:0%"></div>
+                            </div>
+                            <?php } ?>
+                            
                         </div>
-						
 					</div>
 					<div class="col-sm-3 relative price-info">
                
@@ -210,6 +235,32 @@
     </div>
 </div>
 <?php endif; ?>
+<!-- Button trigger modal -->
+<button type="button" id="dealsmodal" class="btn" data-toggle="modal" data-target="#myModal" style="display:none;">Launch modal</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modalstyles deals">
+      <h1 class="title-deals">Get Daily Deals In Your Inbox</h1>
+      <hr>
+      <p>Please Enter Your Email Address Below</p>
+      <input class="widthfull" type="text" name="discount" value="" placeholder="">
+      <button type="button" class="btn1">KEEP ME UPDATED!</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+jQuery(window).load(function() {
+  jQuery('#dealsmodal').click();
+});
+</script>
 <?php
 // Provides a block where additional page components may be attached, primarily good for in-page JavaScript
 if ($this->getChild('after')) {

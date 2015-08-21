@@ -14,6 +14,20 @@
         <reference name="head">
 			
 			
+            <action method="addJs">
+            	<script>prototype/window.js</script>
+            </action>
+
+            <action method="addItem">
+            	<type>js_css</type>
+            	<name>prototype/windows/themes/default.css</name>
+            </action>
+            
+            <action method="addItem">
+            	<type>js_css</type>
+            	<name>prototype/windows/themes/magento.css</name>
+            </action>
+
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/bootstrap.min.js</name>
@@ -163,12 +177,24 @@
 				<block type="extension/seller" name="bestSellings" template="catalog/product/bestsellings.phtml"/> 
 				<block type="extension/phone" name="phoneAccessories" template="catalog/product/phoneaccessories.phtml"/>
 				<block type="extension/computer" name="computerAccessories" template="catalog/product/computeraccessories.phtml"/>
+				
+				 <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            </block>
+				
 				<!--<block type="catalog/product" name="recomendations" template="catalog/product/recomendations.phtml"/>-->
 				<block type="cms/block" name="buyers_protection" after="content">
 				<action method="setBlockId"><block_id>buyers_protection</block_id></action>
 				</block>
 				<!-- <block type="catalog/product" name="brands" template="catalog/product/brands.phtml"/>  -->
              <block name="featuredbrandflexiblebox" type="shopbybrand/featuredbrand" template="shopbybrand/featuredbrandflexiblebox.phtml"/>
+				
+				
+				
+				
 							
 			</reference>
 	    </cms_index_index>

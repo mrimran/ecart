@@ -82,32 +82,32 @@ jQuery(document).ready(function($) {
                jQuery("#" + id).slideToggle();
           });
 
-          jQuery(".loadmore").click(function() {
-               var id = jQuery(this).attr('data-id');
+          // jQuery(".loadmore").click(function() {
+          //      var id = jQuery(this).attr('data-id');
 
-               jQuery("#" + id + " .col-box").fadeIn();
-               jQuery("#" + id + " .col-rec").fadeIn();
-               jQuery(this).slideUp();
-          });
+          //      jQuery("#" + id + " .col-box").fadeIn();
+          //      jQuery("#" + id + " .col-rec").fadeIn();
+          //      jQuery(this).slideUp();
+          // });
 
-          var col = [
-               '#sectionDeals .col-box',
-               '#recomandationsSection .col-rec',
-               '#bestselingproducts .col-box',
-               //"#ComputerAccessories .col-box"
-          ]
-          var length = {};
-          for (var i = 0; i < col.length; i++) {
-               length[i] = $(col[i]).length;
+          // var col = [
+          //      '#sectionDeals .col-box',
+          //      '#recomandationsSection .col-rec',
+          //      '#bestselingproducts .col-box',
+          //      //"#ComputerAccessories .col-box"
+          // ]
+          // var length = {};
+          // for (var i = 0; i < col.length; i++) {
+          //      length[i] = $(col[i]).length;
 
-               for (var j = 0; j < length[i]; j++) {
-                    if (j > 3) {
-                         var d = $(col[i])[j];
-                         $(d).hide();
-                    }
-               }
+          //      for (var j = 0; j < length[i]; j++) {
+          //           if (j > 3) {
+          //                var d = $(col[i])[j];
+          //                $(d).hide();
+          //           }
+          //      }
 
-          };
+          // };
      }
 });
 jQuery(document).ready(function($) {

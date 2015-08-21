@@ -1,3 +1,9 @@
+ <?php
+    $_Collection = $this->getLoadedProductCollection();
+    $Collection = $this->getLoadedProductCollectionnew();
+    $_helper = $this->helper('catalog/output');
+    if($_Collection->count() || $Collection->count()):
+?>
 <section id="phoneaccessories" class="desktop">
     <div class="sectiontitle">
         <h2><span>Phones & Accessories</span></h2>
@@ -43,7 +49,7 @@
                                 </a></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo number_format($_product->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                         </div>
                     </a>
                 </div>
@@ -136,3 +142,4 @@
 
     }
 </script>
+<?php endif ?>

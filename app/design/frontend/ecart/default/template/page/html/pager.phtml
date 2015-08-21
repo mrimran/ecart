@@ -34,23 +34,11 @@
 <?php if($this->getCollection()->getSize()): ?>
 
     <?php if($this->getUseContainer()): ?>
-    <div class="pager pager-no-toolbar">
+    <div class="pager pager-no-toolbar pagination">
     <?php endif ?>
 
     <?php if($this->getShowAmounts() || $this->getShowPerPage()): ?>
     <div class="count-container">
-        <?php if($this->getShowAmounts()): ?>
-            <?php if($this->getLastPageNum()>1): ?>
-            <p class="amount amount--has-pages">
-                <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
-            </p>
-            <?php else: ?>
-            <p class="amount amount--no-pages">
-                <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
-            </p>
-            <?php endif; ?>
-        <?php endif ?>
-
         <?php if($this->getShowPerPage()): ?>
         <div class="limiter">
             <label><?php echo $this->__('Show') ?></label>
@@ -63,18 +51,30 @@
             </select>
         </div>
         <?php endif ?>
-    </div>
     <?php endif; ?>
 
+    <?php if($this->getShowAmounts()): ?>
+            <?php if($this->getLastPageNum()>1): ?>
+            <p class="amount amount--has-pages">
+                <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+            </p>
+            <?php else: ?>
+            <p class="amount amount--no-pages">
+                <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+            </p>
+            <?php endif; ?>
+        <?php endif ?>
+
     <?php if($this->getLastPageNum()>1): ?>
-    <div class="pages">
-        <strong><?php echo $this->__('Page:') ?></strong>
+    <div class="pages pagination">
+        <!-- <strong><?php //echo $this->__('Page:') ?></strong> -->
         <ol>
         <?php if (!$this->isFirstPage()): ?>
             <li>
-                <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
+                <a class="previous prev<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
                     <?php if(!$this->getAnchorTextForPrevious()): ?>
-                        <?php echo $this->__('Previous') ?>
+                        <?php //echo $this->__('Previous') ?>
+                        <i class="fa fa-angle-left"></i>
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForPrevious() ?>
                     <?php endif;?>
@@ -92,7 +92,7 @@
 
         <?php foreach ($this->getFramePages() as $_page): ?>
             <?php if ($this->isPageCurrent($_page)): ?>
-                <li class="current"><?php echo $_page ?></li>
+                <li class="current active"><?php echo $_page ?></li>
             <?php else: ?>
                 <li><a href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
             <?php endif;?>
@@ -111,7 +111,8 @@
             <li>
                 <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
                     <?php if(!$this->getAnchorTextForNext()): ?>
-                        <?php echo $this->__('Next') ?>
+                        <?php //echo $this->__('Next') ?>
+                        <i class="fa fa-angle-right"></i>
                     <?php else: ?>
                         <?php echo $this->getAnchorTextForNext() ?>
                     <?php endif;?>
@@ -120,6 +121,7 @@
         <?php endif;?>
         </ol>
 
+    </div>
     </div>
     <?php endif; ?>
 
