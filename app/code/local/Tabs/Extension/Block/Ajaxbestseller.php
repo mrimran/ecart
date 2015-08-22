@@ -59,60 +59,92 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
         $memory = memory_get_usage();
         $time = microtime();
         $catId = $id;
+        if (is_null($this->_productCollection)) {
+            $layer = $this->getLayer();
+            if ($this->getShowRootCategory()) {
+                $this->setCategoryId(Mage::app()->getStore()->getRootCategoryId());
+            }
+
+            // if this is a product view page
+            if (Mage::registry('product')) {
+                // get collection of categories this product is associated with
+                $categories = Mage::registry('product')->getCategoryCollection()
+                    ->setPage(1, 1)
+                    ->load();
+                // if the product is associated with any category
+                if ($categories->count()) {
+                    // show products from this category
+                    $this->setCategoryId(current($categories->getIterator()));
+                }
+            }
+
+            $origCategory = null;
+            if ($this->getCategoryId()) {
+                $category = Mage::getModel('catalog/category')->load($this->getCategoryId());
+                if ($category->getId()) {
+                    $origCategory = $layer->getCurrentCategory();
+                    $layer->setCurrentCategory($category);
+                    $this->addModelTags($category);
+                }
+            }
+            /* @var $layer Mage_Catalog_Model_Layer */
+            /* @var $layer Mage_Catalog_Model_Layer */
+        $this->_productCollection = $layer->getProductCollection();
+
         /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
-        $collection = Mage::getResourceModel('catalog/product_collection');
+        $this->_productCollection = Mage::getResourceModel('catalog/product_collection');
         // join sales order items column and count sold products
         $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
         $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
-        $collection->addAttributeToSelect('*')->getSelect()
-            ->join(array('oi' => $collection->getTable('sales/order_item')),
+        $this->_productCollection->addAttributeToSelect('*')->getSelect()
+            ->join(array('oi' => $this->_productCollection->getTable('sales/order_item')),
             $condition,
             array('sales_count' => $expression))
-            ->group('e.entity_id')
-            ->order('sales_count' . ' ' . 'desc');
+            ->group('e.entity_id');
+            //->order('sales_count' . ' ' . 'desc');
         //join brand 
            if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brands_ids'); 
                $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
-               $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
+               $this->_productCollection->getSelect()->join(array('br' => $this->_productCollection->getTable('shopbybrand/brand')),
                $condition,
                array('brand_id' => 'br.option_id'));
         }
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
-        $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
+       $this->_productCollection->getSelect()->join(array('ccp' => $this->_productCollection->getTable('catalog/category_product')),
             $condition,
-            array())->join(array('c' => $collection->getTable('catalog/category')),
+            array())->join(array('c' => $this->_productCollection->getTable('catalog/category')),
             $condition2,
             array('cat_id' => 'c.entity_id'));
         $condition = new Zend_Db_Expr("c.entity_id = cv.entity_id AND ea.attribute_id = cv.attribute_id");
         // cutting corners here by hardcoding 3 as Category Entiry_type_id
         $condition2 = new Zend_Db_Expr("ea.entity_type_id = 3 AND ea.attribute_code = 'name'");
-        $collection->getSelect()->join(array('ea' => $collection->getTable('eav/attribute')),
+        $this->_productCollection->getSelect()->join(array('ea' => $this->_productCollection->getTable('eav/attribute')),
             $condition2,
-            array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
+            array())->join(array('cv' => $this->_productCollection->getTable('catalog/category') . '_varchar'),
             $condition,
             array('cat_name' => 'cv.value'));
         
         // if Category filter is on
         if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
+            $this->_productCollection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
             
         }
-
+        
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
         // so all sorting work lays on php
         $result = array();
-        foreach ($collection as $product) {
+       /* foreach ($_productCollection as $product) {
             /** @var $product Mage_Catalog_Model_Product */
-            if (isset($result[$product->getCatId()])) {
+           /* if (isset($result[$product->getCatId()])) {
                 continue;
             }
             $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
-        }
-       
-        return $collection;
+        }*/
+       }
+        return $this->_productCollection;
         
     }
     /**
