@@ -1,5 +1,6 @@
 <?php $_productCollection = $this->getLoadedRelProduct();
-$_helper = $this->helper('catalog/output'); ?>
+$_helper = $this->helper('catalog/output');
+if(count($_productCollection) > 0) :?>
 <section class="desktop arrow-sides" id="users_brought_products">
   <div class="sectiontitle">
     <h2><span>Customers who bought this also bought</span></h2>
@@ -38,3 +39,4 @@ $_helper = $this->helper('catalog/output'); ?>
   
 
 </section>
+<?php endif ?>
