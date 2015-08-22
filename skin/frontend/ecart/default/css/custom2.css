@@ -97,7 +97,8 @@ body.newsletter-manage-index .my-account .fieldset h2{display:none;}
 .addresses-list ol{list-style-type:none;}
 .addresses-list address{font-size:14px;}
 .count-container{text-align:right;}
-.count-container p,.count-container .limiter{display:inline-block;vertical-align:top;}
+.count-container p,.count-container .limiter{display:inline-block;/*vertical-align:top;*/
+padding-right:10px;}
 .data-table.clean-table td.customer-wishlist-item-info{text-align:left;}
 td.customer-wishlist-item-info h3{font-size:16px;margin-bottom:10px;}
 td.customer-wishlist-item-info .wishlist-sku{font-weight:600;}
@@ -107,7 +108,8 @@ padding:8px 12px;font-size:14px;width:100%;border-radius:2px;color:#555;
 border:1px solid #eaeaea;margin-bottom:10px;}
 td.customer-wishlist-item-quantity input{width:50px;text-align:center;height:40px;}
 td.customer-wishlist-item-price,td.customer-wishlist-item-cart{width:115px;}
-td.customer-wishlist-item-price p.old-price{text-decoration:line-through;}
+td.customer-wishlist-item-price p.old-price{text-decoration:line-through;width:100%;}
+td.customer-wishlist-item-price .special-price{width:100%;}
 td.customer-wishlist-item-price .price-label{font-weight:600;}
 .data-table.clean-table .button{text-transform:none;}
 td.customer-wishlist-item-price .price{font-size:inherit;}
@@ -184,12 +186,12 @@ margin-bottom:5px;}
 .compare-products .compare-table .add-to-links li{margin:0;}
 .mini-products-list a,.mini-products-list .product-details,.price-box .old-price,
 .price-box .special-price{display:inline-block;vertical-align:top;}
-.mini-products-list .product-details{margin-top:15px;}
+.mini-products-list .product-details{margin-top:2px;max-width:198px;}
 .suggestpage-activity{border:0;}
 .suggestpage-activity ol{list-style-type:none;}
 .suggestpage-activity .product-image,.suggestpage-activity .product-details{padding:10px;}
 .suggestpage-activity .product-image{background-color:#fff;border:1px solid #eaeaea;}
-.suggestpage-activity .product-details{margin-top:0px;}
+.suggestpage-activity .product-details{margin-top:0px;max-width:80%;}
 .suggestpage-activity p{margin-bottom:5px;}
 .suggestpage-activity .price{font-size:inherit;}
 .suggestpage-activity .product-details input{font-size:12px;padding:5px;border:1px solid #eaeaea;
@@ -235,10 +237,54 @@ border-bottom:1px solid #eaeaea;font-size:13px;margin:0;}
 .block .block-content ul li a:hover{color:#f57a20;}
 .block .block-content ul li label{color:#303030;text-transform:uppercase;
 font-family: 'GothamNarrow-Book', sans-serif;font-size:12px;font-weight:100;cursor:pointer;}
+.block .block-content ul li label a+a{display:inline-block;vertical-align:top;max-width:82%;	}
 .block .block-content ul li label input{padding-right:15px;display:inline-block;width:25px;
 height:13px;vertical-align:middle;margin-top:0px;}
 .block .block-content input[type=checkbox],.block .block-content input[type=radio]{margin:0;
 display:inline-block;}
+/** Faq **/
+.__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
+.__faq .__recent__faq { padding: 0; margin: 0 0 30px 0; }
+.__faq .__recent__faq h2 { background-color: rgb(45, 46, 50); font-size: 16px; color: rgb(255, 254, 254); font-weight: bold; text-transform: uppercase; padding: 16px; }
+.__faq .__recent__faq ul { margin: 0 0 0 0; padding: 12px 0 0 0; border: 1px solid rgb(234, 234, 234); border-top: 0; list-style: none; }
+.__faq .__recent__faq ul li { padding: 12px 18px; border-bottom: 1px solid rgb(234, 234, 234); }
+.__faq .__recent__faq ul li:nth-last-child(1) { border-bottom: 0; }
+.__faq .__recent__faq ul li a { margin: 0; padding: 0; font-size: 14px; color: rgb( 90, 95, 101); }
+.__faq .__recent__faq ul li a:hover { color: rgb(245, 122, 32); }
+.__faq .__faq__search .form-group { position: relative; }
+.__faq .__faq__search .form-control { border-style: solid; border-width: 1px; border-color: rgb(231, 231, 231); border-radius: 4px; background-color: rgb(246, 246, 246); box-shadow: none; padding: 24px 56px 24px 18px; font-size: 16px; color: rgba( 32, 32, 32, 0.4); }
+.__faq .__faq__search button { position: absolute; top: 8px; left: auto; right: 4px; border: 0; background-color: rgba(0, 0, 0, 0); line-height: 35px; padding: 0 12px; border-left: 1px solid rgb(234, 234, 234); color: rgb(205, 205, 205); }
+.__faq .tab-content { padding: 12px 0 0 0; border: 1px solid rgb(236, 236, 236); border-top: 0; }
+.__faq .panel-group .panel { border: 0; border-radius: 0; background-color: rgba(0, 0, 0, 0); }
+.__faq .panel-default>.panel-heading { border: 0; border-radius: 0; border-color: rgba(0, 0, 0, 0); background-color: rgba(0, 0, 0, 0); }
+.__faq .panel-group .panel+.panel { margin-top: 0; }
+.__faq .panel-group { margin-bottom: 0px; }
+.__faq .nav-tabs { background-color: rgb(246, 246, 246); border: 1px solid rgb(236, 236, 236); font-size: 14px; color: rgb( 90, 95, 101); }
+.__faq .nav-tabs > li > a:before, .__faq .nav-tabs > li.active > a:before { content: ""; display: block; border: 0; padding: 0; margin-bottom: 6px; height: 32px; width: 24px; margin: auto auto 6px; background-repeat: no-repeat; background-position: 0 0; }
+.__faq .nav-tabs > li > a[aria-controls="order"]:before { background-image: url('../images/order.png'); }
+.__faq .nav-tabs > li > a[aria-controls="order"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="order"]:before { background-position: 0 -30px; }
+.__faq .nav-tabs > li > a[aria-controls="wallet"]:before, .__faq .nav-tabs > li.active > a[aria-controls="wallet"]:before { height: 26px; width: 36px; margin-bottom: 12px; }
+.__faq .nav-tabs > li > a[aria-controls="wallet"]:before { background-image: url('../images/wallet.png'); }
+.__faq .nav-tabs > li > a[aria-controls="wallet"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="wallet"]:hover:before { background-position: 0 -26px; }
+.__faq .nav-tabs > li > a[aria-controls="shopping"]:before, .__faq .nav-tabs > li.active > a[aria-controls="shopping"]:before { height: 26px; width: 36px; margin-bottom: 12px; }
+.__faq .nav-tabs > li > a[aria-controls="shopping"]:before { background-image: url('../images/shopping.png'); }
+.__faq .nav-tabs > li > a[aria-controls="shopping"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="shopping"]:hover:before { background-position: 0 -26px; }
+.__faq .nav-tabs > li > a[aria-controls="payment"]:before, .__faq .nav-tabs > li.active > a[aria-controls="payment"]:before { height: 25px; width: 36px; margin-bottom: 13px; }
+.__faq .nav-tabs > li > a[aria-controls="payment"]:before { background-image: url('../images/payment.png'); }
+.__faq .nav-tabs > li > a[aria-controls="payment"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="payment"]:hover:before { background-position: 0 -25px; }
+.__faq .nav-tabs > li > a[aria-controls="shipping"]:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:before { height: 30px; width: 36px; margin-bottom: 9px; }
+.__faq .nav-tabs > li > a[aria-controls="shipping"]:before { background-image: url('../images/shipping.png'); }
+.__faq .nav-tabs > li > a[aria-controls="shipping"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:hover:before { background-position: 0 -30px; }
+.__faq .nav-tabs > li > a[aria-controls="refund"]:before, .__faq .nav-tabs > li.active > a[aria-controls="refund"]:before { height: 23px; width: 35px; margin-bottom: 15px; }
+.__faq .nav-tabs > li > a[aria-controls="refund"]:before { background-image: url('../images/refund.png'); }
+.__faq .nav-tabs > li > a[aria-controls="refund"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="refund"]:hover:before { background-position: 0 -23px; }
+.__faq .nav>li>a { margin: 0; padding: 10px 30.42px; border: none; font-size: 14px; color: rgb( 90, 95, 101); text-align: center; }
+.__faq .nav>li>a:focus, .__faq .nav>li>a:hover, .__faq .nav-tabs>li.active>a, .__faq .nav-tabs>li.active>a:focus, .__faq .nav-tabs>li.active>a:hover { border: 0; border-radius: 0; border-color: rgba(0, 0, 0, 0); background-color: rgb(45, 46, 50); color: rgb(255, 255, 255); }
+.__faq .help-block { font-size: 12px; color: rgb(193, 193, 193); margin: 0 0 24px 0; padding: 0; }
+.__faq h2 { font-size: 18px; color: rgb(48, 48, 48); font-weight: bold; text-transform: uppercase; margin-bottom: 16px; }
+.__faq h3 { font-size: 18px; color: rgb(48, 48, 48); font-weight: bold; text-transform: uppercase; margin: 48px 0 18px 0; }
+.__faq .panel-body p, .__faq .panel-body { line-height: normal; font-size: 13px; }
+.__faq .panel-title { font-size: 14px; color: rgb( 87, 87, 87); }
 
 
 @media only screen and (max-width : 800px){

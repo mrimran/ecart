@@ -138,7 +138,7 @@ a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 ul.messages li { list-style: none !important;}
 .catalog-product-view .ratingstarts  {display: inline-block; float: left; }
 .catalog-product-view .reviewscounttop  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
-.catalog-product-view a.wrireyourreviews  { display: inline-block; font-size: 12px; font-style: italic; color: #999; padding: 8px;}
+.catalog-product-view a.wrireyourreviews  { display: inline-block; font-size: 12px; font-style: italic; color: #999;/* padding: 8px;*/}
 .catalog-product-view span.reviewessperator { display: inline-block; font-size: 12px; color: #999; }
 
 .catalog-category-view .reviewscounttop { display: none;} 

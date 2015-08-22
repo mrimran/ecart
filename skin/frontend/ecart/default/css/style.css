@@ -484,7 +484,8 @@ height:13px;vertical-align:middle;margin-top:0px;}
 .maincontainer .filters ul li a{color:#2d2e32;font-size:13px;text-decoration:underline;}
 .maincontainer .filters ul li a:hover{color:#f57a20;}
 .maincontainer .filters ul li.current{background-color:#f57a20;}
-.maincontainer .filters ul li.current a{color:#fff;}
+.maincontainer .filters ul li.current:hover{background-color:#303030;}
+.maincontainer .filters ul li.current a,.maincontainer .filters ul li.current:hover a{color:#fff;}
 .maincontainer .filters .social a{margin-right:4%;}
 .maincontainer .filters .social a:last-child{margin-right:0;}
 .maincontainer .filters h3{font-size:22px;font-weight:600;}
@@ -523,11 +524,11 @@ font-size:18px;line-height:1.4;margin-right:5px;cursor:pointer;}
 .toolbar .sorter .view-mode a:hover,.toolbar .sorter .view-mode a.active{
 background-color:#f57a20;color:#fff;border:1px solid #f57a20;}
 .toolbar .sorter .pagination{float:right;}
-.pagination a{display:inline-block;padding:8px 10px;border:1px solid #e3e3e3;
+.pagination li{display:inline-block;}
+.pagination li a,.pagination li.active{padding:8px 10px;border:1px solid #e3e3e3;display:inline-block;
 font-size:13px;color:#e3e3e3;vertical-align:top;color:#999;line-height:0.95;margin:0 2px;}
-.pagination a.prev,.pagination a.next{font-size:20px;
-padding:4px 12px;}
-.pagination a:hover,.pagination a.active{background-color:#f57a20;
+.pagination li a.prev,.pagination li a.next{font-size:20px;padding:4px 12px;}
+.pagination li a:hover,.pagination li.active{background-color:#f57a20;
 color:#fff;border:1px solid #f57a20;}
 .products .product{padding:5px;border:1px solid #f3f3f3;margin-bottom:25px;}
 .products .product ul{list-style-type:square;margin-left:15px;margin-top:10px;margin-bottom:10px;}
@@ -1031,23 +1032,28 @@ font-size:14px;border-radius:3px;}
 .paddingzero{padding:0 !important;}
 .paddingzeroR{padding-right:0 !important;}
 .paddingzeroL{padding-left:0 !important;}
-.heading2,.heading3,.heading4,.cms_template h1,.cms_template h2,.cms_template h3,.cms_template h4{
+.heading2,.heading3,.heading4,.cms_template h1,.cms_template h2,.cms_template h3,.cms_template h4,
+.category-description h1,.category-description h2,.category-description h3,.category-description h4{
 font-size:22px;color:#202020;font-weight:300;font-family:'GothamNarrow-Bold', sans-serif;
 margin-bottom:15px;}
-.cms_template h1{font-size:25px;text-transform:uppercase;}
-.heading3,.cms_template h3{font-size:18px;}
-.heading4,.cms_template h4{font-size:14px;text-transform:uppercase;margin-top:25px;}
-.heading5,.cms_template h5{font-size:12px;margin-top:20px;}
-.cms_template p.hello{font-weight:600;text-transform:uppercase;margin-bottom:5px;}
-.cms_template .box-head{margin-bottom:5px;}
-.cms_template .box-head a{margin-bottom:15px;display:block;}
-.cms_template .box-head h2{border-bottom:1px solid #eaeaea;line-height:2;font-size:20px;
-text-transform: uppercase;}
-.cms_template .box-title h3{font-family:inherit;font-weight:600;}
-.cms_template a{color:#f57a20;}
-.cms_template a:hover,.cms_template a:focus{color:#303030;}
-.cms_template ul.disc,.cms_template ul,.cms_template ol{margin:10px 0px 10px 20px;}
-.cms_template ul li{line-height:1.5;color: #2d2e32;font-size:14px;}
+.cms_template h1,.category-description h1{font-size:25px;text-transform:uppercase;}
+.heading3,.cms_template h3,.category-description h3{font-size:18px;}
+.heading4,.cms_template h4,.category-description h4{font-size:14px;text-transform:uppercase;
+margin-top:25px;}
+.heading5,.cms_template h5,.category-description h5{font-size:12px;margin-top:20px;}
+.cms_template p.hello,.category-description p.hello{font-weight:600;text-transform:uppercase;
+margin-bottom:5px;}
+.cms_template .box-head,.category-description .box-head{margin-bottom:5px;}
+.cms_template .box-head a,.category-description .box-head a{margin-bottom:15px;display:block;}
+.cms_template .box-head h2,.category-description .box-head h2{border-bottom:1px solid #eaeaea;
+line-height:2;font-size:20px;text-transform: uppercase;}
+.cms_template .box-title h3,.category-description .box-title h3{font-family:inherit;font-weight:600;}
+.cms_template a,.cms_template a{color:#f57a20;}
+.cms_template a:hover,.cms_template a:focus,.category-description a:hover,
+.category-description a:focus{color:#303030;}
+.cms_template ul.disc,.cms_template ul,.cms_template ol,.category-description ul.disc,
+.category-description ul,.category-description ol{margin:10px 0px 10px 20px;}
+.cms_template ul li,.category-description ul li{line-height:1.5;color: #2d2e32;font-size:14px;}
 .padding1{padding:15px 5px;}
 .padding2{padding:15px 15px;}
 .margin1{margin-right:-15px;}
