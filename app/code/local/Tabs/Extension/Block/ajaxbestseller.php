@@ -112,7 +112,7 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
             $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
         }
        
-        return $collection;
+        $this->setProductCollection($collection);
         
     }
     /**
