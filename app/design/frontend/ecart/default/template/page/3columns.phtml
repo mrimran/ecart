@@ -51,7 +51,7 @@
 
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
           			<div class="container">
-                  
+                <div class="row">
                   <div class="col-sm-3 ">
                     <?php // This left_first block will display above the main content on smaller viewports ?>
                     <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
@@ -61,7 +61,6 @@
                   	<?php echo $this->getChildHtml('left') ?>
                   </div>
                   <div class="col-sm-6 ">
-                  
                         <?php echo $this->getChildHtml('global_messages') ?>
                         <?php echo $this->getChildHtml('content') ?>
                   </div>
@@ -69,7 +68,8 @@
                <div class="col-sm-3 ">
              		 <?php echo $this->getChildHtml('right') ?>
                    </div>
-                   </div>
+              </div>
+              </div>
         
         <?php echo $this->getChildHtml('footer_before') ?>
         <?php echo $this->getChildHtml('footer') ?>
