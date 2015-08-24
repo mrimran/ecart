@@ -243,6 +243,15 @@ height:13px;vertical-align:middle;margin-top:0px;}
 .block .block-content input[type=checkbox],.block .block-content input[type=radio]{margin:0;
 display:inline-block;}
 .listing-suggest .product-image img{max-height:200px;}
+#search_mini_form .input-box label{display:none;}
+#itoris_instantsearch_categories_filter{width:200px;font-size:14px;top:8px;}
+#search_mini_form #search{left:212px;text-indent: 0 !important;}
+#search_mini_form #itoris_instantsearch_autocomplete{left: 212px !important;}
+#search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;}
+#search_mini_form #itoris_instantsearch_categories{left:0 !important;position: relative;}
+#search_mini_form button.search-button{position:relative;display:inline-block;left:170px;}
+#search_mini_form #itoris_instantsearch{left:212px !important;width:350px !important;}
+
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
 .__faq .__recent__faq { padding: 0; margin: 0 0 30px 0; }
