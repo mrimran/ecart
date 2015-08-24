@@ -247,10 +247,14 @@ display:inline-block;}
 #itoris_instantsearch_categories_filter{width:200px;font-size:14px;top:8px;}
 #search_mini_form #search{left:212px;text-indent: 0 !important;}
 #search_mini_form #itoris_instantsearch_autocomplete{left: 212px !important;}
-#search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;}
-#search_mini_form #itoris_instantsearch_categories{left:0 !important;position: relative;}
+#search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;top:10px;}
+#search_mini_form #itoris_instantsearch_categories{left:5px !important;position: relative;}
 #search_mini_form button.search-button{position:relative;display:inline-block;left:170px;}
-#search_mini_form #itoris_instantsearch{left:212px !important;width:350px !important;}
+#search_mini_form #itoris_instantsearch{left:212px !important;}
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_product{margin:0;padding:12px 5px 25px;
+border-top: 1px solid #eaeaea;}
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_product:hover{background-color:#f8f8f8;}
+
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
