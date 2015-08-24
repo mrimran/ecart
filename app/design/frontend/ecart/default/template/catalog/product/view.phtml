@@ -55,7 +55,7 @@
         <?php $_helper = $this->helper('catalog/output'); ?>
         <?php $_brands = $this->getBrand($_product->getId()); ?>
         <?php if(!$_brands->count()): ?>  
-        <a href="#"></a>
+        <div class="__type">
         <?php else :?>
         <div class="__type">by
         <?php foreach ($_brands as $brand): ?>
