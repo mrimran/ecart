@@ -1069,3 +1069,7 @@ height: 100%;line-height: 1;margin-right: 5px;padding: 10px;text-align: center;w
 margin-bottom: 10%;}
 .alphacube_message .social{padding: 10px 4px 30px;}
 .overlay_alphacube{background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0 !important;}
+.plugin .footer #branding {
+    color: #666;
+    display: none !important;
+}
