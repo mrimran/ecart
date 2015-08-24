@@ -233,6 +233,25 @@
 			</checkout_onepage_index>
 			
 			
+			<checkout_cart_index>
+			<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/product.collateral.phtml" before="-">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            </block>  <reference name="content">
+            <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            </block>
+        </reference>
+			</checkout_cart_index>
+			
+			
+			
+			
 			
 			<catalog_category_default>
 			<reference name="root">
