@@ -251,9 +251,19 @@ display:inline-block;}
 #search_mini_form #itoris_instantsearch_categories{left:5px !important;position: relative;}
 #search_mini_form button.search-button{position:relative;display:inline-block;left:170px;}
 #search_mini_form #itoris_instantsearch{left:212px !important;}
-#search_mini_form #itoris_instantsearch .itoris_instantsearch_product{margin:0;padding:12px 5px 25px;
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_product{margin:0;padding:12px 5px 20px;
 border-top: 1px solid #eaeaea;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_product:hover{background-color:#f8f8f8;}
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_product_description,
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_article_description{font-family:inherit;
+font-size:11px;color:#303030;margin:5px 0;}
+#search_mini_form .itoris_instantsearch_suggestions{list-style-type:none;}
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_keywords .itoris_instantsearch_keyword{
+font-weight:400;font-family:inherit;display:inline-block;min-width:50%;padding:3px 5px;
+margin-bottom:4px;text-decoration:none;}
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_keywords span,
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_category{font-weight:600;}
+#search_mini_form #itoris_instantsearch .itoris_instantsearch_close{display:none;}
 
 
 /** Faq **/
