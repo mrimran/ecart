@@ -51,19 +51,26 @@
       <div class="col-sm-6"> <?php echo $this->getChildHtml('media') ?> </div>
       <div class="col-sm-6">
       <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
-      <?php if( $_product->getTypeId() != 'grouped' ): ?>
-      <div class="__type">by
+      <?php if( $_product->getTypeId() != 'grouped' ): ?>            
         <?php $_helper = $this->helper('catalog/output'); ?>
         <?php $_brands = $this->getBrand($_product->getId()); ?>
+        <?php if(!$_brands->count()): ?>  
+        <a href="#"></a>
+        <?php else :?>
+        <div class="__type">by
         <?php foreach ($_brands as $brand): ?>
         <a href="#"><?php echo $brand->name ?></a>,
         <?php endforeach ?>
-        <?php $_category_detail = Mage::registry('current_category'); ?>
+        <?php endif ?>
+      <?php $_category_detail = Mage::registry('current_category'); ?>
         <?php if($_category_detail != ''){ ?>
         <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
         <?php } else{ 
 
           $currentCatIds = $_product->getCategoryIds();
+          if(count($currentCatIds) <= 0 ):?>
+             <a href=""></a></div>
+          <?php else :
           $categoryCollection = Mage::getResourceModel('catalog/category_collection')
                      ->addAttributeToSelect('name')
                      ->addAttributeToSelect('url')
@@ -73,6 +80,7 @@
                           <a href="<?php echo $cat->getUrl($_category); ?>"><?php echo $cat->getName(); ?></a></div>
 
                   <?php  break; } ?>
+                <?php endif ?>
           <?php } ?>
           <?php endif ?>
 
