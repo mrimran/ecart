@@ -43,11 +43,7 @@
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
-<<<<<<< HEAD
                     <dbname><![CDATA[18_august_2015_v1_local_ecart]]></dbname>
-=======
-                    <dbname><![CDATA[ecart_8]]></dbname>
->>>>>>> 72309ca3c5ddff8cbbadc4278251525cc6e81618
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
