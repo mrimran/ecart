@@ -28,12 +28,20 @@
 <div class="page-title">
     <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
 </div>
-<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="scaffold-form">
+
+<div class="col-sm-7 col-md-8 paddingzeroL contact-us">
+<!-- <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="scaffold-form form-horizontal">
     <div class="fieldset">
         <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
         <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
         <ul class="form-list">
             <li class="fields">
+                <div class="field">
+                    <label for="subject" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Subject') ?></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
                 <div class="field">
                     <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
                     <div class="input-box">
@@ -65,7 +73,66 @@
         <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
         <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Submit')) ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
     </div>
-</form>
+</form> -->
+
+
+<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="scaffold-form form-horizontal">
+<p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+<div class="form-group">
+<div class="col-sm-6">
+<input name="subject" id="subject" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Subject')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry form-control" type="text" placeholder="<?php echo Mage::helper('contacts')->__('Subject') ?>" />
+</div>
+<div class="col-sm-6">
+<input name="fullname" id="fullname" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Full Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry form-control" placeholder="<?php echo Mage::helper('contacts')->__('Full Name') ?>" type="text" />
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-6">
+<input name="contactno" id="contactno" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Contact no')) ?>" value="" class="input-text form-control" type="tel" placeholder="<?php echo Mage::helper('contacts')->__('Contact no') ?>" />
+</div>
+<div class="col-sm-6">
+<input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Email')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email form-control" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="<?php echo Mage::helper('contacts')->__('Email Address') ?>" />
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-12">
+<textarea name="message" id="message" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Message')) ?>" class="required-entry input-text form-control" rows="10" placeholder="<?php echo Mage::helper('contacts')->__('Type Your message here ...') ?>"></textarea>
+</div>
+</div>
+<div class="form-group row">
+<div class="col-sm-6">
+<p>All Fields are Mandatory</p>
+</div>
+<div class="col-sm-6" style="text-align: right;">
+<input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Submit')) ?>" class="btn btn1"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+</div>
+</div>
+</form></div>
+<div class="col-sm-5 col-md-4 paddingzeroR">
+<div class="filters">
+<h2 class="heading">Customer Service</h2>
+<div class="padding2">
+<h5>TOLL FREE NO</h5>
+<h3>800 42935</h3>
+</div>
+</div>
+<div class="filters">
+<h2 class="heading">Follow Us</h2>
+<div class="social padding2">
+	<a href="http://www.facebook.com/ecart.ae" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
+	<a href="https://twitter.com/MyeCart" target="_blank" class="tw"><i class="fa fa-twitter"></i></a>
+	<a href="https://plus.google.com/+EcartAe26" target="_blank" class="gplus"><i class="fa fa-google-plus"></i></a>
+	<a href="https://www.youtube.com/user/eCartae" target="_blank" class="utube"><i class="fa fa-youtube"></i></a>
+	<a href="https://www.linkedin.com/company/ecart-ae" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
+	<a href="https://instagram.com/myecart" target="_blank" class="insta"><i class="fa fa-instagram"></i></a>
+</div>
+</div>
+<div class="filters">
+<h2 class="heading">Find Us on Map</h2>
+<div class="padding2"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.311990276597!2d55.2914456!3d25.2600882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43159b182d3f%3A0x87c126f02847baef!2sHazel+Trading+LLC!5e0!3m2!1sen!2s!4v1437640330105" height="300" width="100%"></iframe></div>
+</div>
+</div>
 <script type="text/javascript">
 //<![CDATA[
     var contactForm = new VarienForm('contactForm', true);

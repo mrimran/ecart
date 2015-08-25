@@ -71,7 +71,7 @@
                 <contacts_email_email_template translate="label" module="contacts">
                     <label>Contact Form</label>
                     <file>contact_form.html</file>
-                    <type>text</type>
+                    <type>html</type>
                 </contacts_email_email_template>
             </email>
         </template>

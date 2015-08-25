@@ -49,6 +49,21 @@
                     <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" class="sort-by-switcher sort-by-switcher--asc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('Set Descending Direction') ?></a>
                 <?php endif; ?><?php */?>
     </div>
+  <?php if( $this->isEnabledViewSwitcher() ): ?>
+  <p class="view-mode">
+    <?php $_modes = $this->getModes(); ?>
+    <?php if($_modes && count($_modes)>1): ?>
+   <?php /*?> <label><?php echo $this->__('View as') ?></label><?php */?>
+    <?php foreach ($this->getModes() as $_code=>$_label): ?>
+    <?php if($this->isModeActive($_code)): ?>
+    <strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php //echo $_label ?></strong>
+    <?php else: ?>
+    <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php //echo $_label ?></a>
+    <?php endif; ?>
+    <?php endforeach; ?>
+    <?php endif; ?>
+  </p>
+  <?php endif; ?>
     <div class="pager">
     <div class="count-container">
       <?php if($this->getLastPageNum()>1): ?>
@@ -67,21 +82,7 @@
       </div>
     </div>
     <?php echo $this->getPagerHtml() ?> </div>
-     <?php if( $this->isEnabledViewSwitcher() ): ?>
-  <p class="view-mode">
-    <?php $_modes = $this->getModes(); ?>
-    <?php if($_modes && count($_modes)>1): ?>
-   <?php /*?> <label><?php echo $this->__('View as') ?></label><?php */?>
-    <?php foreach ($this->getModes() as $_code=>$_label): ?>
-    <?php if($this->isModeActive($_code)): ?>
-    <strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php //echo $_label ?></strong>
-    <?php else: ?>
-    <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php //echo $_label ?></a>
-    <?php endif; ?>
-    <?php endforeach; ?>
-    <?php endif; ?>
-  </p>
-  <?php endif; ?>
+    
     
   </div>
   
