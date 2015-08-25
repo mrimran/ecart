@@ -496,7 +496,7 @@
     border-color: rgb(223, 40, 10);
 }
 
-.checkout-onepage-index .input-box input,
+/*.checkout-onepage-index .input-box input,
 .checkout-onepage-index select {
     display: block;
     width: 100%;
@@ -515,7 +515,7 @@
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-
+*/
 .checkout-onepage-index li#shipping-new-address-form ul,
 .checkout-onepage-index li#billing-new-address-form ul {
     list-style: none;
