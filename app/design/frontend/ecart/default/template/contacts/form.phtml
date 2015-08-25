@@ -74,34 +74,38 @@
         <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Submit')) ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
     </div>
 </form> -->
-
+<li>
+    <label for="subject"><?php echo Mage::helper('contacts')->__('Subject') ?> <span class="required">*</span></label>
+    <div class="input-box"><input name="subject" id="subject" title="<?php echo Mage::helper('contacts')->__('Subject') ?>" value="" class="required-entry input-text" type="text"/>
+</div>
+</li>
 
 <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="scaffold-form form-horizontal">
-<p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+<p class="required"><?php //echo Mage::helper('contacts')->__('* Required Fields') ?></p>
 <div class="form-group">
 <div class="col-sm-6">
-<input name="subject" id="subject" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Subject')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry form-control" type="text" placeholder="<?php echo Mage::helper('contacts')->__('Subject') ?>" />
+<input name="subject" id="subject" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Subject')) ?>" value="" class="input-text required-entry form-control" type="text" placeholder="<?php echo Mage::helper('contacts')->__('* Subject') ?>" />
 </div>
 <div class="col-sm-6">
-<input name="fullname" id="fullname" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Full Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry form-control" placeholder="<?php echo Mage::helper('contacts')->__('Full Name') ?>" type="text" />
+<input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Full Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry form-control" placeholder="<?php echo Mage::helper('contacts')->__('* Full Name') ?>" type="text" />
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-6">
-<input name="contactno" id="contactno" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Contact no')) ?>" value="" class="input-text form-control" type="tel" placeholder="<?php echo Mage::helper('contacts')->__('Contact no') ?>" />
+<input name="telephone" id="telephone" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Contact no')) ?>" value="" class="input-text form-control" type="tel" placeholder="<?php echo Mage::helper('contacts')->__('Contact No ') ?>" />
 </div>
 <div class="col-sm-6">
-<input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Email')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email form-control" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="<?php echo Mage::helper('contacts')->__('Email Address') ?>" />
+<input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Email')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email form-control" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="<?php echo Mage::helper('contacts')->__('* Email Address') ?>" />
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-12">
-<textarea name="message" id="message" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Message')) ?>" class="required-entry input-text form-control" rows="10" placeholder="<?php echo Mage::helper('contacts')->__('Type Your message here ...') ?>"></textarea>
+<textarea name="comment" id="comment" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Message')) ?>" class="required-entry input-text form-control" rows="10" placeholder="<?php echo Mage::helper('contacts')->__('* Type Your message here ...') ?>"></textarea>
 </div>
 </div>
 <div class="form-group row">
 <div class="col-sm-6">
-<p>All Fields are Mandatory</p>
+<p>* Fields are Mandatory</p>
 </div>
 <div class="col-sm-6" style="text-align: right;">
 <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
