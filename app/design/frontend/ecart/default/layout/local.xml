@@ -113,13 +113,13 @@
             </action>
 
         </reference>
-	<!--
+	
         <reference name="header">
             <block type="catalogcategorysearch/form" name="top.search" as="topSearch" template="catalogsearch/form.phtml">
                 <block type="catalogcategorysearch/form_contents" name="top.search.content" as="topSearchContent" template="catalogsearch/form/contents.phtml"/>
             </block>
         </reference>
-	-->
+	
         <reference name="header">
           <block type="core/text_list" name="top.menu" as="topMenu" after="breadcrumbs"  translate="label">
 
@@ -210,6 +210,12 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 		</cms_index_noroute>
+
+		<contacts_index_index>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+		</contacts_index_index>
 
 			<checkout_onepage_index>
 			<reference name="root">
