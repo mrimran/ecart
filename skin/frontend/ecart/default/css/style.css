@@ -114,7 +114,7 @@ font-size:11px;padding:0;text-transform:uppercase;letter-spacing:0.1px;line-heig
 .mainhead .reasonsnav ul li:last-child{text-align:right;}
 .mainhead .dealsnav{padding:15px 0;}
 .mainhead .dealsnav .col-sm-9{padding:0;}
-.mainhead .dealsnav ul li{padding:0;text-align:center;padding-right:76px;display:inline-block;
+.mainhead .dealsnav ul li{padding:0;text-align:center;padding-right:74px;display:inline-block;
 vertical-align:middle;}
 .mainhead .dealsnav ul li:first-child{text-align:left;}
 .mainhead .dealsnav ul li:last-child{padding-right:0;}
@@ -561,7 +561,8 @@ right:inherit !important;margin:-40px 0 10px 30px !important;}
 .arrow-sides .owl-carousel .owl-controls .owl-nav .owl-next{
 border:0 !important;width:inherit !important;height:inherit !important;background-size:100% !important;}
 .__product__related section{padding-bottom:0;}
-.products .product.grid{width:31.3%;display:inline-block;margin-right:3%;float:left;height:430px;}
+.products .product.grid{width:30.9%;display:inline-block;margin-right:3%;float:none;height:auto;
+vertical-align:top;}
 .products .product.grid .image{padding:0;width:100%;}
 .products .product.grid:nth-of-type(3n+3){margin-right:0;}
 .products .product.grid ul{display:none;}
