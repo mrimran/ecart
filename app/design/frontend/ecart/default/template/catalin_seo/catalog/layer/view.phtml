@@ -73,16 +73,15 @@ $hiddenFilters = array();
     </div>
 <?php endif; ?>
 
-<?php /*
 <script>
-//    document.observe("dom:loaded", function() {
+    document.observe("dom:loaded", function() {
         // initially hide all containers for tab content
         <?php
         foreach ($hiddenFilters as $v) {
             echo "jQuery('cont-" . $v . "').hide();";
         }
         ?>
-//    });
+    });
 
 // Register event 'click' and associated call back.
     Event.observe(document, 'click', respondToClick);
@@ -90,7 +89,7 @@ $hiddenFilters = array();
 // Callback function to handle the event.
     function respondToClick(event) {
         var element = event.element();
-//------
+
 <?php
 foreach ($hiddenFilters as $p) {
     echo "if(element.up('div').id=='more-" . $p . "')
@@ -105,10 +104,5 @@ jQuery('more-" . $p . "').show();
 }";
 }
 ?>
-
-//-----
-
-    }
-
+}
 </script>
- */ ?>

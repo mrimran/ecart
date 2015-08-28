@@ -155,7 +155,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                   <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?></li>
                   <?php $i++ ?>
                   <?php endforeach ?>
-                  <?php //echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
+                  <?php echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
                 </ul>
                 <?php endif; ?>
               </div>
@@ -271,14 +271,14 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 ?>
 <div class="__product__description">
 <div class="row">
-  <div class="col-sm-7">
+  <div class="col-sm-12">
     <?php if ($_product->description): ?>
     <h2><?php echo $_product->getResource()->getAttribute('description')->getFrontendLabel(); ?></h2>
     <div id="__product__detail" class="__product__detail "> <?php echo $_product->getResource()->getAttribute('description')->getFrontend()->getValue($_product); ?>
       <?php endif ?>
     </div>
   </div>
-  <div id="product_specs" class="col-sm-5 ">
+  <div id="product_specs" class="col-sm-12 " style="display:none;">
     <h2>Specifications</h2>
     <?php
             $product_id = Mage::registry('current_product')->getId();
@@ -361,19 +361,19 @@ jQuery(window).load(function() {
 jQuery('.bxslider').bxSlider({
       pagerCustom: '#bx-pager'
     });
-    jQuery('#__product__detail').more({
-      length:1099,
-      ellipsisText: '',
-      moreText: 'Read Full Description',
-      lessText: 'Read Less Description'
-    });
-    jQuery('#product_specs').more({
-      length:335,
-      leaway:10,
-      ellipsisText: '',
-      moreText: 'See Full Specs',
-      lessText: 'See Less Specs'
-    });
+    // jQuery('#__product__detail').more({
+    //   length:1099,
+    //   ellipsisText: '',
+    //   moreText: 'Read Full Description',
+    //   lessText: 'Read Less Description'
+    // });
+    // jQuery('#product_specs').more({
+    //   length:335,
+    //   leaway:10,
+    //   ellipsisText: '',
+    //   moreText: 'See Full Specs',
+    //   lessText: 'See Less Specs'
+    // });
 </script> 
 
 <script>

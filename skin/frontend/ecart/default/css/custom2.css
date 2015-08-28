@@ -244,7 +244,7 @@ font-family: 'GothamNarrow-Book', sans-serif;font-size:12px;font-weight:100;curs
 height:13px;vertical-align:middle;margin-top:0px;}
 .block .block-content input[type=checkbox],.block .block-content input[type=radio]{margin:0;
 display:inline-block;}
-.listing-suggest .product-image img{max-height:200px;}
+.listing-suggest .product-image img{max-height:200px;width:auto;}
 #search_mini_form .input-box label{display:none;}
 #itoris_instantsearch_categories_filter{width:200px;font-size:14px;top:8px;}
 #search_mini_form #search{left:212px;text-indent: 0 !important;}
@@ -268,6 +268,9 @@ margin-bottom:4px;text-decoration:none;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_close{display:none;}
 body.cms-index-index .messages{position:absolute;bottom:-170px;}
 .block.block-compare + .block.block-compare{display: none;}
+.block.block-tags .actions a{background-color:#f57a20;padding:7px 15px;font-size:12px;line-height:1.5;
+color:#fff;margin:5px 0;display:inline-block;}
+.block.block-tags .actions a:hover{background-color:#303030;color:#fff;}
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }

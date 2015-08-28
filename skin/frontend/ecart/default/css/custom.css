@@ -34,11 +34,11 @@ a.level2:hover, a.level2.act, a.level2.actParent {
 }
 a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 #breadcrumbs { margin-bottom: 25px;}
-.toolbar .sorter .sort-by select, .toolbar .sorter .pager select { padding: 8px 7px;}
-.all-search-cats select { border: none;}
-.rating-links { margin: 0;}
-.product.grid .details { min-height: 60px !important;}
-#narrow-by-list #Price { padding: 15px 8px;}
+.toolbar .sorter .sort-by select, .toolbar .sorter .pager select{padding:6px 7px;}
+.all-search-cats select{border:none;}
+.rating-links{margin:0;}
+.product.grid .details{min-height:60px !important;}
+#narrow-by-list #Price{padding:15px 8px;}
 
 .more-less {padding-left: 15px; font: 13px strong;}
 .more-less a{color: #2d2e32; cursor: pointer;}
