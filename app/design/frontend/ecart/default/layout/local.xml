@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout version="0.1.0">
     <default>
-	
         <cms_index_index> 
             <!--<reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
@@ -9,10 +8,18 @@
             <remove name="right" />
             </reference>
             -->	
-  
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.malihu.PageScroll2id.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/scriptshome.js</name>
+            </action>
+        </reference>
         </cms_index_index>
         <reference name="head">
-			
 			
             <action method="addJs">
             	<script>prototype/window.js</script>
@@ -23,10 +30,10 @@
             	<name>prototype/windows/themes/default.css</name>
             </action>
             
-            <action method="addItem">
+            <!-- <action method="addItem">
             	<type>js_css</type>
             	<name>prototype/windows/themes/magento.css</name>
-            </action>
+            </action> -->
 
             <action method="addItem">
                 <type>skin_js</type>
@@ -40,14 +47,14 @@
                 <type>skin_js</type>
                 <name>js/owl.carousel.min.js</name>
             </action>
-            <action method="addItem">
+            <!-- <action method="addItem">
                 <type>skin_js</type>
                 <name>js/jquery.malihu.PageScroll2id.min.js</name>
             </action>
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/bootstrap-select.min.js</name>
-            </action>
+            </action> -->
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/scripts.js</name>

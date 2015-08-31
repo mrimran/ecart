@@ -112,7 +112,7 @@ jQuery(document).ready(function($) {
 });
 jQuery(document).ready(function($) {
      jQuery('.toggle-menu').jPushMenu();
-     jQuery('.selectpicker').selectpicker();
+    // jQuery('.selectpicker').selectpicker();
      // jQuery('.view-mode a').click(function(){
      //   jQuery('.view-mode a').removeClass('active');
      //   var viewmode = jQuery(this).attr('data-id');
@@ -133,11 +133,11 @@ jQuery(document).ready(function($) {
 
 
 });
-(function() {
-     jQuery(window).load(function() {
-          jQuery("a[rel='m_PageScroll2id']").mPageScroll2id();
-     });
-})(jQuery);
+// (function() {
+//      jQuery(window).load(function() {
+//           jQuery("a[rel='m_PageScroll2id']").mPageScroll2id();
+//      });
+// })(jQuery);
 
 function reinitOwlOnSelector(selector, number_of_items) {
     var $owl = jQuery(selector);

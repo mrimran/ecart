@@ -44,9 +44,9 @@
         <?php endforeach; ?>
       </select>
       <?php ?> <?php if($this->getCurrentDirection() == 'desc'): ?>
-                    <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" class="sort-by-switcher sort-by-switcher--desc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('Set Ascending Direction') ?></a>
+                    <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" class="sort-by-switcher sort-by-switcher--desc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('<i class="fa fa-sort-amount-asc"></i>') ?></a>
                 <?php else: ?>
-                    <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" class="sort-by-switcher sort-by-switcher--asc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('Set Descending Direction') ?></a>
+                    <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" class="sort-by-switcher sort-by-switcher--asc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('<i class="fa fa-sort-amount-desc"></i>') ?></a>
                 <?php endif; ?><?php ?>
     </div>
   <?php if( $this->isEnabledViewSwitcher() ): ?>
@@ -81,11 +81,8 @@
         </select>
       </div>
     </div>
-    <?php echo $this->getPagerHtml() ?> </div>
-    
-    
   </div>
-  
+  <?php echo $this->getPagerHtml() ?>
   <?php endif; ?>
  
 </div>

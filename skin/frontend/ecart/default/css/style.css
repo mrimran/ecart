@@ -85,7 +85,7 @@ font-family:'GothamNarrow-Book',sans-serif;font-weight:300;}
 position:relative;}
 .topbar .topnav a{color:#fff;}
 .topbar .topnav a:hover{color:#f57a20;}
-.topbar .topnav li:last-child{border-right:0;}
+.topbar .topnav li:last-child{border-right:0;min-width:150px;}
 .topbar .topnav li:last-child > a{background-image:url(../images/stoparrow.png);background-repeat:no-repeat;background-position:100% center;position:relative;z-index:9999999;}
 .topbar .topnav li:last-child a{padding-right:20px;}
 .topbar .topnav ul ul{display:none;}
@@ -114,7 +114,7 @@ font-size:11px;padding:0;text-transform:uppercase;letter-spacing:0.1px;line-heig
 .mainhead .reasonsnav ul li:last-child{text-align:right;}
 .mainhead .dealsnav{padding:15px 0;}
 .mainhead .dealsnav .col-sm-9{padding:0;}
-.mainhead .dealsnav ul li{padding:0;text-align:center;padding-right:76px;display:inline-block;
+.mainhead .dealsnav ul li{padding:0;text-align:center;padding-right:74px;display:inline-block;
 vertical-align:middle;}
 .mainhead .dealsnav ul li:first-child{text-align:left;}
 .mainhead .dealsnav ul li:last-child{padding-right:0;}
@@ -511,7 +511,7 @@ footer .emailcall a img{vertical-align:middle;max-width:25px;max-height:15px;mar
 line-height:1.5;display:inline-block;vertical-align:top;text-transform:uppercase;}
 .products .main_title p{float:right;display:inline-block;vertical-align:top;line-height:2;
 font-size:14px;}
-.toolbar{padding:15px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;margin:20px 0;
+.toolbar{padding:15px 0 8px;border-top:1px solid #eee;border-bottom:1px solid #eee;margin:20px 0;
 clear:both;}
 .toolbar .sorter .sort-by,.toolbar .sorter .pager,.toolbar .sorter .view-mode,
 .toolbar .sorter .pagination{display:inline-block;vertical-align:top;margin:0;margin-right:10px;
@@ -519,11 +519,12 @@ font-size:14px;font-weight:100;text-transform:uppercase;}
 .toolbar .sorter .sort-by label,.toolbar .sorter .pager label{font-weight:400;}
 .toolbar .sorter .sort-by select,.toolbar .sorter .pager select{color:#5a5f65;padding:4px 7px;
 border:1px solid #e3e3e3;text-transform:uppercase;font-size:12px;}
-.toolbar .sorter .view-mode a{padding:1px 6px;border:1px solid #e3e3e3;display:inline-block;color:#444;
-font-size:18px;line-height:1.4;margin-right:5px;cursor:pointer;}
-.toolbar .sorter .view-mode a:hover,.toolbar .sorter .view-mode a.active{
-background-color:#f57a20;color:#fff;border:1px solid #f57a20;}
-.toolbar .sorter .pagination{float:right;}
+.toolbar .sorter .view-mode a,.toolbar .sorter .sort-by-switcher{padding:2px 6px;
+border:1px solid #e3e3e3;display:inline-block;color:#444;font-size:18px;line-height:1.2;
+margin-right:5px;cursor:pointer;}
+.toolbar .sorter .view-mode a:hover,.toolbar .sorter .view-mode a.active,.toolbar .sorter .sort-by-switcher:hover{background-color:#f57a20;color:#fff;border:1px solid #f57a20;}
+.toolbar .sorter .sort-by-switcher{font-size:18px;vertical-align:top;line-height:1.4;}
+.toolbar .sorter .pagination{/*float:right;*/}
 .pagination li{display:inline-block;}
 .pagination li a,.pagination li.active{padding:8px 10px;border:1px solid #e3e3e3;display:inline-block;
 font-size:13px;color:#e3e3e3;vertical-align:top;color:#999;line-height:0.95;margin:0 2px;
@@ -561,7 +562,8 @@ right:inherit !important;margin:-40px 0 10px 30px !important;}
 .arrow-sides .owl-carousel .owl-controls .owl-nav .owl-next{
 border:0 !important;width:inherit !important;height:inherit !important;background-size:100% !important;}
 .__product__related section{padding-bottom:0;}
-.products .product.grid{width:31.3%;display:inline-block;margin-right:3%;float:left;height:430px;}
+.products .product.grid{width:30.9%;display:inline-block;margin-right:3%;float:none;height:auto;
+vertical-align:top;}
 .products .product.grid .image{padding:0;width:100%;}
 .products .product.grid:nth-of-type(3n+3){margin-right:0;}
 .products .product.grid ul{display:none;}
@@ -871,6 +873,10 @@ font-size:16px;padding:0;line-height:2;}
     color: rgb(58, 58, 58);
     margin-bottom:15px;
 }
+.__product__detail table{width:100% !important;font-size:14px;}
+.__product__detail table td,.__product__detail table th{vertical-align:top;padding:5px;}
+.__product__detail ul,.__product__detail ol{margin:10px 0 10px 15px;line-height:1.5;}
+
 .__product__description .__product__detail .more-link{text-decoration:underline !important;}
 .__product__description .col-sm-5 .__full__detail,
 .__product__description .__product__detail .__full__detail {
