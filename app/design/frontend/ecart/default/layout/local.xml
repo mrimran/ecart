@@ -245,13 +245,23 @@
                     <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
                     <action method="setSliderId"><id>-content</id></action>
                 </block>
-            </block>  <reference name="content">
+            </block>  
+            <reference name="content">
+           
+
             <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
                 <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
                     <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
                     <action method="setSliderId"><id>-content</id></action>
                 </block>
             </block>
+
+           <!--<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml" after="totals">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default.customer" as="smartsuggest_customer" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            </block>-->
         </reference>
 			</checkout_cart_index>
 			
