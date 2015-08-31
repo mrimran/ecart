@@ -247,34 +247,36 @@
 			
 			
 			<checkout_cart_index>
-			<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/product.collateral.phtml" before="-">
-                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
-                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
-                    <action method="setSliderId"><id>-content</id></action>
-                </block>
-            </block>  
+			
             <reference name="content">
            
 
-            <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
+            <block type="smartsuggest/wrapper" name="smartsuggest_content" as="personlized" template="tm/smartsuggest/wrapper/content.phtml">
                 <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
                     <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
                     <action method="setSliderId"><id>-content</id></action>
                 </block>
             </block>
 
-           <!--<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml" after="totals">
-                <block type="smartsuggest/suggest" name="smartsuggest.content.default.customer" as="smartsuggest_customer" template="tm/smartsuggest/list.phtml">
-                    <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
+           <!--<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/product.collateral.phtml">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
                     <action method="setSliderId"><id>-content</id></action>
                 </block>
-            </block>-->
+            </block> -->
         </reference>
-			</checkout_cart_index>
-			
-			
-			
-			
+		</checkout_cart_index>
+		   
+		<checkout_cart_index>
+			<reference name="content">
+
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/listnew.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            
+		   </reference>
+        </checkout_cart_index>
 			
 			<catalog_category_default>
 			<reference name="root">
