@@ -18,6 +18,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         // join sales order items column and count sold products
         $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
         $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
+        $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
         $collection->addAttributeToSelect('*')->getSelect()
             ->join(array('oi' => $collection->getTable('sales/order_item')),
             $condition,
@@ -32,6 +33,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
                $condition,
                array('brand_id' => 'br.option_id'));
         }
+
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -51,8 +53,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         
         // if Category filter is on
         if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
-                  
+            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);      
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
