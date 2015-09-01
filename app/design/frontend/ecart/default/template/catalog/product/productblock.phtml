@@ -11,11 +11,11 @@ $_helper = $this->helper('catalog/output');?>
 <div class="col-sm-4">
 <div class="__icon"><span class="fa fa-user">&nbsp;</span></div>
 <?php foreach ($order as $orders):?>
-<?php if ($orders->purchased > 0) : ?>
+<?php if ($orders->purchased > 10) : ?>
 <?php $neworder = $orders->purchased - 5; ?>
    <div class="__numbers"><?php echo number_format($neworder,'0','.',','); ?>+</div>
 <?php else : ?>
-   <div class="__numbers">0</div>
+   <div class="__numbers"><?php echo number_format($orders->purchased,'0','.',','); ?></div>
  <?php endif ?>
 <?php endforeach ?>
 <div class="__text">Customers bought this product</div>
