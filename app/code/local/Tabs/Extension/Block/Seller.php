@@ -20,11 +20,10 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             //->setOrder('ordered_qty', 'desc')
             ->addAttributeToFilter('upcomingproduct', 0)
             ->setPageSize(20); // most best sellers on top
-
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
 
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
-
+        
         $this->setProductCollection($products);
 
     }
