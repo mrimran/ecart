@@ -320,7 +320,9 @@ background-color:#f57c20;}
 .brands .img-box{height:auto;background-color:transparent;}
 .img-box .abs_center{display:table-cell;text-align:center;vertical-align:middle;}
 .img-box img{max-width:200px;max-height:200px;width:auto;margin:0 auto;}
-.maincontainer .columnslider .col-box h4{color:#303030;font-size:15px;margin-bottom:8px;}
+.maincontainer .columnslider .col-box h4{color:#303030;font-size:15px;margin-bottom:8px;
+line-height:1.4;height:42px;overflow:hidden;}
+.maincontainer .columnslider .col-box h4:after{content:'...';}
 .rating{background-image:url(../images/rating.png);background-repeat:no-repeat;
 background-position:top left;height:15px;margin-top:5px;padding:10px 0 10px;}
 .price{font-family: 'GothamNarrow-Medium', sans-serif;font-weight:400;font-size:22px;color:#f57c20;}
