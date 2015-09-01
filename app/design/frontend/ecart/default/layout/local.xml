@@ -376,6 +376,12 @@
 			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
 			</reference>
 			</tag_list_index>
+
+			<tag_product_list>
+			<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			</reference>
+			</tag_product_list>
 			
 			<extension_index_sale>
 			<reference name="root">
