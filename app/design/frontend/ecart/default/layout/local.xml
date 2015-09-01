@@ -370,6 +370,12 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			</customer_account_login>
+
+			<tag_list_index>
+			<reference name="root">
+			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+			</reference>
+			</tag_list_index>
 			
 			<extension_index_sale>
 			<reference name="root">

@@ -259,7 +259,7 @@ border-top: 1px solid #eaeaea;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_product_description,
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_article_description{font-family:inherit;
 font-size:11px;color:#303030;margin:5px 0;}
-#search_mini_form .itoris_instantsearch_suggestions{list-style-type:none;}
+#search_mini_form .itoris_instantsearch_suggestions,.tags-list.list-only{list-style-type:none;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_keywords .itoris_instantsearch_keyword{
 font-weight:400;font-family:inherit;display:inline-block;min-width:50%;padding:3px 5px;
 margin-bottom:4px;text-decoration:none;}
@@ -271,6 +271,11 @@ body.cms-index-index .messages{position:absolute;bottom:-170px;}
 .block.block-tags .actions a{background-color:#f57a20;padding:7px 15px;font-size:12px;line-height:1.5;
 color:#fff;margin:5px 0;display:inline-block;}
 .block.block-tags .actions a:hover{background-color:#303030;color:#fff;}
+.tags-list.list-only{margin-top:20px;}
+.tags-list.list-only li{display:inline-block;vertical-align:top;padding:5px 8px;
+border:1px solid #eaeaea;margin:2px;background-color:#303030;}
+.tags-list.list-only li a{color:#fff;}
+.tags-list.list-only li:hover,.tags-list.list-only li:hover a{color:#fff;background-color:#f57a20;}
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
