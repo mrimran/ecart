@@ -325,10 +325,10 @@ line-height:1.4;height:42px;overflow:hidden;}
 .maincontainer .columnslider .col-box h4:after{content:'...';}
 .rating{background-image:url(../images/rating.png);background-repeat:no-repeat;
 background-position:top left;height:15px;margin-top:5px;padding:10px 0 10px;}
-.price{font-family: 'GothamNarrow-Medium', sans-serif;font-weight:400;font-size:22px;color:#f57c20;}
+.price{font-family: 'GothamNarrow-Medium', sans-serif;font-weight:400;font-size:18px;color:#f57c20;}
 .price i{font-size:12px;font-style:normal;}
 .product .orders{color:#939393;font-size:14px;position:absolute;bottom:20px;right:20px;}
-.price .not-now{font-size:16px;font-weight:400;color:#bdbdbd;text-decoration:line-through;
+.price .not-now{font-size:14px;font-weight:400;color:#bdbdbd;text-decoration:line-through;
 text-transform:uppercase;margin-left:5px;font-family: 'GothamNarrow-Book', sans-serif;font-weight:400;}
 .maincontainer .columnslider .col-box .bottom-area{padding:15px;}
 .maincontainer .recomandations .col-box .bottom-area{padding:22px 15px 14px;background-color:#f6f6f6;
