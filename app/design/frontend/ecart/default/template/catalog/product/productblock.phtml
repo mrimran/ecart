@@ -1,0 +1,35 @@
+<?php $id = Mage::registry('current_product')->getId();
+$product = Mage::registry('current_product');
+$order=$this->getTotalOrder($id);
+$wishlistProduct = $this->getProductWishlist($id);
+$wishhlist = $this->getTotalWishlist($id);
+$wishProduct = ($wishlistProduct/$wishhlist) * 100;
+$ratingPercent = $this->showSummary($id); 
+$_helper = $this->helper('catalog/output');?>
+<div class="__peoples__loved">
+<div class="row">
+<div class="col-sm-4">
+<div class="__icon"><span class="fa fa-user">&nbsp;</span></div>
+<?php foreach ($order as $orders):?>
+<?php if ($orders->purchased > 10) : ?>
+<?php $neworder = $orders->purchased - 5; ?>
+   <div class="__numbers"><?php echo number_format($neworder,'0','.',','); ?>+</div>
+<?php else : ?>
+   <div class="__numbers"><?php echo number_format($orders->purchased,'0','.',','); ?></div>
+ <?php endif ?>
+<?php endforeach ?>
+<div class="__text">Customers bought this product</div>
+</div>
+<div class="col-sm-4">
+
+<div class="__icon"><span class="fa fa-heart">&nbsp;</span></div>
+<div class="__numbers"><?php echo number_format($wishProduct,'0','.',','); ?>%</div>
+<div class="__text">people Recommend this product</div>
+</div>
+<div class="col-sm-4">
+<div class="__icon"><span class="fa fa-star"> &nbsp;</span></div>
+<div class="__numbers"><?php echo $ratingPercent  ?>/5</div>
+<div class="__text">Is average rating for this product</div>
+</div>
+</div>
+</div>

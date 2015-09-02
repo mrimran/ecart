@@ -502,7 +502,9 @@ body.push-body-toright { overflow: hidden; }
 .mainheadnav { background-color: transparent; }
 .mainheadnav .catgories, .mainheadnav .minicart { position: absolute; top: 16px; padding: 0; background-color: transparent; }
 .mainheadnav .catgories a, .mainheadnav .minicart a { display: block; height: 30px; width: 30px; }
-.mainheadnav .catgories a span { right: inherit; left: 0; top: 10px; color: #f57a20; font-size: 20px; display: none; }
+.mainheadnav .catgories a span{right:inherit;left:0;top:10px;color:#f57a20;font-size:20px;
+display:none;}
+/*body.cms-index-index .mainheadnav .catgories a span{display:block;}*/
 .mainheadnav .minicart { right:15px; width: 35px; overflow: hidden; height: 35px; background-color: transparent; top: 21px; }
 .mainheadnav .minicart a.skip-cart{padding:0;overflow:hidden;background-color:transparent;}
 .mainheadnav .minicart span.icon{font-size: 30px;color:#5a5f65;}
@@ -552,7 +554,8 @@ body.push-body-toright { overflow: hidden; }
 .site-footer .credit-cards { padding: 20px; background-color: #eee; }
 .site-footer .footer-bottom { padding: 20px 10px; text-align: center; }
 .maincontainer section { padding-bottom: 0; clear: both; }
-.mainhead .logo button { position: absolute; top: 7px; left: -3px; padding: 0; border: 0; color: #f57a20; background-color: transparent; font-size: 24px; z-index: 999; outline: none; }
+.mainhead .logo button{position:absolute;top:7px;left:-3px;padding:0;border:0;color:#f57a20;
+background-color:transparent;font-size:24px;z-index:999;outline:none;display:block;}
 .mainmenu.flymenu { border: 0; }
 .floatmenu a { color: #f0f0f0; text-transform: uppercase; }
 .floatmenu .userbio { padding: 20px 0 20px 70px; font-size: 12px; color: #acacae; text-transform: none; }

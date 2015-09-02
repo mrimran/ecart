@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout version="0.1.0">
     <default>
-	
         <cms_index_index> 
             <!--<reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
@@ -9,10 +8,18 @@
             <remove name="right" />
             </reference>
             -->	
-  
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.malihu.PageScroll2id.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/scriptshome.js</name>
+            </action>
+        </reference>
         </cms_index_index>
         <reference name="head">
-			
 			
             <action method="addJs">
             	<script>prototype/window.js</script>
@@ -23,10 +30,10 @@
             	<name>prototype/windows/themes/default.css</name>
             </action>
             
-            <action method="addItem">
+            <!-- <action method="addItem">
             	<type>js_css</type>
             	<name>prototype/windows/themes/magento.css</name>
-            </action>
+            </action> -->
 
             <action method="addItem">
                 <type>skin_js</type>
@@ -40,14 +47,14 @@
                 <type>skin_js</type>
                 <name>js/owl.carousel.min.js</name>
             </action>
-            <action method="addItem">
+            <!-- <action method="addItem">
                 <type>skin_js</type>
                 <name>js/jquery.malihu.PageScroll2id.min.js</name>
             </action>
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/bootstrap-select.min.js</name>
-            </action>
+            </action> -->
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/scripts.js</name>
@@ -113,13 +120,13 @@
             </action>
 
         </reference>
-	<!--
+	
         <reference name="header">
             <block type="catalogcategorysearch/form" name="top.search" as="topSearch" template="catalogsearch/form.phtml">
                 <block type="catalogcategorysearch/form_contents" name="top.search.content" as="topSearchContent" template="catalogsearch/form/contents.phtml"/>
             </block>
         </reference>
-	-->
+	
         <reference name="header">
           <block type="core/text_list" name="top.menu" as="topMenu" after="breadcrumbs"  translate="label">
 
@@ -211,6 +218,12 @@
 			</reference>
 		</cms_index_noroute>
 
+		<contacts_index_index>
+			<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			</reference>
+		</contacts_index_index>
+
 			<checkout_onepage_index>
 			<reference name="root">
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
@@ -234,24 +247,36 @@
 			
 			
 			<checkout_cart_index>
-			<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/product.collateral.phtml" before="-">
-                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
-                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
-                    <action method="setSliderId"><id>-content</id></action>
-                </block>
-            </block>  <reference name="content">
-            <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
+			
+            <reference name="content">
+           
+
+            <block type="smartsuggest/wrapper" name="smartsuggest_content" as="personlized" template="tm/smartsuggest/wrapper/content.phtml">
                 <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
                     <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
                     <action method="setSliderId"><id>-content</id></action>
                 </block>
             </block>
+
+           <!--<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/product.collateral.phtml">
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            </block> -->
         </reference>
-			</checkout_cart_index>
-			
-			
-			
-			
+		</checkout_cart_index>
+		   
+		<checkout_cart_index>
+			<reference name="content">
+
+                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/listnew.phtml">
+                    <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
+                    <action method="setSliderId"><id>-content</id></action>
+                </block>
+            
+		   </reference>
+        </checkout_cart_index>
 			
 			<catalog_category_default>
 			<reference name="root">
@@ -313,6 +338,7 @@
 
 				<!-- <block type="core/template" name="useralsovieweddetailpage" template="catalog/product/useralsoviewed.phtml" /> -->
 
+				
 				<block type="review/product_view_list" name="product.info.product_additional_data" as="product_review" template="review/product/view/list.phtml">
 				<block type="review/form" name="product.review.form" as="review_form"/>
 				</block>	
@@ -344,6 +370,18 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
 			</customer_account_login>
+
+			<tag_list_index>
+			<reference name="root">
+			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+			</reference>
+			</tag_list_index>
+
+			<tag_product_list>
+			<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			</reference>
+			</tag_product_list>
 			
 			<extension_index_sale>
 			<reference name="root">

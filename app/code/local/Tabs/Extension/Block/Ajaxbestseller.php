@@ -129,7 +129,8 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
         
         // if Category filter is on
         if ($catId) {
-            $this->_productCollection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
+           $this->_productCollection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
+           
             
         }
         

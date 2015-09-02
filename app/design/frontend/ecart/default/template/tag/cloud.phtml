@@ -24,11 +24,11 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="page-title">
-    <h1><?php echo $this->__('All Tags') ?></h1>
+<div class="page-title sectiontitle">
+    <h2><?php echo $this->__('All Tags') ?></h2>
 </div>
 <?php if( sizeof($this->getTags()) > 0 ): ?>
-    <ul class="tags-list">
+    <ul class="tags-list list-only">
         <?php foreach ($this->getTags() as $_tag): ?>
             <li><a href="<?php echo $_tag->getTaggedProductsUrl() ?>" style="font-size:<?php echo $_tag->getRatio()*70+75 ?>%;"><?php echo $this->escapeHtml($_tag->getName()) ?></a></li>
         <?php endforeach; ?>
