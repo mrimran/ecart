@@ -10,6 +10,9 @@ $_helper = $this->helper('catalog/output');?>
 <div class="row">
 <div class="col-sm-4">
 <div class="__icon"><span class="fa fa-user">&nbsp;</span></div>
+<?php if(!$order->count()): ?>
+	<div class="__numbers">0</div>
+<?php else : ?>
 <?php foreach ($order as $orders):?>
 <?php if ($orders->purchased > 10) : ?>
 <?php $neworder = $orders->purchased - 5; ?>
@@ -18,6 +21,7 @@ $_helper = $this->helper('catalog/output');?>
    <div class="__numbers"><?php echo number_format($orders->purchased,'0','.',','); ?></div>
  <?php endif ?>
 <?php endforeach ?>
+<?php endif ?>
 <div class="__text">Customers bought this product</div>
 </div>
 <div class="col-sm-4">
