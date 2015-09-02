@@ -43,7 +43,11 @@
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
+<<<<<<< HEAD
                     <dbname><![CDATA[ecart_2]]></dbname>
+=======
+                    <dbname><![CDATA[ecart_8]]></dbname>
+>>>>>>> e73d3f6009705ca8c892f6df6d3aa5bccf496828
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
