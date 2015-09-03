@@ -352,6 +352,11 @@
 				
 						
 				</reference>
+				
+				<block type="core/template_facade" name="product.info.container1" as="container1">
+                  
+                   
+                </block>
 		
 			</catalog_product_view>
 			

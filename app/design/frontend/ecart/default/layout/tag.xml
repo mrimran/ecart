@@ -34,7 +34,7 @@ Default layout, loads most of the pages
 
     <default>
         <!-- Mage_Tag -->
-        <reference name="left">
+        <reference name="right">
             <block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>
         </reference>
 

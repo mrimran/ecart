@@ -154,8 +154,9 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                 <ul class="product-meta-select" data-id="headingOne">
                   <?php $i=0?>
                   <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
-
-                  <li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?></li>
+				<input type="radio" value="<?php echo $value ?>" name="color" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>" />
+                  <?php /*?><li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?>
+                  </li><?php */?>
                   <?php $i++ ?>
                   <?php endforeach ?>
                   <?php echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
@@ -186,8 +187,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             </div>
               <?php endif ?>
          </div>   
-            
-            <div class="buttons">
+        <?php /*?>  <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>   
+            <div class="buttons"><?php */?>
 
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
