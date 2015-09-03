@@ -306,5 +306,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
          ->limit(1);
          return $query;
     }  
+
+      
 }
 ?>

@@ -331,7 +331,8 @@
 			</reference>
 			
 				<reference name="content">
-				
+					
+				<remove name="product.info.options.wrapper.bottom" />
 				<!--<block type="cms/block" name="productdetailpagestaticblock1" after="whishlist">
 				<action method="setBlockId"><block_id>productdetailpagefirststaticblock</block_id></action>
 				</block>-->

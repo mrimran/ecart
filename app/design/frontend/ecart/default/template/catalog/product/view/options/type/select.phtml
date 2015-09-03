@@ -24,17 +24,29 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+    <?php /* @var $this Mage_Catalog_Block_Product_View_Options_Type_Select */ ?>
+    <?php $_option = $this->getOption() ?>
+    
+        <div class="panel">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label>
+                <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
 
-<?php /* @var $this Mage_Catalog_Block_Product_View_Options_Type_Select */ ?>
-<?php $_option = $this->getOption() ?>
-<dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label></dt>
-<dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
-    <div class="input-box">
-        <?php echo $this->getValuesHtml() ?>
-        <?php if ($_option->getIsRequire()): ?>
-            <?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_RADIO || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_CHECKBOX): ?>
-                <span id="options-<?php echo $_option->getId() ?>-container"></span>
-            <?php endif; ?>
-        <?php endif;?>
-    </div>
-</dd>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
+				    <div class="input-box">
+				        <?php echo $this->getValuesHtml() ?>
+				        <?php if ($_option->getIsRequire()): ?>
+				            <?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_RADIO || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_CHECKBOX): ?>
+				                <span id="options-<?php echo $_option->getId() ?>-container"></span>
+				            <?php endif; ?>
+				        <?php endif;?>
+				    </div>
+				</dd>
+              </div>
+            </div>
+        </div>
+       
