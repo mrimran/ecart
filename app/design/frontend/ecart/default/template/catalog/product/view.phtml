@@ -137,7 +137,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php else: ?>
       <br/>
       <?php endif ?>
-      <!--<div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
         <?php if($_product->color): ?>
         <div class="panel">
           <div class="panel-heading" role="tab" id="headingOne">
@@ -185,10 +185,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             </div>
             </div>
               <?php endif ?>
-         </div>  --> 
-         <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
-            <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-          </div>
+         </div>
+         
+            <?php //echo $this->getChildChildHtml('container1', '', true, true) ?>
+          
             <?php //echo $this->getChildChildHtml('container2', '', true, true) ?>
             <div class="buttons">
 
