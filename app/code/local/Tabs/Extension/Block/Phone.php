@@ -9,7 +9,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
        public function getLoadedProductCollection()
     { 
        
-       $id = 6;
+       $id = 29;
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
@@ -73,7 +73,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
 
     protected function _getProductCollection()
     {
-        $id = 6;
+        $id = 29;
         $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $collection = Mage::getResourceModel('catalog/product_collection');
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
