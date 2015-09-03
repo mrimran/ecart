@@ -530,7 +530,7 @@ margin-right:5px;cursor:pointer;}
 .toolbar .sorter .pagination{/*float:right;*/}
 .pagination li{display:inline-block;}
 .pagination li a,.pagination li.active{padding:8px 10px;border:1px solid #e3e3e3;display:inline-block;
-font-size:13px;color:#e3e3e3;vertical-align:top;color:#999;line-height:0.95;margin:0 2px;
+font-size:13px;color:#e3e3e3;vertical-align:top;color:#999;line-height:0.95;margin:0;
 border-radius:0;}
 .pagination li a.prev,.pagination li a.next{font-size:20px;padding:4px 12px;}
 .pagination li a:hover,.pagination li.active{background-color:#f57a20;
