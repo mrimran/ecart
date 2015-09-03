@@ -73,7 +73,10 @@ $_helper = $this->helper('catalog/output');
                                 <?php echo $this->getReviewsSummaryHtml($_product) ?>
                             <?php endif; ?>
                             <ul>
-                                <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                                <?php
+                                $shortDesc = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description');
+                                echo substr(trim(preg_replace('/<[^>]*>/', ' ', $shortDesc)), 0, 100);
+                                ?>
                             </ul>
                             <a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
                         </div>
