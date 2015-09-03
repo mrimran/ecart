@@ -7,7 +7,7 @@
             <remove name="left" />
             <remove name="right" />
             </reference>
-            -->	
+
         <reference name="head">
             <action method="addItem">
                 <type>skin_js</type>
@@ -18,6 +18,7 @@
                 <name>js/scriptshome.js</name>
             </action>
         </reference>
+    -->
         </cms_index_index>
         <reference name="head">
 			
@@ -170,6 +171,16 @@
 
 
     <cms_index_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.malihu.PageScroll2id.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/scriptshome.js</name>
+            </action>
+        </reference>
         <reference name="content"> 
             <block type="auguria_sliders/cms_page_slider" name="auguria_sliders" template="auguria/sliders/slider.phtml" after="catalog.topnav" before="content"/>
 				
@@ -331,7 +342,8 @@
 			</reference>
 			
 				<reference name="content">
-				
+					
+				<remove name="product.info.options.wrapper.bottom" />
 				<!--<block type="cms/block" name="productdetailpagestaticblock1" after="whishlist">
 				<action method="setBlockId"><block_id>productdetailpagefirststaticblock</block_id></action>
 				</block>-->
