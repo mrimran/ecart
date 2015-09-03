@@ -32,9 +32,7 @@
  */
 /* @var $this Mage_Catalog_Block_Product_List */
 ?>
-
 <?php
-die('progos1');
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
 ?>
@@ -84,6 +82,7 @@ die('progos1');
                <span class="not-now">
           <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
                </div>
+
 
           <?php $productCollection=$this->getTotalOrder($_product->getId());
                 $_helper = $this->helper('catalog/output');?>
@@ -160,6 +159,14 @@ die('progos1');
                </div>
           <?php $productCollection=$this->getTotalOrder($_product->getId());
                 $_helper = $this->helper('catalog/output');?>
+<<<<<<< HEAD
+          <div class="orders"><?php echo $productCollection->purchased;?> Orders</div>
+          <a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
+           <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+             <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><i class="fa fa-exchange"></i> <?php echo $this->__('Add to Compare') ?></a>
+            <?php endif; ?>
+          
+=======
           <?php if(!$productCollection->count()): ?>
                 <div class="orders">0 Orders</div>
           <?php else: ?>
@@ -171,18 +178,23 @@ die('progos1');
               <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
              <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><i class="fa fa-exchange"></i> <?php echo $this->__('Add to Compare') ?></a>
             <?php endif; ?> 
+>>>>>>> 3b6c045e339dd523279fa992e9a6d2d1fd84706c
           <h5 class="stocks-update">25 pcs on Stock</h5>
           </div>
         </div>
          <?php endforeach ?>
         
       </div>
+<<<<<<< HEAD
+        
+=======
     
     
     
     
     
     
+>>>>>>> 3b6c045e339dd523279fa992e9a6d2d1fd84706c
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
     <?php endif; ?>
 
