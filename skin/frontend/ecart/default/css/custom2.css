@@ -97,8 +97,8 @@ body.newsletter-manage-index .my-account .fieldset h2{display:none;}
 .addresses-list ol{list-style-type:none;}
 .addresses-list address{font-size:14px;}
 .count-container{text-align:right;}
-.count-container p,.count-container .limiter{display:inline-block;/*vertical-align:top;*/
-padding-right:10px;}
+.count-container p,.count-container .limiter{display:inline-block;vertical-align:middle;
+margin-bottom:0;padding-right:10px;}
 .data-table.clean-table td.customer-wishlist-item-info{text-align:left;}
 td.customer-wishlist-item-info h3{font-size:16px;margin-bottom:10px;}
 td.customer-wishlist-item-info .wishlist-sku{font-weight:600;}
