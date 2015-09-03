@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magetools_OptionFilter>
+            <version>1.0.0.1</version>
+        </Magetools_OptionFilter>
+    </modules>
+    <global>
+        <blocks>
+            <magetools_optionfilter>
+                <class>Magetools_OptionFilter_Block</class>
+            </magetools_optionfilter>
+            <catalog>
+              <rewrite>
+                <layer_view>Magetools_OptionFilter_Block_Layer_View</layer_view>
+              </rewrite>
+            </catalog>
+            <catalogsearch>
+              <rewrite>
+                <layer>Magetools_OptionFilter_Block_Layer</layer>
+              </rewrite>
+            </catalogsearch>
+        </blocks>
+        <helpers>
+            <magetools_optionfilter>
+                <class>Magetools_OptionFilter_Helper</class>
+            </magetools_optionfilter>
+        </helpers>
+
+        <models>
+            <magetools_optionfilter>
+              <class>Magetools_OptionFilter_Model</class>
+            </magetools_optionfilter>
+        </models>
+          
+        <resources>
+          <magetools_optionfilter_setup>
+            <setup>
+              <module>Magetools_OptionFilter</module>
+              <class>Mage_Core_Model_Resource_Setup</class>
+            </setup>
+  	        <connection>
+	            <use>core_setup</use>
+            </connection>
+          </magetools_optionfilter_setup>
+        </resources>        
+    </global>
+
+    <adminhtml>
+        <events>
+          <core_block_abstract_prepare_layout_after>
+            <observers>
+               <magetools_layer_option_before>
+                 <class>magetools_optionfilter/observer</class>
+                 <method>layerLoadBefore</method>
+               </magetools_layer_option_before>
+             </observers>
+           </core_block_abstract_prepare_layout_after>
+        </events>
+        
+        <translate>
+            <modules>
+                <magetools_optionfilter>
+                    <files>
+                        <default>Magetools_OptionFilter.csv</default>
+                    </files>
+                </magetools_optionfilter>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <default>
+        <magetools_optionfilter>
+            <setting>
+                <enabled>0</enabled>
+            </setting>
+        </magetools_optionfilter>
+    </default>
+
+</config>

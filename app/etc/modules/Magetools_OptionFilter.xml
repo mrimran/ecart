@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Magetools_OptionFilter>
+			<active>true</active>
+			<codePool>community</codePool>
+			<depends>			
+				<Mage_Admin />
+			</depends>
+		</Magetools_OptionFilter>
+	</modules>
+</config>
