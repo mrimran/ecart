@@ -276,6 +276,8 @@ color:#fff;margin:5px 0;display:inline-block;}
 border:1px solid #eaeaea;margin:2px;background-color:#303030;}
 .tags-list.list-only li a{color:#fff;}
 .tags-list.list-only li:hover,.tags-list.list-only li:hover a{color:#fff;background-color:#f57a20;}
+.product-options .options-list li .label{font-size:14px;font-weight:300;padding:0;margin:0;}
+.product-options .options-list li .label label{font-weight:300;display:block;padding:4px 8px;}
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }

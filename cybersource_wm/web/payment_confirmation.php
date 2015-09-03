@@ -28,8 +28,10 @@
 	    $allowedFields = explode(",",$signed);
 	    //print_r($allowedFields);
 	    foreach($_POST as $name => $value) {
-	        if(in_array($name, $allowedFields)) 
-	            $params[$name] = htmlspecialchars($value);
+	        if(in_array($name, $allowedFields))  {
+                    $value = trim(preg_replace('/[^A-Za-z0-9\-\s\@#:~!^*_+=`\.]/', '', strip_tags($value)));
+                    $params[$name] = str_replace("  ", " ", $value);//remove double spaces
+                }
 	    }
 
 	    $params['signed_field_names'] = implode(",", $allowedFields);
