@@ -50,7 +50,7 @@ die('progos1');
     
      <?php foreach ($_productCollection as $_product): ?>
     <div class="product clearfix">
-					<div class="col-sm-4 image">
+          <div class="col-sm-4 image">
                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                 <?php /* Based on the native RWD styling, product images are displayed at a max of ~400px wide when viewed on a
                         one column page layout with four product columns from a 1280px viewport. For bandwidth reasons,
@@ -66,26 +66,26 @@ die('progos1');
                 </div></div>
             </a>
                
-					</div>
-					<div class="col-sm-5 details">
-						
+          </div>
+          <div class="col-sm-5 details">
+            
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
-						<?php if($_product->getRatingSummary()): ?>
+            <?php if($_product->getRatingSummary()): ?>
                         <?php echo $this->getReviewsSummaryHtml($_product) ?>
                    <?php endif; ?>
-						<ul>
-							<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
-						</ul>
-						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
-					</div>
-					<div class="col-sm-3 relative price-info">
-					<div class="price">
+            <ul>
+              <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+            </ul>
+            <a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
+          </div>
+          <div class="col-sm-3 relative price-info">
+          <div class="price">
                <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
                <span class="not-now">
-					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
+          <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
                </div>
 
-					<?php $productCollection=$this->getTotalOrder($_product->getId());
+          <?php $productCollection=$this->getTotalOrder($_product->getId());
                 $_helper = $this->helper('catalog/output');?>
           <?php if(!$productCollection->count()): ?>
                 <div class="orders">0 Orders</div>
@@ -94,11 +94,11 @@ die('progos1');
           <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
         <?php endforeach ?>
         <?php endif ?>
-					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
+          <a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
              <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
              <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><i class="fa fa-exchange"></i> <?php echo $this->__('Add to Compare') ?></a>
             <?php endif; ?>
-					<h5 class="stocks-update">
+          <h5 class="stocks-update">
                
                <?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                <?php echo $this->__('In Stock') ?>
@@ -106,9 +106,9 @@ die('progos1');
                <?php echo $this->__('Out of stock') ?>
                  <?php endif ?>
                </h5>
-					</div>
-				</div>
-    		 <?php endforeach; ?>
+          </div>
+        </div>
+         <?php endforeach; ?>
     </div>
     <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
 
@@ -124,11 +124,11 @@ die('progos1');
     
     <div class="clearfix">
     <?php $i=0; foreach ($_productCollection as $_product): ?>
-				<div class="product clearfix grid">
-					<div class="col-sm-4 image">
+        <div class="product clearfix grid">
+          <div class="col-sm-4 image">
                   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php $_imgSize = 210; ?>
-                    	<div class="img-box"><div class="abs_center">
+                      <div class="img-box"><div class="abs_center">
                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
                          src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
                          alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
@@ -136,29 +136,29 @@ die('progos1');
                 </a>
                
                
-					</div>
-					<div class="col-sm-5 details">
-						<a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
-						<?php if($_product->getRatingSummary()): ?>
+          </div>
+          <div class="col-sm-5 details">
+            <a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+            <?php if($_product->getRatingSummary()): ?>
                     <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                     <?php endif; ?>
-						
-						<a href="" class="specs">See Full Specifications</a>
-					</div>
-					<div class="col-sm-3 relative price-info">
+            
+            <a href="" class="specs">See Full Specifications</a>
+          </div>
+          <div class="col-sm-3 relative price-info">
                
                <?php 
-					//echo $this->getPriceHtml($_product, true); 
-					
-					?>
+          //echo $this->getPriceHtml($_product, true); 
+          
+          ?>
                
-					<div class="price">
-					 <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
+          <div class="price">
+           <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
                <span class="not-now">
                <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
-					 </span>
+           </span>
                </div>
-					<?php $productCollection=$this->getTotalOrder($_product->getId());
+          <?php $productCollection=$this->getTotalOrder($_product->getId());
                 $_helper = $this->helper('catalog/output');?>
           <?php if(!$productCollection->count()): ?>
                 <div class="orders">0 Orders</div>
@@ -167,16 +167,16 @@ die('progos1');
           <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
         <?php endforeach ?>
         <?php endif ?>
-					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
+          <a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
               <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
              <a href="<?php echo $_compareUrl ?>" class="link-compare linkcompare_listingPage"><i class="fa fa-exchange"></i> <?php echo $this->__('Add to Compare') ?></a>
             <?php endif; ?> 
-					<h5 class="stocks-update">25 pcs on Stock</h5>
-					</div>
-				</div>
-				 <?php endforeach ?>
-				
-			</div>
+          <h5 class="stocks-update">25 pcs on Stock</h5>
+          </div>
+        </div>
+         <?php endforeach ?>
+        
+      </div>
     
     
     
