@@ -30,52 +30,76 @@
  *
  * @see Mage_Catalog_Block_Layer_Filter
  */
+$displaySize = 2;
+$i = 0;
+$filterName = strtolower($this->getName());
+$cnt = count($this->getItems());
 ?>
 
-
+<?php $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+$url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
+$path = $url->getPath(); 
+?>
 <?php foreach ($this->getItems() as $_item): ?>
-    <li>
-        <?php if ($_item->getCount() > 0): ?>
-        <?php /* commenting default
-            <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>">
-                <?php echo $_item->getLabel() ?>
-                <?php if ($this->shouldDisplayProductCount()): ?>
-                <span class="count">(<?php echo $_item->getCount() ?>)</span>
-                <?php endif; ?>
-            </a>
-        */?>
-            <form>
-                <span class="check-box">
-                    <input type="checkbox" name="vehicle" onclick='window.location.assign("<?php echo $this->urlEscape($_item->getUrl()) ?>")'/>
-                </span>
-                <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>">
-                    <?php echo $_item->getLabel() ?>
-                    <?php if ($this->shouldDisplayProductCount()): ?>
-                    <span class="count">(<?php echo $_item->getCount() ?>)</span>
-                    <?php endif; ?>
-                </a>
-            </form>
-        <?php else: ?>
-        <?php /* commenting default ?>
-            <span>
-                <?php echo $_item->getLabel(); ?>
-                <?php if ($this->shouldDisplayProductCount()): ?>
-                    <span class="count">(<?php echo $_item->getCount() ?>)</span>
-                <?php endif; ?>
-            </span>
-         */?>
-            <form>
-                <span class="check-box">
-                    <input type="checkbox" name="vehicle" onclick='window.location.assign("<?php echo $this->urlEscape($_item->getUrl()) ?>")'/>
-                </span>
-                <span>
-                    <?php echo $_item->getLabel(); ?>
-                    <?php if ($this->shouldDisplayProductCount()): ?>
-                        <span class="count">(<?php echo $_item->getCount() ?>)</span>
-                    <?php endif; ?>
-                </span>
-            </form>
-        <?php endif; ?>
-    </li>
+    <?php /*if ($i == $displaySize) { ?>
+        <div id="more-<?php echo $filterName ?>" class="more-less"><a>Show more</a></div>
+        <div id="cont-<?php echo $filterName ?>">
+        <?php }*/ ?>
+        <?php $str = strtolower($_item->getLabel()); ?>
+        <?php  if (strpos($path, $str) == false) { ?>    
+                
+        <li>
+            <?php if ($_item->getCount() > 0): ?>
+                <?php /* commenting default
+                  <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>">
+                  <?php echo $_item->getLabel() ?>
+                  <?php if ($this->shouldDisplayProductCount()): ?>
+                  <span class="count">(<?php echo $_item->getCount() ?>)</span>
+                  <?php endif; ?>
+                  </a>
+                 */ ?>
+                
+                
+                <form>
+                    <span class="check-box">
+                        <input type="checkbox" name="vehicle" onclick='window.location.assign("<?php echo $this->urlEscape($_item->getUrl()) ?>")'/>
+                    </span>
+                    <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>">
+                        <?php echo $_item->getLabel() ?>
+                        <?php if ($this->shouldDisplayProductCount()): ?>
+                            <span class="count">(<?php echo $_item->getCount() ?>)</span>
+                        <?php endif; ?>
+
+                    </a>
+                </form>
+                
+            <?php else: ?>
+                <?php /* commenting default ?>
+                  <span>
+                  <?php echo $_item->getLabel(); ?>
+                  <?php if ($this->shouldDisplayProductCount()): ?>
+                  <span class="count">(<?php echo $_item->getCount() ?>)</span>
+                  <?php endif; ?>
+                  </span>
+                 */ ?>
+                <form>
+                    <span class="check-box">
+                        <input type="checkbox" name="vehicle" onclick='window.location.assign("<?php echo $this->urlEscape($_item->getUrl()) ?>")'/>
+                    </span>
+                    <span>
+                        <?php echo $_item->getLabel(); ?>
+                        <?php if ($this->shouldDisplayProductCount()): ?>
+                            <span class="count">(<?php echo $_item->getCount() ?>)</span>
+                        <?php endif; ?>
+                    </span>
+                </form>
+            <?php endif; ?>
+        </li>
+        <?php
+        /*$i++;
+        if ($i == $cnt && $cnt > $displaySize)
+            echo '<div id="less-' . $filterName . '" class="more-less"><a>Show less</a></div></div>';*/
+        ?>
+        <?php } ?>
 <?php endforeach ?>
 

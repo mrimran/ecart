@@ -31,29 +31,78 @@
  * @see Mage_Catalog_Block_Layer_View
  */
 ?>
-<?php if($this->canShowBlock()): ?>
-<div class="block block-layered-nav<?php if (!$this->getLayer()->getState()->getFilters()): ?> block-layered-nav--no-filters<?php endif; ?>">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('Shop By') ?></span></strong>
-    </div>
-    <div class="block-content toggle-content">
-        <?php echo $this->getStateHtml() ?>
+
+
+<?php
+$displaySize = 2;
+$hiddenFilters = array();
+?>
+
+<?php if ($this->canShowBlock()): ?>
+    <div class="block-layered-nav<?php if (!$this->getLayer()->getState()->getFilters()): ?> block-layered-nav--no-filters<?php endif; ?>">
+        <div class="filters">
+            <a class="heading" data-id="activeFilters"><h2><?php echo $this->__('Active Filters') ?></h2><span><i class="fa fa-minus-square-o"></i><i class="fa fa-plus-square-o"></i></span></a>
+            <ul id="activeFilters">
+                <li><?php echo $this->getStateHtml() ?></li>
+                <!--<li class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></li>-->
+            </ul>
+        </div>
+        <div class="toggle-content">
         <?php if ($this->getLayer()->getState()->getFilters()): ?>
-            <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
-        <?php endif; ?>
-        <?php if($this->canShowOptions()): ?>
-            <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p>
-            <div id="narrow-by-list">
-                <?php $_filters = $this->getFilters() ?>
-                <?php foreach ($_filters as $_filter): ?>
-                <?php if($_filter->getItemsCount()): ?>
-                    <a class="heading" data-id="<?php echo $this->__($_filter->getName()) ?>"><?php echo $this->__($_filter->getName()) ?></a>
-                    <ul id="<?php echo $this->__($_filter->getName()) ?>"><?php echo $_filter->getHtml() ?></ul>
-                <?php endif; ?>
-                <?php endforeach; ?>
-            </div>
-            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
-        <?php endif; ?>
+            <?php endif; ?>
+            <?php if ($this->canShowOptions()): ?>
+                <!-- <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p> -->
+                <div id="narrow-by-list">
+                        <?php $_filters = $this->getFilters() ?>
+                        <?php foreach ($_filters as $_filter): ?>
+                            <div class="filters">
+                            <?php
+                            if ($_filter->getItemsCount() > $displaySize)
+                                $hiddenFilters[] = strtolower($_filter->getName());
+                            ?>
+                            <?php if ($_filter->getItemsCount()): ?>
+                                <a class="heading" data-id="<?php echo $this->__($_filter->getName()) ?>"><h2><?php echo $this->__($_filter->getName()) ?></h2><span><i class="fa fa-minus-square-o"></i><i class="fa fa-plus-square-o"></i></span></a>
+                                <ul id="<?php echo $this->__($_filter->getName()) ?>"><?php echo $_filter->getHtml() ?></ul>
+                            <?php endif; ?>
+                        </div>
+                        <?php endforeach; ?>
+                </div>
+                <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
 <?php endif; ?>
+
+<script>
+    document.observe("dom:loaded", function() {
+        // initially hide all containers for tab content
+        <?php
+        foreach ($hiddenFilters as $v) {
+            echo "jQuery('cont-" . $v . "').hide();";
+        }
+        ?>
+    });
+
+// Register event 'click' and associated call back.
+    Event.observe(document, 'click', respondToClick);
+
+// Callback function to handle the event.
+    function respondToClick(event) {
+        var element = event.element();
+
+<?php
+foreach ($hiddenFilters as $p) {
+    echo "if(element.up('div').id=='more-" . $p . "')
+{
+jQuery('cont-" . $p . "').show();
+jQuery('more-" . $p . "').hide();
+}
+if(element.up('div').id=='less-" . $p . "')
+{
+jQuery('cont-" . $p . "').hide();
+jQuery('more-" . $p . "').show();
+}";
+}
+?>
+}
+</script>
