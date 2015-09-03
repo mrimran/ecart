@@ -30,7 +30,7 @@
         <div class="panel">
           <div class="panel-heading" role="tab" id="<?php echo  $this->escapeHtml($_option->getTitle()) ?>HD">
             <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo  $this->escapeHtml($_option->getTitle()) ?>ID" aria-expanded="true" aria-controls="<?php echo  $this->escapeHtml($_option->getTitle()) ?>ID">
-              <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label>
+              <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php echo  $this->escapeHtml($_option->getTitle()) ?><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?></label>
                 <i class="fa fa-angle-down"></i> <span class="selected-value" id="<?php echo  $this->escapeHtml($_option->getTitle()) ?>SV"></span> </a> </h4>
 
             </div>

@@ -898,6 +898,7 @@ font-size:16px;padding:0;line-height:2;}
 .product-meta.panel-group .panel-heading{border:1px solid #eaeaea;border-radius:0;}
 .product-meta.panel-group .panel+.panel{margin-top:-2px;}
 .product-meta.panel-group .panel-heading .panel-title a{display:block;clear:both;}
+.product-meta.panel-group .panel-heading .panel-title a label{font-weight:300;}
 .product-meta.panel-group .panel-heading .panel-title a span{float:right;font-weight:600;}
 .product-meta.panel-group .panel-heading .panel-title a i{float:right;font-size:20px;font-weight:100;
 padding-left:8px;}

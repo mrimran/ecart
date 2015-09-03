@@ -129,11 +129,12 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
         : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
         </div>
+        <br>
       <?php endif ?>
       <?php if($_product->warrenty): ?>
-      <div class="__warrenty"><strong>
-        <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel();  ?>
-        :</strong> <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product); ?> </div>
+      <!-- <div class="__warrenty"><strong>
+        <?php //echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel();  ?>
+        :</strong> <?php //echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product); ?> </div> -->
       <?php else: ?>
       <br/>
       <?php endif ?>
@@ -147,8 +148,6 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
           
             <?php //echo $this->getChildChildHtml('container2', '', true, true) ?>
             <div class="buttons">
-
-
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
               if($upcoming == 'No'){?>
