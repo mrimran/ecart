@@ -57,7 +57,7 @@ div.wp-custom-menu-popup {
     width: 75% !important;
     z-index: 1000;
 	 left: auto !important;
-	 max-height: 540px;
+	 max-height: 505px;
 	 border-top: 1px solid #eee;
 	 
 }
@@ -497,7 +497,7 @@ vertical-align:middle;}
     line-height: 1.5;
     padding: 3px 10px;
 }
-.megamenurightimage { width: 25%; float: left;}
+.megamenurightimage{width:25%;float:right;}
 
 /*.btn-group-vertical > .btn-group::after, .btn-group-vertical > .btn-group::before, .btn-toolbar::after, .btn-toolbar::before, .clearfix::after, .clearfix::before, .container-fluid::after, .container-fluid::before, .container::after, .container::before, .dl-horizontal dd::after, .dl-horizontal dd::before, .form-horizontal .form-group::after, .form-horizontal .form-group::before, .modal-footer::after, .modal-footer::before, .nav::after, .nav::before, .navbar-collapse::after, .navbar-collapse::before, .navbar-header::after, .navbar-header::before, .navbar::after, .navbar::before, .pager::after, .pager::before, .panel-body::after, .panel-body::before, .row::after, .row::before {
     content: " ";
