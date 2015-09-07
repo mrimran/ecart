@@ -479,7 +479,7 @@ body.push-body-toright { overflow: hidden; }
 .maincontainer .page_menu, .header .topbar, .mainhead .reasonsnav, .mainhead .dealsnav, .maincontainer .mainmenu, .promotionslider .col-sm-4:last-child, .maincontainer .sectiontitle .dropdown, .mainheadnav .catgories a h2, .site-footer .footer-bottom .live-chat, #features, #sponsors { display: none; }
 /*.container{padding:0;}*/
 .maincontainer section {/*padding-top:0;padding-left:10px;padding-right:10px;*/ }
-.maincontainer { background-color: #eee; }
+.maincontainer { /*background-color: #eee;*/ }
 .mainheadnav .searchform input, .mainheadnav .searchform .all-search-cats { width: 49%; }
 .mainheadnav .searchform .mg { top: 8px; height: 30px; }
 .maincontainer .columnslider .col-box {margin-left:0px;margin-right:0;width:49%;float:none;display: inline-block;
