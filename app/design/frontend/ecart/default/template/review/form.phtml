@@ -111,7 +111,7 @@
         <input type="text" placeholder="Your Name" name="nickname" id="nickname_field" class="input-text required-entry form-control" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
       </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row review-textarea">
   <div class="col-sm-8">
   <table class="data-table review-summary-table ratings table-ratings reviewsbottomtable" id="product-review-table">
     <tbody>
@@ -129,7 +129,7 @@
     </tbody>
   </table>
   </div>
-  <div style="text-aligin:right" class="col-sm-4">
+  <div style="text-align:right" class="col-sm-4">
     <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Post review')) ?>" class="button btn btn1 btn-default"><?php echo $this->__('Post review') ?></button>
   </div>
   </div>

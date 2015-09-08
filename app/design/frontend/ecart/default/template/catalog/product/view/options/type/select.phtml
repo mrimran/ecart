@@ -26,17 +26,23 @@
 ?>
     <?php /* @var $this Mage_Catalog_Block_Product_View_Options_Type_Select */ ?>
     <?php $_option = $this->getOption() ?>
-    
+
         <div class="panel">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label>
-                <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
+        <?php
+        $Cleanedvalue = $this->escapeHtml($_option->getTitle());
+        $Cleanedvalue = trim(preg_replace('/[^A-Za-z0-9]/', '', strip_tags($Cleanedvalue)));
+        //echo $Cleanedvalue;
+        ?>
+          <div class="panel-heading" role="tab" id="<?php echo $Cleanedvalue; ?>HD">
+            <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $Cleanedvalue; ?>ID" aria-expanded="true" aria-controls="<?php echo $Cleanedvalue; ?>ID">
+              <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php echo  $this->escapeHtml($_option->getTitle()) ?><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?></label>
+                <i class="fa fa-angle-down"></i> <span class="selected-value" id="<?php echo $Cleanedvalue; ?>SV"></span> </a> </h4>
 
             </div>
-            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
+            <div id="<?php echo $Cleanedvalue; ?>ID" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<?php echo $Cleanedvalue; ?>HD">
+            <div class="panel-body" data-id="<?php echo $Cleanedvalue; ?>SV">
+
+                <!-- <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>> -->
 				    <div class="input-box">
 				        <?php echo $this->getValuesHtml() ?>
 				        <?php if ($_option->getIsRequire()): ?>
@@ -45,8 +51,7 @@
 				            <?php endif; ?>
 				        <?php endif;?>
 				    </div>
-				</dd>
+				<!-- </dd> -->
               </div>
             </div>
         </div>
-       
