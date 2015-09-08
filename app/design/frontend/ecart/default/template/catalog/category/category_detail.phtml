@@ -151,10 +151,15 @@ $category_new->url_key;
                 <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
                 <?php $seller = 0; ?>
             <?php else: ?>
-    <?php foreach ($_productCollectionseller as $_seller): ?>
+            <?php $_product =  $_productCollectionseller->getFirstItem() ?>
+                <li id="item<?php echo $_product->cat_id; ?>"><a onclick="getBestseller(<?php echo $_product->cat_id ?>)"><?php echo $_product->cat_name; ?></a></li>
+            <?php foreach ($_productCollectionseller as $_seller): ?>
 
                 <?php $seller = $_seller->cat_id; ?>
+                <?php if($_product->cat_id != $_seller->cat_id) :?>
                     <li><a onclick="getBestseller(<?php echo $_seller->cat_id; ?>)"><?php echo $_seller->cat_name; ?></a></li>
+                    <?php break; ?>
+                <?php endif ?>
             <?php endforeach ?>
         <?php endif ?>
         </ul>
@@ -201,9 +206,14 @@ $_helper = $this->helper('catalog/output');
                 <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
                 <?php $seller = 0; ?>
 <?php else: ?>
+    <?php $_product =  $_productCollectionseller->getFirstItem() ?>
+    <li id="item<?php echo $_product->cat_id; ?>"><a onclick="getUpcoming(<?php echo $_product->cat_id ?>)"><?php echo $_product->cat_name; ?></a></li>
     <?php foreach ($_productCollectionseller as $_seller): ?>
                 <?php $seller = $_seller->cat_id; ?>
+                <?php if($_product->cat_id != $_seller->cat_id) :?>
                     <li><a onclick="getUpcoming(<?php echo $_seller->cat_id; ?>)"><?php echo $_seller->cat_name; ?></a></li>
+                <?php break; ?>
+                <?php endif ?>
             <?php endforeach ?>
         <?php endif ?>
         </ul>
