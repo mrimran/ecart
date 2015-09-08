@@ -94,7 +94,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php if($_product->getTypeId() != 'grouped' ): ?>
       <div class="row">
         <div class="col-sm-8">
-          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); if($_formattedSpecialPrice !=""){echo $_formattedSpecialPrice; }?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
         </div>
         <div class="col-sm-4">
           <div class="__you_saved">You save <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
