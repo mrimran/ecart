@@ -1040,6 +1040,13 @@ font-size:14px;border-radius:3px;}
 .link-compare{font-size:12px;margin-bottom:10px;color:#f57a20;}
 .link-compare:hover{color:#303030;}
 .__product__main__area .link-compare{margin-top:-5px;display:block;}
+body.catalog-category-view #shopbybrand .brands li{height:auto;border:1px solid #eee;padding: 2px;}
+body.catalog-category-view #shopbybrand .brands .img-box{line-height:2;padding:15px 5px;
+background-color:#f6f6f6;}
+body.catalog-category-view #shopbybrand{padding-bottom:15px;}
+body.catalog-category-view #shopbybrand .brands .img-box:hover{background-color:#303030;}
+body.catalog-category-view #shopbybrand .brands .img-box a{color:#303030;font-size:18px;display:block;}
+body.catalog-category-view #shopbybrand .brands .img-box:hover a{color:#fff;}
 
 .fullheight{height:100% !important;max-height:100% !important;}
 .relative{position:relative;}
