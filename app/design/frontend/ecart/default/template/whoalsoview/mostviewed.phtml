@@ -20,22 +20,30 @@ if(count($_productCollection)){ ?>
 <?php $display_length = $this->displayproductlength(); ?>
 <?php $showInStock = $this->showInStock(); ?>
 <?php $_collectionSize = count($_productCollection); ?>
+<section>
 <div id="last_most_view_box" class="product-view product-mostview">
     <div id="last_most_view_box_sub">
         <div id="last_most_view_title">
-            <h2>
-                <span><?php echo $this->displaytitle(); ?></span>
-            </h2>
+            <div class="sectiontitle">
+            <h2><span><?php echo $this->displaytitle(); ?></span></h2>
+            </div>
             <div class="products-grid mostlastview sliderbox">
             <!--div class="container"-->
              <!--div class="row"-->
               <!-- <div class="sliderbox"> -->
-                <ul  id="owl-demo" class="owl-carousel"> 
+                <div id="useralsoviewed" class="columnslider owl-carousel" data-items="4">
                 <?php $i=0; foreach ($_productCollection as $key => $_product): ?>
                  <?php if ($key < $display_length && ($showInStock == $_product->isAvailable() || 1 == $_product->isAvailable())): ?>
-                    <li class="item<?php if($key==0): ?> first<?php elseif($key==$_collectionSize): ?> last<?php endif; ?>">
-                        <a href="<?php echo $site_url.$_product->getUrlPath(); ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(125); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" /></a>
-                        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+                    <div class="item<?php if($key==0): ?> first<?php elseif($key==$_collectionSize): ?> last<?php endif; ?>">
+                    <div class="col-box">
+                        <a href="<?php echo $site_url.$_product->getUrlPath(); ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" class="product-image">
+                        <div class="img-box"><div class="abs_center">
+                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(125); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" /></div></div>
+                        </a>
+                        <div class="bottom-area">
+                        <h4 class="product-name">
+                        <!-- <a href="<?php //echo $_product->getProductUrl() ?>" title="<?php // echo $this->htmlEscape($_product->getName()) ?>"> -->
+                        <?php echo $this->htmlEscape($_product->getName()) ?><!-- </a> --></h4>
                         <?php if($_product->getRatingSummary()): ?>
                         <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                         <?php endif; ?>
@@ -46,17 +54,19 @@ if(count($_productCollection)){ ?>
                             <?php else: ?>
                                 <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                             <?php endif; ?>
-                            <ul class="add-to-links">
+                            <!-- <ul class="add-to-links">
                                 <?php if ($this->helper('wishlist')->isAllow()) : ?>
                                     <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
                                 <?php endif; ?>
                                     <li><span class="separator">|</span> <a href="<?php echo $this->helper('catalog/product_compare')->getAddUrl($_product) ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-                            </ul>
+                            </ul> -->
+                            </div>
                         </div>
-                    </li>
-                  <?php endif ?>  
+                        </div>
+                    </div>
+                  <?php endif ?>
                 <?php endforeach ?>
-                </ul>    
+                </div>
                 <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
              <!-- </div> -->
             <!--/div-->
@@ -66,5 +76,6 @@ if(count($_productCollection)){ ?>
         
     </div>
 </div>
+</section>
 <?php } ?>
 
