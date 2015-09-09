@@ -75,7 +75,7 @@
                      ->addAttributeToSelect('name')
                      ->addAttributeToSelect('url')
                      ->addAttributeToFilter('entity_id', $currentCatIds)
-                     ->addIsActiveFilter();
+                     ->addIsActiveFilter();                     
                      foreach($categoryCollection as $cat){ ?>
                           <a href="<?php echo $cat->getUrl($_category); ?>"><?php echo $cat->getName(); ?></a></div>
 

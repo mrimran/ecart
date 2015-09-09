@@ -53,7 +53,7 @@ $count = $collection->getSize();
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
     <?php endif; ?>
     <h2><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h2>
-   <!--  <p><?php //echo $count; ?> Results found for <?php //echo $this->escapeHtml($_category->getName()) ?></p> -->
+    <!-- <p><?php echo $count; ?> Results found for <?php echo $this->escapeHtml($_category->getName()) ?></p> -->
 </div>
 <br>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
