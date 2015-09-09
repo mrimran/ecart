@@ -47,6 +47,7 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
      * @var Mage_Eav_Model_Entity_Collection_Abstract
      */
     protected $_productCollection;
+    
 
     /**
      * Retrieve loaded category collection

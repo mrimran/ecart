@@ -47,7 +47,7 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
      * @var Mage_Eav_Model_Entity_Collection_Abstract
      */
     protected $_productCollection;
-
+    private $_theCat;
     /**
      * Retrieve loaded category collection
      *
@@ -58,7 +58,7 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
-        $catId = $id;
+
         if (is_null($this->_productCollection)) {
             $layer = $this->getLayer();
             if ($this->getShowRootCategory()) {
@@ -89,11 +89,11 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
             }
             /* @var $layer Mage_Catalog_Model_Layer */
             /* @var $layer Mage_Catalog_Model_Layer */
-        $this->_productCollection = $layer->getProductCollection();
-
-        /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
-        $this->_productCollection = Mage::getResourceModel('catalog/product_collection');
-        // join sales order items column and count sold products
+            //$this->_productCollection = $layer->getProductCollection();
+            /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
+           $category   = Mage::getModel('catalog/category')->load($this->_theCat);
+           $this->_productCollection = Mage::getResourceModel('catalog/product_collection');
+           // join sales order items column and count sold products
         $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
         $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
         $this->_productCollection->addAttributeToSelect('*')->getSelect()
@@ -113,7 +113,7 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
-       $this->_productCollection->getSelect()->join(array('ccp' => $this->_productCollection->getTable('catalog/category_product')),
+        $this->_productCollection->getSelect()->join(array('ccp' => $this->_productCollection->getTable('catalog/category_product')),
             $condition,
             array())->join(array('c' => $this->_productCollection->getTable('catalog/category')),
             $condition2,
@@ -126,25 +126,11 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
             array())->join(array('cv' => $this->_productCollection->getTable('catalog/category') . '_varchar'),
             $condition,
             array('cat_name' => 'cv.value'));
+            $id = $this->getRequest()->getParam('id');
+           $this->_productCollection->getSelect()->where('c.entity_id = ?', $id)->limit(20);
+
         
-        // if Category filter is on
-        if ($catId) {
-           $this->_productCollection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
-           
-            
-        }
-        
-        // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
-        // so all sorting work lays on php
-        $result = array();
-       /* foreach ($_productCollection as $product) {
-            /** @var $product Mage_Catalog_Model_Product */
-           /* if (isset($result[$product->getCatId()])) {
-                continue;
-            }
-            $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
-        }*/
-       }
+     }
         return $this->_productCollection;
         
     }

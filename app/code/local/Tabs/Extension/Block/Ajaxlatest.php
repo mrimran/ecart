@@ -60,6 +60,7 @@ class Tabs_Extension_Block_Ajaxlatest extends Mage_Catalog_Block_Product_Abstrac
        
        if (is_null($this->_productCollection)) {
             $layer = $this->getLayer();
+            
             if ($this->getShowRootCategory()) {
                 $this->setCategoryId(Mage::app()->getStore()->getRootCategoryId());
             }
@@ -89,7 +90,6 @@ class Tabs_Extension_Block_Ajaxlatest extends Mage_Catalog_Block_Product_Abstrac
             /* @var $layer Mage_Catalog_Model_Layer */
             /* @var $layer Mage_Catalog_Model_Layer */
         $this->_productCollection = $layer->getProductCollection();
-
        $this->_productCollection = Mage::getResourceModel('catalog/product_collection')
        ->addCategoryFilter($_category)
        ->addAttributeToFilter('upcomingproduct', 0)
