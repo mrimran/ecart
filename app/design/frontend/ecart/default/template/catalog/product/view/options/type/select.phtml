@@ -56,19 +56,20 @@
             </div>
         </div>
 <script type="text/javascript">
-        jQuery('.product-input-box select').each(function(i, select){
-        var $select = jQuery(select);
-        $select.wrapAll('<ul class="options-list"></ul>');
-        $select.find('option').each(function(j, option){
-            var $option = jQuery(option);
-            if( j != 0 ){
-                var html = "<li>";
-                html += "<input type='radio' name='options' id='option_"+j+"' value='"+ $option.val() +"' />";
-                html += "<span class='label'><label for='option_"+j+"'>"+$option.text()+"</label></span>";
-                html += "</li>";
-            }
-            $select.before(html);
-        });
-        $select.remove();
-});
+//         jQuery('.product-input-box select').each(function(i, select){
+//         var $select = jQuery(select);
+//         $select.wrapAll('<ul class="options-list"></ul>');
+//         $select.find('option').each(function(j, option){
+//             var $option = jQuery(option);
+//             if( j != 0 ){
+//                 var html = "<li>";
+//                 html += "<input type='radio' name='options' id='option_"+j+"' value='"+ $option.val() +"' />";
+//                 html += "<span class='label'><label for='option_"+j+"'>"+$option.text()+"</label></span>";
+//                 html += "</li>";
+//             }
+//             if ($option.attr('selected')) $radio.attr('checked', 'checked');
+//             $select.before(html);
+//         });
+//         //$select.remove();
+// });
 </script>
