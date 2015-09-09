@@ -39,11 +39,11 @@
                 <i class="fa fa-angle-down"></i> <span class="selected-value" id="<?php echo $Cleanedvalue; ?>SV"></span> </a> </h4>
 
             </div>
-            <div id="<?php echo $Cleanedvalue; ?>ID" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<?php echo $Cleanedvalue; ?>HD">
+            <div id="<?php echo $Cleanedvalue; ?>ID" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="<?php echo $Cleanedvalue; ?>HD">
             <div class="panel-body" data-id="<?php echo $Cleanedvalue; ?>SV">
 
                 <!-- <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>> -->
-				    <div class="input-box">
+				    <div class="input-box product-input-box">
 				        <?php echo $this->getValuesHtml() ?>
 				        <?php if ($_option->getIsRequire()): ?>
 				            <?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_RADIO || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_CHECKBOX): ?>
@@ -55,3 +55,20 @@
               </div>
             </div>
         </div>
+<script type="text/javascript">
+        jQuery('.product-input-box select').each(function(i, select){
+        var $select = jQuery(select);
+        $select.wrapAll('<ul class="options-list"></ul>');
+        $select.find('option').each(function(j, option){
+            var $option = jQuery(option);
+            if( j != 0 ){
+                var html = "<li>";
+                html += "<input type='radio' name='options' id='option_"+j+"' value='"+ $option.val() +"' />";
+                html += "<span class='label'><label for='option_"+j+"'>"+$option.text()+"</label></span>";
+                html += "</li>";
+            }
+            $select.before(html);
+        });
+        $select.remove();
+});
+</script>
