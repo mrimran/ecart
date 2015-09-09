@@ -35,7 +35,7 @@
 
 <div class="margin1 products">
 <?php
-    $_productCollection=$this->getProductCollection();
+    $_productCollection=$this->getLoadedProductCollectionpro();
     $_helper = $this->helper('catalog/output');
 ?>
 <?php if(!$_productCollection->count()): ?>
