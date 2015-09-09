@@ -110,7 +110,8 @@ $category_new->url_key;
     </div>
     <div class="columnslider" data-items="3" id="latestproduct">
 
-        <?php $getProductCollectionLatest = $this->getProductCollectionLatest($seller);
+        <?php  
+        $getProductCollectionLatest = $this->getProductCollectionLatest($seller);
         $_helper = $this->helper('catalog/output');
         ?>
                 <?php if (!$getProductCollectionLatest->count() || $seller == 0) : ?>

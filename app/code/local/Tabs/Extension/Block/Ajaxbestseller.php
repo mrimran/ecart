@@ -102,6 +102,7 @@ class Tabs_Extension_Block_Ajaxbestseller extends Mage_Catalog_Block_Product_Abs
             array('sales_count' => $expression))
             ->group('e.entity_id');
             //->order('sales_count' . ' ' . 'desc');
+            $this->_productCollection->addFieldToFilter('status','1');
         //join brand 
            if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brands_ids'); 
