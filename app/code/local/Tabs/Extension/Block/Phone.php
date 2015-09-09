@@ -25,6 +25,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
+            $collection->addFieldToFilter('status','1');
         //join brand 
            if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brand_ids'); 
