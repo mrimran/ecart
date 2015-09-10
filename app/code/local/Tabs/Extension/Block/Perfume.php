@@ -8,7 +8,7 @@ class Tabs_Extension_Block_Perfume extends Mage_Catalog_Block_Product_Abstract {
     public function getLoadedProductCollection()
     { 
 
-      $id = 65;
+      $id = 8;
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();

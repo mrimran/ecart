@@ -7,8 +7,8 @@
     <div class="sectiontitle">
         <h2><span>Perfume & Watches</span></h2>
         <ul class="brandsmenu">
-            <li><a onclick="newproduct1()" id="three">New Products</a></li>
-            <li><a class="active" onclick="bestseller1()" id="four" >Best Sellers</a></li>
+            <li><a onclick="newproduct2()" id="five">New Products</a></li>
+            <li><a class="active" onclick="bestseller2()" id="six" >Best Sellers</a></li>
             <li>
                 <?php
                 $productCollectionbrand = $this->getLoadedProductCollectionbrandnew();
@@ -25,7 +25,7 @@
             </li>
         </ul>
     </div>
-    <div class="columnslider" id="bestseller1" data-items="4">
+    <div class="columnslider" id="bestseller2" data-items="4">
         <?php
         $_productCollection = $this->getLoadedProductCollection();
         $_helper = $this->helper('catalog/output');
@@ -55,7 +55,7 @@
             <?php endforeach ?>
         <?php endif; ?>
     </div>
-    <div class="columnslider" id="newproduct1" data-items="4" >
+    <div class="columnslider" id="newproduct2" data-items="4" >
         <?php
         $productCollection = $this->getLoadedProductCollectionnew();
         $_helper = $this->helper('catalog/output');
@@ -94,25 +94,25 @@
 
 
 <script>
-    function newproduct1() {
-        jQuery('#bestseller1').hide();
-        jQuery('#newproduct1').show();
-        jQuery('#three').addClass("active");
-        jQuery('#four').removeClass("active");
+    function newproduct2() {
+        jQuery('#bestseller2').hide();
+        jQuery('#newproduct2').show();
+        jQuery('#five').addClass("active");
+        jQuery('#six').removeClass("active");
 
     }
-    function bestseller1() {
-        jQuery('#bestseller1').show();
-        jQuery('#newproduct1').hide();
-        jQuery('#four').addClass("active");
-        jQuery('#three').removeClass("active");
+    function bestseller2() {
+        jQuery('#bestseller2').show();
+        jQuery('#newproduct2').hide();
+        jQuery('#five').addClass("active");
+        jQuery('#six').removeClass("active");
     }
 
     jQuery(document).ready(function () {
-        jQuery('#bestseller1').show();
-        jQuery('#newproduct1').hide();
-        jQuery('#four').addClass("active");
-        jQuery('#three').removeClass("active");
+        jQuery('#bestseller2').show();
+        jQuery('#newproduct2').hide();
+        jQuery('#five').addClass("active");
+        jQuery('#six').removeClass("active");
 
     });
 
@@ -124,12 +124,12 @@
             type: 'POST',
             data: {action: 'getLoadedProductCollection', brands_ids: brand},
             beforeSend: function () {
-                jQuery('#bestseller1').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+                jQuery('#bestseller2').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
             },
             success: function (data) {
-                jQuery('#bestseller1').html(data);
+                jQuery('#bestseller2').html(data);
                 //jQuery('#bestsejQueryller1').trigger('refresh.owl.carousel');
-                reinitOwlOnSelector('#bestseller1',4);
+                reinitOwlOnSelector('#bestseller2',4);
             }
         });
 
@@ -139,8 +139,8 @@
             data: {action: 'getLoadedProductCollectionnew', brands_ids: brand},
             success: function (data) {
 
-                jQuery('#newproduct1').html(data);
-                reinitOwlOnSelector('#newproduct1',4);
+                jQuery('#newproduct2').html(data);
+                reinitOwlOnSelector('#newproduct2',4);
             }
         });
         
