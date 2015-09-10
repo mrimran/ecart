@@ -96,6 +96,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
         // if Category filter is on
         if ($catId) {
             $collection->getSelect()->where('c.parent_id = ?', $catId);
+    
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
@@ -122,7 +123,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
 
        $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
        ->addCategoryFilter( $_category)
-       ->addAttributeToFilter('upcomingproduct', 0)
+       //->addAttributeToFilter('upcomingproduct', 0)
        ->addAttributeToSelect('*')
        ->setOrder('entity_id', 'desc')
        ->setPageSize(20);
@@ -137,7 +138,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
       $_category = Mage::getModel('catalog/category')->load($category);
       $_testproductCollection = Mage::getResourceModel('catalog/product_collection')
       ->addCategoryFilter( $_category)
-      ->addAttributeToFilter('upcomingproduct', 0)
+      //->addAttributeToFilter('upcomingproduct', 0)
       ->setOrder('entity_id', 'desc')
       ->addAttributeToSelect('*')
       ->setPageSize(20);

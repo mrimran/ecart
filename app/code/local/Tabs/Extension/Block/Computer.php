@@ -119,7 +119,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
      public function getLoadedProductCollectionbrandnew()
     {
          
-         $id = 7;
+         $id = 39;
         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
         ->addFieldToSelect('*');
         $collection->getSelect()->order('main_table.brand_id ASC');      

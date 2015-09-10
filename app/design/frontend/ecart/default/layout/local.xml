@@ -195,6 +195,7 @@
 				<block type="extension/seller" name="bestSellings" template="catalog/product/bestsellings.phtml"/> 
 				<block type="extension/phone" name="phoneAccessories" template="catalog/product/phoneaccessories.phtml"/>
 				<block type="extension/computer" name="computerAccessories" template="catalog/product/computeraccessories.phtml"/>
+				<block type="extension/perfume" name="perfume" template="catalog/product/perfume.phtml"/>
 				
 				 <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
                 <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">

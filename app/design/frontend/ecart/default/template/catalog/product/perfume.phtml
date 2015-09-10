@@ -1,0 +1,155 @@
+<?php $_Collection = $this->getLoadedProductCollection();
+      $Collection = $this->getLoadedProductCollectionnew();
+      $_helper = $this->helper('catalog/output');
+      if($_Collection->count() || $Collection->count()):
+?>
+<section id="computeraccessories" class="desktop">
+    <div class="sectiontitle">
+        <h2><span>Perfume & Watches</span></h2>
+        <ul class="brandsmenu">
+            <li><a onclick="newproduct2()" id="five">New Products</a></li>
+            <li><a class="active" onclick="bestseller2()" id="six" >Best Sellers</a></li>
+            <li>
+                <?php
+                $productCollectionbrand = $this->getLoadedProductCollectionbrandnew();
+                $_helper = $this->helper('catalog/output');
+                ?>
+                <select onchange="getbrands()" id="brand">
+                    <option value="0">Brands</option>
+                    <?php
+                    foreach ($productCollectionbrand as $brand):
+                        ?>
+                        <option value="<?php echo $brand->option_id; ?>"><?php echo $brand->name; ?></option>
+                    <?php endforeach ?>
+                </select>
+            </li>
+        </ul>
+    </div>
+    <div class="columnslider" id="bestseller2" data-items="4">
+        <?php
+        $_productCollection = $this->getLoadedProductCollection();
+        $_helper = $this->helper('catalog/output');
+        ?>
+        <?php if (!$_productCollection->count()): ?>
+            <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+        <?php else: ?>
+            <?php foreach ($_productCollection as $_product): ?>
+                <div class="col-box" id="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
+                        <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
+                            ?>
+                            <span class="new">new</span>
+                        <?php } ?>
+
+                        <div class="img-box"><div class="abs_center"><!-- <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"> -->
+                                <?php $_imgSize = 210; ?>
+                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                <!-- </a> --></div></div>
+                        <div class="bottom-area">
+                            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        <?php endif; ?>
+    </div>
+    <div class="columnslider" id="newproduct2" data-items="4" >
+        <?php
+        $productCollection = $this->getLoadedProductCollectionnew();
+        $_helper = $this->helper('catalog/output');
+        ?>
+        <?php if (!$productCollection->count()): ?>
+            <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+        <?php else: ?>
+            <?php foreach ($productCollection as $_product): ?>
+                <div class="col-box" id="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
+                        <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
+                            ?>
+                            <span class="new">new</span>
+                        <?php } ?>
+
+                        <div class="img-box"><div class="abs_center"><!-- <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"> -->
+                                <?php $_imgSize = 210; ?>
+                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                <!-- </a> --></div></div>
+                        <div class="bottom-area">
+                            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
+                            <div class="price"><?php echo number_format($_product->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        <?php endif; ?>
+    </div>
+    <div class="clearfix viewmore" align="right"><a href="watches-perfumes-gift-sets.html">View All Products</a></div>
+</section>
+
+
+
+
+
+
+<script>
+    function newproduct2() {
+        jQuery('#bestseller2').hide();
+        jQuery('#newproduct2').show();
+        jQuery('#five').addClass("active");
+        jQuery('#six').removeClass("active");
+
+    }
+    function bestseller2() {
+        jQuery('#bestseller2').show();
+        jQuery('#newproduct2').hide();
+        jQuery('#five').addClass("active");
+        jQuery('#six').removeClass("active");
+    }
+
+    jQuery(document).ready(function () {
+        jQuery('#bestseller2').show();
+        jQuery('#newproduct2').hide();
+        jQuery('#five').addClass("active");
+        jQuery('#six').removeClass("active");
+
+    });
+
+    function getbrands() {
+        var brand = document.getElementById("brand").value
+        //make the ajax call
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestseller/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollection', brands_ids: brand},
+            beforeSend: function () {
+                jQuery('#bestseller2').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+            },
+            success: function (data) {
+                jQuery('#bestseller2').html(data);
+                //jQuery('#bestsejQueryller1').trigger('refresh.owl.carousel');
+                reinitOwlOnSelector('#bestseller2',4);
+            }
+        });
+
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproduct/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollectionnew', brands_ids: brand},
+            success: function (data) {
+
+                jQuery('#newproduct2').html(data);
+                reinitOwlOnSelector('#newproduct2',4);
+            }
+        });
+        
+/*        jQuery(document).ready(function () {
+            jQuery("#computeraccessories").on('change', function (e) {
+                
+            });
+        });*/
+//window.location =("index.php?brands_ids="+brand);
+    }
+</script>
+<?php endif ?>
