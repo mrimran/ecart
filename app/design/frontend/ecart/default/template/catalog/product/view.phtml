@@ -107,7 +107,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                             </div>
         </div>
         <div class="col-sm-4">
-          <div class="__you_saved">You save <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
+          <div class="__you_saved"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
             <?php
  $specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+
  $this->getProduct()->getFinalPrice();
@@ -116,10 +116,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
   $this->getProduct()->getPrice();
                      if($specialprice < $_priceExclTax) { 
                      $yousave =  $_priceExclTax - $specialprice;
-                     echo $yousave;
+                     echo "You save ".$yousave." !";
                      }
                      ?>
-            ! </div>
+            </div>
         </div>
       </div>
       <?php endif; ?>
