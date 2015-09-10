@@ -85,6 +85,12 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
+     public function perfumeAction(){
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+
     public function ajaxbestsellerAction(){
        $block = $this->getLayout()->createBlock('extension/computer')
         ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');

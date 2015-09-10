@@ -92,10 +92,10 @@ class Tabs_Extension_Block_Ajaxlatest extends Mage_Catalog_Block_Product_Abstrac
        $_category = Mage::getModel('catalog/category')->load($id);
        $this->_productCollection = Mage::getResourceModel('catalog/product_collection')
        ->addCategoryFilter($_category)
-       ->addAttributeToFilter('upcomingproduct', 0)
+       //->addAttributeToFilter('upcomingproduct', 0)
        ->addAttributeToSelect('*')
        ->setOrder('entity_id', 'desc')
-       ->setPageSize(20);
+       ->setPageSize(100);
 
       }
                            
