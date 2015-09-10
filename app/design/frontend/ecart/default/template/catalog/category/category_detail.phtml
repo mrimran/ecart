@@ -81,7 +81,15 @@ $category_new->url_key;
 <?php $count = $count + 1; ?>
 </section>
 <?php $_productCollectionseller = $this->getLoadedProductCollectionseller($category); ?>
-<?php if ($_productCollectionseller->count()): ?>
+<?php $_product =  $_productCollectionseller->getFirstItem() ?>
+<?php $seller = $_product->cat_id; ?>
+<?php $getProductCollectionLatest = $this->getProductCollectionLatest($seller); ?>
+<?php foreach ($_productCollectionseller as $_seller): ?>
+            <?php $seller = $_seller->cat_id; ?>
+            <?php break; ?>
+<?php endforeach ?>
+<?php $getProductCollectionLatests = $this->getProductCollectionLatest($seller); ?>
+<?php if ($_productCollectionseller->count() && ($getProductCollectionLatests->count() || $getProductCollectionLatest->count()) ): ?>
 <section id="latestproducts" class="desktop">
     <div class="sectiontitle">
         <h2><span>Latest Products</span></h2>
@@ -138,7 +146,15 @@ $category_new->url_key;
     <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/latest?id=$category" ?>">View All Products</a></div>
 </section>
 <?php endif ?>
-<?php if ($_productCollectionseller->count()): ?>
+<?php $_product =  $_productCollectionseller->getFirstItem() ?>
+<?php $seller = $_product->cat_id; ?>
+<?php $getProductCollectionLatest = $this->getLoadedProductCollectionpro($seller); ?>
+<?php foreach ($_productCollectionseller as $_seller): ?>
+            <?php $seller = $_seller->cat_id; ?>
+            <?php break; ?>
+<?php endforeach ?>
+<?php $getProductCollectionLatests = $this->getLoadedProductCollectionpro($seller); ?>
+<?php if ($_productCollectionseller->count() && ($getProductCollectionLatests->count() || $getProductCollectionLatest->count()) ): ?>
 <section id="bestsellings" class="desktop">
     <div class="sectiontitle">
         <h2><span>Best Sellings</span></h2>
@@ -186,7 +202,15 @@ $_helper = $this->helper('catalog/output');
     <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/seller?id=$category" ?>">View All Products</a></div>
 </section>
 <?php endif ?>
-<?php if ($_productCollectionseller->count()): ?>
+<?php $_product =  $_productCollectionseller->getFirstItem() ?>
+<?php $seller = $_product->cat_id; ?>
+<?php $getProductCollectionLatest = $this->getProductCollectionUpcoming($seller); ?>
+<?php foreach ($_productCollectionseller as $_seller): ?>
+            <?php $seller = $_seller->cat_id; ?>
+            <?php break; ?>
+<?php endforeach ?>
+<?php $getProductCollectionLatests = $this->getProductCollectionUpcoming($seller); ?>
+<?php if ($_productCollectionseller->count() && ($getProductCollectionLatests->count() || $getProductCollectionLatest->count()) ): ?>
 <section id="upcommingproducts" class="desktop">
             <?php
             ?>
