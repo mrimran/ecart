@@ -368,7 +368,7 @@ font-family:'GothamNarrow-Medium', sans-serif;}
 .buyerprotection .protection-list li{color:#303030;font-size:14px;display:inline-block;
 padding-right:18%;padding-top:10px;}
 .buyerprotection .protection-list li:last-child{padding-right:0;}
-.maincontainer .page_menu{position:absolute;top:1740px;left:0;width:auto;z-index:555;}
+.maincontainer .page_menu{position:absolute;top:860px;left:0;width:auto;z-index:555;}
 .maincontainer .page_menu.navfixed{position:fixed;top:40px;}
 .maincontainer .page_menu a{background-color:#2d2e32;color:#fff;display:block;width:40px;height:40px;
 padding:10px;background-image:url(../images/cat-sprite-white.png);background-repeat:no-repeat;

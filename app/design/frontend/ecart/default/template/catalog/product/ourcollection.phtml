@@ -98,7 +98,9 @@
             </a>
         </div>
         <div class="col-sm-5 details">
-            <a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></div>
+            <a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+        <?php echo $this->getPriceHtml($_product, true); ?>
+        </div>
         </div>
         <?php endforeach ?>
         <?php // echo $this->getToolbarHtml() ?>

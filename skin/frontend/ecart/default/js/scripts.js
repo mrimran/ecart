@@ -137,7 +137,7 @@ jQuery(document).ready(function($) {
      // });
      jQuery(function() {
           jQuery(window).scroll(function() {
-               if (jQuery(this).scrollTop() > 1500) {
+               if (jQuery(this).scrollTop() > 750) {
                     jQuery('.page_menu').addClass('navfixed');
                } else {
                     jQuery('.page_menu').removeClass('navfixed');
