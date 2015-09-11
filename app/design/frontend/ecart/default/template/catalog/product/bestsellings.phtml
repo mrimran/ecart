@@ -53,7 +53,9 @@
           </div>
 
           <div class="price"><?php echo number_format( $_product->getPrice(),'1','.',','); ?><i>AED</i></div>
-              <div class="actions">
+          </div>
+          </a>
+          <div class="actions">
               <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                   <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->helper('checkout/cart')->getAddUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                   <?php echo $this->getAddToCartUrl($_product) ?>
@@ -63,8 +65,6 @@
                   <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
               <?php endif; ?>
           </div>
-          </div>
-          </a>
         </div>
       <?php endforeach ?>
       </div>
