@@ -111,13 +111,13 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
     }
 
     public function ajaxnewproductphoneAction(){
-        $block = $this->getLayout()->createBlock('extension/phone')
+        $block = $this->getLayout()->createBlock('extension/perfume')
         ->setTemplate('catalog/product/newproductsajax.phtml');
          $this->getResponse()->setBody($block->toHtml());
 
     }
     public function ajaxbestsellerperfumeAction(){
-        $block = $this->getLayout()->createBlock('extension/phone')
+        $block = $this->getLayout()->createBlock('extension/perfume')
         ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');
          $this->getResponse()->setBody($block->toHtml());
     }
