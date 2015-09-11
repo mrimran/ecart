@@ -332,7 +332,7 @@ $_helper = $this->helper('catalog/output');
     }
 
     function getUpcoming(cat_id) {
-        jQuery("li a.active").removeClass("active");
+        jQuery("#item1 a.active").removeClass("active");
         jQuery("#item1" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxupcoming/',
