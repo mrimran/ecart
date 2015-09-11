@@ -8,7 +8,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
     public function getLoadedProductCollection()
     { 
 
-      $id = 39;
+      $id = 8;
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
@@ -75,7 +75,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
 
     protected function _getProductCollection()
     {
-        $id = 39;
+        $id = 8;
         $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $collection = Mage::getResourceModel('catalog/product_collection');
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
@@ -119,7 +119,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
      public function getLoadedProductCollectionbrandnew()
     {
          
-         $id = 39;
+         $id = 8;
         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
         ->addFieldToSelect('*');
         $collection->getSelect()->order('main_table.brand_id ASC');      
