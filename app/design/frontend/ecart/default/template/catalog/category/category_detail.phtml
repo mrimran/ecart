@@ -334,7 +334,7 @@ $_helper = $this->helper('catalog/output');
 
     });
     function getLatest(cat_id) {
-        jQuery("li a.active").removeClass("active");        
+        jQuery("#item a.active").removeClass("active");        
         jQuery("#item" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxlatestproduct/',
@@ -351,7 +351,7 @@ $_helper = $this->helper('catalog/output');
     }
 
     function getBestseller(cat_id) {
-        jQuery("li a.active").removeClass("active"); 
+        jQuery("#items a.active").removeClass("active"); 
         jQuery("#items" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerproduct/',
@@ -368,7 +368,7 @@ $_helper = $this->helper('catalog/output');
     }
 
     function getUpcoming(cat_id) {
-        jQuery("li a.active").removeClass("active");
+        jQuery("#item1 a.active").removeClass("active");
         jQuery("#item1" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxupcoming/',
