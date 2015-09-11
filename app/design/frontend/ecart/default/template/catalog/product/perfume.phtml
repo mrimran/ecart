@@ -3,7 +3,7 @@
       $_helper = $this->helper('catalog/output');
       if($_Collection->count() || $Collection->count()):
 ?>
-<section id="computeraccessories" class="desktop">
+<section id="perfumewatches" class="desktop">
     <div class="sectiontitle">
         <h2><span>Perfume & Watches</span></h2>
         <ul class="brandsmenu">
@@ -104,15 +104,15 @@
     function bestseller2() {
         jQuery('#bestseller2').show();
         jQuery('#newproduct2').hide();
-        jQuery('#five').addClass("active");
-        jQuery('#six').removeClass("active");
+        jQuery('#six').addClass("active");
+        jQuery('#five').removeClass("active");
     }
 
     jQuery(document).ready(function () {
         jQuery('#bestseller2').show();
         jQuery('#newproduct2').hide();
-        jQuery('#five').addClass("active");
-        jQuery('#six').removeClass("active");
+        jQuery('#six').addClass("active");
+        jQuery('#five').removeClass("active");
 
     });
 
@@ -120,7 +120,7 @@
         var brand = document.getElementById("brand").value
         //make the ajax call
         jQuery.ajax({
-            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestseller/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerperfume/',
             type: 'POST',
             data: {action: 'getLoadedProductCollection', brands_ids: brand},
             beforeSend: function () {
@@ -134,7 +134,7 @@
         });
 
         jQuery.ajax({
-            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproduct/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproductperfume/',
             type: 'POST',
             data: {action: 'getLoadedProductCollectionnew', brands_ids: brand},
             success: function (data) {
