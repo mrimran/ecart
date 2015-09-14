@@ -131,6 +131,7 @@
 
     function getbrands() {
         var brand = document.getElementById("brand").value
+        
         //make the ajax call
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestseller/',

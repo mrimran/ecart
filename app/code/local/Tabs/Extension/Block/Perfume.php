@@ -27,13 +27,13 @@ class Tabs_Extension_Block_Perfume extends Mage_Catalog_Block_Product_Abstract {
             ->order('sales_count' . ' ' . 'desc');
             $collection->addFieldToFilter('status','1');
         //join brand 
-           if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
+          /* if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brands_ids'); 
                $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
                array('brand_id' => 'br.option_id'));
-        }
+        } */
 
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
@@ -145,6 +145,17 @@ class Tabs_Extension_Block_Perfume extends Mage_Catalog_Block_Product_Abstract {
 
     }
 
-   
+    public function getproductsids()
+    {
+      if($this->getRequest()->getParam('brands_id')!= null ){      
+      $brands_ids = $this->getRequest()->getParam('brands_id');
+      $id = 8;
+      $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+        ->addFieldToSelect('product_ids');
+      $collection->getSelect()->where('option_id = ?', $brands_ids);  
+      
+      }
+      return $collection;
+    }   
 
 }

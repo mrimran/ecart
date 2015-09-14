@@ -136,7 +136,7 @@
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerperfume/',
             type: 'POST',
-            data: {action: 'getLoadedProductCollection', brands_ids: brand},
+            data: {action: 'getLoadedProductCollection', brands_id: brand},
             beforeSend: function () {
                 jQuery('#bestseller2').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
             },
@@ -150,7 +150,7 @@
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproductperfume/',
             type: 'POST',
-            data: {action: 'getLoadedProductCollectionnew', brands_ids: brand},
+            data: {action: 'getLoadedProductCollectionnew', brands_id: brand},
             success: function (data) {
 
                 jQuery('#newproduct2').html(data);
