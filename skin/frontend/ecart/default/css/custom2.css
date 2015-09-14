@@ -253,7 +253,9 @@ display:inline-block;}
 #itoris_instantsearch_categories_filter{width:200px;font-size:14px;top:8px;}
 #search_mini_form #search{left:212px;text-indent: 0 !important;}
 #search_mini_form #itoris_instantsearch_autocomplete{left: 212px !important;}
-#search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;top:10px;}
+#search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;top:10px;
+font-size:14px;}
+#search_mini_form #itoris_instantsearch_categories_dropdown option{line-height:1.5;}
 #search_mini_form #itoris_instantsearch_categories{left:5px !important;position: relative;}
 #search_mini_form button.search-button{position:relative;display:inline-block;left:170px;}
 #search_mini_form #itoris_instantsearch{left:212px !important;}
