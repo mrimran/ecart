@@ -155,7 +155,7 @@ body.cms-index-index .mainheadnav .catgories a span{display:none;}
 .mainheadnav .searchform{padding:5px;position:relative;height:50px;}
 .mainheadnav .searchform .search-category-menu{display:none;}
 .mainheadnav .searchform .all-search-cats{width:38%;display:inline-block;position:relative;}
-.mainheadnav .searchform .all-search-cats select{width:100%;}
+.mainheadnav .searchform .all-search-cats select{width:100%;font-size:14px;outline:none;}
 .mainheadnav .searchform .all-search-cats a{display:block;cursor:pointer;}
 .mainheadnav .searchform .all-search-cats a h3{padding:12px 0;text-align:center;font-size:14px;
 color:#575757;text-transform:uppercase;border-right:1px solid #eaeaea;}
@@ -184,7 +184,7 @@ background-color:#fff;border-top:1px solid #eaeaea;line-height:1.5;}
 .mainheadnav .searchform input{padding:9px 50px 8px 10px;line-height:1.5;width:100%;border:0;
 font-size:14px;width:61%;display:inline-block;outline:none;border-left:1px solid #cdcdcd;}
 .mainheadnav .searchform .mg{font-weight:300;color:#cdcdcd;background:none;border:0;display:block;
-border-left:1px solid #cdcdcd;position:absolute;top:0px;right:-21px;height: 38px;padding:0 16px;}
+border-left:1px solid #cdcdcd;position:absolute;top:0px;right:0px;height: 38px;padding:0 16px;}
 .mainheadnav .searchform .mg:focus,.mainheadnav .searchform .mg:hover{/*color:#f57a20;*/outline:none;}
 .mainheadnav .minicart a img{vertical-align:middle;/*height:18px;*/}
 /* Main Menu */

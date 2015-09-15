@@ -251,7 +251,7 @@ display:inline-block;}
 .listing-suggest .product-image img{max-height:200px;width:auto;}
 #search_mini_form .input-box label{display:none;}
 #itoris_instantsearch_categories_filter{width:200px;font-size:14px;top:8px;}
-#search_mini_form #search{left:212px;text-indent: 0 !important;}
+#search_mini_form #search{/*left:212px;text-indent: 0 !important;*/}
 #search_mini_form #itoris_instantsearch_autocomplete{left: 212px !important;}
 #search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;top:10px;
 font-size:14px;}
