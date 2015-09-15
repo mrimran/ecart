@@ -190,7 +190,8 @@ border-left:1px solid #cdcdcd;position:absolute;top:0px;right:-21px;height: 38px
 /* Main Menu */
 .maincontainer .mainmenu{padding:0;margin:0;background-color:#FFF;height:400px;}
 .mainmenu.flymenu{position:absolute;z-index:99999;max-width:1144px;display:none;width:100%;
-border-top:1px solid #eaeaea;top:199px;}
+border-top:1px solid #eaeaea;top:50px;}
+.mainheadnav .container{position:relative;}
 .mainmenu.flymenu .nav-container{min-height:400px;top:0;}
 .megamenurightimage img{max-width:100%;}
 .maincontainer .mainmenu > .top{list-style-type:none;margin:0;padding:0;}
