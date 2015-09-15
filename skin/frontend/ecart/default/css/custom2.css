@@ -147,7 +147,7 @@ p.required{color:red;}
 .separator{color:#eaeaea;}
 .shopbybrand-list .filterbar,.shopbybrand-list .brands{/*display:none;*/}
 .shopbybrand-list .brands li{width:20%;padding:3px;border:1px solid #eee;margin:0 !important;height:auto;}
-.shopbybrand-list .brands li a{display:block;background-color:#f6f6f6;padding:15px;}
+.shopbybrand-list .brands li a{display:block;background-color:#f6f6f6;padding:15px;height:65px;}
 .shopbybrand-list .brands li a:hover{background-color:#303030;color:#fff;}
 .shopbybrand-list .brands li a .box{max-width:100%;width:auto;font-size:14px;}
 .shopbybrand-list .brands li a:hover .box{color:#fff;}

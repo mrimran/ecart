@@ -965,7 +965,7 @@ margin-bottom: 20px;width:100%;}
 table.cart_summary td{vertical-align:middle;}
 table.sub_summary{width:100%;}
 table.sub_summary td{padding:8px 20px;}
-table.sub_summary td{color:#2d2e32;font-size:18px;font-weight:600;}
+table.sub_summary td{color:#2d2e32;font-size:18px;font-weight:600;width:50%;}
 table.sub_summary td.price{color:#f57a20;}
 .cart_summary .buyerprotection .shield{background-size:auto 75px;}
 .cart_summary .buyerprotection .title-big{font-weight:100;}
