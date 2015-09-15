@@ -119,7 +119,8 @@ abstract class Mage_Catalog_Model_Layer_Filter_Abstract extends Varien_Object
         if (is_null($this->_items)) {
             $this->_initItems();
         }
-        return asort($this->_items);
+        asort($this->_items);
+        return $this->_items;
     }
 
     /**
