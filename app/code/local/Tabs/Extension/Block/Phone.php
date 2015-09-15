@@ -125,7 +125,8 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
         $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
         $condition,
         array('product_id' => 'main_table.product_ids'));
-        $collection->getSelect()->where('ccp.category_id = ?', $id);
+       echo $collection->getSelect()->where('ccp.category_id = ?', $id);
+       exit;
         return $collection;
         /*$brand = $collection;
         foreach ($brand as $brands):
