@@ -95,19 +95,19 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <div class="row">
         <div class="col-sm-8">
           <div class="price">
-                                <?php
-                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
-                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
-                                ?>
-                                    <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
-                                    <span class="not-now">
-                                    <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
-                                    </span>
-                            <?php endif; ?>
-                            </div>
+                <?php
+                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                ?>
+                    <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                    <span class="not-now">
+                    <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
+                    </span>
+            <?php endif; ?>
+            </div>
         </div>
         <div class="col-sm-4">
-          <div class="__you_saved"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
+          <div class="__you_saved"><?php $currsymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
             <?php
  $specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+
  $this->getProduct()->getFinalPrice();
@@ -116,7 +116,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
   $this->getProduct()->getPrice();
                      if($specialprice < $_priceExclTax) { 
                      $yousave =  $_priceExclTax - $specialprice;
-                     echo "You save ".$yousave." !";
+                     echo "You save ".$yousave.$currsymbol." !";
                      }
                      ?>
             </div>
