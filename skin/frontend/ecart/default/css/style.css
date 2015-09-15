@@ -313,7 +313,7 @@ box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);}
 .maincontainer .columnslider .col-box .discount,.maincontainer .columnslider .col-box .new,
 .maincontainer .products .product .discount,.maincontainer .products .product .new{
 text-transform:uppercase;background-color:#5a5f65;font-size:10px;position:absolute;top:12px;
-left:12px;padding:7px;color:#fff;z-index:555;border-radius:300px;line-height:2.6;height:40px;
+left:12px;padding:7px 0;color:#fff;z-index:555;border-radius:300px;line-height:2.6;height:40px;
 width:40px;text-align:center;}
 .maincontainer .columnslider .col-box .new,.maincontainer .products .product .new{
 background-color:#f57c20;}
@@ -408,7 +408,8 @@ padding-bottom:1px;}
 #features .features-item p{font-size:12px;line-height:1.2;margin-bottom:15px;color:#949494;}
 .maincontainer #sponsors{padding-bottom:40px;}
 .maincontainer #sponsors img{max-width:100%;}
-.maincontainer #sponsors .sponsorlogo{background-color:#f6f6f6;border:1px solid #f3f3f3;margin-top:30px}
+.maincontainer #sponsors .sponsorlogo{background-color:#f6f6f6;border:1px solid #f3f3f3;
+margin-top:30px;text-align:center;}
 .site-footer{background-color:#f6f6f6;}
 .site-footer .footer-main{padding:35px 0;border-bottom:1px solid #f0f0f0;}
 .site-footer .footer-bottom{background-color:#f6f6f6;padding:10px 0;border-top:1px solid #dddddd;}
@@ -581,7 +582,9 @@ vertical-align:top;}
 .products .product.grid ul{display:none;}
 .products .product.grid .details, .products .product.grid .price-info{width:100%;min-height:inherit;}
 .products .product.grid .specs,.products .product.grid .stocks-update{display:none;}
-.products .product.grid a.title{font-family:inherit;font-size:14px;font-weight:600;}
+.products .product.grid a.title{font-family:inherit;font-size:14px;font-weight:600;height:52px;
+display:block;overflow:hidden;}
+.products .product.grid a.title:after{content:'...';}
 .products .product.grid .__rating{margin-bottom:0;}
 .products .product.grid .price-info{padding-top:0;}
 .products .product.grid .wishlist{margin-top:15px;margin-bottom:5px;}
