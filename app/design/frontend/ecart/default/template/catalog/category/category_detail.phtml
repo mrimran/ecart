@@ -105,7 +105,7 @@ $category_new->url_key;
         <h2><span>Latest Products</span></h2>
             <?php $_helper = $this->helper('catalog/output');
             ?>
-        <ul class="brandsmenu">
+        <ul class="brandsmenu" id="brandsLatestProducts">
                 <?php $_columnCount = $this->getColumnCount(); ?>
                 <?php $i = 0;?>
                 <?php $_product =  $_productCollectionseller->getFirstItem() ?>
@@ -175,7 +175,7 @@ $category_new->url_key;
 <section id="bestsellings" class="desktop">
     <div class="sectiontitle">
         <h2><span>Best Sellings</span></h2>
-        <ul class="brandsmenu">
+        <ul class="brandsmenu" id="brandsBestSellings">
             <?php $_product =  $_productCollectionseller->getFirstItem() ?>
                 <li id="items<?php echo $_product->cat_id; ?>"><a onclick="getBestseller(<?php echo $_product->cat_id ?>)" ><?php echo $_product->cat_name; ?></a></li>
             <?php foreach ($_productCollectionseller as $_seller): ?>
@@ -239,7 +239,7 @@ $_helper = $this->helper('catalog/output');
             ?>
     <div class="sectiontitle">
         <h2><span>Upcomming Products</span></h2>
-        <ul class="brandsmenu">
+        <ul class="brandsmenu" id="brandsUpComing">
     <?php $_product =  $_productCollectionseller->getFirstItem() ?>
     <li id="item1<?php echo $_product->cat_id; ?>"><a onclick="getUpcoming(<?php echo $_product->cat_id ?>)"><?php echo $_product->cat_name; ?></a></li>
     <?php foreach ($_productCollectionseller as $_seller): ?>
@@ -298,7 +298,7 @@ $_helper = $this->helper('catalog/output');
 
     });
     function getLatest(cat_id) {
-        jQuery("#item a.active").removeClass("active");
+        jQuery('#brandsLatestProducts li a').removeClass("active");
         jQuery("#item" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxlatestproduct/',
@@ -315,7 +315,7 @@ $_helper = $this->helper('catalog/output');
     }
 
     function getBestseller(cat_id) {
-        jQuery("#items a.active").removeClass("active");
+        jQuery('#brandsBestSellings li a').removeClass("active");
         jQuery("#items" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerproduct/',
@@ -332,7 +332,7 @@ $_helper = $this->helper('catalog/output');
     }
 
     function getUpcoming(cat_id) {
-        jQuery("#item1 a.active").removeClass("active");
+        jQuery('#brandsUpComing li a').removeClass("active");
         jQuery("#item1" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxupcoming/',
