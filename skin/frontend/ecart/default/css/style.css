@@ -378,7 +378,7 @@ font-family:'GothamNarrow-Medium', sans-serif;}
 .buyerprotection .protection-list li{color:#303030;font-size:14px;display:inline-block;
 padding-right:18%;padding-top:10px;}
 .buyerprotection .protection-list li:last-child{padding-right:0;}
-.maincontainer .page_menu{position:absolute;top:860px;left:0;width:auto;z-index:555;}
+.maincontainer .page_menu{position:absolute;top:940px;left:0;width:auto;z-index:555;}
 .maincontainer .page_menu.navfixed{position:fixed;top:40px;}
 .maincontainer .page_menu a{background-color:#2d2e32;color:#fff;display:block;width:40px;height:40px;
 padding:10px;background-image:url(../images/cat-sprite-white.png);background-repeat:no-repeat;
@@ -493,6 +493,9 @@ font-size:16px;text-transform:uppercase;}
 .maincontainer .filters .heading span.plus .fa.fa-plus-square-o{display:inline-block;}
 .maincontainer .filters ul{list-style-type:none;}
 .maincontainer .filters ul li{padding:12px 15px;border-bottom:1px solid #eaeaea;}
+.maincontainer .filters ul.more li:nth-child(n+10){display:none;}
+.maincontainer .filters a.showmoreless{display:block;line-height:1.5;padding:5px 10px;
+font-size:12px;cursor:pointer;}
 .maincontainer .filters ul li label{color:#303030;text-transform:uppercase;font-family:'GothamNarrow-Book', sans-serif;font-size:12px;font-weight:100;cursor:pointer;}
 .maincontainer .filters ul li label:hover{color:#f57a20;}
 .maincontainer .filters ul li label input{padding-right:15px;display:inline-block;width:25px;

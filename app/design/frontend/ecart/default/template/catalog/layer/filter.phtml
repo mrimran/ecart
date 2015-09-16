@@ -47,7 +47,11 @@ $path = $url->getPath();
         <?php }*/ ?>
         <?php $str = strtolower($_item->getLabel()); ?>
         <?php  if (strpos($path, $str) == false) { ?>    
-                
+        
+        <li><?php echo $_item->getLabel() ?></li>
+        <li><?php echo $_item->getLabel() ?></li>
+        <li><?php echo $_item->getLabel() ?></li>
+        <li><?php echo $_item->getLabel() ?></li>
         <li>
             <?php if ($_item->getCount() > 0): ?>
                 <?php /* commenting default

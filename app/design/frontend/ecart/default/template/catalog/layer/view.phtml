@@ -63,11 +63,32 @@ $hiddenFilters = array();
                             <?php if ($_filter->getItemsCount()): ?>
                                 <a class="heading" data-id="<?php echo $this->__($_filter->getName()) ?>"><h2><?php echo $this->__($_filter->getName()) ?></h2><span><i class="fa fa-minus-square-o"></i><i class="fa fa-plus-square-o"></i></span></a>
                                 <ul id="<?php echo $this->__($_filter->getName()) ?>"><?php echo $_filter->getHtml() ?></ul>
+                                <div id="<?php echo $this->__($_filter->getName()) ?>ML" style="display:none;" class="buttons-set"><a class="showmoreless" id="<?php echo $this->__($_filter->getName()) ?>SMT">More/less</a></div>
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    var CNT = jQuery("#<?php echo $this->__($_filter->getName()) ?> li").length;
+                    console.log(CNT);
+                    if(CNT > 10){
+                    jQuery("#<?php echo $this->__($_filter->getName()) ?>").addClass('more');
+                    jQuery("#<?php echo $this->__($_filter->getName()) ?>ML").show().find('a').text('Show More');
+                    }
+                    jQuery("#<?php echo $this->__($_filter->getName()) ?>SMT").click(function(){
+                        jQuery("#<?php echo $this->__($_filter->getName()) ?>").toggleClass('more');
+                        if (jQuery("#<?php echo $this->__($_filter->getName()) ?>").hasClass('more')){
+                            jQuery("#<?php echo $this->__($_filter->getName()) ?>ML").show().find('a').text('Show More');
+                        }
+                        else{
+                            jQuery("#<?php echo $this->__($_filter->getName()) ?>ML").show().find('a').text('Show Less');
+                        }
+                    });
+                });
+                </script>
                             <?php endif; ?>
                         </div>
                         <?php endforeach; ?>
                 </div>
                 <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+               
             <?php endif; ?>
         </div>
     </div>
