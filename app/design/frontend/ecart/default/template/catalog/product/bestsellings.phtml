@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <div class="price"><?php echo number_format( $_product->getPrice(),'1','.',','); ?><i>AED</i></div>
+          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
           </div>
           </a>
           <div class="actions">

@@ -97,10 +97,16 @@
 					</div>
 					<div class="col-sm-3 relative price-info">
 					<div class="price">
-               <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
-               <span class="not-now">
-					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
-               </div>
+                                <?php
+                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                                ?>
+
+                                <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                                    <span class="not-now">
+                                        <?php echo $_formattedActualPrice; ?></span>
+                                <?php endif; ?>
+                                </div>
 					<?php $productCollection=$this->getTotalOrder($_product->getId());
                           $_helper = $this->helper('catalog/output');?>
                      <?php if(!$productCollection->count()): ?>
@@ -180,11 +186,16 @@
 					?>
                
 					<div class="price">
-					 <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
-               <span class="not-now">
-               <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
-					 </span>
-               </div>
+                                <?php
+                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                                ?>
+
+                                <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                                    <span class="not-now">
+                                        <?php echo $_formattedActualPrice; ?></span>
+                                <?php endif; ?>
+                                </div>
 					<?php $productCollection=$this->getTotalOrder($_product->getId());
                           $_helper = $this->helper('catalog/output');?>
                      <?php if(!$productCollection->count()): ?>
