@@ -61,7 +61,7 @@
     font-size: 15px;
     font-size: 15px;
     color: rgb( 58, 58, 58);
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .checkout-onepage-index .mini-products-list .product-details .product-name a {
@@ -135,8 +135,9 @@
 .checkout-onepage-index .block-content {
     padding: 15px;
     border: 1px solid #eaeaea;
-    margin: 0;
+    margin:0;
 }
+.minicart-bottom .block-content{padding:0;border:0;margin:0;}
 
 .checkout-onepage-index .block-content li.item {
     margin: 0 0 8px 0;
@@ -154,10 +155,11 @@
 .checkout-onepage-index p.subtotal {}
 
 .checkout-onepage-index .mini-products-list .product-details {
-    float: right;
+    /*float: right;*/
     width: 66%;
+    padding-left:10px;
 }
-
+.checkout-onepage-index #co-payment-form input[type="radio"]{display:inline;margin:0;vertical-align:middle;}
 ._1 {
     font-size: 14px;
     color: rgb( 58, 58, 58);
@@ -360,13 +362,13 @@
 .checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.checkbox {
     float: left;
     margin-right: -40px;
-    margin-top: 7px;
+    margin-top:11px;
     margin-left: 8px;
 }
-
+.checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio{margin-top:8px;}
 .checkout-onepage-index .sp-methods dt#dt_method_ccsave label,
 .checkout-onepage-index .sp-methods #dt_method_checkmo label,
-/*.checkout-onepage-index .sp-methods label,*/
+.checkout-onepage-index .sp-methods label,
 .checkout-onepage-index .sp-methods #dt_method_cybersourcesa label,
 .product-options ul.options-list label,
 .form-list .control label {
@@ -603,9 +605,7 @@
     margin: 5px 0;
 }
 
-.sp-methods dd li .price {
-    font-size: inherit;
-}
+.sp-methods dd li .price,.sp-methods dd li,.sp-methods dd{font-size:15px;}
 
 .sp-methods dd ul {
     margin-bottom: 0;

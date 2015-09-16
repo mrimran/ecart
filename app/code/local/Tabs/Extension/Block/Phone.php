@@ -6,7 +6,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
     protected $_productsCount = null;
     const DEFAULT_PRODUCTS_COUNT = 10;
 
-       public function getLoadedProductCollection()
+    public function getLoadedProductCollection()
     { 
        
        $id = 29;
@@ -25,14 +25,15 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
+            $collection->addFieldToFilter('status','1');
         //join brand 
-           if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
+          /* if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brand_ids'); 
-               $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
+               $condition = new Zend_Db_Expr("br.option_id = $brand_id");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
                array('brand_id' => 'br.option_id'));
-        }
+        } */
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -116,15 +117,16 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
     
       public function getLoadedProductCollectionbrand()
     {
-         $id = 6;
+         $id = 29;
         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
-        ->addFieldToSelect('*');
+        ->addFieldToSelect('*')
+        ->addFieldToFilter('is_featured',array('gteq'=>0));
         $collection->getSelect()->order('main_table.brand_id ASC');      
         $condition = new Zend_Db_Expr("main_table.product_ids = ccp.product_id");
         $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
         $condition,
         array('product_id' => 'main_table.product_ids'));
-        $collection->getSelect()->where('ccp.category_id = ?', $id)->limit(5);
+        $collection->getSelect()->where('ccp.category_id = ?', $id);
         return $collection;
         /*$brand = $collection;
         foreach ($brand as $brands):
@@ -142,7 +144,20 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
 
     }
 
-   
+   public function getproductsids()
+    {
+      
+      
+      if($this->getRequest()->getParam('brand_ids')!= null ){      
+      $brands_ids = $this->getRequest()->getParam('brand_ids');
+      $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+        ->addFieldToSelect('product_ids');
+      $collection->getSelect()->where('option_id = ?', $brands_ids);  
+      
+      }
+      return $collection;
+      
+    }
 
 
 }

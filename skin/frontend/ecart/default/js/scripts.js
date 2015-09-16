@@ -56,13 +56,23 @@ jQuery(document).ready(function($) {
        jQuery(this).parent().parent().slideUp();
      });
 
-     jQuery('.product-meta-select li').click(function() {
-          var id = jQuery(this).parent().attr('data-id');
+     jQuery('.product-options .options-list li label').click(function() {
+          var id = jQuery(this).parent().parent().parent().parent().parent().attr('data-id');
           var value = jQuery(this).text();
-          jQuery('[data-id=' + id + '] li').removeClass('active');
-          jQuery(this).addClass('active');
-          jQuery('#' + id + ' .selected-value').html(value);
-          //console.log(id,value);
+          jQuery('[data-id=' + id + '] .input-box ul li').removeClass('active');
+          jQuery(this).parents('li').addClass('active');
+          jQuery('#'+id+'.selected-value').html(value);
+          console.log(id,value);
+     });
+
+
+     jQuery('.product-custom-option').change(function() {
+          var id = jQuery(this).parent().parent().attr('data-id');
+          var value = jQuery(this).find('option:selected').text();
+          // jQuery('[data-id=' + id + '] .input-box ul li').removeClass('active');
+          // jQuery(this).parents('li').addClass('active');
+          jQuery('#'+id+'.selected-value').html(value);
+          console.log(value);
      });
 
 
@@ -127,7 +137,7 @@ jQuery(document).ready(function($) {
      // });
      jQuery(function() {
           jQuery(window).scroll(function() {
-               if (jQuery(this).scrollTop() > 1500) {
+               if (jQuery(this).scrollTop() > 750) {
                     jQuery('.page_menu').addClass('navfixed');
                } else {
                     jQuery('.page_menu').removeClass('navfixed');

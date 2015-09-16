@@ -25,14 +25,17 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
+            $collection->addFieldToFilter('status','1');
         //join brand 
-           if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
-               $brand_id = $this->getRequest()->getParam('brands_ids'); 
+          /* if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
+               $brand_id = $this->getRequest()->getParam('brands_ids');
+               $productids = $this->getproductsids();
+               //foreach()
                $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
                array('brand_id' => 'br.option_id'));
-        }
+        } */
 
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
@@ -53,7 +56,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         
         // if Category filter is on
         if ($catId) {
-            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);      
+             $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);     
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
@@ -118,7 +121,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
      public function getLoadedProductCollectionbrandnew()
     {
          
-         $id = 7;
+         $id = 39;
         $collection = Mage::getModel('shopbybrand/brand')->getCollection()
         ->addFieldToSelect('*');
         $collection->getSelect()->order('main_table.brand_id ASC');      
@@ -142,6 +145,19 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
           endforeach;     
         endforeach;*/
 
+    }
+
+    public function getproductsids()
+    {
+      if($this->getRequest()->getParam('brands_ids')!= null){      
+      $brands_ids = $this->getRequest()->getParam('brands_ids');
+      $id = 6;
+      $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+        ->addFieldToSelect('product_ids');
+      $collection->getSelect()->where('option_id = ?', $brands_ids);  
+      
+      }
+      return $collection;
     }
 
    

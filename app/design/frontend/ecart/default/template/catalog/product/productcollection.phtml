@@ -67,11 +67,10 @@
                
 					</div>
 					<div class="col-sm-5 details">
-						
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
                         <div class="ratings">
                       <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
+                            <div class="rating-box">
                                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
                             </div>
                             <?php if($summaryData['reviews_count'] > 1) {?>
@@ -85,7 +84,6 @@
                                  <div class="rating" style="width:0%"></div>
                             </div>
                             <?php } ?>
-                            
                         </div>
 
             <ul>
@@ -110,13 +108,21 @@
                        <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">
-               
                <?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                <?php echo $this->__('In Stock') ?>
                <?php else: ?>
                <?php echo $this->__('Out of stock') ?>
                  <?php endif ?>
                </h5>
+          <div class="actions">
+            <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+            <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+            <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+            <?php endif; ?>
+          </div>
 					</div>
 				</div>
     		 <?php endforeach; ?>
@@ -131,8 +137,6 @@
     <?php $_columnCount = $this->getColumnCount(); ?>
     
     
-    
-    
     <div class="clearfix">
     <?php $i=0; foreach ($_productCollection as $_product): ?>
 				<div class="product clearfix grid">
@@ -145,8 +149,6 @@
                          alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
                      </div></div>
                 </a>
-               
-               
 					</div>
 					<div class="col-sm-5 details">
 						<a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
@@ -166,10 +168,8 @@
                                  <div class="rating" style="width:0%"></div>
                             </div>
                             <?php } ?>
-                            
                         </div>
 
-						
 					</div>
 					<div class="col-sm-3 relative price-info">
                
@@ -195,6 +195,15 @@
                       <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">25 pcs on Stock</h5>
+          <div class="actions">
+            <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+            <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+            <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+            <?php endif; ?>
+          </div>
 					</div>
 				</div>
 				 <?php endforeach ?>

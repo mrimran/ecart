@@ -424,6 +424,19 @@
         </reference>
     </extension_index_computer>
 
+    <extension_index_perfume>
+        <!-- extensionseller -->
+        <reference name="head">
+            <action method="setTitle">
+                <title>Perfume</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="extension/perfume" name="bestsellerajax" as="bestsellerajax"  template="catalog/product/perfume.phtml">
+                </block>  
+        </reference>
+    </extension_index_perfume>
+
  <extension_index_new>
  	<reference name="head">
             <action method="setTitle">

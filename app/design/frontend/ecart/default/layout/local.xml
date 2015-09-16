@@ -195,6 +195,7 @@
 				<block type="extension/seller" name="bestSellings" template="catalog/product/bestsellings.phtml"/> 
 				<block type="extension/phone" name="phoneAccessories" template="catalog/product/phoneaccessories.phtml"/>
 				<block type="extension/computer" name="computerAccessories" template="catalog/product/computeraccessories.phtml"/>
+				<block type="extension/perfume" name="perfume" template="catalog/product/perfume.phtml"/>
 				
 				 <block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/content.phtml">
                 <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
@@ -303,6 +304,8 @@
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 			</reference>
 			
+
+			
 			</catalog_category_layered>
 			
 			
@@ -348,7 +351,7 @@
 				<action method="setBlockId"><block_id>productdetailpagefirststaticblock</block_id></action>
 				</block>-->
 
-				<block type="core/template" name="useralsovieweddetailpage" template="catalog/product/useralsoviewed.phtml" />
+				<!-- <block type="core/template" name="useralsovieweddetailpage" template="catalog/product/useralsoviewed.phtml" /> -->
 
 				
 				<block type="review/product_view_list" name="product.info.product_additional_data" as="product_review" template="review/product/view/list.phtml">

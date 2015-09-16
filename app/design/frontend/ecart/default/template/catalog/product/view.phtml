@@ -75,7 +75,7 @@
                      ->addAttributeToSelect('name')
                      ->addAttributeToSelect('url')
                      ->addAttributeToFilter('entity_id', $currentCatIds)
-                     ->addIsActiveFilter();                     
+                     ->addIsActiveFilter();
                      foreach($categoryCollection as $cat){ ?>
                           <a href="<?php echo $cat->getUrl($_category); ?>"><?php echo $cat->getName(); ?></a></div>
 
@@ -94,10 +94,20 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php if($_product->getTypeId() != 'grouped' ): ?>
       <div class="row">
         <div class="col-sm-8">
-          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+          <div class="price">
+                <?php
+                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                ?>
+                    <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                    <span class="not-now">
+                    <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
+                    </span>
+            <?php endif; ?>
+            </div>
         </div>
         <div class="col-sm-4">
-          <div class="__you_saved">You save <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
+          <div class="__you_saved"><?php // $currsymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
             <?php
  $specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+
  $this->getProduct()->getFinalPrice();
@@ -106,10 +116,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
   $this->getProduct()->getPrice();
                      if($specialprice < $_priceExclTax) { 
                      $yousave =  $_priceExclTax - $specialprice;
-                     echo $yousave;
+                     echo "You save ".$yousave." !";
                      }
                      ?>
-            ! </div>
+            </div>
         </div>
       </div>
       <?php endif; ?>
@@ -129,78 +139,25 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
         : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
         </div>
+        <br>
       <?php endif ?>
       <?php if($_product->warrenty): ?>
-      <div class="__warrenty"><strong>
-        <?php  echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel();  ?>
-        :</strong> <?php echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product); ?> </div>
+      <!-- <div class="__warrenty"><strong>
+        <?php //echo  $_product->getResource()->getAttribute('warrenty')->getFrontendLabel();  ?>
+        :</strong> <?php //echo $_product->getResource()->getAttribute('warrenty')->getFrontend()->getValue($_product); ?> </div> -->
       <?php else: ?>
       <br/>
       <?php endif ?>
-      <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
-        <?php if($_product->color): ?>
-        <div class="panel">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <?php  
-           echo  $_product->getResource()->getAttribute('color')->getFrontendLabel();   
-           ?>
-                <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
-
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                <?php if($_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)):?>
-                <ul class="product-meta-select" data-id="headingOne">
-                  <?php $i=0?>
-                  <?php foreach(explode(',', $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product)) as $value) : ?>
-				<input type="radio" value="<?php echo $value ?>" name="color" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>" />
-                  <?php /*?><li id="value_<?php echo $i?>" onclick="//jQuery('#product-color-field')" attr_id="<?php echo $_product->getResource()->getAttribute('color')->getSource()->getOptionId();?>"><?php echo $value ?>
-                  </li><?php */?>
-                  <?php $i++ ?>
-                  <?php endforeach ?>
-                  <?php echo $_product->getResource()->getAttribute('color')->getFrontend()->getValue($_product); ?>
-                </ul>
-                <?php endif; ?>
-              </div>
-            </div>
-        </div>
-        <?php endif ?>
-        <?php if($_product->storagecapacity): ?>
-        <div class="panel">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> <?php echo  $_product->getResource()->getAttribute('storagecapacity')->getFrontendLabel();    ?> <i class="fa fa-angle-down"></i> <span class="selected-value"></span> </a> </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              <?php if($_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product)):?>
-              <ul class="product-meta-select" data-id="headingTwo">
-                <?php $i=0?>
-                <?php foreach(explode(',', $_product->getResource()->getAttribute('storagecapacity')->getFrontend()->getValue($_product)) as $value) : ?>
-                <li id="value_<?php echo $i?>"><?php echo $value ?></li>
-                <?php $i++ ?>
-                <?php endforeach ?>
-              </ul>
-              <?php endif ?>
-            </div>
-            </div>
-            </div>
-              <?php endif ?>
-
-         </div>   
+      <!-- <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true"> -->
           <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                     <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                <?php endif;?>   
-            <div class="buttons">
+          <?php endif;?>
+         <!-- </div> -->
 
-         </div>
-         
             <?php //echo $this->getChildChildHtml('container1', '', true, true) ?>
           
             <?php //echo $this->getChildChildHtml('container2', '', true, true) ?>
             <div class="buttons">
-
-
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
               if($upcoming == 'No'){?>
@@ -369,9 +326,9 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 </div>
 
 <script>
-jQuery(window).load(function() {
-  jQuery('#discountmodal').click();
-});
+// jQuery(window).load(function() {
+//   jQuery('#discountmodal').click();
+// });
 
 jQuery('.bxslider').bxSlider({
       pagerCustom: '#bx-pager'

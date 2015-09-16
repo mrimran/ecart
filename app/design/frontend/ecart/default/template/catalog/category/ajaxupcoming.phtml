@@ -3,28 +3,43 @@ $getProductCollectionLatest = $this->getProductCollectionUpcomingPro();
 $_helper = $this->helper('catalog/output');
 ?>
 <?php if (!$getProductCollectionLatest->count()): ?>
-    <p class="note-msg"><?php echo $this->__('There are no categories matching'); ?></p>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.'); ?></p>
 <?php else: ?>      
-    <?php foreach ($getProductCollectionLatest as $Latest): ?>
-        <div>
-            <div class="col-box" id="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>"><a href="<?php echo $Latest->getProductUrl() ?>">
-                    <?php if (date("Y-m-d") >= substr($Latest->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($Latest->getNewsToDate(), 0, 10)) {
-                        ?>
-                        <span class="new">new</span>
-        <?php } ?>
+    <?php foreach ($getProductCollectionLatest as $_product): ?>
+        <div class="col-box" id="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
+                        <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
+                            ?>
+                            <span class="new">new</span>
+                        <?php } ?>
 
-                    <div class="img-box"><div class="abs_center"><a href="<?php echo $Latest->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($Latest, 'small_image'), null, true) ?>" class="product-image">
-        <?php $_imgSize = 210; ?>
-                                <img id="product-collection-image-<?php echo $Latest->getId(); ?>"
-                                     src="<?php echo $this->helper('catalog/image')->init($Latest, 'small_image')->resize($_imgSize); ?>"
-                                     alt="<?php echo $this->stripTags($this->getImageLabel($Latest, 'small_image'), null, true) ?>" />
-                            </a></div></div>
-                    <div class="bottom-area">
-                        <h4><?php echo $_helper->productAttribute($Latest, $Latest->getName(), 'name') ?></h4> 
-                        <div class="price"><?php echo number_format($Latest->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                        <div class="img-box"><div class="abs_center"><!-- <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"> -->
+                                <?php $_imgSize = 210; ?>
+                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                <!-- </a> --></div></div>
+                        <div class="bottom-area">
+                            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
+                           <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                        <div class="actions">
+                        <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        <!-- <ul class="add-to-links">
+                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                            <?php endif; ?>
+                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                            <?php endif; ?>
+                        </ul> -->
                     </div>
-                </a>
-            </div>
-        </div>
+                        </div>
+                    </a>
+                </div>
     <?php endforeach ?>
 <?php endif ?>

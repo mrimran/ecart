@@ -11,15 +11,15 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
         $storeId = Mage::app()->getStore()->getId();
 
         $products = Mage::getResourceModel('reports/product_collection')
-
             ->addOrderedQty()
             ->addAttributeToSelect('id')
             ->addAttributeToSelect(array('name', 'price', 'small_image'))
             ->setStoreId($storeId)
             ->addStoreFilter($storeId)
             //->setOrder('ordered_qty', 'desc')
-            ->addAttributeToFilter('upcomingproduct', 0)
-            ->setPageSize(20); // most best sellers on top
+            //->addAttributeToFilter('upcomingproduct', 0)
+            ->setPageSize(100);
+             // most best sellers on top
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
 
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);

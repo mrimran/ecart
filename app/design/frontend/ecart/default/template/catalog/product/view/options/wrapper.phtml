@@ -25,9 +25,11 @@
  */
 ?>
 <div class="product-options" id="product-options-wrapper">
+    <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
     <?php echo $this->getChildHtml('', true, true);?>
+    </div>
     <?php if ($this->hasRequiredOptions()):?>
         <p class="required"><?php echo $this->__('* Required Fields') ?></p>
     <?php endif;?>
 </div>
-<script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
+<script type="text/javascript">//decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>

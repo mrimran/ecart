@@ -71,28 +71,9 @@
 					<div class="col-sm-5 details">
 						
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
-                         <div class="ratings">
-                      <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
-                            </div>
-                            <?php if($summaryData['reviews_count'] > 1) {?>
-                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
-                            <?php } else {?>
-                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
-                            <?php } ?>
-
-                            <?php } else {?>
-                            <div class="rating-box">
-                                 <div class="rating" style="width:0%"></div>
-                            </div>
-                            <?php } ?>
-                            
-                        </div>
-                   
-						<ul>
-							<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
-						</ul>
+						<!-- <ul>
+							<?php // echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+						</ul> -->
 						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
 					</div>
 					<div class="col-sm-3 relative price-info">
@@ -100,7 +81,24 @@
                <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
                <span class="not-now">
 					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
-               </div>
+          </div>
+         <div class="ratings">
+      <?php if ($summaryData['rating_summary'] != '') {?>
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
+            </div>
+            <?php if($summaryData['reviews_count'] > 1) {?>
+                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+            <?php } else {?>
+                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+            <?php } ?>
+
+            <?php } else {?>
+            <div class="rating-box">
+                 <div class="rating" style="width:0%"></div>
+            </div>
+            <?php } ?>
+        </div>
 					<?php $productCollection=$this->getTotalOrder($_product->getId());
                           $_helper = $this->helper('catalog/output');?>
                      <?php if(!$productCollection->count()): ?>

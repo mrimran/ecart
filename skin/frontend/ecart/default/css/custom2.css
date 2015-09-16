@@ -146,7 +146,11 @@ p.required{color:red;}
 .order-date{font-size:12px;color:#555;margin-bottom:10px;}
 .separator{color:#eaeaea;}
 .shopbybrand-list .filterbar,.shopbybrand-list .brands{/*display:none;*/}
-.shopbybrand-list .brands li{width:auto;padding:0;border:0;margin-top:0 !important; }
+.shopbybrand-list .brands li{width:20%;padding:3px;border:1px solid #eee;margin:0 !important;height:auto;}
+.shopbybrand-list .brands li a{display:block;background-color:#f6f6f6;padding:15px;height:65px;}
+.shopbybrand-list .brands li a:hover{background-color:#303030;color:#fff;}
+.shopbybrand-list .brands li a .box{max-width:100%;width:auto;font-size:14px;}
+.shopbybrand-list .brands li a:hover .box{color:#fff;}
 .shopbybrand-list .featuredbrands{margin-top:0 !important;}
 .shopbybrand-list .ca-container{margin:40px auto;width:100% !important;height:auto;}
 .shopbybrand-list .ca-container .ca-item{height:auto;margin-bottom:20px;max-width:190px;
@@ -247,9 +251,11 @@ display:inline-block;}
 .listing-suggest .product-image img{max-height:200px;width:auto;}
 #search_mini_form .input-box label{display:none;}
 #itoris_instantsearch_categories_filter{width:200px;font-size:14px;top:8px;}
-#search_mini_form #search{left:212px;text-indent: 0 !important;}
+#search_mini_form #search{/*left:212px;text-indent: 0 !important;*/}
 #search_mini_form #itoris_instantsearch_autocomplete{left: 212px !important;}
-#search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;top:10px;}
+#search_mini_form #itoris_instantsearch_categories_dropdown{left:0px !important;width:210px;top:10px;
+font-size:14px;}
+#search_mini_form #itoris_instantsearch_categories_dropdown option{line-height:1.5;}
 #search_mini_form #itoris_instantsearch_categories{left:5px !important;position: relative;}
 #search_mini_form button.search-button{position:relative;display:inline-block;left:170px;}
 #search_mini_form #itoris_instantsearch{left:212px !important;}
@@ -276,7 +282,9 @@ color:#fff;margin:5px 0;display:inline-block;}
 border:1px solid #eaeaea;margin:2px;background-color:#303030;}
 .tags-list.list-only li a{color:#fff;}
 .tags-list.list-only li:hover,.tags-list.list-only li:hover a{color:#fff;background-color:#f57a20;}
-
+.product-options .options-list li .label{font-size:14px;font-weight:300;padding:0;margin:0;}
+.product-options .options-list li .label label{font-weight:300;display:block;padding:4px 8px;}
+.product-options .options-list li .label .price{font-size:inherit;color:inherit;font-weight:inherit;}
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
 .__faq .__recent__faq { padding: 0; margin: 0 0 30px 0; }

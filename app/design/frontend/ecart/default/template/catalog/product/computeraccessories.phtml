@@ -51,6 +51,15 @@
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                         </div>
                     </a>
+                <div class="actions">
+                    <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                    <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                        <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                </div>
                 </div>
             <?php endforeach ?>
         <?php endif; ?>
@@ -78,20 +87,24 @@
                                 <!-- </a> --></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo number_format($_product->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                         </div>
                     </a>
+                    <div class="actions">
+                        <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                    </div>
                 </div>
             <?php endforeach ?>
         <?php endif; ?>
     </div>
     <div class="clearfix viewmore" align="right"><a href="computer-accessories.html">View All Products</a></div>
 </section>
-
-
-
-
-
 
 <script>
     function newproduct1() {
@@ -118,6 +131,7 @@
 
     function getbrands() {
         var brand = document.getElementById("brand").value
+        
         //make the ajax call
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestseller/',
