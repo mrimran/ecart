@@ -39,6 +39,13 @@ $cnt = count($this->getItems());
 <?php $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
 $path = $url->getPath(); 
+$items = $this->getItems();
+
+//sort by count
+uasort($items, function($a,$b) {
+    return ($a->getCount() - $b->getCount())* -1;
+});
+
 ?>
 <?php foreach ($this->getItems() as $_item): ?>
     <?php /*if ($i == $displaySize) { ?>
