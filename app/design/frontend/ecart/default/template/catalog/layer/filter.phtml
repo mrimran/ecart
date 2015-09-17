@@ -53,8 +53,7 @@ $path = $url->getPath();
         <div id="cont-<?php echo $filterName ?>">
         <?php }*/ ?>
         <?php $str = strtolower($_item->getLabel()); ?>
-        <?php  if (strpos($path, $str) == false) { ?>    
-                
+        <?php  if (strpos($path, $str) == false) { ?>
         <li>
             <?php if ($_item->getCount() > 0): ?>
                 <?php /* commenting default
@@ -65,8 +64,6 @@ $path = $url->getPath();
                   <?php endif; ?>
                   </a>
                  */ ?>
-                
-                
                 <form>
                     <span class="check-box">
                         <input type="checkbox" name="vehicle" onclick='window.location.assign("<?php echo $this->urlEscape($_item->getUrl()) ?>")'/>
@@ -109,4 +106,3 @@ $path = $url->getPath();
         ?>
         <?php } ?>
 <?php endforeach ?>
-

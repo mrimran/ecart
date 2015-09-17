@@ -9,7 +9,8 @@ $productid = $this->getproductsids();
 ?>
 <?php if (!$_productCollection->count()): ?>
     <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
-<?php elseif($productid->count()): ?>
+<?php elseif($productid->count() && $_productCollection->count()): ?>
+
     <?php foreach ($productids as $_products) : ?>
       <?php foreach ($_productCollection as $_product): ?>
         
@@ -44,8 +45,9 @@ $productid = $this->getproductsids();
             <?php endif ?>
     <?php endforeach ?>
 <?php endforeach ?>
-<?php elseif(!$productid->count() && $_productCollection->count()) :?>
 
+<?php elseif(!$productid->count() && $_productCollection->count()) :?>
+      
       <?php foreach ($_productCollection as $_product): ?>
  
         <div class="col-box"><a href="<?php echo $_product->getProductUrl() ?>">
