@@ -63,7 +63,7 @@ $hiddenFilters = array();
                             <?php if ($_filter->getItemsCount()): ?>
                                 <a class="heading" data-id="<?php echo $this->__($_filter->getName()) ?>"><h2><?php echo $this->__($_filter->getName()) ?></h2><span><i class="fa fa-minus-square-o"></i><i class="fa fa-plus-square-o"></i></span></a>
                                 <ul id="<?php echo $this->__($_filter->getName()) ?>"><?php echo $_filter->getHtml() ?></ul>
-                                <div id="<?php echo $this->__($_filter->getName()) ?>ML" style="display:none;" class="buttons-set"><a class="showmoreless" id="<?php echo $this->__($_filter->getName()) ?>SMT">More/less</a></div>
+                <div id="<?php echo $this->__($_filter->getName()) ?>ML" style="display:none;" class="buttons-set"><a class="showmoreless" id="<?php echo $this->__($_filter->getName()) ?>SMT">More/less</a></div>
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {
                     var CNT = jQuery("#<?php echo $this->__($_filter->getName()) ?> li").length;
