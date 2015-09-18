@@ -287,6 +287,9 @@ border:1px solid #eaeaea;margin:2px;background-color:#303030;}
 .product-options .options-list li .label .price{font-size:inherit;color:inherit;font-weight:inherit;}
 .toolbar .sorter .pagination{display:none;}
 .toolbar-bottom .toolbar .sorter .pagination{display:block;}
+.dashboard .welcome-msg,.dashboard .welcome-cs{display:inline-block;width:49%;vertical-align:top;}
+.dashboard .welcome-cs{padding:15px 20px;float:right;background-color:#333;}
+.dashboard .welcome-cs p{color:#fff;margin-bottom:5px;}
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
 .__faq .__recent__faq { padding: 0; margin: 0 0 30px 0; }

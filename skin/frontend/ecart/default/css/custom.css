@@ -257,17 +257,9 @@ height: 13px;
 
 .extension-index-ourcollection .view-mode  { display: none !important;}
 
-
-div.zoomContainer {
-  display: none;
-}
-
-.grouped-items-table-wrapper {}
-
-
-
-
-.back-link { text-align: left;}
+div.zoomContainer{display:none;}
+.grouped-items-table-wrapper{}
+.back-link{text-align:right;}
 
 #cart-sidebar-reorder .product-name {}
 #cart-sidebar-reorder .product-name a { float: left; width: 90%;}
