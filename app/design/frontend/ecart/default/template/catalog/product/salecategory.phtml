@@ -73,8 +73,8 @@
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
                         <div class="ratings">
                       <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
+                            <div class="rating-box">
+                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
                             </div>
                             <?php if($summaryData['reviews_count'] > 1) {?>
                                  <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
@@ -87,13 +87,11 @@
                                  <div class="rating" style="width:0%"></div>
                             </div>
                             <?php } ?>
-                            
                         </div>
-
-                   
-						<ul>
-							<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
-						</ul>
+						<!-- <ul>
+							<?php // echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+						</ul> -->
+            <br>
 						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
 					</div>
 					<div class="col-sm-3 relative price-info">
@@ -113,7 +111,6 @@
                       <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">
-               
                <?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                <?php echo $this->__('In Stock') ?>
                <?php else: ?>
@@ -132,8 +129,6 @@
 
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
-    
-    
     
     
     <div class="clearfix">
