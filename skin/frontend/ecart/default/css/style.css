@@ -190,7 +190,7 @@ border-left:1px solid #cdcdcd;position:absolute;top:6px;right:0px;height: 38px;p
 .mainheadnav .minicart a img{vertical-align:middle;/*height:18px;*/}
 /* Main Menu */
 .maincontainer .mainmenu{padding:0;margin:0;background-color:#FFF;height:400px;}
-.mainmenu.flymenu{position:absolute;z-index:99999;max-width:1144px;display:none;width:100%;
+.mainmenu.flymenu{position:absolute;z-index:999;max-width:1144px;display:none;width:100%;
 border-top:1px solid #eaeaea;top:50px;}
 .mainheadnav .container{position:relative;}
 .mainmenu.flymenu .nav-container{min-height:400px;top:0;}
@@ -971,7 +971,7 @@ table.sub_summary td{padding:8px 20px;}
 table.sub_summary td{color:#2d2e32;font-size:18px;font-weight:600;width:50%;}
 table.sub_summary td.price{color:#f57a20;}
 .cart_summary .buyerprotection .shield{background-size:auto 75px;}
-.cart_summary .buyerprotection .title-big{font-weight:100;}
+.cart_summary .buyerprotection .title-big{/*font-weight:100;*/}
 .cart_summary .buyerprotection .protection-list li{padding-right:6%;}
 .newselect{width:auto !important;}
 .newselect button{text-align:left;font-size:12px;color:#575757;text-transform: uppercase;outline:none;
