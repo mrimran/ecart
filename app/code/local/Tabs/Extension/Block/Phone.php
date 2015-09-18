@@ -27,9 +27,9 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
             ->order('sales_count' . ' ' . 'desc');
             $collection->addFieldToFilter('status','1');
         //join brand 
-          /* if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
+          /*if($this->getRequest()->getParam('brand_ids')!= null AND $this->getRequest()->getParam('brand_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brand_ids'); 
-               $condition = new Zend_Db_Expr("br.option_id = $brand_id");
+               $condition = new Zend_Db_Expr("br.option_id = $brand_id AND ");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
                array('brand_id' => 'br.option_id'));

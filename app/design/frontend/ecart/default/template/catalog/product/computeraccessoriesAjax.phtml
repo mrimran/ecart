@@ -7,7 +7,8 @@ $productid = $this->getproductsids();
       endforeach;
       
       $productids = array_unique (explode(",",$_product->product_ids));
-      print_r($productids);
+      //print_r($productids);
+      $counter = 0;
 ?>
 <?php if (!$_productCollection->count()): ?>
     <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
@@ -15,8 +16,8 @@ $productid = $this->getproductsids();
 
     <?php foreach ($productids as $_products) : ?>
       <?php foreach ($_productCollection as $_product): ?>
-        <?php echo $_product->entity_id ?>
-        <?php if($_products == $_product->entity_id) : ?>
+        <?php //echo $_product->entity_id ?>
+        <?php if($_products == $_product->entity_id AND $counter <= 20) : ?>
         <div class="col-box"><a href="<?php echo $_product->getProductUrl() ?>">
                         <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
                             ?>
@@ -44,7 +45,9 @@ $productid = $this->getproductsids();
                         </div>
                     </a>
                 </div>
+                <?php $counter = $counter + 1; ?>
             <?php endif ?>
+
     <?php endforeach ?>
 <?php endforeach ?>
 
