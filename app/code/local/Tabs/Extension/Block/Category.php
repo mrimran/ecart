@@ -68,6 +68,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
+
         //join brand 
            if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brands_ids'); 
@@ -166,6 +167,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
+            $collection->addFieldToFilter('status','1');
         //join brand 
            if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brands_ids'); 
@@ -228,6 +230,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
             array('sales_count' => $expression))
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
+            $collection->addFieldToFilter('status','1');
         //join brand 
            if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
                $brand_id = $this->getRequest()->getParam('brands_ids'); 
