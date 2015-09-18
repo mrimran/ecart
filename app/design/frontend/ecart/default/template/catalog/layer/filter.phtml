@@ -34,20 +34,26 @@ $displaySize = 2;
 $i = 0;
 $filterName = strtolower($this->getName());
 $cnt = count($this->getItems());
+
+$items = $this->getItems();
+
+//sort by count
+uasort($items, function($a,$b) {
+    return ($a->getCount() - $b->getCount())* -1;
+});
 ?>
 
 <?php $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
 $path = $url->getPath(); 
 ?>
-<?php foreach ($this->getItems() as $_item): ?>
+<?php foreach ($items as $_item): ?>
     <?php /*if ($i == $displaySize) { ?>
         <div id="more-<?php echo $filterName ?>" class="more-less"><a>Show more</a></div>
         <div id="cont-<?php echo $filterName ?>">
         <?php }*/ ?>
         <?php $str = strtolower($_item->getLabel()); ?>
-        <?php  if (strpos($path, $str) == false) { ?>    
-                
+        <?php  if (strpos($path, $str) == false) { ?>
         <li>
             <?php if ($_item->getCount() > 0): ?>
                 <?php /* commenting default
@@ -58,8 +64,6 @@ $path = $url->getPath();
                   <?php endif; ?>
                   </a>
                  */ ?>
-                
-                
                 <form>
                     <span class="check-box">
                         <input type="checkbox" name="vehicle" onclick='window.location.assign("<?php echo $this->urlEscape($_item->getUrl()) ?>")'/>
@@ -102,4 +106,3 @@ $path = $url->getPath();
         ?>
         <?php } ?>
 <?php endforeach ?>
-

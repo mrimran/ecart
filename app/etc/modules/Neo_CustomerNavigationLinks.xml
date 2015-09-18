@@ -1,0 +1,9 @@
+<?xml version="1.0" ?> 
+<config>
+    <modules>
+        <Neo_CustomerNavigationLinks>
+            <active>true</active> 
+            <codePool>local</codePool> 
+        </Neo_CustomerNavigationLinks>
+    </modules>
+</config>

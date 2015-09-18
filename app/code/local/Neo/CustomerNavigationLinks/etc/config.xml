@@ -1,0 +1,31 @@
+<?xml version="1.0" ?> 
+<config>
+    <modules>
+        <Neo_CustomerNavigationLinks>
+            <version>0.0.1</version> 
+        </Neo_CustomerNavigationLinks>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <customernavigationlinks>
+                    <file>neo_customernavigationlinks.xml</file> 
+                </customernavigationlinks>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <customer>
+                <rewrite>
+                    <account_navigation>Neo_CustomerNavigationLinks_Block_Account_Navigation</account_navigation> 
+                </rewrite>
+            </customer>
+        </blocks>
+        <helpers>
+            <customernavigationlinks>
+                <class>Neo_CustomerNavigationLinks_Helper</class> 
+            </customernavigationlinks>
+        </helpers>
+    </global>
+</config>
