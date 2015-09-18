@@ -27,7 +27,7 @@
                             <img id="product-collection-image-<?php echo $_product->getId(); ?>"
                             src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
                              alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                        <!-- </a> --></div></div>
+                        <!-- </a> --></div></div></a>
                         <div class="bottom-area">
 				        <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4>
 				        <div class="price">
@@ -41,7 +41,6 @@
                                         <?php echo $_formattedActualPrice; ?></span>
                                 <?php endif; ?>
                                 </div>
-					</a>
                     <div class="actions">
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                             <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
@@ -52,9 +51,10 @@
                         <?php endif; ?>
                     </div>
 					</div>
+					</div>
 					<?php endforeach ?>
 				</div>
-			<a data-id="sectionDeals" class="loadmore smartphones">Load More</a>
+		<a data-id="sectionDeals" href="extension/index/sale/" class="loadmore smartphones">View More Products</a>
 		</section>
 
 		<?php endif; ?>
