@@ -56,7 +56,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         
         // if Category filter is on
         if ($catId) {
-             $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);     
+             $collection->getSelect()->where('c.entity_id = ?', $catId);     
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category

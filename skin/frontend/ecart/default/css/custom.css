@@ -265,3 +265,10 @@ div.zoomContainer {
 .grouped-items-table-wrapper {}
 
 
+
+
+.back-link { text-align: left;}
+
+#cart-sidebar-reorder .product-name {}
+#cart-sidebar-reorder .product-name a { float: left; width: 90%;}
+#cart-sidebar-reorder .product-name input {  float: left; width: 10%;}
