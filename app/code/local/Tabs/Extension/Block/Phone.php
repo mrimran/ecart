@@ -52,7 +52,7 @@ class Tabs_Extension_Block_Phone extends Mage_Catalog_Block_Product_Abstract {
             array('cat_name' => 'cv.value'));
         // if Category filter is on
         if ($catId) {
-        $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);
+        $collection->getSelect()->where('c.entity_id = ?', $catId);
 
         }
 
