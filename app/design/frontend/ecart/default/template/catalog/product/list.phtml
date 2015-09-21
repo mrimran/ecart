@@ -165,12 +165,12 @@ $_helper = $this->helper('catalog/output');
                                 echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
                                 $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
                                 ?>
-                                    <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+
+                                <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
                                     <span class="not-now">
-                                    <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
-                                    </span>
+                                        <?php echo $_formattedActualPrice; ?></span>
+                                </div>
                             <?php endif; ?>
-                            </div>
                             <?php
                             $productCollection = $this->getTotalOrder($_product->getId());
                             $_helper = $this->helper('catalog/output');
