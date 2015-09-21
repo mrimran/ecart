@@ -162,7 +162,9 @@ div.level1 {
 }
 div.wp-custom-menu-popup {
     background-color: #fff;
-    /*border: solid 1px #cccccc;*/
+    border: solid 1px #eaeaea;
+    border-left: 0;
+    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.1);
 }
 div.menu a:link, div.menu a:visited {
 }
@@ -555,7 +557,7 @@ vertical-align:middle;}
 
 #wp-nav-container .itemMenuName.level1 > span {
   /*  color: #000;*/
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
 }
 #wp-nav-container .itemMenuName.level1 i {   color: #000; font-size: 16px; margin: 0 0 0 8px; font-weight: bold;}
