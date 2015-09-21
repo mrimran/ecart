@@ -73,17 +73,25 @@
 						<?php if($_product->getRatingSummary()): ?>
                         <?php echo $this->getReviewsSummaryHtml($_product) ?>
                    <?php endif; ?>
-						<ul>
-							<?php echo substr(strip_tags($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'), '<li><p>'),  0, 100) ?>
-						</ul>
+						<!-- <ul>
+							<?php // echo substr(strip_tags($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'), '<li><p>'),  0, 100) ?>
+						</ul> -->
+            <br>
 						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
 					</div>
 					<div class="col-sm-3 relative price-info">
 					<div class="price">
-               <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
-               <span class="not-now">
-					<?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
-               </div>
+                                <?php
+                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                                ?>
+                                    <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                                    <span class="not-now">
+                                    <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
+                                    </span>
+                            <?php endif; ?>
+                            </div>
+
 
 					<?php $productCollection=$this->getTotalOrder($_product->getId());
                 $_helper = $this->helper('catalog/output');?>
@@ -143,11 +151,17 @@
 					<div class="col-sm-3 relative price-info">
                <?php // echo $this->getPriceHtml($_product, true); ?>
 					<div class="price">
-					 <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
-               <span class="not-now">
-               <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
-					 </span>
-               </div>
+                                <?php
+                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                                ?>
+                                    <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                                    <span class="not-now">
+                                    <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
+                                    </span>
+                            <?php endif; ?>
+                            </div>
+
 					<?php $productCollection=$this->getTotalOrder($_product->getId());
                 $_helper = $this->helper('catalog/output');?>
           <?php if(!$productCollection->count()): ?>
