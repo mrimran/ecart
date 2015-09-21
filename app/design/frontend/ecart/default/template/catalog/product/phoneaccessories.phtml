@@ -12,16 +12,27 @@
             <li><a class="active" onclick="bestseller()" id="two" >Best Sellers</a></li>
             <li>
                 <?php
-                $productCollectionbrand = $this->getLoadedProductCollectionbrand();
+                $productCollectionbrand = $this->getproductbrands();
                 $_helper = $this->helper('catalog/output');
                 ?>
-                <select onchange="getbrand()" id="brandsnew">
-                    <option value="0">Brands</option>
-                    <?php
+                <?php
                     foreach ($productCollectionbrand as $brand):
                         ?>
-                        <option value="<?php echo $brand->option_id; ?>"><?php echo $brand->name; ?></option>
+                        <?php $a[]= $brand->brand_optionid; ?>
+                        <?php $b[] = $brand->brand_name; ?>
                     <?php endforeach ?>
+                    <?php $optionid = array_unique($a); ?>
+                    <?php $brandname = array_unique($b); ?>
+                     <?php $max = sizeof($brandname); ?>
+                <select onchange="getbrand()" id="brandsnew">
+                    <option value="0">Brands</option>
+                    <?php for($i = 0; $i <= $max; $i++)
+                             {?>
+                                <?php if($optionid[$i] != ""){ ?>
+                                <option value="<?php echo $optionid[$i]; ?>"><?php echo $brandname[$i]; ?></option>
+                                <?php } ?>
+                            <?php }
+                    ?>
                 </select>
             </li>
         </ul>
