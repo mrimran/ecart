@@ -73,9 +73,10 @@
 						<?php if($_product->getRatingSummary()): ?>
                         <?php echo $this->getReviewsSummaryHtml($_product) ?>
                    <?php endif; ?>
-						<ul>
-							<?php echo substr(strip_tags($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'), '<li><p>'),  0, 100) ?>
-						</ul>
+						<!-- <ul>
+							<?php // echo substr(strip_tags($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'), '<li><p>'),  0, 100) ?>
+						</ul> -->
+            <br>
 						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
 					</div>
 					<div class="col-sm-3 relative price-info">
