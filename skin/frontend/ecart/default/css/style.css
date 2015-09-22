@@ -195,7 +195,7 @@ border-left:1px solid #cdcdcd;position:absolute;top:6px;right:0px;height: 38px;p
 border-top:1px solid #eaeaea;top:50px;}
 .mainheadnav .container{position:relative;}
 .mainmenu.flymenu .nav-container{min-height:400px;top:0;}
-.megamenurightimage img{max-width:100%;}
+.megamenurightimage img{max-width:100%;height:503px;}
 .maincontainer .mainmenu > .top{list-style-type:none;margin:0;padding:0;}
 .maincontainer .mainmenu > .top > li{background-color:#fff;padding:9px 15px 5px;
 border-bottom:1px solid #eaeaea;border-right:1px solid #eaeaea;}
@@ -1068,6 +1068,12 @@ body.catalog-category-view #shopbybrand{padding-bottom:15px;}
 body.catalog-category-view #shopbybrand .brands .img-box:hover{background-color:#303030;}
 body.catalog-category-view #shopbybrand .brands .img-box a{color:#303030;font-size:18px;display:block;}
 body.catalog-category-view #shopbybrand .brands .img-box:hover a{color:#fff;}
+#checkout-step-review .data-table .price{min-width:110px;display:inline-block;text-align:center;}
+.checkout-agreements{list-style-type:none;font-size:14px;}
+.checkout-agreements .agreement-content{padding:5px 15px 5px 3px;}
+.checkout-agreements p.agree{padding:5px;}
+.checkout-agreements p.agree input{display:inline-block;vertical-align:top;margin-right:10px;}
+.my-account .pagination{display:inherit;}
 
 .fullheight{height:100% !important;max-height:100% !important;}
 .relative{position:relative;}

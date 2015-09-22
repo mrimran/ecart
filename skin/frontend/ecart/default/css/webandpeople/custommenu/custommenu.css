@@ -162,7 +162,9 @@ div.level1 {
 }
 div.wp-custom-menu-popup {
     background-color: #fff;
-    /*border: solid 1px #cccccc;*/
+    border: solid 1px #eaeaea;
+    border-left: 0;
+    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.1);
 }
 div.menu a:link, div.menu a:visited {
 }
@@ -466,7 +468,7 @@ vertical-align:middle;}
 #custommenu #menu70 a span{background-position:0px -276px;}
 #custommenu #menu72 a span{background-position:0px -314px;}
 #custommenu #menu81 a span{background-position:0px -355px;}
-#custommenu #menu32 a span{background-position:0px -390px;}
+#custommenu #menu32 a span{background-position:3px -390px;}
 #custommenu #menu39 a span{background-position:0px -422px;}
 #custommenu #menu47 a span{background-position:0px -454px;}
 
@@ -482,9 +484,9 @@ vertical-align:middle;}
 #custommenu #menu70 a:hover span{background-position:-30px -276px;}
 #custommenu #menu72 a:hover span{background-position:-30px -314px;}
 #custommenu #menu81 a:hover span{background-position:-30px -355px;}
-#custommenu #menu32 a:hover span{background-position:0px -390px;}
-#custommenu #menu39 a:hover span{background-position:0px -422px;}
-#custommenu #menu47 a:hover span{background-position:0px -454px;}
+#custommenu #menu32 a:hover span{background-position:-30px -390px;}
+#custommenu #menu39 a:hover span{background-position:-30px -422px;}
+#custommenu #menu47 a:hover span{background-position:-30px -454px;}
 
 .wp-custom-menu-popup .column  { width: 25%;}
 .wp-custom-menu-popup.itemMenu {}
@@ -525,7 +527,7 @@ vertical-align:middle;}
     height: 90px;
     position: relative;
     width: 100%;
-	 top: -90px;
+	 top: -108px;
 }
 
 #wp-nav-container .ads a {
@@ -555,7 +557,7 @@ vertical-align:middle;}
 
 #wp-nav-container .itemMenuName.level1 > span {
   /*  color: #000;*/
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
 }
 #wp-nav-container .itemMenuName.level1 i {   color: #000; font-size: 16px; margin: 0 0 0 8px; font-weight: bold;}
