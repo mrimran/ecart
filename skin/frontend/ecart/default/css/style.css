@@ -393,14 +393,16 @@ background-position:7px 8px;vertical-align:middle;overflow:hidden;text-indent:33
         transition: all 0.55s ease-in-out;
 white-space:nowrap;
 }
-.maincontainer .page_menu a:nth-child(2){background-position:7px -40px;}
-.maincontainer .page_menu a:nth-child(3){background-position:7px -90px;}
-.maincontainer .page_menu a:nth-child(4){background-position:7px -139px;}
-.maincontainer .page_menu a:nth-child(5){background-position:7px -185px;}
-.maincontainer .page_menu a:nth-child(6){background-position:7px -234px;}
-.maincontainer .page_menu a:nth-child(7){background-position:7px -282px;}
-.maincontainer .page_menu a:nth-child(8){background-position:7px -328px;}
-.maincontainer .page_menu a:nth-child(9){background-position:7px -380px;}
+
+.maincontainer .page_menu a.phoneaccessories{background-position:7px 8px;}
+.maincontainer .page_menu a.computeraccessories{background-position:7px -40px;}
+.maincontainer .page_menu a.tvVideo{background-position:7px -90px;}
+/*.maincontainer .page_menu a:nth-child(4){background-position:7px -139px;}
+.maincontainer .page_menu a:nth-child(5){background-position:7px -185px;}*/
+.maincontainer .page_menu a.deals{background-position:7px -234px;}
+.maincontainer .page_menu a.features{background-position:7px -282px;}
+.maincontainer .page_menu a.bestselingproduct,.maincontainer .page_menu a.perfumewatches{background-position:7px -328px;}
+.maincontainer .page_menu a.buyersprotection{background-position:7px -380px;}
 
 .maincontainer .page_menu a:hover{background-color:#3c3f48;text-indent:33px;width:auto;}
 #features{border-bottom:1px solid #f0f0f0;padding:0;margin:50px 0 20px;
