@@ -37,7 +37,7 @@
 	    $params['signed_field_names'] = implode(",", $allowedFields);
 	    $params['signed_date_time'] = gmdate("Y-m-d\TH:i:s\Z");
         
-	  /* echo "<pre>";
+	      /* echo "<pre>";
           print_r($params);
           echo "</pre>"; */
         ?>

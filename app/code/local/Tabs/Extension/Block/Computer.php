@@ -27,15 +27,17 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             ->order('sales_count' . ' ' . 'desc');
             $collection->addFieldToFilter('status','1');
         //join brand 
-          /* if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
-               $brand_id = $this->getRequest()->getParam('brands_ids');
-               $productids = $this->getproductsids();
-               //foreach()
-               $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
+         if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
+          $brands_id = $this->getRequest()->getParam('brands_ids');
+          $condition = new Zend_Db_Expr("cpie.entity_id = e.entity_id AND cpie.attribute_id = 81 AND cpie.value = $brands_id");
+               $collection->getSelect()->join(array('cpie' => $collection->getTable('catalog_product_index_eav')),
+               $condition,
+               array('product_entity' => 'cpie.entity_id'));
+               $condition = new Zend_Db_Expr(" br.option_id = cpie.value");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
-               array('brand_id' => 'br.option_id'));
-        } */
+               array('brand_name' => 'br.name' , 'brand_optionid' => 'br.option_id' ));
+         }   
 
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
@@ -56,7 +58,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         
         // if Category filter is on
         if ($catId) {
-             $collection->getSelect()->where('c.entity_id = ?', $catId);     
+             $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(20);     
         }
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
@@ -93,7 +95,7 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             ->addAttributeToSort('news_from_date', 'desc')
             ->setPageSize($this->getProductsCount())
             ->addAttributeToFilter('upcomingproduct', 0)
-            ->setCurPage(1)
+            ->setCurPage(20)
         ;
         if($categoryId = $id){
         $category = Mage::getModel('catalog/category')->load($categoryId);
@@ -102,12 +104,16 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         } 
         
         if($this->getRequest()->getParam('brands_ids')!= null AND $this->getRequest()->getParam('brands_ids')!= 0){
-            $brand_id = $this->getRequest()->getParam('brands_ids'); 
-            $condition = new Zend_Db_Expr("br.option_id = $brand_id AND br.product_ids = e.entity_id");
-            $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
-            $condition,
-            array('brand_id' => 'br.option_id'));
-        }
+          $brands_id = $this->getRequest()->getParam('brands_ids');
+          $condition = new Zend_Db_Expr("cpie.entity_id = e.entity_id AND cpie.attribute_id = 81 AND cpie.value = $brands_id");
+               $collection->getSelect()->join(array('cpie' => $collection->getTable('catalog_product_index_eav')),
+               $condition,
+               array('product_entity' => 'cpie.entity_id'));
+               $condition = new Zend_Db_Expr(" br.option_id = cpie.value");
+               $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
+               $condition,
+               array('brand_name' => 'br.name' , 'brand_optionid' => 'br.option_id' ));
+         }   
         return $collection;
     }
 
