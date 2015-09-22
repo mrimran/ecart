@@ -1,0 +1,91 @@
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+$productid = $this->getproductsids();
+      foreach ($productid as $_product): 
+         $_product->product_ids;
+      endforeach;
+      
+      $productids = array_unique (explode(",",$_product->product_ids));
+      //print_r($productids);
+      $counter = 0;
+?>
+<?php if (!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php elseif($productid->count() && $_productCollection->count()): ?>
+
+    <?php foreach ($productids as $_products) : ?>
+      <?php foreach ($_productCollection as $_product): ?>
+        <?php //echo $_product->entity_id ?>
+        <?php if($_products == $_product->entity_id AND $counter <= 20) : ?>
+        <div class="col-box"><a href="<?php echo $_product->getProductUrl() ?>">
+                        <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
+                            ?>
+                            <span class="new">new</span>
+                        <?php } ?>
+
+                        <div class="img-box"><div class="abs_center"><!-- <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"> -->
+                                <?php $_imgSize = 210; ?>
+                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                <!-- </a> --></div></div>
+                        <div class="bottom-area">
+                            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                        <div class="actions">
+                        <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        </div>
+                        </div>
+                    </a>
+                </div>
+                <?php $counter = $counter + 1; ?>
+            <?php endif ?>
+
+    <?php endforeach ?>
+<?php endforeach ?>
+
+<?php elseif(!$productid->count() && $_productCollection->count()) :?>
+      
+      <?php foreach ($_productCollection as $_product): ?>
+        <?php if ($counter <= 20) :?>
+        <div class="col-box"><a href="<?php echo $_product->getProductUrl() ?>">
+                        <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
+                            ?>
+                            <span class="new">new</span>
+                        <?php } ?>
+
+                        <div class="img-box"><div class="abs_center"><!-- <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"> -->
+                                <?php $_imgSize = 210; ?>
+                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                <!-- </a> --></div></div>
+                        <div class="bottom-area">
+                            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                        <div class="actions">
+                        <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        </div>
+                        </div>
+                    </a>
+                </div>
+                <?php $counter = $counter + 1; ?>
+            <?php endif ?>
+<?php endforeach ?>
+<?php elseif(!$productid->count() && !$_productCollection->count()) :?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+
+<?php endif; ?>
