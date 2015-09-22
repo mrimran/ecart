@@ -164,7 +164,7 @@ div.wp-custom-menu-popup {
     background-color: #fff;
     border: solid 1px #eaeaea;
     border-left: 0;
-    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.1);
+    box-shadow: 1px 4px 8px 0px rgba(0,0,0,0.2);
 }
 div.menu a:link, div.menu a:visited {
 }

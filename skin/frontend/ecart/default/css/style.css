@@ -1074,6 +1074,7 @@ body.catalog-category-view #shopbybrand .brands .img-box:hover a{color:#fff;}
 .checkout-agreements p.agree{padding:5px;}
 .checkout-agreements p.agree input{display:inline-block;vertical-align:top;margin-right:10px;}
 .my-account .pagination{display:inherit;}
+.my-account .pagination .count-container{text-align:left;}
 
 .fullheight{height:100% !important;max-height:100% !important;}
 .relative{position:relative;}

@@ -196,7 +196,7 @@
     <?php endif; ?>
     <div class="buttons-set" id="billing-buttons-container">
         <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button" onclick="billing.save()"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button" id="goUp"><span><span><?php echo $this->__('Continue') ?></span></span></button>
         <span class="please-wait" id="billing-please-wait" style="display:none;">
             <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo Mage::helper('core')->quoteEscape($this->__('Loading next step...')) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Loading next step...')) ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
         </span>
@@ -204,6 +204,13 @@
 </fieldset>
 </form>
 <script type="text/javascript">
+jQuery("#goUp").click(function() {
+   billing.save();
+   setTimeout(function(){
+    jQuery("html").scrollTop( 220 );
+    console.log("Scroll Going Up");
+    },4000);
+});
 //<![CDATA[
     var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
     var billingForm = new VarienForm('co-billing-form');
