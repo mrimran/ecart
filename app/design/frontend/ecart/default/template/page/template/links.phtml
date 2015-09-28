@@ -40,7 +40,7 @@
    <li><a href="#">Login/Account</a>
    <?php else: ?>
    <li><a href="#">
-		<?php
+    <?php
       $session = Mage::getSingleton('customer/session');
       if($session->isLoggedIn()) {
       $customer = $session->getCustomer();
