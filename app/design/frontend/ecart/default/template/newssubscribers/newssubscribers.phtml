@@ -17,14 +17,16 @@ if ($this->isActivePopUp() && !Mage::helper('newssubscribers')->isMobile()):
     <div class="modal-body">
         <!-- <div id="esns_box_close"></div> -->
         <button type="button" class="close" id="esns_box_close"><span aria-hidden="true">&times;</span></button>
+        <?php if ($this->getFirstTitle()): ?>
         <div class="modalstyles deals">
         <div id="esns_box_title">
-            <?php if ($this->getFirstTitle()): ?>
             <div id="esns_box_block_1">
                <h1 class="title-deals"><?php echo $this->getFirstTitle() ?></h1>
             </div>
             <?php endif; ?>
             <?php if ($this->getSecondTitle()): ?>
+        <div class="modalstyles">
+        <div id="esns_box_title">
             <div id="esns_box_block_2">
                 <h1 class="title"><?php echo $this->getSecondTitle() ?></h1>
             </div>
