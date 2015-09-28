@@ -23,13 +23,13 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 
-$j(document).ready(function () {
+jQuery(document).ready(function () {
 
     // ==============================================
     // UI Pattern - Slideshow
     // ==============================================
 
-    $j('.slideshow-container .slideshow')
+    jQuery('.slideshow-container .slideshow')
         .cycle({
             slides: '> li',
             pager: '.slideshow-pager',
