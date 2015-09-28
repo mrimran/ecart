@@ -44,8 +44,9 @@
       $session = Mage::getSingleton('customer/session');
       if($session->isLoggedIn()) {
       $customer = $session->getCustomer();
-      if($customer->getName()!=""):
+      if(!empty($customer->firstname)):
       echo $customer->getName();
+      //print_r($customer);
       else :
         echo $customer->email;
       endif;
