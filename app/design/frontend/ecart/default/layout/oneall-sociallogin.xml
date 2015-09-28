@@ -13,11 +13,11 @@
 	</customer_logged_out>	
 	<checkout_onepage_index>
 		<reference name="checkout.onepage.login.before">
-			<!--<block type="oneall_sociallogin/login" name="oneall.sociallogin.login.checkout">
+			<block type="oneall_sociallogin/login" name="oneall.sociallogin.login.checkout">
 				<action method="setPlace">
 					<place>checkout</place>
 				</action>
-			</block>-->
+			</block>
 		</reference>
 	</checkout_onepage_index>
 	<customer_account_login>
