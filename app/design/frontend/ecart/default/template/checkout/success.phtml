@@ -30,35 +30,170 @@
 <?php echo $this->getMessagesBlock()->toHtml() ?>
 <h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
 
-<?php if ($this->getOrderId()):?>
-<?php if ($this->getCanViewOrder()) :?>
-    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
-<?php  else :?>
-    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
-<?php endif;?>
+<?php if ($this->getOrderId()): ?>
+    <?php if ($this->getCanViewOrder()) : ?>
+        <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+    <?php else : ?>
+        <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+    <?php endif; ?>
     <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
-<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
-    <p>
-        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
-        <?php echo $this->getChildHtml() ?>
-    </p>
-<?php endif;?>
-<?php endif;?>
+    <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) : ?>
+        <p>
+            <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+            <?php echo $this->getChildHtml() ?>
+        </p>
+    <?php endif; ?>
+<?php endif; ?>
 
 <?php if ($this->getAgreementRefId()): ?>
-    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
-<?php endif;?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId()))) ?></p>
+<?php endif; ?>
 
-<?php if ($profiles = $this->getRecurringProfiles()):?>
-<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
-<ul class="disc">
-<?php foreach($profiles as $profile):?>
-<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
-    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
-<?php endforeach;?>
-</ul>
-<?php endif;?>
+<?php if ($profiles = $this->getRecurringProfiles()): ?>
+    <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+    <ul class="disc">
+        <?php foreach ($profiles as $profile): ?>
+            <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id'))); ?>
+            <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description'))) ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<?php
+$order_id = ($this->getOrderId()) ? $this->getOrderId() : Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$_order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+//$order_details = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+?>
+<?php //$_order = $this->getOrder() ?>
+<div class="title-buttons buttons-set">
+    <h1><strong><?php echo $this->__('Your Order Details:'); ?></strong></h1><br />
+    <h2><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h2>
+    <?php echo $this->getChildHtml('buttons') ?>
+</div>
+<?php echo $this->getStatusHistoryRssUrl($_order) ?>
+<dl class="order-info">
+    <dt><?php echo $this->__('About This Order:') ?></dt>
+    <dd>
+        <?php $_links = $this->getLinks(); ?>
+        <ul id="order-info-tabs">
+            <?php foreach ($_links as $_link): ?>
+                <?php if ($_link->getUrl()): ?>
+                    <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                <?php else: ?>
+                    <li class="current"><?php echo $_link->getLabel() ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+        <script type="text/javascript">decorateGeneric($('order-info-tabs').select('LI'), ['first', 'last']);</script>
+    </dd>
+</dl>
+<p class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
+<?php if (!$_order->getIsVirtual()): ?>
+    <div class="col2-set order-info-box addresses-list">
+        <div class="col-1">
+            <div class="box">
+                <div class="box-title">
+                    <h2><?php echo $this->__('Shipping Address') ?></h2>
+                </div>
+                <div class="box-content">
+                    <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="box">
+                <div class="box-title">
+                    <h2><?php echo $this->__('Shipping Method') ?></h2>
+                </div>
+                <div class="box-content">
+                    <?php if ($_order->getShippingDescription()): ?>
+                        <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
+                    <?php else: ?>
+                        <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<div class="col2-set order-info-box addresses-list">
+    <div class="col-1">
+        <div class="box">
+            <div class="box-title">
+                <h2><?php echo $this->__('Billing Address') ?></h2>
+            </div>
+            <div class="box-content">
+                <address><?php echo $_order->getBillingAddress()->format('html') ?></address>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="box box-payment">
+            <div class="box-title">
+                <h2><?php echo $this->__('Payment Method') ?></h2>
+            </div>
+            <div class="box-content">
+                <?php //echo $this->getPaymentInfoHtml()  ?>
+                <p><?php echo $this->escapeHtml($_order->getPayment()->getMethodInstance()->getTitle()) ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="data-table orders"  id="orders-report-table" summary="<?php echo $this->__('Items Ordered') ?>">
+    <colgroup>
+        <col>
+        <col width="1">
+        <col width="1">
+        <col width="1">
+        <col width="1">
+    </colgroup>
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Product') ?></th>
+            <th><?php echo $this->__('SKU') ?></th>
+            <th class="a-right"><?php echo $this->__('Price') ?></th>
+            <th class="a-center"><?php echo $this->__('Qty') ?></th>
+            <th class="a-right"><?php echo $this->__('Subtotal') ?></th>
+        </tr>
+    </thead>
+    <?php $_items = $_order->getAllItems(); ?>
+    <?php $_index = 0; ?>
+    <?php $_count = count($_items); ?>
+    <?php foreach ($_items as $item): ?>
+        <?php if ($item->getParentItem()) continue; ?>
+        <tbody class="<?php echo ($_index % 2 == 0) ? "even" : "odd"?>">
+            <tr>
+            <?php
+            echo '<td><p class="name">Product:' . $item->getName() . '</p></td>';
+            echo '<td><p class="model">SKU: ' . $item->getSku() . '</p></td>';
+            echo '<td><p class="price">' . Mage::helper("core")->currency($item->getPrice()) . '</p></td>';
+            echo '<td><p class="qty">' . round($item->getQtyOrdered(), 0) . '</p></td>';
+            echo '<td><p class="lineprice">' . Mage::helper("core")->currency($item->getPrice() * $item->getQtyOrdered()) . '</p></td>';
+            $_index++;
+            ?>
+            </tr>
+        </tbody>
+    <?php endforeach; ?>
+    <tfoot>
+        <tr><td colspan="4" class="a-right">Shipping & Handling</td><td><?php echo $_order->getShippingInclTax() ?></td></tr>
+        <tr><td colspan="4" class="a-right"><strong>Grand Total</strong></td><td><?php echo $_order->getGrandTotal() ?></td></tr>
+    </tfoot>
+<?php
+// Get the product id from the item (useful later for loading product attribute information)  
+$product_id = $item->getData('product_id');
+?>
+</table>
+<script type="text/javascript">decorateTable('data-table orders', {'tbody': ['odd', 'even'], 'tbody tr': ['first', 'last']})</script>
 
 <div class="buttons-set">
-    <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+    <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location = '<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+<div style="display: none;" class="debug-params">
+    <pre>
+    REQUEST
+    <?php print_r($_REQUEST)?>
+
+    POST
+    <?php print_r($_POST)?>
+    </pre>
 </div>

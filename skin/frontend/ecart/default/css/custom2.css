@@ -77,13 +77,11 @@ li.item{margin-bottom:15px;}
 li.item .details{display:inline-block;}
 li.item .number{display:inline-block;vertical-align:top;background-color:#f57a20;padding:3px 8px;
 color:#fff;font-size:12px;}
-body.customer-account .data-table,#checkout-step-review .data-table{width:100%;font-size:12px;
+body.customer-account .data-table,#checkout-step-review .data-table,#orders-report-table.data-table{width:100%;font-size:12px;
 margin:15px 0;}
-body.customer-account .data-table th,.customer-account .data-table td,#checkout-step-review .data-table th,#checkout-step-review .data-table td{padding: 10px 15px;background-color: #333;color: #fff;
-vertical-align: middle;font-size:12px;border: 1px solid #eaeaea;text-align:center;
+body.customer-account .data-table th,.customer-account .data-table td,#checkout-step-review .data-table th,#checkout-step-review .data-table td,#orders-report-table.data-table th,#orders-report-table.data-table td{padding: 10px 15px;background-color: #333;color: #fff;vertical-align: middle;font-size:12px;border: 1px solid #eaeaea;text-align:center;
 vertical-align:middle;}
-body.customer-account .data-table td,#checkout-step-review .data-table td{background-color:transparent;
-color:#303030;}
+body.customer-account .data-table td,#checkout-step-review .data-table td,#orders-report-table.data-table td{background-color:transparent;color:#303030;}
 .data-table a,.addresses-list a{color:#f57a20;}
 .data-table a:hover,.addresses-list a:hover{color:#303030;}
 .data-table .price{font-size:inherit;color:inherit;}
