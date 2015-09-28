@@ -48,7 +48,10 @@
       if($customer->getName()!=" "):
       echo $customer->getName();
       else :
-        echo $customer->email;
+        $email = $customer->email;
+        $parts = explode("@", $email);
+        $username = $parts[0];
+        echo $username
       endif;
       }
       ?>
