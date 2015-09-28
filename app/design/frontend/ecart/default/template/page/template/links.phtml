@@ -45,14 +45,14 @@
       if($session->isLoggedIn()) {
       $customer = $session->getCustomer();
       //echo $customer->firstname;
-      if($customer->getName()!=" "):
+      //if($customer->getName()!=" "):
       echo $customer->getName();
-      else :
+     /* else :
         $email = $customer->email;
         $parts = explode("@", $email);
         $username = $parts[0];
         echo $username;
-      endif;
+      endif;*/
       }
       ?>
    </a>
