@@ -165,7 +165,14 @@
                     <?php echo $this->getChildHtml('minicart_head'); ?>
                     </div>
                </div>
-               <?php echo $this->getChildHtml('topMenu') ?>
+               <?php 
+			   
+			echo $this->getChildHtml('topMenu');
+			echo $this->getLayout()
+			->createBlock('auguria_sliders/cms_page_slider')
+			->setTemplate('auguria/sliders/slider.phtml')
+			->toHtml();
+			   ?>
      	</div>
      </div>
 </header>

@@ -182,7 +182,7 @@
             </action>
         </reference>
         <reference name="content"> 
-            <block type="auguria_sliders/cms_page_slider" name="auguria_sliders" template="auguria/sliders/slider.phtml" after="catalog.topnav" before="content"/>
+           <!-- <block type="auguria_sliders/cms_page_slider" name="auguria_sliders" template="auguria/sliders/slider.phtml" after="catalog.topnav" before="content"/>-->
 				
 
 				<block type="core/template" name="verticalnav" template="page/html/verticalnav.phtml"/>
