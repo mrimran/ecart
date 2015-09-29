@@ -1,0 +1,61 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Xnotif
+ */  
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml();  ?>
+<?php $_orders = $this->getSubscriptions(); ?>
+<div class="page-title">
+    <h1><?php echo $this->_title; ?></h1>
+</div>
+<?php echo $this->getPagerHtml(); ?>
+<?php if($_orders->getSize()): ?>
+
+<table class="data-table" id="my-subscriptions-table">
+    <thead>
+        <tr>
+            <th width="50"><?php echo $this->__('Image') ?></th>
+            <th><?php echo $this->__('Product') ?></th>
+            <th><?php echo $this->__('Subscribed On') ?></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($_orders as $_order): ?>
+        <?php $_product = $this->getProduct($_order->getEntityId());
+            $image = $this->helper('catalog/image')->init($_product, 'small_image')->resize(45);
+            if(Mage::getStoreConfig('amxnotif/general/account_image')) {
+                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
+                if(isset($parentIds[0])){
+                    $parent = Mage::getModel('catalog/product')->load($parentIds[0]);
+                    $image = $this->helper('catalog/image')->init($parent, 'small_image')->resize(45);  
+                }      
+            }
+        ?>
+        <tr>
+            <td >
+                <a href="<?php echo $this->getProductUrl($_order) ?>">
+                    <img src="<?php echo $image ?>" width="45" height="45"  />
+                </a>
+            </td>
+            <td>
+                <a href="<?php echo $this->getProductUrl($_order) ?>">
+                    <?php echo $_order->getName() ?>
+                </a>
+            </td>
+            <td><span class="nobr"><?php echo $this->formatDate($_order->getAddDate()) ?></span></td>
+            <td>
+                 <a href="<?php echo $this->getRemoveUrl($_order) ?>" title="<?php echo $this->__('Remove This Item') ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the subscriptions?') ?>');" class="btn-remove btn-remove2"><?php echo $this->__('Remove This Item') ?></a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<script type="text/javascript"> decorateTable('my-subscriptions-table');</script>
+<?php echo $this->getPagerHtml(); ?>
+<?php else: ?>
+    <p><?php echo $this->__('There are no active subscriptions.'); ?></p>
+<?php endif ?>
+

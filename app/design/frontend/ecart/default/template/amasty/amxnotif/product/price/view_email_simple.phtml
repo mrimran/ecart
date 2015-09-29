@@ -1,0 +1,48 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Xnotif
+ */   
+?>
+<?php $_productId = Mage::registry('product')->getId()?>
+ <script type="text/javascript">
+    function send_alert_email_price(url, button)
+    {
+        var f = $('product_addtocart_form');
+		var productId = button.id.replace(/\D+/g,"");
+		if($('amxnotif_guest_email_price-' + productId)){
+			$('amxnotif_guest_email_price-' + productId).addClassName("validate-email required-entry");
+		}
+        var validator = new Validation(f);
+        if (validator.validate()) {
+            f.action = url;
+            f.id = 'am_product_addtocart_form';
+            f.submit();
+            button.remove();
+            return true;  
+        }
+       if($('amxnotif_guest_email_price-' + productId)){
+			$('amxnotif_guest_email_price-' + productId).removeClassName("validate-email required-entry");
+		}
+        return false;
+    }
+    
+    function checkItPrice(evt,url, button) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;  
+        if (charCode == 13) {
+               return send_alert_email_price(url, button);
+        }
+        return true;
+    }
+</script>
+<div class="amxnotif-block-price">
+	<label style="color: #2F2F2F;font-weight: bold; float:none;" ><?php echo $this->__('Sign up for price alert'); ?> </label><br/>
+	<input type="text" name="guest_email_price" id="amxnotif_guest_email_price-<?php echo $_productId;?>" onKeyPress="return checkItPrice(event, '<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl('price'));?>', $('button-email-send-<?php echo $_productId;?>'))" class="input-text" size="30" />
+	<input type="hidden" name="product_id" value="<?php echo $_productId;?>" />
+	<input type="hidden" name="type" value="email" />
+	<input type="hidden" name="parent_id" value="<?php echo Mage::registry('par_product_id')?>" />
+	<input type="hidden" name="<?php echo Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED ?>" value="<?php echo Mage::helper('amxnotif')->getEncodedUrl()?>" />
+	<button type="button" id="button-email-send-<?php echo $_productId;?>" class="button btn-cart amcart-ignore" onclick="send_alert_email_price('<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl('price'));?>', this)" title="<?php echo $this->__('Subscribe'); ?>"><span><span><?php echo $this->__('Subscribe'); ?></span></span> </button>
+</div>
