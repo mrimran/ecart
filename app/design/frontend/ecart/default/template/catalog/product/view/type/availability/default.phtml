@@ -24,8 +24,9 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 $_product = $this->getProduct(); ?>
+<?php $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);?>
 <?php if ($this->displayProductStockStatus()): ?>
-    <?php if ($_product->isAvailable()): ?>
+    <?php if ($_product->isAvailable() && $stock->getQty() != 0): ?>
         <p class="availability in-stock">
             <span class="label"><?php echo $this->helper('catalog')->__('Availability:') ?></span>
             <span class="value"><?php echo $this->helper('catalog')->__('In stock') ?></span>

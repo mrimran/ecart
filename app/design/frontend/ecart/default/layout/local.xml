@@ -181,8 +181,8 @@
                 <name>js/scriptshome.js</name>
             </action>
         </reference>
-        <reference name="content"> 
-            <!-- <block type="auguria_sliders/cms_page_slider" name="auguria_sliders" template="auguria/sliders/slider.phtml" after="catalog.topnav" before="content"/> -->
+        <reference name="content">
+           <!-- <block type="auguria_sliders/cms_page_slider" name="auguria_sliders" template="auguria/sliders/slider.phtml" after="catalog.topnav" before="content"/>-->
 
 				<block type="core/template" name="verticalnav" template="page/html/verticalnav.phtml"/>
 				<block type="core/template" name="sidenav" before="content" template="page/html/sidenav.phtml"/>
