@@ -144,7 +144,11 @@ $category_new->url_key;
                                 </a></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($Latest, $Latest->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
+                            <div class="price">
+							<?php echo $this->getChildHtml('bundle_prices') ?>
+                             <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?>
+                              <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span>
+                              </div>
                         </div>
                     </a>
                     <div class="actions">
