@@ -106,6 +106,13 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
+
+        if($this->getRequest()->getParam('cat_id')!= null){
+            //echo "hdjkdjdksjdks";
+        $categoryId = $this->getRequest()->getParam('cat_id'); 
+        $category = Mage::getModel('catalog/category')->load($categoryId);
+        $this->_productCollection->addCategoryFilter($category);
+        } 
             
         //print_r($collection);
         //$this->_productCollection = $layer->getProductCollections();
@@ -297,6 +304,15 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
          ->where('product_id = ?',array($id))
          ->limit(1);
          return $query;
+    }
+
+    public function getcategories(){
+       $categories = Mage::getModel('catalog/category')->getCollection()
+       ->addAttributeToSelect('*')//or you can just add some attributes
+       ->addAttributeToFilter('level', 2)//2 is actually the first level
+       ->addAttributeToFilter('is_active', 1)//if you want only active categories
+       ;
+       return $categories;
     }
     
 }

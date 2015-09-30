@@ -8,7 +8,8 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
     {
          $id = '%'.$cat_id.'%';
          $collection = Mage::getModel('shopbybrand/brand')->getCollection()
-        ->addFieldToSelect('*');
+        ->addFieldToSelect('*')
+        ->addFieldToFilter('is_featured',array('gteq'=>1));
         $collection->getSelect()->order('brand_id ASC');
         $collection->getSelect()->where('category_ids LIKE ?', $id)->limit(5);
         return $collection;

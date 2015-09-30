@@ -1,77 +1,42 @@
 <?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     rwd_default
- * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-<?php
-/**
- * Product list template
- *
- * @see Mage_Catalog_Block_Product_List
- */
-/* @var $this Mage_Catalog_Block_Product_List */
-?>
-
-<div class="margin1 products">
-<?php $_categories = $this->getcategories();
-$_helper = $this->helper('catalog/output');?>
-<?php foreach ($_categories as $_category): ?>
-  
-<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/sale?cat_id=<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></a>
-<br/>
-<?php endforeach ?>
-<?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
 ?>
 <?php if(!$_productCollection->count()): ?>
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
-<div class="category-products">
-    <?php echo $this->getToolbarHtml(); ?>
-    <?php // List mode ?>
     <?php if($this->getMode()!='grid'): ?>
     <?php $_iterator = 0; ?>
     <div class="clearfix">
     
      <?php foreach ($_productCollection as $_product): ?>
-    <div class="product clearfix">
+     	<?php $special = $_product->getSpecialPrice();
+				              $actual = $_product->getPrice();
+				              $percent = ($special / $actual) * 100;
+				              $percentFinal = 100 - $percent;  
+				              $percent = number_format($percentFinal,'0','.',',');
+			    if($percent >= 20){ ?>
+					    
+                  <div class="product clearfix">
 					<div class="col-sm-4 image">
-               <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
-                <?php /* Based on the native RWD styling, product images are displayed at a max of ~400px wide when viewed on a
-                        one column page layout with four product columns from a 1280px viewport. For bandwidth reasons,
-                        we are going to serve a 300px image, as it will look fine at 400px and most of the times, the image
-                        will be displayed at a smaller size (eg, if two column are being used or viewport is smaller than 1280px).
-                        This $_imgSize value could even be decreased further, based on the page layout
+                          <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                           <?php /* Based on the native RWD styling, product images are displayed at a max of ~400px wide when viewed on a
+                           one column page layout with four product columns from a 1280px viewport. For bandwidth reasons,
+                           we are going to serve a 300px image, as it will look fine at 400px and most of the times, the image
+                           will be displayed at a smaller size (eg, if two column are being used or viewport is smaller than 1280px).
+                           This $_imgSize value could even be decreased further, based on the page layout
                         (one column, two column, three column) and number of product columns. */ ?>
-                <?php $_imgSize = 300; ?>
-                <div class="img-box"><div class="abs_center">
-                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
-                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize($_imgSize); ?>"
-                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                </div></div>
-            </a>
+                         <?php $_imgSize = 300; ?>
+                         <span class="discount"><?php echo number_format($percentFinal,'0','.',',') ?>%</span>
+                         <div class="img-box">
+                             
+                          <div class="abs_center">
+
+                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize($_imgSize); ?>"
+                                alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                            </div></div>
+                         </a>
                
 					</div>
 					<div class="col-sm-5 details">
@@ -93,13 +58,11 @@ $_helper = $this->helper('catalog/output');?>
                                  <div class="rating" style="width:0%"></div>
                             </div>
                             <?php } ?>
-                            
                         </div>
-
-                   
 						<!-- <ul>
-							<?php //echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+							<?php // echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
 						</ul> -->
+            <br>
 						<a href="<?php echo $_product->getProductUrl() ?>" class="specs"> <?php echo $this->__('See Full Specifications') ?></a>
 					</div>
 					<div class="col-sm-3 relative price-info">
@@ -115,25 +78,42 @@ $_helper = $this->helper('catalog/output');?>
                                 <?php endif; ?>
                                 </div>
 					<?php $productCollection=$this->getTotalOrder($_product->getId());
-                          $_helper = $this->helper('catalog/output');?>
-                     <?php if(!$productCollection->count()): ?>
-                            <div class="orders">0 Orders</div>
-                      <?php else: ?>
-                             <?php foreach ($productCollection as $_brand): ?>
-                                 <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
-                              <?php endforeach ?>
-                      <?php endif ?>
+                     $_helper = $this->helper('catalog/output');?>
+                    <?php if(!$productCollection->count()): ?>
+                           <div class="orders">0 Orders</div>
+                    <?php else: ?>
+                         <?php foreach ($productCollection as $_brand): ?>
+                            <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
+                         <?php endforeach ?>
+                    <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">
-               
                <?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                <?php echo $this->__('In Stock') ?>
                <?php else: ?>
                <?php echo $this->__('Out of stock') ?>
                  <?php endif ?>
                </h5>
+              <div class="actions">
+              <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                  <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+              <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                  <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+              <?php else: ?>
+                  <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+              <?php endif; ?>
+              <!-- <ul class="add-to-links">
+                  <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                      <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                  <?php endif; ?>
+                  <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                      <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                  <?php endif; ?>
+              </ul> -->
+         </div>
 					</div>
 				</div>
+				<?php } ?>
     		 <?php endforeach; ?>
     </div>
     <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
@@ -150,10 +130,18 @@ $_helper = $this->helper('catalog/output');?>
     
     <div class="clearfix">
     <?php $i=0; foreach ($_productCollection as $_product): ?>
+    <?php $special = $_product->getSpecialPrice();
+				              $actual = $_product->getPrice();
+				              $percent = ($special / $actual) * 100;
+				              $percentFinal = 100 - $percent;  
+				              $percent = number_format($percentFinal,'0','.',',');
+			    if($percent >= 20){ ?>
+					    
 				<div class="product clearfix grid">
 					<div class="col-sm-4 image">
                   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php $_imgSize = 210; ?>
+                    <span class="discount"><?php echo number_format($percentFinal,'0','.',',') ?>%</span>
                     	<div class="img-box"><div class="abs_center">
                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
                          src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
@@ -183,13 +171,10 @@ $_helper = $this->helper('catalog/output');?>
                             <?php } ?>
                             
                         </div>
-
 					</div>
 					<div class="col-sm-3 relative price-info">
-               
-               <?php 
-					//echo $this->getPriceHtml($_product, true); 
-					
+          <?php 
+					//echo $this->getPriceHtml($_product, true);
 					?>
                
 					<div class="price">
@@ -204,14 +189,14 @@ $_helper = $this->helper('catalog/output');?>
                                 <?php endif; ?>
                                 </div>
 					<?php $productCollection=$this->getTotalOrder($_product->getId());
-                          $_helper = $this->helper('catalog/output');?>
-                     <?php if(!$productCollection->count()): ?>
-                            <div class="orders">0 Orders</div>
-                      <?php else: ?>
-                             <?php foreach ($productCollection as $_brand): ?>
-                                 <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
-                              <?php endforeach ?>
-                      <?php endif ?>
+                $_helper = $this->helper('catalog/output');?>
+          <?php if(!$productCollection->count()): ?>
+                <div class="orders">0 Orders</div>
+          <?php else: ?>
+          <?php foreach ($productCollection as $_brand): ?>
+          <div class="orders"><?php echo number_format($_brand->purchased,'0','.',',');?> Orders</div>
+        <?php endforeach ?>
+        <?php endif ?>
 					<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><i class="fa fa-heart"></i> Add to Wishlist</a>
 					<h5 class="stocks-update">25 pcs on Stock</h5>
           <div class="actions">
@@ -230,18 +215,13 @@ $_helper = $this->helper('catalog/output');?>
                   <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
               <?php endif; ?>
           </ul> -->
-      </div>
-			</div>
-			</div>
+         </div>
+					</div>
+				</div>
+				<?php } ?>
 				 <?php endforeach ?>
-				
 			</div>
-    </div>
-    
-    
-    
-    
-    
+
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
     <?php endif; ?>
 
@@ -250,15 +230,3 @@ $_helper = $this->helper('catalog/output');?>
     </div>
 </div>
 <?php endif; ?>
-<?php
-// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
-if ($this->getChild('after')) {
-    $_afterChildren = $this->getChild('after')->getSortedChildren();
-    foreach ($_afterChildren as $_afterChildName) {
-        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
-        //set product collection on after blocks
-        $_afterChild->setProductCollection($_productCollection);
-        echo $_afterChild->toHtml();
-    }
-}
-?>

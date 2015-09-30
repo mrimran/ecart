@@ -35,7 +35,7 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
-     public function allsaleAction() 
+     public function dealsAction() 
     {
         
         $this->loadLayout();
@@ -90,7 +90,12 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
+    public function ajaxdealsAction(){
+       $block = $this->getLayout()->createBlock('extension/sale')
+        ->setTemplate('catalog/product/ajaxdeals.phtml');
+         $this->getResponse()->setBody($block->toHtml());
 
+    }
     public function ajaxbestsellerAction(){
        $block = $this->getLayout()->createBlock('extension/computer')
         ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');

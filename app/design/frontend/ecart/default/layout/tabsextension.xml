@@ -328,7 +328,7 @@
 
 
 
-    <extension_index_allsale translate="label">
+    <extension_index_deals translate="label">
         <label>Super Deals</label>
         <!-- extensionseller -->
         <reference name="head">
@@ -372,7 +372,7 @@
                     <action method="setColumnCount"><count>4</count></action>
                 </block>
         </reference>
-    </extension_index_allsale>
+    </extension_index_deals>
 
 
  <extension_index_ajaxbestseller>
