@@ -24,6 +24,31 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+$order_id = ($this->getOrderId()) ? $this->getOrderId() : Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$_order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+//$order_details = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+$decision = Mage::app()->getRequest()->getParam('decision');
+$error_while_payment = false;
+if(!empty($decision)) {
+    if($decision == "DECLINE") {
+        $error_while_payment = true;
+	$_order->setState(Mage_Sales_Model_Order::STATE_CLOSED, true);
+	$_order->addStatusHistoryComment('Order was closed because payment was declined by the payment processor.', false);
+	$_order->setIsCustomerNotified(false);
+	$_order->save();
+    }
+    elseif($decision == "CANCEL") {
+        $error_while_payment = true;
+	$_order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true);
+	$_order->addStatusHistoryComment('Order was cancled because customer cancled to proceed with the payment.', false);
+        $_order->setIsCustomerNotified(false);
+	$_order->save();
+    }
+}
+if($error_while_payment === false):
+?>
+
 <div class="page-title">
     <h1><?php echo $this->__('Your order has been received.') ?></h1>
 </div>
@@ -59,12 +84,6 @@
     </ul>
 <?php endif; ?>
 
-<?php
-$order_id = ($this->getOrderId()) ? $this->getOrderId() : Mage::getSingleton('checkout/session')->getLastRealOrderId();
-$_order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
-//$order_details = Mage::getModel('sales/order')->loadByIncrementId($order_id);
-?>
-<?php //$_order = $this->getOrder() ?>
 <div class="title-buttons buttons-set">
     <h1><strong><?php echo $this->__('Your Order Details:'); ?></strong></h1><br />
     <h2><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h2>
@@ -184,7 +203,17 @@ $product_id = $item->getData('product_id');
 ?>
 </table>
 <script type="text/javascript">decorateTable('data-table orders', {'tbody': ['odd', 'even'], 'tbody tr': ['first', 'last']})</script>
-
+<?php
+else:
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('We will not be able process your order due to payment issues.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('We also offer cash on delivery so you may consider that!') ?></h2>
+<?php
+endif;
+?>
 <div class="buttons-set">
     <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location = '<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
 </div>
