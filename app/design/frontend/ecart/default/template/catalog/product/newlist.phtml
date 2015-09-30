@@ -33,7 +33,41 @@
 /* @var $this Mage_Catalog_Block_Product_List */
 ?>
 
+<?php $count = 1;
+$toDate = date('Y-m-d');
+?>
 <div class="margin1 products">
+<h2><span><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/sale/">TODAY'S DEALS</a></span></h2>
+<h4>Deals End in <span id="countbox_<?php echo $count; ?>"></span></h4>
+<script type="text/javascript">
+     var dthen<?php echo $count; ?> = new Date("<?php echo Date("m/d/y", strtotime($toDate)).' 11:59:00 PM'; ?>");
+     start = "<?php echo Date("m/d/y h:i:s A", strtotime(Mage_Core_Model_Locale::date(null, null, "en_US", true))); ?>";
+     start_date = Date.parse(start);
+     var dnow<?php echo $count; ?> = new Date(start_date);
+     if(CountStepper>0)
+     ddiff= new Date((dnow<?php echo $count; ?>)-(dthen<?php echo $count; ?>));
+     else
+     ddiff = new Date((dthen<?php echo $count; ?>)-(dnow<?php echo $count; ?>));
+     gsecs<?php echo $count; ?> = Math.floor(ddiff.valueOf()/1000);
+     var iid<?php echo $count; ?> = "countbox_<?php echo $count; ?>";
+     CountBack(gsecs<?php echo $count; ?>,"countbox_"+timer, timer);
+     timer++;
+  </script>
+<?php $count = $count + 1; ?>
+
+<!--Dynamic style changes goes here-->
+<?php 
+  /* Admin Controllers for timer are declared here */
+  $desc_color = Mage::getStoreConfig('timer/apptha_timer_color/description');
+  $timer_color = Mage::getStoreConfig('timer/apptha_timer_color/text');
+  $head_color = Mage::getStoreConfig('timer/apptha_timer_color/heading_text_color');
+?>
+<style>
+    .timer-view{width : 56% ;padding:0;color: #<?php echo $timer_color; ?>;font-size: 20px; font-family: arial;font-weight: bold;}
+    .timerdate{float: left;width: 100%;padding:0 0 15px 1px;color: #<?php echo $desc_color; ?>;font-size: 13px;}
+    #heading1{color:#<?php echo $head_color;?>;}
+</style>
+
 <?php $_categories = $this->getcategories();
 $_helper = $this->helper('catalog/output');?>
 <?php foreach ($_categories as $_category): ?>
