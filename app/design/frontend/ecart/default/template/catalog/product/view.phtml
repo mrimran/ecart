@@ -129,7 +129,8 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php echo $this->getChildHtml('alert_urls') ?>
       
       </div>
-       <?php if ($_product->isAvailable()): ?>
+      <?php $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);?>
+       <?php if ($_product->isAvailable() && $stock->getQty() != 0): ?>
       <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
         <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
         pcs</div>
@@ -160,8 +161,8 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             <div class="buttons">
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
-              if($upcoming == 'No'){?>
-              
+              if($upcoming == 'No' && $_product->isAvailable() && $stock->getQty() != 0){?>
+          
                 <div class="col-sm-9">
                   <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
                 </div>

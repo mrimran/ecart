@@ -57,7 +57,13 @@ $category_new->url_key;
                                 <!-- </a> --></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4>
+                            <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
+                            <?php if($specialprice) {?>
+                            
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+                            <?php } else {  ?>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                            <?php } ?>
                         </div>
                     </a>
                     <div class="actions">
@@ -144,7 +150,14 @@ $category_new->url_key;
                                 </a></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($Latest, $Latest->getName(), 'name') ?></h4> 
+                            <?php   $specialprice = Mage::getModel('catalog/product')->load($Latest->getId())->getSpecialPrice(); ?>
+                            <?php if($specialprice) {?>
+                            
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
+                            <?php } else {  ?>
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?></div>
+                            
+                            <?php } ?>
                         </div>
                     </a>
                     <div class="actions">
@@ -214,7 +227,14 @@ $_helper = $this->helper('catalog/output');
         <img id="product-collection-image-<?php echo $Latest->getId(); ?>" src="<?php echo $this->helper('catalog/image')->init($Latest, 'small_image')->resize($_imgSize); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($Latest, 'small_image'), null, true) ?>" /> <!-- </a>--></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($Latest, $Latest->getName(), 'name') ?></h4> 
+                            <?php   $specialprice = Mage::getModel('catalog/product')->load($Latest->getId())->getSpecialPrice(); ?>
+                            <?php if($specialprice) {?>
+                            
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
+                            <?php } else {  ?>
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?></div>
+                            
+                            <?php } ?>
                         </div>
                     </a>
                    <div class="actions">

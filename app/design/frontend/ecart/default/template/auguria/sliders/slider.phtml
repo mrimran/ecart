@@ -6,6 +6,8 @@
  * @license    http://opensource.org/licenses/gpl-3.0.html GNU General Public License version 3 (GPLv3)
  */
 ?>
+
+<?php echo $_menu ?>
 <?php
 $slides = $this->getSlides();
 $imageWidth = $this->getImageWidth();
@@ -14,9 +16,6 @@ $captionHeight = $this->getCaptionHeight();
 
 if ($slides && $slides->count()>0):
 ?>
-
-
-<section class="clearfix " id="menuslider">
 
 <div id="auguria-slider" class="clearer col-sm-12 col-md-9 homeslidercontainer">
 	<div class="auguria-slider-container">
@@ -130,4 +129,3 @@ if ($slides && $slides->count()>0):
 endif;
 ?>
 </div>
-</section>

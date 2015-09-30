@@ -54,12 +54,11 @@ div.wp-custom-menu-popup {
     right: 0 !important;
     text-align: left;
     top: 0 !important;
-    width: 75% !important;
+    width:856px;
     z-index: 1000;
-	 left: auto !important;
-	 max-height: 505px;
-	 border-top: 1px solid #eee;
-	 
+	left: 100% !important;
+	max-height: 505px;
+	border-top: 1px solid #eee;
 }
 
 div.menu a, div.wp-custom-menu-popup a {
@@ -162,9 +161,9 @@ div.level1 {
 }
 div.wp-custom-menu-popup {
     background-color: #fff;
-    border: solid 1px #eaeaea;
+    border:solid 1px #ddd;
     border-left: 0;
-    box-shadow: 1px 4px 8px 0px rgba(0,0,0,0.2);
+    /*box-shadow: 1px 4px 8px 0px rgba(0,0,0,0.2);*/
 }
 div.menu a:link, div.menu a:visited {
 }
@@ -441,7 +440,7 @@ html[xmlns] #menu-button, html[xmlns] .parentMenu {
     border-right: 1px solid #eaeaea;
     padding: 9px 15px 5px;
 }
-#custommenu .menu { width: 25%; }
+#custommenu .menu { width:100%; }
 #custommenu .parentMenu{ background-color: #fff;
     border-bottom: 1px solid #eaeaea;
     border-right: 1px solid #eaeaea;

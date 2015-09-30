@@ -217,7 +217,7 @@
 function billing_saved_chk(){
    billing.save();
    setTimeout(function(){
-    jQuery("html").scrollTop( 220 );
+    jQuery("html,body").animate({ scrollTop: 220 }, "slow");
     console.log("Scroll Going Up");
     },2000);
 }
