@@ -100,7 +100,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             $condition,
             array('cat_name' => 'cv.value'));
             $id = $this->getRequest()->getParam('cat_id');
-           $this->_productCollection->getSelect()->where('c.entity_id = ?', $id);
+            $this->_productCollection->getSelect()->where('c.entity_id = ?', $id);
 
         
      }
