@@ -34,6 +34,14 @@
 ?>
 
 <div class="margin1 products">
+<?php $_categories = $this->getcategories();
+$_helper = $this->helper('catalog/output');?>
+<?php foreach ($_categories as $_category): ?>
+  
+<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals?cat_id=<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></a>
+<br/>
+<?php endforeach ?>
+<div class = "saleproducts">
 <?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
@@ -41,7 +49,8 @@
 <?php if(!$_productCollection->count()): ?>
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
-<div class="category-products">
+    
+    <div class="category-products">
     <?php echo $this->getToolbarHtml() ?>
     <?php // List mode ?>
     <?php if($this->getMode()!='grid'): ?>
@@ -149,7 +158,7 @@
                       <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
                   <?php endif; ?>
               </ul> -->
-          </div>
+         </div>
 					</div>
 				</div>
 				<?php } ?>
@@ -254,7 +263,7 @@
                   <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
               <?php endif; ?>
           </ul> -->
-          </div>
+         </div>
 					</div>
 				</div>
 				<?php } ?>
@@ -275,10 +284,10 @@
 </div>
 <?php endif; ?>
 <!-- Button trigger modal -->
-<button type="button" id="dealsmodal" class="btn" data-toggle="modal" data-target="#myModal" style="display:none;">Launch modal</button>
+<!--<button type="button" id="dealsmodal" class="btn" data-toggle="modal" data-target="#myModal" style="display:none;">Launch modal</button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -293,7 +302,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <script>
 // jQuery(window).load(function() {
@@ -312,3 +321,24 @@ if ($this->getChild('after')) {
     }
 }
 ?>
+</div> 
+<script>
+
+function get_categories(catid) {
+
+        //make the ajax call
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxdeals/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollection', cat_id : catid},
+            beforeSend: function () {
+                jQuery('.saleproducts').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+            },
+            success: function (data) {
+                jQuery('.saleproducts').html(data);
+                //jQuery('#bestsejQueryller1').trigger('refresh.owl.carousel');
+               // reinitOwlOnSelector('#bestseller1',4);
+            }
+        });
+}
+</script>

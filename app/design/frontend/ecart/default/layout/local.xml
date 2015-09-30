@@ -415,11 +415,11 @@
 			</reference>
 			</extension_index_seller>
 
-			<extension_index_allsale>
+			<extension_index_deals>
 			<reference name="root">
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 			</reference>
-			</extension_index_allsale>
+			</extension_index_deals>
 
 			<extension_index_ourcollection>
 			<reference name="root">
