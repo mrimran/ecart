@@ -14,17 +14,26 @@ $category_new->url_key;
     </div>
     <ul class="brands clearfix">
         <?php
-        $_productCollectionbrand = $this->getLoadedProductCollectionbrand($category);
+        $_productCollectionbrand = $this->getproductbrands($category);
         $_helper = $this->helper('catalog/output');
-        if (!$_productCollectionbrand->count()):
-            ?>
-            <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
-        <?php else: ?>
-            <?php foreach ($_productCollectionbrand as $_brand): ?>
-                <?php $image = 'images/' . $_brand->thumbnail_image; ?>
-                <li><div class="img-box"><div class="abs_center"><a href="<?php echo Mage::getBaseUrl().$_brand->url_key?>"><?php echo $_brand->name ?></a></div></div></li>
-            <?php endforeach ?>
-<?php endif; ?>
+        foreach ($_productCollectionbrand as $brand):
+                        ?>
+            <?php $a[]= $brand->brand_urlkey; ?>
+            <?php $b[] = $brand->brand_name; ?>
+        <?php endforeach ?>
+        <?php $optionid = array_unique($a); ?>
+        <?php $brandname = array_unique($b); ?>
+        <?php $max = sizeof($brandname); ?>
+        <?php if ($max >= 5): ?>
+        <?php for($i = 0; $i < 5; $i++){?> 
+        <li><div class="img-box"><div class="abs_center"><a href="<?php echo $optionid[$i];?>"><?php echo $brandname[$i];?></a></div></div></li>
+        <?php } ?>  
+        <?php elseif($max < 5): ?> 
+        <?php for($i = 0; $i < $max; $i++){?>
+            
+           <li><div class="img-box"><div class="abs_center"><a href="<?php echo $optionid[$i];?>"><?php echo $brandname[$i];?></a></div></div></li>
+        <?php } ?>
+        <?php endif ?>
     </ul>
 </section>
 <section id="deals">
