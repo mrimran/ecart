@@ -107,12 +107,12 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
 
-        if($this->getRequest()->getParam('cat_id')!= null){
+        /*if($this->getRequest()->getParam('cat_id')!= null){
             //echo "hdjkdjdksjdks";
         $categoryId = $this->getRequest()->getParam('cat_id'); 
         $category = Mage::getModel('catalog/category')->load($categoryId);
         $this->_productCollection->addCategoryFilter($category);
-        } 
+        } */
             
         //print_r($collection);
         //$this->_productCollection = $layer->getProductCollections();
