@@ -24,17 +24,20 @@ $category_new->url_key;
         <?php $optionid = array_unique($a); ?>
         <?php $brandname = array_unique($b); ?>
         <?php $max = sizeof($brandname); ?>
+        <?php $i = 0; ?>
         <?php if ($max >= 5): ?>
-        <?php for($i = 0; $i < 5; $i++){?>
+        <?php while($i < 5){?>
         <?php if($optionid[$i] != ""){ ?>  
         <li><div class="img-box"><div class="abs_center"><a href="<?php echo $optionid[$i];?>"><?php echo $brandname[$i];?></a></div></div></li>
-        <?php } ?>
+        <?php $i = $i + 1; ?>
+          <?php } ?>
         <?php } ?>  
         <?php elseif($max < 5): ?> 
         
-        <?php for($i = 0; $i < $max; $i++){?>
+        <?php while($i < $max){?>
            <?php if($optionid[$i] != ""){ ?>  
            <li><div class="img-box"><div class="abs_center"><a href="<?php echo $optionid[$i];?>"><?php echo $brandname[$i];?></a></div></div></li>
+           <?php $i = $i + 1;?>
             <?php } ?>  
         <?php } ?>
         <?php endif ?>
