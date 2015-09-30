@@ -314,6 +314,7 @@ border-color:#303030;}
 .digit-clock{font-size:18px;line-height:1;}
 .digit-clock .day,.digit-clock .hour,.digit-clock .min,.digit-clock .sec{background-color:#f57a20;
 color:#fff;padding:7px 4px;width:30px;display:inline-block;font-size:16px;border-radius:1px;}
+.padjust1{padding-top:25px;}
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
 .__faq .__recent__faq { padding: 0; margin: 0 0 30px 0; }
