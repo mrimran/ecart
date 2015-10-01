@@ -62,8 +62,8 @@ $toDate = date('Y-m-d');
 <?php $_categories = $this->getcategories();
 $_helper = $this->helper('catalog/output');?>
 <?php foreach ($_categories as $_category): ?>
-<li>
-<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals?cat_id=<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></a>
+<li id="<?php echo $_category->getId(); ?>">
+<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals?cat_id=<?php echo $_category->getId(); ?>" value ="<?php echo $_category->getId(); ?>" ><?php echo $_category->getName(); ?></a>
 </li>
 <?php endforeach ?>
 </ul>
@@ -345,3 +345,19 @@ function get_categories(catid) {
         });
 }
 </script>
+
+<script>
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
+jQuery( document ).ready(function() {
+    myvar = getURLParameter('cat_id');
+    if(myvar != ""){
+      var buttons = document.getElementById(myvar);
+      jQuery("#"+myvar+"").addClass("active");
+    }
+});
+
+</script>
+

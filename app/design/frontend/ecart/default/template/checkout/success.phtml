@@ -25,27 +25,24 @@
  */
 ?>
 <?php
-$order_id = ($this->getOrderId()) ? $this->getOrderId() : Mage::getSingleton('checkout/session')->getLastRealOrderId();
-$_order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
-//$order_details = Mage::getModel('sales/order')->loadByIncrementId($order_id);
 $decision = Mage::app()->getRequest()->getParam('decision');
 $error_while_payment = false;
+$order_changes = array();
 if(!empty($decision)) {
+    $order_id = Mage::app()->getRequest()->getParam('req_reference_number');
     if($decision == "DECLINE") {
         $error_while_payment = true;
-	$_order->setData('state', Mage_Sales_Model_Order::STATE_CLOSED);
-	$_order->addStatusHistoryComment('Order was closed because payment was declined by the payment processor.', false);
-	$_order->setIsCustomerNotified(false);
-	$_order->save();
+	$order_changes = array('state' => 'canceled', 'comment' => "Order (#{$order_id}) was canceled because payment was declined by the payment processor.", 'notify_customer' => false);
     }
     elseif($decision == "CANCEL") {
         $error_while_payment = true;
-	$_order->setData('state', Mage_Sales_Model_Order::STATE_CANCLED);
-	$_order->addStatusHistoryComment('Order was cancled because customer cancled to proceed with the payment.', false);
-        $_order->setIsCustomerNotified(false);
-	$_order->save();
+	$order_changes = array('state' => 'canceled', 'comment' => "Order (#{$order_id}) was canceled because customer cancled to proceed with the payment.", 'notify_customer' => false);
     }
+} else {
+    $order_id = ($this->getOrderId()) ? $this->getOrderId() : Mage::getSingleton('checkout/session')->getLastRealOrderId();
 }
+
+$_order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
 if($error_while_payment === false):
 ?>
 
@@ -210,7 +207,7 @@ else:
     <h1><?php echo $this->__('We will not be able process your order due to payment issues.') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
-<h2 class="sub-title"><?php echo $this->__('We also offer cash on delivery so you may consider that!') ?></h2>
+<h2 class="sub-title"><?php echo $this->__('We also offer cash on delivery so you may consider that!') ?></h2><br />
 <?php
 endif;
 ?>
@@ -224,5 +221,28 @@ endif;
 
     POST
     <?php print_r($_POST)?>
+    <?php
+	//Mage::log($_REQUEST, null, 'cybersource-debug-log.log');
+	Mage::log("logging cybersource response...", null, "cybersource-response.log");
+	Mage::log($_REQUEST, null, "cybersource-response.log");
+        $cybersource = Mage::app()->getRequest()->getParam('cybersource');
+        Mage::log("---------------", null, "cybersource-response.log");
+	Mage::log($cybersource, null, "cybersource-response.log");
+    ?>
     </pre>
 </div>
+<?php
+//save order changes now
+if($error_while_payment === true) {//order will only get changed if payment was not processed well.
+    //echo "++++".$order_id;die();
+    $order = Mage::getModel('sales/order')->loadByIncrementID($order_id);
+    //$order->setData('state', $order_changes['state']);
+    $order->setState($order_changes['state'], true);//state,status. Status can also be changed with setStatus method
+    //$order->setStatus(true);
+    $order->addStatusHistoryComment($order_changes['comment'], false);
+    $order->setIsCustomerNotified($order_changes['notify_customer']);
+    $order->save();
+}
+?>
+
+
