@@ -323,7 +323,22 @@ height: auto !important;}
 .sizeGuidePage .firstlevel_tabcontents{border-top:1px solid #eee !important;}
 .sizeGuidePageTabArea{line-height:0px;}
 .sizeGuidePageTabArea .tab-pane.active{overflow:hidden;}
-.buyerprotectionpage .pointers{background-color:#5a5f65;border-radius:50%;height:100%;}
+.buyerprotectionpage a{color:#f57a20;}
+.buyerprotectionpage a:hover{color:#303030;}
+.buyerprotectionpage .pointers,.buyerprotectionpage .userpic{background-color:#5a5f65;border-radius:50%;
+text-align:center;line-height:2.5;color:#fff;font-weight:600;font-size:21px;max-width:54px;}
+.buyerprotectionpage .pointers.orange{background-color:#f57a20;}
+.buyerprotectionpage .userpic{font-size:50px;max-width:80px;height:80px;line-height:1.5;width:80px;}
+.buyerprotectionpage .description{min-height:115px;}
+.buyerprotectionpage .description h1{color:#5b5b5b;min-height:35px;padding-bottom:10px;
+font-family: 'GothamNarrow-Bold','open-sans',sans-serif;font-size:22px;text-transform:uppercase;}
+.buyerprotectionpage .clearfix{margin-top:40px;}
+.buyerprotectionpage hr{margin-bottom:40px;}
+.buyerprotectionpage .color2{color:#aaa;}
+.tips{background-color:#f6f6f6;padding:15px;color:#5b5b5b;border:1px solid #dfdfdf;font-size:14px;
+margin:15px 0 30px;}
+.tips b{font-family:'GothamNarrow-Bold','open-sans',sans-serif;}
+
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
 .__faq .__recent__faq { padding: 0; margin: 0 0 30px 0; }
@@ -361,6 +376,7 @@ height: auto !important;}
 .__faq .nav-tabs > li > a[aria-controls="refund"]:before { background-image: url('../images/refund.png'); }
 .__faq .nav-tabs > li > a[aria-controls="refund"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="refund"]:hover:before { background-position: 0 -23px; }
 .__faq .nav>li>a { margin: 0; padding: 10px 30.42px; border: none; font-size: 14px; color: rgb( 90, 95, 101); text-align: center; }
+.__faq .nav-tabs > li > a[aria-controls="others"]::before,.__faq .nav-tabs > li.active > a[aria-controls="others"]:hover:before{background-image: url("../images/others.png");}
 .__faq .nav>li>a:focus, .__faq .nav>li>a:hover, .__faq .nav-tabs>li.active>a, .__faq .nav-tabs>li.active>a:focus, .__faq .nav-tabs>li.active>a:hover { border: 0; border-radius: 0; border-color: rgba(0, 0, 0, 0); background-color: rgb(45, 46, 50); color: rgb(255, 255, 255); }
 .__faq .help-block { font-size: 12px; color: rgb(193, 193, 193); margin: 0 0 24px 0; padding: 0; }
 .__faq h2 { font-size: 18px; color: rgb(48, 48, 48); font-weight: bold; text-transform: uppercase; margin-bottom: 16px; }
