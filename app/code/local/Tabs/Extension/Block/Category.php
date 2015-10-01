@@ -366,10 +366,12 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
             array());
         
         // if Category filter is on
+
         //if ($catId) {
             $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5)->distinct(true);
             
             // echo $collection->getSelect()->columns('brand_name as name, brand_urlkey as url')->distinct(true);die();
+
                 
         //}
 
