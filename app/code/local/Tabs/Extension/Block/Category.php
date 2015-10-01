@@ -317,29 +317,31 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
     }  
 
    public function getproductbrands($cat_id){
-     $id = $cat_id;
+     //$id = $cat_id;
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
-        $catId = $id;
+        $catId = $cat_id;
         /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
+        
         $collection = Mage::getResourceModel('catalog/product_collection');
+        $collection->getSelect()->reset('columns'); 
         // join sales order items column and count sold products
         $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
+        //$condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
         $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
-        $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
-        $collection->addAttributeToSelect('*')->getSelect()
+        $collection->getSelect()->columns('')
             ->join(array('oi' => $collection->getTable('sales/order_item')),
             $condition,
-            array('sales_count' => $expression))
-            ->group('e.entity_id')
-            ->order('sales_count' . ' ' . 'desc');
+              array())
+            ->group('e.entity_id');
+            //->order('sales_count' . ' ' . 'desc');
             $collection->addFieldToFilter('status','1');
         //join brand 
               $condition = new Zend_Db_Expr("cpie.entity_id = e.entity_id AND cpie.attribute_id = 81");
-               $collection->getSelect()->join(array('cpie' => $collection->getTable('catalog_product_index_eav')),
+               $collection->getSelect()->columns('')->join(array('cpie' => $collection->getTable('catalog_product_index_eav')),
                $condition,
-               array('product_entity' => 'cpie.entity_id'));
+               array());
                $condition = new Zend_Db_Expr(" br.option_id = cpie.value");
                $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
                $condition,
@@ -353,7 +355,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
             $condition,
             array())->join(array('c' => $collection->getTable('catalog/category')),
             $condition2,
-            array('cat_id' => 'c.entity_id'));
+            array());
         $condition = new Zend_Db_Expr("c.entity_id = cv.entity_id AND ea.attribute_id = cv.attribute_id");
         // cutting corners here by hardcoding 3 as Category Entiry_type_id
         $condition2 = new Zend_Db_Expr("ea.entity_type_id = 3 AND ea.attribute_code = 'name'");
@@ -361,13 +363,15 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
             $condition2,
             array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
             $condition,
-            array('cat_name' => 'cv.value'));
+            array());
         
         // if Category filter is on
-        if ($catId) {
-             $collection->getSelect()->where('c.entity_id = ?', $catId); 
+        //if ($catId) {
+            $collection->getSelect()->where('c.entity_id = ?', $catId)->limit(5)->distinct(true);
+            
+            // echo $collection->getSelect()->columns('brand_name as name, brand_urlkey as url')->distinct(true);die();
                 
-        }
+        //}
 
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
         // so all sorting work lays on php
