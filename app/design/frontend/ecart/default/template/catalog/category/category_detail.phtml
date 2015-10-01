@@ -75,17 +75,19 @@ $category_new->url_key;
                                 <!-- </a> --></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4>
-                            <div class="price">
-                                <?php
-                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
-                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
-                                ?>
-
-                                <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
-                                    <span class="not-now">
-                                        <?php echo $_formattedActualPrice; ?></span>
-                                <?php endif; ?>
-                                </div>
+                           <?php 
+							  $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
+                              $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
+                             $today =  time();
+							 
+							?>
+                           <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
+                            <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate))) {?>
+                            
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+                            <?php } else {  ?>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                            <?php } ?>
                         </div>
                     </a>
                     <div class="actions">
