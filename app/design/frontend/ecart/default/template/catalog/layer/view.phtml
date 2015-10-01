@@ -68,7 +68,7 @@ $hiddenFilters = array();
                 jQuery(document).ready(function($) {
                     var CNT = jQuery("#<?php echo $this->__($_filter->getName()) ?> li").length;
                     console.log(CNT);
-                    if(CNT > 10){
+                    if(CNT > 11){
                     jQuery("#<?php echo $this->__($_filter->getName()) ?>").addClass('more');
                     jQuery("#<?php echo $this->__($_filter->getName()) ?>ML").show().find('a').text('Show More');
                     }
