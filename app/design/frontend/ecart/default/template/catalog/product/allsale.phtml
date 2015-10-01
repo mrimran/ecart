@@ -36,8 +36,13 @@
 $toDate = date('Y-m-d');
 ?>
 <div class="margin1 products">
-<h2><span><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals/">TODAY'S DEALS</a></span></h2>
-<h4>Deals End in <span id="countbox_<?php echo $count; ?>"></span></h4>
+<div class="category_deals clearfix">
+<div class="today_timer">
+<h2><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals/">Today's Deals ></a></h2>
+<h4>End in</h4>
+<h3 class="digit-clock" id="countbox_<?php echo $count; ?>"></h3>
+</div>
+<div class="catgories_table">
 <script type="text/javascript">
      var dthen<?php echo $count; ?> = new Date("<?php echo Date("m/d/y", strtotime($toDate)).' 11:59:00 PM'; ?>");
      start = "<?php echo Date("m/d/y h:i:s A", strtotime(Mage_Core_Model_Locale::date(null, null, "en_US", true))); ?>";
@@ -53,28 +58,20 @@ $toDate = date('Y-m-d');
      timer++;
   </script>
 <?php $count = $count + 1; ?>
-
-<!--Dynamic style changes goes here-->
-<?php 
-  /* Admin Controllers for timer are declared here */
-  $desc_color = Mage::getStoreConfig('timer/apptha_timer_color/description');
-  $timer_color = Mage::getStoreConfig('timer/apptha_timer_color/text');
-  $head_color = Mage::getStoreConfig('timer/apptha_timer_color/heading_text_color');
-?>
-<style>
-    .timer-view{width : 56% ;padding:0;color: #<?php echo $timer_color; ?>;font-size: 20px; font-family: arial;font-weight: bold;}
-    .timerdate{float: left;width: 100%;padding:0 0 15px 1px;color: #<?php echo $desc_color; ?>;font-size: 13px;}
-    #heading1{color:#<?php echo $head_color;?>;}
-</style>
-
+<ul class="categories_list">
 <?php $_categories = $this->getcategories();
 $_helper = $this->helper('catalog/output');?>
 <?php foreach ($_categories as $_category): ?>
-  
+<li>
 <a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals?cat_id=<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></a>
-<br/>
+</li>
 <?php endforeach ?>
-<div class = "saleproducts">
+</ul>
+
+</div>
+</div>
+
+<div class="saleproducts">
 <?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
@@ -121,11 +118,10 @@ $_helper = $this->helper('catalog/output');?>
                
 					</div>
 					<div class="col-sm-5 details">
-						
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
                         <div class="ratings">
                       <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
+                            <div class="rating-box">
                                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
                             </div>
                             <?php if($summaryData['reviews_count'] > 1) {?>
@@ -218,7 +214,7 @@ $_helper = $this->helper('catalog/output');?>
 				              $percent = number_format($percentFinal,'0','.',',');
 			    if($percent >= 20){ ?>
 					    
-				<div class="product clearfix grid">
+				<div class="product clearfix grid" data-items="4">
 					<div class="col-sm-4 image">
                   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php $_imgSize = 210; ?>
@@ -316,32 +312,6 @@ $_helper = $this->helper('catalog/output');?>
     </div>
 </div>
 <?php endif; ?>
-<!-- Button trigger modal -->
-<!--<button type="button" id="dealsmodal" class="btn" data-toggle="modal" data-target="#myModal" style="display:none;">Launch modal</button>
-
-<!-- Modal -->
-<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modalstyles deals">
-      <h1 class="title-deals">Get Daily Deals In Your Inbox</h1>
-      <hr>
-      <p>Please Enter Your Email Address Below</p>
-      <input class="widthfull" type="text" name="discount" value="" placeholder="">
-      <button type="button" class="btn1">KEEP ME UPDATED!</button>
-      </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<script>
-// jQuery(window).load(function() {
-//   jQuery('#dealsmodal').click();
-// });
-</script>
 <?php
 // Provides a block where additional page components may be attached, primarily good for in-page JavaScript
 if ($this->getChild('after')) {
@@ -354,7 +324,7 @@ if ($this->getChild('after')) {
     }
 }
 ?>
-</div> 
+</div>
 <script>
 
 function get_categories(catid) {
