@@ -192,10 +192,11 @@ border-left:1px solid #cdcdcd;position:absolute;top:6px;right:0px;height: 38px;p
 /* Main Menu */
 .maincontainer .mainmenu{padding:0;margin:0;background-color:#FFF;height:400px;}
 .mainmenu.flymenu{position:absolute;z-index:99999;max-width:1144px;display:none;width:100%;
-border-top:1px solid #eaeaea;top:50px;}
+/*border-top:1px solid #eaeaea;*/top:0px;left:0;}
+.mainmenu.flymenu:hover{z-index:99999;}
 .mainheadnav .container{position:relative;}
-.mainmenu.flymenu .nav-container{min-height:400px;top:0;}
-.megamenurightimage img{max-width:100%;}
+.mainmenu.flymenu .nav-container{min-height:400px;top:0;width:100%;}
+.megamenurightimage img{max-width:100%;height:503px;}
 .maincontainer .mainmenu > .top{list-style-type:none;margin:0;padding:0;}
 .maincontainer .mainmenu > .top > li{background-color:#fff;padding:9px 15px 5px;
 border-bottom:1px solid #eaeaea;border-right:1px solid #eaeaea;}
@@ -277,7 +278,7 @@ background-color:#f57a20;}
 .promotionslider .col-sm-4 img{max-width:100%;}
 .promotionslider .col-sm-4:last-child{padding-right:0px;}
 .maincontainer section{padding:5px 0 60px;}
-.maincontainer section#menuslider{padding:0;background-color:#eee;}
+section#menuslider{padding:0;background-color:#eee;}
 .maincontainer .sectiontitle{font-family:'GothamNarrow-Medium','Open Sans', sans-serif;
 position:relative;z-index:100;}
 .maincontainer .sectiontitle:before{position:absolute;top:40px;border:0;border-top:1px solid #e3e3e3;
@@ -381,7 +382,7 @@ font-family:'GothamNarrow-Medium', sans-serif;}
 .buyerprotection .protection-list li{color:#303030;font-size:14px;display:inline-block;
 padding-right:18%;padding-top:10px;}
 .buyerprotection .protection-list li:last-child{padding-right:0;}
-.maincontainer .page_menu{position:absolute;top:840px;left:0;width:auto;z-index:555;}
+.maincontainer .page_menu{position:absolute;top:920px;left:0;width:auto;z-index:555;}
 .maincontainer .page_menu.navfixed{position:fixed;top:40px;}
 .maincontainer .page_menu a{background-color:#2d2e32;color:#fff;display:block;width:40px;height:40px;
 padding:10px;background-image:url(../images/cat-sprite-white.png);background-repeat:no-repeat;
@@ -393,14 +394,16 @@ background-position:7px 8px;vertical-align:middle;overflow:hidden;text-indent:33
         transition: all 0.55s ease-in-out;
 white-space:nowrap;
 }
-.maincontainer .page_menu a:nth-child(2){background-position:7px -40px;}
-.maincontainer .page_menu a:nth-child(3){background-position:7px -90px;}
-.maincontainer .page_menu a:nth-child(4){background-position:7px -139px;}
-.maincontainer .page_menu a:nth-child(5){background-position:7px -185px;}
-.maincontainer .page_menu a:nth-child(6){background-position:7px -234px;}
-.maincontainer .page_menu a:nth-child(7){background-position:7px -282px;}
-.maincontainer .page_menu a:nth-child(8){background-position:7px -328px;}
-.maincontainer .page_menu a:nth-child(9){background-position:7px -380px;}
+
+.maincontainer .page_menu a.phoneaccessories{background-position:7px 8px;}
+.maincontainer .page_menu a.computeraccessories{background-position:7px -40px;}
+.maincontainer .page_menu a.tvVideo{background-position:7px -90px;}
+/*.maincontainer .page_menu a:nth-child(4){background-position:7px -139px;}
+.maincontainer .page_menu a:nth-child(5){background-position:7px -185px;}*/
+.maincontainer .page_menu a.deals{background-position:7px -234px;}
+.maincontainer .page_menu a.features{background-position:7px -282px;}
+.maincontainer .page_menu a.bestselingproduct,.maincontainer .page_menu a.perfumewatches{background-position:7px -328px;}
+.maincontainer .page_menu a.buyersprotection{background-position:7px -380px;}
 
 .maincontainer .page_menu a:hover{background-color:#3c3f48;text-indent:33px;width:auto;}
 #features{border-bottom:1px solid #f0f0f0;padding:0;margin:50px 0 20px;
@@ -1068,6 +1071,13 @@ body.catalog-category-view #shopbybrand{padding-bottom:15px;}
 body.catalog-category-view #shopbybrand .brands .img-box:hover{background-color:#303030;}
 body.catalog-category-view #shopbybrand .brands .img-box a{color:#303030;font-size:18px;display:block;}
 body.catalog-category-view #shopbybrand .brands .img-box:hover a{color:#fff;}
+#checkout-step-review .data-table .price{min-width:110px;display:inline-block;text-align:center;}
+.checkout-agreements{list-style-type:none;font-size:14px;}
+.checkout-agreements .agreement-content{padding:5px 15px 5px 3px;}
+.checkout-agreements p.agree{padding:5px;}
+.checkout-agreements p.agree input{display:inline-block;vertical-align:top;margin-right:10px;}
+.my-account .pagination{display:inherit;}
+.my-account .pagination .count-container{text-align:left;}
 
 .fullheight{height:100% !important;max-height:100% !important;}
 .relative{position:relative;}

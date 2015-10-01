@@ -1,0 +1,149 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+<?php endif;?>
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<p><?php echo $this->__('Your Order Details:'); ?></p>
+<?php
+// First, let's load some Load order details  
+$order_id = Mage::getSingleton('checkout/session')->getLastRealOrderId(); 
+$order_details = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+
+
+$shipping_method = $order_details->_data["shipping_description"];
+
+// Get ship-to address information
+$shipping_address_data = $order_details->getShippingAddress();
+
+// Output the ship-to address information
+echo "<br>" . $shipping_address_data['firstname'];
+echo " " . $shipping_address_data['lastname'];
+echo "<br>" . $shipping_address_data['street'];
+echo "<br>" . $shipping_address_data['city'];
+echo ", " . $shipping_address_data['region'];
+echo " " . $shipping_address_data['postcode'];
+echo "<br>" . $shipping_address_data['country_id'];
+
+/*** Product Listing ***/
+// Iterate through each product listing the sku, the name, the quantity ordered, and the item price
+foreach ($order_details->getAllItems() as $item) {
+     echo '<div class="product">';
+     echo '<div class="line"><p class="name">Product:' . $item->getName() . '</p>';
+     echo '<p class="price">' . Mage::helper("core")->currency($item->getPrice()) . '</p>';
+     echo '<p class="qty">' . round($item->getQtyOrdered(), 0) . '</p>';
+     echo '<p class="lineprice">' . Mage::helper("core")->currency($item->getPrice() * $item->getQtyOrdered()) . '</p>';
+     echo '</div>';
+     echo '<p class="model">SKU: ' . $item->getSku() . '</p>';
+     echo '</div>';
+}
+// Get the product id from the item (useful later for loading product attribute information)
+$product_id = $item->getData('product_id');
+
+// Get payment information
+$payment_method = $order_details->getPayment()->getMethodInstance()->getTitle();
+
+// Get billing address information
+$billing_address_data   = $order_details->getBillingAddress();
+
+// Output the billing address information
+echo "<br>" . $billing_address_data['firstname'];
+echo " " . $billing_address_data['lastname'];
+echo "<br>" . $billing_address_data['street'];
+echo "<br>" . $billing_address_data['city'];
+echo ", " . $billing_address_data['region'];
+echo " " . $billing_address_data['postcode'];
+echo "<br>" . $billing_address_data['country_id'];
+
+
+/*** Billing amounts ***/
+// These leverage the Magento core helper to format the numbers to currency
+echo '<p class="subtotal">Subtotal:<span class="amount">' . Mage::helper("core")->currency($order_details->subtotal)  . "</span></p>";
+echo '<p class="tax">Tax:<span class="amount">' . Mage::helper("core")->currency($order_details->tax_amount)  . "</span></p>";
+echo '<p class="discount">Discount:<span class="amount">' . Mage::helper("core")->currency($order_details->discount_amount) . "</span></p>";
+echo '<p class="paid">Amount Paid:<span class="amount">' . Mage::helper("core")->currency($order_details->total_paid) . "</span></p>";
+
+
+// Load the CMS helper
+$_cmsHelper = Mage::helper('cms');
+$_process = $_cmsHelper->getBlockTemplateProcessor();
+// Load the product model class
+$product = Mage::getModel('catalog/product');
+// Load the product into the class
+// Uses ID we loaded earlier - see block about looping through products
+$product->load($product_id);
+// Load the learn block into the variable so we can test the size before displaying
+// NOTE: "learn" is the identifier of the attributed.  use the id you defined for the attribute
+$block = $product->getData('learn');
+if (strlen($block) > 20) {
+     echo '<h3 class="title">Learn more about your new product</h3>';
+     echo '<div class="learnmore">';
+     // Run the block through the cms filter to get cms code rendered properly
+     echo $_process->filter($block);
+     echo '</div>';
+}
+
+
+// Loads the CMS static block directly
+// Note: the identifier for the cms block in this example is success_faq - adjust to suite your cms
+echo $this->getLayout()->createBlock('cms/block')->setBlockId('success_faq')->toHtml();
+?>
+<p><?php echo $this->__('Shopping:'); ?></p>
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>

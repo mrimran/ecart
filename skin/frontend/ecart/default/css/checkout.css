@@ -335,6 +335,7 @@
     padding: 0;
 }
 .checkout-onepage-index .sp-methods #dt_method_cybersourcesa,
+.checkout-onepage-index .sp-methods #dt_method_phoenix_cashondelivery,
 .checkout-onepage-index .sp-methods #dt_method_checkmo,
 .checkout-onepage-index .sp-methods dt#dt_method_ccsave,
 
@@ -355,6 +356,7 @@
 .checkout-onepage-index .sp-methods #dt_method_cybersourcesa  input[type="radio"],
 .checkout-onepage-index .sp-methods dt#dt_method_ccsave input[type="radio"],
 .checkout-onepage-index .sp-methods #dt_method_checkmo input[type="radio"],
+.checkout-onepage-index .sp-methods #dt_method_phoenix_cashondelivery input[type="radio"],
 
 /*.checkout-onepage-index .sp-methods input[type="radio"],*/
 
@@ -370,6 +372,7 @@
 .checkout-onepage-index .sp-methods #dt_method_checkmo label,
 .checkout-onepage-index .sp-methods label,
 .checkout-onepage-index .sp-methods #dt_method_cybersourcesa label,
+.checkout-onepage-index .sp-methods #dt_method_phoenix_cashondelivery label,
 .product-options ul.options-list label,
 .form-list .control label {
     min-width: inherit;

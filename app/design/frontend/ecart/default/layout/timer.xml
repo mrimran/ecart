@@ -41,6 +41,28 @@
            </action>   
     </reference>
     </cms_index_index>
+    <extension_index_deals>
+      <reference name="head">
+             <action method="addJs"><script>timer.js</script></action>
+             <action method="addCss"><stylesheet>timer/timer.css</stylesheet></action>
+        </reference>
+    <reference name="product_list">
+           <action method="setTemplate" ifconfig="timer/general/enabled">
+             <template>timer/product/list.phtml</template>
+           </action>   
+    </reference>
+    </extension_index_deals>
+    <extension_index_sale>
+      <reference name="head">
+             <action method="addJs"><script>timer.js</script></action>
+             <action method="addCss"><stylesheet>timer/timer.css</stylesheet></action>
+        </reference>
+    <reference name="product_list">
+           <action method="setTemplate" ifconfig="timer/general/enabled">
+             <template>timer/product/list.phtml</template>
+           </action>   
+    </reference>
+    </extension_index_sale>
     <catalog_category_default>
     	<reference name="head">
              <action method="addJs"><script>timer.js</script></action>

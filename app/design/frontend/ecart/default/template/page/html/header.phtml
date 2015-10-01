@@ -139,7 +139,7 @@
      			</div>
 				<div class="dealsnav clearfix">
 				    <ul>
-				     <li><a href="<?php echo Mage::getBaseUrl()."extension/index/allsale/"?>">Super Deals <span class="new">New</span></a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl()."extension/index/deals/"?>">Super Deals <span class="new">New</span></a></li>
 				     <li><a href="<?php echo Mage::getBaseUrl()."extension/index/seller/"?>">Best Selling</a></li>
 				     <li><a href="<?php echo Mage::getBaseUrl()."extension/index/ourcollection/"?>">Our Collection</a></li>
 				     <li><a href="<?php echo Mage::getBaseUrl()."extension/index/sale/"?>">All Sale</a></li>
@@ -165,7 +165,19 @@
                     <?php echo $this->getChildHtml('minicart_head'); ?>
                     </div>
                </div>
-               <?php echo $this->getChildHtml('topMenu') ?>
      	</div>
      </div>
 </header>
+<section class="clearfix " id="menuslider">
+<div class="container">
+<div class="col-sm-3"><?php echo $this->getChildHtml('topMenu'); ?></div>
+<?php
+if($this->getIsHomePage()){
+  echo $this->getLayout()
+     ->createBlock('auguria_sliders/cms_page_slider')
+     ->setTemplate('auguria/sliders/slider.phtml')
+     ->toHtml();
+}
+?>
+</div>
+</section>

@@ -155,13 +155,17 @@
         </a>
             | -->
             <?php if (!$this->isOnCheckoutPage()): ?>
-                <a href="<?php echo $this->getAjaxDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>"
+                <a href="<?php echo $this->getAjaxDeleteUrl()?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>"
                    data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
                    class="remove cross">
                     <?php echo $this->__('x') ?>
                 </a>
             <?php else: ?>
-                <span><?php echo $this->__('Remove Item') ?></span>
+                <a href="<?php echo $this->getAjaxDeleteUrl()?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>"
+                   data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
+                   class="remove cross">
+                    <?php echo $this->__('x') ?>
+                </a>
             <?php endif; ?>
         <?php endif ?>
 
