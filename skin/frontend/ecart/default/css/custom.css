@@ -264,3 +264,5 @@ div.zoomContainer{display:none;}
 #cart-sidebar-reorder .product-name {}
 #cart-sidebar-reorder .product-name a { float: left; width: 90%;}
 #cart-sidebar-reorder .product-name input {  float: left; width: 10%;}
+.dashboard.cms_template ul {margin-left: 0;}
+.maincontainer .sectiontitle{margin-top: 20px;}
