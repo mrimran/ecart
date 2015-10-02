@@ -1,5 +1,4 @@
 <section class="__faq">
-  <div class="container"> 
     <!--<h1>I Need Help With...</h1>-->
     <div class="row">
       <div class="col-sm-8"> 
@@ -167,62 +166,25 @@
             <li class="__more__question"><a href="#">View More Questions</a></li>
           </ul>
         </section>
-        <section class="__customer__service">
-          <h2>Customer Service</h2>
-          <div class="__phone">Toll Free No <a href="#">800 42935</a></div>
-        </section>
-        <section class="__follow__us">
-          <h2>Follow Us</h2>
-          <div class="social clearfix">&nbsp;</div>
-        </section>
+            <section class="__customer__service">
+                <h2>Customer Service</h2>
+                <div class="__phone">Toll Free No <a href="#">800  42935</a></div>
+            </section>
+            <section class="__follow__us">
+                <h2>Follow Us</h2>
+                <div class="social clearfix">
+                <a class="fb" href="http://www.facebook.com/ecart.ae" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a class="tw" href="https://twitter.com/MyeCart" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a class="gplus" href="https://plus.google.com/+EcartAe26" target="_blank"><i class="fa fa-google-plus"></i></a>
+     <a class="linkedin" href="https://www.linkedin.com/company/ecart-ae" target="_blank"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </section>
       </div>
     </div>
-  </div>
 </section>
 
 
-<div id="divParent1" class="parentDiv">
-    Group 1
-    <div id="child1" class="childDiv">
-        Child 1
-    </div>
-    <div id="child2" class="childDiv">
-        Child 2
-    </div>
-</div>
-<div id="divParent2" class="parentDiv">
-    Group 2
-    <div id="child1" class="childDiv">
-        Child 1
-    </div>
-    <div id="child2" class="childDiv">
-        Child 2
-    </div>
-     <div id="child2" class="childDiv">
-        Child 3
-    </div>
-</div>
-
 <script>
-<?php /*?>jQuery(document).ready(function(e) {
-  var rightsidefaqs = jQuery('.rightsidefaqs li a');
-  $(rightsidefaqs).click(function() {
-	 var attroflist = jQuery(this).attr('aria-controls')
-    //alert(attroflist);
-	jQuery('.__faq ul.nav-tabs li a').each(function(index, element) {
-		
-		var attroftab = jQuery(this).attr('aria-controls');
-		if(attroftab == attroflist ) 
-		{ 
-			alert(jQuery(this));
-		}
-		else
-		{
-		alert("no");
-		}
-    });
-});
-});<?php */?>
 var rightsidefaqs = jQuery('.rightsidefaqs li a');
 jQuery('.rightsidefaqs li a').click(function(event) {
 	 event.preventDefault;
@@ -233,7 +195,4 @@ jQuery('.rightsidefaqs li a').click(function(event) {
 	 //alert(hrefoflist);
 	  jQuery('.tab-content a[href^="' + hrefoflist + '"]').trigger('click');
 });
- 
-
-
 </script>
