@@ -58,7 +58,7 @@ uasort($items, function($a,$b) {
 
         <?php  $str1 = strtolower(rtrim($_item->getLabel())); ?>
          <?php
-         $str = str_replace(
+         echo $str = str_replace(
 					array(' ','&nbsp;'),
 					array('-', ''),
 					$str1
