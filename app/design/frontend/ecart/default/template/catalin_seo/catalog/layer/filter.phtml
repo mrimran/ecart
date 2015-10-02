@@ -38,6 +38,7 @@ $cnt = count($this->getItems());
 
 <?php $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
+
 $path = $url->getPath(); 
 $items = $this->getItems();
 
@@ -53,7 +54,11 @@ uasort($items, function($a,$b) {
         <div id="cont-<?php echo $filterName ?>">
         <?php }*/ ?>
         <?php $str = strtolower($_item->getLabel()); ?>
-        <?php  if (strpos($path, $str) == false) { ?>    
+        <?php $new = explode(' ', $str); ?>
+        <?php $new1 = implode('-', $new); ?>
+        <?php //print_r($new1);?>
+        
+        <?php  if (strpos($path, $new1) == false) { ?>    
                 
         <li>
             <?php if ($_item->getCount() > 0): ?>

@@ -34,18 +34,21 @@ $displaySize = 2;
 $i = 0;
 $filterName = strtolower($this->getName());
 $cnt = count($this->getItems());
+?>
+<?php $currentUrl = "https://labs.localmediauae.com/ecart/games-accessories/filter/manufacturer/icore,light-wave,thrustmaster,thrustmaster,turtle-beach.html";
+$url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
 
+$path = $url->getPath(); 
 $items = $this->getItems();
-
 //sort by count
 uasort($items, function($a,$b) {
     return ($a->getCount() - $b->getCount())* -1;
 });
 ?>
 
-<?php $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-$url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
-$path = $url->getPath(); 
+<?php //$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+//$url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
+//$path = $url->getPath(); 
 ?>
 <?php foreach ($items as $_item): ?>
     <?php /*if ($i == $displaySize) { ?>
@@ -53,7 +56,12 @@ $path = $url->getPath();
         <div id="cont-<?php echo $filterName ?>">
         <?php }*/ ?>
         <?php $str = strtolower($_item->getLabel()); ?>
-        <?php  if (strpos($path, $str) == false) { ?>
+        <?php //echo $str ?>
+        <?php $new = explode(' ', $str); ?>
+        <?php $new1 = implode('-', $new); ?>
+        <?php //print_r($new1);?>
+        
+        <?php  if (strpos($path, $new1) == false) { ?>
         <li>
             <?php if ($_item->getCount() > 0): ?>
                 <?php /* commenting default
