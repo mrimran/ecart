@@ -29,13 +29,15 @@
 	    //print_r($allowedFields);
 	    foreach($_POST as $name => $value) {
 	        if(in_array($name, $allowedFields))  {
-                    $value = trim(preg_replace('/[^A-Za-z0-9\-\s\@#:~!^*_+=`\."\']/', '', strip_tags($value)));
+                    $value = trim(preg_replace('/[^A-Za-z0-9\-\s\@#:~!^*_+=`\.]/', '', strip_tags($value)));
+                    $value = substr($value, 0, 100);
                     $params[$name] = str_replace("  ", " ", $value);//remove double spaces
                 }
 	    }
 
 	    $params['signed_field_names'] = implode(",", $allowedFields);
 	    $params['signed_date_time'] = gmdate("Y-m-d\TH:i:s\Z");
+            $params['merchant_defined_data9'] = "ECART";
         
 	      /* echo "<pre>";
           print_r($params);
