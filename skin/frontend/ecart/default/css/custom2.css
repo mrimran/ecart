@@ -342,7 +342,7 @@ margin:15px 0 30px;}
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
 .__faq .__recent__faq { padding: 0; margin: 0 0 30px 0; }
-.__faq .__recent__faq h2 { background-color: rgb(45, 46, 50); font-size: 16px; color: rgb(255, 254, 254); font-weight: bold; text-transform: uppercase; padding: 16px; }
+.__faq .__recent__faq h2 { background-color: rgb(45, 46, 50); font-size: 16px; color: rgb(255, 254, 254); font-weight: bold; text-transform: uppercase; padding: 16px;margin-bottom:0; }
 .__faq .__recent__faq ul { margin: 0 0 0 0; padding: 12px 0 0 0; border: 1px solid rgb(234, 234, 234); border-top: 0; list-style: none; }
 .__faq .__recent__faq ul li { padding: 12px 18px; border-bottom: 1px solid rgb(234, 234, 234); }
 .__faq .__recent__faq ul li:nth-last-child(1) { border-bottom: 0; }
@@ -375,8 +375,9 @@ margin:15px 0 30px;}
 .__faq .nav-tabs > li > a[aria-controls="refund"]:before, .__faq .nav-tabs > li.active > a[aria-controls="refund"]:before { height: 23px; width: 35px; margin-bottom: 15px; }
 .__faq .nav-tabs > li > a[aria-controls="refund"]:before { background-image: url('../images/refund.png'); }
 .__faq .nav-tabs > li > a[aria-controls="refund"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="refund"]:hover:before { background-position: 0 -23px; }
-.__faq .nav>li>a { margin: 0; padding: 10px 30.42px; border: none; font-size: 14px; color: rgb( 90, 95, 101); text-align: center; }
-.__faq .nav-tabs > li > a[aria-controls="others"]::before,.__faq .nav-tabs > li.active > a[aria-controls="others"]:hover:before{background-image: url("../images/others.png");}
+.__faq .nav>li>a { margin: 0; padding: 10px 29.92px; border: none; font-size: 14px; color: rgb( 90, 95, 101); text-align: center; }
+.__faq .nav-tabs > li > a[aria-controls="others"]::before{background-image: url("../images/others.png");background-position:1px 0;width:32px;}
+.__faq .nav-tabs > li > a[aria-controls="others"]:hover:before,.__faq .nav-tabs > li.active > a[aria-controls="others"]:before{ background-position:1px -30px;}
 .__faq .nav>li>a:focus, .__faq .nav>li>a:hover, .__faq .nav-tabs>li.active>a, .__faq .nav-tabs>li.active>a:focus, .__faq .nav-tabs>li.active>a:hover { border: 0; border-radius: 0; border-color: rgba(0, 0, 0, 0); background-color: rgb(45, 46, 50); color: rgb(255, 255, 255); }
 .__faq .help-block { font-size: 12px; color: rgb(193, 193, 193); margin: 0 0 24px 0; padding: 0; }
 .__faq h2 { font-size: 18px; color: rgb(48, 48, 48); font-weight: bold; text-transform: uppercase; margin-bottom: 16px; }
