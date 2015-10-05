@@ -294,10 +294,10 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
 
 
         $collection = Mage::getModel('shopbybrand/brand')->getCollection();
-        $collection->getSelect()->where('product_ids LIKE ?', '%' . $productid . '%')->limit(1);
+        //$collection->getSelect()->where('product_ids LIKE ?', '%' . $productid . '%')->limit(1);
         //modifying above comparison because it's matches the substring IDs as well which a bug.
-        //middle product, first product, or last product.
-        $collection->getSelect()->where('product_ids LIKE ? OR product_ids LIKE ? OR product_ids LIKE ?', array('%,' . $productid . ',%', $productid . ',%', '%,' . $productid))->limit(1);
+        //middle product, first product, last product, or only single product.
+        $collection->getSelect()->where('product_ids LIKE ? OR product_ids LIKE ? OR product_ids LIKE ? OR product_ids=?', array('%,' . $productid . ',%', $productid . ',%', '%,' . $productid, $productid))->limit(1);
         return $collection;
     }
 
