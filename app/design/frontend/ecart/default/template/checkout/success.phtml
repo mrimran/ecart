@@ -38,6 +38,10 @@ if(!empty($decision)) {
         $error_while_payment = true;
 	$order_changes = array('state' => 'canceled', 'comment' => "Order (#{$order_id}) was canceled because customer cancled to proceed with the payment.", 'notify_customer' => false);
     }
+    elseif($decision == "ERROR") {
+        $error_while_payment = true;
+	$order_changes = array('state' => 'canceled', 'comment' => "Order (#{$order_id}) was canceled because there was error while processing the payment.", 'notify_customer' => false);
+    }
 } else {
     $order_id = ($this->getOrderId()) ? $this->getOrderId() : Mage::getSingleton('checkout/session')->getLastRealOrderId();
 }
