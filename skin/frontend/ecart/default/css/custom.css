@@ -235,7 +235,10 @@ height: 13px;
 .ratings .rating-box .rating {
 	background-image: url(../images/star_full.png);
 }
- 
+#my-reviews-table .rating-box .rating {
+	background-image: url(../images/star_full.png);
+
+} 
 .ratings-table .rating-box,
 .ratings .rating-box {
 	height: 15px;

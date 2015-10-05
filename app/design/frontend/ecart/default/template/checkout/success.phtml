@@ -195,8 +195,10 @@ if($error_while_payment === false):
         </tbody>
     <?php endforeach; ?>
     <tfoot>
-        <tr><td colspan="4" class="a-right">Shipping & Handling</td><td><?php echo $_order->getShippingInclTax() ?></td></tr>
-        <tr><td colspan="4" class="a-right"><strong>Grand Total</strong></td><td><?php echo $_order->getGrandTotal() ?></td></tr>
+        <tr><td colspan="4" class="a-right">Shipping & Handling</td><td><?php 
+        echo number_format($_order->getShippingInclTax(),'0','.',','); ?></td></tr>
+        <tr><td colspan="4" class="a-right"><strong>Grand Total</strong></td><td><?php 
+        echo number_format($_order->getGrandTotal(),'0','.',','); ?></td></tr>
     </tfoot>
 <?php
 // Get the product id from the item (useful later for loading product attribute information)  
