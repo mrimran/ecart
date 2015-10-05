@@ -102,16 +102,16 @@ background-color:#fff;border-top:0;}
 .topbar .topnav .lang > a{padding-right:24px;}
 .topbar .topnav .lang:hover ul{right:15px;}
 
-.mainhead{padding:10px 0;}
+.mainhead{padding:10px 0;visibility: visible;}
 .mainhead .logo{padding-top:10px;}
 .mainhead .padding-r{padding-right:0;}
 .mainhead .reasonsnav{margin:0;padding:5px 0 15px;border-bottom:1px dashed #eaeaea;}
 .mainhead .reasonsnav ul,.mainhead .dealsnav ul{list-style-type:none;}
 .mainhead .reasonsnav ul li{font-family:'OratorStd-Regular','Open Sans', sans-serif;font-weight:400;
-font-size:11px;padding:0;text-transform:uppercase;letter-spacing:0.1px;line-height:2;text-align:center;}
+font-size:11px;padding:0;text-transform:uppercase;letter-spacing:0.1px;line-height:2;text-align:center; width: 32%;}
 .mainhead .reasonsnav > ul > li:nth-child(2){padding-left:8%;}
 .mainhead .reasonsnav ul li img{vertical-align:middle;}
-.mainhead .reasonsnav ul li:first-child{text-align:left;}
+.mainhead .reasonsnav ul li:first-child{text-align:left;width: 35%;}
 .mainhead .reasonsnav ul li:last-child{text-align:right;}
 .mainhead .dealsnav{padding:15px 0;}
 .mainhead .dealsnav .col-sm-9{padding:0;}
@@ -1064,12 +1064,12 @@ font-size:14px;border-radius:3px;}
 .link-compare{font-size:12px;margin-bottom:10px;color:#f57a20;}
 .link-compare:hover{color:#303030;}
 .__product__main__area .link-compare{margin-top:-5px;display:block;}
-body.catalog-category-view #shopbybrand .brands li{height:auto;border:1px solid #eee;padding: 2px;}
+body.catalog-category-view #shopbybrand .brands li{height:auto;border:1px solid #eee;padding: 2px;overflow: hidden;}
 body.catalog-category-view #shopbybrand .brands .img-box{line-height:2;padding:15px 5px;
 background-color:#f6f6f6;}
 body.catalog-category-view #shopbybrand{padding-bottom:15px;}
 body.catalog-category-view #shopbybrand .brands .img-box:hover{background-color:#303030;}
-body.catalog-category-view #shopbybrand .brands .img-box a{color:#303030;font-size:18px;display:block;}
+body.catalog-category-view #shopbybrand .brands .img-box a{color:#303030;font-size:18px;display:block; white-space: nowrap;}
 body.catalog-category-view #shopbybrand .brands .img-box:hover a{color:#fff;}
 #checkout-step-review .data-table .price{min-width:110px;display:inline-block;text-align:center;}
 .checkout-agreements{list-style-type:none;font-size:14px;}
