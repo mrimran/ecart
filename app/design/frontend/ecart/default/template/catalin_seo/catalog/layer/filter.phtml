@@ -53,8 +53,14 @@ uasort($items, function($a,$b) {
         <div id="more-<?php echo $filterName ?>" class="more-less"><a>Show more</a></div>
         <div id="cont-<?php echo $filterName ?>">
         <?php }*/ ?>
-        <?php  $str1 = strtolower($_item->getLabel()); ?>
-        <?php   $str = str_replace(' ', '-', $str1); ?>
+        <?php $str1 = strtolower(rtrim($_item->getLabel())); ?>
+        <?php
+         $str = str_replace(
+					array(" ","&nbsp;"),
+					array("-", ""),
+					$str1
+				);
+		?>
         <?php  if (strpos($path, $str) == false) { ?>
         <?php //print_r($new1);?>
         
