@@ -353,7 +353,7 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
   display: inline-block;
   overflow: auto;
   width: 100%;
-  max-height: 370px !important;
+  max-height: 430px !important;
 }
 #search_mini_form .jcf-list ul {
   list-style: none;
