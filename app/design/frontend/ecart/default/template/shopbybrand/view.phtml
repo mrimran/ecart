@@ -39,56 +39,56 @@
         <div class="brand-category">
             <div class="shopbybrand-title category-title">
                 <h1><?php echo $this->__('Brand categories'); ?></h1>
-            </div>			
+            </div>          
             <div class="brand-category-content">
                 <ul>
-                <?php 	$cats = $this->getParentCategories(); $categories = $cats['parent'];
-						$count=count($categories);	
-						$div = intval($count/3);
-						if($count%3==2) $div++ ;
-						if($count%3==1) $div_more=$div+1;
-						$j=0;
-						$column=1;
-				?>
+                <?php   $cats = $this->getParentCategories(); $categories = $cats['parent'];
+                        $count=count($categories);  
+                        $div = intval($count/3);
+                        if($count%3==2) $div++ ;
+                        if($count%3==1) $div_more=$div+1;
+                        $j=0;
+                        $column=1;
+                ?>
                 <?php $i=0; foreach ($categories as $category) {
                     if(isset($cats['children'][$category->getId()]))
                         $childs = $cats['children'][$category->getId()];
                     else $childs = array();
-					$i++;
-					$j++;
+                    $i++;
+                    $j++;
                     ?>
-					<?php if($j==1): ?>
-					<ol class="<?php if($column==3): ?>last<?php endif; ?>  col-md-4 col-sm-6 col-xs-12"><?php endif;?>
+                    <?php if($j==1): ?>
+                    <ol class="<?php if($column==3): ?>last<?php endif; ?>  col-md-4 col-sm-6 col-xs-12"><?php endif;?>
                     <li id="cat-<?php echo $i; ?>">
-						<?php if(count($childs)>1) : ?>
-						<a class="show-child" onclick="showChild(this)">&nbsp;</a>
-						<?php endif;?>
+                        <?php if(count($childs)>1) : ?>
+                        <a class="show-child" onclick="showChild(this)">&nbsp;</a>
+                        <?php endif;?>
                         <a href="<?php echo $this->getBaseUrl().$brand->getUrlKey().'?cat='.$category->getId(); ?>">
                             <?php echo $category->getName(); ?>
                         </a>
                         <?php if(count($childs)>1) : ?>
                                                 <ul class="brand-child" style="display:none;">
-							<?php
-								foreach($childs as $child):
-									if($child->getId() != $category->getId()):
-							?>
-										<li class="child-cat">
-											<a href="<?php echo $this->getBaseUrl().$brand->getUrlKey().'?cat='.$child->getId(); ?>" onclick="">
-												<?php echo $child->getName(); ?>
-											</a>
-										</li>
-							<?php endif;endforeach;?>
+                            <?php
+                                foreach($childs as $child):
+                                    if($child->getId() != $category->getId()):
+                            ?>
+                                        <li class="child-cat">
+                                            <a href="<?php echo $this->getBaseUrl().$brand->getUrlKey().'?cat='.$child->getId(); ?>" onclick="">
+                                                <?php echo $child->getName(); ?>
+                                            </a>
+                                        </li>
+                            <?php endif;endforeach;?>
                         </ul>
-						<?php endif;?>
+                        <?php endif;?>
                     </li>
-					<?php if($count%3==1):if($column==1):if($j==$div_more):?></ol><?php $j=0;$column++;endif;endif;endif;?>
-					<?php if($count%3==1):if($column!=1):if($j==$div&&$div>0): ?></ol><?php $j=0;$column++; endif;endif;endif;?>
-					<?php if($count%3==2||$count%3==0):if($j==$div):?></ol><?php $j=0;$column++;endif;endif;?>								
-					<?php if($count%3==2): if($column==3):if($j==$div-1&&$div>1): ?></ol><?php endif; endif;endif;?>						
+                    <?php if($count%3==1):if($column==1):if($j==$div_more):?></ol><?php $j=0;$column++;endif;endif;endif;?>
+                    <?php if($count%3==1):if($column!=1):if($j==$div&&$div>0): ?></ol><?php $j=0;$column++; endif;endif;endif;?>
+                    <?php if($count%3==2||$count%3==0):if($j==$div):?></ol><?php $j=0;$column++;endif;endif;?>                              
+                    <?php if($count%3==2): if($column==3):if($j==$div-1&&$div>1): ?></ol><?php endif; endif;endif;?>                        
                 <?php } ?>
             </ul>
-			<script>
-				function showChild(el){
+            <script>
+                function showChild(el){
                                 var showChild = el.next('ul')
                                 if(el.hasClassName('child_active')){
                                         el.removeClassName('child_active');
@@ -99,9 +99,9 @@
                                         showChild.show();
                                     }
         }
-			</script>
+            </script>
             </div>
         </div>
     <?php endif; ?>
-    <?php echo $this->getChildHtml('brandfeaturedproduct');?>        		
+    <?php echo $this->getChildHtml('brandfeaturedproduct');?>               
 <?php endif; ?>
