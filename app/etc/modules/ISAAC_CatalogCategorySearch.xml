@@ -26,7 +26,7 @@
 <config>
     <modules>
         <ISAAC_CatalogCategorySearch>
-            <active>false</active>
+            <active>true</active>
             <codePool>community</codePool>
                 <depends>
                     <Mage_CatalogSearch/>
