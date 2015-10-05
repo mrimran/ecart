@@ -1,2 +1,10 @@
 Order deny,allow
 Deny from all
+
+#########################################################
+
+RewriteEngine On
+        RewriteCond %{HTTP_HOST} ^localhost/ecart/index.php/extension/index/deals/$
+        RewriteRule ^$ http://localhost/ecart/index.php/deals/ [L,R=301]
+
+#########################################################

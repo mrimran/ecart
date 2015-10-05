@@ -56,12 +56,13 @@ uasort($items, function($a,$b) {
         <?php $str1 = strtolower(rtrim($_item->getLabel())); ?>
         <?php
          $str = str_replace(
-					array(' ','&nbsp;'),
-					array('-', ''),
+					array("&nbsp;", " &nbsp;"," "),
+					array("","", "-"),
 					$str1
 				);
 				
-				//echo '1'.$str 
+				$str = htmlentities($str, null, 'utf-8');
+                $str = str_replace("&nbsp;", "", $str);
 		?>
         <?php  if (strpos($path, $str) == false) { ?>
         <?php //print_r($new1);?>
