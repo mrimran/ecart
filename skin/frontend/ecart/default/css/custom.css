@@ -235,7 +235,10 @@ height: 13px;
 .ratings .rating-box .rating {
 	background-image: url(../images/star_full.png);
 }
- 
+#my-reviews-table .rating-box .rating {
+	background-image: url(../images/star_full.png);
+
+} 
 .ratings-table .rating-box,
 .ratings .rating-box {
 	height: 15px;
@@ -266,3 +269,181 @@ div.zoomContainer{display:none;}
 #cart-sidebar-reorder .product-name input {  float: left; width: 10%;}
 .dashboard.cms_template ul {margin-left: 0;}
 .maincontainer .sectiontitle{margin-top: 20px;}
+
+
+
+/* JCF Custom Forms (custom select styles) */
+#search_mini_form .jcf-select {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  border: 1px solid #777;
+  background: #fff;
+  margin: 0 0 12px;
+  min-width: 150px;
+  height: 26px;
+}
+#search_mini_form .jcf-select select {
+  z-index: 1;
+  left: 0;
+  top: 0;
+}
+#search_mini_form .jcf-select .jcf-select-text {
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: default;
+  display: block;
+  font-size: 13px;
+  line-height: 26px;
+  margin: 0 35px 0 8px;
+  cursor: pointer;
+}
+#search_mini_form .jcf-select .jcf-select-opener {
+  position: absolute;
+  text-align: center;
+  background: none;
+  width: 26px;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+body > #search_mini_form .jcf-select-drop {
+  position: absolute;
+  margin: -1px 0 0;
+  z-index: 9999;
+}
+body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
+  margin: 1px 0 0;
+}
+#search_mini_form .jcf-select .jcf-select-drop {
+  position: absolute;
+  margin-top: 0px;
+  z-index: 9999;
+  top: 36px;
+  left: -1px;
+  right: -1px;
+  width: 230px !important;
+}
+#search_mini_form .jcf-select .jcf-drop-flipped {
+  bottom: 100%;
+  top: auto;
+}
+/* multiple select styles */
+#search_mini_form .jcf-list-box {
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid #b8c3c9;
+  min-width: 200px;
+  margin: 0 15px;
+}
+/* select options styles */
+#search_mini_form .jcf-list {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  background: #fff;
+  line-height: 14px;
+  font-size: 12px;
+  width: 100%;
+}
+#search_mini_form .jcf-list .jcf-list-content {
+  vertical-align: top;
+  display: inline-block;
+  overflow: auto;
+  width: 100%;
+  max-height: 430px !important;
+}
+#search_mini_form .jcf-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#search_mini_form .jcf-list ul li {
+  overflow: hidden;
+  display: block;
+}
+#search_mini_form .jcf-list .jcf-overflow {
+  overflow: auto;
+}
+#search_mini_form .jcf-list .jcf-option {
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  padding: 9px 9px 9px 18px;
+  height: 1%;
+}
+#search_mini_form .jcf-list .jcf-disabled {
+  background: #fff !important;
+  color: #aaa !important;
+}
+#search_mini_form .jcf-list-content li.selected,
+#search_mini_form .jcf-select-drop .jcf-hover,
+#search_mini_form .jcf-list-box .jcf-selected {
+  background: #f57a20;
+  color: #fff;
+}
+#search_mini_form .jcf-list .jcf-optgroup-caption {
+  white-space: nowrap;
+  font-weight: bold;
+  display: block;
+  padding: 5px 9px;
+  cursor: default;
+  color: #000;
+}
+#search_mini_form .jcf-list .jcf-optgroup .jcf-option {
+  padding-left: 30px;
+}
+/* common custom form elements styles */
+#search_mini_form .jcf-disabled {background: #ddd !important;}
+#search_mini_form .jcf-focus, .jcf-focus * {border-color: #f00 !important;}
+
+#search_mini_form .jcf-list-content ul,
+#search_mini_form .jcf-select{
+    background-color: transparent;
+    border: 0 none;
+    box-shadow: none;
+    color: #575757;
+    font-family: "GothamNarrow-Book", "GothamMedium-Regular","Open Sans",sans-serif;
+    font-size: 11px;
+    outline: medium none;
+    padding-left: 10px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100% !important;
+}
+#search_mini_form .jcf-list-content ul{
+  padding: 0;
+  border-top: 1px solid #eaeaea !important;
+}
+#search_mini_form .jcf-list-content li{
+  background: none;
+  color: #666;
+  border-bottom: 1px solid #eaeaea !important;
+}
+#search_mini_form .jcf-select .jcf-select-opener:before{
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  content: '';
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px dashed;
+  height: 0;
+  width: 0;
+  color: #575757;
+}
+.mainheadnav .searchform .all-search-cats{width: 24%;}
+.mainheadnav .searchform input{width: 74%;}
+.mainheadnav .searchform .mg{
+  background: #f57a20;
+  color: #fff;
+  height: 50px;
+  margin: -6px 0 0;
+  border-color: #fff;
+}
+.mainheadnav .searchform .mg:hover{
+  background: #f57a20;
+}
