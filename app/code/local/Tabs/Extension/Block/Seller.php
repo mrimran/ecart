@@ -19,7 +19,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             ->addStoreFilter($storeId)
             //->setOrder('ordered_qty', 'desc')
             //->addAttributeToFilter('upcomingproduct', 0)
-            ->setPageSize(20);
+            ->setPageSize(40);
              // most best sellers on top
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
 
@@ -101,7 +101,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             $condition,
             array('cat_name' => 'cv.value'));
             $id = $this->getRequest()->getParam('cat_id');
-            $this->_productCollection->getSelect()->where('c.entity_id = ?', $id);
+            $this->_productCollection->getSelect()->where('c.entity_id = ?', $id)->limit(40);
 
         
      }
