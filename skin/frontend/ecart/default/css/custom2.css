@@ -334,7 +334,7 @@ height: auto !important;}
 .buyerprotectionpage .pointers,.buyerprotectionpage .userpic{background-color:#5a5f65;border-radius:50%;
 text-align:center;line-height:2.5;color:#fff;font-weight:600;font-size:21px;max-width:56px;}
 .buyerprotectionpage .pointers.orange{background-color:#f57a20;}
-.buyerprotectionpage .userpic{font-size:50px;max-width:80px;height:80px;line-height:1.5;width:80px;}
+.buyerprotectionpage .userpic{font-size:50px;max-width:80px;height:80px;line-height:1.5;width:80px;background-image: url("../images/userpic.png");}
 .buyerprotectionpage .description{min-height:115px;}
 .buyerprotectionpage .description h1{color:#5b5b5b;min-height:35px;padding-bottom:10px;
 font-family: 'GothamNarrow-Bold','open-sans',sans-serif;font-size:22px;text-transform:uppercase;}
@@ -387,6 +387,14 @@ margin:15px 0 30px;}
 .__faq .nav>li>a:focus, .__faq .nav>li>a:hover, .__faq .nav-tabs>li.active>a, .__faq .nav-tabs>li.active>a:focus, .__faq .nav-tabs>li.active>a:hover { border: 0; border-radius: 0; border-color: rgba(0, 0, 0, 0); background-color: rgb(45, 46, 50); color: rgb(255, 255, 255); }
 .__faq .help-block { font-size: 12px; color: rgb(193, 193, 193); margin: 0 0 24px 0; padding: 0; }
 .__faq h2 { font-size: 18px; color: rgb(48, 48, 48); font-weight: bold; text-transform: uppercase; margin-bottom: 16px; }
+.cms-faq .__faq h2 { color: white; background-color: #2d2e32; font-weight: normal;padding: 10px 15px; }
+.cms-faq .__phone{padding-left: 15px;}
+.cms-faq .__phone a{ color: #333;
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    width: 100%;}
+.cms-faq .__follow__us .social {padding-left: 15px;}
 .__faq h3 { font-size: 18px; color: rgb(48, 48, 48); font-weight: bold; text-transform: uppercase; margin: 48px 0 18px 0; }
 .__faq .panel-body p, .__faq .panel-body { line-height: normal; font-size: 13px; }
 .__faq .panel-title { font-size: 14px; color: rgb( 87, 87, 87); }
