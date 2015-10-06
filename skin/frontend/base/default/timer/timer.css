@@ -40,4 +40,4 @@
  .timerdate .hour{margin:1px 1px;width:20px; text-align: center;}
  .timerdate .min{margin:1px 1px; width:20px; text-align: center;}
  .timerdate .sec{margin:1px 1px; width:20px; text-align: center;}
- .products-grid .actions{position:relative !important;bottom:0;}
+ .products-grid .actions{/*position:relative !important;*/bottom:0;}

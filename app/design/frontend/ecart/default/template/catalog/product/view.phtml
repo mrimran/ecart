@@ -51,7 +51,7 @@
       <div class="col-sm-6"> <?php echo $this->getChildHtml('media') ?> </div>
       <div class="col-sm-6">
       <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
-      <?php if( $_product->getTypeId() != 'grouped' ): ?>            
+      <?php if( $_product->getTypeId() != 'grouped' ): ?>
         <?php $_helper = $this->helper('catalog/output'); ?>
         <?php $_brands = $this->getBrand($_product->getId()); ?>
         <?php if(!$_brands->count()): ?>  
@@ -65,8 +65,7 @@
       <?php $_category_detail = Mage::registry('current_category'); ?>
         <?php if($_category_detail != ''){ ?>
         <a href="<?php echo $_category_detail->getUrl($_category); ?>"><?php echo $_category_detail->getName(); ?></a></div>
-        <?php } else{ 
-
+        <?php } else{
           $currentCatIds = $_product->getCategoryIds();
           if(count($currentCatIds) <= 0 ):?>
              <a href=""></a></div>
