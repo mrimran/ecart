@@ -390,7 +390,7 @@ $_helper = $this->helper('catalog/output');
 
     function getBestseller(cat_id) {
         jQuery('#brandsBestSellings li a').removeClass("active");
-        jQuery("#items" + cat_id + " a").addClass("active");
+        jQuery("#item" + cat_id + " a").addClass("active");
         jQuery.ajax({
             url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerproduct/',
             type: 'POST',
