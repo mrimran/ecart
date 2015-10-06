@@ -247,11 +247,11 @@ class Magestore_Shopbybrand_Block_Shopbybrand extends Mage_Core_Block_Template {
                                 ->addFieldToFilter('entity_id',array('in'=>$productIDs))
                                 ->addAttributeToFilter('status', 1)
                                 ->addAttributeToFilter('visibility', array("neq" => 1));  
-        $collection->getSelect()->joinLeft(
+       $collection->getSelect()->joinLeft(
                                     array('stock' => Mage::getModel('core/resource')->getTableName('cataloginventory_stock_item')),
                                     "e.entity_id = stock.product_id",
                                     array('stock.is_in_stock')
-                                )->where('stock.is_in_stock = 1');
+                                )->where('stock.is_in_stock >= 0');
         $allProductIds = $collection->getAllIds();
         return count($allProductIds);
     }
@@ -270,6 +270,7 @@ class Magestore_Shopbybrand_Block_Shopbybrand extends Mage_Core_Block_Template {
                 ->setOrder('name','ASC')
                 ->addFieldToFilter('status',array('eq'=>1))
                 ->load();
+
  
             if($showNumberOfProducts||$onlyBrandHaveProduct){
                 $productIDs = Mage::getModel('catalog/category')

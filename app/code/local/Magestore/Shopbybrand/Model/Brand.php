@@ -282,12 +282,14 @@ class Magestore_Shopbybrand_Model_Brand extends Mage_Core_Model_Abstract {
                         ->addAttributeToFilter('visibility', array('in'=>Mage::getSingleton('catalog/product_visibility')->getVisibleInSiteIds()))
                         ->getSelect()
                         ->assemble();
-                    $collection->getSelect()
+
+                   $collection->getSelect()
                         ->joinLeft(array('product'=> new Zend_Db_Expr("($productIDs)")),'FIND_IN_SET(product.entity_id,main_table.product_ids)',array())
                         ->group('main_table.brand_id')
                         ->columns(array(
                             'number_product' => 'SUM(IF( product.entity_id > 0, 1, 0 ))'
                         ));
+        
                 }
                 if ($onlyBrandHaveProduct)
                     $collection->addFieldToFilter('SUM(IF( product.entity_id > 0, 1, 0 ))', array('neq' => 0));
@@ -308,7 +310,7 @@ class Magestore_Shopbybrand_Model_Brand extends Mage_Core_Model_Abstract {
         if($this->getBrandCollectionData())
             return $this->getBrandCollectionData();
         $store = Mage::app()->getStore()->getId();
-        $brandData = unserialize(Mage::app()->getCacheInstance()->load('brand_data_'.$store));
+        //$brandData = unserialize(Mage::app()->getCacheInstance()->load('brand_data_'.$store));
         if($brandData)
             return $brandData;  
         $brandData = $this->getBrandCollection();

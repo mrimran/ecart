@@ -40,7 +40,7 @@
             <tr>
                 <th class="date"><?php echo $this->__('Date') ?></th>
                 <th><?php echo $this->__('Product') ?></th>
-                <th><?php echo $this->__('Rating') ?></th>
+                <th width="150"><?php echo $this->__('Rating') ?></th>
                 <th><?php echo $this->__('Description') ?></th>
                 <th><?php echo $this->__('Detail') ?></th>
             </tr>
@@ -52,8 +52,10 @@
                     <td><h2 class="product-name"><a href="<?php echo $this->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>"><?php echo $this->escapeHtml($_review->getName()) ?></a></h2></td>
                     <td>
                     <?php if($_review->getSum()): ?>
+                    <div class="ratings">
                         <div class="rating-box">
                             <div class="rating" style="width:<?php echo ( $_review->getSum() / $_review->getCount() ) ?>%;"></div>
+                        </div>
                         </div>
                     <?php endif; ?>
                     </td>

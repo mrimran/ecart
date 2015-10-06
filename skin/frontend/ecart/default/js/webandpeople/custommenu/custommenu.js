@@ -58,7 +58,7 @@ function wpShowMenuPopup(objMenu, event, popupId)
             if (typeof jQuery == 'undefined') {
                 popup.style.display = 'block';
             } else {
-                jQuery('#' + popupId).stop(true, true).fadeIn();
+                jQuery('#' + popupId).stop(true, true).fadeIn(1);
             }
         }, CUSTOMMENU_POPUP_DELAY_BEFORE_DISPLAYING);
     }
@@ -82,7 +82,7 @@ function wpHideMenuPopup(element, event, popupId, menuId)
                         if (typeof jQuery == 'undefined') {
                             popup.style.display = 'none';
                         } else {
-                            jQuery('#' + popupId).stop(true, true).fadeOut();
+                            jQuery('#' + popupId).stop(true, true).fadeOut(1);
                         }
                     }, CUSTOMMENU_POPUP_DELAY_BEFORE_HIDING);
                 }

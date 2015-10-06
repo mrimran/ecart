@@ -2,7 +2,8 @@
 font-size: 22px;color: rgb(48, 48, 48);font-weight: bold;margin: 0 0 12px 0;padding: 0;}
 .mainhead .reasonsnav ul li img,.mainheadnav .minicart a img{display:inline-block;}
 /*.mainheadnav .searchform #search{width:61%;font-family:inherit;}*/
-.maincontainer .filters ul li a{text-decoration:none;}
+.maincontainer .filters ul li a{text-decoration:none; width: 91%; line-height: 20px; float: right;}
+#Category > li{clear: both; width: 100%; float: left;}
 .maincontainer .filters ul li .currently p{margin-bottom:0;}
 .maincontainer .filters ul li .currently ul{list-style-type:none;}
 .maincontainer .filters ul li .currently ul li:first-child{padding-top:0;border-top:0;}
@@ -143,6 +144,8 @@ white-space:normal;margin-bottom:10px;font-size:80%;color:#303030;}
 .ratings-description dt,.order-info dt{font-size:14px;line-height:1.5;}
 .ratings-description dd{font-size:12px;line-height:1.5;}
 .validation-advice{margin:5px 0; color:red;}
+.panel-body{padding-bottom:30px;}
+.panel-body .validation-advice {position:absolute;bottom:5px;left:23px;font-size:12px;}
 p.required{color:red;}
 .order-info{margin:5px 5px 5px 0;}
 .order-info ul{list-style-type:none;font-size:12px;margin:2px;}
@@ -326,7 +329,7 @@ height: auto !important;}
 .buyerprotectionpage a{color:#f57a20;}
 .buyerprotectionpage a:hover{color:#303030;}
 .buyerprotectionpage .pointers,.buyerprotectionpage .userpic{background-color:#5a5f65;border-radius:50%;
-text-align:center;line-height:2.5;color:#fff;font-weight:600;font-size:21px;max-width:55px;}
+text-align:center;line-height:2.5;color:#fff;font-weight:600;font-size:21px;max-width:56px;}
 .buyerprotectionpage .pointers.orange{background-color:#f57a20;}
 .buyerprotectionpage .userpic{font-size:50px;max-width:80px;height:80px;line-height:1.5;width:80px;}
 .buyerprotectionpage .description{min-height:115px;}
