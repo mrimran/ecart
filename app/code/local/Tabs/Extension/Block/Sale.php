@@ -96,7 +96,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
        
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($this->_productCollection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($this->_productCollection);
-
+        Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($this->_productCollection);
         $todayDate = date('m/d/y');
         $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
         $tomorrowDate = date('m/d/y', $tomorrow);
