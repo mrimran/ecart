@@ -822,13 +822,13 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
     public function validate()
     {
         $errors = array();
-        if (!Zend_Validate::is( trim($this->getFirstname()) , 'NotEmpty')) {
+        /*if (!Zend_Validate::is( trim($this->getFirstname()) , 'NotEmpty')) {
             $errors[] = Mage::helper('customer')->__('The first name cannot be empty.');
         }
 
         if (!Zend_Validate::is( trim($this->getLastname()) , 'NotEmpty')) {
             $errors[] = Mage::helper('customer')->__('The last name cannot be empty.');
-        }
+        }*/
 
         if (!Zend_Validate::is($this->getEmail(), 'EmailAddress')) {
             $errors[] = Mage::helper('customer')->__('Invalid email address "%s".', $this->getEmail());

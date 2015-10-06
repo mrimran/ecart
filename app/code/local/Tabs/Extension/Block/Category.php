@@ -29,7 +29,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
 
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($_productCollection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($_productCollection);
-
+        Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($_productCollection);
         $todayDate = date('m/d/y');
         $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
         $tomorrowDate = date('m/d/y', $tomorrow);
@@ -78,6 +78,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
                $condition,
                array('brand_id' => 'br.option_id'));
         }
+        
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -129,7 +130,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
        ->addAttributeToSelect('*')
        ->setOrder('entity_id', 'desc')
        ->setPageSize(20);
-                           
+      Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($_testproductCollection);                 
         return $_testproductCollection;
     }
 
@@ -144,7 +145,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
       ->setOrder('entity_id', 'desc')
       ->addAttributeToSelect('*')
       ->setPageSize(20);
-                           
+      Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($_testproductCollection);                     
       return $_testproductCollection;
     }
     
@@ -177,6 +178,10 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
                $condition,
                array('brand_id' => 'br.option_id'));
         }
+        $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
+            $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+            $condition,
+            array());
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -240,6 +245,10 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
                $condition,
                array('brand_id' => 'br.option_id'));
         }
+        $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
+            $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+            $condition,
+            array());
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -288,7 +297,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
        ->addCategoryFilter($_category)
        ->addAttributeToFilter('upcomingproduct', 1)
        ->addAttributeToSelect('*');
-                           
+       Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($_testproductCollection);                    
         return $_testproductCollection;
     }  
 
@@ -302,7 +311,7 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
        ->addCategoryFilter($_category)
        ->addAttributeToFilter('upcomingproduct', 1)
        ->addAttributeToSelect('*');
-                           
+       Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($_testproductCollection);                    
         return $_testproductCollection;
     }
 

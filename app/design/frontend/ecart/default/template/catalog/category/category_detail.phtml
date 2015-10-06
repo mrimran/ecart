@@ -231,7 +231,7 @@ $category_new->url_key;
 
                 <?php $seller = $_seller->cat_id; ?>
                 <?php if($_product->cat_id != $_seller->cat_id) :?>
-                    <li id="items<?php echo $_product->cat_id; ?>"><a onclick="getBestseller(<?php echo $_seller->cat_id; ?>)" class ="active" ><?php echo $_seller->cat_name; ?></a></li>
+                    <li id="items<?php echo $_seller->cat_id; ?>"><a onclick="getBestseller(<?php echo $_seller->cat_id; ?>)" class ="active" ><?php echo $_seller->cat_name; ?></a></li>
                     <?php break; ?>
                 <?php endif ?>
             <?php endforeach ?>

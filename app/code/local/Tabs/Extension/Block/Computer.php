@@ -38,6 +38,10 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
                $condition,
                array('brand_name' => 'br.name' , 'brand_optionid' => 'br.option_id' ));
          }    
+        $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
+            $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+            $condition,
+            array());
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -82,7 +86,8 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         $collection = Mage::getResourceModel('catalog/product_collection');
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
-        
+        Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($collection);
+
         $collection = $this->_addProductAttributesAndPrices($collection)
             ->addStoreFilter()
             ->addAttributeToFilter('news_from_date', array('date' => true, 'to' => $todayDate))
