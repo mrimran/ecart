@@ -472,7 +472,7 @@ function initCustomForms() {
 
 	jcf.addModule({
 		name: 'Select',
-		selector: 'select',
+		selector: 'select.custom-s',
 		options: {
 			element: null,
 			multipleCompactStyle: false

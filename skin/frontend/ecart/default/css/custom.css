@@ -447,3 +447,18 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
 .mainheadnav .searchform .mg:hover{
   background: #f57a20;
 }
+.maincontainer .filters ul li label:after,
+.maincontainer .filters ul li:after{
+  display: block;
+  content: '';
+  clear: both;
+}
+.maincontainer .filters ul li label{display: block;}
+
+
+
+
+
+
+
+
