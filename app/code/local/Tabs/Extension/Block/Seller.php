@@ -19,7 +19,8 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             ->addStoreFilter($storeId)
             //->setOrder('ordered_qty', 'desc')
             //->addAttributeToFilter('upcomingproduct', 0)
-            ->setPageSize(40);
+           ->setPageSize(54)
+           ->load();
              // most best sellers on top
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
 
@@ -42,7 +43,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             if (Mage::registry('product')) {
                 // get collection of categories this product is associated with
                 $categories = Mage::registry('product')->getCategoryCollection()
-                    ->setPage(1, 1)
+                    //->setPage(1, 1)
                     ->load();
                 // if the product is associated with any category
                 if ($categories->count()) {
@@ -101,8 +102,8 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             $condition,
             array('cat_name' => 'cv.value'));
             $id = $this->getRequest()->getParam('cat_id');
-            $this->_productCollection->getSelect()->where('c.entity_id = ?', $id)->limit(40);
-
+            $this->_productCollection->getSelect()->where('c.entity_id = ?', $id)->limit(54);
+            $this->_productCollection->load();
         
      }
         $this->setProductCollection($this->_productCollection);
@@ -267,5 +268,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
        ;
        return $categories;
     }
+
+    
 
 }
