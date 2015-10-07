@@ -218,20 +218,45 @@ function reinitOwlOnSelector(selector, number_of_items) {
 
 
 	jQuery( document ).ready(function() {
-	jQuery('[name="billing[city]"]').bind('keypress', function (event) {
-	    var regex = new RegExp("^[a-zA-Z0-9]+$");
-	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-	    if (!regex.test(key)) {
-	       event.preventDefault();
-	       return false;
-	    }
+	// jQuery('[name="billing[city]"]').bind('keypress', function (event) {
+	//     var regex = new RegExp("^[a-zA-Z0-9]+$");
+	//     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	//     if (!regex.test(key)) {
+	//        event.preventDefault();
+	//        return false;
+	//     }
+	// });
+	 jQuery('[name="billing[city]"]').keydown(function (e) {
+	if (e.shiftKey || e.ctrlKey || e.altKey) {
+	e.preventDefault();
+	} else {
+	var key = e.keyCode;
+	if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+	e.preventDefault();
+	}
+	}
 	});
-	jQuery('[name="billing[telephone]"]').bind('keypress', function (event) {
-	    var regex = new RegExp("^[a-zA-Z0-9]+$");
-	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-	    if (!regex.test(key)) {
-	       event.preventDefault();
-	       return false;
-	    }
-	});
+	// jQuery('[name="billing[telephone]"]').bind('keypress', function (event) {
+	//     var regex = new RegExp("^[a-zA-Z0-9]+$");
+	//     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	//     if (!regex.test(key)) {
+	//        event.preventDefault();
+	//        return false;
+	//     }
+	// });
+	jQuery('[name="billing[telephone]"]').keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if (jQuery.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode == 65 && ( e.ctrlKey === true || e.metaKey === true ) ) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
 	});
