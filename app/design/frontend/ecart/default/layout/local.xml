@@ -173,7 +173,18 @@
  
  
     </default> 
-
+<extension_index_seller>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.malihu.PageScroll2id.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/scriptshome.js</name>
+            </action>
+        </reference>	
+</extension_index_seller>
 
     <cms_index_index>
         <reference name="head">
