@@ -31,6 +31,18 @@
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
 <link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+
+<?php $product = Mage::registry('current_product');
+if ($product): ?>
+<meta property="og:title" content="<?php echo htmlspecialchars($product->getName()); ?>" />
+<meta property="og:type" content="product" />
+<meta property="og:url" content="<?php echo $this->helper('catalog/product')->getProductUrl($product); ?>" />
+<meta property="og:image" content="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(300, 300); ?>" />
+<meta property="og:description" content="<?php echo strip_tags(htmlspecialchars_decode(substr($product->getDescription(),0,500))); ?>" />
+<meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName() ?>" />
+<?php endif; ?>
+
+
 <!--[if lt IE 7]>
 <script type="text/javascript">
 //<![CDATA[
