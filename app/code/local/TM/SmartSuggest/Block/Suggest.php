@@ -24,7 +24,7 @@ class TM_SmartSuggest_Block_Suggest extends Mage_Catalog_Block_Product_Abstract
 
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
-
+        Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($collection);
         switch ($this->getOrder()) {
             case 'popularity':
                 $collection->addViewsCount()

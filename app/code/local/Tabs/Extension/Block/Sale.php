@@ -93,6 +93,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         ->addStoreFilter()
         ->setPageSize(20)
         ->addAttributeToFilter('upcomingproduct', 0);
+        //->load();
        
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($this->_productCollection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($this->_productCollection);

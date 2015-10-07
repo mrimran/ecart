@@ -1127,6 +1127,7 @@ margin-bottom: 10%;}
 }
 .customer-account .buttons-set .back-link { float: right;}
 .customer-account .buttons-set .button { float: left;}
+<<<<<<< HEAD
 .cms-home .owl-stage { display: inline-block;}
 #recently-viewed-items li > a {
     float: left;
@@ -1143,3 +1144,6 @@ margin-bottom: 10%;}
     margin-left: 15px;
     margin-top: 10px;
 }
+=======
+.owl-stage-outer .owl-stage { display: inline-block;}
+>>>>>>> d50eee18d42e593a5b78aafcf80289c3e378c948
