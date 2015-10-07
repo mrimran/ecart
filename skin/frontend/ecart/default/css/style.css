@@ -506,6 +506,7 @@ font-size:12px;cursor:pointer;}
 .maincontainer .filters ul li label:hover{color:#f57a20;}
 .maincontainer .filters ul li label input{padding-right:15px;display:inline-block;width:25px;
 height:13px;vertical-align:middle;margin-top:0px;}
+.catalog-category-view .maincontainer .filters ul li label input{ width: 13px;margin-right: 10px; float: left;}
 .maincontainer .filters ul li a{color:#2d2e32;font-size:13px;text-decoration:underline;}
 .maincontainer .filters ul li a:hover{color:#f57a20;}
 .maincontainer .filters ul li.current{background-color:#f57a20;}
@@ -1126,4 +1127,23 @@ margin-bottom: 10%;}
 }
 .customer-account .buttons-set .back-link { float: right;}
 .customer-account .buttons-set .button { float: left;}
+<<<<<<< HEAD
+.cms-home .owl-stage { display: inline-block;}
+#recently-viewed-items li > a {
+    float: left;
+    width: 50px;
+}
+.mini-products-list .product-details {
+    margin-top: 2px;
+    max-width: 198px;
+}
+#cart-sidebar-reorder li .actions > a {
+    display: block;
+    float: left;
+    font-size: inherit;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+=======
 .owl-stage-outer .owl-stage { display: inline-block;}
+>>>>>>> d50eee18d42e593a5b78aafcf80289c3e378c948
