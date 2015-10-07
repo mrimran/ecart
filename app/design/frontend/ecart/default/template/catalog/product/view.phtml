@@ -93,17 +93,18 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php if($_product->getTypeId() != 'grouped' ): ?>
       <div class="row">
         <div class="col-sm-8">
-          <div class="price">
-                <?php
-                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
-                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
-                ?>
-                    <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
-                    <span class="not-now">
-                    <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
-                    </span>
-            <?php endif; ?>
-            </div>
+          <?php 
+							  $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
+                              $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
+                             $today =  time();
+							?>
+                           <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
+                            <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)  || ($specialPriceToDate=='2000-01-12 00:00:00'))) {?>
+                            
+                            <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+                            <?php } else {  ?>
+                            <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                            <?php } ?>
         </div>
         <div class="col-sm-4">
           <div class="__you_saved"><?php // $currsymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
