@@ -61,7 +61,7 @@ $_helper = $this->helper('catalog/output');?>
       <div class="sectiontitle">
         <h2><span>BEST SELLINGS</span></h2>
       </div>
-      <div class="columnslider" id="bestselingproducts">
+      <div class="columnslider" id="bestselingproducts" data-items="4">
 
        <?php foreach ($_productCollection as $_product): ?>
         <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">

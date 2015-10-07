@@ -30,10 +30,6 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
                $condition,
                array('brand_id' => 'br.option_id'));
         }
-        $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
-            $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
-            $condition,
-            array());
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
@@ -50,7 +46,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
             array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
             $condition,
             array('cat_name' => 'cv.value'));
-            $collection->getSelect()->where('c.entity_id = ?', $id)->limit(54);
+            $collection->getSelect()->where('c.entity_id = ?', $id)->limit(20);
             //$this->_productCollection->load();
         
         return $collection;
