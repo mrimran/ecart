@@ -1124,3 +1124,6 @@ margin-bottom: 10%;}
     color: #666;
     display: none !important;
 }
+.customer-account .buttons-set .back-link { float: right;}
+.customer-account .buttons-set .button { float: left;}
+.owl-stage-outer .owl-stage { display: inline-block;}
