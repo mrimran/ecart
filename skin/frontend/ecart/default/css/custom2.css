@@ -399,6 +399,79 @@ margin:15px 0 30px;}
 .__faq .panel-title { font-size: 14px; color: rgb( 87, 87, 87); }
 
 
+/*    **********************  */
+.__peoples__loved .__icon span.fa.fa-star{
+    margin-right: -8px;
+    position: relative;
+    top: -1px;
+}
+@media (min-width : 801px) and (max-width : 991px){
+
+#search_mini_form #search {
+  		float: left;
+    	width: 48%;
+    	margin-top: 6px;
+    	font-size: 11px;
+	}
+	#search_mini_form{
+		width: 100%;
+	}
+	#search_mini_form .jcf-select .jcf-select-text{
+		margin: 6px 35px 0 0;
+		font-size:11px;
+	}
+	#search_mini_form .jcf-select .jcf-select-opener::before{
+		left: 0;
+		top: 69%;
+	}
+	.catalog-category-view #Category li form .check-box input[type="checkbox"]{
+		margin-top: 0;
+	}
+	.catalog-category-view #Price li form .check-box input[type="checkbox"]{
+		margin-top: -5px;
+		margin-right: 2px;
+	}
+	.catalog-category-view #Price li{
+		padding-left: 8px;
+	}
+	body div.wp-custom-menu-popup{
+		width: 575px;
+	}
+	.__product__main__area .buttons .btn1.wishlist span{
+		font-size: 12px;
+	}
+	.__reviews__section .col-sm-5 .__rating{
+		font-size: 12px;
+		margin: 0;
+	}
+	button.button{
+		font-size: 9px;
+		font-weight: bold;
+		margin-top: 4px;
+		padding: 9px 5px;
+	}
+	.__product__main__area .__you_saved{
+		width: 111%;
+		margin-top: 5px;
+	}
+	.subscribe .button.btn1{
+		font-size: inherit;
+	}
+	.category_deals .categories_list li{
+		float: left;
+		width: 50%;
+	}
+	.maincontainer .columnslider .col-box, .maincontainer .recomandations .col-box{
+		width: 32%;
+		float: left;
+		margin-bottom: 10px;
+	}
+	.category_deals .today_timer{
+		padding: 31px 10px 0;
+	}
+}
+
+/********************************/
 @media only screen and (max-width : 800px){
 body.cms-index-index .messages{position:relative;bottom:inherit;}
 .data-table{display:block;}

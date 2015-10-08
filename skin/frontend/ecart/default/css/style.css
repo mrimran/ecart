@@ -1127,11 +1127,10 @@ margin-bottom: 10%;}
 }
 .customer-account .buttons-set .back-link { float: right;}
 .customer-account .buttons-set .button { float: left;}
-<<<<<<< HEAD
 .cms-home .owl-stage { display: inline-block;}
 #recently-viewed-items li > a {
     float: left;
-    width: 50px;
+    width: 55px;
 }
 .mini-products-list .product-details {
     margin-top: 2px;
@@ -1144,6 +1143,12 @@ margin-bottom: 10%;}
     margin-left: 15px;
     margin-top: 10px;
 }
-=======
 .owl-stage-outer .owl-stage { display: inline-block;}
->>>>>>> d50eee18d42e593a5b78aafcf80289c3e378c948
+.catalog-category-view #Category li form .check-box{
+	float: left;
+    width: 20px;
+}
+.catalog-category-view #Category li form > a{
+	float: left;
+	width: calc(100% - 20px);
+}
