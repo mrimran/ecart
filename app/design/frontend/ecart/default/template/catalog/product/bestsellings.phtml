@@ -8,7 +8,7 @@
     <section id="bestselingproduct">
       <div class="sectiontitle">
         <h2><span>BEST SELLINGS</span></h2>
-        <a href="extension/index/seller/">View More Products</a>
+        <a href="<?php echo Mage::helper('extension')->getCustomUrl('bestselling')?>">View More Products</a>
         <ul class="brandsmenu smartphones">
             <li>
                 <?php
@@ -26,7 +26,7 @@
             </li>
         </ul>
       </div>
-      <div class="columnslider" id="bestselingproducts">
+      <div class="columnslider" id="bestselingproducts" data-items="4">
 
        <?php foreach ($_productCollection as $_product): ?>
         <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
@@ -83,4 +83,3 @@ if ($this->getChild('after')) {
     }
 }
 ?>
-
