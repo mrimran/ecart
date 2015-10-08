@@ -1,11 +1,19 @@
-<div class="page_menu desktop ">
+<div class="page_menu desktop " id="page_menu_id">
 	<a class="_mPS2id-h deals" href="#deals" rel="m_PageScroll2id"> Super Deals</a>
 	<a class="_mPS2id-h bestselingproduct" href="#bestselingproduct" rel="m_PageScroll2id"> Best Selling</a>
 	<a class="_mPS2id-h phoneaccessories" href="#phoneaccessories" rel="m_PageScroll2id"> Phone &amp; Accessories</a>
 	<a class="_mPS2id-h computeraccessories" href="#computeraccessories" rel="m_PageScroll2id"> Computer &amp; Accessories</a>
 	<a class="_mPS2id-h perfumewatches" href="#perfumewatches" rel="m_PageScroll2id"> Perfume & Watches</a>
-	<a class="_mPS2id-h recommendationsforyou" href="#recomendations" rel="m_PageScroll2id"> Recommendations for you</a>
 	<!-- <a class="_mPS2id-h" href="#menuslider" rel="m_PageScroll2id"> Featured Slider</a> -->
-	<a class="_mPS2id-h buyersprotection" href="#buyersprotection" rel="m_PageScroll2id"> Buyers Protection</a>
 	<a class="_mPS2id-h features" href="#features" rel="m_PageScroll2id"> Features</a>
+	<a class="_mPS2id-h buyersprotection" href="#buyersprotection" rel="m_PageScroll2id"> Buyers Protection</a>
 </div>
+<script type="text/javascript">
+	jQuery(window).load(function(){
+		// body...
+		var Rec = jQuery(".listing-suggest.listing-suggest-grid").is("#recomendations");
+		if (Rec == true) {
+			jQuery("#page_menu_id").append("<a class='_mPS2id-h recommendationsforyou' href='#recomendations' rel='m_PageScroll2id'> Recommendations for you</a>");
+		};
+	})
+</script>
