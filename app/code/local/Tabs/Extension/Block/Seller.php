@@ -30,6 +30,10 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
                $condition,
                array('brand_id' => 'br.option_id'));
         }
+        $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
+            $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+            $condition,
+            array());
         // join category
         $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
         $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
