@@ -3,9 +3,7 @@ font-size: 22px;color: rgb(48, 48, 48);font-weight: bold;margin: 0 0 12px 0;padd
 .mainhead .reasonsnav ul li img,.mainheadnav .minicart a img{display:inline-block;}
 /*.mainheadnav .searchform #search{width:61%;font-family:inherit;}*/
 .maincontainer .filters ul li a{text-decoration:none; }
-.catalog-category-view .maincontainer .filters ul li form > a{
-	width: 91%; line-height: 20px; float: right;
-}
+.catalog-category-view .maincontainer .filters ul li a{/*width: 91%;*/line-height: 20px;/*float: right;*/}
 #Category > li{clear: both; width: 100%; float: left;}
 .maincontainer .filters ul li .currently p{margin-bottom:0;}
 .maincontainer .filters ul li .currently ul{list-style-type:none;}
@@ -148,7 +146,7 @@ white-space:normal;margin-bottom:10px;font-size:80%;color:#303030;}
 .ratings-description dd{font-size:12px;line-height:1.5;}
 .validation-advice{margin:5px 0; color:red;}
 .panel-body{padding-bottom:30px;}
-.panel-body .validation-advice {position:absolute;bottom:5px;left:23px;font-size:12px;}
+.panel-body .validation-advice {position:absolute;bottom:5px;left:75px;font-size:12px;}
 p.required{color:red;}
 .order-info{margin:5px 5px 5px 0;}
 .order-info ul{list-style-type:none;font-size:12px;margin:2px;}
@@ -344,6 +342,7 @@ font-family: 'GothamNarrow-Bold','open-sans',sans-serif;font-size:22px;text-tran
 .tips{background-color:#f6f6f6;padding:15px;color:#5b5b5b;border:1px solid #dfdfdf;font-size:14px;
 margin:15px 0 30px;}
 .tips b{font-family:'GothamNarrow-Bold','open-sans',sans-serif;}
+
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
