@@ -12,7 +12,7 @@
 				    <h2><span>TODAY'S DEALS</span></h2>
 				    <h4>Deals End in <span id="countbox_<?php echo $count; ?>"></span> 
 				    </h4>
-				    <a href="extension/index/sale/">View More Products</a>
+				    <a href="<?php echo Mage::helper('extension')->getCustomUrl('sale')?>">View More Products</a>
 			    </div>
 			    <div class="columnslider" id="sectionDeals" data-items="4">
 			     <?php foreach ($_productCollection as $_product): ?>
