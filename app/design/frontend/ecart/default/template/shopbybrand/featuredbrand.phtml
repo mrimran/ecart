@@ -126,13 +126,13 @@
         var running = false;
         
         var countFeaturedBrands = <?php echo count($featuredBrands);?>;
-        var featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth -50;
+        var featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth-50;
         var numberofbrand = Math.floor(featuredbrandsWidth/brandWidth);
         numberofbrand = (numberofbrand<=countFeaturedBrands)?numberofbrand:countFeaturedBrands;
         $('ca-container').style.width = numberofbrand*brandWidth - 10 +"px";       
         window.onresize = brandresize;
         function brandresize(){
-            featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth  -50;
+            featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth-50;
             numberofbrand = Math.floor(featuredbrandsWidth/brandWidth);
             numberofbrand = (numberofbrand<=countFeaturedBrands)?numberofbrand:countFeaturedBrands;
             $('ca-container').style.width = numberofbrand*brandWidth - 10 +"px";

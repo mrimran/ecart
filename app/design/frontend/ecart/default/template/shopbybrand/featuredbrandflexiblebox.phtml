@@ -61,21 +61,21 @@
         </div>
 
     <script type="text/javascript">
-        var brandWidth = <?php echo $brandWidth;?>;
-        var running = false;
+        // var brandWidth = <?php echo $brandWidth;?>;
+        // var running = false;
         
-        var countFeaturedBrands = <?php echo count($featuredBrands);?>;
-        var featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth -50;
-        var numberofbrand = Math.floor(featuredbrandsWidth/brandWidth);
-        numberofbrand = (numberofbrand<=countFeaturedBrands)?numberofbrand:countFeaturedBrands;
-        $('ca-container').style.width = numberofbrand*brandWidth +"px";
-        window.onresize = brandresize;
-        function brandresize(){
-            featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth  -50;
-            numberofbrand = Math.floor(featuredbrandsWidth/brandWidth);
-            numberofbrand = (numberofbrand<=countFeaturedBrands)?numberofbrand:countFeaturedBrands;
-            $('ca-container').style.width = numberofbrand*brandWidth +"px";
-        }
+        // var countFeaturedBrands = <?php echo count($featuredBrands);?>;
+        // var featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth-50;
+        // var numberofbrand = Math.floor(featuredbrandsWidth/brandWidth);
+        // numberofbrand = (numberofbrand<=countFeaturedBrands)?numberofbrand:countFeaturedBrands;
+        // $('ca-container').style.width = numberofbrand*brandWidth +"px";
+        // window.onresize = brandresize;
+        // function brandresize(){
+        //     featuredbrandsWidth = $$('.featuredbrands').first().offsetWidth-50;
+        //     numberofbrand = Math.floor(featuredbrandsWidth/brandWidth);
+        //     numberofbrand = (numberofbrand<=countFeaturedBrands)?numberofbrand:countFeaturedBrands;
+        //     $('ca-container').style.width = numberofbrand*brandWidth +"px";
+        // }
     </script>
 
 
