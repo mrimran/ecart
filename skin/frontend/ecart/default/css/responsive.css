@@ -273,7 +273,7 @@
     }
     .mainhead .dealsnav ul li {
         text-align: center;
-        padding-right: 25px;
+        padding-right: 20px;
     }
     .mainhead .dealsnav ul li a .new {
         display: inline-block;
@@ -290,7 +290,7 @@
     }
     .mainmenu.flymenu {
         max-width: 750px;
-        top: 169px;
+        top: 0px;
     }
     .megamenurightimage {
         visibility: hidden;
@@ -320,8 +320,9 @@
         padding: 10px 20px;
     }
     .mainheadnav .searchform .all-search-cats {
-        width: 85%;
+        width: 40%;
         font-size: 14px;
+        float: left;
     }
     .mainheadnav .searchform .search-category-select {
         width: 100% !important;

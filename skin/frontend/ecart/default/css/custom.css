@@ -423,6 +423,7 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
   color: #666;
   border-bottom: 1px solid #eaeaea !important;
 }
+
 #search_mini_form .jcf-select .jcf-select-opener:before{
   position: absolute;
   top: 40%;

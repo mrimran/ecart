@@ -1137,7 +1137,7 @@ margin-bottom: 10%;}
 .cms-home .owl-stage { display: inline-block;}
 #recently-viewed-items li > a {
     float: left;
-    width: 50px;
+    width: 55px;
 }
 .mini-products-list .product-details {
     margin-top: 2px;
@@ -1149,4 +1149,12 @@ margin-bottom: 10%;}
     font-size: inherit;
     margin-left: 15px;
     margin-top: 10px;
+}
+.catalog-category-view #Category li form .check-box{
+	float: left;
+    width: 20px;
+}
+.catalog-category-view #Category li form > a{
+	float: left;
+	width: calc(100% - 20px);
 }
