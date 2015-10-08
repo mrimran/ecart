@@ -401,7 +401,7 @@ white-space:nowrap;
 /*.maincontainer .page_menu a:nth-child(4){background-position:7px -139px;}
 .maincontainer .page_menu a:nth-child(5){background-position:7px -185px;}*/
 .maincontainer .page_menu a.deals{background-position:7px -234px;}
-.maincontainer .page_menu a.features{background-position:7px -282px;}
+.maincontainer .page_menu a.features,.maincontainer .page_menu a.recommendationsforyou{background-position:7px -282px;}
 .maincontainer .page_menu a.bestselingproduct,.maincontainer .page_menu a.perfumewatches{background-position:7px -328px;}
 .maincontainer .page_menu a.buyersprotection{background-position:7px -380px;}
 
@@ -589,8 +589,11 @@ border:0 !important;width:inherit !important;height:inherit !important;backgroun
 .__product__related section{padding-bottom:0;}
 .products .product.grid{width:30.9%;display:inline-block;margin-right:3%;float:none;height:auto;
 vertical-align:top;}
+.products .product.grid[data-items="4"]{width:23%;margin-right:2.5%;float:left;}
 .products .product.grid .image{padding:0;width:100%;}
 .products .product.grid:nth-of-type(3n+3){margin-right:0;}
+.products .product.grid[data-items="4"]:nth-of-type(3n+3){margin-right:2.5%;}
+.products .product.grid[data-items="4"]:nth-of-type(4n+4){margin-right:0;}
 .products .product.grid ul{display:none;}
 .products .product.grid .details, .products .product.grid .price-info{width:100%;min-height:inherit;}
 .products .product.grid .specs,.products .product.grid .stocks-update{display:none;}
@@ -643,7 +646,9 @@ display:inline-block;}
 }
 
 .__product__main__area .price {font-size: 25px;font-weight:600;}
+.columnslider .price{font-size:18px;font-weight:400;}
 .__product__main__area .price .not-now {font-size:16px;font-weight: 600;margin:6px 0 0 0;}
+.columnslider .price .not-now{font-size:14px;font-weight:400;}
 
 .__product__main__area .__you_saved {
     font-size: 16px;

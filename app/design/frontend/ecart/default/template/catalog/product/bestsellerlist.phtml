@@ -36,7 +36,7 @@
 <div class="margin1 products">
 <div class="category_deals clearfix">
 <div class="today_timer">
-<h2 class="padjust1"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/seller/">Best Selling Products ></a></h2>
+<h2 class="padjust1"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">Best Selling Products ></a></h2>
 </div>
 <div class="catgories_table">
 <ul class="categories_list">
@@ -44,7 +44,7 @@
 $_helper = $this->helper('catalog/output');?>
 <?php foreach ($_categories as $_category): ?>
 <li id="<?php echo $_category->getId(); ?>">
-<a href ="<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></a>
+<a href ="#bestselingproduct<?php echo $_category->getId(); ?>" rel="m_PageScroll2id"><?php echo $_category->getName(); ?></a>
 </li>
 <?php endforeach ?>
 </ul>
@@ -57,7 +57,7 @@ $_helper = $this->helper('catalog/output');?>
     <?php if(!$_productCollection->count()): ?>
         <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
     <?php else: ?>
-    <section id="bestselingproduct">
+    <section id="bestselingproductmain">
       <div class="sectiontitle">
         <h2><span>BEST SELLINGS</span></h2>
       </div>
@@ -130,12 +130,13 @@ $_helper = $this->helper('catalog/output');?>
         
     <?php else: ?>
     <?php $id = $_category->getId(); ?>
-    <section id="bestselingproduct">
+    <section id="bestselingproduct<?php echo $id; ?>">
       <div class="sectiontitle">
         <h2><span></span><?php echo $_category->getName(); ?></h2>
-      <a href="<?php echo Mage::getBaseUrl() . "extension/category/seller?id=$id "?>">View More Products</a>
+        
+      <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestseller')?>?id=<?php echo $id ?>">View More Products</a>
       </div>
-      <div class="columnslider" id="bestselingproducts<?php echo $id; ?>">
+      <div class="columnslider" data-items="4">
 
        <?php foreach ($_productCollection as $_product): ?>
         <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
@@ -193,5 +194,3 @@ if ($this->getChild('after')) {
 }
 ?>
 <?php endforeach ?>
-
-
