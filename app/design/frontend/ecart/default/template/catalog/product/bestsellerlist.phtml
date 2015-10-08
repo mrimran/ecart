@@ -133,7 +133,8 @@ $_helper = $this->helper('catalog/output');?>
     <section id="bestselingproduct<?php echo $id; ?>">
       <div class="sectiontitle">
         <h2><span></span><?php echo $_category->getName(); ?></h2>
-      <a href="<?php echo Mage::getBaseUrl() . "extension/category/seller?id=$id "?>">View More Products</a>
+        
+      <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestseller')?>?id=<?php echo $id ?>">View More Products</a>
       </div>
       <div class="columnslider" data-items="4">
 

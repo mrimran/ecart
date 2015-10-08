@@ -38,7 +38,7 @@ $toDate = date('Y-m-d');
 <div class="margin1 products">
 <div class="category_deals clearfix">
 <div class="today_timer">
-<h2><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('sale')?>">Today's Deals ></a></h2>
+<h2><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('superdeals')?>">Today's Deals ></a></h2>
 <h4>End in</h4>
 <h3 class="digit-clock" id="countbox_<?php echo $count; ?>"></h3>
 </div>
@@ -63,7 +63,7 @@ $toDate = date('Y-m-d');
 $_helper = $this->helper('catalog/output');?>
 <?php foreach ($_categories as $_category): ?>
 <li id="<?php echo $_category->getId(); ?>">
-<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).$cust_urls['superdeals']?>?cat_id=<?php echo $_category->getId(); ?>" value ="<?php echo $_category->getId(); ?>" ><?php echo $_category->getName(); ?></a>
+<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('superdeals')?>?cat_id=<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></a>
 </li>
 <?php endforeach ?>
 </ul>

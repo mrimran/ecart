@@ -39,11 +39,13 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
-
+         echo $id;
         if($categoryId = $id){
-        $category = Mage::getModel('catalog/category')->load($categoryId);
+
+        $category = Mage::getModel('catalog/category')->load($id);
         $_productCollection->addCategoryFilter($category);
         } 
+        
         
         return $_productCollection;
     }
