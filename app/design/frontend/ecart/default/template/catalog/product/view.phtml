@@ -125,16 +125,22 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php endif; ?>
       <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?> 
     <?php echo $this->getChildHtml('extrahint') ?>
-      <?php echo $this->getChildHtml('product_type_availability'); ?> 
+      <?php //echo $this->getChildHtml('product_type_availability'); ?> 
       <?php echo $this->getChildHtml('alert_urls') ?>
       
       </div>
       <?php $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);?>
+      <?php if( $_product->getTypeId() == 'configurable' ) { ?>
+       <?php if ($_product->isAvailable()): ?>
+      <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock</div>
+       <?php endif; ?>
+       <?php } else { ?>
        <?php if ($_product->isAvailable() && $stock->getQty() != 0): ?>
       <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
         <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
         pcs</div>
        <?php endif; ?>
+       <?php } ?>
       <?php if($_product->condition): ?>
       <div class="__condition"><strong>
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
@@ -161,7 +167,8 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             <div class="buttons">
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
-              if($upcoming == 'No' && $_product->isAvailable() && $stock->getQty() != 0){?>
+
+              if($upcoming == 'No' && $_product->isAvailable()){?>
           
                 <div class="col-sm-9">
                   <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
