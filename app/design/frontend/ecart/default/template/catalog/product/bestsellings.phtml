@@ -9,7 +9,7 @@
       <div class="sectiontitle">
         <h2><span>BEST SELLINGS</span></h2>
         <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">View More Products</a>
-        <ul class="brandsmenu smartphones">
+<!--         <ul class="brandsmenu smartphones">
             <li>
                 <?php
                 $_productCollectionbrand = $this->getLoadedProductCollectionbrand();
@@ -24,7 +24,7 @@
 <?php endforeach ?>
                 </select>
             </li>
-        </ul>
+        </ul> -->
       </div>
       <div class="columnslider" id="bestselingproducts" data-items="4">
 
@@ -72,7 +72,7 @@
         </div>
       <?php endforeach ?>
       </div>
-<!--       <a data-id="bestselingproducts" class="loadmore smartphones" href="<?php echo Mage::helper('extension')->getCustomUrl('bestselling')?>">View All Products</a> -->
+      <a data-id="bestselingproducts" class="loadmore smartphones" href="<?php echo Mage::helper('extension')->getCustomUrl('bestselling')?>">View All Products</a>
     </section>
   <?php endif; ?>
 <?php
