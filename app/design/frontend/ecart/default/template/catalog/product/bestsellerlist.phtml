@@ -92,7 +92,11 @@ $_helper = $this->helper('catalog/output');?>
           ?>
           <div class="ratings">
             <div class="rating-box">
+            <?php if($summaryData['rating_summary'] == ""): ?>
+                <div class="rating" style="width:0%"></div>
+            <?php else :?>
                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
+            <?php endif ?>    
             </div>
           </div>
 
@@ -167,7 +171,11 @@ $_helper = $this->helper('catalog/output');?>
           ?>
           <div class="ratings">
             <div class="rating-box">
+            <?php if($summaryData['rating_summary'] == ""): ?>
+                <div class="rating" style="width:0%"></div>
+            <?php else :?>
                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
+            <?php endif ?>
             </div>
           </div>
 
