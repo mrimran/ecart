@@ -273,7 +273,7 @@
     }
     .mainhead .dealsnav ul li {
         text-align: center;
-        padding-right: 25px;
+        padding-right: 20px;
     }
     .mainhead .dealsnav ul li a .new {
         display: inline-block;
@@ -290,7 +290,7 @@
     }
     .mainmenu.flymenu {
         max-width: 750px;
-        top: 169px;
+        top: 0px;
     }
     .megamenurightimage {
         visibility: hidden;
@@ -320,8 +320,9 @@
         padding: 10px 20px;
     }
     .mainheadnav .searchform .all-search-cats {
-        width: 85%;
+        width: 40%;
         font-size: 14px;
+        float: left;
     }
     .mainheadnav .searchform .search-category-select {
         width: 100% !important;
@@ -491,8 +492,8 @@ min-height:315px;vertical-align:top;}
 .maincontainer section#menuslider { padding-bottom: 0px;margin:0 -15px; }
 .maincontainer .sectiontitle { padding: 14px; margin:0; background-color: #fff; }
 .maincontainer .sectiontitle:before { display: none; }
-.maincontainer .sectiontitle h2 { padding: 0; border: 0; height: auto; font-size: 12px; }
-.maincontainer .sectiontitle h4 { font-size: 12px; padding: 0 0px; float: right; line-height: 1.5em; }
+.maincontainer .sectiontitle h2 { padding: 0; border: 0; height: auto; font-size: 16px; }
+.maincontainer .sectiontitle h4 { font-size: 12px; padding: 0 0px; line-height: 1.5em; }
 .maincontainer .sectiontitle a { display: none; }
 .maincontainer .sectiontitle .brandsmenu { margin: -5px; }
 .maincontainer #recomendations .sectiontitle a { display: inline-block; }
@@ -597,6 +598,8 @@ clear:both;}
 .maincontainer .brands li{width:auto;}
 .forgot-pass .form-list .input-box{width:100%;}
 .paddingzeroR{padding-right:inherit !important;}
+body.canvas-slid #disable_view{display:block;}
+section#menuslider .container{padding:0;}
 }
 
 @media only screen and (max-width: 480px) {
@@ -622,6 +625,7 @@ clear:both;}
         border-bottom: 0;
         border-radius: 0;
     }
+    .mainheadnav .minicart{top:-54px;}
     .maincontainer .sectiontitle .brandsmenu a,
     .maincontainer .sectiontitle .brandsmenu select {
         font-size: 11px;
