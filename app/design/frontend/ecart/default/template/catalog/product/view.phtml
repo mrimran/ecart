@@ -363,3 +363,78 @@ Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
 </script>
 <?php //echo $this->getChildHtml('upsell_products') ?>
 <?php //echo $this->getChildHtml('product_additional_data') ?>
+<style>
+.product-image-gallery {
+  position: relative;
+}
+.product-image-gallery .gallery-image {
+  display: none;
+}
+.product-image-gallery .gallery-image.visible {
+  display: block;
+}
+.product-image-gallery .gallery-image.visible.hidden {
+  visibility: hidden;
+}
+.product-image-gallery:before, .product-image-gallery:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.product-image-gallery:before {
+  background-color: white;
+  opacity: 0.8;
+  z-index: 2;
+}
+.product-image-gallery:after {
+  background-image: url("../images/opc-ajax-loader.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+}
+.product-image-gallery.loading {
+  position: relative;
+}
+.product-image-gallery.loading:before, .product-image-gallery.loading:after {
+  display: block;
+}
+
+.product-image-thumbs li {
+  display: inline-block;
+}
+.product-image-thumbs li:first-child {
+  margin-left: -1px;
+}
+.product-image-thumbs a {
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.no-touch .product-image-thumbs a:hover {
+  border-color: #c7c7c7;
+}
+
+.product-view .product-shop,
+.product-view .add-to-cart-wrapper,
+.product-view .block-related {
+  padding-left: 15px;
+}
+
+.product-img-box {
+  padding-right: 15px;
+}
+
+.product-view .product-shop,
+.product-img-box,
+.product-collateral,
+.product-view .block-related,
+.box-collateral {
+  margin-bottom: 10px;
+}
+
+
+</style>
