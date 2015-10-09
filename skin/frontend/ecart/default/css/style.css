@@ -498,7 +498,7 @@ font-size:16px;text-transform:uppercase;}
 .maincontainer .filters .heading span .fa.fa-minus-square-o,
 .maincontainer .filters .heading span.plus .fa.fa-plus-square-o{display:inline-block;}
 .maincontainer .filters ul{list-style-type:none;}
-.maincontainer .filters ul li{padding:12px 15px;border-bottom:1px solid #eaeaea;}
+.maincontainer .filters ul li{padding:12px 15px;border-bottom:1px solid #eaeaea;list-style-type:none;}
 .maincontainer .filters ul.more li:nth-child(n+10){display:none;}
 .maincontainer .filters a.showmoreless{display:block;line-height:1.5;padding:5px 10px;
 font-size:12px;cursor:pointer;}
