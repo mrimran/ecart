@@ -54,7 +54,7 @@
       <?php if( $_product->getTypeId() != 'grouped' ): ?>
         <?php $_helper = $this->helper('catalog/output'); ?>
         <?php $_brands = $this->getBrand($_product->getId()); ?>
-        <?php if(!$_brands->count()): ?>  
+        <?php if(!$_brands->count()): ?>
         <div class="__type">
         <?php else :?>
         <div class="__type">by
@@ -93,14 +93,13 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php if($_product->getTypeId() != 'grouped' ): ?>
       <div class="row">
         <div class="col-sm-8">
-          <?php 
+          <?php
 							  $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
                               $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
                              $today =  time();
 							?>
                            <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)  || ($specialPriceToDate=='2000-01-12 00:00:00'))) {?>
-                            
                             <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
                             <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
@@ -111,10 +110,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             <?php
  $specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+
  $this->getProduct()->getFinalPrice();
-  
+
   $_priceExclTax = $this->getPrice($sign.$value['pricing_value'])+
   $this->getProduct()->getPrice();
-                     if($specialprice < $_priceExclTax) { 
+                     if($specialprice < $_priceExclTax) {
                      $yousave =  $_priceExclTax - $specialprice;
                      echo "You save ".$yousave." !";
                      }
@@ -123,22 +122,27 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
         </div>
       </div>
       <?php endif; ?>
-      <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?> 
+      <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?>
     <?php echo $this->getChildHtml('extrahint') ?>
-      <?php echo $this->getChildHtml('product_type_availability'); ?> 
+      <?php //echo $this->getChildHtml('product_type_availability'); ?>
       <?php echo $this->getChildHtml('alert_urls') ?>
-      
       </div>
       <?php $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);?>
+      <?php if( $_product->getTypeId() == 'configurable' ) { ?>
+       <?php if ($_product->isAvailable()): ?>
+      <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock</div>
+       <?php endif; ?>
+       <?php } else { ?>
        <?php if ($_product->isAvailable() && $stock->getQty() != 0): ?>
       <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
         <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
         pcs</div>
        <?php endif; ?>
+       <?php } ?>
       <?php if($_product->condition): ?>
       <div class="__condition"><strong>
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
-        : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
+        : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?>
         </div>
         <br>
       <?php endif ?>
@@ -156,13 +160,13 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
          <!-- </div> -->
 
             <?php //echo $this->getChildChildHtml('container1', '', true, true) ?>
-          
+
             <?php //echo $this->getChildChildHtml('container2', '', true, true) ?>
             <div class="buttons">
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
-              if($upcoming == 'No' && $_product->isAvailable() ){?>
-          
+
+              if($upcoming == 'No' && $_product->isAvailable()){?>
                 <div class="col-sm-9">
                   <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
                 </div>
@@ -176,16 +180,11 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                 </div>
               </div>
             </div>
-            
-            <div class="__share__this"> 
-            
+            <div class="__share__this">
             <?php /*?><a onclick="return showForm('social_share')" >Share this product</a> <?php */?>
             <?php echo $this->getLayout()->createBlock('sharingtool/share')->setTemplate('addthis/sharingtool/share.phtml')->toHtml(); ?>
-            
             </div>
-          
         </div>
-  
     </form>
 
   <script type="text/javascript">
@@ -235,13 +234,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             }
         }.bind(productAddToCartForm);
         //]]>
-    </script> 
+    </script>
 </div>
 
-<?php 
-echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpagefirststaticblock')->toHtml();  
-
-?>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpagefirststaticblock')->toHtml(); ?>
 <div class="__product__description">
 <div class="row">
   <div class="col-sm-12">
@@ -302,35 +298,7 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" id="discountmodal" class="btn" data-toggle="modal" data-target="#myModal" style="display:none;">Launch modal</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modalstyles">
-      <h1 class="title">Get 30% Off</h1>
-      <hr>
-      <p>Sign Up for Newsletter & Promotions</p>
-      <form action="<?php echo $this->getFormAction(); ?>" id="NewsletterPromotion" method="post">
-      <input name="discount" id="discount" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Discount')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="widthfull" type="text" placeholder="" />
-      <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
-      <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Subscribe')) ?>" class="btn1"><?php echo Mage::helper('contacts')->__('Subscribe') ?></button>
-      </form>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-// jQuery(window).load(function() {
-//   jQuery('#discountmodal').click();
-// });
-
 jQuery('.bxslider').bxSlider({
       pagerCustom: '#bx-pager'
     });
@@ -347,7 +315,7 @@ jQuery('.bxslider').bxSlider({
     //   moreText: 'See Full Specs',
     //   lessText: 'See Less Specs'
     // });
-</script> 
+</script>
 
 <script>
 function showForm(id){
@@ -356,3 +324,78 @@ Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
 </script>
 <?php //echo $this->getChildHtml('upsell_products') ?>
 <?php //echo $this->getChildHtml('product_additional_data') ?>
+<style>
+.product-image-gallery {
+  position: relative;
+}
+.product-image-gallery .gallery-image {
+  display: none;
+}
+.product-image-gallery .gallery-image.visible {
+  display: block;
+}
+.product-image-gallery .gallery-image.visible.hidden {
+  visibility: hidden;
+}
+.product-image-gallery:before, .product-image-gallery:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.product-image-gallery:before {
+  background-color: white;
+  opacity: 0.8;
+  z-index: 2;
+}
+.product-image-gallery:after {
+  background-image: url("../images/opc-ajax-loader.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+}
+.product-image-gallery.loading {
+  position: relative;
+}
+.product-image-gallery.loading:before, .product-image-gallery.loading:after {
+  display: block;
+}
+
+.product-image-thumbs li {
+  display: inline-block;
+}
+.product-image-thumbs li:first-child {
+  margin-left: -1px;
+}
+.product-image-thumbs a {
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.no-touch .product-image-thumbs a:hover {
+  border-color: #c7c7c7;
+}
+
+.product-view .product-shop,
+.product-view .add-to-cart-wrapper,
+.product-view .block-related {
+  padding-left: 15px;
+}
+
+.product-img-box {
+  padding-right: 15px;
+}
+
+.product-view .product-shop,
+.product-img-box,
+.product-collateral,
+.product-view .block-related,
+.box-collateral {
+  margin-bottom: 10px;
+}
+
+
+</style>

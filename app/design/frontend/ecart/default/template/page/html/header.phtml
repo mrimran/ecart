@@ -117,6 +117,7 @@
 
   </ul>
 </nav>
+<div id="disable_view"></div>
      <div class="container">
      	<div class="mainhead">
      		<div class="logo col-sm-3">
@@ -137,23 +138,12 @@
      					<li class="col-sm-4"><img src="<?php echo $this->getSkinUrl('images/dollor.jpg') ?>"> ECART buyer protection</li>
      				</ul>
      			</div>
-                                <?php
-                                //$rewiteUrl = Mage::getModel('core/url_rewrite');
-                                $superdeals = Mage::getModel('core/url_rewrite')->setStoreId(Mage::app()->getStore()->getStoreId())->loadByRequestPath('superdeals/')->getData('request_path');
-                                $superdeals = ($superdeals) ? $superdeals : "extension/index/deals/";
-                                $bestselling = Mage::getModel('core/url_rewrite')->setStoreId(Mage::app()->getStore()->getStoreId())->loadByRequestPath('bestselling/')->getData('request_path');
-                                $bestselling = ($bestselling) ? $bestselling : "extension/index/seller/";
-                                $collection = Mage::getModel('core/url_rewrite')->setStoreId(Mage::app()->getStore()->getStoreId())->loadByRequestPath('collection/')->getData('request_path');
-                                $collection = ($collection) ? $collection : "extension/index/ourcollection/";
-                                $sale = Mage::getModel('core/url_rewrite')->setStoreId(Mage::app()->getStore()->getStoreId())->loadByRequestPath('sale/')->getData('request_path');
-                                $sale = ($sale) ? $sale : "extension/index/sale/";
-                                ?>
 				<div class="dealsnav clearfix">
 				    <ul>
-				     <li><a href="<?php echo Mage::getBaseUrl().$superdeals?>">Super Deals <span class="new">New</span></a></li>
-				     <li><a href="<?php echo Mage::getBaseUrl().$bestselling?>">Best Selling</a></li>
-				     <li><a href="<?php echo Mage::getBaseUrl().$collection?>">Our Collection</a></li>
-				     <li><a href="<?php echo Mage::getBaseUrl().$sale?>">All Sale</a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('superdeals')?>">Super Deals <span class="new">New</span></a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">Best Selling</a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('collection')?>">Our Collection</a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('sale')?>">All Sale</a></li>
 				     <li class="call-us"><a href="tel:+97180042935"><i class="fa fa-phone"></i> 800 42935</a></li>
 				    </ul>
 				   </div>

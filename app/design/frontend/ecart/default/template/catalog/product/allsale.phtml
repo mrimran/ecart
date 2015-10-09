@@ -38,7 +38,7 @@ $toDate = date('Y-m-d');
 <div class="margin1 products">
 <div class="category_deals clearfix">
 <div class="today_timer">
-<h2><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals/">Today's Deals ></a></h2>
+<h2><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('superdeals')?>">Today's Deals ></a></h2>
 <h4>End in</h4>
 <h3 class="digit-clock" id="countbox_<?php echo $count; ?>"></h3>
 </div>
@@ -63,7 +63,7 @@ $toDate = date('Y-m-d');
 $_helper = $this->helper('catalog/output');?>
 <?php foreach ($_categories as $_category): ?>
 <li id="<?php echo $_category->getId(); ?>">
-<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>extension/index/deals?cat_id=<?php echo $_category->getId(); ?>" value ="<?php echo $_category->getId(); ?>" ><?php echo $_category->getName(); ?></a>
+<a href ="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('superdeals')?>?cat_id=<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></a>
 </li>
 <?php endforeach ?>
 </ul>
@@ -119,23 +119,20 @@ $_helper = $this->helper('catalog/output');?>
 					</div>
 					<div class="col-sm-5 details">
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
-                        <div class="ratings">
-                      <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
-                            </div>
-                            <?php if($summaryData['reviews_count'] > 1) {?>
-                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
-                            <?php } else {?>
-                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
-                            <?php } ?>
-
-                            <?php } else {?>
-                            <div class="rating-box">
-                                 <div class="rating" style="width:0%"></div>
-                            </div>
-                            <?php } ?>
+                         <?php $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
+                      ?>
+                       <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
+                      <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
                         </div>
+                        <?php if($summaryData['reviews_count'] > 1) {?>
+                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+                        <?php } else {?>
+                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+                        <?php } ?>
+                      </div>
+                       <?php endif ?>
 						<!-- <ul>
 							<?php // echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
 						</ul> -->
@@ -230,24 +227,20 @@ $_helper = $this->helper('catalog/output');?>
 					</div>
 					<div class="col-sm-5 details">
 						<a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
-						<div class="ratings">
-                      <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
-                            </div>
-                            <?php if($summaryData['reviews_count'] > 1) {?>
-                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
-                            <?php } else {?>
-                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
-                            <?php } ?>
-
-                            <?php } else {?>
-                            <div class="rating-box">
-                                 <div class="rating" style="width:0%"></div>
-                            </div>
-                            <?php } ?>
-                            
-                        </div>
+						 <?php $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
+          ?>
+           <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
+          <div class="ratings">
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
+            </div>
+            <?php if($summaryData['reviews_count'] > 1) {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+            <?php } else {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+            <?php } ?>
+          </div>
+           <?php endif ?>
 					</div>
 					<div class="col-sm-3 relative price-info">
           <?php 

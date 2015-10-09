@@ -37,7 +37,7 @@
     $_helper = $this->helper('catalog/output');
 ?>
 
-<div class="__product__slider">
+<!-- <div class="__product__slider">
   <ul class="bxslider">
     <?php $i=0; 
 	 foreach ($this->getGalleryImages() as $_image): ?>
@@ -59,45 +59,44 @@
     <?php $i++; endforeach; ?>
   </div>
   <?php endif ?>
-</div>
+</div> -->
 
 
-<?php /*?><div class="product-image product-image-zoom">
-    <div class="product-image-gallery">
-        <img id="image-main"
+<div class="__product__slider product-image product-image-zoom">
+    <ul class="bxslider product-image-gallery">
+    <li><img id="image-main"
              class="gallery-image visible"
              src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
              alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
              title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
-
+             </li>
         <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
             <?php if ($this->isGalleryImageVisible($_image)): ?>
-            <img id="image-<?php echo $i; ?>"
+            <li><img id="image-<?php echo $i; ?>"
                  class="gallery-image"
                  src="<?php echo $this->getGalleryImageUrl($_image); ?>"
-                 data-zoom-image="<?php echo  $this->getGalleryImageUrl($_image); ?>" />
+                 data-zoom-image="<?php echo  $this->getGalleryImageUrl($_image); ?>" /></li>
             <?php endif; ?>
         <?php $i++; endforeach; ?>
-    </div>
-</div>
+    </ul>
 
 <?php if (count($this->getGalleryImages()) > 0): ?>
-<div class="more-views">
-    <h2><?php echo $this->__('More Views') ?></h2>
-    <ul class="product-image-thumbs">
+<div class="more-views"  id="bx-pager">
+  <!--   <h2><?php //echo $this->__('More Views') ?></h2> -->
+    <!-- <ul class="product-image-thumbs"> -->
     <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
         <?php if ($this->isGalleryImageVisible($_image)): ?>
-        <li>
-            <a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+        <!-- <li> -->
+            <a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>"  data-slide-index="<?php echo $i; ?>">
                 <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(75); ?>"
                      width="75" height="75" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
             </a>
-        </li>
+        <!-- </li> -->
         <?php endif; ?>
     <?php $i++; endforeach; ?>
-    </ul>
+    <!-- </ul> -->
 </div>
-<?php endif; ?><?php */?>
-
+<?php endif; ?>
+</div>
 
 <?php echo $this->getChildHtml('after'); ?> 
