@@ -309,35 +309,7 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" id="discountmodal" class="btn" data-toggle="modal" data-target="#myModal" style="display:none;">Launch modal</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modalstyles">
-      <h1 class="title">Get 30% Off</h1>
-      <hr>
-      <p>Sign Up for Newsletter & Promotions</p>
-      <form action="<?php echo $this->getFormAction(); ?>" id="NewsletterPromotion" method="post">
-      <input name="discount" id="discount" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Discount')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="widthfull" type="text" placeholder="" />
-      <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
-      <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Subscribe')) ?>" class="btn1"><?php echo Mage::helper('contacts')->__('Subscribe') ?></button>
-      </form>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-// jQuery(window).load(function() {
-//   jQuery('#discountmodal').click();
-// });
-
 jQuery('.bxslider').bxSlider({
       pagerCustom: '#bx-pager'
     });

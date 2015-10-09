@@ -50,15 +50,6 @@ $_helper = $this->helper('catalog/output');?>
 </ul>
 </div>
 </div>
-<ul class="categories_list">
-<?php $_categories = $this->getcategories();
-$_helper = $this->helper('catalog/output');?>
-<?php foreach ($_categories as $_category): ?>
-<li id="<?php echo $_category->getId(); ?>">
-<a href ="#bestselingproduct<?php echo $_category->getId(); ?>" rel="m_PageScroll2id"><?php echo $_category->getName(); ?></a>
-</li>
-<?php endforeach ?>
-</ul>
 <?php
     $_productCollection=$this->getProductCollection();
     $_helper = $this->helper('catalog/output');
