@@ -303,8 +303,8 @@ border:1px solid #eaeaea;margin:2px;background-color:#303030;}
 margin-top:15px;}
 .category_deals .today_timer{width:25%;display:inline-block;float:left;padding:15px 10px 15px 20px;}
 .category_deals .catgories_table{width:75%;display:inline-block;float:left;padding:15px 20px 15px 10px;}
-.category_deals .categories_list{list-style-type:none;}
-.category_deals .categories_list li{display:inline-block;vertical-align:top;width:24.5%;
+.categories_list{list-style-type:none;}
+.categories_list li{display:inline-block;vertical-align:top;width:24.5%;
 margin-bottom:2px;margin-right:0px;margin-top:3px;}
 .category_deals .categories_list li a{padding:19px 10px 0;display:block;min-height:50px;overflow: hidden;
 font-size:12px;color:#303030;text-align:center;background-color:#fff;border:1px solid #eee; white-space: nowrap; text-overflow:ellipsis;}

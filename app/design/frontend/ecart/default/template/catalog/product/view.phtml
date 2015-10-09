@@ -125,16 +125,22 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php endif; ?>
       <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?> 
     <?php echo $this->getChildHtml('extrahint') ?>
-      <?php echo $this->getChildHtml('product_type_availability'); ?> 
+      <?php //echo $this->getChildHtml('product_type_availability'); ?> 
       <?php echo $this->getChildHtml('alert_urls') ?>
       
       </div>
       <?php $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);?>
+      <?php if( $_product->getTypeId() == 'configurable' ) { ?>
+       <?php if ($_product->isAvailable()): ?>
+      <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock</div>
+       <?php endif; ?>
+       <?php } else { ?>
        <?php if ($_product->isAvailable() && $stock->getQty() != 0): ?>
       <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
         <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
         pcs</div>
        <?php endif; ?>
+       <?php } ?>
       <?php if($_product->condition): ?>
       <div class="__condition"><strong>
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
@@ -161,7 +167,8 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             <div class="buttons">
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
-              if($upcoming == 'No' && $_product->isAvailable() && $stock->getQty() != 0){?>
+
+              if($upcoming == 'No' && $_product->isAvailable()){?>
           
                 <div class="col-sm-9">
                   <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
@@ -302,35 +309,7 @@ echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpage
 </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" id="discountmodal" class="btn" data-toggle="modal" data-target="#myModal" style="display:none;">Launch modal</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modalstyles">
-      <h1 class="title">Get 30% Off</h1>
-      <hr>
-      <p>Sign Up for Newsletter & Promotions</p>
-      <form action="<?php echo $this->getFormAction(); ?>" id="NewsletterPromotion" method="post">
-      <input name="discount" id="discount" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Discount')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="widthfull" type="text" placeholder="" />
-      <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
-      <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Subscribe')) ?>" class="btn1"><?php echo Mage::helper('contacts')->__('Subscribe') ?></button>
-      </form>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-// jQuery(window).load(function() {
-//   jQuery('#discountmodal').click();
-// });
-
 jQuery('.bxslider').bxSlider({
       pagerCustom: '#bx-pager'
     });
@@ -356,3 +335,78 @@ Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
 </script>
 <?php //echo $this->getChildHtml('upsell_products') ?>
 <?php //echo $this->getChildHtml('product_additional_data') ?>
+<style>
+.product-image-gallery {
+  position: relative;
+}
+.product-image-gallery .gallery-image {
+  display: none;
+}
+.product-image-gallery .gallery-image.visible {
+  display: block;
+}
+.product-image-gallery .gallery-image.visible.hidden {
+  visibility: hidden;
+}
+.product-image-gallery:before, .product-image-gallery:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.product-image-gallery:before {
+  background-color: white;
+  opacity: 0.8;
+  z-index: 2;
+}
+.product-image-gallery:after {
+  background-image: url("../images/opc-ajax-loader.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+}
+.product-image-gallery.loading {
+  position: relative;
+}
+.product-image-gallery.loading:before, .product-image-gallery.loading:after {
+  display: block;
+}
+
+.product-image-thumbs li {
+  display: inline-block;
+}
+.product-image-thumbs li:first-child {
+  margin-left: -1px;
+}
+.product-image-thumbs a {
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.no-touch .product-image-thumbs a:hover {
+  border-color: #c7c7c7;
+}
+
+.product-view .product-shop,
+.product-view .add-to-cart-wrapper,
+.product-view .block-related {
+  padding-left: 15px;
+}
+
+.product-img-box {
+  padding-right: 15px;
+}
+
+.product-view .product-shop,
+.product-img-box,
+.product-collateral,
+.product-view .block-related,
+.box-collateral {
+  margin-bottom: 10px;
+}
+
+
+</style>

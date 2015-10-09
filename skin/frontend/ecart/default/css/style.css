@@ -1115,7 +1115,9 @@ line-height:2;font-size:20px;text-transform: uppercase;}
 .padding1{padding:15px 5px;}
 .padding2{padding:15px 15px;}
 .margin1{margin-right:-15px;}
-.tablet,.smartphones,.navmenu-fixed-left{display:none;}
+.tablet,.smartphones,.navmenu-fixed-left,#disable_view{display:none;}
+#disable_view{position:fixed;z-index:9999;background-color:rgba(51,51,51,0.2);width:100%;height:100%;
+cursor:pointer;}
 .desktop{display:block;}
 .loader{position:relative;}
 .loader img{display:block;height:auto;position:absolute;top:0;left:50%;margin-right:-50%;
@@ -1148,7 +1150,6 @@ margin-bottom: 10%;}
     margin-left: 15px;
     margin-top: 10px;
 }
-.owl-stage-outer .owl-stage { display: inline-block;}
 .catalog-category-view #Category li form .check-box{
 	float: left;
     width: 20px;
