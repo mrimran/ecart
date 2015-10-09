@@ -71,24 +71,20 @@
           <div class="col-sm-5 details">
             
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
-                        <div class="ratings">
-                      <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
-                            </div>
-                            <?php if($summaryData['reviews_count'] > 1) {?>
-                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
-                            <?php } else {?>
-                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
-                            <?php } ?>
-
-                            <?php } else {?>
-                            <div class="rating-box">
-                                 <div class="rating" style="width:0%"></div>
-                            </div>
-                            <?php } ?>
-                            
-                        </div>
+           <?php $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
+          ?>
+           <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
+          <div class="ratings">
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
+            </div>
+            <?php if($summaryData['reviews_count'] > 1) {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+            <?php } else {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+            <?php } ?>
+          </div>
+           <?php endif ?>
 
                    
             <!-- <ul>
@@ -162,25 +158,22 @@
           </div>
           <div class="col-sm-5 details">
             <a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
-            <div class="ratings">
-                      <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
-                            </div>
-                            <?php if($summaryData['reviews_count'] > 1) {?>
-                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
-                            <?php } else {?>
-                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
-                            <?php } ?>
-
-                            <?php } else {?>
-                            <div class="rating-box">
-                                 <div class="rating" style="width:0%"></div>
-                            </div>
-                            <?php } ?>
-                            
-                        </div>
-
+              
+             <?php $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
+          ?>
+           <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
+          <div class="ratings">
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
+            </div>
+            <?php if($summaryData['reviews_count'] > 1) {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+            <?php } else {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+            <?php } ?>
+          </div>
+           <?php endif ?>
+            
           </div>
           <div class="col-sm-3 relative price-info">
                
