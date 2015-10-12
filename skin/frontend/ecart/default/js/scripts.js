@@ -260,3 +260,39 @@ function reinitOwlOnSelector(selector, number_of_items) {
         }
     });
 	});
+	
+jQuery(document).ready(function(e) {
+  	var navigationtopPosition = jQuery(".catgories_table").position().top;
+   var leftpostion = jQuery(".today_timer").width() + 80;
+   var containerWidth = jQuery(".extension-index-seller .container").width() + 20;
+   var nav_height = 52; //jQuery(".catgories_table").outerHeight();
+   var sections = jQuery(".extension-index-seller .products section");
+   var nav = jQuery(".catgories_table");
+
+   
+	jQuery(window).scroll(function () {
+		var windowScrollPosition = jQuery(this).scrollTop();
+		if(windowScrollPosition  >= navigationtopPosition) {
+		jQuery(".catgories_table").addClass("bestSellingsNaviTable")
+		.css({ 'margin-left' : -leftpostion, 'width' : containerWidth});
+			}
+			else
+			{
+			jQuery(".catgories_table").removeClass("bestSellingsNaviTable")
+			.css({ 'margin-left' : '', 'width' : ''});
+			}
+			
+			var cur_pos = jQuery(this).scrollTop();
+			sections.each(function() {
+                 var top = jQuery(this).offset().top - nav_height;
+				 var bottom = top + jQuery(this).outerHeight();
+					if (cur_pos >= top && cur_pos <= bottom) {
+					nav.find('a').removeClass('active');
+					nav.find('a[href="#'+jQuery(this).attr('id')+'"]').addClass('active');
+					}
+            }); 
+			
+		});
+	
+	
+});
