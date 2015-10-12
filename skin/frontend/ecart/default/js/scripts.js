@@ -277,7 +277,6 @@ jQuery(document).ready(function(e) {
 			jQuery(".extension-index-seller .catgories_table").removeClass("bestSellingsNaviTable")
 			.css({ 'margin-left' : '', 'width' : ''});
 			}
-			
 			var cur_pos = jQuery(this).scrollTop();
 			sections.each(function() {
                  var top = jQuery(this).offset().top - nav_height;
@@ -286,9 +285,7 @@ jQuery(document).ready(function(e) {
 					nav.find('a').removeClass('active');
 					nav.find('a[href="#'+jQuery(this).attr('id')+'"]').addClass('active');
 					}
-            }); 
-			
+            });
+
 		});
-	
-	
 });
