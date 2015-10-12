@@ -262,19 +262,19 @@ jQuery(document).ready(function(e) {
 	
    var leftpostion = jQuery(".today_timer").width() + 80;
    var containerWidth = jQuery(".extension-index-seller .container").width() + 20;
-   var nav_height = 52; //jQuery(".catgories_table").outerHeight();
+   var nav_height = 150; //jQuery(".catgories_table").outerHeight();
    var sections = jQuery(".extension-index-seller .products section");
    var nav = jQuery(".catgories_table");
 
 	jQuery(window).scroll(function () {
 		var windowScrollPosition = jQuery(this).scrollTop();
 		if(windowScrollPosition  >= navigationtopPosition) {
-		jQuery(".catgories_table").addClass("bestSellingsNaviTable")
+		jQuery(".extension-index-seller .catgories_table").addClass("bestSellingsNaviTable")
 		.css({ 'margin-left' : -leftpostion, 'width' : containerWidth});
 			}
 			else
 			{
-			jQuery(".catgories_table").removeClass("bestSellingsNaviTable")
+			jQuery(".extension-index-seller .catgories_table").removeClass("bestSellingsNaviTable")
 			.css({ 'margin-left' : '', 'width' : ''});
 			}
 			
