@@ -189,6 +189,10 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
             ->group('e.entity_id')
             ->order('sales_count' . ' ' . 'desc');
             $collection->addFieldToFilter('status','1');
+            $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
+            $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+            $condition,
+            array());
         //join brand 
               $condition = new Zend_Db_Expr("cpie.entity_id = e.entity_id AND cpie.attribute_id = 81");
                $collection->getSelect()->join(array('cpie' => $collection->getTable('catalog_product_index_eav')),
