@@ -269,7 +269,7 @@ jQuery(document).ready(function(e) {
 	
    var leftpostion = jQuery(".today_timer").width() + 80;
    var containerWidth = jQuery(".extension-index-seller .container").width() + 20;
-   var nav_height = 118; //jQuery(".catgories_table").outerHeight();
+   var nav_height = 150; //jQuery(".catgories_table").outerHeight();
    var sections = jQuery(".extension-index-seller .products section");
    var nav = jQuery(".catgories_table");
 
