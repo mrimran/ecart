@@ -277,12 +277,12 @@ jQuery(document).ready(function(e) {
 	jQuery(window).scroll(function () {
 		var windowScrollPosition = jQuery(this).scrollTop();
 		if(windowScrollPosition  >= navigationtopPosition) {
-		jQuery(".catgories_table").addClass("bestSellingsNaviTable")
+		jQuery(".extension-index-seller .catgories_table").addClass("bestSellingsNaviTable")
 		.css({ 'margin-left' : -leftpostion, 'width' : containerWidth});
 			}
 			else
 			{
-			jQuery(".catgories_table").removeClass("bestSellingsNaviTable")
+			jQuery(".extension-index-seller .catgories_table").removeClass("bestSellingsNaviTable")
 			.css({ 'margin-left' : '', 'width' : ''});
 			}
 			

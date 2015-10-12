@@ -1134,10 +1134,7 @@ margin-bottom: 10%;}
 }
 .customer-account .buttons-set .back-link { float: right;}
 .customer-account .buttons-set .button { float: left;}
-<<<<<<< HEAD
 
-=======
->>>>>>> 9d74f2ba7c256a6e41472dcaf5caea5af42566e1
 .cms-home .owl-stage { display: inline-block;}
 #recently-viewed-items li > a {
     float: left;
@@ -1157,10 +1154,10 @@ margin-bottom: 10%;}
 
 
 .bestSellingsNaviTable { position: fixed; top: 0; margin:-16px 0 0 0; background: #fff; z-index:999; padding-left: 0 !important; padding-right: 0 !important;}
-.bestSellingsNaviTable .categories_list li { width: 9.6% !important;}
+.bestSellingsNaviTable .categories_list li { width: 16% !important;}
 .bestSellingsNaviTable .categories_list li a { line-height: 15px; padding-top: 4px !important;} 
-.bestSellingsNaviTable .categories_list a.active { background: #f57a20 !important; color: #fff !important; }
-.bestSellingsNaviTable .categories_list a:hover { background: #f57a20 !important; color: #fff !important; }
+.bestSellingsNaviTable .categories_list a.active { background: #000 !important; color: #fff !important; }
+.bestSellingsNaviTable .categories_list a:hover { background: #000 !important; color: #fff !important; }
 
 
 .categories_list a span { background-image: url("../images/cat-sprite.png"); background-position: 0 0; background-repeat: no-repeat; display: block;  height: 25px; vertical-align: middle; width: 27px;
