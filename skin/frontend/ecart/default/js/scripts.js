@@ -262,7 +262,11 @@ function reinitOwlOnSelector(selector, number_of_items) {
 	});
 	
 jQuery(document).ready(function(e) {
+	var navigationtopPosition = jQuery(".catgories_table").length;
+	if(navigationtopPosition > 0) {
   	var navigationtopPosition = jQuery(".catgories_table").position().top;
+	}
+	
    var leftpostion = jQuery(".today_timer").width() + 80;
    var containerWidth = jQuery(".extension-index-seller .container").width() + 20;
    var nav_height = 52; //jQuery(".catgories_table").outerHeight();
