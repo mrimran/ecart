@@ -1192,9 +1192,9 @@ var ProductMediaManager = {
         }
 
         image.elevateZoom();
-	if ($('.review-product-list').length == 0) {
-	   image.elevateZoom();
-	}
+	// if ($('.review-product-list').length == 0) {
+	//    image.elevateZoom();
+	// }
     },
 
     swapImage: function(targetImage) {
