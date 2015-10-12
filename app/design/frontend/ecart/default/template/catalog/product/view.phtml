@@ -167,7 +167,6 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
 
               if($upcoming == 'No' && $_product->isAvailable()){?>
-
                 <div class="col-sm-9">
                   <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
                 </div>
