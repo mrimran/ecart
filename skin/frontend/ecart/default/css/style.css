@@ -935,7 +935,7 @@ font-size:16px;padding:0;line-height:2;}
 padding-left:8px;}
 .product-meta.panel-group .product-meta-select{list-style-type:none;}
 .product-options ul{list-style-type:none;}
-.product-options .options-list li input[type="radio"]{display:none;}
+.product-options .options-list li input[type="radio"],.product-options .options-list li input[type="checkbox"]{display:none;}
 .product-meta.panel-group .product-meta-select li,.product-options .options-list li{
 border:1px solid #d7d7d7;display:inline-block;margin:2px 5px;padding:2px 8px;line-height:1.5;
 font-size:15px;font-weight:300;cursor:pointer;}
