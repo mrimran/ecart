@@ -37,7 +37,7 @@
 </script>
 
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<div class="__product__main__area">
+<div class="__product__main__area product-view">
   <div class="row">
     <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
       <?php echo $this->getBlockHtml('formkey') ?>
@@ -48,7 +48,7 @@
         <input type="hidden" name="color" id="product-color-field" value="" />
 
       </div>
-      <div class="col-sm-6"> <?php echo $this->getChildHtml('media') ?> </div>
+      <div class="col-sm-6"> <div class="product-img-box"><?php echo $this->getChildHtml('media') ?> </div></div>
       <div class="col-sm-6">
       <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
       <?php if( $_product->getTypeId() != 'grouped' ): ?>
@@ -153,11 +153,11 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php else: ?>
       <br/>
       <?php endif ?>
-      <!-- <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true"> -->
+      <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
           <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                     <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
           <?php endif;?>
-         <!-- </div> -->
+      </div>
 
             <?php //echo $this->getChildChildHtml('container1', '', true, true) ?>
 
@@ -332,7 +332,7 @@ Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
   display: none;
 }
 .product-image-gallery .gallery-image.visible {
-  display: block;
+  display: block;max-width:100%;
 }
 .product-image-gallery .gallery-image.visible.hidden {
   visibility: hidden;
@@ -396,6 +396,4 @@ Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
 .box-collateral {
   margin-bottom: 10px;
 }
-
-
 </style>
