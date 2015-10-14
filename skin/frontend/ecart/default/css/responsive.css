@@ -602,15 +602,17 @@ body.canvas-slid #disable_view{display:block;}
 section#menuslider .container{padding:0;}
 #search_mini_form .jcf-select .jcf-select-drop{width:100% !important;}
 #search_mini_form .jcf-select{margin-top:3px;}
-.maincontainer .columnslider .actions, .products .product.grid .price-info .actions{visibility: visible;}
-.maincontainer .columnslider .col-box .bottom-area .ratings{position:absolute;bottom:3px;}
-.zopim{font-size:12px;transform: scale(0.6);right:-30px !important;bottom: 0px !important;}
+.maincontainer .columnslider .actions, .products .product.grid .price-info .actions{visibility: visible;position:relative;left:15px;bottom:5px; }
+.maincontainer .columnslider .col-box .bottom-area .ratings{position:absolute;top:205px;}
+/*.zopim{font-size:12px;transform: scale(0.8);right:-30px !important;bottom: 0px !important;}*/
 .maincontainer .filters ul{display: none;}
 .maincontainer .filters ul li{display: inline-block;}
 .maincontainer .filters .heading{border-bottom:1px solid #555;}
 .maincontainer .filters .heading span .fa.fa-minus-square-o,.maincontainer .filters .heading span.plus .fa.fa-plus-square-o{display: none;}
 .maincontainer .filters .heading span .fa.fa-plus-square-o,.maincontainer .filters .heading span.plus .fa.fa-minus-square-o{display:inline-block;}
 .col-sm-8.col-md-9.paddingzeroR{padding-left:0;}
+.img-box,.img-box .abs_center{display:block;height:200px;padding-bottom:30px;}
+.__peoples__loved .__numbers{font-size: 28px;padding:0 10px;}
 }
 
 @media only screen and (max-width: 359px) {
