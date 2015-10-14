@@ -30,6 +30,13 @@ $_product    = $this->getProduct();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 $_jsonConfig = $this->getJsonConfig();
 $_renderers = $this->getChild('attr_renderers')->getSortedChildren();
+$attributes = array(81 => 8);
+$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($attributes, $_product);
+$_childPrice = Mage::getModel('catalog/product')->load($childProduct->getEntityId())->getPrice();
+echo $_childPrice;
+echo '<pre>';
+print_r($childProduct); 
+die;
 ?>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
     <dl>
