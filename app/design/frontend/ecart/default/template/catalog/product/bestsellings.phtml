@@ -8,8 +8,8 @@
     <section id="bestselingproduct">
       <div class="sectiontitle">
         <h2><span>BEST SELLINGS</span></h2>
-        <a href="<?php echo Mage::helper('extension')->getCustomUrl('bestselling')?>">View More Products</a>
-        <ul class="brandsmenu smartphones">
+        <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">View More Products</a>
+<!--         <ul class="brandsmenu smartphones">
             <li>
                 <?php
                 $_productCollectionbrand = $this->getLoadedProductCollectionbrand();
@@ -24,9 +24,9 @@
 <?php endforeach ?>
                 </select>
             </li>
-        </ul>
+        </ul> -->
       </div>
-      <div class="columnslider" id="bestselingproducts">
+      <div class="columnslider" id="bestselingproducts" data-items="4">
 
        <?php foreach ($_productCollection as $_product): ?>
         <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
@@ -46,11 +46,18 @@
           <?php $storeId = Mage::app()->getStore()->getId();
           $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
           ?>
+           <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
           <div class="ratings">
             <div class="rating-box">
                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
             </div>
+            <?php if($summaryData['reviews_count'] > 1) {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+            <?php } else {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+            <?php } ?>
           </div>
+           <?php endif ?>
 
           <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
           </div>
@@ -68,7 +75,7 @@
         </div>
       <?php endforeach ?>
       </div>
-      <a data-id="bestselingproducts" class="loadmore smartphones">View All Products</a>
+      <a data-id="bestselingproducts" class="loadmore smartphones" href="<?php echo Mage::helper('extension')->getCustomUrl('bestselling')?>">View All Products</a>
     </section>
   <?php endif; ?>
 <?php
@@ -83,4 +90,3 @@ if ($this->getChild('after')) {
     }
 }
 ?>
-

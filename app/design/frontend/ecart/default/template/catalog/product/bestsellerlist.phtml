@@ -44,7 +44,9 @@
 $_helper = $this->helper('catalog/output');?>
 <?php foreach ($_categories as $_category): ?>
 <li id="<?php echo $_category->getId(); ?>">
-<a href ="#bestselingproduct<?php echo $_category->getId(); ?>" rel="m_PageScroll2id"><?php echo $_category->getName(); ?></a>
+<a href ="#bestselingproduct<?php echo $_category->getId(); ?>" rel="m_PageScroll2id_1">
+<span> </span>
+<?php echo $_category->getName(); ?></a>
 </li>
 <?php endforeach ?>
 </ul>
@@ -81,12 +83,13 @@ $_helper = $this->helper('catalog/output');?>
           <?php $storeId = Mage::app()->getStore()->getId();
           $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
           ?>
+           <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
           <div class="ratings">
             <div class="rating-box">
                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
             </div>
           </div>
-
+           <?php endif ?>
           <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
           </div>
           </a>
@@ -133,7 +136,8 @@ $_helper = $this->helper('catalog/output');?>
     <section id="bestselingproduct<?php echo $id; ?>">
       <div class="sectiontitle">
         <h2><span></span><?php echo $_category->getName(); ?></h2>
-      <a href="<?php echo Mage::getBaseUrl() . "extension/category/seller?id=$id "?>">View More Products</a>
+        
+      <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestseller')?>?id=<?php echo $id ?>">View More Products</a>
       </div>
       <div class="columnslider" data-items="4">
 
@@ -155,11 +159,13 @@ $_helper = $this->helper('catalog/output');?>
           <?php $storeId = Mage::app()->getStore()->getId();
           $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
           ?>
+          <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
           <div class="ratings">
             <div class="rating-box">
                 <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
             </div>
           </div>
+           <?php endif ?>
 
           <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
           </div>

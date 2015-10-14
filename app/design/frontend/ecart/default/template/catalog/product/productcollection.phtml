@@ -68,23 +68,20 @@
 					</div>
 					<div class="col-sm-5 details">
                   <a  class="title" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
-                        <div class="ratings">
-                      <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
-                            </div>
-                            <?php if($summaryData['reviews_count'] > 1) {?>
-                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
-                            <?php } else {?>
-                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
-                            <?php } ?>
-
-                            <?php } else {?>
-                            <div class="rating-box">
-                                 <div class="rating" style="width:0%"></div>
-                            </div>
-                            <?php } ?>
-                        </div>
+                        <?php $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
+                    ?>
+                     <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
+                    <div class="ratings">
+                      <div class="rating-box">
+                          <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
+                      </div>
+                      <?php if($summaryData['reviews_count'] > 1) {?>
+                              <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+                      <?php } else {?>
+                              <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+                      <?php } ?>
+                    </div>
+                     <?php endif ?>
 
             <ul>
 							<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
@@ -118,7 +115,7 @@
             <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                 <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
             <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-                <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
             <?php else: ?>
                 <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
             <?php endif; ?>
@@ -152,23 +149,20 @@
 					</div>
 					<div class="col-sm-5 details">
 						<a href="<?php echo $_product->getProductUrl() ?>" class="title" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
-						<div class="ratings">
-                      <?php if ($summaryData['rating_summary'] != '') {?>
-                            <div class="rating-box">                            
-                                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div> 
-                            </div>
-                            <?php if($summaryData['reviews_count'] > 1) {?>
-                                 <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
-                            <?php } else {?>
-                                <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
-                            <?php } ?>
-
-                            <?php } else {?>
-                            <div class="rating-box">
-                                 <div class="rating" style="width:0%"></div>
-                            </div>
-                            <?php } ?>
-                        </div>
+						 <?php $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)  ->load($_product->getId());
+          ?>
+           <?php if($summaryData['rating_summary'] != "" && $summaryData['rating_summary'] != 0 ): ?>
+          <div class="ratings">
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $summaryData['rating_summary']; ?>%"></div>
+            </div>
+            <?php if($summaryData['reviews_count'] > 1) {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> reviews)</span>
+            <?php } else {?>
+                    <span class="amount reviewscounttop">(<?php echo $summaryData['reviews_count']; ?> review)</span>
+            <?php } ?>
+          </div>
+           <?php endif ?>
 
 					</div>
 					<div class="col-sm-3 relative price-info">
@@ -199,8 +193,7 @@
             <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                 <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
             <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-                <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
-            <?php else: ?>
+                <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>            <?php else: ?>
                 <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
             <?php endif; ?>
           </div>

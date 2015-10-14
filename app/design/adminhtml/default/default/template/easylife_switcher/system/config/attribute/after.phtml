@@ -1,0 +1,22 @@
+<?php
+/**
+ * Easylife_Switcher extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE_EASYLIFE_SWITCHER.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Easylife
+ * @package	    Easylife_Switcher
+ * @copyright   2013 - 2014 Marius Strajeru
+ * @license	    http://opensource.org/licenses/mit-license.php MIT License
+ */
+/** @var Easylife_Switcher_Block_Adminhtml_System_Attribute_After_Options $this*/
+echo $this->getButton();
+?>
+<div>
+    <input class="real-value"<?php echo ($this->getDisabled() ? ' disabled="disabled"' : '');?> type="hidden" name="<?php echo $this->getInputName();?>" id="<?php echo $this->getInputId();?>" value="<?php echo $this->getInputValue()?>" />
+</div>

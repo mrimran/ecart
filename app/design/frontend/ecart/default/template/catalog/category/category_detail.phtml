@@ -84,7 +84,7 @@ $category_new->url_key;
                            <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice) {?>
                             
-                            <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+                            <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
                             <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                             <?php } ?>
@@ -94,7 +94,7 @@ $category_new->url_key;
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                     <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-                        <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                        <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
@@ -102,7 +102,7 @@ $category_new->url_key;
                     </div>
         <?php endforeach ?>
         </div>
-        <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/sale?id=$category" ?>">View All Products</a></div>
+        <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('todaysdeals')?>?id=<?php echo $category ?>">View All Products</a></div>
 <?php endif; ?>
     <script type="text/javascript">
         var dthen<?php echo $count; ?> = new Date("<?php echo Date("m/d/y", strtotime($toDate)) . ' 11:59:00 PM'; ?>");
@@ -182,7 +182,7 @@ $category_new->url_key;
                            <?php   $specialprice = Mage::getModel('catalog/product')->load($Latest->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate))) {?>
                             
-                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?></div>
                             <?php } ?>
@@ -192,7 +192,7 @@ $category_new->url_key;
                         <?php if(!$Latest->canConfigure() && $Latest->isSaleable()): ?>
                             <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($Latest) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php elseif($Latest->getStockItem() && $Latest->getStockItem()->getIsInStock()): ?>
-                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $Latest->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php else: ?>
                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
@@ -209,7 +209,7 @@ $category_new->url_key;
     <?php endforeach ?>
 <?php endif ?>
     </div>
-    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/latest?id=$category" ?>">View All Products</a></div>
+    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('latestproduct')?>?id=<?php echo $category ?>">View All Products</a></div>
 </section>
 <?php endif ?>
 <?php $_product =  $_productCollectionseller->getFirstItem() ?>
@@ -263,7 +263,7 @@ $_helper = $this->helper('catalog/output');
                            <?php   $specialprice = Mage::getModel('catalog/product')->load($Latest->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate))) {?>
                             
-                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?></div>
                             <?php } ?>
@@ -273,7 +273,7 @@ $_helper = $this->helper('catalog/output');
                         <?php if(!$Latest->canConfigure() &&$Latest->isSaleable()): ?>
                             <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($Latest) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php elseif($Latest->getStockItem() && $Latest->getStockItem()->getIsInStock()): ?>
-                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $Latest->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php else: ?>
                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
@@ -290,7 +290,7 @@ $_helper = $this->helper('catalog/output');
         <?php endforeach ?>
     <?php endif ?>
     </div>
-    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/seller?id=$category" ?>">View All Products</a></div>
+    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestseller')?>?id=<?php echo $category ?>">View All Products</a></div>
 </section>
 <?php endif ?>
 <?php $_product =  $_productCollectionseller->getFirstItem() ?>
@@ -348,7 +348,7 @@ $_helper = $this->helper('catalog/output');
                         <?php if(!$Latest->canConfigure() && $Latest->isSaleable()): ?>
                             <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($Latest) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php elseif($Latest->getStockItem() && $Latest->getStockItem()->getIsInStock()): ?>
-                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $Latest->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php else: ?>
                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
@@ -365,7 +365,7 @@ $_helper = $this->helper('catalog/output');
     <?php endforeach ?>
 <?php endif ?>
     </div>
-    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl() . "extension/category/upcoming?id=$category" ?>">View All Products</a></div>
+    <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('upcoming')?>?id=<?php echo $category ?>">View All Products</a></div>
 </section>
  <?php endif ?>
 <script>

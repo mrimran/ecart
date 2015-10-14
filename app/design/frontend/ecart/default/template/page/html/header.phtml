@@ -117,6 +117,7 @@
 
   </ul>
 </nav>
+<div id="disable_view"></div>
      <div class="container">
      	<div class="mainhead">
      		<div class="logo col-sm-3">
@@ -139,10 +140,10 @@
      			</div>
 				<div class="dealsnav clearfix">
 				    <ul>
-				     <li><a href="<?php echo Mage::getBaseUrl().Mage::helper('extension')->getCustomUrl('superdeals')?>">Super Deals <span class="new">New</span></a></li>
-				     <li><a href="<?php echo Mage::getBaseUrl().Mage::helper('extension')->getCustomUrl('bestselling')?>">Best Selling</a></li>
-				     <li><a href="<?php echo Mage::getBaseUrl().Mage::helper('extension')->getCustomUrl('collection')?>">Our Collection</a></li>
-				     <li><a href="<?php echo Mage::getBaseUrl().Mage::helper('extension')->getCustomUrl('sale')?>">All Sale</a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('superdeals')?>">Super Deals <span class="new">New</span></a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">Best Selling</a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('collection')?>">Our Collection</a></li>
+				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('sale')?>">All Sale</a></li>
 				     <li class="call-us"><a href="tel:+97180042935"><i class="fa fa-phone"></i> 800 42935</a></li>
 				    </ul>
 				   </div>

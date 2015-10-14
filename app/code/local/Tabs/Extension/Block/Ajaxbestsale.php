@@ -57,7 +57,6 @@ class Tabs_Extension_Block_Ajaxbestsale extends Mage_Catalog_Block_Product_Abstr
     public function getLoadedProductCollections($cat_id)
     {
         $id = $cat_id;
-
         if (is_null($this->_productCollection)) {
             $layer = $this->getLayer();
             if ($this->getShowRootCategory()) {
@@ -110,9 +109,10 @@ class Tabs_Extension_Block_Ajaxbestsale extends Mage_Catalog_Block_Product_Abstr
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
-
+        $id = $this->getRequest()->getParam('id');
         if($categoryId = $id){
-        $category = Mage::getModel('catalog/category')->load($categoryId);
+
+        $category = Mage::getModel('catalog/category')->load($id);
         $this->_productCollection->addCategoryFilter($category);
         } 
     }
