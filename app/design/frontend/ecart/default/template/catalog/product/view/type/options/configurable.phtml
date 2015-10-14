@@ -103,7 +103,7 @@ echo "</pre>";*/
                         <div class="panel-body" data-id="<?php echo $Cleanedvalue; ?>SV">
                                 <!-- <dd<?php if ($_attribute->decoratedIsLast) { ?> class="last"<?php } ?>> -->
                             <div class="input-box product-input-box">
-                                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select" onchange="spConfig.getIdOfSelectedProduct()">
+                                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
                                     <option><?php echo $this->__('Choose an Option...') ?></option>
                                 </select>
                             </div>
