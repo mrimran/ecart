@@ -342,7 +342,7 @@ font-family: 'GothamNarrow-Bold','open-sans',sans-serif;font-size:22px;text-tran
 .tips{background-color:#f6f6f6;padding:15px;color:#5b5b5b;border:1px solid #dfdfdf;font-size:14px;
 margin:15px 0 30px;}
 .tips b{font-family:'GothamNarrow-Bold','open-sans',sans-serif;}
-
+.item-options{font-size:13px;text-transform:capitalize;}
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
