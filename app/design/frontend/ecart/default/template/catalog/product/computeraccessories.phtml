@@ -114,7 +114,8 @@
             <?php endforeach ?>
         <?php endif; ?>
     </div>
-    <div class="clearfix viewmore" align="right"><a href="computer-accessories.html">View All Products</a></div>
+    <?php $url = Mage::getModel('catalog/category')->load(39)->getUrl();?>
+    <div class="clearfix viewmore" align="right"><a href="<?php echo $url ?>">View All Products</a></div>
 </section>
 
 <script>

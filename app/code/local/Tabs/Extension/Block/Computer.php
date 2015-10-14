@@ -243,4 +243,6 @@ class Tabs_Extension_Block_Computer extends Mage_Catalog_Block_Product_Abstract 
         
    }
 
+   
+
 }

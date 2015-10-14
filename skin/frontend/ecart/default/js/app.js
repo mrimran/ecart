@@ -105,11 +105,11 @@ Varien.searchForm.prototype.blur = function (event) {
  *
  * - The mouse-detected event is triggered on the window object when the user
  *   is using a mouse pointer input, or has switched from touch to mouse input.
- *   It can be observed in this manner: $j(window).on('mouse-detected', function(event) { // custom code });
+ *   It can be observed in this manner: jQuery(window).on('mouse-detected', function(event) { // custom code });
  *
  * - The touch-detected event is triggered on the window object when the user
  *   is using touch pointer input, or has switched from mouse to touch input.
- *   It can be observed in this manner: $j(window).on('touch-detected', function(event) { // custom code });
+ *   It can be observed in this manner: jQuery(window).on('touch-detected', function(event) { // custom code });
  */
 var PointerManager = {
     MOUSE_POINTER_TYPE: 'mouse',
@@ -187,7 +187,7 @@ var PointerManager = {
         }
 
         this.lastTouchType = this.MOUSE_POINTER_TYPE;
-        $j(window).trigger('mouse-detected', originalEvent);
+        jQuery(window).trigger('mouse-detected', originalEvent);
     },
     triggerTouchEvent: function(originalEvent) {
         if(this.lastTouchType == this.TOUCH_POINTER_TYPE) {
@@ -195,7 +195,7 @@ var PointerManager = {
         }
 
         this.lastTouchType = this.TOUCH_POINTER_TYPE;
-        $j(window).trigger('touch-detected', originalEvent);
+        jQuery(window).trigger('touch-detected', originalEvent);
     },
 
     initEnv: function() {
@@ -215,7 +215,7 @@ var PointerManager = {
 
         if(this.standardTouch) { //standard-based touch events. Wire only one event.
             //detect pointer event
-            $j(window).on(this.touchDetectionEvent, function(e) {
+            jQuery(window).on(this.touchDetectionEvent, function(e) {
                 switch(e.originalEvent.pointerType) {
                     case that.getPointerEventsInputTypes().MOUSE:
                         that.triggerMouseEvent(e);
@@ -229,7 +229,7 @@ var PointerManager = {
             });
         } else { //non-standard touch events. Wire touch and mouse competing events.
             //detect first touch
-            $j(window).on(this.touchDetectionEvent, function(e) {
+            jQuery(window).on(this.touchDetectionEvent, function(e) {
                 if(that.pointerEventLock) {
                     return;
                 }
@@ -239,7 +239,7 @@ var PointerManager = {
             });
 
             //detect mouse usage
-            $j(document).on('mouseover', function(e) {
+            jQuery(document).on('mouseover', function(e) {
                 if(that.pointerEventLock) {
                     return;
                 }
@@ -294,7 +294,7 @@ var MenuManager = {
          * Should probably be called on touchstart (or similar) event.
          */
         reset: function() {
-            this.touchStartPosition = $j(window).scrollTop();
+            this.touchStartPosition = jQuery(window).scrollTop();
         },
 
         /**
@@ -307,7 +307,7 @@ var MenuManager = {
                 return false;
             }
 
-            var scroll = $j(window).scrollTop() - this.touchStartPosition;
+            var scroll = jQuery(window).scrollTop() - this.touchStartPosition;
             return Math.abs(scroll) > this.TOUCH_SCROLL_THRESHOLD;
         }
     },
@@ -328,7 +328,7 @@ var MenuManager = {
      * @param target
      */
     toggleMenuVisibility: function(target) {
-        var link = $j(target);
+        var link = jQuery(target);
         var li = link.closest('li');
 
         if(!this.useSmallScreenBehavior()) {
@@ -377,8 +377,8 @@ var MenuManager = {
      */
     wirePointerEvents: function() {
         var that = this;
-        var pointerTarget = $j('#nav a.has-children');
-        var hoverTarget = $j('#nav li');
+        var pointerTarget = jQuery('#nav a.has-children');
+        var hoverTarget = jQuery('#nav li');
 
         if(PointerManager.getPointerEventsSupported()) {
             // pointer events supported, so observe those type of events
@@ -414,12 +414,12 @@ var MenuManager = {
                 //observe MSPointerDown to set pointer type for click to find later
 
                 pointerTarget.on('MSPointerDown', function(e) {
-                    $j(this).data('pointer-type', e.originalEvent.pointerType);
+                    jQuery(this).data('pointer-type', e.originalEvent.pointerType);
                 });
             }
 
             pointerTarget.on('click', function(e) {
-                var pointerType = fullPointerSupport ? e.originalEvent.pointerType : $j(this).data('pointer-type');
+                var pointerType = fullPointerSupport ? e.originalEvent.pointerType : jQuery(this).data('pointer-type');
 
                 if(pointerType === undefined || pointerType == PointerManager.getPointerEventsInputTypes().MOUSE) {
                     that.mouseClickAction(e, this);
@@ -431,7 +431,7 @@ var MenuManager = {
                     }
                 }
 
-                $j(this).removeData('pointer-type'); // clear pointer type hint from target, if any
+                jQuery(this).removeData('pointer-type'); // clear pointer type hint from target, if any
             });
         } else {
             //pointer events not supported, use Apple-style events to simulate
@@ -448,7 +448,7 @@ var MenuManager = {
                 that.mouseLeaveAction(e, this);
             });
 
-            $j(window).on('touchstart', function(e) {
+            jQuery(window).on('touchstart', function(e) {
                 if(that.mouseEnterEventObserved) {
                     // If mouse enter observed before touch, then device touch
                     // event order is incorrect.
@@ -461,7 +461,7 @@ var MenuManager = {
             });
 
             pointerTarget.on('touchend', function(e) {
-                $j(this).data('was-touch', true); // Note that element was invoked by touch pointer
+                jQuery(this).data('was-touch', true); // Note that element was invoked by touch pointer
 
                 e.preventDefault(); // Prevent mouse compatibility events from firing where possible
 
@@ -475,7 +475,7 @@ var MenuManager = {
                     that.touchAction(e, this);
                 }
             }).on('click', function(e) {
-                if($j(this).data('was-touch')) { // Event invoked after touch
+                if(jQuery(this).data('was-touch')) { // Event invoked after touch
                     e.preventDefault(); // Prevent following link
                     return; // Prevent other behavior
                 }
@@ -524,7 +524,7 @@ var MenuManager = {
 
             event.stopPropagation();
 
-            var jtarget = $j(target);
+            var jtarget = jQuery(target);
             if(!jtarget.hasClass('level0')) {
                 this.mouseleaveLock = jtarget.parents('li').length + 1;
             }
@@ -551,7 +551,7 @@ var MenuManager = {
                 return; // suppress duplicate mouseleave event after touch
             }
 
-            $j(target).removeClass('menu-active'); //hide all menus
+            jQuery(target).removeClass('menu-active'); //hide all menus
         },
 
         /**
@@ -611,7 +611,7 @@ var MenuManager = {
             return; // don't do mouse enter functionality on smaller screens
         }
 
-        $j(target).addClass('menu-active'); //show current menu
+        jQuery(target).addClass('menu-active'); //show current menu
     },
 
     /**
@@ -626,7 +626,7 @@ var MenuManager = {
             return; // don't do mouse leave functionality on smaller screens
         }
 
-        $j(target).removeClass('menu-active'); //hide all menus
+        jQuery(target).removeClass('menu-active'); //hide all menus
     },
 
     /**
@@ -661,17 +661,17 @@ var MenuManager = {
 // jQuery Init
 // ==============================================
 
-// Use $j(document).ready() because Magento executes Prototype inline
-$j(document).ready(function () {
+// Use jQuery(document).ready() because Magento executes Prototype inline
+jQuery(document).ready(function () {
 
     // ==============================================
     // Shared Vars
     // ==============================================
 
     // Document
-    var w = $j(window);
-    var d = $j(document);
-    var body = $j('body');
+    var w = jQuery(window);
+    var d = jQuery(document);
+    var body = jQuery('body');
 
     Modernizr.addTest('ios', function () {
         return navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
@@ -682,13 +682,13 @@ $j(document).ready(function () {
 
     /* Wishlist Toggle Class */
 
-    $j(".change").click(function (e) {
-        $j( this ).toggleClass('active');
+    jQuery(".change").click(function (e) {
+        jQuery( this ).toggleClass('active');
         e.stopPropagation()
     });
 
-    $j(document).click(function (e) {
-        if (! $j(e.target).hasClass('.change')) $j(".change").removeClass('active');
+    jQuery(document).click(function (e) {
+        if (! jQuery(e.target).hasClass('.change')) jQuery(".change").removeClass('active');
     });
 
 
@@ -696,18 +696,18 @@ $j(document).ready(function () {
     // Skip Links
     // =============================================
 
-    var skipContents = $j('.skip-content');
-    var skipLinks = $j('.skip-link');
+    var skipContents = jQuery('.skip-content');
+    var skipLinks = jQuery('.skip-link');
 
     skipLinks.on('click', function (e) {
         e.preventDefault();
 
-        var self = $j(this);
+        var self = jQuery(this);
         // Use the data-target-element attribute, if it exists. Fall back to href.
         var target = self.attr('data-target-element') ? self.attr('data-target-element') : self.attr('href');
 
         // Get target element
-        var elem = $j(target);
+        var elem = jQuery(target);
 
         // Check if stub is open
         var isSkipContentOpen = elem.hasClass('skip-active') ? 1 : 0;
@@ -725,8 +725,8 @@ $j(document).ready(function () {
         }
     });
 
-    $j('#header-cart').on('click', '.skip-link-close', function(e) {
-        var parent = $j(this).parents('.skip-content');
+    jQuery('#header-cart').on('click', '.skip-link-close', function(e) {
+        var parent = jQuery(this).parents('.skip-content');
         var link = parent.siblings('.skip-link');
 
         parent.removeClass('skip-active');
@@ -745,9 +745,9 @@ $j(document).ready(function () {
 
     // Prevent sub menus from spilling out of the window.
     function preventMenuSpill() {
-        var windowWidth = $j(window).width();
-        $j('ul.level0').each(function(){
-            var ul = $j(this);
+        var windowWidth = jQuery(window).width();
+        jQuery('ul.level0').each(function(){
+            var ul = jQuery(this);
             //Show it long enough to get info, then hide it.
             ul.addClass('position-test');
             ul.removeClass('spill');
@@ -761,7 +761,7 @@ $j(document).ready(function () {
         });
     }
     preventMenuSpill();
-    $j(window).on('delayed-resize', preventMenuSpill);
+    jQuery(window).on('delayed-resize', preventMenuSpill);
 
 
     // ==============================================
@@ -772,10 +772,10 @@ $j(document).ready(function () {
     // rather than having duplicate markup or changing the design
     enquire.register('(max-width: ' + bp.medium + 'px)', {
         match: function () {
-            $j('.page-header-container .store-language-container').prepend($j('.form-language'));
+            jQuery('.page-header-container .store-language-container').prepend(jQuery('.form-language'));
         },
         unmatch: function () {
-            $j('.header-language-container .store-language-container').prepend($j('.form-language'));
+            jQuery('.header-language-container .store-language-container').prepend(jQuery('.form-language'));
         }
     });
 
@@ -785,14 +785,14 @@ $j(document).ready(function () {
 
     enquire.register('screen and (min-width: ' + (bp.medium + 1) + 'px)', {
         match: function () {
-            $j('.menu-active').removeClass('menu-active');
-            $j('.sub-menu-active').removeClass('sub-menu-active');
-            $j('.skip-active').removeClass('skip-active');
+            jQuery('.menu-active').removeClass('menu-active');
+            jQuery('.sub-menu-active').removeClass('sub-menu-active');
+            jQuery('.skip-active').removeClass('skip-active');
         },
         unmatch: function () {
-            $j('.menu-active').removeClass('menu-active');
-            $j('.sub-menu-active').removeClass('sub-menu-active');
-            $j('.skip-active').removeClass('skip-active');
+            jQuery('.menu-active').removeClass('menu-active');
+            jQuery('.sub-menu-active').removeClass('sub-menu-active');
+            jQuery('.skip-active').removeClass('skip-active');
         }
     });
 
@@ -802,14 +802,14 @@ $j(document).ready(function () {
 
     // Used to swap primary product photo from thumbnails.
 
-    var mediaListLinks = $j('.media-list').find('a');
-    var mediaPrimaryImage = $j('.primary-image').find('img');
+    var mediaListLinks = jQuery('.media-list').find('a');
+    var mediaPrimaryImage = jQuery('.primary-image').find('img');
 
     if (mediaListLinks.length) {
         mediaListLinks.on('click', function (e) {
             e.preventDefault();
 
-            var self = $j(this);
+            var self = jQuery(this);
 
             mediaPrimaryImage.attr('src', self.attr('href'));
         });
@@ -848,19 +848,19 @@ $j(document).ready(function () {
 
         return this.each(function () {
             if (!settings.destruct) {
-                $j(this).on('click', function () {
-                    $j(this)
+                jQuery(this).on('click', function () {
+                    jQuery(this)
                         .toggleClass('active')
                         .next()
                         .toggleClass('no-display');
                 });
                 // Hide the content
-                $j(this).next().addClass('no-display');
+                jQuery(this).next().addClass('no-display');
             } else {
                 // Remove event handler so that the toggle link can no longer be used
-                $j(this).off('click');
+                jQuery(this).off('click');
                 // Remove all classes that were added by this plugin
-                $j(this)
+                jQuery(this)
                     .removeClass('active')
                     .next()
                     .removeClass('no-display');
@@ -873,7 +873,7 @@ $j(document).ready(function () {
     // UI Pattern - Toggle Content (tabs and accordions in one setup)
     // ==============================================
     
-    $j('.toggle-content').each(function () {
+    jQuery('.toggle-content').each(function () {
         var wrapper = jQuery(this);
 
         var hasTabs = wrapper.hasClass('tabs');
@@ -951,14 +951,14 @@ $j(document).ready(function () {
     // While it would make more sense to just move the .block-layered-nav block rather than .col-left-first
     // (since other blocks can be inserted into left_first), it creates simpler code to move the entire
     // .col-left-first block, so that is the approach we're taking
-    if ($j('.col-left-first > .block').length && $j('.category-products').length) {
+    if (jQuery('.col-left-first > .block').length && jQuery('.category-products').length) {
         enquire.register('screen and (max-width: ' + bp.medium + 'px)', {
             match: function () {
-                $j('.col-left-first').insertBefore($j('.category-products'))
+                jQuery('.col-left-first').insertBefore(jQuery('.category-products'))
             },
             unmatch: function () {
                 // Move layered nav back to left column
-                $j('.col-left-first').insertBefore($j('.col-main'))
+                jQuery('.col-left-first').insertBefore(jQuery('.col-main'))
             }
         });
     }
@@ -968,17 +968,17 @@ $j(document).ready(function () {
     // ==============================================
 
     // On viewports smaller than 1000px, move the right column into the left column
-    if ($j('.main-container.col3-layout').length > 0) {
+    if (jQuery('.main-container.col3-layout').length > 0) {
         enquire.register('screen and (max-width: 1000px)', {
             match: function () {
-                var rightColumn = $j('.col-right');
-                var colWrapper = $j('.col-wrapper');
+                var rightColumn = jQuery('.col-right');
+                var colWrapper = jQuery('.col-wrapper');
 
                 rightColumn.appendTo(colWrapper);
             },
             unmatch: function () {
-                var rightColumn = $j('.col-right');
-                var main = $j('.main');
+                var rightColumn = jQuery('.col-right');
+                var main = jQuery('.main');
 
                 rightColumn.appendTo(main);
             }
@@ -992,7 +992,7 @@ $j(document).ready(function () {
 
     enquire.register('(max-width: ' + bp.medium + 'px)', {
         setup: function () {
-            this.toggleElements = $j(
+            this.toggleElements = jQuery(
                 // This selects the menu on the My Account and CMS pages
                 '.col-left-first .block:not(.block-layered-nav) .block-title, ' +
                     '.col-left-first .block-layered-nav .block-subtitle--filter, ' +
@@ -1012,13 +1012,13 @@ $j(document).ready(function () {
     // OPC - Progress Block
     // ==============================================
 
-    if ($j('body.checkout-onepage-index').length) {
+    if (jQuery('body.checkout-onepage-index').length) {
         enquire.register('(max-width: ' + bp.large + 'px)', {
             match: function () {
-                $j('#checkout-step-review').prepend($j('#checkout-progress-wrapper'));
+                jQuery('#checkout-step-review').prepend(jQuery('#checkout-progress-wrapper'));
             },
             unmatch: function () {
-                $j('.col-right').prepend($j('#checkout-progress-wrapper'));
+                jQuery('.col-right').prepend(jQuery('#checkout-progress-wrapper'));
             }
         });
     }
@@ -1028,9 +1028,9 @@ $j(document).ready(function () {
     // Checkout Cart - events
     // ==============================================
 
-    if ($j('body.checkout-cart-index').length) {
-        $j('input[name^="cart"]').focus(function () {
-            $j(this).siblings('button').fadeIn();
+    if (jQuery('body.checkout-cart-index').length) {
+        jQuery('input[name^="cart"]').focus(function () {
+            jQuery(this).siblings('button').fadeIn();
         });
     }
 
@@ -1039,16 +1039,16 @@ $j(document).ready(function () {
     // Gift Registry Styles
     // ==============================================
 
-    if ($j('.a-left').length) {
+    if (jQuery('.a-left').length) {
         enquire.register('(max-width: ' + bp.large + 'px)', {
             match: function () {
-                $j('.gift-info').each(function() {
-                  $j(this).next('td').children('textarea').appendTo(this).children();
+                jQuery('.gift-info').each(function() {
+                  jQuery(this).next('td').children('textarea').appendTo(this).children();
                 })
             },
             unmatch: function () {
-                $j('.left-note').each(function() {
-                    $j(this).prev('td').children('textarea').appendTo(this).children();
+                jQuery('.left-note').each(function() {
+                    jQuery(this).prev('td').children('textarea').appendTo(this).children();
                 })
             }
         });
@@ -1062,19 +1062,19 @@ $j(document).ready(function () {
     // Since the number of columns per grid will vary based on the viewport size, the only way to align the action
     // buttons/links is via JS
 
-    if ($j('.products-grid').length) {
+    if (jQuery('.products-grid').length) {
 
         var alignProductGridActions = function () {
             // Loop through each product grid on the page
-            $j('.products-grid').each(function(){
+            jQuery('.products-grid').each(function(){
                 var gridRows = []; // This will store an array per row
                 var tempRow = [];
-                productGridElements = $j(this).children('li');
+                productGridElements = jQuery(this).children('li');
                 productGridElements.each(function (index) {
                     // The JS ought to be agnostic of the specific CSS breakpoints, so we are dynamically checking to find
                     // each row by grouping all cells (eg, li elements) up until we find an element that is cleared.
                     // We are ignoring the first cell since it will always be cleared.
-                    if ($j(this).css('clear') != 'none' && index != 0) {
+                    if (jQuery(this).css('clear') != 'none' && index != 0) {
                         gridRows.push(tempRow); // Add the previous set of rows to the main array
                         tempRow = []; // Reset the array since we're on a new row
                     }
@@ -1092,18 +1092,18 @@ $j(document).ready(function () {
                     $j.each(this, function () {
                         // Since this function is called every time the page is resized, we need to remove the min-height
                         // and bottom-padding so each cell can return to its natural size before being measured.
-                        $j(this).find('.product-info').css({
+                        jQuery(this).find('.product-info').css({
                             'min-height': '',
                             'padding-bottom': ''
                         });
 
                         // We are checking the height of .product-info (rather than the entire li), because the images
                         // will not be loaded when this JS is run.
-                        var productInfoHeight = $j(this).find('.product-info').height();
+                        var productInfoHeight = jQuery(this).find('.product-info').height();
                         // Space above .actions element
                         var actionSpacing = 10;
                         // The height of the absolutely positioned .actions element
-                        var actionHeight = $j(this).find('.product-info .actions').height();
+                        var actionHeight = jQuery(this).find('.product-info .actions').height();
 
                         // Add height of two elements. This is necessary since .actions is absolutely positioned and won't
                         // be included in the height of .product-info
@@ -1114,11 +1114,11 @@ $j(document).ready(function () {
 
                         // Set the bottom-padding to accommodate the height of the .actions element. Note: if .actions
                         // elements are of varying heights, they will not be aligned.
-                        $j(this).find('.product-info').css('padding-bottom', actionHeight + 'px');
+                        jQuery(this).find('.product-info').css('padding-bottom', actionHeight + 'px');
                     });
                     // Set the height of all .product-info elements in a row to the tallest height
                     $j.each(this, function () {
-                        $j(this).find('.product-info').css('min-height', tallestProductInfo);
+                        jQuery(this).find('.product-info').css('min-height', tallestProductInfo);
                     });
                 });
             });
@@ -1127,7 +1127,7 @@ $j(document).ready(function () {
 
         // Since the height of each cell and the number of columns per page may change when the page is resized, we are
         // going to run the alignment function each time the page is resized.
-        $j(window).on('delayed-resize', function (e, resizeEvent) {
+        jQuery(window).on('delayed-resize', function (e, resizeEvent) {
             alignProductGridActions();
         });
     }
@@ -1138,10 +1138,10 @@ $j(document).ready(function () {
 
     // Using setTimeout since Web-Kit and some other browsers call the resize function constantly upon window resizing.
     var resizeTimer;
-    $j(window).resize(function (e) {
+    jQuery(window).resize(function (e) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
-            $j(window).trigger('delayed-resize', e);
+            jQuery(window).trigger('delayed-resize', e);
         }, 250);
     });
 });
@@ -1155,8 +1155,8 @@ var ProductMediaManager = {
     imageWrapper: null,
 
     destroyZoom: function() {
-        $j('.zoomContainer').remove();
-        $j('.product-image-gallery .gallery-image').removeData('elevateZoom');
+        jQuery('.zoomContainer').remove();
+        jQuery('.product-image-gallery .gallery-image').removeData('elevateZoom');
     },
 
     createZoom: function(image) {
@@ -1192,18 +1192,18 @@ var ProductMediaManager = {
         }
 
         image.elevateZoom();
-	if ($('.review-product-list').length == 0) {
-	   image.elevateZoom();
-	}
+	// if ($('.review-product-list').length == 0) {
+	//    image.elevateZoom();
+	// }
     },
 
     swapImage: function(targetImage) {
-        targetImage = $j(targetImage);
+        targetImage = jQuery(targetImage);
         targetImage.addClass('gallery-image');
 
         ProductMediaManager.destroyZoom();
 
-        var imageGallery = $j('.product-image-gallery');
+        var imageGallery = jQuery('.product-image-gallery');
 
         if(targetImage[0].complete) { //image already loaded -- swap immediately
 
@@ -1246,25 +1246,25 @@ var ProductMediaManager = {
 
     wireThumbnails: function() {
         //trigger image change event on thumbnail click
-        $j('.product-image-thumbs .thumb-link').click(function(e) {
+        jQuery('.product-image-thumbs .thumb-link').click(function(e) {
             e.preventDefault();
-            var jlink = $j(this);
-            var target = $j('#image-' + jlink.data('image-index'));
+            var jlink = jQuery(this);
+            var target = jQuery('#image-' + jlink.data('image-index'));
 
             ProductMediaManager.swapImage(target);
         });
     },
 
     initZoom: function() {
-        ProductMediaManager.createZoom($j(".gallery-image.visible")); //set zoom on first image
+        ProductMediaManager.createZoom(jQuery(".gallery-image.visible")); //set zoom on first image
     },
 
     init: function() {
-        ProductMediaManager.imageWrapper = $j('.product-img-box');
+        ProductMediaManager.imageWrapper = jQuery('.product-img-box');
 
         // Re-initialize zoom on viewport size change since resizing causes problems with zoom and since smaller
         // viewport sizes shouldn't have zoom
-        $j(window).on('delayed-resize', function(e, resizeEvent) {
+        jQuery(window).on('delayed-resize', function(e, resizeEvent) {
             ProductMediaManager.initZoom();
         });
 
@@ -1272,10 +1272,10 @@ var ProductMediaManager = {
 
         ProductMediaManager.wireThumbnails();
 
-        $j(document).trigger('product-media-loaded', ProductMediaManager);
+        jQuery(document).trigger('product-media-loaded', ProductMediaManager);
     }
 };
 
-$j(document).ready(function() {
+jQuery(document).ready(function() {
     ProductMediaManager.init();
 });

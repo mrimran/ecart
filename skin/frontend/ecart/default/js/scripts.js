@@ -7,13 +7,6 @@ if("undefined"==typeof jQuery)throw new Error("Jasny Bootstrap's JavaScript requ
 
 jQuery(document).ready(function($) {
 
-//////////////////////
-
-
-///////////////////
-
-
-
      var mainheight = jQuery(window).height();
      var mainwidth = jQuery(window).width();
 
@@ -273,7 +266,6 @@ jQuery(document).ready(function(e) {
    var sections = jQuery(".extension-index-seller .products section");
    var nav = jQuery(".catgories_table");
 
-   
 	jQuery(window).scroll(function () {
 		var windowScrollPosition = jQuery(this).scrollTop();
 		if(windowScrollPosition  >= navigationtopPosition) {
@@ -285,7 +277,6 @@ jQuery(document).ready(function(e) {
 			jQuery(".extension-index-seller .catgories_table").removeClass("bestSellingsNaviTable")
 			.css({ 'margin-left' : '', 'width' : ''});
 			}
-			
 			var cur_pos = jQuery(this).scrollTop();
 			sections.each(function() {
                  var top = jQuery(this).offset().top - nav_height;
@@ -294,9 +285,7 @@ jQuery(document).ready(function(e) {
 					nav.find('a').removeClass('active');
 					nav.find('a[href="#'+jQuery(this).attr('id')+'"]').addClass('active');
 					}
-            }); 
-			
+            });
+
 		});
-	
-	
 });
