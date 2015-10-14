@@ -482,9 +482,10 @@ body.push-body-toright { overflow: hidden; }
 .maincontainer section {/*padding-top:0;padding-left:10px;padding-right:10px;*/ }
 .maincontainer { /*background-color: #eee;*/ }
 .mainheadnav .searchform input, .mainheadnav .searchform .all-search-cats { width: 49%; }
-.mainheadnav .searchform .mg { top: 8px; height: 30px; }
+.mainheadnav .searchform .mg { top:15px; height: 30px;margin-top:0; }
+#search_mini_form #search{margin-top: 6px;}
 .maincontainer .columnslider .col-box {margin-left:0px;margin-right:0;width:49%;float:none;display: inline-block;
-min-height:315px;vertical-align:top;}
+min-height:315px;vertical-align:top;margin-bottom:5px;}
 .maincontainer .columnslider .col-box:last-child { float: none; }
 .promotionslider .col-sm-4, .promotionslider .col-sm-4:nth-child(2) { padding: 5px; width: 50%; display: inline-block; float: left; }
 .promotionslider .col-sm-4:first-child { padding: 5px; }
@@ -507,7 +508,7 @@ min-height:315px;vertical-align:top;}
 .mainheadnav .catgories a span{right:inherit;left:0;top:10px;color:#f57a20;font-size:20px;
 display:none;}
 /*body.cms-index-index .mainheadnav .catgories a span{display:block;}*/
-.mainheadnav .minicart { right:15px; width: 35px; overflow: hidden; height: 35px; background-color: transparent; top: 21px; }
+.mainheadnav .minicart { right:15px; width: 35px; overflow: hidden; height: 35px; background-color: transparent; top: -62px; }
 .mainheadnav .minicart a.skip-cart{padding:0;overflow:hidden;background-color:transparent;}
 .mainheadnav .minicart span.icon{font-size: 30px;color:#5a5f65;}
 /*.mainheadnav .minicart a { text-indent: 300px; background-image: url(../images/cart-img-gray.png); background-repeat: no-repeat; background-position: center; height: 25px; width: 30px; background-color: transparent; }
@@ -603,6 +604,7 @@ section#menuslider .container{padding:0;}
 #search_mini_form .jcf-select .jcf-select-drop{width:100% !important;}
 #search_mini_form .jcf-select{margin-top:3px;}
 .maincontainer .columnslider .actions, .products .product.grid .price-info .actions{visibility: visible;}
+.maincontainer .columnslider .col-box .bottom-area .ratings{position:absolute;bottom:3px;}
 }
 
 @media only screen and (max-width: 480px) {
