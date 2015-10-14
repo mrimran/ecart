@@ -16,7 +16,7 @@
                 <observers>
                     <ybizz_pricechange_observer>
                         <class>ybizz_pricechange/observer</class>
-                        <method>change_price</method>
+                        <method>changePrice</method>
                     </ybizz_pricechange_observer>
                 </observers>
             </checkout_cart_product_add_after>
