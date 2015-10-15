@@ -9,7 +9,7 @@
     <global>
         <models>
             <wts_ajaxpriceloader>
-                <class>AssociatedProductAjaxPriceLoader_Model</class>
+                <class>WTS_AssociatedProductAjaxPriceLoader_Model</class>
             </wts_ajaxpriceloader>
         </models>
         <events>
@@ -17,7 +17,7 @@
                 <observers>
                     <WTS_AssociatedProductAjaxPriceLoader_Model_Observer>
                         <type>singleton</type>
-                        <class>WTS_AssociatedProductAjaxPriceLoader_Model_Observer</class>
+                        <class>wts_ajaxpriceloader/observer</class>
                         <method>changePrice</method>
                     </WTS_AssociatedProductAjaxPriceLoader_Model_Observer>
                 </observers>
