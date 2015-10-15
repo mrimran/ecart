@@ -15,10 +15,11 @@
         <events>
             <checkout_cart_product_add_after>
                 <observers>
-                    <wts_ajaxpriceloader_observer>
+                    <WTS_AssociatedProductAjaxPriceLoader_Model_Observer>
+                        <type>singleton</type>
                         <class>WTS_AssociatedProductAjaxPriceLoader_Model_Observer</class>
                         <method>changePrice</method>
-                    </wts_ajaxpriceloader_observer>
+                    </WTS_AssociatedProductAjaxPriceLoader_Model_Observer>
                 </observers>
             </checkout_cart_product_add_after>
         </events>

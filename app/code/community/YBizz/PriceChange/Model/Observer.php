@@ -2,8 +2,8 @@
 
 class YBizz_PriceChange_Model_Observer
 {
-
-    public function changePrice(Varient_Event_Observer $observer)
+    
+    public function changePrice(Varien_Event_Observer $observer)
     {
 
         $sku = $observer->getEvent()->getQuoteItem()->getProduct()->getData('sku');

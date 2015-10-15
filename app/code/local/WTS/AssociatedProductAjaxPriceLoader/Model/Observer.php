@@ -3,9 +3,9 @@
 class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
 {
 
-    public function changePrice(Varient_Event_Observer $observer)
+    public function changePrice(Varien_Event_Observer $observer)
     {
-
+die("yoo");
         $sku = $observer->getEvent()->getQuoteItem()->getProduct()->getData('sku');
         $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
