@@ -31,8 +31,7 @@ class YBizz_PriceChange_Model_Observer
         //identify if there is some extra cost, final price - $new_price or price
         $extra_price = $item->getProduct()->getFinalPrice() - $price;//add this extra price
         $extra_price = ($extra_price > 0) ? $extra_price : 0;
-        echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);
-        die();  
+        //echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);
         $item->setCustomPrice($extra_price + $price);
         $item->setOriginalCustomPrice($extra_price + $price);
         // Enable super mode on the product.
