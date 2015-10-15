@@ -145,8 +145,8 @@ white-space:normal;margin-bottom:10px;font-size:80%;color:#303030;}
 .ratings-description dt,.order-info dt{font-size:14px;line-height:1.5;}
 .ratings-description dd{font-size:12px;line-height:1.5;}
 .validation-advice{margin:5px 0; color:red;}
-.panel-body{padding-bottom:30px;position:relative;}
-.panel-body .validation-advice {position:absolute;bottom:5px;left:22px;font-size:12px;}
+.panel-body{/*padding-bottom:30px;*/position:relative;}
+.panel-body .validation-advice {/*position:absolute;bottom:5px;*/padding-left:5px;font-size:12px;}
 p.required{color:red;}
 .order-info{margin:5px 5px 5px 0;}
 .order-info ul{list-style-type:none;font-size:12px;margin:2px;}
