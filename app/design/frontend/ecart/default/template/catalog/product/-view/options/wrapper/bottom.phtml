@@ -19,12 +19,11 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     rwd_default
+ * @package     base_default
  * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
-<?php $_product = $this->getProduct() ?>
-
-<?php echo $this->getChildHtml('product_type_data_extra') ?>
+<div class="product-options-bottom">
+    <?php echo $this->getChildHtml('', true, true);?>
+</div>

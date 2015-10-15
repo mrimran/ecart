@@ -24,7 +24,20 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
-<?php $_product = $this->getProduct() ?>
 
-<?php echo $this->getChildHtml('product_type_data_extra') ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+
+<ul class="add-to-links">
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+    <li><a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+<?php endif; ?>
+<?php
+    $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+?>
+<?php if($_compareUrl) : ?>
+    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+<?php endif; ?>
+
+</ul>
+

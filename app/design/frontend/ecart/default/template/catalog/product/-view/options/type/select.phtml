@@ -40,7 +40,7 @@
             </div>
             <div id="<?php echo $Cleanedvalue; ?>ID" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="<?php echo $Cleanedvalue; ?>HD">
             <div class="panel-body" data-id="<?php echo $Cleanedvalue; ?>SV">
-                <!--<dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>-->
+                <!-- <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>> -->
 	    <div class="input-box product-input-box 111" id="<?php echo $Cleanedvalue; ?>BOX">
 	        <?php echo $this->getValuesHtml() ?>
 	        <?php if ($_option->getIsRequire()): ?>
@@ -49,15 +49,15 @@
 	            <?php endif; ?>
 	        <?php endif;?>
 	    </div>
-	<!--</dd>-->
+	<!-- </dd> -->
               </div>
             </div>
-
+</div>
 <script type="text/javascript">
 function uniqId() {
   return Math.round(new Date().getTime() + (Math.random() * 100));
 }
-//Uid = uniqId();
+Uid = uniqId();
 //console.log(Uid);
 
    var select = "#<?php echo $Cleanedvalue; ?>BOX select";
@@ -65,24 +65,17 @@ function uniqId() {
     var $select = jQuery(select);
     var selectName = jQuery(select).attr('name');
     var selectClases = jQuery(select).attr('class');
-	var selectid = jQuery(select).attr('id');
     $select.wrapAll('<ul class="options-list"></ul>');
     $select.find('option').each(function(j, option){
         var $option = jQuery(option);
         var selectPrice = jQuery(option).attr('price');
-		var optionId = jQuery(option).attr('id');
         if( j != 0 ){
-			var data = $option.text();
-			var arr = data.split('+');
-			//var arr1 = $option.html(arr[0]);
-			console.log(arr[0],arr[1]);
-            var html = "<li onclick=\"jQuery('#"+selectid+"').val('"+$option.val()+"').change();\">";
-            html += "<input type='radio' name='"+selectName+"' class='radio' value='"+ $option.val() +"' />";
-            html += "<span class='label'><label for='"+selectName+"'>"+arr[0]+"</label></span>";
+            var html = "<li>";
+            html += "<input type='radio' class='radio validate-one-required-by-name' price='"+selectPrice+"' name='"+selectName+"' id='option_"+j+Uid+"' onclick='opConfig.reloadPrice()' value='"+ $option.val() +"' />";
+            html += "<span class='label'><label for='option_"+j+Uid+"'>"+$option.text()+"</label></span>";
             html += "</li>";
         }
         $select.before(html);
     });
-    $select.css('visibility','hidden');
+    $select.remove();
 </script>
-</div>
