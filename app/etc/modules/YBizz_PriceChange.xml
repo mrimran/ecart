@@ -2,7 +2,7 @@
 <config>
      <modules>
         <YBizz_PriceChange>
-             <active>true</active>
+             <active>false</active>
              <codePool>community</codePool>
         </YBizz_PriceChange>
      </modules>
