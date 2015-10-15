@@ -30,13 +30,13 @@ $_product = $this->getProduct();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 $_jsonConfig = $this->getJsonConfig();
 $_renderers = $this->getChild('attr_renderers')->getSortedChildren();
-/*$attributes = array(149 => 28, 150 => 32);
+/*$attributes = array(150 => 31);
 $childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($attributes, $_product);
  $_childPrice = Mage::getModel('catalog/product')->load($childProduct->getEntityId())->getPrice();
   echo $_childPrice;
   echo '<pre>';
   print_r($childProduct);
-  die;*/
+  die; */
 
 /*
 $usedChildProducts = $_product->getTypeInstance(true)->getUsedProducts(array(149,150), $_product);
@@ -70,7 +70,6 @@ echo "<pre>";
 echo "</pre>";*/
 ?>
 <?php if ($_product->isSaleable() && count($_attributes)): ?>
-
     <dl>
         <?php foreach ($_attributes as $_attribute): ?>
             <?php
@@ -88,13 +87,12 @@ echo "</pre>";*/
 
             if (!$_rendered):
                 ?>
-                
+                <div class="panel">
                     <?php
                     $Cleanedvalue = $_attribute->getLabel();
                     $Cleanedvalue = trim(preg_replace('/[^A-Za-z0-9]/', '', strip_tags($Cleanedvalue)));
                     //echo $Cleanedvalue;
                     ?>
-                    <div class="panel">
                     <div class="panel-heading" role="tab" id="<?php echo $Cleanedvalue; ?>HD">
                         <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $Cleanedvalue; ?>ID" aria-expanded="true" aria-controls="<?php echo $Cleanedvalue; ?>ID">
                                 <label class="required"><?php echo $_attribute->getLabel() ?> <em>*</em></label>
@@ -113,12 +111,10 @@ echo "</pre>";*/
                         </div>
                     <?php endif; ?>
                 </div>
-                </div>
             <?php endforeach; ?>
     </dl>
     <script type="text/javascript">
         var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
     </script>
-
     <?php echo $this->getChildHtml('after') ?>
 <?php endif; ?>
