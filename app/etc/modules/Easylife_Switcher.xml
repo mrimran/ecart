@@ -3,7 +3,7 @@
     <modules>
         <Easylife_Switcher>
             <codePool>community</codePool>
-            <active>true</active>
+            <active>false</active>
             <depends>
                 <Mage_Catalog />
             </depends>

@@ -279,7 +279,7 @@ margin-bottom:4px;text-decoration:none;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_keywords span,
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_category{font-weight:600;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_close{display:none;}
-body.cms-index-index .messages{position:absolute;bottom:-170px;}
+body.cms-index-index .messages{/*position:absolute;bottom:-170px;*/ margin: 15px 0 0 0;}
 .block.block-compare + .block.block-compare{display: none;}
 .block.block-tags .actions a{background-color:#f57a20;padding:7px 15px;font-size:12px;line-height:1.5;
 color:#fff;margin:5px 0;display:inline-block;}
