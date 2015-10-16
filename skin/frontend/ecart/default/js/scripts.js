@@ -290,24 +290,22 @@ jQuery(document).ready(function(e) {
 		});
 });
 
-function removePlusmMinus()
+function removePlusMinusFromInputBox()
 {
-	var boxes = ".catalog-product-view .input-box";
-	jQuery(boxes).find('label').each(function(k, label){
-		var txt = jQuery(label).text();
-		var arr = [];
-		if(txt.indexOf("+") >= 0){
-			arr = txt.split('+');
-			//console.log(arr);
-		}
-		else if(txt.indexOf("-") >= 0){
-			arr = txt.split('-');
-			//console.log(arr);
-		}
-		else{
-			arr[0] = txt;
-			//console.log(arr);
-		}
-		jQuery(label).text(arr[0]);
-	});	
+    var boxes = ".catalog-product-view .input-box";
+    //console.log(boxes);
+    jQuery(boxes).find('label').each(function(k, label){
+        var txt = jQuery(label).text();
+        var arr = [];
+        if(txt.indexOf("+") >= 0){
+                arr = txt.split('+');
+        }
+        else if(txt.indexOf("-") >= 0){
+                arr = txt.split('-');
+        }
+        else{
+                arr[0] = txt;
+        }
+        jQuery(label).text(arr[0]);
+    });	
 }
