@@ -13,22 +13,24 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
         $item = $observer->getQuoteItem();
         // Ensure we have the parent item, if it has one
         $item = ( $item->getParentItem() ? $item->getParentItem() : $item );
-        // Load the custom price
-        $price = $new_price;
-        // Set the custom price
-        
-        //Set price by subtracting base price from the passed price and 
-        //then adding the product price to tackle any extra price attached with custom options :)
-        //identify if there is some extra cost, final price - base price
-        $extra_price = $item->getProduct()->getFinalPrice() - $item->getProduct()->getPrice();//add this extra price
-        $extra_price = ($extra_price > 0) ? $extra_price : 0;
-        /*echo "Got:". $price;
-        echo " Extra: ".$extra_price;
-        echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);die();*/
-        $item->setCustomPrice($extra_price + $price);
-        $item->setOriginalCustomPrice($extra_price + $price);
-        // Enable super mode on the product.
-        $item->getProduct()->setIsSuperMode(true);
+        //apply the payment logic on in configurable products
+        if($item->getProduct()->isConfigurable()) {
+            // Load the custom price
+            $price = $new_price;
+            // Set the custom price
+            //Set price by subtracting base price from the passed price and 
+            //then adding the product price to tackle any extra price attached with custom options :)
+            //identify if there is some extra cost, final price - base price
+            $extra_price = $item->getProduct()->getFinalPrice() - $item->getProduct()->getPrice(); //add this extra price
+            $extra_price = ($extra_price > 0) ? $extra_price : 0;
+            /* echo "Got:". $price;
+              echo " Extra: ".$extra_price;
+              echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);die(); */
+            $item->setCustomPrice($extra_price + $price);
+            $item->setOriginalCustomPrice($extra_price + $price);
+            // Enable super mode on the product.
+            $item->getProduct()->setIsSuperMode(true);
+        }
     }
 
 }
