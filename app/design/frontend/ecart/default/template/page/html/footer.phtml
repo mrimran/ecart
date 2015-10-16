@@ -40,28 +40,34 @@
       <div class="col-sm-12 col-md-7 desktop tablet">
 			<div class="col-sm-4">
 			<?php
-         $shopping_links_footer = Mage::getModel('cms/block')->load('shopping_links_footer'); 
+         	$shopping_links_footer = Mage::getModel('cms/block')->load('shopping_links_footer'); 
 			$footer_help_links = Mage::getModel('cms/block')->load('footer_help_links');
 			$footer_customerService_link = Mage::getModel('cms/block')->load('footer_customerService_link');
+			
          ?>
          
 			<h3> <?php  echo $shopping_links_footer->getTitle(); ?></h3>
 				<ul>
-					 <?php echo $shopping_links_footer->getContent(); ?>
+					 <?php //echo $shopping_links_footer->getContent(); ?>
+                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shopping_links_footer')->toHtml();	?>		
 				</ul>
 			</div>
 			<div class="col-sm-4">
 				<h3><?php  echo $footer_help_links->getTitle(); ?></h3>
 				<ul>
-					<?php echo $footer_help_links->getContent(); ?>
+					<?php //echo $footer_help_links->getContent(); ?>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_help_links')->toHtml();	?>			
+
 				</ul>
 			</div>
 			<div class="col-sm-4">
 				<h3><?php  echo $footer_customerService_link->getTitle(); ?></h3>
-				<ul>
-					<?php echo $footer_customerService_link->getContent(); ?>
-				</ul>
+            <ul>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_customerService_link')->toHtml();	?>			
+            </ul>
 			</div>
+            
+             <?php //echo $this->getChildHtml() ?>
 		</div>
       
       

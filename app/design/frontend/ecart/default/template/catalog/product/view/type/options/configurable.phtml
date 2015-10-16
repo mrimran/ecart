@@ -26,42 +26,99 @@
 ?>
 
 <?php
-$_product    = $this->getProduct();
+$_product = $this->getProduct();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 $_jsonConfig = $this->getJsonConfig();
 $_renderers = $this->getChild('attr_renderers')->getSortedChildren();
-?>
-<?php if ($_product->isSaleable() && count($_attributes)):?>
-    <dl>
-    <?php foreach($_attributes as $_attribute): ?>
-        <?php
-        $_rendered = false;
-        foreach ($_renderers as $_rendererName):
-            $_renderer = $this->getChild('attr_renderers')->getChild($_rendererName);
-            if (method_exists($_renderer, 'shouldRender') && $_renderer->shouldRender($_attribute, $_jsonConfig)):
-                $_renderer->setProduct($_product);
-                $_renderer->setAttributeObj($_attribute);
-                echo $_renderer->toHtml();
-                $_rendered = true;
-                break;
-            endif;
-        endforeach;
+/*$attributes = array(149 => 28, 150 => 32);
+$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($attributes, $_product);
+ $_childPrice = Mage::getModel('catalog/product')->load($childProduct->getEntityId())->getPrice();
+  echo $_childPrice;
+  echo '<pre>';
+  print_r($childProduct);
+  die;*/
 
-        if (!$_rendered):
-        ?>
-        <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
-        <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
-            <div class="input-box">
-                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
-                    <option><?php echo $this->__('Choose an Option...') ?></option>
-                  </select>
-              </div>
-        </dd>
-        <?php endif; ?>
-    <?php endforeach; ?>
+/*
+$usedChildProducts = $_product->getTypeInstance(true)->getUsedProducts(array(149,150), $_product);
+    echo "<pre>";
+foreach($usedChildProducts as $childPrd) {
+    print_r((array)$childPrd->getData());
+    //echo "<br>".$childPrd->Option()."</br>";
+    //print_r($childPrd);
+    break;
+}*/
+//getConfigurableAttributesAsArray
+//$confAttrs = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
+//print_r($confAttrs);
+//die();
+// Get any super_attribute settings we need
+/*$options = array();
+$productAttributesOptions = $_product->getTypeInstance(true)->getConfigurableOptions($_product);
+foreach ($productAttributesOptions as $productAttributeOption) {
+    $options[$_product->getId()] = array();
+    foreach ($productAttributeOption as $optionValues) {
+        $val = trim($optionValues['option_title']);
+        $options[$_product->getId()][] = array(
+            $optionValues['sku'] => $optionValues['attribute_code'] . "=" . $val
+        );
+    }
+}
+echo "<pre>";
+//print_r($confAttributes);
+//print_r($productAttributesOptions);
+//print_r($options);
+echo "</pre>";*/
+?>
+<?php if ($_product->isSaleable() && count($_attributes)): ?>
+
+    <dl>
+        <?php foreach ($_attributes as $_attribute): ?>
+            <?php
+            $_rendered = false;
+            foreach ($_renderers as $_rendererName):
+                $_renderer = $this->getChild('attr_renderers')->getChild($_rendererName);
+                if (method_exists($_renderer, 'shouldRender') && $_renderer->shouldRender($_attribute, $_jsonConfig)):
+                    $_renderer->setProduct($_product);
+                    $_renderer->setAttributeObj($_attribute);
+                    echo $_renderer->toHtml();
+                    $_rendered = true;
+                    break;
+                endif;
+            endforeach;
+
+            if (!$_rendered):
+                ?>
+                
+                    <?php
+                    $Cleanedvalue = $_attribute->getLabel();
+                    $Cleanedvalue = trim(preg_replace('/[^A-Za-z0-9]/', '', strip_tags($Cleanedvalue)));
+                    //echo $Cleanedvalue;
+                    ?>
+                    <div class="panel">
+                    <div class="panel-heading" role="tab" id="<?php echo $Cleanedvalue; ?>HD">
+                        <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $Cleanedvalue; ?>ID" aria-expanded="true" aria-controls="<?php echo $Cleanedvalue; ?>ID">
+                                <label class="required"><?php echo $_attribute->getLabel() ?> <em>*</em></label>
+                                <i class="fa fa-angle-down"></i> <span class="selected-value" id="<?php echo $Cleanedvalue; ?>SV"></span> </a> </h4>
+                    </div>
+                    <!--     <dt><label class="required"><em>*</em><?php //echo $_attribute->getLabel()   ?></label></dt> -->
+                    <div id="<?php echo $Cleanedvalue; ?>ID" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="<?php echo $Cleanedvalue; ?>HD">
+                        <div class="panel-body" data-id="<?php echo $Cleanedvalue; ?>SV">
+                                <!-- <dd<?php if ($_attribute->decoratedIsLast) { ?> class="last"<?php } ?>> -->
+                            <div class="input-box product-input-box">
+                                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                                    <option><?php echo $this->__('Choose an Option...') ?></option>
+                                </select>
+                            </div>
+                            <!-- </dd> -->
+                        </div>
+                    <?php endif; ?>
+                </div>
+                </div>
+            <?php endforeach; ?>
     </dl>
     <script type="text/javascript">
         var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
     </script>
+
     <?php echo $this->getChildHtml('after') ?>
-<?php endif;?>
+<?php endif; ?>

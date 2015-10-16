@@ -3,13 +3,13 @@
       $_helper = $this->helper('catalog/output');
       if($_Collection->count() || $Collection->count()):
 ?>
-<section id="perfumewatches" class="desktop">
+<section id="perfumewatches">
     <div class="sectiontitle">
         <h2><span>Perfume & Watches</span></h2>
         <ul class="brandsmenu">
             <li><a onclick="newproduct2()" id="five">New Products</a></li>
             <li><a class="active" onclick="bestseller2()" id="six" >Best Sellers</a></li>
-            <li>
+            <li class="desktop">
                <?php
                 $productCollectionbrand = $this->getproductbrands();
                 $_helper = $this->helper('catalog/output');
@@ -114,7 +114,8 @@
             <?php endforeach ?>
         <?php endif; ?>
     </div>
-    <div class="clearfix viewmore" align="right"><a href="watches-perfumes-gift-sets.html">View All Products</a></div>
+    <?php $url = Mage::getModel('catalog/category')->load(65)->getUrl();?>
+    <div class="clearfix viewmore" align="right"><a href="<?php echo $url ?>">View All Products</a></div>
 </section>
 
 

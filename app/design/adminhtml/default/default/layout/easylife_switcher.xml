@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Easylife_Switcher extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE_EASYLIFE_SWITCHER.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Easylife
+ * @package	    Easylife_Switcher
+ * @copyright   2013 - 2014 Marius Strajeru
+ * @license	    http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Admin layout update file
+ *
+ * @category    Easylife
+ * @package	    Easylife_Switcher
+ */
+ -->
+<layout>
+    <easylife_switcher_handle>
+        <reference name="head">
+            <action method="addJs" ifconfig="easylife_switcher/settings/enabled">
+                <js>easylife_switcher/adminhtml/configurable.js</js>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="adminhtml/template" template="easylife_switcher/configurable.phtml" name="configurable_default" as="configurable_default"/>
+        </reference>
+    </easylife_switcher_handle>
+    <adminhtml_catalog_product_edit>
+        <update handle="easylife_switcher_handle" />
+    </adminhtml_catalog_product_edit>
+    <adminhtml_catalog_product_new>
+        <update handle="easylife_switcher_handle" />
+    </adminhtml_catalog_product_new>
+
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <block type="easylife_switcher/adminhtml_system_head" name="easylife_switcher.head" as="easylife_switcher_head">
+                <action method="addResourcesToParent" />
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="easylife_switcher/adminhtml_system_dependency" name="easylife_switcher.dependency" as="easylife_switcher.dependency" after="" />
+        </reference>
+    </adminhtml_system_config_edit>
+
+</layout>

@@ -37,7 +37,7 @@
 </script>
 
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<div class="__product__main__area">
+<div class="__product__main__area product-view">
   <div class="row">
     <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
       <?php echo $this->getBlockHtml('formkey') ?>
@@ -48,13 +48,13 @@
         <input type="hidden" name="color" id="product-color-field" value="" />
 
       </div>
-      <div class="col-sm-6"> <?php echo $this->getChildHtml('media') ?> </div>
+      <div class="col-sm-6"> <div class="product-img-box"><?php echo $this->getChildHtml('media') ?> </div></div>
       <div class="col-sm-6">
       <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> </h1>
       <?php if( $_product->getTypeId() != 'grouped' ): ?>
         <?php $_helper = $this->helper('catalog/output'); ?>
         <?php $_brands = $this->getBrand($_product->getId()); ?>
-        <?php if(!$_brands->count()): ?>  
+        <?php if(!$_brands->count()): ?>
         <div class="__type">
         <?php else :?>
         <div class="__type">by
@@ -93,28 +93,33 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php if($_product->getTypeId() != 'grouped' ): ?>
       <div class="row">
         <div class="col-sm-8">
-          <?php 
-							  $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
-                              $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
+          <?php
+$specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
+$specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
                              $today =  time();
 							?>
-                           <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
+  <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)  || ($specialPriceToDate=='2000-01-12 00:00:00'))) {?>
-                            
-                            <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+<?php /*?><div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
-                            <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                            <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div><?php */?>
+                            
+				
                             <?php } ?>
+                            
+                  <?php echo $this->getPriceHtml($_product); ?>
+                <?php echo $this->getChildHtml('bundle_prices') ?>
+                <?php echo $this->getTierPriceHtml() ?>
         </div>
         <div class="col-sm-4">
           <div class="__you_saved"><?php // $currsymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
             <?php
  $specialprice = $_priceInclTax = $this->getPrice($sign.$value['pricing_value'], true)+
  $this->getProduct()->getFinalPrice();
-  
+
   $_priceExclTax = $this->getPrice($sign.$value['pricing_value'])+
   $this->getProduct()->getPrice();
-                     if($specialprice < $_priceExclTax) { 
+                     if($specialprice < $_priceExclTax) {
                      $yousave =  $_priceExclTax - $specialprice;
                      echo "You save ".$yousave." !";
                      }
@@ -123,11 +128,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
         </div>
       </div>
       <?php endif; ?>
-      <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?> 
+      <div class="product_type_data"> <?php echo $this->getChildHtml('product_type_data') ?>
     <?php echo $this->getChildHtml('extrahint') ?>
-      <?php //echo $this->getChildHtml('product_type_availability'); ?> 
+      <?php //echo $this->getChildHtml('product_type_availability'); ?>
       <?php echo $this->getChildHtml('alert_urls') ?>
-      
       </div>
       <?php $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);?>
       <?php if( $_product->getTypeId() == 'configurable' ) { ?>
@@ -144,7 +148,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php if($_product->condition): ?>
       <div class="__condition"><strong>
         <?php  echo  $_product->getResource()->getAttribute('condition')->getFrontendLabel();   ?>
-        : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?> 
+        : </strong> <?php echo $_product->getResource()->getAttribute('condition')->getFrontend()->getValue($_product); ?>
         </div>
         <br>
       <?php endif ?>
@@ -155,21 +159,20 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php else: ?>
       <br/>
       <?php endif ?>
-      <!-- <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true"> -->
+      <div class="panel-group product-meta" id="accordion" role="tablist" aria-multiselectable="true">
           <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                     <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
           <?php endif;?>
-         <!-- </div> -->
+      </div>
 
             <?php //echo $this->getChildChildHtml('container1', '', true, true) ?>
-          
+
             <?php //echo $this->getChildChildHtml('container2', '', true, true) ?>
             <div class="buttons">
               <div class="row">
               <?php $upcoming = $_product->getAttributeText('upcomingproduct') ;
 
               if($upcoming == 'No' && $_product->isAvailable()){?>
-          
                 <div class="col-sm-9">
                   <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
                 </div>
@@ -183,16 +186,11 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
                 </div>
               </div>
             </div>
-            
-            <div class="__share__this"> 
-            
+            <div class="__share__this">
             <?php /*?><a onclick="return showForm('social_share')" >Share this product</a> <?php */?>
             <?php echo $this->getLayout()->createBlock('sharingtool/share')->setTemplate('addthis/sharingtool/share.phtml')->toHtml(); ?>
-            
             </div>
-          
         </div>
-  
     </form>
 
   <script type="text/javascript">
@@ -242,13 +240,10 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
             }
         }.bind(productAddToCartForm);
         //]]>
-    </script> 
+    </script>
 </div>
 
-<?php 
-echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpagefirststaticblock')->toHtml();  
-
-?>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('productdetailpagefirststaticblock')->toHtml(); ?>
 <div class="__product__description">
 <div class="row">
   <div class="col-sm-12">
@@ -326,7 +321,7 @@ jQuery('.bxslider').bxSlider({
     //   moreText: 'See Full Specs',
     //   lessText: 'See Less Specs'
     // });
-</script> 
+</script>
 
 <script>
 function showForm(id){
@@ -343,7 +338,7 @@ Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
   display: none;
 }
 .product-image-gallery .gallery-image.visible {
-  display: block;
+  display: block;max-width:100%;
 }
 .product-image-gallery .gallery-image.visible.hidden {
   visibility: hidden;
@@ -407,6 +402,4 @@ Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
 .box-collateral {
   margin-bottom: 10px;
 }
-
-
 </style>

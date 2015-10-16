@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Easylife_Switcher extension
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the MIT License
+* that is bundled with this package in the file LICENSE_EASYLIFE_SWITCHER.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/mit-license.php
+*
+* @category   	Easylife
+* @package	    Easylife_Switcher
+* @copyright    2013 - 2014 Marius Strajeru
+* @license	    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
+<config>
+    <modules>
+        <Easylife_Switcher>
+            <version>2.3.1</version>
+        </Easylife_Switcher>
+    </modules>
+    <global>
+        <helpers>
+            <easylife_switcher>
+                <class>Easylife_Switcher_Helper</class>
+            </easylife_switcher>
+        </helpers>
+        <blocks>
+            <easylife_switcher>
+                <class>Easylife_Switcher_Block</class>
+            </easylife_switcher>
+        </blocks>
+        <models>
+            <easylife_switcher>
+                <class>Easylife_Switcher_Model</class>
+                <resourceModel>easylife_switcher_resource</resourceModel>
+            </easylife_switcher>
+            <easylife_switcher_resource>
+                <class>Easylife_Switcher_Model_Resource</class>
+                <entities>
+                    <hashcode><!-- left here for backwards compatibility - @deprecated since 2.0.0 -->
+                        <table>easylife_switcher_hascode</table>
+                    </hashcode>
+                </entities>
+            </easylife_switcher_resource>
+        </models>
+        <resources>
+            <easylife_switcher_setup>
+                <setup>
+                    <module>Easylife_Switcher</module>
+                    <class>Easylife_Switcher_Model_Resource_Setup</class>
+                </setup>
+            </easylife_switcher_setup>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <easylife_switcher>
+                    <file>easylife_switcher.xml</file>
+                </easylife_switcher>
+            </updates>
+        </layout>
+        <events>
+            <catalog_controller_product_init>
+                <observers>
+                    <easylife_switcher>
+                        <class>easylife_switcher/observer</class>
+                        <method>checkShowStock</method>
+                    </easylife_switcher>
+                </observers>
+            </catalog_controller_product_init>
+        </events>
+        <translate>
+            <modules>
+                <Easylife_Switcher>
+                    <files>
+                        <default>Easylife_Switcher.csv</default>
+                    </files>
+                </Easylife_Switcher>
+            </modules>
+        </translate>
+        <product><!-- for 1.9 compatibility. The simple product attributes are not loaded by default anymore. https://github.com/tzyganu/Switcher/issues/109#issuecomment-105227387 -->
+            <configurable><!-- any other image attribute that you want to use should be added here -->
+                <child>
+                    <attributes>
+                        <image />
+                        <small_image />
+                        <thumbnail />
+                    </attributes>
+                </child>
+            </configurable>
+        </product>
+    </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <easylife_switcher>
+                    <file>easylife_switcher.xml</file>
+                </easylife_switcher>
+            </updates>
+        </layout>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <easylife_switcher>
+                        <class>easylife_switcher/observer</class>
+                        <method>addDefaultColumn</method>
+                    </easylife_switcher>
+                </observers>
+            </core_block_abstract_to_html_before>
+
+            <adminhtml_cache_flush_all>
+                <observers>
+                    <easylife_switcher>
+                        <class>easylife_switcher/observer</class>
+                        <method>cleanOptImages</method>
+                    </easylife_switcher>
+                </observers>
+            </adminhtml_cache_flush_all>
+
+            <adminhtml_cache_flush_system>
+                <observers>
+                    <easylife_switcher>
+                        <class>easylife_switcher/observer</class>
+                        <method>cleanOptImages</method>
+                    </easylife_switcher>
+                </observers>
+            </adminhtml_cache_flush_system>
+
+            <clean_media_cache_after>
+                <observers>
+                    <easylife_switcher>
+                        <class>easylife_switcher/observer</class>
+                        <method>cleanOptImages</method>
+                    </easylife_switcher>
+                </observers>
+            </clean_media_cache_after>
+
+            <clean_catalog_images_cache_after>
+                <observers>
+                    <easylife_switcher>
+                        <class>easylife_switcher/observer</class>
+                        <method>cleanOptImages</method>
+                    </easylife_switcher>
+                </observers>
+            </clean_catalog_images_cache_after>
+        </events>
+        <translate>
+            <modules>
+                <Easylife_Switcher>
+                    <files>
+                        <default>Easylife_Switcher.csv</default>
+                    </files>
+                </Easylife_Switcher>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Easylife_Switcher before="Mage_Adminhtml">Easylife_Switcher_Adminhtml</Easylife_Switcher>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <default>
+        <easylife_switcher>
+            <settings>
+                <enabled>0</enabled>
+                <keep_values>1</keep_values>
+                <transform_dropdowns>1</transform_dropdowns>
+                <autoselect_first>1</autoselect_first>
+                <show_added_prices>1</show_added_prices>
+                <out_of_stock>1</out_of_stock>
+                <use_images>color</use_images>
+                <image_attribute>small_image</image_attribute>
+                <change_images>1</change_images>
+                <use_conf_image>1</use_conf_image>
+                <change_image_attribtues>color</change_image_attribtues>
+                <change_media_attribtues>color</change_media_attribtues>
+                <image_selector>$('image') || $$('.product-image img')[0]</image_selector>
+                <image_change_callback>$('image').setStyle({width:'', height:''});$('image').up().addClassName('product-image-zoom');product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');</image_change_callback>
+                <media_selector>$$('.product-view .product-img-box')[0]</media_selector>
+                <media_change_callback>product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');</media_change_callback>
+                <allow_no_stock_select>1</allow_no_stock_select>
+                <use_option_images>color</use_option_images><!-- Use attribute option images as label -->
+                <options_image_resize>40</options_image_resize>
+            </settings>
+        </easylife_switcher>
+    </default>
+    <easylife_switcher>
+        <system>
+            <transform>
+                <none translate="label" module="easylife_switcher">
+                    <label>No transformation</label>
+                </none>
+                <labels translate="label" module="easylife_switcher">
+                    <label>Labels</label>
+                </labels>
+                <product_images translate="label" module="easylife_switcher">
+                    <label>Simple product images</label>
+                    <after_block>easylife_switcher/adminhtml_system_attribute_after_product_image</after_block>
+                </product_images>
+                <colors translate="label" module="easylife_switcher">
+                    <label>Colors</label>
+                    <after_block>easylife_switcher/adminhtml_system_attribute_after_color</after_block>
+                </colors>
+                <custom_images translate="label" module="easylife_switcher">
+                    <label>Custom images</label>
+                    <after_block>easylife_switcher/adminhtml_system_attribute_after_image</after_block>
+                </custom_images>
+            </transform>
+        </system>
+    </easylife_switcher>
+</config>

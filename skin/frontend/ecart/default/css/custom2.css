@@ -145,8 +145,8 @@ white-space:normal;margin-bottom:10px;font-size:80%;color:#303030;}
 .ratings-description dt,.order-info dt{font-size:14px;line-height:1.5;}
 .ratings-description dd{font-size:12px;line-height:1.5;}
 .validation-advice{margin:5px 0; color:red;}
-.panel-body{padding-bottom:30px;position:relative;}
-.panel-body .validation-advice {position:absolute;bottom:5px;left:22px;font-size:12px;}
+.panel-body{/*padding-bottom:30px;*/position:relative;}
+.panel-body .validation-advice {/*position:absolute;bottom:5px;*/padding-left:5px;font-size:12px;}
 p.required{color:red;}
 .order-info{margin:5px 5px 5px 0;}
 .order-info ul{list-style-type:none;font-size:12px;margin:2px;}
@@ -279,7 +279,7 @@ margin-bottom:4px;text-decoration:none;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_keywords span,
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_category{font-weight:600;}
 #search_mini_form #itoris_instantsearch .itoris_instantsearch_close{display:none;}
-body.cms-index-index .messages{position:absolute;bottom:-170px;}
+body.cms-index-index .messages{/*position:absolute;bottom:-170px;*/ margin: 15px 0 0 0;}
 .block.block-compare + .block.block-compare{display: none;}
 .block.block-tags .actions a{background-color:#f57a20;padding:7px 15px;font-size:12px;line-height:1.5;
 color:#fff;margin:5px 0;display:inline-block;}
@@ -342,7 +342,7 @@ font-family: 'GothamNarrow-Bold','open-sans',sans-serif;font-size:22px;text-tran
 .tips{background-color:#f6f6f6;padding:15px;color:#5b5b5b;border:1px solid #dfdfdf;font-size:14px;
 margin:15px 0 30px;}
 .tips b{font-family:'GothamNarrow-Bold','open-sans',sans-serif;}
-
+.item-options{font-size:13px;text-transform:capitalize;}
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
@@ -553,4 +553,5 @@ table.cart_summary td{display:block;width:100%;}
 .cart table.cart_summary{padding:0;background-color:transparent;}
 .checkout-types.bottom{text-align:left;}
 .discount-form{margin:5px 0;}
+.shopbybrand-index-index .col .list_1{height:60px !important;}
 }
