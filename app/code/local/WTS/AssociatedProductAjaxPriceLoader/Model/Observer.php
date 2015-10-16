@@ -7,15 +7,7 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
     {
         $sku = $observer->getEvent()->getQuoteItem()->getProduct()->getData('sku');
         $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
-
         $new_price = $_product->getPrice();
-        //$productId = $observer->getEvent()->getQuoteItem()->getProductId();
-
-        /* $item = $observer->getQuoteItem();
-          $item->setCustomPrice($new_price);
-          $item->setOriginalCustomPrice($new_price);
-          $item->setFinalPrice($new_price);
-          $item->getProduct()->setIsSuperMode(true); */
 
         // Get the quote item
         $item = $observer->getQuoteItem();
@@ -29,7 +21,6 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
         //then adding the product price to tackle any extra price attached with custom options :)
         //identify if there is some extra cost, final price - base price
         $extra_price = $item->getProduct()->getFinalPrice() - $item->getProduct()->getPrice();//add this extra price
-        //die("ooooo");
         $extra_price = ($extra_price > 0) ? $extra_price : 0;
         /*echo "Got:". $price;
         echo " Extra: ".$extra_price;
