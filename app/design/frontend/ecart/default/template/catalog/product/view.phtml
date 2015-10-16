@@ -309,8 +309,9 @@ $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId()
 jQuery(document).ready(function(){
     removePlusMinusFromInputBox();
 });
-    
+
 //Get associated product price
+<?php if($_product->isConfigurable()):?>
 function isValidPrice(price)
 {
     if(typeof price !== 'undefined' && (price > 0 || price < 0)) {
@@ -355,6 +356,7 @@ jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
         }
     }
 });
+<?php endif;?>
 //associated price module code ends here
 
 jQuery('.bxslider').bxSlider({
