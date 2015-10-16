@@ -622,6 +622,7 @@ section#menuslider .container{padding:0;}
 .categories_list li{width:49%;}
 .__product__detail table td, .__product__detail table th{width:100% !important;display:block;}
 .__product__detail table td img, .__product__detail table th img {max-width:100%;max-height: 100%;height: auto !important;}
+.bestSellingsNaviTable{display: none;}
 }
 
 @media only screen and (max-width: 359px) {

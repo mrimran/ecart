@@ -31,11 +31,10 @@ if(count($_productCollection)){ ?>
             <!--div class="container"-->
              <!--div class="row"-->
               <!-- <div class="sliderbox"> -->
-                <div id="useralsoviewed" class="columnslider owl-carousel" data-items="4">
+                <div id="useralsoviewed" class="columnslider" data-items="4">
                 <?php $i=0; foreach ($_productCollection as $key => $_product): ?>
                  <?php if ($key < $display_length && ($showInStock == $_product->isAvailable() || 1 == $_product->isAvailable())): ?>
-                    <div class="item<?php if($key==0): ?> first<?php elseif($key==$_collectionSize): ?> last<?php endif; ?>">
-                    <div class="col-box">
+                    <div class="col-box item<?php if($key==0): ?> first<?php elseif($key==$_collectionSize): ?> last<?php endif; ?>">
                         <a href="<?php echo $site_url.$_product->getUrlPath(); ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" class="product-image">
                         <div class="img-box"><div class="abs_center">
                         <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(125); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" /></div></div>
@@ -59,6 +58,7 @@ if(count($_productCollection)){ ?>
                                         <?php echo $_formattedActualPrice; ?></span>
                                 <?php endif; ?>
                           </div>
+                          </div>
                         <div class="actions">
                             <?php if($_product->isSaleable()): ?>
                                 <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
@@ -72,8 +72,6 @@ if(count($_productCollection)){ ?>
                                     <li><span class="separator">|</span> <a href="<?php echo $this->helper('catalog/product_compare')->getAddUrl($_product) ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
                             </ul> -->
                             </div>
-                        </div>
-                        </div>
                     </div>
                   <?php endif ?>
                 <?php endforeach ?>
