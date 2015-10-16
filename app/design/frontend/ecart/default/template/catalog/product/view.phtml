@@ -305,11 +305,58 @@ $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId()
 </div>
 
 <script>
-
-	//removing + and -
-	jQuery(document).ready(function(){
-		removePlusmMinus();
-	});
+//removing + and -
+jQuery(document).ready(function(){
+    removePlusMinusFromInputBox();
+});
+    
+//Get associated product price
+function isValidPrice(price)
+{
+    if(typeof price !== 'undefined' && (price > 0 || price < 0)) {
+        return true;
+    }
+    return false;
+}
+function attrsHasPrice()
+{
+    var attrs = jQuery("select[name*='super_attribute']");
+    var hasPrice = false;
+    jQuery(attrs).find("option").each(function(k, attr){//for select
+        var price = parseInt(jQuery(attr).attr('price'));
+        if(hasPrice === false) {
+            hasPrice = isValidPrice(price);
+        }
+    });
+    attrs = jQuery("input[name*='super_attribute']");
+    jQuery(attrs).each(function(k, attr){//for input
+        var price = parseInt(jQuery(attr).attr('price'));
+        if(hasPrice === false) {
+            hasPrice = isValidPrice(price);
+        }
+    });
+    return hasPrice;
+}
+var request;//to stop duplicate/multiple ajax calls
+jQuery("[name*='super_attribute']").on('change', function(){
+    var hasPrice = attrsHasPrice();
+    if(hasPrice === false) {
+        if(!request) {
+            //console.log(jQuery("[name*='super_attribute']"));
+            request = jQuery.post( "<?php echo Mage::getUrl()?>wts_ajaxpriceloader/ajax/getAssociatedProductPrice/", jQuery('#product_addtocart_form').serialize())
+              .done(function( data ) {
+                //console.log( "Data Loaded: " + data );
+                //console.log(data.price);
+                if(data.price.length > 0){
+                    jQuery('.price-box .regular-price .price').text(data.price);
+                }
+                request = null;//release the request
+            });
+        }
+        console.log("changed."); console.log(jQuery('#product_addtocart_form').serialize());
+    }
+});
+//associated price module code ends here
 
 jQuery('.bxslider').bxSlider({
       pagerCustom: '#bx-pager'
