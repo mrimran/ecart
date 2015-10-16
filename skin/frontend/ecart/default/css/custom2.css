@@ -306,7 +306,7 @@ margin-top:15px;}
 .categories_list{list-style-type:none;}
 .categories_list li{display:inline-block;vertical-align:top;width:24.5%;
 margin-bottom:2px;margin-right:0px;margin-top:3px;}
-.category_deals .categories_list li a{padding:19px 10px 0;display:block;min-height:50px;overflow: hidden;
+.category_deals .categories_list li a{padding:19px 10px 10px;display:block;min-height:50px;overflow: hidden;
 font-size:12px;color:#303030;text-align:center;background-color:#fff;border:1px solid #eee; white-space: nowrap; text-overflow:ellipsis;}
 .category_deals .categories_list li a:hover,.category_deals .categories_list li.active a{
 background-color:#303030;color:#fff;border-color:#303030;}
