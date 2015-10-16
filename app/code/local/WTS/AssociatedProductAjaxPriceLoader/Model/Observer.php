@@ -27,11 +27,13 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
         
         //Set price by subtracting base price from the passed price and 
         //then adding the product price to tackle any extra price attached with custom options :)
-        //identify if there is some extra cost, final price - $new_price or price
-        $extra_price = $item->getProduct()->getFinalPrice() - $price;//add this extra price
+        //identify if there is some extra cost, final price - base price
+        $extra_price = $item->getProduct()->getFinalPrice() - $item->getProduct()->getPrice();//add this extra price
         //die("ooooo");
         $extra_price = ($extra_price > 0) ? $extra_price : 0;
-        //echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);
+        /*echo "Got:". $price;
+        echo " Extra: ".$extra_price;
+        echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);die();*/
         $item->setCustomPrice($extra_price + $price);
         $item->setOriginalCustomPrice($extra_price + $price);
         // Enable super mode on the product.
