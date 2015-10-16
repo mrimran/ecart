@@ -289,3 +289,25 @@ jQuery(document).ready(function(e) {
 
 		});
 });
+
+function removePlusmMinus()
+{
+	var boxes = ".catalog-product-view .input-box";
+	jQuery(boxes).find('label').each(function(k, label){
+		var txt = jQuery(label).text();
+		var arr = [];
+		if(txt.indexOf("+") >= 0){
+			arr = txt.split('+');
+			//console.log(arr);
+		}
+		else if(txt.indexOf("-") >= 0){
+			arr = txt.split('-');
+			//console.log(arr);
+		}
+		else{
+			arr[0] = txt;
+			//console.log(arr);
+		}
+		jQuery(label).text(arr[0]);
+	});	
+}
