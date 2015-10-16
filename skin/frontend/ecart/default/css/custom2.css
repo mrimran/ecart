@@ -503,6 +503,12 @@ margin:15px 0 30px;}
     	float: left;
     	width: 100%;
 	}
+	.maincontainer section .viewmore a{
+		margin-bottom: 10px;
+	}
+	.category-description.std{
+		clear: both;
+	}
 }
 
 /********************************/

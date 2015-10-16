@@ -305,6 +305,12 @@ $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId()
 </div>
 
 <script>
+
+	//removing + and -
+	jQuery(document).ready(function(){
+		removePlusmMinus();
+	});
+
 jQuery('.bxslider').bxSlider({
       pagerCustom: '#bx-pager'
     });
