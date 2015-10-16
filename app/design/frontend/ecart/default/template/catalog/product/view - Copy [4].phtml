@@ -98,18 +98,12 @@ $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId
 $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
                              $today =  time();
 							?>
-  <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
+                           <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)  || ($specialPriceToDate=='2000-01-12 00:00:00'))) {?>
-<?php /*?><div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+                            <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
-                            <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div><?php */?>
-                            
-				
+                            <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                             <?php } ?>
-                            
-                  <?php echo $this->getPriceHtml($_product); ?>
-                <?php echo $this->getChildHtml('bundle_prices') ?>
-                <?php echo $this->getTierPriceHtml() ?>
         </div>
         <div class="col-sm-4">
           <div class="__you_saved"><?php // $currsymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>

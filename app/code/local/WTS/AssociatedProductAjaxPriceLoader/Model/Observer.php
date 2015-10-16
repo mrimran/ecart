@@ -1,11 +1,10 @@
 <?php
 
-class YBizz_PriceChange_Model_Observer
+class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
 {
 
-    public function changePrice(Varient_Event_Observer $observer)
+    public function changePrice(Varien_Event_Observer $observer)
     {
-
         $sku = $observer->getEvent()->getQuoteItem()->getProduct()->getData('sku');
         $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
@@ -30,9 +29,9 @@ class YBizz_PriceChange_Model_Observer
         //then adding the product price to tackle any extra price attached with custom options :)
         //identify if there is some extra cost, final price - $new_price or price
         $extra_price = $item->getProduct()->getFinalPrice() - $price;//add this extra price
+        //die("ooooo");
         $extra_price = ($extra_price > 0) ? $extra_price : 0;
-        echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);
-        die();  
+        //echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);
         $item->setCustomPrice($extra_price + $price);
         $item->setOriginalCustomPrice($extra_price + $price);
         // Enable super mode on the product.
