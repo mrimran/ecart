@@ -338,7 +338,7 @@ function attrsHasPrice()
     return hasPrice;
 }
 var request;//to stop duplicate/multiple ajax calls
-jQuery("[name*='super_attribute']").on('change', function(){
+jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
     var hasPrice = attrsHasPrice();
     if(hasPrice === false) {
         if(!request) {
@@ -353,7 +353,6 @@ jQuery("[name*='super_attribute']").on('change', function(){
                 request = null;//release the request
             });
         }
-        console.log("changed."); console.log(jQuery('#product_addtocart_form').serialize());
     }
 });
 //associated price module code ends here
