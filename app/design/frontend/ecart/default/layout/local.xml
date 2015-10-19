@@ -94,14 +94,14 @@
             <action method="addCss">
                 <stylesheet>css/bootstrap.min.css</stylesheet>
             </action> 
-				
-				<action method="addCss"> 
-				<stylesheet>css/styles.css</stylesheet>
-				</action>
-				<action method="addCss"> 
-				<stylesheet>js/jquery.bxslider/jquery.bxslider.css</stylesheet>
-				</action>
-				
+
+	<action method="addCss"> 
+	<stylesheet>css/styles.css</stylesheet>
+	</action>
+	<action method="addCss"> 
+	<stylesheet>js/jquery.bxslider/jquery.bxslider.css</stylesheet>
+	</action>
+
             <action method="addCss">
                 <stylesheet>css/bootstrap-select.css</stylesheet>
             </action>
@@ -111,7 +111,7 @@
             <action method="addCss">
                 <stylesheet>css/custom.css</stylesheet>
             </action>
-				<action method="addCss">
+	<action method="addCss">
                 <stylesheet>css/custom2.css</stylesheet>
             </action>
             <action method="addCss">
