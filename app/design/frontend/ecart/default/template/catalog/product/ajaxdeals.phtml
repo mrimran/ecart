@@ -12,6 +12,7 @@
      <?php foreach ($_productCollection as $_product): ?>
      	<?php $special = $_product->getSpecialPrice();
 				              $actual = $_product->getPrice();
+            if($special < $actual):
 				              $percent = ($special / $actual) * 100;
 				              $percentFinal = 100 - $percent;  
 				              $percent = number_format($percentFinal,'0','.',',');
@@ -114,6 +115,7 @@
 					</div>
 				</div>
 				<?php } ?>
+      <?php endif ?>
     		 <?php endforeach; ?>
     </div>
     <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
@@ -132,6 +134,7 @@
     <?php $i=0; foreach ($_productCollection as $_product): ?>
     <?php $special = $_product->getSpecialPrice();
 				              $actual = $_product->getPrice();
+          if($special < $actual):
 				              $percent = ($special / $actual) * 100;
 				              $percentFinal = 100 - $percent;  
 				              $percent = number_format($percentFinal,'0','.',',');
@@ -219,6 +222,7 @@
 					</div>
 				</div>
 				<?php } ?>
+      <?php endif ?>
 				 <?php endforeach ?>
 			</div>
 

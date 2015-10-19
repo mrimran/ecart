@@ -208,6 +208,7 @@
 				
 				<block type="extension/sale" name="todaysDeal" template="catalog/product/todays_deals.phtml"/>
 				<block type="extension/seller" name="bestSellings" template="catalog/product/bestsellings.phtml"/> 
+				<!--<block type="extension/test" name="test" template="catalog/product/test.phtml"/>--> 
 				<block type="extension/phone" name="phoneAccessories" template="catalog/product/phoneaccessories.phtml"/>
 				<block type="extension/computer" name="computerAccessories" template="catalog/product/computeraccessories.phtml"/>
 				<block type="extension/perfume" name="perfume" template="catalog/product/perfume.phtml"/>

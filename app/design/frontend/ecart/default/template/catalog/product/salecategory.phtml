@@ -50,6 +50,9 @@
     <div class="clearfix">
     
      <?php foreach ($_productCollection as $_product): ?>
+      <?php $special = $_product->getSpecialPrice();
+                      $actual = $_product->getPrice();
+          if($special < $actual): ?>
     <div class="product clearfix">
 					<div class="col-sm-4 image">
                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
@@ -116,6 +119,7 @@
                </h5>
 					</div>
 				</div>
+      <?php endif ?>
     		 <?php endforeach; ?>
     </div>
     <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
@@ -130,6 +134,10 @@
     
     <div class="clearfix">
     <?php $i=0; foreach ($_productCollection as $_product): ?>
+
+    <?php $special = $_product->getSpecialPrice();
+                      $actual = $_product->getPrice();
+          if($special < $actual): ?>
 				<div class="product clearfix grid">
 					<div class="col-sm-4 image">
                   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
@@ -188,6 +196,7 @@
 					<h5 class="stocks-update">25 pcs on Stock</h5>
 					</div>
 				</div>
+      <?php endif ?>
 				 <?php endforeach ?>
 				
 			</div>

@@ -101,13 +101,13 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         $todayDate = date('m/d/y');
         $tomorrow = mktime(0, 0, 0, date('m'), date('d'), date('y'));
         $tomorrowDate = date('m/d/y', $tomorrow);
-
         $this->_productCollection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
         ->addAttributeToFilter('special_to_date', array('or'=> array(
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
 
+        $this->_productCollection->addAttributeToFilter('special_price', array('neq' => 'null'));
         if($this->getRequest()->getParam('cat_id')!= null){
             //echo "hdjkdjdksjdks";
         $categoryId = $this->getRequest()->getParam('cat_id'); 
