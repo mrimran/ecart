@@ -570,7 +570,7 @@ background-color:transparent;font-size:24px;z-index:999;outline:none;display:blo
 .floatmenu .empty { height: 60px; border-bottom: 1px solid #3d3e42; }
 .maincontainer .filters { background-color: #fff; }
 .maincontainer .filters .price{color:inherit;font-family:inherit;font-size:inherit;font-weight:inherit;}
-input[type=checkbox],input[type=radio]{margin-top:0;}
+input[type=checkbox],input[type=radio]{margin-top:0;vertical-align:middle !important;}
 .margin1 { margin-left:0px; }
 .toolbar { margin: 0; padding: 15px; background-color: #fff; margin-bottom: 20px; }
 .products .product { background-color: #fff; }
@@ -579,7 +579,7 @@ input[type=checkbox],input[type=radio]{margin-top:0;}
 .products .product.grid .wishlist{margin-top:7px;}
 .products .product.grid:nth-of-type(2n+2) { margin-right: 0; }
 .products .product.grid:nth-of-type(3n+3) { margin-right:inherit; }
-.toolbar .sorter .sort-by, .toolbar .sorter .pager, .toolbar .sorter .view-mode, .toolbar .sorter .pagination{
+.toolbar .sorter .sort-by, .toolbar .sorter .pager, .toolbar .sorter .view-mode, .toolbar .sorter .pagination{margin-top:5px;margin-bottom:5px;
 font-size:12px;}
 .__product__main__area .buttons .col-sm-9{padding-right:15px;margin-bottom:15px;}
 /*.__product__main__area .buttons .col-sm-3{padding-left:0;}*/
@@ -622,7 +622,13 @@ section#menuslider .container{padding:0;}
 .categories_list li{width:49%;}
 .__product__detail table td, .__product__detail table th{width:100% !important;display:block;}
 .__product__detail table td img, .__product__detail table th img {max-width:100%;max-height: 100%;height: auto !important;}
+.cart_table .item-detail h4, .cart_table .item-detail h4 a{font-size:14px;}
+.checkout-agreements p.agree input{vertical-align: middle;}
 .bestSellingsNaviTable{display: none;}
+body.customer-account .filters ul{display:block;}
+body.customer-account .filters ul li{display:inherit;}
+.dashboard .welcome-msg, .dashboard .welcome-cs{width:100%;}
+.form-list li label{font-size:11px;}
 }
 
 @media only screen and (max-width: 359px) {
