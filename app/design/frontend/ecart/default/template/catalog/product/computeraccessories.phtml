@@ -3,13 +3,13 @@
       $_helper = $this->helper('catalog/output');
       if($_Collection->count() || $Collection->count()):
 ?>
-<section id="computeraccessories" class="desktop">
+<section id="computeraccessories">
     <div class="sectiontitle">
         <h2><span>Computer & Accessories</span></h2>
         <ul class="brandsmenu">
             <li><a onclick="newproduct1()" id="three">New Products</a></li>
             <li><a class="active" onclick="bestseller1()" id="four" >Best Sellers</a></li>
-            <li>
+            <li class="desktop">
                <?php
                 $productCollectionbrand = $this->getproductbrands();
                 $_helper = $this->helper('catalog/output');

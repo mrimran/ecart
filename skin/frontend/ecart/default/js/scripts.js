@@ -289,3 +289,23 @@ jQuery(document).ready(function(e) {
 
 		});
 });
+
+function removePlusMinusFromInputBox()
+{
+    var boxes = ".catalog-product-view .input-box";
+    //console.log(boxes);
+    jQuery(boxes).find('label').each(function(k, label){
+        var txt = jQuery(label).text();
+        var arr = [];
+        if(txt.indexOf("+") >= 0){
+                arr = txt.split('+');
+        }
+        else if(txt.indexOf("-") >= 0){
+                arr = txt.split('-');
+        }
+        else{
+                arr[0] = txt;
+        }
+        jQuery(label).text(arr[0]);
+    });	
+}

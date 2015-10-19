@@ -190,7 +190,7 @@
         <reference name="head">
             <action method="addItem">
                 <type>skin_js</type>
-                <name>js/jquery.malihu.PageScroll2id.min.js</name>
+                <name>js/jquery.malihu.PageScroll2id.js</name>
             </action>
             <action method="addItem">
                 <type>skin_js</type>

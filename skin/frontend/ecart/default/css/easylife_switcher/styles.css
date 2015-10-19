@@ -20,18 +20,14 @@
  * @package	    Easylife_Switcher
  */
 .product-options .switcher-field label {
-    border: 1px solid #E7E9EA;
-    border-radius: 2px 2px 2px 2px;
-    color: #696E72;
-    display: inline-block;
-    font-size: 12px;
-    height: 45px;
-    line-height: 45px;
-    margin: 0 10px 0px 0;
-    overflow: hidden;
-    text-align: center;
-    width: auto;
-    float:left;
+border: 1px solid #D7D7D7;
+display: inline-block;
+margin: 2px 5px;
+padding: 2px 8px;
+line-height: 1.5;
+font-size: 15px;
+font-weight: 300;
+cursor: pointer;
 }
 .switcher-field label {
     cursor: pointer;

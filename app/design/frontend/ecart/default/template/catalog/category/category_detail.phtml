@@ -89,7 +89,7 @@ $category_new->url_key;
                            <?php   $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice) {?>
                             
-                            <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
+                            <div class="price"> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
                             <div class="price"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                             <?php } ?>
@@ -99,7 +99,7 @@ $category_new->url_key;
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                     <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-                        button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
@@ -188,7 +188,7 @@ $category_new->url_key;
                            <?php   $specialprice = Mage::getModel('catalog/product')->load($Latest->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate))) {?>
                             
-                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?></div>
                             <?php } ?>
@@ -269,7 +269,7 @@ $_helper = $this->helper('catalog/output');
                            <?php   $specialprice = Mage::getModel('catalog/product')->load($Latest->getId())->getSpecialPrice(); ?>
                             <?php if($specialprice and ($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate))) {?>
                             
-                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getFinalPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedSpecialPrice = Mage::helper('core')->currency($Latest->getSpecialPrice(),true,false); ?> <span class="not-now"> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?> </span></div>
                             <?php } else {  ?>
                             <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($Latest->getPrice(),true,false); ?></div>
                             <?php } ?>
