@@ -16,6 +16,9 @@
 			    </div>
 			    <div class="columnslider" id="sectionDeals" data-items="4">
 			     <?php foreach ($_productCollection as $_product): ?>
+			     	<?php $special = $_product->getSpecialPrice();
+				              $actual = $_product->getPrice();
+                    if($special < $actual): ?>
 				    <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
 				        <?php $special = $_product->getSpecialPrice();
 				              $actual = $_product->getPrice();
@@ -51,9 +54,11 @@
                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
                     </div>
-		</div>
+                    </div>
+				<?php endif ?>
 		<?php endforeach ?>
 		</div>
+
 		<a data-id="sectionDeals" href="extension/index/sale/" class="loadmore smartphones">View More Products</a>
 		</section>
 

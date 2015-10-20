@@ -57,6 +57,7 @@
                      $customer = $session->getCustomer();
                      echo "<h3>".$customer->getName()."</h3>Last Activity: ";
                          $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
+                         print_r($logCustomer);
                          $lastVisited = $logCustomer->getLoginAtTimestamp();
                          $lastVisited = date('Y-m-d H:i:s', $lastVisited);
                          echo Mage::helper('functions/data')->CalculateTime($lastVisited);
@@ -106,7 +107,7 @@
                </ol>
           </li>
           <li><a href="<?php echo Mage::getUrl('faqs'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/help.png'); ?>" alt=""></span> Help Center</a></li>
-          <li><a href="<?php echo Mage::getUrl('contactus'); ?>"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
+          <li><a href="<?php echo Mage::getUrl('contacts/index'); ?>"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
          <?php
           if( $islogedin){
           ?>
