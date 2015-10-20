@@ -82,9 +82,12 @@
                 <type>skin_js</type>
                 <script>js/jquery.bxslider/jquery.bxslider.js</script>
             </action>
-				
-				
-				
+
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/stacktable.js</name>
+            </action>
+
             <action method="addCss">
                 <stylesheet>css/font-awesome.min.css</stylesheet>
             </action>
@@ -116,6 +119,9 @@
             </action>
             <action method="addCss">
                 <stylesheet>css/responsive.css</stylesheet>
+            </action>
+             <action method="addCss">
+                <stylesheet>css/stacktable.css</stylesheet>
             </action>
             <!-- <action method="addCss">
                 <stylesheet>css/jPushMenu.css</stylesheet>

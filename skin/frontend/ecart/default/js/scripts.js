@@ -127,6 +127,8 @@ jQuery(document).ready(function($) {
 });
 jQuery(document).ready(function($) {
      jQuery('.toggle-menu').jPushMenu();
+     //jQuery('.data-table').stacktable();
+     //jQuery('#checkout-review-table').stacktable({myClass:'a-center'});
     // jQuery('.selectpicker').selectpicker();
      // jQuery('.view-mode a').click(function(){
      //   jQuery('.view-mode a').removeClass('active');
@@ -170,11 +172,13 @@ jQuery("body").mouseup(function (e){
   });
 
 });
-// (function() {
-//      jQuery(window).load(function() {
-//           jQuery("a[rel='m_PageScroll2id']").mPageScroll2id();
-//      });
-// })(jQuery);
+(function() {
+     jQuery(window).load(function() {
+          jQuery('.data-table').stacktable();
+         // jQuery('#checkout-review-table').stacktable({myClass:'a-center'});
+     });
+})(jQuery);
+
 
 function reinitOwlOnSelector(selector, number_of_items) {
     var $owl = jQuery(selector);
