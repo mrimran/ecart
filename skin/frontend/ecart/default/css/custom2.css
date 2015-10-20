@@ -213,8 +213,11 @@ width:40px;text-align:center;}
 .account-create .form-list{width:50%;}
 .listing-suggest .products-grid .product-image{width:100%;height:200px;}
 .price-box .old-price,.price-box .special-price{width:49%;}
-.price-box .price-label{font-weight:600;}
-.price-box .old-price .price{text-decoration:line-through;}
+.price-box .price-label{font-weight:600; display:none;}
+.price-box .old-price .price{text-decoration:line-through;color: #bdbdbd;
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;}
 .products .product .bottom-area{padding:15px;}
 .listing-suggest .product-name{margin-bottom:15px;}
 .listing-suggest .product-name a{font-size:18px;color:#303030;line-height:1.5;}
