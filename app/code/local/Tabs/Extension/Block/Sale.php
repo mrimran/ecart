@@ -106,8 +106,9 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
-
+        
         $this->_productCollection->addAttributeToFilter('special_price', array('neq' => 'null'));
+        //$this->_productCollection->addAttributeToFilter('special_price', array('gt' => 'price'));
         if($this->getRequest()->getParam('cat_id')!= null){
             //echo "hdjkdjdksjdks";
         $categoryId = $this->getRequest()->getParam('cat_id'); 
