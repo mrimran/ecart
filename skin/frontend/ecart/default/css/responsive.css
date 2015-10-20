@@ -603,6 +603,7 @@ section#menuslider .container{padding:0;}
 #search_mini_form .jcf-select .jcf-select-drop{width:100% !important;}
 #search_mini_form .jcf-select{margin-top:3px;}
 .maincontainer .columnslider .actions, .products .product.grid .price-info .actions{visibility: visible;position:relative;left:15px;bottom:5px; }
+.maincontainer .listing-suggest .columnslider .actions{bottom:5px;}
 .products .product.grid .price-info .actions,.products .product .price-info .orders{left:0;bottom:0;position:relative;padding:5px 0;}
 .maincontainer .columnslider .col-box .bottom-area .ratings{position:absolute;top:205px;}
 /*.zopim{font-size:12px;transform: scale(0.8);right:-30px !important;bottom: 0px !important;}*/
@@ -631,10 +632,18 @@ body.customer-account .filters ul li{display:inherit;width:100%;}
 .dashboard .welcome-msg, .dashboard .welcome-cs{width:100%;}
 .form-list li label{font-size:11px;}
 #checkout-step-review .data-table .price{min-width:40px;}
-.cart_table th{background-color:transparent;color:inherit;text-align:left;border:inherit;}
+.cart_table th{text-align:left;border:inherit;}
 .cart_table .item-detail a.remove{position:relative;bottom:0;}
 .cart_table td.qty input{padding:5px;}
 .cart_table td.qty, .data-table td.product_price, .cart_table td.sub-tota,.data-table td{text-align:left;}
+.data-table td .item-options{text-align:left;padding:10px 0;}
+.data-table td,.data-table th{padding:20px;border:1px solid #eaeaea;}
+.discount-form{margin:5px 0;width:100%;}
+.discount-form label{padding-bottom:5px;}
+.cart_table .img-box {background-color: #fff;border:1px solid #EAEAEA;border-radius:3px;}
+.st-head-row{background-color:#333;color:#fff;}
+.st-head-row .item-detail ul.square,.st-head-row p,.st-head-row .item-detail h4 a,.st-head-row .label{color:#fff;}
+.st-head-row.st-head-row-main{display:none;}
 }
 
 @media only screen and (max-width: 359px) {
@@ -699,10 +708,10 @@ body.customer-account .filters ul li{display:inherit;width:100%;}
     footer .emailcall a:last-child {
         float: right;
     }
-    .cart_table .item-detail h4,.cart_table .item-detail h4 a{font-size:12px;}
+ /*   .cart_table .item-detail h4,.cart_table .item-detail h4 a{font-size:12px;}
     .cart_table td.qty input{padding:5px;}
     .cart_page .btn2{font-size:8px;}
-    .cart_table td.qty{top:58px;}
+    .cart_table td.qty{top:58px;}*/
     .buyerprotection .padding1{padding:0;}
     .site-footer .footer-bottom{padding:20px 0;}
 }

@@ -531,7 +531,7 @@ display:block;}
 /*.cart .cart_table td{border:0;border-bottom:1px solid #eaeaea;}*/
 .cart table.sub_summary td{width:49%;display:inline-block;vertical-align:middle;}
 .cart table.sub_summary td{font-size:14px;padding-left:2px;padding-right:2px;}
-.cart table.sub_summary .price{font-size:14px;color:#303030;}
+.cart table.sub_summary .price{font-size:14px;/*color:#303030;*/}
 .cart table.sub_summary td:last-child{text-align:right;}
 /*.cart_table tr{position:relative;}
 .cart_table td.qty,.cart_table td.product_price{position:absolute;padding:0;top:55px;left:25%;border:0;
@@ -556,6 +556,5 @@ table.cart_summary,.buyerprotection{background-color:#fff;}
 table.cart_summary td{display:block;width:100%;}
 .cart table.cart_summary{padding:0;background-color:transparent;}
 .checkout-types.bottom{text-align:left;}
-.discount-form{margin:5px 0;}
 .shopbybrand-index-index .col .list_1{height:60px !important;}
 }
