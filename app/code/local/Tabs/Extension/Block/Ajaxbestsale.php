@@ -116,6 +116,9 @@ class Tabs_Extension_Block_Ajaxbestsale extends Mage_Catalog_Block_Product_Abstr
 
         $category = Mage::getModel('catalog/category')->load($id);
         $this->_productCollection->addCategoryFilter($category);
+
+        $select = $this->_productCollection->getSelect();
+        $select->where('price_index.final_price < price_index.price');
         } 
     }
         

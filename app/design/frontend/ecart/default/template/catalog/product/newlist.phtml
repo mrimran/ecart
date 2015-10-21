@@ -69,7 +69,8 @@ $_helper = $this->helper('catalog/output');?>
 </div>
 </div>
 <?php
-    $_productCollection=$this->getLoadedProductCollection();
+    $page_id = 1;
+    $_productCollection=$this->getLoadedProductCollection($page_id);
     $_helper = $this->helper('catalog/output');
 ?>
 <?php if(!$_productCollection->count()): ?>
@@ -85,7 +86,7 @@ $_helper = $this->helper('catalog/output');?>
      <?php foreach ($_productCollection as $_product): ?>
       <?php $special = $_product->getSpecialPrice();
                       $actual = $_product->getPrice();
-            if($special < $actual): ?>
+            //if($special < $actual): ?>
     <div class="product clearfix">
 					<div class="col-sm-4 image">
                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
@@ -160,7 +161,7 @@ $_helper = $this->helper('catalog/output');?>
                </h5>
 					</div>
 				</div>
-      <?php endif ?>
+      <?php //endif ?>
     		 <?php endforeach; ?>
     </div>
     <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
@@ -179,7 +180,7 @@ $_helper = $this->helper('catalog/output');?>
     <?php $i=0; foreach ($_productCollection as $_product): ?>
     <?php $special = $_product->getSpecialPrice();
                       $actual = $_product->getPrice();
-          if($special < $actual): ?>
+          //if($special < $actual): ?>
 				<div class="product clearfix grid" data-items="4">
 					<div class="col-sm-4 image">
                   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
@@ -258,7 +259,7 @@ $_helper = $this->helper('catalog/output');?>
       </div>
 			</div>
 			</div>
-    <?php endif ?>
+    <?php //endif ?>
 				 <?php endforeach ?>
 				
 			</div>

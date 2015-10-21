@@ -61,7 +61,7 @@ $category_new->url_key;
                     <?php foreach ($_productCollection as $_product): ?>
                          <?php $special = $_product->getSpecialPrice();
                               $actual = $_product->getPrice();
-                        if($special < $actual): ?>
+                        //if($special < $actual): ?>
 
                 <div class="col-box" id="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
                         <?php
@@ -105,7 +105,7 @@ $category_new->url_key;
                         <?php endif; ?>
                     </div>
                     </div>
-                <?php endif ?>
+                <?php //endif ?>
         <?php endforeach ?>
         </div>
         <div class="clearfix viewmore" align="right"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('todaysdeals')?>?id=<?php echo $category ?>">View All Products</a></div>

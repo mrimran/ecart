@@ -53,7 +53,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
      *
      * @return Mage_Eav_Model_Entity_Collection_Abstract
      */
-    protected function _getProductCollections()
+    protected function _getProductCollections($page_id)
     {
         if (is_null($this->_productCollection)) {
             $layer = $this->getLayer();
@@ -87,6 +87,7 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
             /* @var $layer Mage_Catalog_Model_Layer */
         $this->_productCollection = $layer->getProductCollection();
         //Mage::getSingleton('core/session', array('name' => 'frontend'));
+       $condition = new Zend_Db_Expr("special_price < price");
        $this->_productCollection = Mage::getResourceModel('catalogsearch/advanced_collection')
         ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
         ->addMinimalPrice()
@@ -108,13 +109,26 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
         ), 'left');
         
         $this->_productCollection->addAttributeToFilter('special_price', array('neq' => 'null'));
-        //$this->_productCollection->addAttributeToFilter('special_price', array('gt' => 'price'));
+        //$this->_productCollection->addFieldToFilter('special_price', array('lt' => 'price'));
         if($this->getRequest()->getParam('cat_id')!= null){
             //echo "hdjkdjdksjdks";
         $categoryId = $this->getRequest()->getParam('cat_id'); 
         $category = Mage::getModel('catalog/category')->load($categoryId);
         $this->_productCollection->addCategoryFilter($category);
         } 
+
+        $select = $this->_productCollection->getSelect();
+        $currentUrl = $this->helper('core/url')->getCurrentUrl();
+        $str = "sale";
+        $str1 = "superdeals";
+        if (strpos($currentUrl, $str) == true):
+           $select->where('price_index.final_price < price_index.price');
+        elseif(strpos($currentUrl, $str1) == true):
+            $select->where('price_index.final_price < price_index.price AND (100 - (price_index.final_price/price_index.price) * 100) > 20');
+        endif;
+
+
+        //exit;
             
         //print_r($collection);
         //$this->_productCollection = $layer->getProductCollections();
@@ -144,9 +158,9 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
      *
      * @return Mage_Eav_Model_Entity_Collection_Abstract
      */
-    public function getLoadedProductCollection()
+    public function getLoadedProductCollection($page_id)
     {
-        return $this->_getProductCollections();
+        return $this->_getProductCollections($page_id);
     }
 
     /**
