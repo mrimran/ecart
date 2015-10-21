@@ -460,7 +460,7 @@ margin:15px 0 30px;}
 	}
 	.__product__main__area .__you_saved{
 		width: 100%;
-		margin-top: 9px;
+		margin-top: 17px;
 		font-size: 12px;
 	}
 	.subscribe .button.btn1{
@@ -511,6 +511,12 @@ margin:15px 0 30px;}
 	}
 	.category-description.std{
 		clear: both;
+	}
+	.price-box .special-price .price{
+		white-space: nowrap;
+	}
+	.price-box .old-price .price{
+		margin-top: 11px;
 	}
 }
 
