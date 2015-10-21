@@ -644,6 +644,7 @@ body.customer-account .filters ul li{display:inherit;width:100%;}
 .st-head-row{background-color:#333;color:#fff;}
 .st-head-row .item-detail ul.square,.st-head-row p,.st-head-row .item-detail h4 a,.st-head-row .label{color:#fff;}
 .st-head-row.st-head-row-main{display:none;}
+.price-box .old-price, .price-box .special-price,.customer-account .buttons-set .button{width:100%;display:block;}
 }
 
 @media only screen and (max-width: 359px) {
