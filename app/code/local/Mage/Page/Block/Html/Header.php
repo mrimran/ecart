@@ -99,5 +99,13 @@ class Mage_Page_Block_Html_Header extends Mage_Core_Block_Template
         return $this->_data['welcome'];
     }
 
-   
+    public function getlogintime($id){
+
+        $collection = Mage::getModel('log/customer')->getCollection()->addFieldToFilter('customer_id', array('eq' => $id));
+        echo $collection->getSelect()
+        ->order('log_id' . ' ' . 'desc');
+        //echo $collection->getSelect()->where('customer_id = ?', $id)->limit(2);
+        exit;
+        return $collection;
+    }
 }
