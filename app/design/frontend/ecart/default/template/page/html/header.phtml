@@ -55,11 +55,24 @@
                  $session = Mage::getSingleton('customer/session');
                  if($session->isLoggedIn()) {
                      $customer = $session->getCustomer();
-                     echo "<h3>".$customer->getName()."</h3>Last Activity: ";
+                     //$time = $this->getlogintime($customer->getId());
+                     // foreach($time as $tim):
+                     //       echo $tim->login_at;
+                     //       echo $tim->logout_at;
+                     //  endforeach;
+
+                     echo "<h3>".$customer->getName()."</h3>";
                          $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
-                         $lastVisited = $logCustomer->getLoginAtTimestamp();
-                         $lastVisited = date('Y-m-d H:i:s', $lastVisited);
-                         echo Mage::helper('functions/data')->CalculateTime($lastVisited);
+                         //print_r($logCustomer);
+                         $lastVisited = $logCustomer->last_visit_at;
+                         $loginTime = $logCustomer->login_at;
+                         //$firstVisited = $logCustomer->first_visit_at; 
+                         //print_r($lastVisited);
+                         //print_r($firstVisited);
+                         $lastVisited = date('H:i:s', $lastVisited);
+                         $loginat = date('H:i:s', $loginTime);
+                        // print_r($lastVisited);
+                         //echo Mage::helper('functions/data')->CalculateTime($lastVisited);
                  }
                }
           ?>
@@ -106,7 +119,7 @@
                </ol>
           </li>
           <li><a href="<?php echo Mage::getUrl('faqs'); ?>"><span><img src="<?php echo $this->getSkinUrl('images/help.png'); ?>" alt=""></span> Help Center</a></li>
-          <li><a href="<?php echo Mage::getUrl('contactus'); ?>"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
+          <li><a href="<?php echo Mage::getUrl('contacts/index'); ?>"><span><i class="fa fa-star-o"></i></span> Feedback</a></li>
          <?php
           if( $islogedin){
           ?>

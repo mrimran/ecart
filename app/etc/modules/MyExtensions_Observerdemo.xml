@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <MyExtensions_Observerdemo>
-            <active>true</active>
-            <codePool>local</codePool>
-        </MyExtensions_Observerdemo>
-    </modules>
-</config>

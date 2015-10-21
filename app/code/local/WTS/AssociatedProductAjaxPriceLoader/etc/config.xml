@@ -9,16 +9,17 @@
     <global>
         <models>
             <wts_ajaxpriceloader>
-                <class>AssociatedProductAjaxPriceLoader_Model</class>
+                <class>WTS_AssociatedProductAjaxPriceLoader_Model</class>
             </wts_ajaxpriceloader>
         </models>
         <events>
             <checkout_cart_product_add_after>
                 <observers>
-                    <wts_ajaxpriceloader_observer>
-                        <class>WTS_AssociatedProductAjaxPriceLoader_Model_Observer</class>
+                    <WTS_AssociatedProductAjaxPriceLoader_Model_Observer>
+                        <type>singleton</type>
+                        <class>wts_ajaxpriceloader/observer</class>
                         <method>changePrice</method>
-                    </wts_ajaxpriceloader_observer>
+                    </WTS_AssociatedProductAjaxPriceLoader_Model_Observer>
                 </observers>
             </checkout_cart_product_add_after>
         </events>

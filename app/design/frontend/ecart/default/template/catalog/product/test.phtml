@@ -1,17 +1,21 @@
-<?php $_Collection = $this->getLoadedProductCollection();
-      $Collection = $this->getLoadedProductCollectionnew();
+<?php $category = array('3','6','7');
+      foreach($category as $cat):?>
+<?php
+      $_category = Mage::getModel('catalog/category')->load($cat);
+      $_Collection = $this->getLoadedProductCollection($cat);
+      $Collection = $this->getLoadedProductCollectionnew($cat);
       $_helper = $this->helper('catalog/output');
       if($_Collection->count() || $Collection->count()):
 ?>
-<section id="perfumewatches">
+<section id="computeraccessories" class="desktop">
     <div class="sectiontitle">
-        <h2><span>Perfume & Watches</span></h2>
-        <ul class="brandsmenu desktop">
-            <li><a onclick="newproduct2()" id="five">New Products</a></li>
-            <li><a class="active" onclick="bestseller2()" id="six" >Best Sellers</a></li>
+        <h2><span><?php echo $_category->getName(); ?></span></h2>
+        <ul class="brandsmenu">
+            <li><a onclick="newproduct" id="three<?php echo $cat ?>">New Products</a></li>
+            <li><a class="active" onclick="bestseller" id="four<?php echo $cat ?>" >Best Sellers</a></li>
             <li>
                <?php
-                $productCollectionbrand = $this->getproductbrands();
+                $productCollectionbrand = $this->getproductbrands($cat);
                 $_helper = $this->helper('catalog/output');
                 ?>
                 <?php
@@ -23,7 +27,7 @@
                     <?php $optionid = array_unique($a); ?>
                     <?php $brandname = array_unique($b); ?>
                      <?php $max = sizeof($brandname); ?>
-                <select onchange="getbrands1()" id="brand1">
+                <select onchange="getbrands()" id="brand">
                     <option value="0">Brands</option>
                     <?php for($i = 0; $i <= $max; $i++)
                              {?>
@@ -36,9 +40,9 @@
             </li>
         </ul>
     </div>
-    <div class="columnslider" id="bestseller2" data-items="4">
+    <div class="columnslider" id="bestseller<?php echo $cat ?>" data-items="4">
         <?php
-        $_productCollection = $this->getLoadedProductCollection();
+        $_productCollection = $this->getLoadedProductCollection($cat);
         $_helper = $this->helper('catalog/output');
         ?>
         <?php if (!$_productCollection->count()): ?>
@@ -75,9 +79,9 @@
             <?php endforeach ?>
         <?php endif; ?>
     </div>
-    <div class="columnslider" id="newproduct2" data-items="4" >
+    <div class="columnslider" id="newproduct<?php echo $cat ?>" data-items="4" >
         <?php
-        $productCollection = $this->getLoadedProductCollectionnew();
+        $productCollection = $this->getLoadedProductCollectionnew($cat);
         $_helper = $this->helper('catalog/output');
         ?>
         <?php if (!$productCollection->count()): ?>
@@ -98,7 +102,7 @@
                                 <!-- </a> --></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo number_format($_product->getPrice(), '1', '.', ','); ?><i>AED</i></div>
+                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
                         </div>
                     </a>
                     <div class="actions">
@@ -114,59 +118,61 @@
             <?php endforeach ?>
         <?php endif; ?>
     </div>
-    <?php $url = Mage::getModel('catalog/category')->load(65)->getUrl();?>
+    <?php $url = Mage::getModel('catalog/category')->load(39)->getUrl();?>
     <div class="clearfix viewmore" align="right"><a href="<?php echo $url ?>">View All Products</a></div>
 </section>
 
-
 <script>
-    function newproduct2() {
-        jQuery('#bestseller2').hide();
-        jQuery('#newproduct2').show();
-        jQuery('#five').addClass("active");
-        jQuery('#six').removeClass("active");
+     var cat = '<?php echo $cat; ?>'
+    function newproduct() {
+        jQuery('#bestseller'+cat).hide();
+        jQuery('#newproduct'+cat).show();
+        jQuery('#three'+cat).addClass("active");
+        jQuery('#four'+cat).removeClass("active");
 
     }
-    function bestseller2() {
-        jQuery('#bestseller2').show();
-        jQuery('#newproduct2').hide();
-        jQuery('#six').addClass("active");
-        jQuery('#five').removeClass("active");
+    function bestseller() {
+        jQuery('#bestseller'+cat).show();
+        jQuery('#newproduct'+cat).hide();
+        jQuery('#four'+cat).addClass("active");
+        jQuery('#three'+cat).removeClass("active");
     }
 
     jQuery(document).ready(function () {
-        jQuery('#bestseller2').show();
-        jQuery('#newproduct2').hide();
-        jQuery('#six').addClass("active");
-        jQuery('#five').removeClass("active");
+        alert(cat);
+        jQuery('#bestseller'+cat).show();
+        jQuery('#newproduct'+cat).hide();
+        jQuery('#four'+cat).addClass("active");
+        jQuery('#three'+cat).removeClass("active");
 
     });
 
-    function getbrands1() {
-        var brand = document.getElementById("brand1").value
+    function getbrands() {
+        var brand = document.getElementById("brand").value
+        
         //make the ajax call
         jQuery.ajax({
-            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerperfume/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestseller/',
             type: 'POST',
-            data: {action: 'getLoadedProductCollection', brands_id: brand},
+            data: {action: 'getLoadedProductCollection', brands_ids: brand},
             beforeSend: function () {
-                jQuery('#bestseller2').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+                jQuery('#bestseller1').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
             },
             success: function (data) {
-                jQuery('#bestseller2').html(data);
+                jQuery('#bestseller1').html(data);
                 //jQuery('#bestsejQueryller1').trigger('refresh.owl.carousel');
-                reinitOwlOnSelector('#bestseller2',4);
+                reinitOwlOnSelector('#bestseller1',4);
             }
         });
 
         jQuery.ajax({
-            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproductperfume/',
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproduct/',
             type: 'POST',
-            data: {action: 'getLoadedProductCollectionnew', brands_id: brand},
+            data: {action: 'getLoadedProductCollectionnew', brands_ids: brand},
             success: function (data) {
 
-                jQuery('#newproduct2').html(data);
-                reinitOwlOnSelector('#newproduct2',4);
+                jQuery('#newproduct1').html(data);
+                reinitOwlOnSelector('#newproduct1',4);
             }
         });
         
@@ -179,3 +185,4 @@
     }
 </script>
 <?php endif ?>
+<?php endforeach ?>

@@ -19,7 +19,24 @@
  * @category    Easylife
  * @package	    Easylife_Switcher
  */
-
+function removePlusMinus(text)
+{
+    var txt = text;
+    var arr = [];
+    if(txt.indexOf("+") >= 0){
+            arr = txt.split('+');
+            //console.log(arr);
+    }
+    else if(txt.indexOf("-") >= 0){
+            arr = txt.split('-');
+            //console.log(arr);
+    }
+    else{
+            arr[0] = txt;
+            //console.log(arr);
+    }
+    return arr[0];
+}
 if(typeof Easylife=='undefined') {
     var Easylife = {};
 }
@@ -101,6 +118,7 @@ Easylife.Switcher = Class.create(Product.Config, {
                 var optVal = $(elem).value;
                 var title =  $(elem).innerHTML;
                 var optText = that.getOptionText(elem, optVal, switchConfig);
+                optText = removePlusMinus(optText+"");//removing any plus minus
                 var inStock = that.isInStock(attributeId, optVal);
                 var labelClass = that.getLabelClass(elem, attributeId, optVal, inStock);
 
