@@ -45,6 +45,8 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
         $_productCollection->addCategoryFilter($category);
         } 
         
+        $select = $_productCollection->getSelect();
+        $select->where('price_index.final_price < price_index.price');
         
         return $_productCollection;
     }

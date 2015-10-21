@@ -125,6 +125,8 @@ class Tabs_Extension_Block_Sale extends Mage_Catalog_Block_Product_Abstract
            $select->where('price_index.final_price < price_index.price');
         elseif(strpos($currentUrl, $str1) == true):
             $select->where('price_index.final_price < price_index.price AND (100 - (price_index.final_price/price_index.price) * 100) > 20');
+        else:
+            $select->where('price_index.final_price < price_index.price');
         endif;
 
 
