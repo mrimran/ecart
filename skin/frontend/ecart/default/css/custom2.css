@@ -377,7 +377,7 @@ margin:15px 0 30px;}
 .__faq .nav-tabs > li > a[aria-controls="payment"]:before, .__faq .nav-tabs > li.active > a[aria-controls="payment"]:before { height: 25px; width: 36px; margin-bottom: 13px; }
 .__faq .nav-tabs > li > a[aria-controls="payment"]:before { background-image: url('../images/payment.png'); }
 .__faq .nav-tabs > li > a[aria-controls="payment"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="payment"]:hover:before { background-position: 0 -25px; }
-.__faq .nav-tabs > li > a[aria-controls="shipping"]:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:before { height: 30px; width: 36px; margin-bottom: 9px; }
+.__faq .nav-tabs > li > a[aria-controls="shipping"]:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:before { height: 30px; width: 36px; margin-bottom: 8px; }
 .__faq .nav-tabs > li > a[aria-controls="shipping"]:before { background-image: url('../images/shipping.png'); }
 .__faq .nav-tabs > li > a[aria-controls="shipping"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:hover:before { background-position: 0 -30px; }
 .__faq .nav-tabs > li > a[aria-controls="refund"]:before, .__faq .nav-tabs > li.active > a[aria-controls="refund"]:before { height: 23px; width: 35px; margin-bottom: 15px; }
