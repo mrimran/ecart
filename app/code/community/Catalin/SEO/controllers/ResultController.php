@@ -41,13 +41,7 @@ class Catalin_Seo_ResultController extends Mage_CatalogSearch_ResultController
                     $query->setPopularity(1);
                 }
 
-                if ($query->getRedirect()) {
-                    $query->save();
-                    $this->getResponse()->setRedirect($query->getRedirect());
-                    return;
-                } else {
-                    $query->prepare();
-                }
+				$query->prepare();
             }
 
             Mage::helper('catalogsearch')->checkNotes();
