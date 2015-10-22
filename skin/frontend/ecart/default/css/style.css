@@ -334,8 +334,7 @@ line-height:1.4;height:42px;overflow:hidden;}
 background-position:top left;height:15px;margin-top:5px;padding:10px 0 10px;}
 .price{font-family: 'GothamNarrow-Medium', sans-serif;font-weight:400;font-size:18px;color:#f57c20;}
 .price i{font-size:12px;font-style:normal;}
-.product .orders{color:#939393;font-size:13px;position:absolute;bottom:20px;right:20px;}
-.product .stocks-update{color: #939393;font-size:13px;}
+.product .stocks-update,.product .orders{color: #939393;font-size:13px;padding:0 0 10px;}
 .price .not-now{font-size:14px;font-weight:400;color:#bdbdbd;text-decoration:line-through;
 text-transform:uppercase;margin-left:5px;font-family: 'GothamNarrow-Book', sans-serif;font-weight:400;}
 .maincontainer .columnslider .col-box .bottom-area{padding:15px;}
@@ -570,7 +569,7 @@ color:#f57a20;}
 color:#303030;}
 .products .product a.title:hover{color:#f57a20;}
 .products .product a:hover{color:#303030;}
-.products .product .wishlist,.products .product .link-compare{color:#999;font-size:12px;}
+.products .product .wishlist,.products .product .link-compare{color:#999;font-size:12px;margin-bottom:10px;display:block;}
 .products .product .wishlist i,.products .product .link-compare i{color:#d7d7d7;}
 .__rating{color:rgb(158, 158, 158);margin:10px 0;font-size:12px;font-style:italic;}
 .__rating span{color:rgb(255, 180, 50);display:inline-block;padding-right:12px;}
@@ -605,7 +604,7 @@ display:block;overflow:hidden;}
 .products .product.grid a.title:after{content:'...';}
 .products .product.grid .__rating{margin-bottom:0;}
 .products .product.grid .price-info{padding-top:0;}
-.products .product.grid .wishlist{margin-top:15px;margin-bottom:5px;}
+.products .product.grid .wishlist{/*margin-top:15px;*/margin-bottom:5px;}
 .products .wrireyourreviews{display:none;}
 .products .reviewscounttop{color:rgb(158, 158, 158);font-size:12px;font-style:italic;
 display:inline-block;}

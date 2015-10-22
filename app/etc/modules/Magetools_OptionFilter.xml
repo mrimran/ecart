@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Magetools_OptionFilter>
-			<active>true</active>
+			<active>false</active>
 			<codePool>community</codePool>
 			<depends>			
 				<Mage_Admin />

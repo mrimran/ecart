@@ -109,11 +109,16 @@ class Tabs_Extension_Block_Ajaxbestsale extends Mage_Catalog_Block_Product_Abstr
         0 => array('date' => true, 'from' => $tomorrowDate),
         1 => array('is' => new Zend_Db_Expr('null')))
         ), 'left');
+
+        $this->_productCollection->addAttributeToFilter('special_price', array('neq' => 'null'));
         $id = $this->getRequest()->getParam('id');
         if($categoryId = $id){
 
         $category = Mage::getModel('catalog/category')->load($id);
         $this->_productCollection->addCategoryFilter($category);
+
+        $select = $this->_productCollection->getSelect();
+        $select->where('price_index.final_price < price_index.price');
         } 
     }
         

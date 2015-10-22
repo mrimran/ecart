@@ -645,18 +645,16 @@
         background-color: rgb(255, 255, 255);
     }
     .form-list li.control label {
-        padding: 22px 10px;
+        padding:10px;
     }
     .checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio {
         float: left;
         margin-right: -40px;
-        margin-top: 24px;
+        margin-top: 10px;
         margin-left: 8px;
     }
     .form-list li .input-box input,
-    .form-list li .input-box select {
-        padding: 22px 12px;
-    }
+    .form-list li .input-box select {padding:12px;}
     .checkout-onepage-index #billing-new-address-form .validation-advice {
         margin: 3px 0 0;
         top: 100%;
@@ -670,7 +668,7 @@
     }
     .checkout-onepage-index .sp-methods dt#dt_method_ccsave label,
     .checkout-onepage-index .sp-methods #dt_method_checkmo label {
-        padding: 15px 10px 9px 25px;
+        padding: 12px 10px 9px 25px;
     }
     .checkout-onepage-index .sp-methods dt#dt_method_ccsave input[type="radio"],
     .checkout-onepage-index .sp-methods #dt_method_checkmo input[type="radio"] {
