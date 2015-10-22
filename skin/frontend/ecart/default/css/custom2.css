@@ -124,7 +124,7 @@ td.customer-wishlist-item-price .price{font-size:inherit;}
 #checkout-step-review .data-table th:first-child{text-align:left;}
 div.price-slider{height:10px !important;background-color:#e3e3e3 !important;
 background-image:none !important;}
-.products .product.grid .ratingstopdetail{margin-bottom:0;}
+.products .product.grid .ratingstopdetail,.products .product.grid .ratings{margin-bottom:0;top:-5px;position:absolute;}
 div.price-slider .price-slider-from{top:-3px;background-color:#f57a20 !important;
 background-image:none !important;}
 div.price-slider .price-slider-to{margin-top:-20px !important;background-color:#f57a20 !important;
