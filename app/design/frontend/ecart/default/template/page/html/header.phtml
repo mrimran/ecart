@@ -27,7 +27,12 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
-
+ <?php //$session = Mage::getSingleton('customer/session');
+//                  if($session->isLoggedIn()) {
+//                      $customer = $session->getCustomer();
+//                      $time = $this->getlogintime($customer->getId());
+//                    }
+?>
 <header id="header" class="header">
 	<div class="topbar">
      	<div class="container">
@@ -62,16 +67,18 @@
                       endforeach;
 
 
-                     echo "<h3>".$customer->getName()."</h3>Last Activity :";
+                     echo "<h3>".$customer->getName()."</h3>";
+                     if($logout != Null):
+                     echo "Last Activity :";
                          $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
                          $loginTime = $logCustomer->login_at;
-                         
                          $val1 = $loginTime;
                          $val2 = $logout;
 
                           $datetime1 = new DateTime($val1);
                           $datetime2 = new DateTime($val2);
                           $interval = $datetime1->diff($datetime2);
+                          
                           if($interval->format('%Y%') != 00 || $interval->format('%Y%') != 0):
                             echo $interval->format('%Y years');
                           elseif($interval->format('%m%') != 00 || $interval->format('%m%') != 0):
@@ -84,6 +91,7 @@
                             echo $interval->format('%i minutes');
                           elseif($interval->format('%s%') != 0 || $interval->format('%s%') != 00 ):
                             echo $interval->format('%s seconds');
+                          endif;
                           endif;
                          //echo Mage::helper('functions/data')->CalculateTime($loginTime);
                  }
