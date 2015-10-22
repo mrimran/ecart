@@ -55,24 +55,37 @@
                  $session = Mage::getSingleton('customer/session');
                  if($session->isLoggedIn()) {
                      $customer = $session->getCustomer();
-                     //$time = $this->getlogintime($customer->getId());
-                     // foreach($time as $tim):
-                     //       echo $tim->login_at;
-                     //       echo $tim->logout_at;
-                     //  endforeach;
+                     $time = $this->getlogintime($customer->getId());
+                    foreach($time as $tim):
+                           
+                           $logout =  $tim->logout_at;
+                      endforeach;
 
-                     echo "<h3>".$customer->getName()."</h3>";
+
+                     echo "<h3>".$customer->getName()."</h3>Last Activity :";
                          $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
-                         //print_r($logCustomer);
-                         $lastVisited = $logCustomer->last_visit_at;
                          $loginTime = $logCustomer->login_at;
-                         //$firstVisited = $logCustomer->first_visit_at; 
-                         //print_r($lastVisited);
-                         //print_r($firstVisited);
-                         $lastVisited = date('H:i:s', $lastVisited);
-                         $loginat = date('H:i:s', $loginTime);
-                        // print_r($lastVisited);
-                         //echo Mage::helper('functions/data')->CalculateTime($lastVisited);
+                         
+                         $val1 = $loginTime;
+                         $val2 = $logout;
+
+                          $datetime1 = new DateTime($val1);
+                          $datetime2 = new DateTime($val2);
+                          $interval = $datetime1->diff($datetime2);
+                          if($interval->format('%Y%') != 00 || $interval->format('%Y%') != 0):
+                            echo $interval->format('%Y years');
+                          elseif($interval->format('%m%') != 00 || $interval->format('%m%') != 0):
+                            echo $interval->format('%m months');
+                          elseif($interval->format('%d%') != 00 || $interval->format('%d%') != 0):
+                            echo $interval->format('%d days');
+                          elseif($interval->format('%H%') != 00 || $interval->format('%H%') != 0):
+                            echo $interval->format('%H hours');
+                          elseif($interval->format('%i%') != 00 || $interval->format('%i%') != 0):
+                            echo $interval->format('%i minutes');
+                          elseif($interval->format('%s%') != 0 || $interval->format('%s%') != 00 ):
+                            echo $interval->format('%s seconds');
+                          endif;
+                         //echo Mage::helper('functions/data')->CalculateTime($loginTime);
                  }
                }
           ?>

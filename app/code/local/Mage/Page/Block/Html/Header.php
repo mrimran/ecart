@@ -101,11 +101,15 @@ class Mage_Page_Block_Html_Header extends Mage_Core_Block_Template
 
     public function getlogintime($id){
 
-        $collection = Mage::getModel('log/customer')->getCollection()->addFieldToFilter('customer_id', array('eq' => $id));
-        echo $collection->getSelect()
-        ->order('log_id' . ' ' . 'desc');
-        //echo $collection->getSelect()->where('customer_id = ?', $id)->limit(2);
-        exit;
-        return $collection;
+       
+       $collection = Mage::getResourceModel('customer/customer_collection');
+       $collection->addAttributeToSelect('*')->getSelect()
+       ->order('logout_at' . ' ' . 'desc');
+       $condition = new Zend_Db_Expr("lc.customer_id = e.entity_id ");
+       //join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+       $collection->getSelect()->join(array('lc' => 'log_customer'),
+       $condition,
+       array('logout_at' => 'logout_at'))->limit(1);
+       return $collection;
     }
 }
