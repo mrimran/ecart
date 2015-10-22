@@ -66,8 +66,15 @@
                            $logout =  $tim->logout_at;
                       endforeach;
 
-
+                    if($customer->getName()!=" "):
                      echo "<h3>".$customer->getName()."</h3>";
+                    else :
+                      $email = $customer->email;
+                      $parts = explode("@", $email);
+                      $username = $parts[0];
+                      echo "<h3>".$username."</h3>";
+                     endif;
+                     
                      if($logout != Null):
                      echo "Last Activity :";
                          $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
