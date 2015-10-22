@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * JeroenVermeulen_Solarium
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this Module to
+ * newer versions in the future.
+ *
+ * @category    JeroenVermeulen
+ * @package     JeroenVermeulen_Solarium
+ * @copyright   Copyright (c) 2014 Jeroen Vermeulen (http://www.jeroenvermeulen.eu)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<!--suppress XmlUnboundNsPrefix -->
+<config>
+    <modules>
+        <JeroenVermeulen_Solarium>
+            <version>1.6.12</version>
+        </JeroenVermeulen_Solarium>
+    </modules>
+    <global>
+        <blocks>
+            <jeroenvermeulen_solarium>
+                <class>JeroenVermeulen_Solarium_Block</class>
+            </jeroenvermeulen_solarium>
+        </blocks>
+        <models>
+            <jeroenvermeulen_solarium>
+                <class>JeroenVermeulen_Solarium_Model</class>
+                <resourceModel>jeroenvermeulen_solarium_resource</resourceModel>
+            </jeroenvermeulen_solarium>
+            <jeroenvermeulen_solarium_resource>
+                <class>JeroenVermeulen_Solarium_Model_Resource</class>
+            </jeroenvermeulen_solarium_resource>
+            <catalogsearch_resource>
+                <rewrite>
+                    <fulltext>JeroenVermeulen_Solarium_Model_Resource_CatalogSearch_Fulltext</fulltext>
+                </rewrite>
+            </catalogsearch_resource>
+            <catalogsearch>
+                <rewrite>
+                    <indexer_fulltext>JeroenVermeulen_Solarium_Model_CatalogSearch_Indexer_Fulltext</indexer_fulltext>
+                </rewrite>
+            </catalogsearch>
+        </models>
+        <helpers>
+            <jeroenvermeulen_solarium>
+                <class>JeroenVermeulen_Solarium_Helper</class>
+            </jeroenvermeulen_solarium>
+        </helpers>
+        <resources>
+            <jeroenvermeulen_solarium_setup>
+                <setup>
+                    <module>JeroenVermeulen_Solarium</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </jeroenvermeulen_solarium_setup>
+        </resources>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <jeroenvermeulen_solarium>
+                        <type>singleton</type>
+                        <class>jeroenvermeulen_solarium/observer</class>
+                        <method>controllerFrontInitBefore</method>
+                    </jeroenvermeulen_solarium>
+                </observers>
+            </controller_front_init_before>
+            <shell_reindex_init_process>
+                <!-- This event only works for Magento >= 1.8 -->
+                <observers>
+                    <jeroenvermeulen_solarium>
+                        <type>singleton</type>
+                        <class>jeroenvermeulen_solarium/observer</class>
+                        <method>shellReindexInitProcess</method>
+                    </jeroenvermeulen_solarium>
+                </observers>
+            </shell_reindex_init_process>
+            <after_reindex_process_catalogsearch_fulltext>
+                <observers>
+                    <jeroenvermeulen_solarium>
+                        <type>singleton</type>
+                        <class>jeroenvermeulen_solarium/observer</class>
+                        <method>afterReindexProcessCatalogsearchFulltext</method>
+                    </jeroenvermeulen_solarium>
+                </observers>
+            </after_reindex_process_catalogsearch_fulltext>
+            <catalogsearch_index_process_start>
+                <observers>
+                    <jeroenvermeulen_solarium>
+                        <type>singleton</type>
+                        <class>jeroenvermeulen_solarium/observer</class>
+                        <method>catalogsearchIndexProcessStart</method>
+                    </jeroenvermeulen_solarium>
+                </observers>
+            </catalogsearch_index_process_start>
+            <catalogsearch_index_process_complete>
+                <observers>
+                    <jeroenvermeulen_solarium>
+                        <type>singleton</type>
+                        <class>jeroenvermeulen_solarium/observer</class>
+                        <method>catalogsearchIndexProcessComplete</method>
+                    </jeroenvermeulen_solarium>
+                </observers>
+            </catalogsearch_index_process_complete>
+            <adminhtml_block_html_before>
+                <observers>
+                    <jeroenvermeulen_solarium>
+                        <type>singleton</type>
+                        <class>jeroenvermeulen_solarium/observer</class>
+                        <method>adminhtmlBlockHtmlBefore</method>
+                    </jeroenvermeulen_solarium>
+                </observers>
+            </adminhtml_block_html_before>
+            <start_index_events_catalog_product_delete>
+                <observers>
+                    <jeroenvermeulen_solarium>
+                        <type>singleton</type>
+                        <class>jeroenvermeulen_solarium/observer</class>
+                        <method>startIndexEventsCatalogProductDelete</method>
+                    </jeroenvermeulen_solarium>
+                </observers>
+            </start_index_events_catalog_product_delete>
+        </events>
+    </global>
+    <frontend>
+        <translate>
+            <modules>
+                <jeroenvermeulen_solarium>
+                    <files>
+                        <default>JeroenVermeulen_Solarium.csv</default>
+                    </files>
+                </jeroenvermeulen_solarium>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <jeroenvermeulen_solarium>
+                    <file>jeroenvermeulen/solarium.xml</file>
+                </jeroenvermeulen_solarium>
+            </updates>
+        </layout>
+        <routers>
+            <jeroenvermeulen_solarium>
+                <use>standard</use>
+                <args>
+                    <!-- URL:  http://[MAGROOT]/solarium/[ACTION]/key/[NONCE]/ -->
+                    <module>JeroenVermeulen_Solarium</module>
+                    <frontName>solarium</frontName>
+                </args>
+            </jeroenvermeulen_solarium>
+        </routers>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <!-- URL:  http://[MAGROOT]/admin/[CONTROLLER]/[ACTION]/key/[NONCE]/ -->
+                        <JeroenVermeulen_Solarium after="Mage_Adminhtml">JeroenVermeulen_Solarium_Admin</JeroenVermeulen_Solarium>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <jeroenvermeulen_solarium>
+                    <files>
+                        <default>JeroenVermeulen_Solarium.csv</default>
+                    </files>
+                </jeroenvermeulen_solarium>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <jeroenvermeulen_solarium>
+                    <file>jeroenvermeulen/solarium.xml</file>
+                </jeroenvermeulen_solarium>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <jeroenvermeulen_solarium>
+            <general>
+                <enabled>0</enabled>
+            </general>
+            <server>
+                <host>localhost</host>
+                <port>8983</port>
+                <path>/solr</path>
+                <core>collection1</core>
+                <timeout>3600</timeout>
+                <search_timeout>5</search_timeout>
+                <requires_authentication>0</requires_authentication>
+            </server>
+            <results>
+                <autocomplete_suggestions>25</autocomplete_suggestions>
+                <autocorrect>1</autocorrect>
+                <did_you_mean>1</did_you_mean>
+                <did_you_mean_suggestions>5</did_you_mean_suggestions>
+                <suggestions_accuracy>70</suggestions_accuracy>
+                <max>100</max>
+                <search_type>1</search_type>
+            </results>
+            <reindexing>
+                <buffersize>100</buffersize>
+            </reindexing>
+        </jeroenvermeulen_solarium>
+    </default>
+</config>
