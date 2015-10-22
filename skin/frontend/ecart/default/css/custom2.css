@@ -332,7 +332,7 @@ height: auto !important;}
 .sizeGuidePageTabArea .tab-pane.active{overflow:hidden;}
 .buyerprotectionpage a{color:#f57a20;}
 .buyerprotectionpage a:hover{color:#303030;}
-.buyerprotectionpage .pointers,.buyerprotectionpage .userpic{background-color:#5a5f65;border-radius:50%;
+.buyerprotectionpage .pointers,.buyerprotectionpage .userpic{/*background-color:#5a5f65;*/border-radius:50%;
 text-align:center;line-height:2.5;color:#fff;font-weight:600;font-size:21px;max-width:56px;}
 .buyerprotectionpage .pointers.orange{background-color:#f57a20;}
 .buyerprotectionpage .userpic{font-size:50px;max-width:80px;height:80px;line-height:1.5;width:80px;background-image: url("../images/userpic.png");}
@@ -377,7 +377,7 @@ margin:15px 0 30px;}
 .__faq .nav-tabs > li > a[aria-controls="payment"]:before, .__faq .nav-tabs > li.active > a[aria-controls="payment"]:before { height: 25px; width: 36px; margin-bottom: 13px; }
 .__faq .nav-tabs > li > a[aria-controls="payment"]:before { background-image: url('../images/payment.png'); }
 .__faq .nav-tabs > li > a[aria-controls="payment"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="payment"]:hover:before { background-position: 0 -25px; }
-.__faq .nav-tabs > li > a[aria-controls="shipping"]:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:before { height: 30px; width: 36px; margin-bottom: 9px; }
+.__faq .nav-tabs > li > a[aria-controls="shipping"]:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:before { height: 30px; width: 36px; margin-bottom: 8px; }
 .__faq .nav-tabs > li > a[aria-controls="shipping"]:before { background-image: url('../images/shipping.png'); }
 .__faq .nav-tabs > li > a[aria-controls="shipping"]:hover:before, .__faq .nav-tabs > li.active > a[aria-controls="shipping"]:hover:before { background-position: 0 -30px; }
 .__faq .nav-tabs > li > a[aria-controls="refund"]:before, .__faq .nav-tabs > li.active > a[aria-controls="refund"]:before { height: 23px; width: 35px; margin-bottom: 15px; }
