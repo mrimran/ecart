@@ -527,6 +527,7 @@ display:none;}
 .category-menup li a:hover { background-color: transparent; }
 .category-menup li a span { background-image: url(../images/cat-sprite.png); text-align: center; background-repeat: no-repeat; background-position: 0px 2px; width: 25px; height: 25px; display: block; vertical-align: middle; margin: 10px auto 5px; }
 .category-menup li > a.clearance-sale span { background-position: 0px 2px; }
+.category-menup li > a.mobiles-accessories span { background-position: 0px -35px; }
 .category-menup li > a.phones-accessories span { background-position: 0px -35px; }
 .category-menup li > a.computer-accessories span { background-position: 0px -74px; }
 .category-menup li > a.consumer-electronics span { background-position: 0px -115px; }
