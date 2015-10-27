@@ -64,7 +64,7 @@ uasort($items, function($a,$b) {
 				$str = htmlentities($str, null, 'utf-8');
                 $str = str_replace("&nbsp;", "", $str);
 		?>
-        <?php  if (strpos($path, $str) == false) { ?>
+        <?php  if (strpos($path, $str) === false && strpos($_SERVER[REQUEST_URI], $str) === false) { ?>
         <?php //print_r($new1);?>
         
         <li>
