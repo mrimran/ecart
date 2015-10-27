@@ -64,7 +64,7 @@ uasort($items, function($a,$b) {
 					$str1
 				);
 		?>
-        <?php  if (strpos($path, $str) == false) { ?>
+        <?php  if (strpos($path, $str) === false && strpos($_SERVER[REQUEST_URI], $str) === false) { ?>
 
         <li>
             <?php if ($_item->getCount() > 0): ?>
