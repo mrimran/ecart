@@ -13,7 +13,7 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
         $item = $observer->getQuoteItem();
         // Ensure we have the parent item, if it has one
         $item = ( $item->getParentItem() ? $item->getParentItem() : $item );
-        //apply the payment logic on in configurable products
+        //apply the payment logic on in configurable products only
         if($item->getProduct()->isConfigurable()) {
             // Load the custom price
             $price = $new_price;
@@ -26,8 +26,15 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
             /* echo "Got:". $price;
               echo " Extra: ".$extra_price;
               echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);die(); */
-            $item->setCustomPrice($extra_price + $price);
-            $item->setOriginalCustomPrice($extra_price + $price);
+            //only apply the associated price if extra_price don't exist (means values are not being set with attributes)
+            if($extra_price == 0) {
+                $item->setCustomPrice($extra_price + $price);
+                $item->setOriginalCustomPrice($extra_price + $price);
+            }else {
+                //if the attributes are defined, use the parent product price instead (base product price)
+                $item->setCustomPrice($item->getProduct()->getFinalPrice());
+                $item->setOriginalCustomPrice($item->getProduct()->getFinalPrice());
+            }
             // Enable super mode on the product.
             $item->getProduct()->setIsSuperMode(true);
         }
