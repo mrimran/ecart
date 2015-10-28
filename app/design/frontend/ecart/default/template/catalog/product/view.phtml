@@ -342,22 +342,24 @@ function attrsHasPrice()
     return hasPrice;
 }
 var request;//to stop duplicate/multiple ajax calls
-jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
-    var hasPrice = attrsHasPrice();
-    if(hasPrice === false) {
-        if(!request) {
-            //console.log(jQuery("[name*='super_attribute']"));
-            request = jQuery.post( "<?php echo Mage::getUrl()?>wts_ajaxpriceloader/ajax/getAssociatedProductPrice/", jQuery('#product_addtocart_form').serialize())
-              .done(function( data ) {
-                //console.log( "Data Loaded: " + data );
-                //console.log(data.price);
-                if(data.price.length > 0){
-                    jQuery('.price-box .regular-price .price').text(data.price);
-                }
-                request = null;//release the request
-            });
+jQuery(document).ready(function(){
+    jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
+        var hasPrice = attrsHasPrice();
+        if(hasPrice === false) {
+            if(!request) {
+                //console.log(jQuery("[name*='super_attribute']"));
+                request = jQuery.post( "<?php echo Mage::getUrl()?>wts_ajaxpriceloader/ajax/getAssociatedProductPrice/", jQuery('#product_addtocart_form').serialize())
+                  .done(function( data ) {
+                    //console.log( "Data Loaded: " + data );
+                    //console.log(data.price);
+                    if(data.price.length > 0){
+                        jQuery('.price-box .regular-price .price').text(data.price);
+                    }
+                    request = null;//release the request
+                });
+            }
         }
-    }
+    });
 });
 <?php endif;?>
 //associated price module code ends here
