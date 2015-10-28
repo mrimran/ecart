@@ -341,25 +341,51 @@ function attrsHasPrice()
     });
     return hasPrice;
 }
+
 var request;//to stop duplicate/multiple ajax calls
-jQuery(document).ready(function(){
-    jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
-        var hasPrice = attrsHasPrice();
-        if(hasPrice === false) {
-            if(!request) {
-                //console.log(jQuery("[name*='super_attribute']"));
-                request = jQuery.post( "<?php echo Mage::getUrl()?>wts_ajaxpriceloader/ajax/getAssociatedProductPrice/", jQuery('#product_addtocart_form').serialize())
-                  .done(function( data ) {
-                    //console.log( "Data Loaded: " + data );
-                    //console.log(data.price);
-                    if(data.price.length > 0){
-                        jQuery('.price-box .regular-price .price').text(data.price);
-                    }
-                    request = null;//release the request
-                });
+
+function loadPriceWithAjax()
+{
+    //send request only if attribute don't have price
+    var hasPrice = attrsHasPrice();
+    if(hasPrice === false) {
+        if(!request) {
+            //console.log(jQuery("[name*='super_attribute']"));
+            request = jQuery.post( "<?php echo Mage::getUrl()?>wts_ajaxpriceloader/ajax/getAssociatedProductPrice/", jQuery('#product_addtocart_form').serialize())
+              .done(function( data ) {
+                //console.log( "Data Loaded: " + data );
+                //console.log(data.price);
+                if(data.price.length > 0){
+                    jQuery('.price-box .regular-price .price').text(data.price);
+                }
+                request = null;//release the request
+            });
+        }
+    }
+}
+
+function hasDefaultSelection()
+{
+    var hasSelection = false;
+    jQuery("[name*='super_attribute'], [name*='options']").each(function(k,v){
+        if(jQuery(v).val().length > 0) {
+            if(hasSelection === false) {
+                hasSelection = true;
             }
         }
     });
+    return hasSelection;
+}
+
+jQuery(document).ready(function(){
+    jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
+        loadPriceWithAjax();
+    });
+    
+    //if any of the default attribute or option is selected do send the ajax request
+    if(hasDefaultSelection()) {
+        loadPriceWithAjax();
+    }
 });
 <?php endif;?>
 //associated price module code ends here
