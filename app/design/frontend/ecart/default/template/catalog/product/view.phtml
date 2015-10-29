@@ -351,7 +351,8 @@ function loadPriceWithAjax()
     if(hasPrice === false) {
         if(!request) {
             //show slider on price
-			jQuery('.price-box .regular-price .price').html('Loading');
+					jQuery('.price-box .regular-price .price').hide();
+					jQuery('.price-box .regular-price .price').html('Loading');
             
             //console.log(jQuery("[name*='super_attribute']"));
             request = jQuery.post( "<?php echo Mage::getUrl()?>wts_ajaxpriceloader/ajax/getAssociatedProductPrice/", jQuery('#product_addtocart_form').serialize())
@@ -361,7 +362,8 @@ function loadPriceWithAjax()
                 if(data.price.length > 0){
                     jQuery('.price-box .regular-price .price').text(data.price);
                     //hide slider on price.
-					jQuery('.price-box .regular-price .price').hide();
+					
+					jQuery('.price-box .regular-price .price').show();
                     
                 }
                 request = null;//release the request
