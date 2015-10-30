@@ -1188,3 +1188,15 @@ margin: auto;
 	width: calc(100% - 20px);
 }
 
+.loader-orange{
+	position: relative;
+	width: 60px;
+	height: 15px;
+	padding: 0 0 15px;
+	display: inline-block;
+	vertical-align: middle;
+	background: url(../images/loading.gif) no-repeat;
+}
+
+
+
