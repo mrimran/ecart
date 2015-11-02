@@ -362,12 +362,11 @@
 
 .checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio,
 .checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.checkbox {
-    float: left;
-    margin-right: -40px;
-    margin-top:11px;
-    margin-left: 8px;
+/*float: left;*/
+margin-top:4px;margin-right: -20px;
+/* margin-top:11px;margin-left: 8px;*/
 }
-.checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio{margin-top:8px;}
+.checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio{margin-top:4px;}
 .checkout-onepage-index .sp-methods dt#dt_method_ccsave label,
 .checkout-onepage-index .sp-methods #dt_method_checkmo label,
 .checkout-onepage-index .sp-methods label,
@@ -375,25 +374,26 @@
 .checkout-onepage-index .sp-methods #dt_method_phoenix_cashondelivery label,
 .product-options ul.options-list label,
 .form-list .control label {
-    min-width: inherit;
+    /*min-width: inherit;
     width: 250px;
-    max-width: 100%;
+    max-width: 100%;*/
     color: rgb(99, 99, 99);
     background-color: rgb(244, 244, 244);
-    padding: 5px 10px;
+    /*padding: 5px 10px;*/
     display: inline-block;
-    width: auto;
+    /*width: auto;
     font-size: inherit;
     max-width: none;
     min-width: 250px;
-    float: none;
-    padding: 7px 10px 6px 25px;
+    float: none;*/
+    padding:5px 10px;
 }
 
-.step .form-list .control label {
-    padding-left: 25px;
-}
-
+.step .form-list .control label {/*padding-left: 25px;*/}
+.checkout-onepage-index .sp-methods #dt_method_checkmo input[type="radio"],
+.checkout-onepage-index .sp-methods #dt_method_cybersourcesa input[type="radio"]{margin-top:0;}
+.checkout-onepage-index .sp-methods #dt_method_checkmo label,
+.checkout-onepage-index .sp-methods #dt_method_cybersourcesa label{padding-left:20px;}
 .checkout-onepage-index #shipping-new-address-form .validation-advice,
 .checkout-onepage-index #billing-new-address-form .validation-advice {
     margin: 5px 0 0;
@@ -616,6 +616,9 @@
     list-style: none;
     font-size: 23px !important;
 }
+.__categories__container .__categories{
+    display: none;
+}
 
 @media only screen and (max-width: 480px) {
     .checkout-onepage-index .col-sm-4.col-md-3.paddingzero {
@@ -644,15 +647,15 @@
     .checkout-onepage-index .col-md-9 .opc {
         background-color: rgb(255, 255, 255);
     }
-    .form-list li.control label {
+   /* .form-list li.control label {
         padding:10px;
-    }
-    .checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio {
+    }*/
+    /*.checkout-onepage-index .col-md-9 .opc li .step .form-list .control input.radio {
         float: left;
         margin-right: -40px;
         margin-top: 10px;
         margin-left: 8px;
-    }
+    }*/
     .form-list li .input-box input,
     .form-list li .input-box select {padding:12px;}
     .checkout-onepage-index #billing-new-address-form .validation-advice {
@@ -666,14 +669,15 @@
     .checkout-onepage-index .col-md-9 .opc li .step {
         border-bottom: 0;
     }
-    .checkout-onepage-index .sp-methods dt#dt_method_ccsave label,
+    .checkout-onepage-index .col-md-9 .opc li .step{padding:10px;}
+   /* .checkout-onepage-index .sp-methods dt#dt_method_ccsave label,
     .checkout-onepage-index .sp-methods #dt_method_checkmo label {
         padding: 12px 10px 9px 25px;
     }
     .checkout-onepage-index .sp-methods dt#dt_method_ccsave input[type="radio"],
     .checkout-onepage-index .sp-methods #dt_method_checkmo input[type="radio"] {
         margin-top: 18px;
-    }
+    }*/
     .checkout-onepage-index #checkout-payment-method-load .form-list li {
         float: none;
         width: auto;
@@ -689,7 +693,4 @@
         display: block;
         padding: 0;
     }
-}
-.__categories__container .__categories{
-    display: none;
 }

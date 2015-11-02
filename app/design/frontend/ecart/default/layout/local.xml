@@ -264,7 +264,9 @@
 			</reference>
 			
 			<reference name="head">
+			<action method="removeItem"><type>skin_css</type><name>css/responsive.css</name></action>
 			<action method="addCss"> <name>css/checkout.css</name> </action>
+			<action method="addCss"><stylesheet>css/responsive.css</stylesheet></action>
 			</reference>
 			
 			<reference name="left">
