@@ -636,7 +636,7 @@ body.customer-account .filters ul li{display:inherit;width:100%;}
 .cart_table th{text-align:left;border:inherit;}
 .cart_table .item-detail a.remove{position:relative;bottom:0;}
 .cart_table td.qty input{padding:5px;}
-.cart_table td.qty, .data-table td.product_price, .cart_table td.sub-tota,.data-table td{text-align:left;}
+.cart_table td.qty, .data-table td.product_price, .cart_table td.sub-total,.data-table td{text-align:left;}
 .data-table td .item-options{text-align:left;padding:10px 0;}
 .data-table td,.data-table th{padding:20px;border:1px solid #eaeaea;}
 .discount-form{margin:5px 0;width:100%;}
