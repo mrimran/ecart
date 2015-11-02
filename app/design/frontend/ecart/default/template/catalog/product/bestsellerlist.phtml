@@ -90,14 +90,11 @@ $_helper = $this->helper('catalog/output');?>
             </div>
           </div>
            <?php endif ?>
-            <?php $productBlock = $this->getLayout()->createBlock('catalog/product_price');
-            echo $productBlock->getPriceHtml($_product); ?>
+            
           <div class="price"><?php
-                                $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
-
-                                echo $_formattedSpecialPrice;
+                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
                                 $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
-                                echo $_formattedActualPrice;
+                              
                                 ?>
 
                                 <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
