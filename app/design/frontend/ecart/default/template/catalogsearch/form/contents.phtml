@@ -43,7 +43,8 @@
 
 <!--search-category-select selectpicker-->
 <form id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
-  
+<input type="hidden" name="order" value="relevance">
+<input type="hidden" name="dir" value="desc"> 
        <?php /*?> <label for="search"><?php echo $this->__('Search:') ?></label><?php */?>
         <?php $categorySearchHelper = $this->helper('catalogcategorysearch'); ?>
         <div class="all-search-cats">

@@ -124,7 +124,7 @@ td.customer-wishlist-item-price .price{font-size:inherit;}
 #checkout-step-review .data-table th:first-child{text-align:left;}
 div.price-slider{height:10px !important;background-color:#e3e3e3 !important;
 background-image:none !important;}
-.products .product.grid .ratingstopdetail{margin-bottom:0;}
+.products .product.grid .ratingstopdetail,.products .product.grid .ratings{margin-bottom:0;top:-5px;position:absolute;}
 div.price-slider .price-slider-from{top:-3px;background-color:#f57a20 !important;
 background-image:none !important;}
 div.price-slider .price-slider-to{margin-top:-20px !important;background-color:#f57a20 !important;
@@ -212,12 +212,10 @@ width:40px;text-align:center;}
 .listing-suggest .products-grid .product.grid{height:auto;min-height:330px;}
 .account-create .form-list{width:50%;}
 .listing-suggest .products-grid .product-image{width:100%;height:200px;}
-.price-box .old-price,.price-box .special-price{width:49%;}
+.price-box .old-price,.price-box .special-price{/*width:49%;*/}
+.__product__main__area .price-box .special-price{float:left;}
 .price-box .price-label{font-weight:600; display:none;}
-.price-box .old-price .price{text-decoration:line-through;color: #bdbdbd;
-    display: block;
-    font-size: 16px;
-    margin-top: 10px;}
+.price-box .old-price .price{text-decoration:line-through;color: #bdbdbd;display: block;font-size: 16px;margin-top: 10px;}
 .products .product .bottom-area{padding:15px;}
 .listing-suggest .product-name{margin-bottom:15px;}
 .listing-suggest .product-name a{font-size:18px;color:#303030;line-height:1.5;}
@@ -346,6 +344,7 @@ font-family: 'GothamNarrow-Bold','open-sans',sans-serif;font-size:22px;text-tran
 margin:15px 0 30px;}
 .tips b{font-family:'GothamNarrow-Bold','open-sans',sans-serif;}
 .item-options{font-size:13px;text-transform:capitalize;}
+#search_mini_form .jcf-select{margin-top:-2px;}
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }

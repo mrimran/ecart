@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * JeroenVermeulen_Solarium
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this Module to
+ * newer versions in the future.
+ *
+ * @category    JeroenVermeulen
+ * @package     JeroenVermeulen_Solarium
+ * @copyright   Copyright (c) 2014 Jeroen Vermeulen (http://www.jeroenvermeulen.eu)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<!--suppress XmlUnboundNsPrefix -->
+<config>
+    <sections>
+        <jeroenvermeulen_solarium translate="label" module="jeroenvermeulen_solarium">
+            <label>Solarium Search</label>
+            <tab>catalog</tab>
+            <class>solarium-tab</class>
+            <header_css>solarium-header</header_css>
+            <sort_order>45</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="jeroenvermeulen_solarium">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>jeroenvermeulen_solarium/adminhtml_system_config_form_fieldset_general</frontend_model>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <comment><![CDATA[After switching please reindex the<br /><em>Catalog Search Index</em>.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enabled>
+                        <verboseLogging>
+                            <label>Verbose logging</label>
+                            <comment><![CDATA[Log debug information to system.log]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10000</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </verboseLogging>
+                    </fields>
+                </general>
+                <server translate="label" module="jeroenvermeulen_solarium">
+                    <label>Solr Server</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>jeroenvermeulen_solarium/adminhtml_system_config_form_fieldset_server</frontend_model>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <host translate="label">
+                            <label>Hostname or IP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </host>
+                        <port translate="label">
+                            <label>Port Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <validate>validate-greater-than-zero</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </port>
+                        <path translate="label">
+                            <label>Path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </path>
+                        <core translate="label">
+                            <label>Solr Core</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </core>
+                        <timeout translate="label">
+                            <label>General Timeout (seconds)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <validate>validate-greater-than-zero</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </timeout>
+                        <search_timeout translate="label">
+                            <label>Search Timeout (seconds)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <validate>validate-greater-than-zero</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </search_timeout>
+                        <requires_authentication translate="label comment">
+                            <label>Authentication Required</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </requires_authentication>
+                        <username translate="label">
+                            <label>User Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <validate>required-entry</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <requires_authentication>1</requires_authentication>
+                            </depends>
+                        </username>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_type>obscure</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>90</sort_order>
+                            <validate>required-entry</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <requires_authentication>1</requires_authentication>
+                            </depends>
+                        </password>
+                    </fields>
+                </server>
+                <results translate="label" module="jeroenvermeulen_solarium">
+                    <label>Search Results</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>400</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <autocomplete_product_suggestions translate="label">
+                            <label>Show Products as Autocomplete</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </autocomplete_product_suggestions>
+                        <autocomplete_suggestions translate="label">
+                            <label>Nr of Autocomplete Suggestions</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <validate>validate-zero-or-greater</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autocomplete_suggestions>
+                        <autocorrect translate="label">
+                            <label>Correct Search Terms Typos</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </autocorrect>
+                        <did_you_mean translate="label">
+                            <label>Display "Did you mean..."</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </did_you_mean>
+                        <did_you_mean_suggestions translate="label">
+                            <label>"Did you mean..." Suggestions</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <validate>validate-zero-or-greater</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <did_you_mean>1</did_you_mean>
+                            </depends>
+                        </did_you_mean_suggestions>
+                        <suggestions_accuracy translate="label comment">
+                            <label>Accuracy for Suggestions</label>
+                            <comment><![CDATA[Percentage between 0 and 100, default 70]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <validate>validate-zero-or-greater</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <did_you_mean>1</did_you_mean>
+                            </depends>
+                        </suggestions_accuracy>
+                        <max translate="label">
+                            <label>Maximum Number of Results</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <validate>validate-greater-than-zero</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max>
+                        <search_type translate="label">
+                            <label>Search Type</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>jeroenvermeulen_solarium/adminhtml_system_config_source_searchtype</source_model>
+                        </search_type>
+                    </fields>
+                </results>
+                <reindexing translate="label" module="jeroenvermeulen_solarium">
+                    <label>Reindex Data</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <buffersize translate="label">
+                            <label>Updates to Post At Once</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <validate>validate-greater-than-zero</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </buffersize>
+                    </fields>
+                </reindexing>
+            </groups>
+        </jeroenvermeulen_solarium>
+    </sections>
+</config>
