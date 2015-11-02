@@ -90,7 +90,20 @@ $_helper = $this->helper('catalog/output');?>
             </div>
           </div>
            <?php endif ?>
-          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+            <?php $productBlock = $this->getLayout()->createBlock('catalog/product_price');
+            echo $productBlock->getPriceHtml($_product); ?>
+          <div class="price"><?php
+                                $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+
+                                echo $_formattedSpecialPrice;
+                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                                echo $_formattedActualPrice;
+                                ?>
+
+                                <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                                    <span class="not-now">
+                                        <?php echo $_formattedActualPrice; ?></span>
+                                <?php endif; ?></div>
           </div>
           </a>
           <div class="actions">
@@ -167,7 +180,17 @@ $_helper = $this->helper('catalog/output');?>
           </div>
            <?php endif ?>
 
-          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+          <div class="price">
+          <?php
+            echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+              $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+            ?>
+
+            <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                 <span class="not-now">
+            <?php echo $_formattedActualPrice; ?></span>
+            <?php endif; ?>
+          </div>
           </div>
           </a>
           <div class="actions">
