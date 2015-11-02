@@ -177,14 +177,14 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
 
               if($upcoming == 'No' && $_product->isAvailable()){?>
                 <div class="col-sm-9">
-                  <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onclick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
+                  <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart btn btn-default btn1 btn-block" onClick="productAddToCartForm.submit(this)"><span>ADD TO CART</span> <i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <?php } ?>
                 <div class="col-sm-3">
                   <?php $_product = $this->getProduct(); ?>
                   <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
                   <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                  <a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
+                  <a href="<?php echo $_wishlistSubmitUrl ?>" onClick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist btn btn-default btn1 btn-block wishlist"><i class="fa fa-heart"></i><span>WISHLIST</span></a>
                   <?php endif; ?>
                 </div>
               </div>
@@ -341,22 +341,55 @@ function attrsHasPrice()
     });
     return hasPrice;
 }
+
 var request;//to stop duplicate/multiple ajax calls
-jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
+
+function loadPriceWithAjax()
+{
+    //send request only if attribute don't have price
     var hasPrice = attrsHasPrice();
     if(hasPrice === false) {
         if(!request) {
+            //show slider on price
+            jQuery('.price-box .regular-price .price').html(' <span class="loader-orange"></span>');
+            // jQuery('.price-box .regular-price .price').hide();
             //console.log(jQuery("[name*='super_attribute']"));
             request = jQuery.post( "<?php echo Mage::getUrl()?>wts_ajaxpriceloader/ajax/getAssociatedProductPrice/", jQuery('#product_addtocart_form').serialize())
-              .done(function( data ) {
+                .done(function( data ) {
                 //console.log( "Data Loaded: " + data );
                 //console.log(data.price);
                 if(data.price.length > 0){
                     jQuery('.price-box .regular-price .price').text(data.price);
+                    //hide slider on price.
+                    jQuery('.price-box .regular-price .price').show();
                 }
                 request = null;//release the request
             });
         }
+    }
+}
+
+function hasDefaultSelection()
+{
+    var hasSelection = false;
+    jQuery("[name*='super_attribute'], [name*='options']").each(function(k,v){
+        if(jQuery(v).val().length > 0) {
+            if(hasSelection === false) {
+                hasSelection = true;
+            }
+        }
+    });
+    return hasSelection;
+}
+
+jQuery(document).ready(function(){
+    jQuery("[name*='super_attribute'], [name*='options']").on('change', function(){
+        loadPriceWithAjax();
+    });
+    
+    //if any of the default attribute or option is selected do send the ajax request
+    if(hasDefaultSelection()) {
+        loadPriceWithAjax();
     }
 });
 <?php endif;?>
