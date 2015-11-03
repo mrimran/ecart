@@ -399,7 +399,7 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
 }
 /* common custom form elements styles */
 #search_mini_form .jcf-disabled {background: #ddd !important;}
-#search_mini_form .jcf-focus, .jcf-focus * {border-color: #f00 !important;}
+#search_mini_form .jcf-focus, .jcf-focus * {border-color: #eaeaea !important;}
 
 #search_mini_form .jcf-list-content ul,
 #search_mini_form .jcf-select{
