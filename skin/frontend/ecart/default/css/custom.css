@@ -324,6 +324,8 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
   left: -1px;
   right: -1px;
   width: 230px !important;
+  border-left: 1px solid #eaeaea;
+  border-right: 1px solid #eaeaea;
 }
 #search_mini_form .jcf-select .jcf-drop-flipped {
   bottom: 100%;
