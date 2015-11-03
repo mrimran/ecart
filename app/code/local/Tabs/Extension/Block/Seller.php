@@ -65,7 +65,7 @@ class Tabs_Extension_Block_Seller extends Mage_Core_Block_Template {
         $products = Mage::getResourceModel('reports/product_collection')
             ->addOrderedQty()
             ->addAttributeToSelect('id')
-            ->addAttributeToSelect(array('name', 'price', 'small_image'))
+            ->addAttributeToSelect('*')
             ->setStoreId($storeId)
             ->addStoreFilter($storeId)
            ->setPageSize(20);
