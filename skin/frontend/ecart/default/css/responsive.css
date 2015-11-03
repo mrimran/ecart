@@ -488,7 +488,7 @@ display:none;}
 .mainheadnav .minicart { right:15px; top: -62px; }
 .checkout-types.minicart{position: relative;top:0;}
 .mainheadnav .minicart a.skip-cart .icon + span{display: none;}
-.mainheadnav .minicart a.skip-cart{width:100px;}
+.mainheadnav .minicart a.skip-cart{width:90px;}
 /*.mainheadnav .minicart a.skip-cart{padding:0;overflow:hidden;background-color:transparent;}*/
 /*.mainheadnav .minicart span.icon{font-size: 30px;color:#5a5f65;}*/
 /*.mainheadnav .minicart a { text-indent: 300px; background-image: url(../images/cart-img-gray.png); background-repeat: no-repeat; background-position: center; height: 25px; width: 30px; background-color: transparent; }
