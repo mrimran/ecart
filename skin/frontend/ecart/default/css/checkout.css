@@ -70,9 +70,9 @@
 
 .checkout-onepage-index .mini-products-list .product-details .price {
     font-size: 17.585px;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     color: rgb(58, 58, 58);
-    font-weight: bold;
+    /*font-weight: bold;*/
     display: block;
     margin-bottom: 8px;
 }
