@@ -20,7 +20,15 @@ $_helper = $this->helper('catalog/output');
                                 <!-- </a> --></div></div>
                         <div class="bottom-area">
                             <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
-                            <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+                            <div class="price"><?php
+                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                                  $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                                ?>
+
+                                <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                                     <span class="not-now">
+                                <?php echo $_formattedActualPrice; ?></span>
+                                <?php endif; ?></div>
                         <div class="actions">
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                             <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
