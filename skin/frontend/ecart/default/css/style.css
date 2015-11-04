@@ -333,7 +333,7 @@ line-height:1.4;height:42px;overflow:hidden;}
 background-position:top left;height:15px;margin-top:5px;padding:10px 0 10px;}
 .price{font-family: 'GothamNarrow-Medium', sans-serif;font-weight:400;font-size:18px;color:#f57c20;}
 .price i{font-size:12px;font-style:normal;}
-.product .stocks-update,.product .orders{color: #939393;font-size:13px;padding:0 0 10px;}
+.product .stocks-update,.product .orders{color: #939393;font-size:13px;padding:0 0 3px;}
 .price .not-now{font-size:14px;font-weight:400;color:#bdbdbd;text-decoration:line-through;
 text-transform:uppercase;margin-left:5px;font-family: 'GothamNarrow-Book', sans-serif;font-weight:400;}
 .maincontainer .columnslider .col-box .bottom-area{padding:15px;}
@@ -547,10 +547,11 @@ font-size:14px;font-weight:100;text-transform:uppercase;}
 .toolbar .sorter .sort-by label,.toolbar .sorter .pager label{font-weight:400;}
 .toolbar .sorter .sort-by select,.toolbar .sorter .pager select{color:#5a5f65;padding:4px 7px;
 border:1px solid #e3e3e3;text-transform:uppercase;font-size:12px;}
-.toolbar .sorter .view-mode a,.toolbar .sorter .sort-by-switcher{padding:2px 6px;
-border:1px solid #e3e3e3;display:inline-block;color:#444;font-size:18px;line-height:1.2;
-margin-right:-5px;cursor:pointer;}
-.toolbar .sorter .view-mode a:hover,.toolbar .sorter .view-mode a.active,.toolbar .sorter .sort-by-switcher:hover{background-color:#f57a20;color:#fff;border:1px solid #f57a20;}
+.toolbar .sorter .view-mode a,.toolbar .sorter .sort-by-switcher{padding:4px 6px;vertical-align:top;height:35px;
+border:1px solid #e3e3e3;display:inline-block;color:#444;font-size:18px;line-height:1.2;margin-right:-5px;cursor:pointer;}
+.toolbar .sorter .view-mode a{margin-top:-6px;line-height:1.4;}
+.toolbar .sorter .view-mode a:hover,.toolbar .sorter .view-mode a.active,.toolbar .sorter .sort-by-switcher:hover{background-color:#f57a20;
+color:#fff;border:1px solid #f57a20;}
 .toolbar .sorter .sort-by-switcher{font-size:18px;vertical-align:top;line-height:1.4;}
 .toolbar .sorter .pagination{/*float:right;*/}
 .pagination li{display:inline-block;}

@@ -388,7 +388,7 @@ margin-top:4px;margin-right: -20px;
     float: none;*/
     padding:5px 10px;
 }
-
+.checkout-onepage-index .sp-methods #dt_method_phoenix_cashondelivery label{padding-left: 20px;}
 .step .form-list .control label {/*padding-left: 25px;*/}
 .checkout-onepage-index .sp-methods #dt_method_checkmo input[type="radio"],
 .checkout-onepage-index .sp-methods #dt_method_cybersourcesa input[type="radio"]{margin-top:0;}

@@ -33,7 +33,7 @@ a.level2:hover, a.level2.act, a.level2.actParent {
 }
 a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 #breadcrumbs { margin-bottom: 25px;}
-.toolbar .sorter .sort-by select, .toolbar .sorter .pager select{padding:6px 7px;}
+.toolbar .sorter .sort-by select, .toolbar .sorter .pager select{padding:6px 7px;height:35px;}
 .all-search-cats select{border:none;}
 .rating-links{margin:0;}
 .product.grid .details{min-height:60px !important;}

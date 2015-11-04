@@ -578,15 +578,9 @@ vertical-align:middle;}
 }
 .view-mode, .view-mode a, .view-mode strong {
 }
-.view-mode, .view-mode a, .view-mode strong {
-	font-size: 18px; padding: 2px 6px;
-}
-.view-mode strong {
-    font-weight: normal;
-}
-.view-mode > a, .view-mode > strong {
-    margin-right: 3px;
-}
+.view-mode, .view-mode a, .view-mode strong {font-size:18px;padding:6px 6px;height:35px;line-height:1.3;}
+.view-mode strong {font-weight: normal;}
+.view-mode > a, .view-mode > strong {margin-right: 3px;}
 .view-mode .grid::before {
     content: "\f00a";
     font-family: FontAwesome;
