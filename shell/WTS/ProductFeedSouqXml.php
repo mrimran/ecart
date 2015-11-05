@@ -13,11 +13,12 @@ require_once __DIR__.'/../../lib/Varien/Io/File.php';
 class WTS_ProductFeedSouqXml extends Mage_Shell_Abstract
 {
     protected $io;
-    protected $path = __DIR__.'/../../';//project root directory
+    protected $path;//project root directory
     protected $fileName = "souqmobi.xml";
     
     public function __construct()
     {
+        $this->path = __DIR__.'/../../';
         $this->io = new Varien_Io_File();
         parent::__construct();
     }
