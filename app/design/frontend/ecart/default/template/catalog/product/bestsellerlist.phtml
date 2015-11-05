@@ -66,6 +66,8 @@ $_helper = $this->helper('catalog/output');?>
       <div class="columnslider" id="bestselingproducts" data-items="4">
 
        <?php foreach ($_productCollection as $_product): ?>
+      
+
         <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
             <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10)         
                      && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) { ?>
@@ -90,7 +92,18 @@ $_helper = $this->helper('catalog/output');?>
             </div>
           </div>
            <?php endif ?>
-          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+            
+          <div class="price"><?php
+                                echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+                                $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+                                //echo $_product->getFinalPrice();
+                              
+                                ?>
+
+                                <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                                    <span class="not-now">
+                                        <?php echo $_formattedActualPrice; ?></span>
+                                <?php endif; ?></div>
           </div>
           </a>
           <div class="actions">
@@ -142,6 +155,7 @@ $_helper = $this->helper('catalog/output');?>
       <div class="columnslider" data-items="4">
 
        <?php foreach ($_productCollection as $_product): ?>
+        
         <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
             <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10)         
                      && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) { ?>
@@ -167,7 +181,17 @@ $_helper = $this->helper('catalog/output');?>
           </div>
            <?php endif ?>
 
-          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+          <div class="price">
+          <?php
+            echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+              $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+            ?>
+
+            <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                 <span class="not-now">
+            <?php echo $_formattedActualPrice; ?></span>
+            <?php endif; ?>
+          </div>
           </div>
           </a>
           <div class="actions">

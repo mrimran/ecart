@@ -33,11 +33,11 @@ a.level2:hover, a.level2.act, a.level2.actParent {
 }
 a.level1:hover, a.level1.act, a.level1.actParent { color: #f57a20 !important;}
 #breadcrumbs { margin-bottom: 25px;}
-.toolbar .sorter .sort-by select, .toolbar .sorter .pager select{padding:6px 7px;}
+.toolbar .sorter .sort-by select, .toolbar .sorter .pager select{padding:6px 7px;height:35px;}
 .all-search-cats select{border:none;}
 .rating-links{margin:0;}
 .product.grid .details{min-height:60px !important;}
-#narrow-by-list #Price{padding:15px 8px;}
+#narrow-by-list #Price{padding:15px 8px; position:relative;z-index:9999;}
 
 .more-less {padding-left: 15px; font: 13px strong;}
 .more-less a{color: #2d2e32; cursor: pointer;}
@@ -324,6 +324,8 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
   left: -1px;
   right: -1px;
   width: 230px !important;
+  border-left: 1px solid #eaeaea;
+  border-right: 1px solid #eaeaea;
 }
 #search_mini_form .jcf-select .jcf-drop-flipped {
   bottom: 100%;
@@ -397,7 +399,7 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
 }
 /* common custom form elements styles */
 #search_mini_form .jcf-disabled {background: #ddd !important;}
-#search_mini_form .jcf-focus, .jcf-focus * {border-color: #f00 !important;}
+#search_mini_form .jcf-focus, .jcf-focus * {border-color: #eaeaea !important;}
 
 #search_mini_form .jcf-list-content ul,
 #search_mini_form .jcf-select{

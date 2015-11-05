@@ -59,7 +59,15 @@
           </div>
            <?php endif ?>
 
-          <div class="price"><?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false); ?></div>
+          <div class="price"><?php
+            echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
+              $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
+            ?>
+
+            <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
+                 <span class="not-now">
+            <?php echo $_formattedActualPrice; ?></span>
+            <?php endif; ?></div>
           </div>
           </a>
           <div class="actions">
