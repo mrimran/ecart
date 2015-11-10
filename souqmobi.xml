@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+<item>
+<brand>Sharp</brand>
+<datePublished>2015-08-07</datePublished>
+<pname><![CDATA[Apple - iPhone 6 Light Yellow]]></pname>
+<loc><![CDATA[http://localhost/ecart/test-product.html]]></loc>
+<price>23</price>
+</item>
+<item>
+<brand>Sharp</brand>
+<datePublished>2015-08-13</datePublished>
+<pname><![CDATA[Apple - iPhone 6  4GB light Pink]]></pname>
+<loc><![CDATA[http://localhost/ecart/test-product-20.html]]></loc>
+<price>55</price>
+</item>
+<item>
+<brand>Sony</brand>
+<datePublished>2015-08-13</datePublished>
+<pname><![CDATA[ Apple - iPhone 6 16GB - Gray]]></pname>
+<loc><![CDATA[http://localhost/ecart/test-product-21.html]]></loc>
+<price>50.0000</price>
+</item>
+<item>
+<brand>Sharp</brand>
+<datePublished>2015-08-07</datePublished>
+<pname><![CDATA[Apple - iPhone 6 Light Blue]]></pname>
+<loc><![CDATA[http://localhost/ecart/test-product-22.html]]></loc>
+<price>800</price>
+</item>
+<item>
+<brand>Sony</brand>
+<datePublished>2015-10-16</datePublished>
+<pname><![CDATA[Apple - iPhone 6 Light Green]]></pname>
+<loc><![CDATA[http://localhost/ecart/test-product-23.html]]></loc>
+<price>10</price>
+</item>
+<item>
+<brand>Electrolux</brand>
+<datePublished>2015-10-16</datePublished>
+<pname><![CDATA[Apple - iPhone 6  White Simple]]></pname>
+<loc><![CDATA[http://localhost/ecart/apple-iphone-6-16gb-white-simple.html]]></loc>
+<price>800</price>
+</item>
+<item>
+<brand>Sony</brand>
+<datePublished>2015-08-07</datePublished>
+<pname><![CDATA[Apple - iPhone Upcoming Product 1]]></pname>
+<loc><![CDATA[http://localhost/ecart/apple-iphone-upcoming-product-1.html]]></loc>
+<price>35.0000</price>
+</item>
+<item>
+<brand>Panasonic</brand>
+<datePublished>2015-08-17</datePublished>
+<pname><![CDATA[Apple - iPhone Grouped 1]]></pname>
+<loc><![CDATA[http://localhost/ecart/apple-iphone-grouped-1.html]]></loc>
+<price>0</price>
+</item>
+<item>
+<brand></brand>
+<datePublished>2015-08-07</datePublished>
+<pname><![CDATA[Group Associated Product 2]]></pname>
+<loc><![CDATA[http://localhost/ecart/group-associated-product-2.html]]></loc>
+<price>90</price>
+</item>
+<item>
+<brand></brand>
+<datePublished>2015-08-07</datePublished>
+<pname><![CDATA[Group Associated Product 3]]></pname>
+<loc><![CDATA[http://localhost/ecart/group-associated-product-5.html]]></loc>
+<price>190</price>
+</item>
+<item>
+<brand></brand>
+<datePublished>2015-08-07</datePublished>
+<pname><![CDATA[Group Associated Product 4]]></pname>
+<loc><![CDATA[http://localhost/ecart/group-associated-product-6.html]]></loc>
+<price>290</price>
+</item>
+<item>
+<brand>Panasonic</brand>
+<datePublished>2015-08-17</datePublished>
+<pname><![CDATA[Apple - iPhone Grouped 1]]></pname>
+<loc><![CDATA[http://localhost/ecart/apple-iphone-grouped-6.html]]></loc>
+<price>0</price>
+</item>
+<item>
+<brand>Panasonic</brand>
+<datePublished>2015-08-07</datePublished>
+<pname><![CDATA[Apple - iPhone Grouped 3]]></pname>
+<loc><![CDATA[http://localhost/ecart/apple-iphone-grouped-5.html]]></loc>
+<price>0</price>
+</item>
+<item>
+<brand></brand>
+<datePublished>2015-11-02</datePublished>
+<pname><![CDATA[IPhone 6S]]></pname>
+<loc><![CDATA[http://localhost/ecart/iphone-6s.html]]></loc>
+<price>2000</price>
+</item>
+</products>

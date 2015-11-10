@@ -15,6 +15,8 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 require_once 'Mage/CatalogSearch/controllers/ResultController.php';
+$read = Mage::getSingleton('core/resource')->getConnection('core_read'); 
+$write = Mage::getSingleton('core/resource')->getConnection('core_write');
 
 class Catalin_Seo_ResultController extends Mage_CatalogSearch_ResultController
 {
@@ -40,9 +42,26 @@ class Catalin_Seo_ResultController extends Mage_CatalogSearch_ResultController
                 } else {
                     $query->setPopularity(1);
                 }
+				
+			/*	$results = $read->fetchAll("select redirect from catalogsearch_query where redirect='".$query->getRedirect()."'"); 
+                if($results) {
+					echo 'hell'; exit;
+					}
+					else {*/
 
-				$query->prepare();
+				if ($query->getRedirect()) {
+
+					
+					$query->save();
+$this->getResponse()->setRedirect($query->getRedirect(), 301);
+return;
+                } else {
+                    $query->prepare();
+                }
+					/*}*/
             }
+			
+			
 
             Mage::helper('catalogsearch')->checkNotes();
 
