@@ -148,6 +148,8 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
       ->setOrder('entity_id', 'desc')
       ->addAttributeToSelect('*')
       ->setPageSize(20);
+      Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($_productCollection);
+      Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($_productCollection);
       Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($_testproductCollection);                     
       return $_testproductCollection;
     }
