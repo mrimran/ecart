@@ -495,7 +495,7 @@ display:none;}
 .mainheadnav .minicart a .cart-items { position: absolute; top: 0; margin: 0; padding: 2px; font-size: 8px; right: -5px; text-indent: 0; width: 15px; text-align: center; border-radius: 140px; line-height: 1.5; height: 15px; }*/
 .mainheadnav .searchform { display: none; height: auto; }
 .site-footer .footer-bottom .credit-cards { padding: 5px 20px; text-align: center; }
-.showsearch{ display: block; position: absolute; top:4px; right:85px; font-size:20px;color:#fff; cursor: pointer;z-index:9999;background: #f57a20;
+.showsearch{ display: block; position: absolute; top:4px; right:75px; font-size:20px;color:#fff; cursor: pointer;z-index:9999;background: #f57a20;
 height: 50px;margin: 0;border:0;width: 45px;text-align: center;vertical-align: top;padding-top: 14px;}
 .owl-theme .owl-controls { margin-left: 0; text-align: center; }
 #category-menu, #ads { display: block; padding:0; margin:5px -5px -15px;}
