@@ -442,7 +442,7 @@ margin:15px 0 30px;}
 		padding-left: 8px;
 	}
 	body div.wp-custom-menu-popup{
-		width: 575px;
+		width: 540px;
 	}
 	.__product__main__area .buttons .btn1.wishlist span{
 		font-size: 12px;
@@ -451,12 +451,7 @@ margin:15px 0 30px;}
 		font-size: 12px;
 		margin: 0;
 	}
-	button.button{
-		font-size: 9px;
-		font-weight: bold;
-		margin-top: 4px;
-		padding: 9px 5px;
-	}
+	button.button{font-size:10px;/*font-weight: bold;margin-top: 4px;padding: 9px 5px;*/}
 	.__product__main__area .__you_saved{
 		width: 100%;
 		margin-top: 17px;
@@ -469,11 +464,8 @@ margin:15px 0 30px;}
 		float: left;
 		width: 50%;
 	}
-	.maincontainer .columnslider .col-box, .maincontainer .recomandations .col-box{
-		width: 32%;
-		float: left;
-		margin-bottom: 10px;
-	}
+	.maincontainer .columnslider .col-box, .maincontainer .recomandations .col-box{width: 32%;float: left;margin-bottom:10px;}
+	.maincontainer .columnslider.owl-carousel .col-box{width:100%;}
 	.category_deals .today_timer{
 		padding: 31px 10px 0;
 	}
@@ -500,11 +492,7 @@ margin:15px 0 30px;}
     	max-width: 100%;
     	width: auto;
 	}
-	.columnslider {
-    	display: block;
-    	float: left;
-    	width: 100%;
-	}
+	.columnslider{display: block;/*float: left;*/width: 100%;}
 	.maincontainer section .viewmore a{
 		margin-bottom: 10px;
 	}

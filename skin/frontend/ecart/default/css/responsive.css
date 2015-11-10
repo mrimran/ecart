@@ -261,10 +261,7 @@
     .mainhead .logo {
         padding: 0;
     }
-    .mainhead .dealsnav ul li a {
-        font-size: 11px;
-        line-height: 1.4;
-    }
+    .mainhead .dealsnav ul li a {font-size:12px;line-height:1;}
     .mainhead .reasonsnav ul li:first-child,
     .mainhead .reasonsnav ul li {
         text-align: right;
@@ -283,6 +280,10 @@
     .maincontainer .mainmenu {
         display: none;
     }
+    #custommenu .menu a span{display: none !important;}
+    .mainmenu.flymenu #custommenu .parentMenu{padding:10px 15px;}
+    .wp-custom-menu-popup .column a.level1:link,.wp-custom-menu-popup .column a.level1:visited{margin-top:4px;margin-bottom:12px;}
+    .maincontainer .filters ul li label input[type="checkbox"]{padding-right:0;width:13px;margin-left:-15px;margin-top:4px;}
     .homeslidercontainer {
         width: 100%;
     }

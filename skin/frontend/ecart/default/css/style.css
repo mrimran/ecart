@@ -103,7 +103,8 @@ background-color:#fff;border-top:0;}
 .topbar .topnav .lang:hover ul{right:15px;}
 
 .mainhead{padding:10px 0;visibility: visible;}
-.mainhead .logo{padding-top:10px;}
+.mainhead .logo{padding-top:10px;display:block;}
+.mainhead .logo img{max-width:100%;}
 .mainhead .padding-r{padding-right:0;}
 .mainhead .reasonsnav{margin:0;padding:5px 0 15px;border-bottom:1px dashed #eaeaea;}
 .mainhead .reasonsnav ul,.mainhead .dealsnav ul{list-style-type:none;}
