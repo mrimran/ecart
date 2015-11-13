@@ -625,6 +625,7 @@ body.customer-account .filters ul li{display:inherit;width:100%;}
 .cart_table td.qty input{padding:5px;}
 .cart_table td.qty, .data-table td.product_price, .cart_table td.sub-total,.data-table td{text-align:center;}
 .data-table.orders td.st-key,form#wishlist-view-form .clean-table.linearize-table.data-table td.st-key{display: none;}
+.dashboard .data-table.orders td.st-key{display:table-cell;}
 #recently-viewed-items li > a{width:27%;}
 .mini-products-list .product-details{max-width:72%;}
 .data-table td .item-options{text-align:left;padding:10px 0;}
@@ -658,8 +659,8 @@ div.price-slider .price-slider-to{margin-top:0;}
 @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:portrait){
 .col-sm-8.col-md-9.paddingzeroR{padding-left:15px;padding-right:0 !important;}
 .__product__main__area .buttons .col-sm-3{padding-left:0;}
-.mainheadnav .minicart {top: -59px;right:0; }
-.showsearch{top:0px;}
+.mainheadnav .minicart {top: -70px;right:0; }
+.showsearch{top:9px;}
 /*.mainhead .logo{padding:0;}
 .mainhead .dealsnav ul li a{font-size:11px;}
 .mainhead .reasonsnav ul li:first-child,.mainhead .reasonsnav ul li{
