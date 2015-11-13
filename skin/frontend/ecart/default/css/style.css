@@ -343,6 +343,7 @@ margin-top:-2px;}
 .maincontainer .columnslider .actions,.products .product.grid .price-info .actions{visibility:hidden;
 font-size:14px;position:absolute;z-index:99999;bottom:15px;right:15px;}
 .products .actions a.button{text-transform: uppercase;background-color:#f57a20;color:#fff;padding:4px 10px;}
+.products .actions a.button:hover{color:#fff;background-color:#303030;}
 .maincontainer .listing-suggest .columnslider .actions{bottom:25px;}
 .maincontainer .columnslider .actions p,.products .product.grid .price-info .actions p{margin-bottom:0;}
 .maincontainer .columnslider .actions .availability.out-of-stock,
