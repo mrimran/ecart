@@ -573,6 +573,7 @@ input[type=checkbox],input[type=radio]{margin-top:0;/*vertical-align:middle !imp
 clear:both;}
 .__product__main__area .price{font-size:18px;}
 .img-box img{max-width:100%;}
+.form-horizontal .form-group .col-sm-6:first-child{margin-bottom:15px;}
 .form-horizontal .form-group.review-textarea .col-sm-8{width:100%;}
 .form-horizontal .form-group.review-textarea .col-sm-4{margin-top:10px;}
 .form-horizontal .form-group.review-textarea #product-review-table tr{background-color:inherit;}
