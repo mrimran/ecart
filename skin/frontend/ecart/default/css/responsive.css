@@ -654,13 +654,13 @@ div.price-slider .price-slider-to{margin-top:0;}
 .maincontainer .columnslider .col-box .bottom-area{padding-top:0;position:relative;}
 .st-head-row.st-head-row-main{display:none;}
 .price-box .old-price, .price-box .special-price,.customer-account .buttons-set .button{width:100%;display:block;margin-bottom:2px;}
+.toolbar .sorter .sort-by, .toolbar .sorter .pager, .toolbar .sorter .view-mode, .toolbar .sorter .pagination{margin:2px 0;padding-right:0;}
+body.catalog-category-view #shopbybrand .brands li{width:50%;}
 }
 
 @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:portrait){
 .col-sm-8.col-md-9.paddingzeroR{padding-left:15px;padding-right:0 !important;}
 .__product__main__area .buttons .col-sm-3{padding-left:0;}
-.mainheadnav .minicart {top: -70px;right:0; }
-.showsearch{top:9px;}
 /*.mainhead .logo{padding:0;}
 .mainhead .dealsnav ul li a{font-size:11px;}
 .mainhead .reasonsnav ul li:first-child,.mainhead .reasonsnav ul li{
