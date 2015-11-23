@@ -9,11 +9,13 @@
  <script type="text/javascript">
     function send_alert_email(url, button)
     {
+       
         var f = document.createElement('form');
-		var productId = button.id.replace(/\D+/g,"");
+        var productId = button.id.replace(/\D+/g,"");
         var block = button.up('.amxnotif-block');
         if($('amxnotif_guest_email-' + productId)){
              $('amxnotif_guest_email-' + productId).addClassName("validate-email required-entry");
+       
         }
         if(block) {
             block.childElements().each(function (child) {
@@ -32,9 +34,12 @@
             button.remove();
             return true;  
         }
-		if($('amxnotif_guest_email-' + productId)){
-			$('amxnotif_guest_email-' + productId).removeClassName("validate-email required-entry");
-		}
+
+        if($('amxnotif_guest_email-' + productId)){
+            $(".amxnotif_guest_email-" + productId).stop();
+            $('amxnotif_guest_email-' + productId).removeClassName("validate-email required-entry");
+             
+        }
         return false;
     }
     
@@ -48,11 +53,11 @@
     }
 </script>
 <div class="amxnotif-block">
-	<label style="color: #2F2F2F;font-weight: bold; float:none;" ><?php echo $this->__('Subscribe to back in stock notification'); ?> </label><br/>
-	<input type="text" name="guest_email" id="amxnotif_guest_email-<?php echo $_productId;?>" onKeyPress="return checkIt(event, '<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl('stock'));?>', $('button-email-send-<?php echo $_productId;?>'))" class="input-text" size="30" />
-	<input type="hidden" name="product_id" value="<?php echo $_productId;?>" />
-	<input type="hidden" name="type" value="email" />
-	<input type="hidden" name="parent_id" value="<?php echo Mage::registry('par_product_id')?>" />
-	<input type="hidden" name="<?php echo Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED ?>" value="<?php echo Mage::helper('amxnotif')->getEncodedUrl()?>" />
-	<button type="button" id="button-email-send-<?php echo $_productId;?>" class="button btn-cart amcart-ignore" onclick="send_alert_email('<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl('stock'));?>', this)" title="<?php echo $this->__('Subscribe'); ?>"><span><span><?php echo $this->__('Subscribe'); ?></span></span> </button>
+    <label style="color: #2F2F2F;font-weight: bold; float:none;" ><?php echo $this->__('Subscribe to back in stock notification'); ?> </label><br/>
+    <input type="text" name="guest_email" id="amxnotif_guest_email-<?php echo $_productId;?>" onKeyPress="send_alert_email('<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl('stock'));?>', this)" class="input-text" size="30" />
+    <input type="hidden" name="product_id" value="<?php echo $_productId;?>" />
+    <input type="hidden" name="type" value="email" />
+    <input type="hidden" name="parent_id" value="<?php echo Mage::registry('par_product_id')?>" />
+    <input type="hidden" name="<?php echo Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED ?>" value="<?php echo Mage::helper('amxnotif')->getEncodedUrl()?>" />
+    <button type="button" id="button-email-send-<?php echo $_productId;?>" class="button btn-cart amcart-ignore" onclick="send_alert_email('<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl('stock'));?>', this)" title="<?php echo $this->__('Subscribe'); ?>"><span><span><?php echo $this->__('Subscribe'); ?></span></span> </button>
 </div>
