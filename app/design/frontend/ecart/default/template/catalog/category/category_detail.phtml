@@ -136,7 +136,7 @@ $category_new->url_key;
 <?php endforeach ?>
 <?php $getProductCollectionLatests = $this->getProductCollectionLatest($seller); ?>
 <?php if ($_productCollectionseller->count() && ($getProductCollectionLatests->count() || $getProductCollectionLatest->count()) ): ?>
-<section id="latestproducts" class="desktop">
+<section id="latestproducts">
     <div class="sectiontitle">
         <h2><span>Latest Products</span></h2>
             <?php $_helper = $this->helper('catalog/output');
@@ -227,7 +227,7 @@ $category_new->url_key;
 <?php endforeach ?>
 <?php $getProductCollectionLatests = $this->getLoadedProductCollectionpro($seller); ?>
 <?php if ($_productCollectionseller->count() && ($getProductCollectionLatests->count() || $getProductCollectionLatest->count()) ): ?>
-<section id="bestsellings" class="desktop">
+<section id="bestsellings">
     <div class="sectiontitle">
         <h2><span>Best Sellings</span></h2>
         <ul class="brandsmenu" id="brandsBestSellings">
@@ -308,7 +308,7 @@ $_helper = $this->helper('catalog/output');
 <?php endforeach ?>
 <?php $getProductCollectionLatests = $this->getProductCollectionUpcoming($seller); ?>
 <?php if ($_productCollectionseller->count() && ($getProductCollectionLatests->count() || $getProductCollectionLatest->count()) ): ?>
-<section id="upcommingproducts" class="desktop">
+<section id="upcommingproducts">
             <?php
             ?>
     <div class="sectiontitle">

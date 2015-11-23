@@ -21,6 +21,7 @@ class Amasty_Xnotif_EmailController extends Mage_Core_Controller_Front_Action
 
      public function stockAction()
     {
+    
         $session = Mage::getSingleton('catalog/session');
         /* @var $session Mage_Catalog_Model_Session */
         $backUrl    = $this->getRequest()->getParam(Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED);
@@ -28,7 +29,7 @@ class Amasty_Xnotif_EmailController extends Mage_Core_Controller_Front_Action
         $guestEmail  = $this->getRequest()->getParam('guest_email');
         $parentId  = (int) $this->getRequest()->getParam('parent_id');
          
-        if (!$backUrl) {
+        if (!$backUrl) {  
             $this->_redirect('/');
             return ;
         }

@@ -1176,22 +1176,55 @@ var ProductMediaManager = {
             return;
         }
 
-        if(image[0].naturalWidth && image[0].naturalHeight) {
-            var widthDiff = image[0].naturalWidth - image.width() - ProductMediaManager.IMAGE_ZOOM_THRESHOLD;
-            var heightDiff = image[0].naturalHeight - image.height() - ProductMediaManager.IMAGE_ZOOM_THRESHOLD;
+        // if(image[0].naturalWidth && image[0].naturalHeight) {
+        //     var widthDiff = image[0].naturalWidth - image.width() - ProductMediaManager.IMAGE_ZOOM_THRESHOLD;
+        //     var heightDiff = image[0].naturalHeight - image.height() - ProductMediaManager.IMAGE_ZOOM_THRESHOLD;
 
-            if(widthDiff < 0 && heightDiff < 0) {
-                //image not big enough
+        //     if(widthDiff < 0 && heightDiff < 0) {
+        //         //image not big enough
 
-                image.parents('.product-image').removeClass('zoom-available');
+        //         image.parents('.product-image').removeClass('zoom-available');
 
-                return;
-            } else {
-                image.parents('.product-image').addClass('zoom-available');
-            }
-        }
+        //         return;
+        //     } else {
+        //         image.parents('.product-image').addClass('zoom-available');
+        //     }
+        // }
 
-        image.elevateZoom();
+        //image.elevateZoom();
+        var settings = {
+
+        // set tint background
+        // tint:true,
+        // tintColour:'#F90',
+        // tintOpacity:0.5,
+
+        // Size
+        zoomWindowHeight: 300,
+        zoomWindowWidth: 400,
+        borderSize: 0,
+
+        // Position
+        zoomWindowOffetx: 10,
+        zoomWindowOffety: 0,
+
+        // Additional settings for Zoomer positioning.
+        // zoomWindowPosition: 1,
+        // zoomType: "inner",
+
+        // Fade-in speed settings
+        zoomWindowFadeIn: 500,
+        zoomWindowFadeOut: 500,
+        lensFadeIn: 500,
+        lensFadeOut: 500,
+
+        // Ability to zoom by using the mouse scroll.
+        scrollZoom : true,
+
+        // inertia - my favorite one
+        //easing: true
+}
+    image.elevateZoom(settings);
 	// if ($('.review-product-list').length == 0) {
 	//    image.elevateZoom();
 	// }

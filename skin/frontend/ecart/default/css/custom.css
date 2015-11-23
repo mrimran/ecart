@@ -369,7 +369,7 @@ body > #search_mini_form .jcf-select-drop.jcf-drop-flipped {
   overflow: auto;
 }
 #search_mini_form .jcf-list .jcf-option {
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   overflow: hidden;
   cursor: pointer;
   display: block;

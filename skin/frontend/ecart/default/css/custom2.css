@@ -310,6 +310,8 @@ margin-bottom:2px;margin-right:0px;margin-top:3px;}
 font-size:12px;color:#303030;text-align:center;background-color:#fff;border:1px solid #eee; white-space: nowrap; text-overflow:ellipsis;}
 .category_deals .categories_list li a:hover,.category_deals .categories_list li.active a{
 background-color:#303030;color:#fff;border-color:#303030;}
+body.extension-index-seller .category_deals .categories_list li a:hover,
+body.extension-index-seller .category_deals .categories_list li.active a{color:#f57a20;background-color:#fff;border-color:#eee;}
 .category_deals .today_timer{height:195px;padding:45px 42px 0;text-align:center;}
 .category_deals .today_timer h2{font-size:24px;font-weight:400;margin-bottom:0px;}
 .category_deals .today_timer h2 a{color:#f57a20;}
@@ -345,6 +347,10 @@ margin:15px 0 30px;}
 .tips b{font-family:'GothamNarrow-Bold','open-sans',sans-serif;}
 .item-options{font-size:13px;text-transform:capitalize;}
 #search_mini_form .jcf-select{margin-top:-2px;}
+.note-msg{position:relative;margin-top:15px;padding: 7px 10px 7px 20px;border-left: 5px solid #df280a;background-color:#faebe7;
+font-size:15px;color:#000;}
+.note-msg:before{content: '';position: absolute;width:0;height:0;display: block;border-top: 6px solid transparent;top:12px;left:0;
+border-bottom: 6px solid transparent;border-left: 6px solid #df280a;border-right: none;}
 
 /** Faq **/
 .__faq h1 { font-size: 22px; color: rgb(48, 48, 48); margin-bottom: 24px; font-weight: bold; }
