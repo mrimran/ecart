@@ -351,6 +351,7 @@ function loadPriceWithAjax()
     if(hasPrice === false) {
         if(!request) {
             //show slider on price
+            var old_price = jQuery('.price-box .regular-price .price').text();
             jQuery('.price-box .regular-price .price').html(' <span class="loader-orange"></span>');
             // jQuery('.price-box .regular-price .price').hide();
             //console.log(jQuery("[name*='super_attribute']"));
@@ -360,9 +361,11 @@ function loadPriceWithAjax()
                 //console.log(data.price);
                 if(data.price.length > 0){
                     jQuery('.price-box .regular-price .price').text(data.price);
-                    //hide slider on price.
-                    jQuery('.price-box .regular-price .price').show();
+                }else {
+                    jQuery('.price-box .regular-price .price').text(data.price);
                 }
+                //hide slider on price.
+                jQuery('.price-box .regular-price .price').show();
                 request = null;//release the request
             });
         }
