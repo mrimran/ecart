@@ -1224,7 +1224,7 @@ var ProductMediaManager = {
         // inertia - my favorite one
         //easing: true
 }
-    image.elevateZoom(settings);
+    //image.elevateZoom(settings);
 	// if ($('.review-product-list').length == 0) {
 	//    image.elevateZoom();
 	// }
