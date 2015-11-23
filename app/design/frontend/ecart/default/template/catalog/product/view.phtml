@@ -141,9 +141,9 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
        <?php endif; ?>
        <?php } else { ?>
        <?php if ($_product->isAvailable() && $stock->getQty() != 0): ?>
-      <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
-        <?php echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
-        pcs</div>
+      <!-- <div class="__in_stock"><strong>AVAILABILITY:</strong> In Stock
+        <?php // echo (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()?>
+        pcs</div> -->
         <?php else : ?>
             <div class="__in_stock"><strong>AVAILABILITY:</strong> Out of Stock</div>
        <?php endif; ?>
