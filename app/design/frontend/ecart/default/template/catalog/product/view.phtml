@@ -362,7 +362,7 @@ function loadPriceWithAjax()
                 if(data.price.length > 0){
                     jQuery('.price-box .regular-price .price').text(data.price);
                 }else {
-                    jQuery('.price-box .regular-price .price').text(data.price);
+                    jQuery('.price-box .regular-price .price').text(old_price);
                 }
                 //hide slider on price.
                 jQuery('.price-box .regular-price .price').show();
