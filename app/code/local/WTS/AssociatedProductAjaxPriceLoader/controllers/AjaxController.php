@@ -42,12 +42,12 @@ class WTS_AssociatedProductAjaxPriceLoader_AjaxController extends Mage_Core_Cont
         }
         $this->getResponse()->setHeader('Content-type', 'application/json');
         if($finalPrice <= 0.00) {
-            $this->getResponse()->setBody("");
-            return;
+            $this->getResponse()->setBody("{}");
+        }else {
+            $finalPrice = Mage::app()->getStore()->getCurrentCurrencyCode() . number_format($finalPrice, 2, '.', ',');//change in this format 1234.54
+            $priceArray = array('price' => $finalPrice);
+            $this->getResponse()->setBody(json_encode($priceArray));
         }
-        $finalPrice = Mage::app()->getStore()->getCurrentCurrencyCode() . number_format($finalPrice, 2, '.', ',');//change in this format 1234.54
-        $priceArray = array('price' => $finalPrice);
-        $this->getResponse()->setBody(json_encode($priceArray));
     }
 
 }
