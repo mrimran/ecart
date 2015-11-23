@@ -103,7 +103,8 @@ background-color:#fff;border-top:0;}
 .topbar .topnav .lang:hover ul{right:15px;}
 
 .mainhead{padding:10px 0;visibility: visible;}
-.mainhead .logo{padding-top:10px;}
+.mainhead .logo{padding-top:10px;display:block;}
+.mainhead .logo img{max-width:100%;}
 .mainhead .padding-r{padding-right:0;}
 .mainhead .reasonsnav{margin:0;padding:5px 0 15px;border-bottom:1px dashed #eaeaea;}
 .mainhead .reasonsnav ul,.mainhead .dealsnav ul{list-style-type:none;}
@@ -342,6 +343,7 @@ margin-top:-2px;}
 .maincontainer .columnslider .actions,.products .product.grid .price-info .actions{visibility:hidden;
 font-size:14px;position:absolute;z-index:99999;bottom:15px;right:15px;}
 .products .actions a.button{text-transform: uppercase;background-color:#f57a20;color:#fff;padding:4px 10px;}
+.products .actions a.button:hover{color:#fff;background-color:#303030;}
 .maincontainer .listing-suggest .columnslider .actions{bottom:25px;}
 .maincontainer .columnslider .actions p,.products .product.grid .price-info .actions p{margin-bottom:0;}
 .maincontainer .columnslider .actions .availability.out-of-stock,
@@ -1160,25 +1162,50 @@ margin-bottom: 10%;}
 .bestSellingsNaviTable { position: fixed; top: 0; margin:-16px 0 0 0; background: #fff; z-index:999; padding-left: 0 !important; padding-right: 0 !important;}
 .bestSellingsNaviTable .categories_list li { width: 16% !important;}
 .bestSellingsNaviTable .categories_list li a { line-height: 15px; padding-top: 4px !important;} 
-.bestSellingsNaviTable .categories_list a.active { background: #000 !important; color: #fff !important; }
-.bestSellingsNaviTable .categories_list a:hover { background: #000 !important; color: #fff !important; }
+.bestSellingsNaviTable .categories_list a.active{color:#f57a20;}
+.bestSellingsNaviTable .categories_list a:hover{color:#f57a20;}
 
 
 .categories_list a span { background-image: url("../images/cat-sprite.png"); background-position: 0 0; background-repeat: no-repeat; display: block;  height: 25px; vertical-align: middle; width: 27px;
 margin: auto;
 }
-.categories_list a[href="#bestselingproduct29"] span {background-position: 0 -35px;}
-.categories_list a[href="#bestselingproduct32"] span {background-position: 3px -390px;}
-.categories_list a[href="#bestselingproduct35"] span {background-position: 0 -74px;}
-.categories_list a[href="#bestselingproduct39"] span {background-position: 0 -422px;}
-.categories_list a[href="#bestselingproduct47"] span {background-position: 0 -454px;}
-.categories_list a[href="#bestselingproduct53"] span {background-position: 0 -115px;}
-.categories_list a[href="#bestselingproduct61"] span {background-position: 0 -156px;}
-.categories_list a[href="#bestselingproduct65"] span {background-position: 0 -233px;}
-.categories_list a[href="#bestselingproduct68"] span {background-position: 0 -194px;}
-.categories_list a[href="#bestselingproduct70"] span {background-position: 0 -276px;}
-.categories_list a[href="#bestselingproduct72"] span {background-position: 0 -314px;}
-.categories_list a[href="#bestselingproduct81"] span {background-position: 0 -355px;}
+.categories_list a[href="#bestselingproduct29"] span{background-position: 0 -35px;}
+.categories_list a[href="#bestselingproduct32"] span{background-position: 3px -390px;}
+.categories_list a[href="#bestselingproduct35"] span{background-position: 0 -74px;}
+.categories_list a[href="#bestselingproduct39"] span{background-position: 0 -422px;}
+.categories_list a[href="#bestselingproduct47"] span{background-position: 0 -454px;}
+.categories_list a[href="#bestselingproduct53"] span{background-position: 0 -115px;}
+.categories_list a[href="#bestselingproduct61"] span{background-position: 0 -156px;}
+.categories_list a[href="#bestselingproduct65"] span{background-position: 0 -233px;}
+.categories_list a[href="#bestselingproduct68"] span{background-position: 0 -194px;}
+.categories_list a[href="#bestselingproduct70"] span{background-position: 0 -276px;}
+.categories_list a[href="#bestselingproduct72"] span{background-position: 0 -314px;}
+.categories_list a[href="#bestselingproduct81"] span{background-position: 0 -355px;}
+
+.categories_list a[href="#bestselingproduct29"]:hover span,
+.categories_list a[href="#bestselingproduct29"].active span{background-position: -25px -35px;}
+.categories_list a[href="#bestselingproduct32"]:hover span,
+.categories_list a[href="#bestselingproduct32"].active span{background-position: -28px -390px;}
+.categories_list a[href="#bestselingproduct35"]:hover span,
+.categories_list a[href="#bestselingproduct35"].active span{background-position: -28px -74px;}
+.categories_list a[href="#bestselingproduct39"]:hover span,
+.categories_list a[href="#bestselingproduct39"].active span{background-position: -28px -422px;}
+.categories_list a[href="#bestselingproduct47"]:hover span,
+.categories_list a[href="#bestselingproduct47"].active span{background-position:-25px -454px;}
+.categories_list a[href="#bestselingproduct53"]:hover span,
+.categories_list a[href="#bestselingproduct53"].active span{background-position:-28px -115px;}
+.categories_list a[href="#bestselingproduct61"]:hover span,
+.categories_list a[href="#bestselingproduct61"].active span{background-position:-28px -156px;}
+.categories_list a[href="#bestselingproduct65"]:hover span,
+.categories_list a[href="#bestselingproduct65"].active span{background-position:-28px -233px;}
+.categories_list a[href="#bestselingproduct68"]:hover span,
+.categories_list a[href="#bestselingproduct68"].active span{background-position:-25px -194px;}
+.categories_list a[href="#bestselingproduct70"]:hover span,
+.categories_list a[href="#bestselingproduct70"].active span{background-position:-26px -276px;}
+.categories_list a[href="#bestselingproduct72"]:hover span,
+.categories_list a[href="#bestselingproduct72"].active span{background-position:-28px -314px;}
+.categories_list a[href="#bestselingproduct81"]:hover span,
+.categories_list a[href="#bestselingproduct81"].active span{background-position:-26px -355px;}
 
 .catalog-category-view #Category li form .check-box{
 	float: left;

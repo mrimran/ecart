@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Fenomics_GTM</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License (OSL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Simple Google Tag Manager (GTM) Integration</summary>
+    <description>Simple Google Tag Manager (GTM) Integration. Made in Germany.</description>
+    <notes>Latest version</notes>
+    <authors><author><name>FENOMICS GmbH</name><user>we</user><email>w.embach@fenomics.de</email></author></authors>
+    <date>2014-08-21</date>
+    <time>12:06:17</time>
+    <contents><target name="magelocal"><dir name="Fenomics"><dir name="GTM"><dir name="Block"><file name="Gtmcode.php" hash="88a7f87717b0a86ca70b7f194076088d"/></dir><dir name="Helper"><file name="Data.php" hash="b62d88ce00ca36e751a6a98b4109668e"/></dir><dir name="etc"><file name="adminhtml.xml" hash="7fc7608e12fa0569744095e7e99c9ee9"/><file name="config.xml" hash="da242565fc42ec925951fabc35659540"/><file name="system.xml" hash="dfe54030618ec5368f98e9fe7794d3aa"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="fenomics"><file name="gtm.xml" hash="8d5d95229f74c900ea71e20d6edf0676"/></dir></dir><dir name="template"><dir name="fenomics"><dir name="gtm"><file name="default.phtml" hash="83f3b48f0dc88e61fda582eb6ce20f79"/></dir></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Fenomics_GTM.xml" hash="8320d9814f7a78a34ee6e58e15dd43a3"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>5.5.0</max></php></required></dependencies>
+</package>
