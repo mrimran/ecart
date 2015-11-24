@@ -109,6 +109,9 @@
                 <stylesheet>css/bootstrap-select.css</stylesheet>
             </action>
             <action method="addCss">
+                <stylesheet>css/webandpeople/custommenu/custommenu.css</stylesheet>
+            </action>
+            <action method="addCss">
                 <stylesheet>css/style.css</stylesheet>
             </action>
             <action method="addCss">
@@ -123,9 +126,6 @@
              <action method="addCss">
                 <stylesheet>css/stacktable.css</stylesheet>
             </action>
-            <!-- <action method="addCss">
-                <stylesheet>css/jPushMenu.css</stylesheet>
-            </action> -->
             <action method="removeItem">
                 <type>skin_css</type>
                 <name>css/styles.css</name>
@@ -154,18 +154,13 @@
 	
 	
         <reference name="footer">
-			
-
 			<block type="cms/block" name="feature_footer" before="bottomContainer">
 			<action method="setBlockId"><block_id>feature_footer</block_id></action>
 			</block>
 			
-			
 			<block type="cms/block" name="footer_social"  before="cms_footer_links">
 			<action method="setBlockId"><block_id>footer_social</block_id></action>
 			</block>
-		
-			
         </reference>
   
  <reference name="left">
