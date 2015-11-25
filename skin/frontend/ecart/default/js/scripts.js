@@ -52,6 +52,7 @@ jQuery(document).ready(function($) {
           var id = jQuery(this).attr('data-id');
           jQuery("#" + id).slideToggle();
      });
+
      jQuery('.close.skip-link-close').click(function(){
        /* Act on the event */
        jQuery(this).parent().parent().slideUp();
@@ -175,6 +176,7 @@ jQuery("body").mouseup(function (e){
 (function() {
      jQuery(window).load(function() {
           jQuery('.data-table').stacktable();
+          jQuery(".custom-scroll").mCustomScrollbar({theme:"dark",});
          // jQuery('#checkout-review-table').stacktable({myClass:'a-center'});
      });
 })(jQuery);

@@ -1043,11 +1043,11 @@ background-color:#fff;border:1px solid #eaeaea;height:auto;vertical-align: top;}
 vertical-align: top;padding:0 10px;}
 .header-minicart .mini-products-list li .product-name{color:#494949;font-size:14px;line-height: 1.3;
 margin-bottom:5px;}
-.header-minicart .mini-products-list li .info-wrapper .price-wrapper th,
-.header-minicart .mini-products-list li .info-wrapper .qty-wrapper{display:none;}
+.header-minicart .mini-products-list li .info-wrapper .price-wrapper th{display:none;}
 .header-minicart .mini-products-list li .cross{position:absolute;right:8px;top:48%;
 background-color:#5a5f65;font-size:10px;padding:1px 5px;border-radius:3px;line-height:1.5;
 text-align:center;display:none;}
+.header-minicart .mini-products-list li .info-wrapper .qty-wrapper{}
 .header-minicart .mini-products-list li:hover .cross{display:block;}
 .header-minicart .mini-products-list li .price{font-size:14px;
 font-family:'GothamNarrow-Bold', sans-serif;}
@@ -1215,7 +1215,7 @@ margin: auto;
 	float: left;
 	width: calc(100% - 20px);
 }
-
+.custom-scroll{max-height:300px;overflow: auto;}
 .loader-orange{
 	position: relative;
 	width: 60px;
@@ -1225,6 +1225,3 @@ margin: auto;
 	vertical-align: middle;
 	background: url(../images/loading.gif) no-repeat;
 }
-
-
-

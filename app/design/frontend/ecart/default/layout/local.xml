@@ -53,6 +53,10 @@
                 <type>skin_js</type>
                 <name>js/owl.carousel.min.js</name>
             </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.mCustomScrollbar.concat.min.js</name>
+            </action>
             <!-- <action method="addItem">
                 <type>skin_js</type>
                 <name>js/jquery.malihu.PageScroll2id.min.js</name>
@@ -107,6 +111,9 @@
 
             <action method="addCss">
                 <stylesheet>css/bootstrap-select.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/jquery.mCustomScrollbar.min.css</stylesheet>
             </action>
             <action method="addCss">
                 <stylesheet>css/webandpeople/custommenu/custommenu.css</stylesheet>
