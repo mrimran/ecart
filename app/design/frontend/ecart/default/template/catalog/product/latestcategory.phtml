@@ -139,7 +139,7 @@
     
     <div class="clearfix">
     <?php $i=0; foreach ($_productCollection as $_product): ?>
-				<div class="product clearfix grid">
+				<div class="product clearfix grid" data-items="4">
 					<div class="col-sm-4 image">
                   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php $_imgSize = 210; ?>

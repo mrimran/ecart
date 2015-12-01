@@ -87,7 +87,7 @@
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
     <?php $i=0; foreach ($_productCollection as $_product): ?>
-    <div class="product grid">
+    <div class="product grid" data-items="4">
         <div class="col-sm-4 image">
             <a href="<?php echo Mage::getBaseUrl()."extension/index/productcollection?id=".$_product->getId();?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                 <?php $_imgSize = 210; ?>
