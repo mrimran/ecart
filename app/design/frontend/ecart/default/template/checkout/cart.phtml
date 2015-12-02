@@ -160,6 +160,12 @@
             </table>
         <script type="text/javascript">decorateTable('shopping-cart-table')</script>
     </form>
+<div class="cart-forms clearfix">
+        <?php /* Extensions placeholder */ ?>
+        <?php echo $this->getChildHtml('checkout_cart_widget') ?>
+        <?php echo $this->getChildHtml('coupon') ?>
+        <?php echo $this->getChildHtml('checkout.cart.extra') ?>
+    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
 <?php if(!$this->hasError()): ?>
     <ul class="checkout-types bottom">
     <li><?php if($this->getContinueShoppingUrl()): ?>
@@ -172,13 +178,7 @@
     <?php endforeach; ?>
     </ul>
 <?php endif; ?>
-<div class="cart-forms">
-        <?php /* Extensions placeholder */ ?>
-        <?php echo $this->getChildHtml('checkout_cart_widget') ?>
-        <?php echo $this->getChildHtml('coupon') ?>
-        <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-    </div>
-    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+</div>
 <!--     <div class="cart-totals-wrapper">
         <div class="cart-totals">
             <?php echo $this->getChildHtml('totals'); ?>

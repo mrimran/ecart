@@ -162,7 +162,11 @@ p.required{color:red;}
 .shopbybrand-list .ca-container .ca-item{height:auto;margin-bottom:20px;max-width:190px;
 text-align:left;}
 .shopbybrand-list .ca-container .ca-item-main a{max-height:70px;display:block;overflow:hidden;}
-.discount-form{margin-top:0px;position:relative;width:50%;}
+.cart-forms{min-height:85px;}
+#discount-coupon-form,.cart-forms .checkout-types.bottom{display: inline-block;vertical-align:top;}
+.cart-forms .checkout-types.bottom{float:right;}
+#discount-coupon-form .field-wrapper{position:relative;}
+.discount-form{margin-top:5px;position:relative;}
 .discount-form label{text-transform:uppercase;padding-right:5px;padding-top:10px;}
 .discount-form .input-text{outline:none;padding:8px 12px;font-size:14px;width:50%;border-radius:2px;
 color:#555;border:1px solid #eaeaea;margin-bottom:10px;height:36px;}

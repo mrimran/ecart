@@ -661,6 +661,8 @@ div.price-slider .price-slider-to{margin-top:0;}
 .price-box .old-price, .price-box .special-price,.customer-account .buttons-set .button{width:100%;display:block;margin-bottom:2px;}
 .toolbar .sorter .sort-by, .toolbar .sorter .pager, .toolbar .sorter .view-mode, .toolbar .sorter .pagination{margin:2px 0;padding-right:0;}
 body.catalog-category-view #shopbybrand .brands li{width:50%;}
+.discount-form .validation-advice{font-size:12px;}
+#discount-coupon-form, .cart-forms .checkout-types.bottom{width:100%;float:none;}
 }
 
 @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:portrait){
