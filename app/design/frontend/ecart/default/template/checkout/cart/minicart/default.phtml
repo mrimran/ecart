@@ -124,9 +124,12 @@
                     </td>
                 </tr>
                 <tr class="qty-wrapper">
-                    <th><?php echo $this->__('Qty'); ?></th>
-                    <td>
-                        <input
+                    <!-- <th><span class="priice"><?php echo $this->__('Qty'); ?></span>x <?php echo $this->getQty()?></th> -->
+                    <td class="price-wrapper">
+                    <dl class="item-options">
+                <dt><?php echo $this->__('Qty'); ?> x <?php echo $this->getQty()?></dt>
+                </dl>
+                        <!-- <input
                             id="qinput-<?php echo $_item->getId(); ?>"
                             data-link="<?php echo $this->getAjaxUpdateUrl() ?>"
                             data-item-id="<?php echo $_item->getId(); ?>"
@@ -141,8 +144,8 @@
                                 disabled="disabled"
                                 data-update
                                 data-cart-item-update
-                                class="button quantity-button">
-                            <?php echo $this->__('ok'); ?>
+                                class="button quantity-button"> -->
+                            <?php //echo $this->__('ok'); ?>
                         </button>
                     </td>
                 </tr>

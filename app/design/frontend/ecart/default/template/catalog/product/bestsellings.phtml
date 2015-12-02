@@ -9,22 +9,6 @@
       <div class="sectiontitle">
         <h2><span>BEST SELLINGS</span></h2>
         <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">View More Products</a>
-<!--         <ul class="brandsmenu smartphones">
-            <li>
-                <?php
-                $_productCollectionbrand = $this->getLoadedProductCollectionbrand();
-                $_helper = $this->helper('catalog/output');
-                ?>
-                <select onchange="getbrand()" id="brands">
-                    <option value="0">Brands</option>
-                    <?php
-                    foreach ($_productCollectionbrand as $_brand):
-                        ?>
-                        <option value="<?php echo $_brand->option_id; ?>"><?php echo $_brand->name; ?></option>
-<?php endforeach ?>
-                </select>
-            </li>
-        </ul> -->
       </div>
       <div class="columnslider" id="bestselingproducts" data-items="4">
 

@@ -361,6 +361,7 @@ function loadPriceWithAjax()
                 //console.log(data.price);
                 if(data.price.length > 0){
                     jQuery('.price-box .regular-price .price').text(data.price);
+                    jQuery('#product_addtocart_form div h1').text(data.name);
                 }else {
                     jQuery('.price-box .regular-price .price').text(old_price);
                 }

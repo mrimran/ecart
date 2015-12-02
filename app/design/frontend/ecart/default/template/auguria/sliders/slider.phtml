@@ -16,8 +16,8 @@ $captionHeight = $this->getCaptionHeight();
 
 if ($slides && $slides->count()>0):
 ?>
-
-<div id="auguria-slider" class="clearer col-sm-12 col-md-9 homeslidercontainer">
+<div class="col-sm-12 col-md-9 paddingzero">
+<div id="auguria-slider" class="clearer homeslidercontainer">
 	<div class="auguria-slider-container">
 		<?php
 		foreach ($slides as $slide):
@@ -128,4 +128,5 @@ if ($slides && $slides->count()>0):
 <?php
 endif;
 ?>
+</div>
 </div>
