@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<layout>
+    <captcha_test_form>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addJs"><file>mage/captcha.js</file></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="atwix.test" template="atwix.phtml">
+                <block type="atwix_captcha/captcha" name="captcha">
+                    <action method="setFormId">
+                        <id>form-validate-captcha</id>
+                    </action>
+                    <action method="setImgWidth">
+                        <width>300</width>
+                    </action>
+                    <action method="setImgHeight">
+                        <height>40</height>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </captcha_test_form>
+    
+</layout>
