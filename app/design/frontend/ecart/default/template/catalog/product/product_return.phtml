@@ -74,7 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
     $productopened = $_POST["productopened"];
     $otherdetails = $_POST["otherdetails"];
     $_captcha = Mage::getModel('customer/session')->getData('form-validate-captcha_word');
-    echo $_POST['captcha']['form-validate-captcha'];
     if (strcmp($_captcha['data'] , $_POST['captcha']['form-validate-captcha'])) {
     $to=$email;
     $subject = "Ecart Product Return";
