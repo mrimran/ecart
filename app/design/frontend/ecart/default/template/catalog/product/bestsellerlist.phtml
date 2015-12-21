@@ -68,7 +68,7 @@ $_helper = $this->helper('catalog/output');?>
        <?php foreach ($_productCollection as $_product): ?>
       
 
-        <div class="col-box" id="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
+        <div class="col-box" id="item first"><a href="<?php echo $_product->getProductUrl() ?>">
             <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10)         
                      && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) { ?>
                      <span class="new">new</span>
