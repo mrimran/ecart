@@ -186,7 +186,9 @@
 				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">Best Selling</a></li>
 				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('collection')?>">Our Collection</a></li>
 				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('sale')?>">All Sale</a></li>
-				     <li class="call-us"><a href="tel:+97180042935"><i class="fa fa-phone"></i> 800 42935</a></li>
+				     <li class="call-us"><a href="tel:+97180042935"><i class="fa fa-phone"></i> 
+                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cell-header')->toHtml(); ?>
+                     </a></li>
 				    </ul>
 				   </div>
      		</div>
