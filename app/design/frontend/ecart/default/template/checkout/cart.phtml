@@ -35,7 +35,7 @@
 $product_ids = "";
 $total = 0.00;
 foreach($this->getItems() as $item) { 
-    $product_ids .= "'".$item->getId()."', ";
+    $product_ids .= "'".$item->getSku()."', ";
 }
 ?>
 
