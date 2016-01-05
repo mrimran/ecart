@@ -36,6 +36,25 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 
+<?php
+$cats = $_product->getCategoryIds();
+$category_name = "";
+foreach ($cats as $category_id) {
+    $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+    $category_name .= $_cat->getName().", ";
+} 
+
+?>
+<script>
+dataLayer.push({
+    product_name: '<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> ',
+    product_category: '<?php echo trim($category_name, ", ")?>',
+    product_ids: ['<?php echo $_product->getId()?>'],
+    product_price: <?php echo $_product->getFinalPrice()?>,
+    product_currency: 'AED'
+});
+</script>
+
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
 <div class="__product__main__area product-view">
   <div class="row">
@@ -313,6 +332,14 @@ jQuery(document).ready(function(){
     removePlusMinusFromInputBox();
 });
 
+function priceChangeGoogleTagManagerDataLayer(newPrice)
+{
+    //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
+    if(jQuery('.special-price').length <= 0 && dataLayer[0].product_price) {
+        dataLayer[0].product_price = newPrice;
+    }
+}
+
 //Get associated product price
 <?php if($_product->isConfigurable()):?>
 function isValidPrice(price)
@@ -365,6 +392,10 @@ function loadPriceWithAjax()
                 }else {
                     jQuery('.price-box .regular-price .price').text(old_price);
                 }
+                
+                //updating pushed product price so that it can be updated in google tag manager
+                priceChangeGoogleTagManagerDataLayer(data.price);
+                
                 //hide slider on price.
                 //jQuery('.price-box .regular-price .price').show();
                 request = null;//release the request
@@ -397,6 +428,15 @@ jQuery(document).ready(function(){
     }
 });
 <?php endif;?>
+
+//for google tag manager, if the price changes inside html that should take affect.
+jQuery('.price-box .regular-price .price').bind("DOMSubtreeModified",function(){
+    var priceObj = jQuery(this);
+    var price = priceObj.text().match(/\d+(,\d+)?(\.\d+)?/)[0];
+    price = price.replace(",","");
+    priceChangeGoogleTagManagerDataLayer(price);
+});
+
 //associated price module code ends here
 
 jQuery('.bxslider').bxSlider({

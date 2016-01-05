@@ -176,6 +176,7 @@ if($error_while_payment === false):
             <th class="a-right"><?php echo $this->__('Subtotal') ?></th>
         </tr>
     </thead>
+    <?php $product_ids = "";?>
     <?php $_items = $_order->getAllItems(); ?>
     <?php $_index = 0; ?>
     <?php $_count = count($_items); ?>
@@ -184,6 +185,7 @@ if($error_while_payment === false):
         <tbody class="<?php echo ($_index % 2 == 0) ? "even" : "odd"?>">
             <tr>
             <?php
+            $product_ids .= "'".$item->getId()."', ";
             echo '<td><p class="name">Product:' . $item->getName() . '</p></td>';
             echo '<td><p class="model">SKU: ' . $item->getSku() . '</p></td>';
             echo '<td><p class="price">' . Mage::helper("core")->currency($item->getPrice()) . '</p></td>';
@@ -252,3 +254,10 @@ if($error_while_payment === true) {//order will only get changed if payment was 
 ?>
 
 
+<script>
+dataLayer.push({
+    product_ids: [<?php echo trim($product_ids, ", ")?>],
+    product_total: <?php echo number_format($_order->getGrandTotal(),'0','.','');?>,
+    product_currency: 'AED'
+});
+</script>

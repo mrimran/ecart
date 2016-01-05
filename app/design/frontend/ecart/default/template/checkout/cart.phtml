@@ -31,6 +31,13 @@
  * @var $this Mage_Checkout_Block_Cart
  */
 ?>
+<?php 
+$product_ids = "";
+$total = 0.00;
+foreach($this->getItems() as $item) { 
+    $product_ids .= "'".$item->getId()."', ";
+}
+?>
 
 <?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
 <section>
@@ -199,3 +206,13 @@
 </section>
 <?php //echo $this->getLayout()->createBlock('extension/related')->setTemplate('checkout/cart/cutomerswhobought.phtml')->toHtml(); ?>
 <?php echo $this->getChildHtml('product_additional_data') ?>
+<script>
+/*var priceObj = jQuery('.cart-price .price').last();
+var price = priceObj.text().match(/\d+(,\d+)?(\.\d+)?/)[0];
+price = price.replace(",","");*/
+dataLayer.push({
+    product_ids: [<?php echo trim($product_ids, ", ")?>],
+    product_total: <?php echo $this->helper('checkout/cart')->getQuote()->getGrandTotal()?>,
+    product_currency: 'AED'
+});
+</script>
