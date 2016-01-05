@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <blocks>
+            <atwix_captcha>
+                <class>Atwix_Captcha_Block</class>
+            </atwix_captcha>
+        </blocks>
+    </global>
+    <frontend>
+        <routers>
+            <atwix_captcha>
+                <use>standard</use>
+                <args>
+                    <module>Atwix_Captcha</module>
+                    <frontName>captcha</frontName>
+                </args>
+            </atwix_captcha>
+        </routers>
+        <layout>
+            <updates>
+                <atwix_captcha>
+                    <file>atwix_captcha.xml</file>
+                </atwix_captcha>
+            </updates>
+        </layout>
+    </frontend>
+</config>  

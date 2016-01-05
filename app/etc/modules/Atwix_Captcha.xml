@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Atwix_Captcha>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Atwix_Captcha>
+    </modules>
+</config>
