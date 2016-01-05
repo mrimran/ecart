@@ -50,7 +50,7 @@ dataLayer.push({
     product_name: '<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> ',
     product_category: '<?php echo trim($category_name, ", ")?>',
     product_ids: ['<?php echo $_product->getId()?>'],
-    product_price: <?php echo $_product->getFinalPrice()?>,
+    product_price: <?php echo number_format($_product->getFinalPrice(),'2','.','')?>,
     product_currency: 'AED'
 });
 </script>

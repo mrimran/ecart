@@ -212,7 +212,7 @@ var price = priceObj.text().match(/\d+(,\d+)?(\.\d+)?/)[0];
 price = price.replace(",","");*/
 dataLayer.push({
     product_ids: [<?php echo trim($product_ids, ", ")?>],
-    product_total: <?php echo $this->helper('checkout/cart')->getQuote()->getGrandTotal()?>,
+    product_total: <?php echo number_format($this->helper('checkout/cart')->getQuote()->getGrandTotal(),'2','.','')?>,
     product_currency: 'AED'
 });
 </script>

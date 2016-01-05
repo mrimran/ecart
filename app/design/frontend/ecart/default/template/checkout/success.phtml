@@ -257,7 +257,7 @@ if($error_while_payment === true) {//order will only get changed if payment was 
 <script>
 dataLayer.push({
     product_ids: [<?php echo trim($product_ids, ", ")?>],
-    product_total: <?php echo number_format($_order->getGrandTotal(),'0','.','');?>,
+    product_total: <?php echo number_format($_order->getGrandTotal(),'2','.','');?>,
     product_currency: 'AED'
 });
 </script>
