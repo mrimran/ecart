@@ -442,6 +442,14 @@ jQuery('.price-box .regular-price .price').bind("DOMSubtreeModified",function(){
     priceChangeGoogleTagManagerDataLayer(price);
 });
 
+//for google tag manager, if special price changes
+jQuery('.price-box .special-price .price').bind("DOMSubtreeModified",function(){
+    var priceObj = jQuery(this);
+    var price = priceObj.text().match(/\d+(,\d+)?(\.\d+)?/)[0];
+    price = price.replace(",","");
+    priceChangeGoogleTagManagerDataLayer(price);
+});
+
 //associated price module code ends here
 
 jQuery('.bxslider').bxSlider({
