@@ -335,11 +335,11 @@ jQuery(document).ready(function(){
 function priceChangeGoogleTagManagerDataLayer(newPrice)
 {
     //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
-    if(jQuery('.special-price').length <= 0 && (dataLayer[0].product_price || dataLayer[1].product_price)) {
-        if(dataLayer[0].product_price) {
+    if(typeof(dataLayer[0].product_price) !== "undefined" || typeof(dataLayer[1].product_price) !== "undefined") {
+        if(typeof(dataLayer[0].product_price) !== "undefined") {
             dataLayer[0].product_price = newPrice;
         }
-        if(dataLayer[1].product_price) {
+        if(typeof(dataLayer[1].product_price) !== "undefined") {
             dataLayer[1].product_price = newPrice;
         }
     }
