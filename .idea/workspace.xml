@@ -37,8 +37,8 @@
       <file leaf-file-name="success.phtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/design/frontend/ecart/default/template/checkout/success.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22172949">
-              <caret line="183" column="75" selection-start-line="183" selection-start-column="75" selection-end-line="183" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.32150775">
+              <caret line="188" column="48" selection-start-line="188" selection-start-column="48" selection-end-line="188" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -256,8 +256,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/design/frontend/ecart/default/template/checkout/success.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22172949">
-          <caret line="183" column="75" selection-start-line="183" selection-start-column="75" selection-end-line="183" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.32150775">
+          <caret line="188" column="48" selection-start-line="188" selection-start-column="48" selection-end-line="188" selection-end-column="48" />
           <folding />
         </state>
       </provider>
