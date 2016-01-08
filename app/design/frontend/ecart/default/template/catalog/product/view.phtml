@@ -337,6 +337,8 @@ jQuery(document).ready(function(){
 
 function priceChangeGoogleTagManagerDataLayer(newPrice)
 {
+    newPrice = newPrice.match(/\d+(,\d+)?(\.\d+)?/)[0];
+    newPrice = newPrice.replace(",","");
     //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
     if(typeof(dataLayer[0]) !== "undefined") {
         if(typeof(dataLayer[0].product_price) !== "undefined") {
@@ -409,7 +411,9 @@ function loadPriceWithAjax()
                 }
                 
                 //updating pushed product price so that it can be updated in google tag manager
-                priceChangeGoogleTagManagerDataLayer(data.price);
+                if(jQuery('.price-box .special-price .price').length <= 0) {
+                    priceChangeGoogleTagManagerDataLayer(data.price);
+                }
                 
                 //hide slider on price.
                 //jQuery('.price-box .regular-price .price').show();
@@ -448,18 +452,14 @@ jQuery(document).ready(function(){
 if(jQuery('.price-box .special-price .price').length <= 0) {
     jQuery('.price-box .regular-price .price').bind("DOMSubtreeModified",function(){
         var priceObj = jQuery(this);
-        var price = priceObj.text().match(/\d+(,\d+)?(\.\d+)?/)[0];
-        price = price.replace(",","");
-        priceChangeGoogleTagManagerDataLayer(price);
+        priceChangeGoogleTagManagerDataLayer(priceObj.text());
     });
 }
 else {
     //for google tag manager, if special price changes
     jQuery('.price-box .special-price .price').bind("DOMSubtreeModified",function(){
         var priceObj = jQuery(this);
-        var price = priceObj.text().match(/\d+(,\d+)?(\.\d+)?/)[0];
-        price = price.replace(",","");
-        priceChangeGoogleTagManagerDataLayer(price);
+        priceChangeGoogleTagManagerDataLayer(priceObj.text());
     });
 }
 
