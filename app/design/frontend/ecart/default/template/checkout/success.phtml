@@ -180,12 +180,16 @@ if($error_while_payment === false):
     <?php $_items = $_order->getAllItems(); ?>
     <?php $_index = 0; ?>
     <?php $_count = count($_items); ?>
+    <?php
+    foreach($_items as $item) {//getting all products ids which are ordered
+        $product_ids .= "'".$item->getId()."', ";
+    }
+    ?>
     <?php foreach ($_items as $item): ?>
         <?php if ($item->getParentItem()) continue; ?>
         <tbody class="<?php echo ($_index % 2 == 0) ? "even" : "odd"?>">
             <tr>
             <?php
-            $product_ids .= "'".$item->getId()."', ";
             echo '<td><p class="name">Product:' . $item->getName() . '</p></td>';
             echo '<td><p class="model">SKU: ' . $item->getSku() . '</p></td>';
             echo '<td><p class="price">' . Mage::helper("core")->currency($item->getPrice()) . '</p></td>';
