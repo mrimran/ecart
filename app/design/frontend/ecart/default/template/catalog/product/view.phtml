@@ -55,7 +55,7 @@ dataLayer.push({
 });
 </script>
 <input type="hidden" id="product_id_seo" value="<?php echo $_product->getId()?>"/>
-<input type="hidden" id="product_name_seo" value="<?php echo trim($category_name, ", ")?>"/>
+<input type="hidden" id="product_name_seo" value="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"/>
 <input type="hidden" id="product_category_seo" value="<?php echo trim($category_name, ", ")?>"/>
 <input type="hidden" id="total_value_seo" value="<?php echo number_format($_product->getFinalPrice(),'2','.','')?>"/>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
