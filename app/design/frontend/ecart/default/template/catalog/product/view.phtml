@@ -488,6 +488,33 @@ function showForm(id){
 Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
 }
 </script>
+
+
+<script  type="text/javascript">
+var product_id_seo = document.getElementById("product_id_seo").value;
+var product_name_seo = document.getElementById("product_name_seo").value;
+var product_category_seo = document.getElementById("product_category_seo").value;
+var total_value_seo = document.getElementById("total_value_seo").value;
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '902932903153821');
+fbq('track', 'ViewContent', {
+content_type: 'product',
+  content_ids: product_id_seo,
+content_name: product_name_seo,
+content_category: product_category_seo,
+value: total_value_seo,
+currency: 'AED'
+});
+
+</script>
+
+
 <?php //echo $this->getChildHtml('upsell_products') ?>
 <?php //echo $this->getChildHtml('product_additional_data') ?>
 <style>
