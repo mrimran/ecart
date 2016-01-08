@@ -257,7 +257,24 @@ if($error_while_payment === true) {//order will only get changed if payment was 
 <script>
 dataLayer.push({
     product_ids: [<?php echo trim($product_ids, ", ")?>],
-    product_total: <?php echo number_format($_order->getGrandTotal(),'2','.','');?>,
+    product_total: <?php echo number_format($_order->getGrandTotal(),'2','.','')?>,
     product_currency: 'AED'
 });
+
+<!-- Facebook Pixel Code -->
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','//connect.facebook.net/en_US/fbevents.js');
+// Insert Your Facebook Pixel ID below.
+fbq('init', '902932903153821');
+fbq('track', 'PageView');
+fbq('track', 'Purchase', {
+    content_ids: [<?php echo trim($product_ids, ", ")?>],
+    content_type: 'product',
+    value: <?php echo number_format($_order->getGrandTotal(),'2','.','')?>,
+    currency: 'AED'
+});
+<!-- End Facebook Pixel Code -->
 </script>
