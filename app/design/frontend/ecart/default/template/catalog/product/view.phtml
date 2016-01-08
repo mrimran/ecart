@@ -518,7 +518,7 @@ jQuery( 'button.button.btn-cart' ).click(function() {
     fbq('track', 'AddToCart', {
         content_name: "'"+product_name_seo+"'",
         content_category: "'"+product_category_seo+"'",
-        content_ids: ["'"+product_id_seo+"'"],
+        content_ids: [product_id_seo],
         content_type: 'product',
         value: total_value_seo,
         currency: 'AED'
