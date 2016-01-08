@@ -504,14 +504,27 @@ document,'script','//connect.facebook.net/en_US/fbevents.js');
 
 fbq('init', '902932903153821');
 fbq('track', 'ViewContent', {
-content_type: 'product',
-  content_ids: product_id_seo,
-content_name: product_name_seo,
-content_category: product_category_seo,
-value: total_value_seo,
-currency: 'AED'
+    content_type: 'product',
+    content_ids: product_id_seo,
+    content_name: product_name_seo,
+    content_category: product_category_seo,
+    value: total_value_seo,
+    currency: 'AED'
 });
 
+
+<!-- Facebook Pixel Code -->
+jQuery( 'button.button.btn-cart' ).click(function() {
+    fbq('track', 'AddToCart', {
+        content_name: "'"+product_name_seo+"'",
+        content_category: "'"+product_category_seo+"'",
+        content_ids: ["'"+product_id_seo+"'"],
+        content_type: 'product',
+        value: total_value_seo,
+        currency: 'AED'
+    });
+});
+<!-- End Facebook Pixel Code -->
 </script>
 
 
