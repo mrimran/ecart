@@ -185,7 +185,7 @@ if($error_while_payment === false):
         <tbody class="<?php echo ($_index % 2 == 0) ? "even" : "odd"?>">
             <tr>
             <?php
-            $product_ids .= "'".$item->getSku()."', ";
+            $product_ids .= "'".$item->getId()."', ";
             echo '<td><p class="name">Product:' . $item->getName() . '</p></td>';
             echo '<td><p class="model">SKU: ' . $item->getSku() . '</p></td>';
             echo '<td><p class="price">' . Mage::helper("core")->currency($item->getPrice()) . '</p></td>';

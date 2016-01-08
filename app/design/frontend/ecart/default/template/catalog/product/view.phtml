@@ -49,12 +49,15 @@ foreach ($cats as $category_id) {
 dataLayer.push({
     product_name: '<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> ',
     product_category: '<?php echo trim($category_name, ", ")?>',
-    product_ids: ['<?php echo $_product->getSku()?>'],
+    product_ids: ['<?php echo $_product->getId()?>'],
     product_price: <?php echo number_format($_product->getFinalPrice(),'2','.','')?>,
     product_currency: 'AED'
 });
 </script>
-
+<input type="hidden" id="product_id_seo" value="<?php echo $_product->getId()?>"/>
+<input type="hidden" id="product_name_seo" value="<?php echo trim($category_name, ", ")?>"/>
+<input type="hidden" id="product_category_seo" value="<?php echo trim($category_name, ", ")?>"/>
+<input type="hidden" id="total_value_seo" value="<?php echo number_format($_product->getFinalPrice(),'2','.','')?>"/>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
 <div class="__product__main__area product-view">
   <div class="row">
@@ -335,13 +338,20 @@ jQuery(document).ready(function(){
 function priceChangeGoogleTagManagerDataLayer(newPrice)
 {
     //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
-    if(typeof(dataLayer[0].product_price) !== "undefined" || typeof(dataLayer[1].product_price) !== "undefined") {
+    if(typeof(dataLayer[0]) !== "undefined") {
         if(typeof(dataLayer[0].product_price) !== "undefined") {
             dataLayer[0].product_price = newPrice;
         }
+    }
+    
+    if(typeof(dataLayer[1]) !== "undefined") {
         if(typeof(dataLayer[1].product_price) !== "undefined") {
             dataLayer[1].product_price = newPrice;
         }
+    }
+    
+    if(typeof(jQuery('#total_value_seo')) !== "undefined") {
+        jQuery('#total_value_seo').val(newPrice);
     }
 }
 
