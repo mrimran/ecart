@@ -28,13 +28,13 @@
 
 <?php /* @var $captcha Mage_Core_Model_Captcha_Zend */ ?>
 <?php $captcha = $this->getCaptchaModel() ?>
-<li class="captcha-input-container" id="captcha-input-box-<?php echo $this->getFormId()?>">
-    <label for="captcha_<?php echo $this->getFormId() ?>" class="required"><em>*</em><?php echo $this->__('Please type the letters below')?></label>
+<div class="captcha-input-container" id="captcha-input-box-<?php echo $this->getFormId()?>">
+   <h4 class="heading4"><label for="captcha_<?php echo $this->getFormId() ?>" class="required"><?php echo $this->__('Enter the code in the box below')?></label></h4>
     <div class="input-box captcha">
         <input name="<?php echo Mage_Captcha_Helper_Data::INPUT_NAME_FIELD_VALUE ?>[<?php echo $this->getFormId()?>]" type="text" class="input-text required-entry" id="captcha_<?php echo $this->getFormId() ?>" />
     </div>
-</li>
-<li class="captcha-img-container">
+</div>
+<div class="captcha-img-container">
     <div class="captcha-image" id="captcha-image-box-<?php echo $this->getFormId()?>">
         <img id="captcha-reload" class="captcha-reload" src="<?php echo $this->getSkinUrl('images/reload.png') ?>" alt="<?php echo Mage::helper('core')->quoteEscape($this->__('Reload captcha')) ?>" onclick="$('<?php echo $this->getFormId()?>').captcha.refresh(this)">
         <img id="<?php echo $this->getFormId() ?>" class="captcha-img" height="<?php echo $this->getImgHeight() ?>" src="<?php echo $captcha->getImgSrc() ?>"/>
@@ -47,5 +47,5 @@
     <script type="text/javascript">//<![CDATA[
         $('<?php echo $this->getFormId() ?>').captcha = new Captcha('<?php echo $this->getRefreshUrl() ?>', '<?php echo $this->getFormId() ?>');
         //]]></script>
-</li>
+</div>
 

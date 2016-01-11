@@ -36,6 +36,28 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 
+<?php
+$cats = $_product->getCategoryIds();
+$category_name = "";
+foreach ($cats as $category_id) {
+    $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+    $category_name .= $_cat->getName().", ";
+} 
+
+?>
+<script>
+dataLayer.push({
+    product_name: '<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> ',
+    product_category: '<?php echo trim($category_name, ", ")?>',
+    product_ids: ['<?php echo $_product->getId()?>'],
+    product_price: <?php echo number_format($_product->getFinalPrice(),'2','.','')?>,
+    product_currency: 'AED'
+});
+</script>
+<input type="hidden" id="product_id_seo" value="<?php echo $_product->getId()?>"/>
+<input type="hidden" id="product_name_seo" value="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"/>
+<input type="hidden" id="product_category_seo" value="<?php echo trim($category_name, ", ")?>"/>
+<input type="hidden" id="total_value_seo" value="<?php echo number_format($_product->getFinalPrice(),'2','.','')?>"/>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
 <div class="__product__main__area product-view">
   <div class="row">
@@ -313,6 +335,28 @@ jQuery(document).ready(function(){
     removePlusMinusFromInputBox();
 });
 
+function priceChangeGoogleTagManagerDataLayer(newPrice)
+{
+    newPrice = newPrice.match(/\d+(,\d+)?(\.\d+)?/)[0];
+    newPrice = newPrice.replace(",","");
+    //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
+    if(typeof(dataLayer[0]) !== "undefined") {
+        if(typeof(dataLayer[0].product_price) !== "undefined") {
+            dataLayer[0].product_price = newPrice;
+        }
+    }
+    
+    if(typeof(dataLayer[1]) !== "undefined") {
+        if(typeof(dataLayer[1].product_price) !== "undefined") {
+            dataLayer[1].product_price = newPrice;
+        }
+    }
+    
+    if(typeof(jQuery('#total_value_seo')) !== "undefined") {
+        jQuery('#total_value_seo').val(newPrice);
+    }
+}
+
 //Get associated product price
 <?php if($_product->isConfigurable()):?>
 function isValidPrice(price)
@@ -365,6 +409,12 @@ function loadPriceWithAjax()
                 }else {
                     jQuery('.price-box .regular-price .price').text(old_price);
                 }
+                
+                //updating pushed product price so that it can be updated in google tag manager
+                if(jQuery('.price-box .special-price .price').length <= 0) {
+                    priceChangeGoogleTagManagerDataLayer(data.price);
+                }
+                
                 //hide slider on price.
                 //jQuery('.price-box .regular-price .price').show();
                 request = null;//release the request
@@ -397,6 +447,22 @@ jQuery(document).ready(function(){
     }
 });
 <?php endif;?>
+
+//for google tag manager, if the price changes inside html that should take affect.
+if(jQuery('.price-box .special-price .price').length <= 0) {
+    jQuery('.price-box .regular-price .price').bind("DOMSubtreeModified",function(){
+        var priceObj = jQuery(this);
+        priceChangeGoogleTagManagerDataLayer(priceObj.text());
+    });
+}
+else {
+    //for google tag manager, if special price changes
+    jQuery('.price-box .special-price .price').bind("DOMSubtreeModified",function(){
+        var priceObj = jQuery(this);
+        priceChangeGoogleTagManagerDataLayer(priceObj.text());
+    });
+}
+
 //associated price module code ends here
 
 jQuery('.bxslider').bxSlider({
@@ -422,6 +488,46 @@ function showForm(id){
 Dialog.confirm($('social_share').innerHTML, {className:"alphacube", width:400});
 }
 </script>
+
+
+<script  type="text/javascript">
+var product_id_seo = document.getElementById("product_id_seo").value;
+var product_name_seo = document.getElementById("product_name_seo").value;
+var product_category_seo = document.getElementById("product_category_seo").value;
+var total_value_seo = document.getElementById("total_value_seo").value;
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '902932903153821');
+fbq('track', 'ViewContent', {
+    content_type: 'product',
+    content_ids: product_id_seo,
+    content_name: product_name_seo,
+    content_category: product_category_seo,
+    value: total_value_seo,
+    currency: 'AED'
+});
+
+
+<!-- Facebook Pixel Code -->
+jQuery( 'button.button.btn-cart' ).click(function() {
+    fbq('track', 'AddToCart', {
+        content_name: "'"+product_name_seo+"'",
+        content_category: "'"+product_category_seo+"'",
+        content_ids: [product_id_seo],
+        content_type: 'product',
+        value: total_value_seo,
+        currency: 'AED'
+    });
+});
+<!-- End Facebook Pixel Code -->
+</script>
+
+
 <?php //echo $this->getChildHtml('upsell_products') ?>
 <?php //echo $this->getChildHtml('product_additional_data') ?>
 <style>
