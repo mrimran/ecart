@@ -127,7 +127,7 @@ jQuery(document).ready(function($) {
      }
 });
 jQuery(document).ready(function($) {
-     jQuery('.toggle-menu').jPushMenu();
+   //  jQuery('.toggle-menu').jPushMenu();
      //jQuery('.data-table').stacktable();
      //jQuery('#checkout-review-table').stacktable({myClass:'a-center'});
     // jQuery('.selectpicker').selectpicker();

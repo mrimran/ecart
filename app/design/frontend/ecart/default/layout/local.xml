@@ -45,10 +45,10 @@
                 <type>skin_js</type>
                 <name>js/bootstrap.min.js</name>
             </action>
-            <action method="addItem">
+            <!-- <action method="addItem">
                 <type>skin_js</type>
                 <name>js/jPushMenu.js</name>
-            </action>
+            </action> -->
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/owl.carousel.min.js</name>
