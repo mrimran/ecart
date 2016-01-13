@@ -1,0 +1,117 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $contactForm = Mage::getSingleton('core/session')->getData('contactForm'); ?>
+<?php $contactForm = $contactForm ? $contactForm : new Varien_Object(); ?>
+<?php $contactForm->setName( (strlen($contactForm->getName()) > 0 ? $contactForm->getName() : $this->helper('contacts')->getUserName()) ); ?>
+<?php $contactForm->setEmail( (strlen($contactForm->getEmail()) > 0 ? $contactForm->getEmail() : $this->helper('contacts')->getUserEmail()) ); ?>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var RecaptchaOptions = {
+        theme : '<?php echo $this->getCaptchaTheme(); ?>',
+        lang : '<?php echo $this->getCaptchaLang(); ?>',
+    };
+//]]>
+</script>
+<div class="col-sm-7 col-md-8 paddingzeroL contact-us">
+<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->htmlEscape($contactForm->getName()) ?>" class="input-text required-entry form-control" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->htmlEscape($contactForm->getEmail()) ?>" class="input-text required-entry validate-email form-control" type="text" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                <div class="input-box">
+                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="<?php echo $this->htmlEscape($contactForm->getTelephone()) ?>" class="input-text form-control" type="text" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text form-control" ><?php echo $this->htmlEscape($contactForm->getComment()) ?></textarea>
+                </div>
+            </li>
+            <li class="wide">
+                <div class="input-box">
+                    <?php echo $this->getCaptchaCode(); ?>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo Mage::helper('contacts')->__('* Fields are Mandatory') ?></p>
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+    </div>
+</form>
+</div>
+<div class="col-sm-5 col-md-4 paddingzeroR">
+<div class="filters">
+<h2 class="heading">Customer Service</h2>
+<div class="padding2">
+<h5>TOLL FREE NO</h5>
+<h3>04 327 5970</h3>
+</div>
+</div>
+<div class="filters">
+<h2 class="heading">Follow Us</h2>
+<div class="social padding2">
+    <a href="http://www.facebook.com/ecart.ae" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/MyeCart" target="_blank" class="tw"><i class="fa fa-twitter"></i></a>
+    <a href="https://plus.google.com/+EcartAe26" target="_blank" class="gplus"><i class="fa fa-google-plus"></i></a>
+    <a href="https://www.youtube.com/user/eCartae" target="_blank" class="utube"><i class="fa fa-youtube"></i></a>
+    <a href="https://www.linkedin.com/company/ecart-ae" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
+    <a href="https://instagram.com/myecart" target="_blank" class="insta"><i class="fa fa-instagram"></i></a>
+</div>
+</div>
+<div class="filters">
+<h2 class="heading">Find Us on Map</h2>
+<div class="padding2"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.311990276597!2d55.2914456!3d25.2600882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43159b182d3f%3A0x87c126f02847baef!2sHazel+Trading+LLC!5e0!3m2!1sen!2s!4v1437640330105" height="300" width="100%"></iframe></div>
+</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>
