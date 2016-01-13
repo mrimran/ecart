@@ -49,8 +49,12 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
 
     public function memcacheSet($key, $data, $seconds = 1800, $compress = false)
     {
-        if ($this->_fullfillsMemcachePrereq()) {
-            return $this->memcache->set($key, $data, $compress, $seconds);
+        if($this->_fullfillsMemcachePrereq()) {
+            try {
+                return $this->memcache->set($key, $data, $compress, $seconds);
+            } catch (Exception $e) {
+                //don't through error just return false which is at the bottom
+            }
         }
 
         return false;
