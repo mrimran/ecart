@@ -136,7 +136,7 @@ class Tabs_Extension_IndexController extends Tabs_Extension_BaseController
             ->setTemplate('catalog/product/newproductsajax.phtml');
         $this->getResponse()->setBody($block->toHtml());
     }
-    
+
     public function ajaxbestsellerperfumeAction(){
         $block = $this->getLayout()->createBlock('extension/perfume')
         ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');
