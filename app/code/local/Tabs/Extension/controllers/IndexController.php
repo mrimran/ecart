@@ -100,76 +100,62 @@ class Tabs_Extension_IndexController extends Tabs_Extension_BaseController
 
     public function ajaxbestsellerhomeAction()
     {
-        $this->getHtmlForCurrentUriWithMemcache('extension/seller', 'bestsellerAjax.phtml');
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/seller', 'bestsellerAjax.phtml');
     }
 
     public function ajaxdealsAction()
     {
-        $block = $this->getLayout()->createBlock('extension/sale')
-            ->setTemplate('catalog/product/ajaxdeals.phtml');
-        $this->getResponse()->setBody($block->toHtml());
-        $this->getHtmlForCurrentUriWithMemcache('extension/sale', 'ajaxdeals.phtml');
-
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/sale', 'ajaxdeals.phtml');
     }
 
     public function ajaxdealshomeAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/sale', 'todays_dealsAjax.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/sale', 'todays_dealsAjax.phtml');
     }
 
     public function ajaxbestsellerAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/computer', 'computeraccessoriesAjax.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/computer', 'computeraccessoriesAjax.phtml');
     }
 
     public function ajaxnewproductAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/computer', 'newproductsajax.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/computer', 'newproductsajax.phtml');
     }
 
     public function ajaxbestsellerphoneAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/phone', 'computeraccessoriesAjax.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/phone', 'computeraccessoriesAjax.phtml');
     }
 
     public function ajaxnewproductphoneAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/phone', 'newproductsajax.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/phone', 'newproductsajax.phtml');
     }
 
     public function ajaxbestsellerperfumeAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/perfume', 'computeraccessoriesAjax.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/perfume', 'computeraccessoriesAjax.phtml');
     }
 
     public function ajaxnewproductperfumeAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/perfume', 'newproductsajax.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/perfume', 'newproductsajax.phtml');
     }
 
     public function ajaxlatestproductAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/category', 'ajaxlatestproduct.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/category', 'ajaxlatestproduct.phtml');
     }
 
     public function ajaxbestsellerproductAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/category', 'ajaxbestseller.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/category', 'ajaxbestseller.phtml');
     }
 
     public function ajaxupcomingAction()
     {
-        $html = $this->getHtmlForCurrentUriWithMemcache('extension/category', 'ajaxupcoming.phtml');
-        $this->getResponse()->setBody($html);
+        $this->getHtmlForCurrentUriWithMemcache($this, 'extension/category', 'ajaxupcoming.phtml');
     }
 
 }
