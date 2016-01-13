@@ -1,0 +1,134 @@
+ <?php
+    $_Collection = $this->getLoadedProductCollection();
+    $Collection = $this->getLoadedProductCollectionnew();
+    $_helper = $this->helper('catalog/output');
+    if($_Collection->count() || $Collection->count()):
+?>
+<section id="phoneaccessories">
+    <div class="sectiontitle">
+        <h2><span>Phones & Accessories</span></h2>
+        <ul class="brandsmenu desktop">
+            <li><a onclick="newproduct()" id="one">New Products</a></li>
+            <li><a class="active" onclick="bestseller()" id="two" >Best Sellers</a></li>
+            <li>
+                <?php
+                $productCollectionbrand = $this->getproductbrands();
+                $_helper = $this->helper('catalog/output');
+                ?>
+                <?php
+                    foreach ($productCollectionbrand as $brand):
+                        ?>
+                        <?php $a[]= $brand->brand_optionid; ?>
+                        <?php $b[] = $brand->brand_name; ?>
+                    <?php endforeach ?>
+                    <?php $optionid = array_unique($a); ?>
+                    <?php $brandname = array_unique($b); ?>
+                     <?php $max = sizeof($brandname); ?>
+                <select onchange="getbrand()" id="brandsnew">
+                    <option value="0">Brands</option>
+                    <?php for($i = 0; $i <= $max; $i++)
+                             {?>
+                                <?php if($optionid[$i] != ""){ ?>
+                                <option value="<?php echo $optionid[$i]; ?>"><?php echo $brandname[$i]; ?></option>
+                                <?php } ?>
+                            <?php }
+                    ?>
+                </select>
+            </li>
+        </ul>
+    </div>
+    <div class="columnslider" id="bestseller" data-items="4">   
+    </div>
+    <div class="columnslider" id="newproduct" data-items="4" >
+    </div>
+    <?php $url = Mage::getModel('catalog/category')->load(29)->getUrl();?>
+    <div class="clearfix viewmore" align="right"><a href="<?php echo $url ?>">View All Products</a></div>
+</section>
+
+<script>
+
+    function newproduct() {
+        jQuery('#bestseller').hide();
+        jQuery('#newproduct').show();
+        jQuery('#one').addClass("active");
+        jQuery('#two').removeClass("active");
+
+    }
+    function bestseller() {
+        jQuery('#bestseller').show();
+        jQuery('#newproduct').hide();
+        jQuery('#two').addClass("active");
+        jQuery('#one').removeClass("active");
+    }
+
+    jQuery(document).ready(function () {
+        jQuery('#bestseller').show();
+        jQuery('#newproduct').hide();
+        jQuery('#two').addClass("active");
+        jQuery('#one').removeClass("active");
+        
+        jQuery.ajax({
+                url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerphone/',
+                type: 'POST',
+                data: {action: 'getLoadedProductCollection'},
+                beforeSend: function () {
+                    jQuery('#bestseller').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+                },
+                success: function (data) {
+                    jQuery('#bestseller').html(data);
+                    //jQuery('#bestsejQueryller1').trigger('refresh.owl.carousel');
+                    reinitOwlOnSelector('#bestseller',4);
+                }
+            });
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproductphone/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollectionnew'},
+            success: function (data) {
+
+                jQuery('#newproduct').html(data);
+                reinitOwlOnSelector('#newproduct',4);
+            }
+        });
+
+    });
+
+    function getbrand() {
+        var brand = document.getElementById("brandsnew").value
+        
+        //make the ajax call
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestsellerphone/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollection', brand_ids: brand},
+            beforeSend: function () {
+                jQuery('#bestseller').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+            },
+            success: function (data) {
+                jQuery('#bestseller').html(data);
+
+                //jQuery('#bestsejQueryller1').trigger('refresh.owl.carousel');
+                reinitOwlOnSelector('#bestseller',4);
+            }
+        });
+
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproductphone/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollectionnew', brand_ids: brand},
+            success: function (data) {
+
+                jQuery('#newproduct').html(data);
+                reinitOwlOnSelector('#newproduct',4);
+            }
+        });
+        
+/*        jQuery(document).ready(function () {
+            jQuery("#computeraccessories").on('change', function (e) {
+                
+            });
+        });*/
+//window.location =("index.php?brands_ids="+brand);
+    }
+</script>
+<?php endif ?>
