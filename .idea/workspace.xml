@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="612c29e4-d621-4e0f-af1f-0e9f80e16c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestcategoryseller-backup.phtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/todays_dealsAjax.phtml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellings.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellerAjax.phtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellings.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellings.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/computeraccessories.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/computeraccessories.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/perfume.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/perfume.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/phoneaccessories.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/phoneaccessories.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/todays_deals.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/todays_deals.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/etc/local.xml" afterPath="$PROJECT_DIR$/app/etc/local.xml" />
     </list>
     <ignored path="ecart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,54 +33,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="view.phtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/view.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-              <folding>
-                <element signature="e#6#952#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.htaccess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-              <folding>
-                <marker date="1452493978963" expanded="true" signature="733:1720" placeholder="&lt;IfModule mod_php5.c&gt;" />
-                <marker date="1452493978963" expanded="true" signature="1722:1915" placeholder="&lt;IfModule mod_security.c&gt;" />
-                <marker date="1452493978963" expanded="true" signature="1917:2807" placeholder="&lt;IfModule mod_deflate.c&gt;" />
-                <marker date="1452493978963" expanded="true" signature="2809:2961" placeholder="&lt;IfModule mod_ssl.c&gt;" />
-                <marker date="1452493978963" expanded="true" signature="2963:4927" placeholder="&lt;IfModule mod_rewrite.c&gt;" />
-                <marker date="1452493978963" expanded="true" signature="5150:5365" placeholder="&lt;IfModule mod_expires.c&gt;" />
-                <marker date="1452493978963" expanded="true" signature="5621:5706" placeholder="&lt;Files RELEASE_NOTES.txt&gt;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.344828">
-              <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-              <folding>
-                <marker date="1452494023019" expanded="true" signature="1128:1174" placeholder="..." />
-                <marker date="1452494023019" expanded="true" signature="1175:1598" placeholder="..." />
-                <marker date="1452494023019" expanded="false" signature="1189:1237" placeholder="..." />
-                <marker date="1452494023019" expanded="true" signature="1238:1417" placeholder="..." />
-                <marker date="1452494023019" expanded="false" signature="1251:1350" placeholder="..." />
-                <marker date="1452494023019" expanded="true" signature="1351:1411" placeholder="..." />
-                <marker date="1452494023019" expanded="true" signature="1420:1592" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="local.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/etc/local.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -109,11 +53,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Phone.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Phone.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.589041">
-              <caret line="284" column="1" selection-start-line="284" selection-start-column="1" selection-end-line="284" selection-end-column="1" />
+            <state vertical-scroll-proportion="-12.827586">
+              <caret line="199" column="16" selection-start-line="199" selection-start-column="16" selection-end-line="199" selection-end-column="114" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5886525">
+              <caret line="132" column="48" selection-start-line="132" selection-start-column="48" selection-end-line="132" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -124,6 +78,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-13.24138">
               <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.793103">
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/CategoryController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -173,6 +147,8 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Tabs_Extension_Block_Base.php" />
         <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php" />
+        <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php" />
+        <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php" />
       </list>
     </option>
   </component>
@@ -335,6 +311,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tabs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Block" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -394,6 +404,11 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../dashboard" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -498,7 +513,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -524,7 +539,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -574,7 +589,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -592,7 +607,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -610,7 +625,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -628,7 +643,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -646,7 +661,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -664,7 +679,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -682,7 +697,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="520" column="36" selection-start-line="520" selection-start-column="36" selection-end-line="520" selection-end-column="36" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -700,7 +715,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="520" column="36" selection-start-line="520" selection-start-column="36" selection-end-line="520" selection-end-column="36" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -718,7 +733,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="520" column="36" selection-start-line="520" selection-start-column="36" selection-end-line="520" selection-end-column="36" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -736,7 +751,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="520" column="36" selection-start-line="520" selection-start-column="36" selection-end-line="520" selection-end-column="36" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -791,7 +806,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
           <folding>
-            <element signature="e#6#952#0#PHP" expanded="true" />
+            <element signature="e#6#952#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -860,10 +875,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/CategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.589041">
-          <caret line="284" column="1" selection-start-line="284" selection-start-column="1" selection-end-line="284" selection-end-column="1" />
+        <state vertical-scroll-proportion="-12.827586">
+          <caret line="199" column="16" selection-start-line="199" selection-start-column="16" selection-end-line="199" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.793103">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5886525">
+          <caret line="132" column="48" selection-start-line="132" selection-start-column="48" selection-end-line="132" selection-end-column="48" />
           <folding />
         </state>
       </provider>
