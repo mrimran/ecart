@@ -132,11 +132,8 @@ class Tabs_Extension_IndexController extends Tabs_Extension_BaseController
     }
 
     public function ajaxnewproductphoneAction(){
-        $block = $this->getLayout()->createBlock('extension/phone')
-            ->setTemplate('catalog/product/newproductsajax.phtml');
-        $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/phone', 'newproductsajax.phtml');
     }
-
     public function ajaxbestsellerperfumeAction(){
         $block = $this->getLayout()->createBlock('extension/perfume')
         ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');

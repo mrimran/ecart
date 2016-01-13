@@ -14,17 +14,18 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
     const CACHE_FOR_HOUR = 3600;
     const CACHE_FOR_HALF_HOUR = 1800;
     const USE_CACHE = true;//set it to true to enable memcache on controllers
-    public function __construct(array $args)
+
+    protected function _init()
     {
-        parent::__construct($args);
-        if(self::USE_CACHE) {
+        if (self::USE_CACHE) {
             $this->canConnectToMemcache = $this->memcacheConnect();
         }
     }
 
     private function _fullfillsMemcachePrereq()
     {
-        if($this->connectedToMemcache) {
+        $this->_init();
+        if ($this->connectedToMemcache) {
             return true;
         }
         return false;
@@ -32,11 +33,11 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
 
     public function memcacheConnect()
     {
-        if(!$this->memcache) {
-            if(class_exists('Memcache')) {
+        if (!$this->memcache) {
+            if (class_exists('Memcache')) {
                 $this->memcache = new Memcache;
                 $this->memcache->connect('localhost', 11211);
-                if($this->memcache) {
+                if ($this->memcache) {
                     $this->connectedToMemcache = true;
                 }
             } else {
@@ -46,18 +47,20 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
         return true;
     }
 
-    public function memcacheSet($key, $data, $seconds=1800, $compress=false)
+    public function memcacheSet($key, $data, $seconds = 1800, $compress = false)
     {
-        if($this->_fullfillsMemcachePrereq())
+        if ($this->_fullfillsMemcachePrereq()) {
             return $this->memcache->set($key, $data, $compress, $seconds);
+        }
 
         return false;
     }
 
     public function memcacheGet($key)
     {
-        if($this->_fullfillsMemcachePrereq())
+        if ($this->_fullfillsMemcachePrereq()) {
             return $this->memcache->get($key);
+        }
         return null;
     }
 
@@ -71,15 +74,19 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
         return ($this->getRequest()->getParam('brand_ids')) ? $this->getRequest()->getParam('brand_ids') : 0;
     }
 
-    public function setResponseForCurrentUriWithMemcache($block, $template, $path = "catalog/product/", $memcacheSeconds = self::CACHE_FOR_HOUR)
-    {
+    public function setResponseForCurrentUriWithMemcache(
+        $block,
+        $template,
+        $path = "catalog/product/",
+        $memcacheSeconds = self::CACHE_FOR_HOUR
+    ) {
         $memcacheKey = $this->generateMemcacheKey(print_r($this->getRequest()->getParams(), true));
         $html = $this->memcacheGet($memcacheKey);
-        if(!$html) {
+        if (!$html) {
             $html = $this->getLayout()->createBlock($block)
-                ->setTemplate($path.$template)->toHtml();
+                ->setTemplate($path . $template)->toHtml();
             $this->memcacheSet($memcacheKey, $html, $memcacheSeconds, $this->memcacheCompress);
         }
-        return $html;
+        $this->getResponse()->setBody($html);
     }
 }
