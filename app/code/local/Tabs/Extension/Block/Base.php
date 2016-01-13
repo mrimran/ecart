@@ -10,10 +10,10 @@ class Tabs_Extension_Block_Base extends Mage_Catalog_Block_Product_Abstract
     public $memcache = null;
     public $canConnectToMemcache = false;
     public $connectedToMemcache = false;
-    public $memcacheCompress = true;
+    public $memcacheCompress = 0;//to enable use MEMCACHE_COMPRESSED
     const CACHE_FOR_HOUR = 3600;
     const CACHE_FOR_HALF_HOUR = 1800;
-    const USE_CACHE = false;//set it to true to enable memcache on block collections
+    const USE_CACHE = true;//set it to true to enable memcache on block collections
     public function __construct(array $args)
     {
         parent::__construct($args);
@@ -35,7 +35,7 @@ class Tabs_Extension_Block_Base extends Mage_Catalog_Block_Product_Abstract
         if(!$this->memcache) {
             if(class_exists('Memcache')) {
                 $this->memcache = new Memcache;
-                $this->memcache->connect('localhost', 11211);
+                $this->memcache->pconnect('localhost', 11211);
                 if($this->memcache) {
                     $this->connectedToMemcache = true;
                 }
