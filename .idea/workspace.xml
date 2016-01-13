@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="612c29e4-d621-4e0f-af1f-0e9f80e16c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Base.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestcategoryseller-backup.phtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/todays_dealsAjax.phtml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellings.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellerAjax.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellings.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/bestsellings.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/computeraccessories.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/computeraccessories.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/perfume.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/perfume.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/phoneaccessories.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/phoneaccessories.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/todays_deals.phtml" afterPath="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/todays_deals.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/etc/local.xml" afterPath="$PROJECT_DIR$/app/etc/local.xml" />
     </list>
     <ignored path="ecart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,7 +112,7 @@
       <file leaf-file-name="Phone.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.780822">
+            <state vertical-scroll-proportion="2.589041">
               <caret line="284" column="1" selection-start-line="284" selection-start-column="1" selection-end-line="284" selection-end-column="1" />
               <folding />
             </state>
@@ -124,8 +132,8 @@
       <file leaf-file-name="phoneaccessories.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/phoneaccessories.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.310345">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="19" />
+            <state vertical-scroll-proportion="-0.82758623">
+              <caret line="1" column="19" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -444,7 +452,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1055" extended-state="7" />
+    <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -830,8 +838,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/phoneaccessories.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.310345">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="19" />
+        <state vertical-scroll-proportion="-0.82758623">
+          <caret line="1" column="19" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -854,7 +862,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.780822">
+        <state vertical-scroll-proportion="2.589041">
           <caret line="284" column="1" selection-start-line="284" selection-start-column="1" selection-end-line="284" selection-end-column="1" />
           <folding />
         </state>
