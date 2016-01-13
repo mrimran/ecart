@@ -80,7 +80,8 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
         $path = "catalog/product/",
         $memcacheSeconds = self::CACHE_FOR_HOUR
     ) {
-        $memcacheKey = $this->generateMemcacheKey(print_r($this->getRequest()->getParams(), true));
+        $key = print_r($this->getRequest()->getParams(), true) . Mage::app()->getRequest()->getRequestUri();
+        $memcacheKey = $this->generateMemcacheKey($key);
         $html = $this->memcacheGet($memcacheKey);
         if (!$html) {
             $html = $this->getLayout()->createBlock($block)
