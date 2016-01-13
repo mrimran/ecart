@@ -13,10 +13,21 @@ class Tabs_Extension_Block_Base extends Mage_Catalog_Block_Product_Abstract
     public $memcacheCompress = true;
     const CACHE_FOR_HOUR = 3600;
     const CACHE_FOR_HALF_HOUR = 1800;
+    const USE_CACHE = false;//set it to true to enable memcache on block collections
     public function __construct(array $args)
     {
         parent::__construct($args);
-        $this->canConnectToMemcache = $this->memcacheConnect();
+        if(self::USE_CACHE) {
+            $this->canConnectToMemcache = $this->memcacheConnect();
+        }
+    }
+
+    private function _fullfillsMemcachePrereq()
+    {
+        if($this->connectedToMemcache) {
+            return true;
+        }
+        return false;
     }
 
     public function memcacheConnect()
@@ -37,12 +48,17 @@ class Tabs_Extension_Block_Base extends Mage_Catalog_Block_Product_Abstract
 
     public function memcacheSet($key, $data, $seconds=1800, $compress=false)
     {
-        return $this->memcache->set($key, $data, $compress, $seconds);
+        if($this->_fullfillsMemcachePrereq())
+            return $this->memcache->set($key, $data, $compress, $seconds);
+
+        return false;
     }
 
     public function memcacheGet($key)
     {
-        return $this->memcache->get($key);
+        if($this->_fullfillsMemcachePrereq())
+            return $this->memcache->get($key);
+        return null;
     }
 
     public function generateMemcacheKey($keyData)
