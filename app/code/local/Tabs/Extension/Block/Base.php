@@ -19,6 +19,7 @@ class Tabs_Extension_Block_Base extends Mage_Catalog_Block_Product_Abstract
         parent::__construct($args);
         if(self::USE_CACHE) {
             $this->canConnectToMemcache = $this->memcacheConnect();
+            $this->memcacheCompress = MEMCACHE_COMPRESSED;
         }
     }
 

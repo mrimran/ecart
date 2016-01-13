@@ -93,7 +93,7 @@ class Tabs_Extension_IndexController extends Tabs_Extension_BaseController
     }
 
     public function ajaxbestsellerhomeAction(){
-        $this->setResponseForCurrentUriWithMemcache('extension/seller', 'bestsellerAjax.phtml');
+        $this->setResponseForCurrentUriWithMemcache('extension/seller', 'bestsellerAjax.phtml', 'catalog/product/', self::CACHE_FOR_HALF_HOUR*24);
     }
 
     public function ajaxdealsAction(){

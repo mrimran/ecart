@@ -23,9 +23,9 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         //$time = microtime();
         $catId = $id;
         $brandId = $this->getBrandId();
-        $memcacheKey = $this->generateMemcacheKey($id.$catId.$brandId."getLoadedProductCollection");
+        $memcacheKey = $this->generateMemcacheKey($id . $catId . $brandId . "getLoadedProductCollection");
         $collection = $this->memcacheGet($memcacheKey);
-        if(!$collection) {
+        if (!$collection) {
             /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
             $collection = Mage::getResourceModel('catalog/product_collection');
             // join sales order items column and count sold products
@@ -102,9 +102,9 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         $categoryId = $id;
         $todayDate = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $brandId = $this->getBrandId();
-        $memcacheKey = $this->generateMemcacheKey($id.$categoryId.$brandId."_getProductCollection");
+        $memcacheKey = $this->generateMemcacheKey($id . $categoryId . $brandId . "_getProductCollection");
         $collection = $this->memcacheGet($memcacheKey);
-        if(!$collection) {
+        if (!$collection) {
             $collection = Mage::getResourceModel('catalog/product_collection');
             Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
             Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
@@ -154,20 +154,16 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
     public function getLoadedProductCollectionbrand()
     {
         $id = 29;
-        $memcacheKey = $this->generateMemcacheKey($id."getLoadedProductCollectionbrand");
-        $collection = $this->memcacheGet($memcacheKey);
-        if(!$collection) {
-            $collection = Mage::getModel('shopbybrand/brand')->getCollection()
-                ->addFieldToSelect('*')
-                ->addFieldToFilter('is_featured', array('gteq' => 0));
-            $collection->getSelect()->order('main_table.brand_id ASC');
-            $condition = new Zend_Db_Expr("main_table.product_ids = ccp.product_id");
-            $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
-                $condition,
-                array('product_id' => 'main_table.product_ids'));
-            $collection->getSelect()->where('ccp.category_id = ?', $id);
-            $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
-        }
+        $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+            ->addFieldToSelect('*')
+            ->addFieldToFilter('is_featured', array('gteq' => 0));
+        $collection->getSelect()->order('main_table.brand_id ASC');
+        $condition = new Zend_Db_Expr("main_table.product_ids = ccp.product_id");
+        $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
+            $condition,
+            array('product_id' => 'main_table.product_ids'));
+        $collection->getSelect()->where('ccp.category_id = ?', $id);
+        $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
 
         return $collection;
         /*$brand = $collection;
@@ -189,16 +185,12 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
     public function getproductsids()
     {
         $brandId = $this->getBrandId();
-        $memcacheKey = $this->generateMemcacheKey($brandId."getproductsids");
-        $collection = $this->memcacheGet($memcacheKey);
-        if(!$collection) {
-            if ($brandId != 0) {
-                $brands_ids = $this->getRequest()->getParam('brand_ids');
-                $collection = Mage::getModel('shopbybrand/brand')->getCollection()
-                    ->addFieldToSelect('product_ids');
-                $collection->getSelect()->where('option_id = ?', $brands_ids);
-                $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HALF_HOUR, $this->memcacheCompress);
-            }
+        if ($brandId != 0) {
+            $brands_ids = $this->getRequest()->getParam('brand_ids');
+            $collection = Mage::getModel('shopbybrand/brand')->getCollection()
+                ->addFieldToSelect('product_ids');
+            $collection->getSelect()->where('option_id = ?', $brands_ids);
+            $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HALF_HOUR, $this->memcacheCompress);
         }
 
         return $collection;
@@ -212,73 +204,67 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         $memory = memory_get_usage();
         $time = microtime();
         $catId = $id;
-        $memcacheKey = $this->generateMemcacheKey($id.$catId."getproductbrands");
-        $collection = $this->memcacheGet($memcacheKey);
-        if(!$collection) {
-            /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
-            $collection = Mage::getResourceModel('catalog/product_collection');
-            // join sales order items column and count sold products
-            $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
-            $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
-            $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
-            $collection->addAttributeToSelect('*')->getSelect()
-                ->join(array('oi' => $collection->getTable('sales/order_item')),
-                    $condition,
-                    array('sales_count' => $expression))
-                ->group('e.entity_id')
-                ->order('sales_count' . ' ' . 'desc');
-            $collection->addFieldToFilter('status', '1');
-            $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
-            $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+        /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
+        $collection = Mage::getResourceModel('catalog/product_collection');
+        // join sales order items column and count sold products
+        $expression = new Zend_Db_Expr("SUM(oi.qty_ordered)");
+        $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
+        $condition = new Zend_Db_Expr("e.entity_id = oi.product_id AND oi.parent_item_id IS NULL");
+        $collection->addAttributeToSelect('*')->getSelect()
+            ->join(array('oi' => $collection->getTable('sales/order_item')),
                 $condition,
-                array());
-            //join brand
-            $condition = new Zend_Db_Expr("cpie.entity_id = e.entity_id AND cpie.attribute_id = 81");
-            $collection->getSelect()->join(array('cpie' => $collection->getTable('catalog_product_index_eav')),
-                $condition,
-                array('product_entity' => 'cpie.entity_id'));
-            $condition = new Zend_Db_Expr(" br.option_id = cpie.value");
-            $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
-                $condition,
-                array('brand_name' => 'br.name', 'brand_optionid' => 'br.option_id'));
+                array('sales_count' => $expression))
+            ->group('e.entity_id')
+            ->order('sales_count' . ' ' . 'desc');
+        $collection->addFieldToFilter('status', '1');
+        $condition = new Zend_Db_Expr("e.entity_id = stock.product_id AND is_in_stock = 1");
+        $collection->getSelect()->join(array('stock' => $collection->getTable('cataloginventory_stock_item')),
+            $condition,
+            array());
+        //join brand
+        $condition = new Zend_Db_Expr("cpie.entity_id = e.entity_id AND cpie.attribute_id = 81");
+        $collection->getSelect()->join(array('cpie' => $collection->getTable('catalog_product_index_eav')),
+            $condition,
+            array('product_entity' => 'cpie.entity_id'));
+        $condition = new Zend_Db_Expr(" br.option_id = cpie.value");
+        $collection->getSelect()->join(array('br' => $collection->getTable('shopbybrand/brand')),
+            $condition,
+            array('brand_name' => 'br.name', 'brand_optionid' => 'br.option_id'));
 
 
-            // join category
-            $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
-            $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
-            $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
-                $condition,
-                array())->join(array('c' => $collection->getTable('catalog/category')),
-                $condition2,
-                array('cat_id' => 'c.entity_id'));
-            $condition = new Zend_Db_Expr("c.entity_id = cv.entity_id AND ea.attribute_id = cv.attribute_id");
-            // cutting corners here by hardcoding 3 as Category Entiry_type_id
-            $condition2 = new Zend_Db_Expr("ea.entity_type_id = 3 AND ea.attribute_code = 'name'");
-            $collection->getSelect()->join(array('ea' => $collection->getTable('eav/attribute')),
-                $condition2,
-                array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
-                $condition,
-                array('cat_name' => 'cv.value'));
+        // join category
+        $condition = new Zend_Db_Expr("e.entity_id = ccp.product_id");
+        $condition2 = new Zend_Db_Expr("c.entity_id = ccp.category_id");
+        $collection->getSelect()->join(array('ccp' => $collection->getTable('catalog/category_product')),
+            $condition,
+            array())->join(array('c' => $collection->getTable('catalog/category')),
+            $condition2,
+            array('cat_id' => 'c.entity_id'));
+        $condition = new Zend_Db_Expr("c.entity_id = cv.entity_id AND ea.attribute_id = cv.attribute_id");
+        // cutting corners here by hardcoding 3 as Category Entiry_type_id
+        $condition2 = new Zend_Db_Expr("ea.entity_type_id = 3 AND ea.attribute_code = 'name'");
+        $collection->getSelect()->join(array('ea' => $collection->getTable('eav/attribute')),
+            $condition2,
+            array())->join(array('cv' => $collection->getTable('catalog/category') . '_varchar'),
+            $condition,
+            array('cat_name' => 'cv.value'));
 
-            // if Category filter is on
-            if ($catId) {
-                $collection->getSelect()->where('c.entity_id = ?', $catId);
-            }
-            $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
-            // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
-            // so all sorting work lays on php
-            /*$result = array();
-            foreach ($collection as $product) {
-                if (isset($result[$product->getCatId()])) {
-                    continue;
-                }
-                $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:' . $product->getSalesCount();
-            }*/
+        // if Category filter is on
+        if ($catId) {
+            $collection->getSelect()->where('c.entity_id = ?', $catId);
         }
-
+        $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
+        // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
+        // so all sorting work lays on php
+        /*$result = array();
+        foreach ($collection as $product) {
+            if (isset($result[$product->getCatId()])) {
+                continue;
+            }
+            $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:' . $product->getSalesCount();
+        }*/
 
         return $collection;
-
 
     }
 
