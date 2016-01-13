@@ -90,9 +90,23 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
+    public function ajaxbestsellerhomeAction(){
+       $block = $this->getLayout()->createBlock('extension/seller')
+        ->setTemplate('catalog/product/bestsellerAjax.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+
+    }
+    
     public function ajaxdealsAction(){
        $block = $this->getLayout()->createBlock('extension/sale')
         ->setTemplate('catalog/product/ajaxdeals.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+
+    }
+    
+    public function ajaxdealshomeAction(){
+       $block = $this->getLayout()->createBlock('extension/sale')
+        ->setTemplate('catalog/product/todays_dealsAjax.phtml');
          $this->getResponse()->setBody($block->toHtml());
 
     }
