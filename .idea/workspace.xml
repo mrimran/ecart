@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="612c29e4-d621-4e0f-af1f-0e9f80e16c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Base.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Base.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php" />
     </list>
@@ -46,8 +45,8 @@
       <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.8439716">
-              <caret line="107" column="89" selection-start-line="107" selection-start-column="89" selection-end-line="107" selection-end-column="89" />
+            <state vertical-scroll-proportion="2.1780822">
+              <caret line="170" column="16" selection-start-line="170" selection-start-column="16" selection-end-line="170" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -86,7 +85,7 @@
       <file leaf-file-name="Base.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Base.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.275864">
+            <state vertical-scroll-proportion="-15.310345">
               <caret line="48" column="69" selection-start-line="48" selection-start-column="69" selection-end-line="48" selection-end-column="69" />
               <folding />
             </state>
@@ -96,8 +95,8 @@
       <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.965517">
-              <caret line="73" column="56" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="56" />
+            <state vertical-scroll-proportion="-16.137932">
+              <caret line="73" column="52" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -986,26 +985,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Base.php">
+    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.275864">
-          <caret line="48" column="69" selection-start-line="48" selection-start-column="69" selection-end-line="48" selection-end-column="69" />
+        <state vertical-scroll-proportion="-16.137932">
+          <caret line="73" column="52" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php">
+    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.965517">
-          <caret line="73" column="56" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="56" />
+        <state vertical-scroll-proportion="-15.310345">
+          <caret line="48" column="69" selection-start-line="48" selection-start-column="69" selection-end-line="48" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8439716">
-          <caret line="107" column="89" selection-start-line="107" selection-start-column="89" selection-end-line="107" selection-end-column="89" />
+        <state vertical-scroll-proportion="2.1780822">
+          <caret line="170" column="16" selection-start-line="170" selection-start-column="16" selection-end-line="170" selection-end-column="16" />
           <folding />
         </state>
       </provider>

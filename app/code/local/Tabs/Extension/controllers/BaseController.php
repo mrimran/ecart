@@ -71,7 +71,7 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
         return ($this->getRequest()->getParam('brand_ids')) ? $this->getRequest()->getParam('brand_ids') : 0;
     }
 
-    public function setResponseForCurrentUriWithMemcache($block, $template, $path = "catalog/product/", $memcacheSeconds = self::CACHE_FOR_HOUR)
+    public function getHtmlForCurrentUriWithMemcache($block, $template, $path = "catalog/product/", $memcacheSeconds = self::CACHE_FOR_HOUR)
     {
         $memcacheKey = $this->generateMemcacheKey(print_r($this->getRequest()->getParams(), true));
         $html = $this->memcacheGet($memcacheKey);
@@ -80,6 +80,6 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
                 ->setTemplate($path.$template)->toHtml();
             $this->memcacheSet($memcacheKey, $html, $memcacheSeconds, $this->memcacheCompress);
         }
-        $this->getResponse()->setBody($html);
+        return $html;
     }
 }

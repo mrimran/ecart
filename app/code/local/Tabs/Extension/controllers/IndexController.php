@@ -100,62 +100,76 @@ class Tabs_Extension_IndexController extends Tabs_Extension_BaseController
 
     public function ajaxbestsellerhomeAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/seller', 'bestsellerAjax.phtml');
+        $this->getHtmlForCurrentUriWithMemcache('extension/seller', 'bestsellerAjax.phtml');
     }
 
     public function ajaxdealsAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/sale', 'ajaxdeals.phtml');
+        $block = $this->getLayout()->createBlock('extension/sale')
+            ->setTemplate('catalog/product/ajaxdeals.phtml');
+        $this->getResponse()->setBody($block->toHtml());
+        $this->getHtmlForCurrentUriWithMemcache('extension/sale', 'ajaxdeals.phtml');
+
     }
 
     public function ajaxdealshomeAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/sale', 'todays_dealsAjax.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/sale', 'todays_dealsAjax.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxbestsellerAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/computer', 'computeraccessoriesAjax.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/computer', 'computeraccessoriesAjax.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxnewproductAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/computer', 'newproductsajax.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/computer', 'newproductsajax.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxbestsellerphoneAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/phone', 'computeraccessoriesAjax.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/phone', 'computeraccessoriesAjax.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxnewproductphoneAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/phone', 'newproductsajax.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/phone', 'newproductsajax.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxbestsellerperfumeAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/perfume', 'computeraccessoriesAjax.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/perfume', 'computeraccessoriesAjax.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxnewproductperfumeAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/perfume', 'newproductsajax.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/perfume', 'newproductsajax.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxlatestproductAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxlatestproduct.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/category', 'ajaxlatestproduct.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxbestsellerproductAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxbestseller.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/category', 'ajaxbestseller.phtml');
+        $this->getResponse()->setBody($html);
     }
 
     public function ajaxupcomingAction()
     {
-        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxupcoming.phtml');
+        $html = $this->getHtmlForCurrentUriWithMemcache('extension/category', 'ajaxupcoming.phtml');
+        $this->getResponse()->setBody($html);
     }
 
 }
