@@ -25,6 +25,7 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         //$time = microtime();
         $catId = $id;
         $brandId = $this->getBrandId();
+        echo $brandId.'jsjdjdj';
         $memcacheKey = $this->dataHelper->generateMemcacheKey($id . $catId . $brandId . "getLoadedProductCollection");
         $collection = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$collection) {

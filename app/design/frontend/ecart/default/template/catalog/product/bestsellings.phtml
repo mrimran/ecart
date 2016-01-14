@@ -1,10 +1,8 @@
 <?php
     $_productCollection=$this->getProductCollection();
     $_helper = $this->helper('catalog/output');
-    $count = Mage::helper('extension')->getCollectionCountWithMemcache('bestsellings', $this, ['getProductCollection']);
 ?>
-
-    <?php if(!$count): ?>
+    <?php if(!$_productCollection->count()): ?>
         
     <?php else: ?>
     <section id="bestselingproduct">    
@@ -22,7 +20,6 @@
   <?php endif; ?>
 <?php
 // Provides a block where additional page components may be attached, primarily good for in-page JavaScript
-<<<<<<< HEAD
 // if ($this->getChild('after')) {
 //     $_afterChildren = $this->getChild('after')->getSortedChildren();
 //     foreach ($_afterChildren as $_afterChildName) {
@@ -32,17 +29,6 @@
 //         echo $_afterChild->toHtml();
 //     }
 // }
-=======
-/*if ($this->getChild('after')) {
-    $_afterChildren = $this->getChild('after')->getSortedChildren();
-    foreach ($_afterChildren as $_afterChildName) {
-        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
-        //set product collection on after blocks
-        $_afterChild->setProductCollection($_productCollection);
-        echo $_afterChild->toHtml();
-    }
-}*/
->>>>>>> 6723b0330ad37c88a024ad8e2e68236f2a98aab8
 ?>
 <script>
  jQuery(document).ready(function () {
