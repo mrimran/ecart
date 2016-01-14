@@ -19,7 +19,12 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
 
   public function getLoadedProductCollection($cat_id)
     {
+      if($this->getRequest()->getParam('cat_ids')!= null AND $this->getRequest()->getParam('cat_ids')!= 0){
+        $id = $this->getRequest()->getParam('cat_ids');
+      }
+      else{
         $id = $cat_id;
+      }
         Mage::getSingleton('core/session', array('name' => 'frontend'));
         $_productCollection = Mage::getResourceModel('catalogsearch/advanced_collection')
         ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())

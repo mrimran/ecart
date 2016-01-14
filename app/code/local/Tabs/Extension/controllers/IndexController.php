@@ -129,15 +129,15 @@ class Tabs_Extension_IndexController extends Tabs_Extension_BaseController
     }
 
     public function ajaxlatestproductAction(){
-        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxlatestproduct.phtml');
+        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxlatestproduct.phtml', 'catalog/category/');
     }
 
     public function ajaxbestsellerproductAction(){
-        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxbestseller.phtml');
+        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxbestseller.phtml', 'catalog/category/');
     }
 
     public function ajaxupcomingAction(){
-        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxupcoming.phtml');
+        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxupcoming.phtml', 'catalog/category/');
     }
 
 }
