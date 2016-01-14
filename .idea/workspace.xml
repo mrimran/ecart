@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="612c29e4-d621-4e0f-af1f-0e9f80e16c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Helper/Data.php" afterPath="$PROJECT_DIR$/app/code/local/Tabs/Extension/Helper/Data.php" />
     </list>
     <ignored path="ecart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Data.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Data.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Helper/Data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.896552">
-              <caret line="78" column="30" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="80" column="79" selection-start-line="80" selection-start-column="79" selection-end-line="80" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -81,10 +81,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Phone.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Phone.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9148936">
+            <state vertical-scroll-proportion="-13.118644">
               <caret line="105" column="59" selection-start-line="105" selection-start-column="59" selection-end-line="105" selection-end-column="59" />
               <folding />
             </state>
@@ -159,8 +159,8 @@
         <option value="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/phoneaccessories.phtml" />
         <option value="$PROJECT_DIR$/app/design/frontend/ecart/default/template/catalog/product/todays_deals.phtml" />
         <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php" />
-        <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/Helper/Data.php" />
         <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php" />
+        <option value="$PROJECT_DIR$/app/code/local/Tabs/Extension/Helper/Data.php" />
       </list>
     </option>
   </component>
@@ -1123,14 +1123,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Helper/Data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.896552">
-          <caret line="78" column="30" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-41.37931">
@@ -1149,8 +1141,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Block/Phone.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9148936">
+        <state vertical-scroll-proportion="-13.118644">
           <caret line="105" column="59" selection-start-line="105" selection-start-column="59" selection-end-line="105" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/code/local/Tabs/Extension/Helper/Data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="80" column="79" selection-start-line="80" selection-start-column="79" selection-end-line="80" selection-end-column="79" />
           <folding />
         </state>
       </provider>
