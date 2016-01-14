@@ -23,8 +23,10 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         // benchmarking
         //$memory = memory_get_usage();
         //$time = microtime();
-        $catId = $id;
-        $brandId = $this->getBrandId();
+        $catId = ($id) ? $id : 0;
+        $this->printDebugInfo("catId:".$catId."|");
+        $brandId = Mage::helper('extension')->getBrandId();
+        $this->printDebugInfo("brandId:".$brandId."|");
         $memcacheKey = $this->dataHelper->generateMemcacheKey($id . $catId . $brandId . "getLoadedProductCollection");
         $collection = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$collection) {
@@ -101,9 +103,11 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
     protected function _getProductCollection()
     {
         $id = 29;
-        $categoryId = $id;
+        $catId = ($id) ? $id : 0;
+        $this->printDebugInfo("catId:".$catId."|");
         $todayDate = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
-        $brandId = $this->getBrandId();
+        $brandId = Mage::helper('extension')->getBrandId();
+        $this->printDebugInfo("brand_id:".$brandId."|");
         $memcacheKey = $this->dataHelper->generateMemcacheKey($id . $categoryId . $brandId . "_getProductCollection");
         $collection = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$collection) {
