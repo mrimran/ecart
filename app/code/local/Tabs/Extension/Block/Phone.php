@@ -16,12 +16,6 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         //this will initiate the memcache variables in Base class if it exist
     }
 
-    public function __construct(array $args)
-    {
-        parent::__construct($args);
-        //this will initiate the memcache variables in Base class if it exist
-    }
-
     public function getLoadedProductCollection()
     {
 
