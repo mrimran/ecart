@@ -7,10 +7,12 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
     protected $_defaultToolbarBlock = 'catalog/product_list_toolbar';
     protected $_productsCount = null;
     const DEFAULT_PRODUCTS_COUNT = 10;
+    protected $dataHelper = null;
 
     public function __construct(array $args)
     {
         parent::__construct($args);
+        $this->dataHelper = Mage::helper('extension');//call default data helper
         //this will initiate the memcache variables in Base class if it exist
     }
 
@@ -22,9 +24,9 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         //$memory = memory_get_usage();
         //$time = microtime();
         $catId = $id;
-        $brandId = $this->getBrandId();
-        $memcacheKey = $this->generateMemcacheKey($id . $catId . $brandId . "getLoadedProductCollection");
-        $collection = $this->memcacheGet($memcacheKey);
+        $brandId = 0;
+        $memcacheKey = $this->dataHelper->generateMemcacheKey($id . $catId . $brandId . "getLoadedProductCollection");
+        $collection = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$collection) {
             /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
             $collection = Mage::getResourceModel('catalog/product_collection');
@@ -88,7 +90,7 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
             }*/
 
             Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($collection);
-            $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
+            $this->dataHelper->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
         }
 
         return $collection;
@@ -101,9 +103,9 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         $id = 29;
         $categoryId = $id;
         $todayDate = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
-        $brandId = $this->getBrandId();
-        $memcacheKey = $this->generateMemcacheKey($id . $categoryId . $brandId . "_getProductCollection");
-        $collection = $this->memcacheGet($memcacheKey);
+        $brandId = 0;
+        $memcacheKey = $this->dataHelper->generateMemcacheKey($id . $categoryId . $brandId . "_getProductCollection");
+        $collection = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$collection) {
             $collection = Mage::getResourceModel('catalog/product_collection');
             Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
@@ -139,7 +141,7 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
                     $condition,
                     array('brand_name' => 'br.name', 'brand_optionid' => 'br.option_id'));
             }
-            $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
+            $this->dataHelper->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->dataHelper->memcacheCompress);
         }
 
         return $collection;
@@ -163,7 +165,6 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
             $condition,
             array('product_id' => 'main_table.product_ids'));
         $collection->getSelect()->where('ccp.category_id = ?', $id);
-        $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
 
         return $collection;
         /*$brand = $collection;
@@ -184,13 +185,12 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
 
     public function getproductsids()
     {
-        $brandId = $this->getBrandId();
+        $brandId = $this->dataHelper->getBrandId();
         if ($brandId != 0) {
             $brands_ids = $this->getRequest()->getParam('brand_ids');
             $collection = Mage::getModel('shopbybrand/brand')->getCollection()
                 ->addFieldToSelect('product_ids');
             $collection->getSelect()->where('option_id = ?', $brands_ids);
-            $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HALF_HOUR, $this->memcacheCompress);
         }
 
         return $collection;
@@ -253,7 +253,6 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         if ($catId) {
             $collection->getSelect()->where('c.entity_id = ?', $catId);
         }
-        $this->memcacheSet($memcacheKey, $collection, self::CACHE_FOR_HOUR, $this->memcacheCompress);
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
         // so all sorting work lays on php
         /*$result = array();
