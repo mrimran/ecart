@@ -1,10 +1,13 @@
 <?php
-    $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
+	$keyData = 'todays_deals'.print_r(Mage::app()->getRequest()->getParams(),true).Mage::app()->getRequest()->getRequestUri();
+	$dataHelper = Mage::helper('extension');
+	$memcacheKey = $dataHelper->generateMemcacheKey($keyData);
+	$prdCount = $dataHelper->getCollectionCountWithMemcache($memcacheKey, $this, ['getLoadedProductCollection']);
     $count = 1;
     $toDate = date('Y-m-d');
 ?>
-    <?php if(!$_productCollection->count()): ?>
+    <?php if(!$prdCount): ?>
         <!--<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>-->
     <?php else: ?>
             <section id="deals">

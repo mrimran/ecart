@@ -1,7 +1,7 @@
-<?php $_Collection = $this->getLoadedProductCollection();
-      $Collection = $this->getLoadedProductCollectionnew();
+<?php
       $_helper = $this->helper('catalog/output');
-      if($_Collection->count() || $Collection->count()):
+$count = Mage::helper('extension')->getCollectionCountWithMemcache('computeraccessories', $this, ['getLoadedProductCollection', 'getLoadedProductCollectionnew']);
+      if($count):
 ?>
 <section id="computeraccessories">
     <div class="sectiontitle">
