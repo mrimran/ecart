@@ -1,77 +1,79 @@
 <?php
-class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
-    
+require_once(Mage::getModuleDir('controllers','Tabs_Extension').DS.'BaseController.php');
+class Tabs_Extension_IndexController extends Tabs_Extension_BaseController
+{
+
     public function indexAction() {
-      
-	 $this->_redirect('/'); 
-	  
+
+	 $this->_redirect('/');
+
     }
 
-    public function sellerAction() 
+    public function sellerAction()
     {
-    	
+
     	$this->loadLayout();
         $this->renderLayout();
     }
 
-    public function newAction() 
+    public function newAction()
     {
-    	
+
     	$this->loadLayout();
         $this->renderLayout();
     }
 
-    public function ourcollectionAction() 
+    public function ourcollectionAction()
     {
-        
+
         $this->loadLayout();
         $this->renderLayout();
     }
 
-    public function productcollectionAction() 
+    public function productcollectionAction()
     {
-        
+
         $this->loadLayout();
         $this->renderLayout();
     }
 
-     public function dealsAction() 
+     public function dealsAction()
     {
-        
+
         $this->loadLayout();
         $this->renderLayout();
     }
 
-    public function TrendingAction() 
+    public function TrendingAction()
     {
-    	
+
     	$this->loadLayout();
         $this->renderLayout();
     }
 
-     public function relatedAction() 
+     public function relatedAction()
     {
-        
+
         $this->loadLayout();
         $this->renderLayout();
     }
 
-    public function mostviewedAction() 
-    {   
+    public function mostviewedAction()
+    {
         $this->loadLayout();
         $this->renderLayout();
     }
 
-     public function categoryAction() 
+     public function categoryAction()
     {
-        
+
         $this->loadLayout();
         $this->renderLayout();
     }
 
-    public function saleAction() 
+    public function saleAction()
     {
-        
+
         $this->loadLayout();
         $this->renderLayout();
     }
@@ -90,68 +92,54 @@ class Tabs_Extension_IndexController extends Mage_Core_Controller_Front_Action{
         $this->renderLayout();
     }
 
+    public function ajaxbestsellerhomeAction(){
+        $this->setResponseForCurrentUriWithMemcache('extension/seller', 'bestsellerAjax.phtml', 'catalog/product/', self::CACHE_FOR_HALF_HOUR*24);
+    }
+
     public function ajaxdealsAction(){
-       $block = $this->getLayout()->createBlock('extension/sale')
-        ->setTemplate('catalog/product/ajaxdeals.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/sale', 'ajaxdeals.phtml');
+    }
+
+    public function ajaxdealshomeAction(){
+        $this->setResponseForCurrentUriWithMemcache('extension/sale', 'todays_dealsAjax.phtml');
 
     }
     public function ajaxbestsellerAction(){
-       $block = $this->getLayout()->createBlock('extension/computer')
-        ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/computer', 'computeraccessoriesAjax.phtml');
 
     }
 
      public function ajaxnewproductAction(){
-        $block = $this->getLayout()->createBlock('extension/computer')
-        ->setTemplate('catalog/product/newproductsajax.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+         $this->setResponseForCurrentUriWithMemcache('extension/computer', 'newproductsajax.phtml');
     }
 
     public function ajaxbestsellerphoneAction(){
-        $block = $this->getLayout()->createBlock('extension/phone')
-        ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/phone', 'computeraccessoriesAjax.phtml');
     }
 
     public function ajaxnewproductphoneAction(){
-        $block = $this->getLayout()->createBlock('extension/phone')
-        ->setTemplate('catalog/product/newproductsajax.phtml');
-         $this->getResponse()->setBody($block->toHtml());
-
+        $this->setResponseForCurrentUriWithMemcache('extension/phone', 'newproductsajax.phtml');
     }
     public function ajaxbestsellerperfumeAction(){
-        $block = $this->getLayout()->createBlock('extension/perfume')
-        ->setTemplate('catalog/product/computeraccessoriesAjax.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/perfume', 'computeraccessoriesAjax.phtml');
     }
 
     public function ajaxnewproductperfumeAction(){
-        $block = $this->getLayout()->createBlock('extension/perfume')
-        ->setTemplate('catalog/product/newproductsajax.phtml');
-         $this->getResponse()->setBody($block->toHtml());
-
+        $this->setResponseForCurrentUriWithMemcache('extension/perfume', 'newproductsajax.phtml');
     }
 
     public function ajaxlatestproductAction(){
-        $block = $this->getLayout()->createBlock('extension/category')
-        ->setTemplate('catalog/category/ajaxlatestproduct.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxlatestproduct.phtml', 'catalog/category/');
     }
 
     public function ajaxbestsellerproductAction(){
-        $block = $this->getLayout()->createBlock('extension/category')
-        ->setTemplate('catalog/category/ajaxbestseller.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxbestseller.phtml', 'catalog/category/');
     }
-    
+
     public function ajaxupcomingAction(){
-        $block = $this->getLayout()->createBlock('extension/category')
-        ->setTemplate('catalog/category/ajaxupcoming.phtml');
-         $this->getResponse()->setBody($block->toHtml());
+        $this->setResponseForCurrentUriWithMemcache('extension/category', 'ajaxupcoming.phtml', 'catalog/category/');
     }
-    
+
 }
 
 
