@@ -13,37 +13,8 @@ $category_new->url_key;
     <div class="sectiontitle">
         <h2><span>Shop by brand</span></h2>
     </div>
-    <ul class="brands clearfix">
-        <?php
-       $_productCollectionbrand = $this->getproductbrands($category);
-       $_helper = $this->helper('catalog/output');
-        foreach ($_productCollectionbrand as $brand):
-                        ?>
-                <li><div class="img-box"><div class="abs_center"><a href="<?php echo $brand->brand_urlkey;?>"><?php echo $brand->brand_name;?></a></div></div></li>
-            <?php //$a[]= $brand->brand_urlkey; ?>
-            <?php //$b[] = $brand->brand_name; ?>
-            <?php //print_r($b) ?>
-        <?php endforeach ?>
-       <?php /*  $optionid = array_unique($a); ?>
-        <?php $brandname = array_unique($b); ?>
-        <?php $max = sizeof($brandname); ?>
-        <?php $i = 0; ?>
-        <?php if ($max >= 5): ?>
-        <?php while($i < 5){?>
-        <?php if($optionid[$i] != ""){ ?>  
-        <li><div class="img-box"><div class="abs_center"><a href="<?php echo $optionid[$i];?>"><?php echo $brandname[$i];?></a></div></div></li>
-        <?php $i = $i + 1; ?>
-          <?php } ?>
-        <?php } ?>  
-        <?php elseif($max < 5): ?> 
-        
-        <?php while($i < $max){?>
-           <?php if($optionid[$i] != ""){ ?>  
-           <li><div class="img-box"><div class="abs_center"><a href="<?php echo $optionid[$i];?>"><?php echo $brandname[$i];?></a></div></div></li>
-           <?php $i = $i + 1;?>
-            <?php } ?>  
-        <?php } ?>
-        <?php endif */ ?>
+    <ul class="brands clearfix" id="brands">
+       <!-- load through Ajax -->
     </ul>
 </section>
 <section id="deals">
@@ -232,6 +203,18 @@ $category_new->url_key;
             success: function (data) {
                 jQuery('#upcoming').html(data);
                 reinitOwlOnSelector('#upcoming',3);
+            }
+        });
+
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/category/brand_categoryAjax/',
+            type: 'POST',
+            data: {action: 'getproductbrands', cat_ids: cat_id},
+            beforeSend: function () {
+                jQuery('#brands').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+            },
+            success: function (data) {
+                jQuery('#brands').html(data);
             }
         });
 

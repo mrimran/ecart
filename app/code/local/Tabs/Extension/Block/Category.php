@@ -342,7 +342,12 @@ class Tabs_Extension_Block_Category extends Mage_Catalog_Block_Product_Abstract 
        // benchmarking
         $memory = memory_get_usage();
         $time = microtime();
+        if($this->getRequest()->getParam('cat_ids')!= null AND $this->getRequest()->getParam('cat_ids')!= 0){
+        $catId = $this->getRequest()->getParam('cat_ids');
+        }
+        else{
         $catId = $cat_id;
+        }
         /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
         
         $collection = Mage::getResourceModel('catalog/product_collection');

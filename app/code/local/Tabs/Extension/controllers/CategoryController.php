@@ -40,6 +40,13 @@ class Tabs_Extension_CategoryController extends Mage_Core_Controller_Front_Actio
         ->setTemplate('catalog/category/latestproduct_category.phtml');
          $this->getResponse()->setBody($block->toHtml());
     }
+
+    public function brand_categoryAjaxAction() 
+    {
+        $block = $this->getLayout()->createBlock('extension/category')
+        ->setTemplate('catalog/category/brand_categoryAjax.phtml');
+         $this->getResponse()->setBody($block->toHtml());
+    }
 }
 
 ?>
