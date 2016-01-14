@@ -1,10 +1,10 @@
 <?php
-    $_productCollection=$this->getProductCollection();
+    //$_productCollection=$this->getProductCollection();
     $_helper = $this->helper('catalog/output');
 ?>
-    <?php if(!$_productCollection->count()): ?>
+    <?php //if(!$_productCollection->count()): ?>
         
-    <?php else: ?>
+    <?php //else: ?>
     <section id="bestselingproduct">    
     <div class="sectiontitle">
       <h2><span>BEST SELLINGS</span></h2>
@@ -17,7 +17,7 @@
 
       <a data-id="bestselingproducts" class="loadmore smartphones" href="<?php echo Mage::helper('extension')->getCustomUrl('bestselling')?>">View All Products</a> 
     </section>
-  <?php endif; ?>
+  <?php //endif; ?>
 <?php
 // Provides a block where additional page components may be attached, primarily good for in-page JavaScript
 if ($this->getChild('after')) {
