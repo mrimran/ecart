@@ -1,6 +1,9 @@
  <?php
     $_helper = $this->helper('catalog/output');
-    $count = Mage::helper('extension')->getCollectionCountWithMemcache('phoneaccessories', $this, ['getLoadedProductCollection', 'getLoadedProductCollectionnew']);
+    $keyData = 'phoneaccessories'.print_r(Mage::app()->getRequest()->getParams(),true).Mage::app()->getRequest()->getRequestUri();
+    $dataHelper = Mage::helper('extension');
+    $memcacheKey = $dataHelper->generateMemcacheKey($keyData);
+    $count = $dataHelper->getCollectionCountWithMemcache($memcacheKey, $this, ['getLoadedProductCollection', 'getLoadedProductCollectionnew']);
     if($count):
 ?>
 <section id="phoneaccessories">

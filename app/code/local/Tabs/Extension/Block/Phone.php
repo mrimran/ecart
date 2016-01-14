@@ -24,7 +24,7 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         //$memory = memory_get_usage();
         //$time = microtime();
         $catId = $id;
-        $brandId = 0;
+        $brandId = $this->getBrandId();
         $memcacheKey = $this->dataHelper->generateMemcacheKey($id . $catId . $brandId . "getLoadedProductCollection");
         $collection = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$collection) {
@@ -103,7 +103,7 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         $id = 29;
         $categoryId = $id;
         $todayDate = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
-        $brandId = 0;
+        $brandId = $this->getBrandId();
         $memcacheKey = $this->dataHelper->generateMemcacheKey($id . $categoryId . $brandId . "_getProductCollection");
         $collection = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$collection) {

@@ -39,4 +39,9 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
         }
         $this->getResponse()->setBody($html);
     }
+
+    public function getBrandId()
+    {
+        return ($this->getRequest()->getParam('brand_ids')) ? $this->getRequest()->getParam('brand_ids') : 0;
+    }
 }
