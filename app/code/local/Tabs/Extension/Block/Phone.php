@@ -255,14 +255,17 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         }
         // unfortunately I cound not come up with the sql query that could grab only 1 bestseller for each category
         // so all sorting work lays on php
-        /*$result = array();
-        foreach ($collection as $product) {
-            if (isset($result[$product->getCatId()])) {
+
+        $result = array();
+        /*foreach ($collection as $product) {            
+        if (isset($result[$product->getCatId()])) {
                 continue;
             }
-            $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:' . $product->getSalesCount();
-        }*/
-
+             $result[$product->getCatId()] = 'Category:' . $product->getCatName() . '; Product:' . $product->getName() . '; Sold Times:'. $product->getSalesCount();
+             print_r($result);
+             exit;
+        } */
+       
         return $collection;
 
     }

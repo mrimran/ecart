@@ -1,4 +1,5 @@
 <?php
+    //$_productCollection=$this->getProductCollection();
     $_helper = $this->helper('catalog/output');
     $count = Mage::helper('extension')->getCollectionCountWithMemcache('bestsellings', $this, ['getProductCollection']);
 ?>
