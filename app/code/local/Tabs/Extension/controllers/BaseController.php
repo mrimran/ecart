@@ -33,9 +33,12 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
         $memcacheKey = $this->dataHelper->generateMemcacheKey($key);
         $html = $this->dataHelper->memcacheGet($memcacheKey);
         if (!$html) {
+            $this->printDebugInfo("New Data");
             $html = $this->getLayout()->createBlock($block)
                 ->setTemplate($path . $template)->toHtml();
             $this->dataHelper->memcacheSet($memcacheKey, $html, $memcacheSeconds, $this->memcacheCompress);
+        } else {
+            $this->printDebugInfo("Memcached Data");
         }
         $this->getResponse()->setBody($html);
     }
@@ -43,5 +46,12 @@ class Tabs_Extension_BaseController extends Mage_Core_Controller_Front_Action
     public function getBrandId()
     {
         return ($this->getRequest()->getParam('brand_ids')) ? $this->getRequest()->getParam('brand_ids') : 0;
+    }
+
+    public function printDebugInfo($message)
+    {
+        if(Mage::app()->getRequest()->getParam('debug')) {
+            echo "debug:".$message;
+        }
     }
 }
