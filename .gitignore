@@ -3,3 +3,5 @@ app/etc/config/local.xml
 var/
 app/design/frontend/ecart/default/layout/local.xml
 app/etc/local.xml
+.idea/workspace.xml
+

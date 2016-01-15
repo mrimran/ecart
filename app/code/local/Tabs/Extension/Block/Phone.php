@@ -257,7 +257,7 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
         // so all sorting work lays on php
 
         $result = array();
-        /*foreach ($collection as $product) {            
+        /*foreach ($collection as $product) {
         if (isset($result[$product->getCatId()])) {
                 continue;
             }
@@ -265,7 +265,7 @@ class Tabs_Extension_Block_Phone extends Tabs_Extension_Block_Base
              print_r($result);
              exit;
         } */
-       
+
         return $collection;
 
     }

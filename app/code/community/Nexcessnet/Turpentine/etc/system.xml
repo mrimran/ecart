@@ -1,0 +1,637 @@
+<?xml version="1.0"?>
+<!--
+    Nexcess.net Turpentine Extension for Magento
+    Copyright (C) 2012  Nexcess.net L.L.C.
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<config>
+    <tabs>
+        <Nexcessnet_Turpentine translate="label" module="turpentine">
+            <label>Turpentine</label>
+            <sort_order>999999</sort_order>
+        </Nexcessnet_Turpentine>
+    </tabs>
+    <sections>
+        <turpentine_varnish translate="label" module="turpentine">
+            <label>Varnish Options</label>
+            <tab>Nexcessnet_Turpentine</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label" module="turpentine">
+                    <label>General Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <auto_apply_on_save translate="label" module="turpentine">
+                            <label>Apply VCL On Config Change</label>
+                            <comment>Automatically generate and apply the new VCL when a change is made to the Varnish or Caching options</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auto_apply_on_save>
+                        <strip_vcl_whitespace translate="label,comment" module="turpentine">
+                            <label>Strip whitespace from VCL files</label>
+                            <comment>If whitespace stripping is disabled, generated VCL files will get larger and may exceed the cli_buffer varnish config.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_stripWhitespace</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </strip_vcl_whitespace>
+                        <vcl_fix translate="label comment">
+                            <label>Use VCL fix</label>
+                            <comment>When Enable is selected, a VCL fix will be used to prevent formKey issues. If Disable is selected, an observer will be used.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>28</sort_order>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </vcl_fix>
+                        <varnish_debug translate="label" module="turpentine">
+                            <label>Enable Debug Info</label>
+                            <comment>It is a major security vulnerability, to leave this enabled on production sites</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </varnish_debug>
+                        <block_debug translate="label" module="turpentine">
+                            <label>Enable Block Logging</label>
+                            <comment>Log block names for adding ESI, only enable when needed to avoid performance hit</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </block_debug>
+                        <ajax_messages translate="label" module="turpentine">
+                            <label>Enable AJAX Flash Messages</label>
+                            <comment>Enable fixing the messages block to load via AJAX, disable if you already have an extension that does this</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ajax_messages>
+                        <fix_product_toolbar translate="label" module="turpentine">
+                            <label>Fix Product List Toolbar</label>
+                            <comment>Enable this to prevent caching the visitor's view preferences of the product list</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </fix_product_toolbar>
+                        <crawler_enable translate="label" module="turpentine">
+                            <label>Enable Site Crawler</label>
+                            <comment>Enable to allow Turpentine to automatically warm the cache</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </crawler_enable>
+                        <crawler_debug translate="label" module="turpentine">
+                            <label>Enable Crawler Debug</label>
+                            <comment>Enable debug info from the site crawler</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </crawler_debug>
+                    </fields>
+                </general>
+                <logging translate="label" module="turpentine">
+                    <label>Logging</label>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <use_custom_log_file translate="label,comment" module="turpentine">
+                            <label>Use custom log file</label>
+                            <comment>Log to custom log file rather than system.log</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </use_custom_log_file>
+                        <custom_log_file_name translate="label,comment" module="turpentine">
+                            <label>Custom log file name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <comment>Only enter a file name, no paths.</comment>
+		            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <use_custom_log_file>1</use_custom_log_file>
+                            </depends>
+                        </custom_log_file_name>
+                    </fields>
+                </logging>
+                <servers translate="label" module="turpentine">
+                    <label>Servers</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <version translate="label" module="turpentine">
+                            <label>Varnish Version</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_version</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </version>
+                        <server_list translate="label" module="turpentine">
+                            <label>Server List</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment>Should be a list of HOST:PORT pairs of the Varnish management interfaces, one per line</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </server_list>
+                        <auth_key translate="label" module="turpentine">
+                            <label>Varnish Authentication Key</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Authentication key for Varnish CLI access. This should be the exact contents of the secret file (if used), newlines can be written as \n</comment>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auth_key>
+                        <config_file translate="label" module="turpentine">
+                            <label>Config File Location</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Specify where the Varnish VCL file should be saved</comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_file>
+                        <custom_include_file translate="label" module="turpentine">
+                            <label>Custom VCL File Location</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Specify where the Varnish VCL customization file should be saved</comment>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </custom_include_file>
+                    </fields>
+                </servers>
+            </groups>
+        </turpentine_varnish>
+        <turpentine_vcl translate="label" module="turpentine">
+            <label>Caching Options</label>
+            <tab>Nexcessnet_Turpentine</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <backend translate="label" module="turpentine">
+                    <label>Backend</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <load_balancing translate="label" module="turpentine">
+                            <label>Load Balancing</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_loadBalancing</source_model>
+                            <sort_order>05</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </load_balancing>
+                        <backend_host translate="label" module="turpentine">
+                            <label>Backend Host</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <load_balancing>no</load_balancing>
+                            </depends>
+                        </backend_host>
+                        <backend_port translate="label" module="turpentine">
+                            <label>Backend Port</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-greater-than-zero</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <load_balancing>no</load_balancing>
+                            </depends>
+                        </backend_port>
+                        <backend_nodes translate="label comment" module="turpentine">
+                            <label>Backend Server List</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment>A list of HOST:PORT pairs of the backend web servers, one per line</comment>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <load_balancing separator="|">yes|yes_admin</load_balancing>
+                            </depends>
+                        </backend_nodes>
+                        <backend_probe_url translate="label comment" module="turpentine">
+                            <label>Backend Check URL</label>
+                            <comment>URL where Varnish can probe if a node is available. Leave empty to disable probing.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>23</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <load_balancing separator="|">yes|yes_admin</load_balancing>
+                            </depends>
+                        </backend_probe_url>
+                        <backend_nodes_admin translate="label" module="turpentine">
+                            <label>Backend Server List for Admin</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <load_balancing>yes_admin</load_balancing>
+                            </depends>
+                        </backend_nodes_admin>
+                        <backend_probe_url_admin translate="label" module="turpentine">
+                            <label>Backend Check URL for Admin</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <load_balancing>yes_admin</load_balancing>
+                            </depends>
+                        </backend_probe_url_admin>
+                        <frontend_timeout translate="label" module="turpentine">
+                            <label>Frontend Timeout</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-greater-than-zero</validate>
+                            <sort_order>30</sort_order>
+                            <comment>Timeout in seconds for Varnish to get a response from Magento's frontend</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </frontend_timeout>
+                        <admin_timeout translate="label" module="turpentine">
+                            <label>Admin Timeout</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-greater-than-zero</validate>
+                            <sort_order>40</sort_order>
+                            <comment>Timeout in seconds for Varnish to get a response from Magento's backend</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </admin_timeout>
+                        <crawlers translate="label" module="turpentine">
+                            <label>Crawler IP Addresses</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <comment>Comma-separated list of IP addresses that should bypass Turpentine's frontend cookie requirement. Also useful for performance testing tools as they also typically don't support cookies. Note - if you are using something like Pound to terminate SSL before Varnish, setting this to the same IP could cause users to end up sharing the crawler session.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </crawlers>
+                        <crawler_user_agents translate="label" module="turpentine">
+                            <label>Crawler User Agents</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <comment>Comma-separated list of User-Agents (regexes) to serve cached pages to on initial visit</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </crawler_user_agents>
+                    </fields>
+                </backend>
+                <normalization translate="label" module="turpentine">
+                    <label>Normalization Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <encoding translate="label" module="turpentine">
+                            <label>Normalize Encoding</label>
+                            <comment>Simplify the Accept-Encoding header recieved from clients</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </encoding>
+                        <user_agent translate="label" module="turpentine">
+                            <label>Normalize User-Agent</label>
+                            <comment>Simplify the User-Agent header recieved from clients</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </user_agent>
+                        <host translate="label" module="turpentine">
+                            <label>Normalize Host</label>
+                            <comment>Force requests to be for a specific domain name, will probably break most multi-store setups</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </host>
+                        <host_target translate="label" module="turpentine">
+                            <label>Normalized Host Target</label>
+                            <comment>Domain to force requests to, defaults to the domain in the base URL</comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <host>1</host>
+                            </depends>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </host_target>
+                        <cookie_regex translate="label" module="turpentine">
+                            <label>Normalize Cookie Regex</label>
+                            <comment>Cookie regex to match to override initial cookie domain</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cookie_regex>
+                        <cookie_target translate="label" module="turpentine">
+                            <label>Normalized Cookie Target</label>
+                            <comment>Domain to force cookies to which the regex matches</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cookie_target>
+                    </fields>
+                </normalization>
+                <ttls translate="label" module="turpentine">
+                    <label>TTLs</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <grace_period translate="label" module="turpentine">
+                            <label>Grace Period (seconds)</label>
+                            <comment>Time for using dirty/expired entries while new copies are fetched and hit_for_pass timeout</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-greater-than-zero</validate>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </grace_period>
+                        <default_ttl translate="label" module="turpentine">
+                            <label>Default Page TTL (seconds)</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-greater-than-zero</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </default_ttl>
+                        <url_ttls translate="label" module="turpentine">
+                            <label>URL-based TTLs</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment>List of regex (relative to Magento root) and TTL (in seconds) comma-separated pairs (one per line)</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url_ttls>
+                        <static_ttl translate="label" module="turpentine">
+                            <label>Static File TTL (seconds)</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-greater-than-zero</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </static_ttl>
+                        <!--
+                        <lru_factor translate="label" module="turpentine">
+                            <label>Cache Hit Extension Time</label>
+                            <comment>Time (in seconds) to add to cache object TTL on a cache hit (this should be set very low)</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-greater-than-zero</validate>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </lru_factor>
+                        -->
+                    </fields>
+                </ttls>
+                <urls translate="label" module="turpentine">
+                    <label>URL-based Caching</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <url_blacklist translate="label" module="turpentine">
+                            <label>URL Blacklist</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment>List of relative URLs to exclude from caching. The admin section and API are automatically included</comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url_blacklist>
+                        <bypass_cache_store_url translate="label" module="turpentine">
+                            <label>Bypass Varnish if base URL is not found within a store?</label>
+                            <comment>If enabled any URL in the client that does not start with a store URL will bypass the cache</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </bypass_cache_store_url>
+                    </fields>
+                </urls>
+                <params translate="label" module="turpentine">
+                    <label>Parameter-based Caching</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <get_params translate="label" module="turpentine">
+                            <label>GET Parameters</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Comma-separated list of GET variables that prevent caching</comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                        
+                        </get_params>
+                        <ignore_get_params translate="label" module="turpentine">
+                            <label>Ignore GET Parameters</label>
+                            <comment>Comma-separated list of GET variables that will be ignored for caching</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ignore_get_params>
+                        <transfer_unmodified_url translate="label" module="turpentine">
+                            <label>Transfer unmodified URL to Backend Server</label>
+                            <comment>
+                                By default the backend server (webserver / magento) gets a modified URL (without ignored get parameters).
+                                As a result the ignored parameters can not be used by the backend server for uncachable requests, for example a redirect.
+                                By activating this option the backend server gets the the unmodified url, but the cache still uses the modified url for lookups.
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </transfer_unmodified_url>
+                    </fields>
+                </params>
+                <static translate="label" module="turpentine">
+                    <label>Static Caching</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>45</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <force_static translate="label" module="turpentine">
+                            <label>Force Static Asset Caching</label>
+                            <comment>Always cache static assets</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </force_static>
+                        <exts translate="label" module="turpentine">
+                            <label>Static Asset Extensions</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Comma-separated list of static asset file extensions</comment>
+                            <depends>
+                                <force_static>1</force_static>
+                            </depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </exts>
+                        <simple_hash translate="label" module="turpentine">
+                            <label>Use Simple Hash</label>
+                            <comment>Always serve the same version of a static file. Ignore domain, cookies and browser version. Saves memory and lowers cache misses.</comment>
+                            <depends>
+                                <force_static>1</force_static>
+                            </depends>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </simple_hash>
+                    </fields>
+                </static>
+                <maintenance translate="label" module="turpentine">
+                    <label>Maintenance mode</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>46</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enable translate="label" module="turpentine">
+                            <label>Enable Maintenance Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>turpentine/config_select_toggle</source_model>
+                            <comment>If enabled IP's not in 'developer client restrictions' will receive the following error page</comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable>
+                        <custom_vcl_synth translate="label" module="turpentine">
+                            <label>Custom HTML content of vcl synth (error) sub</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment>Enter full HTML page content</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </custom_vcl_synth>
+                    </fields>
+                </maintenance>
+            </groups>
+        </turpentine_vcl>
+    </sections>
+</config>
