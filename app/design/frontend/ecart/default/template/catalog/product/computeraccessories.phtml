@@ -1,7 +1,7 @@
-<?php $_Collection = $this->getLoadedProductCollection();
-      $Collection = $this->getLoadedProductCollectionnew();
+<?php
       $_helper = $this->helper('catalog/output');
-      if($_Collection->count() || $Collection->count()):
+$count = Mage::helper('extension')->getCollectionCountWithMemcache('computeraccessories', $this, ['getLoadedProductCollection', 'getLoadedProductCollectionnew']);
+      if($count):
 ?>
 <section id="computeraccessories">
     <div class="sectiontitle">
@@ -37,98 +37,8 @@
         </ul>
     </div>
     <div class="columnslider" id="bestseller1" data-items="4">
-        <?php
-        $_productCollection = $this->getLoadedProductCollection();
-        $_helper = $this->helper('catalog/output');
-        ?>
-        <?php if (!$_productCollection->count()): ?>
-            <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
-        <?php else: ?>
-            <?php foreach ($_productCollection as $_product): ?>
-                <div class="col-box" id="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
-                        <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
-                            ?>
-                            <span class="new">new</span>
-                        <?php } ?>
-
-                        <div class="img-box"><div class="abs_center"><!-- <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"> -->
-                                <?php $_imgSize = 210; ?>
-                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
-                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
-                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                                <!-- </a> --></div></div>
-                        <div class="bottom-area">
-                            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
-                            <div class="price"><?php
-                            echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
-                              $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
-                            ?>
-
-                            <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
-                                 <span class="not-now">
-                            <?php echo $_formattedActualPrice; ?></span>
-                            <?php endif; ?></div>
-                        </div>
-                    </a>
-                <div class="actions">
-                    <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
-                        <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-                    <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-                        <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
-                    <?php else: ?>
-                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                    <?php endif; ?>
-                </div>
-                </div>
-            <?php endforeach ?>
-        <?php endif; ?>
     </div>
     <div class="columnslider" id="newproduct1" data-items="4" >
-        <?php
-        $productCollection = $this->getLoadedProductCollectionnew();
-        $_helper = $this->helper('catalog/output');
-        ?>
-        <?php if (!$productCollection->count()): ?>
-            <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
-        <?php else: ?>
-            <?php foreach ($productCollection as $_product): ?>
-                <div class="col-box" id="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>"><a href="<?php echo $_product->getProductUrl() ?>">
-                        <?php if (date("Y-m-d") >= substr($_product->getNewsFromDate(), 0, 10) && date("Y-m-d") <= substr($_product->getNewsToDate(), 0, 10)) {
-                            ?>
-                            <span class="new">new</span>
-                        <?php } ?>
-
-                        <div class="img-box"><div class="abs_center"><!-- <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"> -->
-                                <?php $_imgSize = 210; ?>
-                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
-                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
-                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                                <!-- </a> --></div></div>
-                        <div class="bottom-area">
-                            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h4> 
-                            <div class="price"><?php
-                            echo $_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(), true, false);
-                              $_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(), true, false);
-                            ?>
-
-            <?php if ($_formattedActualPrice != $_formattedSpecialPrice): ?>
-                 <span class="not-now">
-            <?php echo $_formattedActualPrice; ?></span>
-            <?php endif; ?></div>
-                        </div>
-                    </a>
-                    <div class="actions">
-                        <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
-                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-                        <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-                            <a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
-                        <?php else: ?>
-                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            <?php endforeach ?>
-        <?php endif; ?>
     </div>
     <?php $url = Mage::getModel('catalog/category')->load(39)->getUrl();?>
     <div class="clearfix viewmore" align="right"><a href="<?php echo $url ?>">View All Products</a></div>
@@ -154,6 +64,31 @@
         jQuery('#newproduct1').hide();
         jQuery('#four').addClass("active");
         jQuery('#three').removeClass("active");
+
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxbestseller/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollection'},
+            beforeSend: function () {
+                jQuery('#bestseller1').html("<div class='loader'><img src='<?php echo $this->getSkinUrl('images/ajax-loader2.gif') ?>' /></div>");
+            },
+            success: function (data) {
+                jQuery('#bestseller1').html(data);
+                //jQuery('#bestsejQueryller1').trigger('refresh.owl.carousel');
+                reinitOwlOnSelector('#bestseller1',4);
+            }
+        });
+
+        jQuery.ajax({
+            url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>index.php/extension/index/ajaxnewproduct/',
+            type: 'POST',
+            data: {action: 'getLoadedProductCollectionnew'},
+            success: function (data) {
+
+                jQuery('#newproduct1').html(data);
+                reinitOwlOnSelector('#newproduct1',4);
+            }
+        });
 
     });
 
