@@ -87,15 +87,26 @@ $subject = "Ecart Product Return";
 $header  = "MIME-Version: 1.0\r\n";
 $headers .= 'From: info@ecart.ae' . "\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-$message = "<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderdate</b></p><br><h3>Detail:</h3><p>Product Code: <b>$productcode</b> Product Name: <b>$productname</b> Quantity <b>$quantity</b><br>";
+// To Customer
+$message = "<p><a href='<?php echo $this->getUrl('');?>'><img style='margin-bottom: 10px;'' alt='Ecart' src='<?php echo $this->getSkinUrl('images/logo.png'); ?>' /></a></p><p>Your request has been received one of our staff member would contact you soon</p>";
+mail($to,$subject,$message,$headers);
 
-    mail($to,$subject,$message,$headers);
-
-      $messagenew="<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderdate</b></p><br><h3>Detail:</h3><p>Product Code: <b>$productcode</b> Product Name: <b>$productname</b> Quantity <b>$quantity</b><br><h3> Customer Details:</h3><br>Name: <b>$firstname $lastname</b> Email <b>$email</b>";
+// To Admin
+$messagenew="<p><a href='<?php echo $this->getUrl('');?>'><img style='margin-bottom: 10px;'' alt='Ecart' src='<?php echo $this->getSkinUrl('images/logo.png'); ?>' /></a></p>
+<h3>Customer Details</h3>
+<p><b>Name:</b> $firstname $lastname</p>
+<p><b>Email:</b> $email</p>
+<h3>Ecart Product Return of Order</h3>
+<p><b>OrderID:</b> $orderid </p>
+<p><b>Date:</b> $orderdate</p>
+<h3>Details</h3>
+<p><b>Product Name:</b> $productname</p>
+<p><b>Quantity:</b> $quantity</p>
+<p><b>Product Code:</b>$productcode</p>";
      mail("nzsiddiqui@gmail.com","Customer Product Return",$messagenew,$headers);
      if(mail($to,$subject,$message,$headers) && mail("nzsiddiqui@gmail.com","customer Subscription",$messagenew,$headers) ){ ?>
      	<script>
-     	jQuery(".message").html("<h4>Mail Has Been sent</h4>");
+     	jQuery(".message").html("<ul class='messages'><li class='success-msg'><ul><li><span>E-mail has been sent.</span></li></ul></li></ul>");
       	jQuery(".message").show();
       	</script>
     <?php
@@ -103,7 +114,7 @@ $message = "<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderd
      else{
       	?> 
       	<script>
-      	jQuery(".message").html("<h4>Mail Was Not Able to sent</h4>");
+      	jQuery(".message").html("<ul class='messages'><li class='notice-msg'><ul><li><span>Error was not able sent.</span></li></ul></li></ul>");
       	jQuery(".message").show();
       	</script>
      <?php 
