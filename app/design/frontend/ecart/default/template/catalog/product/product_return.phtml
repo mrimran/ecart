@@ -103,8 +103,8 @@ $messagenew="<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' a
 <p><b>Product Name:</b> $productname</p>
 <p><b>Quantity:</b> $quantity</p>
 <p><b>Product Code:</b>$productcode</p>";
-     mail("nzsiddiqui@gmail.com","Customer Product Return",$messagenew,$headers);
-     if(mail($to,$subject,$message,$headers)){ ?>
+     mail("$email","Product Return Request",$messagenew,$headers);
+     if(mail($to,$subject,$message,$headers) && mail("nzsiddiqui@gmail.com","Product Return Request by $firstname $lastname",$messagenew,$headers) ){ ?>
      	<script>
      	jQuery(".message").html("<ul class='messages'><li class='success-msg'><ul><li><span>E-mail has been sent.</span></li></ul></li></ul>");
       	jQuery(".message").slideDown();
