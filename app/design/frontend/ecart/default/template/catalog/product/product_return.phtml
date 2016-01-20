@@ -102,7 +102,8 @@ $messagenew="<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' a
 <h3>Details</h3>
 <p><b>Product Name:</b> $productname</p>
 <p><b>Quantity:</b> $quantity</p>
-<p><b>Product Code:</b>$productcode</p>";
+<p><b>Product Code:</b>$productcode</p>
+<p><b>Faulty or other details:</b>$otherdetails</p>";
      mail("$email","Product Return Request",$messagenew,$headers);
      if(mail($to,$subject,$message,$headers) && mail("nzsiddiqui@gmail.com","Product Return Request by $firstname $lastname",$messagenew,$headers) ){ ?>
      	<script>
