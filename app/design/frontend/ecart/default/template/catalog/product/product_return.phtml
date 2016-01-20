@@ -88,11 +88,11 @@ $header  = "MIME-Version: 1.0\r\n";
 $headers .= 'From: info@ecart.ae' . "\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 // To Customer
-$message = "<p><a href='echo $this->getUrl('');'><img style='margin-bottom: 10px;'' alt='Ecart' src='echo $this->getSkinUrl('images/logo.png');' /></a></p><p>Your request has been received one of our staff member would contact you soon</p>";
+$message = "<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' alt='Ecart' src='http://ecart.ae/skin/frontend/ecart/default/images/logo.png' /></a></p><p>Your request has been received one of our staff member would contact you soon</p>";
 mail($to,$subject,$message,$headers);
 
 // To Admin
-$messagenew="<p><a href='echo $this->getUrl('');'><img style='margin-bottom: 10px;'' alt='Ecart' src='echo $this->getSkinUrl('images/logo.png');' /></a></p>
+$messagenew="<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' alt='Ecart' src='http://ecart.ae/skin/frontend/ecart/default/images/logo.png' /></a></p>
 <h3>Customer Details</h3>
 <p><b>Name:</b> $firstname $lastname</p>
 <p><b>Email:</b> $email</p>
