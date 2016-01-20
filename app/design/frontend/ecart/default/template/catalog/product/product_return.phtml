@@ -1,5 +1,5 @@
 <h3 class="heading2">Product Returns</h3>
-<div class="col-sm-7 col-md-8 paddingzeroL contact-us">
+<div class="col-sm-7 col-md-8 paddingzeroL contact-us product_returns">
 <p>Please complete the form below to request an RMA number.</p>
 <form class="form-horizontal" action="" method="Post" id="form1">
 <h3 class="heading3">Order Information</h3>
@@ -44,18 +44,25 @@ echo $this->getChildHtml('captcha') ?>
 </form></div>
 <div class="col-sm-5 col-md-4 paddingzeroR">
 <div class="filters">
-<h2>Customer Service</h2>
+<h2 class="heading">Customer Service</h2>
 <div class="padding2">
-<h5>TOLL FREE NO</h5>
-<h3>800 42935</h3>
+<h5>CALL US</h5>
+<h3>04 327 5970</h3>
 </div>
 </div>
 <div class="filters">
-<h2>Follow Us</h2>
-<div class="social padding2">&nbsp;</div>
+<h2 class="heading">Follow Us</h2>
+<div class="social padding2">
+    <a href="http://www.facebook.com/ecart.ae" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/MyeCart" target="_blank" class="tw"><i class="fa fa-twitter"></i></a>
+    <a href="https://plus.google.com/+EcartAe26" target="_blank" class="gplus"><i class="fa fa-google-plus"></i></a>
+    <a href="https://www.youtube.com/user/eCartae" target="_blank" class="utube"><i class="fa fa-youtube"></i></a>
+    <a href="https://www.linkedin.com/company/ecart-ae" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
+    <a href="https://instagram.com/myecart" target="_blank" class="insta"><i class="fa fa-instagram"></i></a>
+</div>
 </div>
 <div class="filters">
-<h2>Find Us on Map</h2>
+<h2 class="heading">Find Us on Map</h2>
 <div class="padding2"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.311990276597!2d55.2914456!3d25.2600882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43159b182d3f%3A0x87c126f02847baef!2sHazel+Trading+LLC!5e0!3m2!1sen!2s!4v1437640330105" height="300" width="100%"></iframe></div>
 </div>
 </div>
@@ -76,17 +83,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
     $_captcha = Mage::getModel('customer/session')->getData('form-validate-captcha_word');
     if (strcmp($_captcha['data'] , $_POST['captcha']['form-validate-captcha'])) {
     $to=$email;
-    $subject = "Ecart Product Return";
-     $header  = "MIME-Version: 1.0\r\n";
-     $headers .= 'From: info@ecart.ae' . "\r\n";
-     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-      $message = "<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderdate</b></p><br><h3>Detail:</h3><p>Product Code: <b>$productcode</b> Product Name: <b>$productname</b> Quantity <b>$quantity</b><br>";
+$subject = "Ecart Product Return";
+$header  = "MIME-Version: 1.0\r\n";
+$headers .= 'From: info@ecart.ae' . "\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+$message = "<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderdate</b></p><br><h3>Detail:</h3><p>Product Code: <b>$productcode</b> Product Name: <b>$productname</b> Quantity <b>$quantity</b><br>";
 
     mail($to,$subject,$message,$headers);
 
       $messagenew="<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderdate</b></p><br><h3>Detail:</h3><p>Product Code: <b>$productcode</b> Product Name: <b>$productname</b> Quantity <b>$quantity</b><br><h3> Customer Details:</h3><br>Name: <b>$firstname $lastname</b> Email <b>$email</b>";
-     mail("humaira.batool@progos.org","Customer Product Return",$messagenew,$headers);
-     if(mail($to,$subject,$message,$headers) && mail("humaira.batool@progos.org","customer Subscription",$messagenew,$headers) ){ ?>
+     mail("nzsiddiqui@gmail.com","Customer Product Return",$messagenew,$headers);
+     if(mail($to,$subject,$message,$headers) && mail("nzsiddiqui@gmail.com","customer Subscription",$messagenew,$headers) ){ ?>
      	<script>
      	jQuery(".message").html("<h4>Mail Has Been sent</h4>");
       	jQuery(".message").show();
