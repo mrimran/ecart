@@ -32,7 +32,6 @@
    <h4 class="heading4"><label for="captcha_<?php echo $this->getFormId() ?>" class="required"><?php echo $this->__('Enter the code in the box below')?></label></h4>
     <div class="input-box captcha">
         <input name="<?php echo Mage_Captcha_Helper_Data::INPUT_NAME_FIELD_VALUE ?>[<?php echo $this->getFormId()?>]" type="text" required class="input-text required-entry" id="captcha_<?php echo $this->getFormId() ?>" />
-        <input id="captcha" type="text" required="required" pattern="^(?!Enter Code$).+">
     </div>
 </div>
 <div class="captcha-img-container">
@@ -45,8 +44,7 @@
             </div>
         <?php endif; ?>
     </div>
+</div>
     <script type="text/javascript">
     jQuery('<?php echo $this->getFormId() ?>').captcha = new Captcha('<?php echo $this->getRefreshUrl() ?>', '<?php echo $this->getFormId() ?>');
     </script>
-</div>
-
