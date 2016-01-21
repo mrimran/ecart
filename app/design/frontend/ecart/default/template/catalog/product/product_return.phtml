@@ -84,12 +84,12 @@ $_captcha = Mage::getModel('customer/session')->getData('form-validate-captcha_w
 if (strcmp($_captcha['data'] , $_POST['captcha']['form-validate-captcha'])) {
 $to=$email;
 $subject = "Product Return Request";
+$subjectAdmin = "Product Return Request by $firstname $lastname";
 $header  = "MIME-Version: 1.0\r\n";
 $headers .= 'From: info@ecart.ae' . "\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 // To Customer
 $message = "<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' alt='Ecart' src='http://ecart.ae/skin/frontend/ecart/default/images/logo.png' /></a></p><p>Your request has been received one of our staff member would contact you soon</p>";
-mail($to,$subject,$message,$headers);
 
 // To Admin
 $messagenew="<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' alt='Ecart' src='http://ecart.ae/skin/frontend/ecart/default/images/logo.png' /></a></p>
@@ -102,10 +102,11 @@ $messagenew="<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' a
 <h3>Details</h3>
 <p><b>Product Name:</b> $productname</p>
 <p><b>Quantity:</b> $quantity</p>
-<p><b>Product Code:</b>$productcode</p>
-<p><b>Faulty or other details:</b>$otherdetails</p>";
-     mail("$email","Product Return Request",$messagenew,$headers);
-     if(mail($to,$subject,$message,$headers) && mail("info@ecart.ae","Product Return Request by $firstname $lastname",$messagenew,$headers) ){ ?>
+<p><b>Product Code:</b> $productcode</p>
+<p><b>Reason for Return:</b> $returnresons</p>
+<p><b>Faulty or other details:</b> $otherdetails</p>";
+
+if(mail($to,$subject,$message,$headers) && mail("nzsiddiqui@gmail.com",$subjectAdmin,$messagenew,$headers) ){ ?>
      	<script>
      	jQuery(".message").html("<ul class='messages'><li class='success-msg'><ul><li><span>E-mail has been sent.</span></li></ul></li></ul>");
       	jQuery(".message").slideDown();
