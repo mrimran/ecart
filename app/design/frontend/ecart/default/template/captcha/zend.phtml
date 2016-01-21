@@ -44,7 +44,8 @@
             </div>
         <?php endif; ?>
     </div>
+    <script type="text/javascript">//<![CDATA[
+        $('<?php echo $this->getFormId() ?>').captcha = new Captcha('<?php echo $this->getRefreshUrl() ?>', '<?php echo $this->getFormId() ?>');
+        //]]></script>
 </div>
-    <script type="text/javascript">
-    jQuery('<?php echo $this->getFormId() ?>').captcha = new Captcha('<?php echo $this->getRefreshUrl() ?>', '<?php echo $this->getFormId() ?>');
-    </script>
+
