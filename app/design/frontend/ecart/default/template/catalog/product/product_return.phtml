@@ -1,7 +1,8 @@
 <h3 class="heading2">Product Returns</h3>
-<div class="col-sm-7 col-md-8 paddingzeroL contact-us">
+<div class="col-sm-7 col-md-8 paddingzeroL contact-us product_returns">
 <p>Please complete the form below to request an RMA number.</p>
 <form class="form-horizontal" action="" method="Post" id="form1">
+<div class="message" style="display:none"></div>
 <h3 class="heading3">Order Information</h3>
 <div class="form-group">
 <div class="col-sm-6"><input class="form-control" type="text"  placeholder="First Name" required="" name="firstname" /></div>
@@ -9,7 +10,12 @@
 </div>
 <div class="form-group">
 <div class="col-sm-6"><input class="form-control" type="text"  placeholder="Order ID" required="" name="orderid" /></div>
-<div class="col-sm-6"><input class="form-control" type="date"  placeholder="Order Date" required="" name="orderdate" /></div>
+<div class="col-sm-6"><input class="form-control" type="date"  placeholder="Order Date" required="" name="orderdate" />
+<?php
+// Prints the day, date, month, year, Dubai time, AM or PM
+date_default_timezone_set("Asia/Dubai");
+$dubaiDateTime =date("l jS F Y h:i A");
+?><input type="hidden" name="currentdatetime" value="<?php echo $dubaiDateTime; ?>"></div>
 </div>
 <div class="form-group">
 <div class="col-sm-6"><input class="form-control" type="email" placeholder="Email" required="" name="email" /></div>
@@ -40,76 +46,98 @@ echo $this->getChildHtml('captcha') ?>
 </div>
 <div class="col-sm-6" style="text-align: right;"><button class="btn btn1" type="submit">Submit</button></div>
 </div>
-<div class="message" style="display:none"></div>
 </form></div>
 <div class="col-sm-5 col-md-4 paddingzeroR">
 <div class="filters">
-<h2>Customer Service</h2>
+<h2 class="heading">Customer Service</h2>
 <div class="padding2">
-<h5>TOLL FREE NO</h5>
-<h3>800 42935</h3>
+<h5>CALL US</h5>
+<h3>04 327 5970</h3>
 </div>
 </div>
 <div class="filters">
-<h2>Follow Us</h2>
-<div class="social padding2">&nbsp;</div>
+<h2 class="heading">Follow Us</h2>
+<div class="social padding2">
+    <a href="http://www.facebook.com/ecart.ae" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/MyeCart" target="_blank" class="tw"><i class="fa fa-twitter"></i></a>
+    <a href="https://plus.google.com/+EcartAe26" target="_blank" class="gplus"><i class="fa fa-google-plus"></i></a>
+    <a href="https://www.youtube.com/user/eCartae" target="_blank" class="utube"><i class="fa fa-youtube"></i></a>
+    <a href="https://www.linkedin.com/company/ecart-ae" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
+    <a href="https://instagram.com/myecart" target="_blank" class="insta"><i class="fa fa-instagram"></i></a>
+</div>
 </div>
 <div class="filters">
-<h2>Find Us on Map</h2>
+<h2 class="heading">Find Us on Map</h2>
 <div class="padding2"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.311990276597!2d55.2914456!3d25.2600882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43159b182d3f%3A0x87c126f02847baef!2sHazel+Trading+LLC!5e0!3m2!1sen!2s!4v1437640330105" height="300" width="100%"></iframe></div>
 </div>
 </div>
-<?php 
+<?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST'):
-	$firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-    $orderid = $_POST["orderid"];
-    $orderdate = $_POST["orderdate"];
-    $email = $_POST["email"];
-    $tel = $_POST["tel"];
-    $productname = $_POST["productname"];
-    $productcode = $_POST["productcode"];
-    $quantity = $_POST["quantity"];
-    $returnresons = $_POST["returnresons"];
-    $productopened = $_POST["productopened"];
-    $otherdetails = $_POST["otherdetails"];
-    $_captcha = Mage::getModel('customer/session')->getData('form-validate-captcha_word');
-    if (strcmp($_captcha['data'] , $_POST['captcha']['form-validate-captcha'])) {
-    $to=$email;
-    $subject = "Ecart Product Return";
-     $header  = "MIME-Version: 1.0\r\n";
-     $headers .= 'From: info@ecart.ae' . "\r\n";
-     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-      $message = "<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderdate</b></p><br><h3>Detail:</h3><p>Product Code: <b>$productcode</b> Product Name: <b>$productname</b> Quantity <b>$quantity</b><br>";
+$firstname = $_POST["firstname"];
+$lastname = $_POST["lastname"];
+$orderid = $_POST["orderid"];
+$orderdate = $_POST["orderdate"];
+$currentdatetime = $_POST["currentdatetime"];
+$email = $_POST["email"];
+$tel = $_POST["tel"];
+$productname = $_POST["productname"];
+$productcode = $_POST["productcode"];
+$quantity = $_POST["quantity"];
+$returnresons = $_POST["returnresons"];
+$productopened = $_POST["productopened"];
+$otherdetails = $_POST["otherdetails"];
+$_captcha = Mage::getModel('customer/session')->getData('form-validate-captcha_word');
+if (strcmp($_captcha['data'] , $_POST['captcha']['form-validate-captcha'])) {
+$to=$email;
+$subject = "Product Return Request";
+$subjectAdmin = "Product Return Request by $firstname $lastname";
+$header  = "MIME-Version: 1.0\r\n";
+$headers .= 'From: info@ecart.ae' . "\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+// To Customer
+$message = "<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' alt='Ecart' src='http://ecart.ae/skin/frontend/ecart/default/images/logo.png' /></a></p><p>Your request has been received one of our staff member would contact you soon</p>";
 
-    mail($to,$subject,$message,$headers);
+// To Admin
+$messagenew="<p><a href='https://ecart.ae/'><img style='margin-bottom: 10px;'' alt='Ecart' src='http://ecart.ae/skin/frontend/ecart/default/images/logo.png' /></a></p>
+<h3>Customer Details</h3>
+<p><b>Name:</b> $firstname $lastname</p>
+<p><b>Email:</b> $email</p>
+<p><b>Telephone no:</b> $tel</p>
+<h3>Ecart Product Return of Order</h3>
+<p><b>OrderID:</b> $orderid </p>
+<p><b>Date:</b> $orderdate</p>
+<h3>Details</h3>
+<p><b>Product Name:</b> $productname</p>
+<p><b>Quantity:</b> $quantity</p>
+<p><b>Product Code:</b> $productcode</p>
+<p><b>Is Product is opened:</b> $productopened</p>
+<p><b>Reason for Return:</b> $returnresons</p>
+<p><b>Faulty or other details:</b> $otherdetails</p>
+<p><b>Request Submission Date and Time:</b> $currentdatetime</p>";
 
-      $messagenew="<p>Ecart Product Return of Order <b>$orderid </b>at Date: <b>$orderdate</b></p><br><h3>Detail:</h3><p>Product Code: <b>$productcode</b> Product Name: <b>$productname</b> Quantity <b>$quantity</b><br><h3> Customer Details:</h3><br>Name: <b>$firstname $lastname</b> Email <b>$email</b>";
-     mail("humaira.batool@progos.org","Customer Product Return",$messagenew,$headers);
-     if(mail($to,$subject,$message,$headers) && mail("humaira.batool@progos.org","customer Subscription",$messagenew,$headers) ){ ?>
+if(mail($email,$subject,$message,$headers) && mail("info@ecart.ae",$subjectAdmin,$messagenew,$headers) ){ ?>
      	<script>
-     	jQuery(".message").html("<h4>Mail Has Been sent</h4>");
-      	jQuery(".message").show();
+     	jQuery(".message").html("<ul class='messages'><li class='success-msg'><ul><li><span>E-mail has been sent.</span></li></ul></li></ul>");
+      	jQuery(".message").slideDown();
       	</script>
     <?php
      }
      else{
-      	?> 
+      	?>
       	<script>
-      	jQuery(".message").html("<h4>Mail Was Not Able to sent</h4>");
-      	jQuery(".message").show();
+      	jQuery(".message").html("<ul class='messages'><li class='notice-msg'><ul><li><span>There is some error in sending email. Please try again later.</span></li></ul></li></ul>");
+      	jQuery(".message").slideDown();
       	</script>
-     <?php 
+     <?php
       }
     }
     else{
-   	?> 
+   	?>
       	<script>
       	jQuery(".message").html("<h4>You are a disgusting robot!</h4>");
-      	jQuery(".message").show();
+      	jQuery(".message").slideDown();
       	</script>
      <?php
- } 
-
+ }
 endif;
 ?>

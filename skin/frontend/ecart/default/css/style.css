@@ -1019,6 +1019,8 @@ content:'';display:block;background-position:center;width:14px;height:15px;backg
 .contact-us .form-control{border-radius:0;}
 .contact-us p{color:#bebebe;}
 .contact-us .btn1{font-weight:600;padding:8px 30px;}
+.product_returns .label{line-height:1.8;}
+.product_returns .label input[type="radio"]{margin:0;}
 .cart_page .btn1,.cart_page .btn2{font-size:20px;padding:10px 30px;font-weight: 600;line-height: 1.2;}
 .cart_page .btn2{font-size:14px;padding:12px 18px;font-weight:100;}
 .navmenu-fixed-left{background: rgb(45, 46, 50);display:none;}
