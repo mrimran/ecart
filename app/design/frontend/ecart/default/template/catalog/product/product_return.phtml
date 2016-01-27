@@ -1,3 +1,4 @@
+<?php $_SESSION["captcha"] = "";?>
 <h3 class="heading2">Product Returns</h3>
 <div class="col-sm-7 col-md-8 paddingzeroL contact-us">
 <p>Please complete the form below to request an RMA number.</p>
@@ -59,9 +60,11 @@ echo $this->getChildHtml('captcha') ?>
 <div class="padding2"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.311990276597!2d55.2914456!3d25.2600882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43159b182d3f%3A0x87c126f02847baef!2sHazel+Trading+LLC!5e0!3m2!1sen!2s!4v1437640330105" height="300" width="100%"></iframe></div>
 </div>
 </div>
+<div class="test"></div>
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'):
-	$firstname = $_POST["firstname"];
+
+	  $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $orderid = $_POST["orderid"];
     $orderdate = $_POST["orderdate"];
@@ -73,8 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
     $returnresons = $_POST["returnresons"];
     $productopened = $_POST["productopened"];
     $otherdetails = $_POST["otherdetails"];
-    $_captcha = Mage::getModel('customer/session')->getData('form-validate-captcha_word');
-    if (strcmp($_captcha['data'] , $_POST['captcha']['form-validate-captcha'])) {
+    if (strcmp($_captcha['data'] , $_POST['captcha']['form-validate-captcha']) == 0) {
     $to=$email;
     $subject = "Ecart Product Return";
      $header  = "MIME-Version: 1.0\r\n";

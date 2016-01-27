@@ -76,6 +76,11 @@ class Tabs_Extension_Helper_Data extends Mage_Core_Helper_Abstract
         return crc32($keyData);
     }
 
+    public function getBrandId()
+    {
+        return (Mage::app()->getRequest()->getParam('brand_ids')) ? Mage::app()->getRequest()->getParam('brand_ids') : 0;
+    }
+
     public function getCustomUrl($key)
     {
         //get friendly urls
