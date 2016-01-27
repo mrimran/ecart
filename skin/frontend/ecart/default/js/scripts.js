@@ -35,8 +35,9 @@ jQuery(document).ready(function($) {
                     0: {
                          items: 1,
                     },
-                    480: {
+                    360: {
                          items: 2,
+                         margin:5,
                     },
                     768: {
                          items: 3,
@@ -202,8 +203,9 @@ function reinitOwlOnSelector(selector, number_of_items) {
                     0: {
                          items: 1,
                     },
-                    480: {
+                    360: {
                          items: 2,
+                         margin: 5,
                     },
                     768: {
                          items: 3,
