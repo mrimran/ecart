@@ -9,7 +9,7 @@
 <config>
     <modules>
         <Amasty_Base>
-            <active>false</active>
+            <active>true/active>
             <codePool>local</codePool>
             <edition>community</edition>
         </Amasty_Base>

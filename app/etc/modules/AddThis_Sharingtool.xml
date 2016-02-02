@@ -2,15 +2,15 @@
 <config>
     <modules>
         <AddThis_SmartLayers>
-            <active>false</active>
+            <active>true</active>
             <codePool>community</codePool>
         </AddThis_SmartLayers>
         <AddThis_SharingTool>
-            <active>false</active>
+            <active>true</active>
             <codePool>community</codePool>
         </AddThis_SharingTool>
         <AddThis_PluginsGeneral>
-            <active>false</active>
+            <active>true</active>
             <codePool>community</codePool>
         </AddThis_PluginsGeneral> 
     </modules>
