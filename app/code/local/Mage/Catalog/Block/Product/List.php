@@ -142,31 +142,31 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
         $collection = $this->_getProductCollection();
 
         // use sortable parameters
-        if ($orders = $this->getAvailableOrders()) {
+        $orders = array('entity_id' => $this->__('Latest'), 'price' => $this->__('Price') ); 
             $toolbar->setAvailableOrders($orders);
-        }
+        
         if ($sort = $this->getSortBy()) {
-            $toolbar->setDefaultOrder($sort);
-        }
-        if ($dir = $this->getDefaultDirection()) {
-            $toolbar->setDefaultDirection($dir);
+            $toolbar->setAvailableOrders($orders);
+            $toolbar->setDefaultOrder('entity_id');
+            $toolbar->setDefaultDirection('desc');
         }
         if ($modes = $this->getModes()) {
-            $toolbar->setModes($modes);
-        }
-
-        // set collection to toolbar and apply sort
-        $toolbar->setCollection($collection);
-
-        $this->setChild('toolbar', $toolbar);
-        Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->_getProductCollection()
-        ));
-
-        $this->_getProductCollection()->load();
-
-        return parent::_beforeToHtml();
+        $toolbar->setModes($modes);
     }
+ 
+    // set collection to tollbar and apply sort
+    $toolbar->setCollection($collection);
+ 
+    $this->setChild('toolbar', $toolbar);
+    Mage::dispatchEvent('catalog_block_product_list_collection', array(
+        'collection'=>$this->_getProductCollection(),
+    ));
+ 
+    $this->_getProductCollection()->load();
+    Mage::getModel('review/review')->appendSummary($this->_getProductCollection());
+    return parent::_beforeToHtml();
+    }
+
 
     /**
      * Retrieve Toolbar block

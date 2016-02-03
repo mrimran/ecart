@@ -5,9 +5,12 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
 
     public function changePrice(Varien_Event_Observer $observer)
     {
+        
+        
         $sku = $observer->getEvent()->getQuoteItem()->getProduct()->getData('sku');
         $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
         $new_price = $_product->getPrice();
+        
 
         // Get the quote item
         $item = $observer->getQuoteItem();
@@ -17,12 +20,16 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
         if($item->getProduct()->isConfigurable()) {
             // Load the custom price
             $price = $new_price;
+
             // Set the custom price
             //Set price by subtracting base price from the passed price and 
             //then adding the product price to tackle any extra price attached with custom options :)
             //identify if there is some extra cost, final price - base price
             $extra_price = $item->getProduct()->getFinalPrice() - $item->getProduct()->getPrice(); //add this extra price
+            
             $extra_price = ($extra_price > 0) ? $extra_price : 0;
+            $price = $price + $extra_price;
+            
             /* echo "Got:". $price;
               echo " Extra: ".$extra_price;
               echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);die(); */
@@ -32,8 +39,9 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
                 $item->setOriginalCustomPrice($extra_price + $price);
             }else {*/
                 //if the attributes are defined, use the parent product price instead (base product price)
-                $item->setCustomPrice($item->getProduct()->getFinalPrice());
-                $item->setOriginalCustomPrice($item->getProduct()->getFinalPrice());
+                $item->setCustomPrice($price); 
+                $item->setOriginalCustomPrice($price);
+                
             //}
             // Enable super mode on the product.
             $item->getProduct()->setIsSuperMode(true);

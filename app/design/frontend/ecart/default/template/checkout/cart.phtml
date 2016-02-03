@@ -36,10 +36,12 @@ $product_ids = "";
 $total = 0.00;
 foreach($this->getItems() as $item) { 
     $product_ids .= "'".$item->getId()."', ";
+    
 }
 ?>
-
-<?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
+ 
+<?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; 
+?>
 <section>
 <div class="cart col-sm-12 paddingzero cart_page <?php echo $_priceDisplay; ?>">
     <div class="page-title title-buttons">
