@@ -8,6 +8,15 @@
         <!--<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>-->
     <?php else: ?>
  <?php foreach ($_productCollection as $_product): ?>
+                    <?php if ($_product->isConfigurable() && !$_product->isAvailable()): ?>
+                    <?php $simples = $_product->getTypeInstance(true)->getUsedProducts(null, $_product) ?>
+                    <?php foreach($simples as $simpleProduct): ?>
+                     <?php if (!$simpleProduct->isAvailable()) : ?>
+                           <?php $_product = 0; ?>
+                     <?php endif; ?>
+                     <?php endforeach; ?>
+                     <?php endif; ?>
+        <?php if($_product != 0): ?>
                     <?php $special = $_product->getSpecialPrice();
                               $actual = $_product->getPrice();
                     if($special < $actual): ?>
@@ -47,6 +56,7 @@
                         <?php endif; ?>
                     </div>
                     </div>
-                <?php endif ?>
-        <?php endforeach ?>
-        <?php endif ?>
+                <?php endif; ?>
+                <?php endif; ?>
+        <?php endforeach; ?>
+        <?php endif; ?>

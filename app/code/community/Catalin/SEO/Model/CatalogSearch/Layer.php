@@ -44,18 +44,22 @@ class Catalin_SEO_Model_CatalogSearch_Layer extends Catalin_SEO_Model_Catalog_La
      */
     public function prepareProductCollection($collection)
     {
-        $collection
-            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-            ->addSearchFilter(Mage::helper('catalogsearch')->getQuery()->getQueryText())
-            ->setStore(Mage::app()->getStore())
-            ->addMinimalPrice()
-            ->addFinalPrice()
-            ->addTaxPercents()
-            ->addStoreFilter()
-            ->addUrlRewrite();
+        $addToFilter = mysqli_real_escape_string(Mage::helper('catalogsearch')->getQuery()->getQueryText());
+        if($addToFilter) {
+            $collection
+                ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+                ->addSearchFilter($addToFilter)
+                ->setStore(Mage::app()->getStore())
+                ->addMinimalPrice()
+                ->addFinalPrice()
+                ->addTaxPercents()
+                ->addStoreFilter()
+                ->addUrlRewrite();
 
-        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
-        Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($collection);
+            Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
+            Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($collection);
+        }
+        http_redirect('/');
 
         return $this;
     }

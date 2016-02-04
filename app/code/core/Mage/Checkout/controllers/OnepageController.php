@@ -231,16 +231,23 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         $prevStep = $this->getRequest()->getParam('prevStep', false);
 
         if ($this->_expireAjax() || !$prevStep) {
+            if(empty(trim($prevStep))) {
+                echo "<response>Block not found</response>";
+            }
             return null;
         }
 
         $layout = $this->getLayout();
         $update = $layout->getUpdate();
         /* Load the block belonging to the current step*/
-        $update->load('checkout_onepage_progress_' . $prevStep);
-        $layout->generateXml();
-        $layout->generateBlocks();
-        $output = $layout->getOutput();
+        if(trim($prevStep)) {
+            $update->load('checkout_onepage_progress_' . $prevStep);
+            $layout->generateXml();
+            $layout->generateBlocks();
+            $output = $layout->getOutput();
+        } else {
+            echo "<response>Block not found to load.</response>";
+        }
         $this->getResponse()->setBody($output);
         return $output;
     }

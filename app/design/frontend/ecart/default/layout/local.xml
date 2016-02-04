@@ -289,12 +289,12 @@
             <reference name="content">
            
 
-            <block type="smartsuggest/wrapper" name="smartsuggest_content" as="personlized" template="tm/smartsuggest/wrapper/content.phtml">
+           <!-- <block type="smartsuggest/wrapper" name="smartsuggest_content" as="personlized" template="tm/smartsuggest/wrapper/content.phtml">
                 <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
                     <action method="addDataFromConfig"><path>smartsuggest/suggestpage</path></action>
                     <action method="setSliderId"><id>-content</id></action>
                 </block>
-            </block>
+            </block>-->
 
            <!--<block type="smartsuggest/wrapper" name="smartsuggest_content" template="tm/smartsuggest/wrapper/product.collateral.phtml">
                 <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/list.phtml">
@@ -308,19 +308,22 @@
 		<checkout_cart_index>
 			<reference name="content">
 
-                <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/listnew.phtml">
+               <!-- <block type="smartsuggest/suggest" name="smartsuggest.content.default" as="smartsuggest" template="tm/smartsuggest/listnew.phtml">
                     <action method="addDataFromConfig"><path>smartsuggest/product_additional_info</path></action>
                     <action method="setSliderId"><id>-content</id></action>
-                </block>
+                </block>-->
             
 		   </reference>
         </checkout_cart_index>
+		<!--<checkout_onepage_index>
+		<reference name="root">
+		<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+		</checkout_onepage_index>-->
 			
 			<catalog_category_default>
 			<reference name="root">
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
-			
-			
 			</reference>
 			
 			</catalog_category_default>
