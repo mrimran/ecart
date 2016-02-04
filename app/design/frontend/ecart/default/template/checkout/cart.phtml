@@ -36,10 +36,12 @@ $product_ids = "";
 $total = 0.00;
 foreach($this->getItems() as $item) { 
     $product_ids .= "'".$item->getId()."', ";
+    
 }
 ?>
-
-<?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
+ 
+<?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; 
+?>
 <section>
 <div class="cart col-sm-12 paddingzero cart_page <?php echo $_priceDisplay; ?>">
     <div class="page-title title-buttons">
@@ -170,7 +172,7 @@ foreach($this->getItems() as $item) {
 <div class="cart-forms clearfix">
         <?php /* Extensions placeholder */ ?>
         <?php echo $this->getChildHtml('checkout_cart_widget') ?>
-        <?php echo $this->getChildHtml('coupon') ?>
+        <?php //echo $this->getChildHtml('coupon') ?>
         <?php echo $this->getChildHtml('checkout.cart.extra') ?>
     <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
 <?php if(!$this->hasError()): ?>

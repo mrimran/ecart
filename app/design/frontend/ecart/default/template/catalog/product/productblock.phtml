@@ -27,13 +27,17 @@ $_helper = $this->helper('catalog/output');?>
 <div class="col-sm-4">
 
 <div class="__icon"><span class="fa fa-heart">&nbsp;</span></div>
-<div class="__numbers"><?php echo number_format($wishProduct,'0','.',','); ?>%</div>
+<div class="__numbers"><?php echo number_format($wishhlist,'0','.',','); ?></div>
 <div class="__text">people Recommend this product</div>
 </div>
 <div class="col-sm-4">
 <div class="__icon"><span class="fa fa-star"> &nbsp;</span></div>
-<div class="__numbers"><?php echo $ratingPercent  ?>/5</div>
-<div class="__text">Is average rating for this product</div>
+<?php if ($ratingPercent == 0): ?>
+	  <div class="__text">Be the first one to rate this product</div>
+<?php else : ?>
+      <div class="__numbers"><?php echo $ratingPercent  ?>/5</div>
+      <div class="__text">Is average rating for this product</div>
+<?php endif; ?>
 </div>
 </div>
 </div>

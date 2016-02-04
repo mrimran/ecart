@@ -5,6 +5,8 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
 
     public function changePrice(Varien_Event_Observer $observer)
     {
+        
+        
         $sku = $observer->getEvent()->getQuoteItem()->getProduct()->getData('sku');
         $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
         $new_price = $_product->getPrice();
@@ -32,12 +34,17 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
         if($item->getProduct()->isConfigurable()) {
             // Load the custom price
             $price = $new_price;
+
             // Set the custom price
             //Set price by subtracting base price from the passed price and 
             //then adding the product price to tackle any extra price attached with custom options :)
             //identify if there is some extra cost, final price - base price
             $extra_price = $item->getProduct()->getFinalPrice() - $item->getProduct()->getPrice(); //add this extra price
+            echo $item->getProduct()->getProductThumbnail();
+           
             $extra_price = ($extra_price > 0) ? $extra_price : 0;
+            $price = $price + $extra_price;
+            
             /* echo "Got:". $price;
               echo " Extra: ".$extra_price;
               echo "final price:".$item->getProduct()->getFinalPrice().", price:".$item->getProduct()->getPrice().", Passed:".($extra_price + $price);die(); */
