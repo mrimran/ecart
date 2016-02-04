@@ -108,8 +108,8 @@ background-color:#fff;border-top:0;}
 .mainhead .padding-r{padding-right:0;}
 .mainhead .reasonsnav{margin:0;padding:5px 0 15px;border-bottom:1px dashed #eaeaea;}
 .mainhead .reasonsnav ul,.mainhead .dealsnav ul{list-style-type:none;}
-.mainhead .reasonsnav ul li{font-family:'OratorStd-Regular','Open Sans', sans-serif;font-weight:400;
-font-size:11px;padding:0;text-transform:uppercase;letter-spacing:0.1px;line-height:2;text-align:center; width: 32%;}
+.mainhead .reasonsnav ul li{/*font-family:'OratorStd-Regular','Open Sans', sans-serif;*/font-weight:400;
+font-size:12px;padding:0;text-transform:uppercase;letter-spacing:0.5px;line-height:2;text-align:center; width: 32%;}
 .mainhead .reasonsnav > ul > li:nth-child(2){padding-left:8%;}
 .mainhead .reasonsnav ul li img{vertical-align:middle;}
 .mainhead .reasonsnav ul li:first-child{text-align:left;width: 35%;}
@@ -486,7 +486,7 @@ background-color:#25272F;border-top:1px dashed #555;line-height:1;}
 body.cms-index-index .maincontainer{padding-top:0px;}
 .maincontainer #breadcrumbs{padding:20px 0 0;}
 .maincontainer .breadcrumbs,.maincontainer .breadcrumbs a{font-size:12px;color:#575757;
-font-family:'OratorStd-Regular','Open Sans', sans-serif;font-weight:600;}
+/*font-family:'OratorStd-Regular','Open Sans', sans-serif;font-weight:600;*/}
 .maincontainer .breadcrumbs a:hover{color:#f57a20;}
 .maincontainer .filters{width:100%;/*margin-bottom:20px;border:1px solid #eaeaea;*/clear: both;}
 .maincontainer .filters .heading{background-color:#2d2e32;padding:10px 15px;display:block;color:#fff;
@@ -1019,6 +1019,8 @@ content:'';display:block;background-position:center;width:14px;height:15px;backg
 .contact-us .form-control{border-radius:0;}
 .contact-us p{color:#bebebe;}
 .contact-us .btn1{font-weight:600;padding:8px 30px;}
+.product_returns .label{line-height:1.8;}
+.product_returns .label input[type="radio"]{margin:0;}
 .cart_page .btn1,.cart_page .btn2{font-size:20px;padding:10px 30px;font-weight: 600;line-height: 1.2;}
 .cart_page .btn2{font-size:14px;padding:12px 18px;font-weight:100;}
 .navmenu-fixed-left{background: rgb(45, 46, 50);display:none;}
