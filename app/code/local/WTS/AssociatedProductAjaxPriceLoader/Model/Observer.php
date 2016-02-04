@@ -14,6 +14,7 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
 
         // Get the quote item
         $item = $observer->getQuoteItem();
+        
         // Ensure we have the parent item, if it has one
         $item = ( $item->getParentItem() ? $item->getParentItem() : $item );
         //apply the payment logic on in configurable products only
@@ -26,7 +27,8 @@ class WTS_AssociatedProductAjaxPriceLoader_Model_Observer
             //then adding the product price to tackle any extra price attached with custom options :)
             //identify if there is some extra cost, final price - base price
             $extra_price = $item->getProduct()->getFinalPrice() - $item->getProduct()->getPrice(); //add this extra price
-            
+            echo $item->getProduct()->getProductThumbnail();
+           
             $extra_price = ($extra_price > 0) ? $extra_price : 0;
             $price = $price + $extra_price;
             

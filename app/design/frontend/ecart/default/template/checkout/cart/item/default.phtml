@@ -35,11 +35,23 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 
 ?>
 <tr>
+<?php $productType = $_item->getProductType() ; ?>
     <td class="product-cart-image">
-        <?php if ($this->hasProductUrl()):?>
+    <?php if ($this->hasProductUrl()):?>
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image img-box">
         <?php endif;?>
+        <?php if($productType === "configurable"):?>
+             <?php  $product_new = Mage::getModel('catalog/product')->loadByAttribute('sku',$_item->getSku());
+               if($product_new->getThumbnail()!= "no_selection"):
+               $thumbnail = Mage::helper('catalog/image')->init($product_new, 'thumbnail')->resize(80);
+              ?>
+              <img src="<?php echo $thumbnail; ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+        <?php elseif($product_new->getThumbnail() == "no_selection"):?>
+              <img src="<?php echo $this->getProductThumbnail()->resize(180); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+        <?php endif; ?>
+        <?php else :?>
             <img src="<?php echo $this->getProductThumbnail()->resize(180); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+        <?php endif; ?>
         <?php if ($this->hasProductUrl()):?>
             </a>
         <?php endif;?>
@@ -69,7 +81,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 
 
         <li class="product-cart-sku">
-            <!-- <span class="label"><?php echo $this->__('SKU'); ?>:</span> --> <?php echo $this->escapeHtml($_item->getSku()); ?>
+            <!-- <span class="label"><?php echo $this->__('SKU'); ?>:</span> -->
+                         <?php echo $this->escapeHtml($_item->getSku()); ?>
         </li>
        <!-- <li class="product-cart-sku">
          <span class="label"><?php //echo $this->__('COLOR'); ?>:</span> 
@@ -236,9 +249,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
     <?php endif; ?>
     <td class="a-center product-cart-remove delivery">
-    <h3 class="heading2">FREE</h3>
-    <p>Delivered in 3-5 <br>business days.</p>
-        <!-- <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove Item')) ?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove Item') ?></a> -->
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cart_block')->toHtml(); 
+    ?> 
     </td>
     <!--Sub total starts here -->
     <?php if (($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()) && !$_item->getNoSubtotal()): ?>
