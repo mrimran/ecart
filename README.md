@@ -1,5 +1,8 @@
 Release Notes
 -----------------
+===1.2.1===
+- Search blank page issue fix
+
 ===1.2.0===
 - Image thumbnail issue for cart page is resolved
 - Product block issue on people recomendation and average rating is resolved
