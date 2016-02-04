@@ -137,7 +137,7 @@ class Tabs_Extension_Block_Ajaxlatest extends Mage_Catalog_Block_Product_Abstrac
      * Need use as _prepareLayout - but problem in declaring collection from
      * another block (was problem with search result)
      */
-    protected function _beforeToHtml()
+   protected function _beforeToHtml()
     {
         $toolbar = $this->getToolbarBlock();
 
@@ -145,32 +145,30 @@ class Tabs_Extension_Block_Ajaxlatest extends Mage_Catalog_Block_Product_Abstrac
         $collection = $this->getProductCollectionLatest($id);
 
         // use sortable parameters
-        if ($orders = $this->getAvailableOrders()) {
+        $orders = array('entity_id' => $this->__('Latest'), 'price' => $this->__('Price') ); 
             $toolbar->setAvailableOrders($orders);
-        }
+        
         if ($sort = $this->getSortBy()) {
-            $toolbar->setDefaultOrder($sort);
-        }
-        if ($dir = $this->getDefaultDirection()) {
-            $toolbar->setDefaultDirection($dir);
+            $toolbar->setAvailableOrders($orders);
+            $toolbar->setDefaultOrder('entity_id');
+            $toolbar->setDefaultDirection('desc');
         }
         if ($modes = $this->getModes()) {
-            $toolbar->setModes($modes);
-        }
-
-        // set collection to toolbar and apply sort
-        $toolbar->setCollection($collection);
-
-        $this->setChild('toolbar', $toolbar);
-        Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->getProductCollectionLatest($id)
-        ));
-
-        $this->getProductCollectionLatest($id)->load();
-
-        return parent::_beforeToHtml();
+        $toolbar->setModes($modes);
     }
-
+ 
+    // set collection to tollbar and apply sort
+    $toolbar->setCollection($collection);
+ 
+    $this->setChild('toolbar', $toolbar);
+    Mage::dispatchEvent('catalog_block_product_list_collection', array(
+        'collection'=>$this->getProductCollectionLatest($id),
+    ));
+ 
+    $this->getProductCollectionLatest($id)->load();
+    Mage::getModel('review/review')->appendSummary($this->getProductCollectionLatest($id));
+    return parent::_beforeToHtml();
+    }
     /**
      * Retrieve Toolbar block
      *

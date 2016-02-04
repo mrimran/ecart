@@ -278,7 +278,7 @@ $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
       <?php endif ?>
     </div>
   </div>
-  <div id="product_specs" class="col-sm-12 " style="display:none;">
+  <div id="product_specs" class="col-sm-12 " style="display:none">
     <h2>Specifications</h2>
     <?php
             $product_id = Mage::registry('current_product')->getId();
@@ -337,6 +337,7 @@ jQuery(document).ready(function(){
 
 function priceChangeGoogleTagManagerDataLayer(newPrice)
 {
+  
     newPrice = newPrice.match(/\d+(,\d+)?(\.\d+)?/)[0];
     newPrice = newPrice.replace(",","");
     //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
