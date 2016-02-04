@@ -337,24 +337,25 @@ jQuery(document).ready(function(){
 
 function priceChangeGoogleTagManagerDataLayer(newPrice)
 {
-
-    newPrice = newPrice.match(/\d+(,\d+)?(\.\d+)?/)[0];
-    newPrice = newPrice.replace(",","");
-    //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
-    if(typeof(dataLayer[0]) !== "undefined") {
-        if(typeof(dataLayer[0].product_price) !== "undefined") {
-            dataLayer[0].product_price = newPrice;
+    if(jQuery.trim(newPrice)) {
+        newPrice = newPrice.match(/\d+(,\d+)?(\.\d+)?/)[0];
+        newPrice = newPrice.replace(",","");
+        //console.log(newPrice+"|"+dataLayer[0].product_price.toString().length+"|"+jQuery('.special-price').length);
+        if(typeof(dataLayer[0]) !== "undefined") {
+            if(typeof(dataLayer[0].product_price) !== "undefined") {
+                dataLayer[0].product_price = newPrice;
+            }
         }
-    }
 
-    if(typeof(dataLayer[1]) !== "undefined") {
-        if(typeof(dataLayer[1].product_price) !== "undefined") {
-            dataLayer[1].product_price = newPrice;
+        if(typeof(dataLayer[1]) !== "undefined") {
+            if(typeof(dataLayer[1].product_price) !== "undefined") {
+                dataLayer[1].product_price = newPrice;
+            }
         }
-    }
 
-    if(typeof(jQuery('#total_value_seo')) !== "undefined") {
-        jQuery('#total_value_seo').val(newPrice);
+        if(typeof(jQuery('#total_value_seo')) !== "undefined") {
+            jQuery('#total_value_seo').val(newPrice);
+        }
     }
 }
 
