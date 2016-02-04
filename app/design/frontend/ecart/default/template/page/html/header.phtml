@@ -63,7 +63,7 @@
                      $customer = $session->getCustomer();
                      $time = $this->getlogintime($customer->getId());
                     foreach($time as $tim):
-
+                           
                            $logout =  $tim->logout_at;
                       endforeach;
 
@@ -75,7 +75,7 @@
                       $username = $parts[0];
                       echo "<h3>".$username."</h3>";
                  endif;
-
+                     
                      if($logout != Null):
                      echo "Last Activity :";
                          $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
@@ -86,7 +86,7 @@
                           $datetime1 = new DateTime($val1);
                           $datetime2 = new DateTime($val2);
                           $interval = $datetime1->diff($datetime2);
-
+                          
                           if($interval->format('%Y%') != 00 || $interval->format('%Y%') != 0):
                             echo $interval->format('%Y years');
                           elseif($interval->format('%m%') != 00 || $interval->format('%m%') != 0):
@@ -186,7 +186,7 @@
 				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('bestselling')?>">Best Selling</a></li>
 				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('collection')?>">Our Collection</a></li>
 				     <li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).Mage::helper('extension')->getCustomUrl('sale')?>">All Sale</a></li>
-				     <li class="call-us"><a href="tel:+971<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('cell-header')->toHtml(); ?>"><i class="fa fa-phone"></i><?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('cell-header')->toHtml(); ?></a></li>
+				     <li class="call-us"><a href="tel:+971<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cell-header')->toHtml(); ?>"><i class="fa fa-phone"></i> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cell-header')->toHtml(); ?></a></li>
 				    </ul>
 				   </div>
      		</div>
