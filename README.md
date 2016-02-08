@@ -1,5 +1,8 @@
 Release Notes
 -----------------
+===1.2.2===
+- Javascript breaking error fix for ajax price loader
+
 ===1.2.1===
 - Search blank page issue fix
 

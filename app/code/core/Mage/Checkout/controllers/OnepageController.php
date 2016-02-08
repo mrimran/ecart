@@ -231,7 +231,8 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         $prevStep = $this->getRequest()->getParam('prevStep', false);
 
         if ($this->_expireAjax() || !$prevStep) {
-            if(empty(trim($prevStep))) {
+            $prevStep = trim($prevStep);
+            if(empty($prevStep)) {
                 echo "<response>Block not found</response>";
             }
             return null;
